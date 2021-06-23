@@ -1,93 +1,50 @@
-# This file is a template, and might need editing before it works on your project.
-# Official framework image. Look for the different tagged releases at:
-# https://hub.docker.com/r/library/node/tags/
-image: node:latest
+############################### CI Template ###############################
 
-# Pick zero or more services to be used on all builds.
-# Only needed when using a docker container to run your tests in.
-# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
+## Due to include file fail for Anchor defination, we copy it for each project.
+## Copy the required repeatable template for code simplification.
 
-# This folder is cached between builds
-# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+#==== SSH Deploy script ===============================================================================================================
 
-stages:
- - build
- - deploy:dev
-
-# cache:
-#   key: ${CI_COMMIT_REF_SLUG}
-#   paths:
-#   - node_modules/
-
-build:node:
-  stage: build
-  tags: [nodejs]
-  before_script:
-    - npm install
+.sshDeployTemplate: &sshDeployTemplate
+  image: alpine:3.11
   script:
-    - npm run build
-  only:
-    - master
-  artifacts:
-    name: "$CI_JOB_STAGE-$CI_COMMIT_REF_NAME"
-    paths: 
-      - 'dist/*'
-    expire_in: 1 day
-    when: always
-
-deploy_dev:
-  stage: deploy:dev
-  tags: [general-shell] # Shell Worker to make SSH / SCP
-  only:
-    - master
-  dependencies:
-    - build:node    # We need the artifacts for deploy, (We using Gitlab 11, cannot use "needs")
-  variables:            # Setup Variables for deploy
-    HOST: $WEBSERVER_IP                # Deploy Host IP
-    USER: $WEBSERVER_USER              # Deploy Host Signin User
-    SSH_PRI_KEY: $SSH_PRIVATE_KEY      # SSH Privite Key for signin
-    DOCROOT: $WEBSERVER_DOCROOT        # Deploy Host Document Root
-    TMP: $TMP                # Deploy Host Temp folder for handle Backup and Deploy Files.
-    GIT_STRATEGY: none
-  script:
-    #remove SSH Key
-    - rm -rf ~/.ssh/id_rsa
 
     # Set Commit Time
     - export DEPLOY_DATE=$(date '+%Y%m%d_%H%M%S')
 
     #Import SSH Key
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - ls
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_PRI_KEY" > ~/.ssh/id_rsa
-    - chmod 400 ~/.ssh/id_rsa
+    - apk add --update openssh-client bash tar
+    - eval $(ssh-agent -s)
+    #- 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - bash -c 'ssh-add <(echo "$SSH_PRI_KEY")'
+    # - chmod 400 ~/.ssh/id_rsa
 
     #  1. (Optional) Clear Remote Host tmp folder
     #     Clear File before Copy (Optional, as this can be a Cron on Server, Or handle )
-    - ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$USER"@"$HOST" "rm -rf $TMP/backup.*.gz; rm -rf $TMP/deploy.*.gz;"
+    - ssh -o "StrictHostKeyChecking no" "$USER"@"$HOST" "rm -rf $TMP/backup.*.gz; rm -rf $TMP/deploy.*.gz;"
 
     #  2. Upload the artifacts,
-    - tar zcf - ./ | ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa $USER@$HOST "cat > $TMP/deploy.$DEPLOY_DATE.tar.gz"
+    - tar zcf - . | ssh -o "StrictHostKeyChecking no" $USER@$HOST "cat > $TMP/deploy.$DEPLOY_DATE.tar.gz"
 
     # Prepare Remote scripts (For Step 3 and 4)
     #  3. Backup exisiting webroot,
-    - echo "tar -zcf $TMP/backup.$DEPLOY_DATE.tar.gz $DOCROOT" >> ~/"$CI_PROJECT_NAME".sh
+    # Exculde!! /var/www/newwww/bec-dev/webroot/public_html/sites/default/files/event_highlight
+
+    - echo "tar -zcf $TMP/backup.$DEPLOY_DATE.tar.gz --exclude=public_html/public_html/sites/default/files $DOCROOT" >> ~/"$CI_PROJECT_NAME".sh
     #  4. Copy deploy code on top exisiting webroot (i.e. gitignored file will not overwrite)
     #     Unzip
     - echo "mkdir -p $TMP/deploy; " >> ~/"$CI_PROJECT_NAME".sh
     - echo "tar -zxf $TMP/deploy.$DEPLOY_DATE.tar.gz -C $TMP/deploy;" >> ~/"$CI_PROJECT_NAME".sh
     #     Copy
-    - echo "cp -rlf $TMP/deploy/dist/* $DOCROOT/" >> ~/"$CI_PROJECT_NAME".sh
+    - echo "cp -rlf $TMP/deploy/* $DOCROOT/" >> ~/"$CI_PROJECT_NAME".sh
     #     Remove Deploy Folder
     - echo "rm -rf $TMP/deploy" >> ~/"$CI_PROJECT_NAME".sh
 
     # Fire Remote Command
-    - ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$USER"@"$HOST" < ~/"$CI_PROJECT_NAME".sh
+    - ssh -q -o "StrictHostKeyChecking no" "$USER"@"$HOST" < ~/"$CI_PROJECT_NAME".sh
 
     #  5. (Optional) Copy backup to Local
-    - scp -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$USER"@"$HOST":$TMP/backup.$DEPLOY_DATE.tar.gz ./
+    # - scp -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$USER"@"$HOST":$TMP/backup.$DEPLOY_DATE.tar.gz ./
     # Copy to backup location.
     # - mv ./backup.$DEPLOY_DATE.tar.gz /mnt/deployBackup/$backupFolder
 
@@ -95,9 +52,79 @@ deploy_dev:
     # - ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$WEBSERVER_USER"@"$WEBSERVER_IP" "rm -rf $TMP/backup.*.gz; rm -rf $TMP/deploy.*.gz;"
 
     #remove SSH Keys and Remote scripts
-    - rm ~/.ssh/id_rsa
     - rm ~/"$CI_PROJECT_NAME".sh
 
-  # Allow CI pass if Build fail
-  allow_failure: false
+############################### End of Template ###############################
 
+############################### Start of CI Config ###############################
+
+# .gitlab-ci.yml
+# @Kenny 2020 Mar 20
+
+# REMARK: All Kanhan internal package need to add as VCS with IP (172.16.10.135)
+
+## Example snippest of composer.json
+############
+#    "repositories": {
+#        "kanhan": {
+#            "type": "vcs",
+#            "url": "git@172.16.10.135:drupal-8-resource/kh-dh-keyexchange.git"
+#        }
+#    }
+############
+
+stages:
+  - build # Stage for composer Build
+  - deploy:master
+  - deploy:development
+
+# Include Composer Builder
+# REMARK: All Kanhan internal package need to add as VCS with IP (172.16.10.135)
+#
+# -- Intro ---
+#  It will auto build the project with composer and upload the artifacts into Gitlab with 1 day availability.
+#  You can download the project for deploy Or make use of it in the next stage.
+
+deploy_dev_without_composer:
+  stage: deploy:master
+  tags: [nwt-deploy] # Docker Worker to make SSH / SCP
+  rules:
+    - if: '$CI_COMMIT_BRANCH  == "uat"'
+      changes:
+      - composer.lock
+      when: never
+    - if: '$CI_COMMIT_BRANCH  == "uat"'
+  variables:            # Setup Variables for deploy
+    HOST: $UAT_IP        # Deploy Host IP
+    USER: $UAT_USER            # Deploy Host Signin User
+    SSH_PRI_KEY: $UAT_PRIVATE_KEY      # SSH Privite Key for signin
+    DOCROOT: $WEBSERVER_DOCROOT        # Deploy Host Document Root
+    TMP: $WEB_TMP                # Deploy Host Temp folder for handle Backup and Deploy Files.
+  before_script:
+    - rm -rf composer.json
+    - rm -rf composer.lock
+    - rm -rf *.md
+  extends:
+    - .sshDeployTemplate
+
+deploy_development_without_composer:
+  stage: deploy:development
+  tags: [ssh-deploy] # Docker Worker to make SSH / SCP
+  rules:
+    - if: '$CI_COMMIT_BRANCH  == "master"'
+      changes:
+      - composer.lock
+      when: never
+    - if: '$CI_COMMIT_BRANCH  == "master"'
+  variables:            # Setup Variables for deploy
+    HOST: $WEBSERVER_IP               # Deploy Host IP
+    USER: $WEBSERVER_USER            # Deploy Host Signin User
+    SSH_PRI_KEY: $SSH_PRIVATE_KEY      # SSH Privite Key for signin
+    DOCROOT: $WEBSERVER_DOCROOT        # Deploy Host Document Root
+    TMP: $WEB_TMP                # Deploy Host Temp folder for handle Backup and Deploy Files.
+  before_script:
+    - rm -rf composer.json
+    - rm -rf composer.lock
+    - rm -rf *.md
+  extends:
+    - .sshDeployTemplate

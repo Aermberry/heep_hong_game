@@ -76,7 +76,7 @@
 stages:
   - build # Stage for composer Build
   - deploy:master
-  - deploy:development
+  - deploy:uat
 
 # Include Composer Builder
 # REMARK: All Kanhan internal package need to add as VCS with IP (172.16.10.135)
@@ -86,7 +86,7 @@ stages:
 #  You can download the project for deploy Or make use of it in the next stage.
 
 deploy_dev_without_composer:
-  stage: deploy:master
+  stage: deploy:uat
   tags: [nwt-deploy] # Docker Worker to make SSH / SCP
   rules:
     - if: '$CI_COMMIT_BRANCH  == "uat"'
@@ -108,7 +108,7 @@ deploy_dev_without_composer:
     - .sshDeployTemplate
 
 deploy_development_without_composer:
-  stage: deploy:development
+  stage: deploy:master
   tags: [ssh-deploy] # Docker Worker to make SSH / SCP
   rules:
     - if: '$CI_COMMIT_BRANCH  == "master"'

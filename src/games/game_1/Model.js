@@ -1,31 +1,14 @@
 export default class Model {
   constructor() {
-    // this._soundOn = true;
-    // this._musicOn = true;
-    // this._bgMusicPlaying = false;
+    this._world = {}
   }
 
-  // set musicOn(value) {
-  //   this._musicOn = value;
-  // }
+  set world(value){
+    this._world = value
+  }
 
-  // get musicOn() {
-  //   return this._musicOn;
-  // }
+  get world(){
+    return this._world
+  }
 
-  // set soundOn(value) {
-  //   this._soundOn = value;
-  // }
-
-  // get soundOn() {
-  //   return this._soundOn;
-  // }
-
-  // set bgMusicPlaying(value) {
-  //   this._bgMusicPlaying = value;
-  // }
-
-  // get bgMusicPlaying() {
-  //   return this._bgMusicPlaying;
-  // }
 }

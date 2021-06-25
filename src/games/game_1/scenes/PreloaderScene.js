@@ -4,14 +4,32 @@ import config from '../config/Config';
 import tutorBg from '../assets/tutor.png'
 import gameBg from '../assets/bg_pnl.png'
 import refBg from '../assets/ref.png'
+
+
+
 import endBg from '../assets/bg_end.png'
+import endBoxBg from '../assets/end_box.png'
+import endPicBg from '../assets/end_pic1.png'
 
-
-import extSmBtn from '../assets/btn_ext_1.png'
-import strBtn from '../assets/btn_str.png'
-import strOnBtn from '../assets/btn_str.png'
+import sudBg from '../assets/bg_snd.png'
 import sndBtn from '../assets/btn_ply.png'
 import sndOnBtn from '../assets/btn_pus.png'
+
+
+import ph1Bg from '../assets/bg_ph1.png'
+import ph2Bg from '../assets/bg_ph2.png'
+
+import pnlBg from '../assets/bg_pnl.png'
+import ltpBg from '../assets/bg_ltp.png'
+import stageBg from '../assets/bg_stage.png'
+
+
+import rplBtn from '../assets/btn_rpl.png'
+import extSmBtn from '../assets/btn_ext_1.png'
+import extBtn from '../assets/btn_ext.png'
+import strBtn from '../assets/btn_str.png'
+import strOnBtn from '../assets/btn_str.png'
+
 
 import thudMp3 from '../assets/thud.mp3'
 import thudOgg from '../assets/thud.ogg'
@@ -31,14 +49,26 @@ export default class PreloaderScene extends Scene {
     self.load.image('tutorBg', tutorBg)
     self.load.image('gameBg', gameBg)
     self.load.image('refBg', refBg)
-    self.load.image('endBg', endBg)
 
     self.load.image('extSmBtn', extSmBtn)
     self.load.image('strBtn', strBtn)
     self.load.image('strOnBtn', strOnBtn)
+
+    self.load.image('sndBg', sudBg)
     self.load.image('sndBtn', sndBtn)
     self.load.image('sndOnBtn', sndOnBtn)
 
+    self.load.image('ph1Bg', ph1Bg)
+    self.load.image('ph2Bg', ph2Bg)
+    self.load.image('ltpBg', ltpBg)
+    self.load.image('pnlBg', pnlBg)
+    self.load.image('stageBg', stageBg)
+
+    self.load.image('rplBtn', rplBtn)
+    self.load.image('extBtn', extBtn)
+    self.load.image('endBg', endBg)
+    self.load.image('endBoxBg', endBoxBg)
+    self.load.image('endPicBg', endPicBg)
 
 
     self.load.audio('thud', [thudMp3, thudOgg])
@@ -72,10 +102,10 @@ export default class PreloaderScene extends Scene {
   }
 
   ready () {
-    this.scene.start('Title');
+    this.scene.start('Tutor');
     this.readyCount++;
     if (this.readyCount === 2) {
-      this.scene.start('Title');
+      this.scene.start('Tutor');
     }
   }
 

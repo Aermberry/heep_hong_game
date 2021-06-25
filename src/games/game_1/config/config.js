@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 
 export default {
-  type: Phaser.CANVAS,
+  type: Phaser.AUTO,
   //width: '100%',
   //height: '100%',
   width: 1920,

@@ -1,31 +1,35 @@
 import Phaser from 'phaser'
 
 export default class Button extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, key1, text, targetScene) {
+  constructor(scene, x, y, key, targetScene, target) {
     super(scene);
     this.scene = scene;
     this.x = x;
     this.y = y;
 
-    this.button = this.scene.add.sprite(0, 0, key1).setInteractive();
-    this.text = this.scene.add.text(0, 0, text, { fontSize: '32px', fill: '#fff' });
-    Phaser.Display.Align.In.Center(this.text, this.button);
+
+    this.button = this.scene.add.sprite(0, 0, key).setInteractive();
 
     this.add(this.button);
-    this.add(this.text);
 
     this.button.on('pointerdown', function () {
+      this.button.setFrame(1)
       if(targetScene){
-        this.scene.scene.start(targetScene);
+        setTimeout(() => {
+          if(target == 'self'){
+            this.scene.scene.start(targetScene);
+          }else{
+            window.location.href = targetScene;
+          }
+        }, 500);
       }
     }.bind(this));
 
-    this.button.on('pointerover', function () {
-
-    }.bind(this));
+    // this.button.on('pointerover', function () {
+    // }.bind(this));
 
     this.button.on('pointerout', function () {
-      this.button.setTexture(key1);
+      this.button.setFrame(0);
     }.bind(this));
 
     this.scene.add.existing(this);

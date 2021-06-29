@@ -14,7 +14,7 @@ export default class EndScene extends Scene {
     background.setDisplaySize(config.width, config.height)
 
     self.add.image(config.width/2, config.height/2, 'endBoxBg').setOrigin(.5, .5)
-    self.add.image(config.width/2, config.height/2 - 30, 'endPicBg').setOrigin(.5, .5)
+    self.add.image(config.width/2, config.height/2 - 30, 'endPic1').setOrigin(.5, .5)
 
     self.replayButton = new Button(self, config.width/2 - 220, config.height/2 + 310, 'rplBtn')
     self.exitButton = new Button(self, config.width/2 + 220, config.height/2 + 310, 'extBtn')

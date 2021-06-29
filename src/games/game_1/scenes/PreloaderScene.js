@@ -1,36 +1,6 @@
 import { Scene } from 'phaser'
 import config from '../config/Config';
 
-import tutorBg from '../assets/tutor.png'
-import gameBg from '../assets/bg_pnl.png'
-import refBg from '../assets/ref.png'
-
-
-
-import endBg from '../assets/bg_end.png'
-import endBoxBg from '../assets/end_box.png'
-import endPicBg from '../assets/end_pic1.png'
-
-import sudBg from '../assets/bg_snd.png'
-import sndBtn from '../assets/btn_ply.png'
-import sndOnBtn from '../assets/btn_pus.png'
-
-
-import ph1Bg from '../assets/bg_ph1.png'
-import ph2Bg from '../assets/bg_ph2.png'
-
-import pnlBg from '../assets/bg_pnl.png'
-import ltpBg from '../assets/bg_ltp.png'
-import stageBg from '../assets/bg_stage.png'
-
-
-import rplBtn from '../assets/btn_rpl.png'
-import extSmBtn from '../assets/btn_ext_1.png'
-import extBtn from '../assets/btn_ext.png'
-import strBtn from '../assets/btn_str.png'
-import strOnBtn from '../assets/btn_str.png'
-
-
 import thudMp3 from '../assets/thud.mp3'
 import thudOgg from '../assets/thud.ogg'
 
@@ -46,30 +16,52 @@ export default class PreloaderScene extends Scene {
   preload () {
     let self = this
 
-    self.load.image('tutorBg', tutorBg)
-    self.load.image('gameBg', gameBg)
-    self.load.image('refBg', refBg)
 
-    self.load.image('extSmBtn', extSmBtn)
-    self.load.image('strBtn', strBtn)
-    self.load.image('strOnBtn', strOnBtn)
 
-    self.load.image('sndBg', sudBg)
-    self.load.image('sndBtn', sndBtn)
-    self.load.image('sndOnBtn', sndOnBtn)
+    self.load.image('tutorBg', require('../assets/tutor_bg.png'))
+    self.load.image('gameBg', require('../assets/bg_pnl.png'))
+    self.load.image('refBg', require('../assets/ref.png'))
+    self.load.image('endBg', require('../assets/bg_end.png'))
+    self.load.image('endBoxBg', require('../assets/end_box.png'))
+    self.load.image('ltpBg', require('../assets/bg_ltp.png'))
+    self.load.image('pnlBg', require('../assets/bg_pnl.png'))
+    self.load.image('stageBg', require('../assets/bg_stage.png'))
+    self.load.image('sndBg', require('../assets/bg_snd.png'))
 
-    self.load.image('ph1Bg', ph1Bg)
-    self.load.image('ph2Bg', ph2Bg)
-    self.load.image('ltpBg', ltpBg)
-    self.load.image('pnlBg', pnlBg)
-    self.load.image('stageBg', stageBg)
+    self.load.image('endPic1', require('../assets/end_pic1.png'))
+    self.load.image('endPic2', require('../assets/end_pic2.png'))
+    self.load.image('endPic3', require('../assets/end_pic3.png'))
 
-    self.load.image('rplBtn', rplBtn)
-    self.load.image('extBtn', extBtn)
-    self.load.image('endBg', endBg)
-    self.load.image('endBoxBg', endBoxBg)
-    self.load.image('endPicBg', endPicBg)
 
+    self.load.image('ph1Bg', require('../assets/bg_ph1.png'))
+    self.load.image('ph2Bg', require('../assets/bg_ph2.png'))
+    self.load.image('i_apl', require('../assets/i_apl.png'))
+    self.load.image('i_bgr', require('../assets/i_bgr.png'))
+    self.load.image('i_bnn', require('../assets/i_bnn.png'))
+    self.load.image('i_egg', require('../assets/i_egg.png'))
+    self.load.image('i_fri', require('../assets/i_fri.png'))
+    self.load.image('i_fsh', require('../assets/i_fsh.png'))
+    self.load.image('i_ice', require('../assets/i_ice.png'))
+    self.load.image('i_it', require('../assets/i_it.png'))
+    self.load.image('i_ndl', require('../assets/i_ndl.png'))
+    self.load.image('i_oj', require('../assets/i_oj.png'))
+    self.load.image('i_ric', require('../assets/i_ric.png'))
+    self.load.image('i_veg', require('../assets/i_veg.png'))
+    self.load.image('i_wng', require('../assets/i_wng.png'))
+    self.load.image('i_wtr', require('../assets/i_wtr.png'))
+    self.load.image('tray', require('../assets/tray.png'))
+
+    self.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 })
+    self.load.spritesheet('strBtn', require('../assets/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
+    self.load.spritesheet('plyBtn', require('../assets/btn_ply.png'),{ frameWidth: 186, frameHeight: 209 })
+    self.load.spritesheet('pusBtn', require('../assets/btn_pus.png'),{ frameWidth: 186, frameHeight: 209 })
+    self.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 })
+    self.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 })
+
+    self.load.atlas('tut1',require('../assets/tut1.png'), require('../assets/tut1.json'))
+    self.load.atlas('tut2',require('../assets/tut2.png'), require('../assets/tut2.json'))
+    self.load.atlas('tut3',require('../assets/tut3.png'), require('../assets/tut3.json'))
+    self.load.atlas('tut4',require('../assets/tut4.png'), require('../assets/tut4.json'))
 
     self.load.audio('thud', [thudMp3, thudOgg])
 

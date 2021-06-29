@@ -1,6 +1,8 @@
 import { Scene } from 'phaser'
 import config from '../config/Config';
-import Button from '../objects/Button';
+//import Button from '../objects/Button';
+import ExitBtn from '../objects/ExitBtn';
+import VoiceBtn from '../objects/VoiceBtn';
 
 export default class GameScene extends Scene {
   constructor () {
@@ -32,10 +34,16 @@ export default class GameScene extends Scene {
     })
 
 
-    self.exitTopButton = new Button(this, 120, 135, 'extSmBtn')
+    let exitBtn = new ExitBtn(this, 120, 135);
+    this.add.existing(exitBtn);
 
-    self.voiceBg = self.add.image(config.width -385, config.height -195, 'sndBg')
-    self.voiceButton = new Button(this, config.width -260, config.height -190, 'sndBtn')
+    let voiceBtn = new VoiceBtn(this, config.width -385, config.height -195);
+    this.add.existing(voiceBtn);
+
+    //self.voiceBg = self.add.image(config.width -385, config.height -195, 'sndBg')
+    //self.voiceButton = new Button(this, config.width -260, config.height -190, 'plyBtn')
+
+    this.sound.add('thud')
 
   }
 }

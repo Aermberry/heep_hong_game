@@ -1,8 +1,6 @@
 import { Scene } from 'phaser'
 import config from '../config/Config';
 
-import thudMp3 from '../assets/thud.mp3'
-import thudOgg from '../assets/thud.ogg'
 
 export default class PreloaderScene extends Scene {
   constructor () {
@@ -32,6 +30,8 @@ export default class PreloaderScene extends Scene {
     self.load.image('endPic2', require('../assets/end_pic2.png'))
     self.load.image('endPic3', require('../assets/end_pic3.png'))
 
+    self.load.image('sndAim', require('../assets/snd.gif'))
+
 
     self.load.image('ph1Bg', require('../assets/bg_ph1.png'))
     self.load.image('ph2Bg', require('../assets/bg_ph2.png'))
@@ -58,12 +58,20 @@ export default class PreloaderScene extends Scene {
     self.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 })
     self.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 })
 
-    self.load.atlas('tut1',require('../assets/tut1.png'), require('../assets/tut1.json'))
-    self.load.atlas('tut2',require('../assets/tut2.png'), require('../assets/tut2.json'))
-    self.load.atlas('tut3',require('../assets/tut3.png'), require('../assets/tut3.json'))
-    self.load.atlas('tut4',require('../assets/tut4.png'), require('../assets/tut4.json'))
+    self.load.atlas('tut1',require('../assets/animation/tut1.png'), require('../assets/animation/tut1.json'))
+    self.load.atlas('tut2',require('../assets/animation/tut2.png'), require('../assets/animation/tut2.json'))
+    self.load.atlas('tut3',require('../assets/animation/tut3.png'), require('../assets/animation/tut3.json'))
+    self.load.atlas('tut4',require('../assets/animation/tut4.png'), require('../assets/animation/tut4.json'))
 
-    self.load.audio('thud', [thudMp3, thudOgg])
+    self.load.audio('vo_egg', require('../assets/voice/egg.wav'))
+    self.load.audio('vo_fish', require('../assets/voice/fish.wav'))
+    self.load.audio('vo_juice', require('../assets/voice/juice.wav'))
+    self.load.audio('vo_noodle', require('../assets/voice/noodle.wav'))
+    self.load.audio('vo_rice', require('../assets/voice/rice.wav'))
+    self.load.audio('vo_tea', require('../assets/voice/tea.wav'))
+    self.load.audio('vo_vegetable', require('../assets/voice/vegetable.wav'))
+    self.load.audio('vo_water', require('../assets/voice/water.wav'))
+    self.load.audio('vo_wing', require('../assets/voice/wing.wav'))
 
     let background = self.add.image(config.width/2, config.height/2, 'bootBg').setOrigin(.5, .5)
     background.setDisplaySize(config.width, config.height)
@@ -88,7 +96,7 @@ export default class PreloaderScene extends Scene {
 
     self.load.on('complete', function () {
       loadingText.setText('連接完成')
-      self.time.delayedCall(3000, self.ready, [], self)
+      self.time.delayedCall(1000, self.ready, [], self)
     }.bind(self))
 
   }

@@ -12,6 +12,7 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
     this.background = scene.add.image(0, 0, 'sndBg')
     this.sprite =  scene.add.sprite(130, 0, 'plyBtn')
 
+    this.top1 = scene.sound.add('vo_egg');
 
     this.add(this.background);
     this.add(this.sprite);
@@ -31,7 +32,10 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
   }
 
   down(){
-    this.sprite.setFrame(1)
+    this.sprite.setFrame(1);
+    this.sprite.setTexture('pusBtn');
+    this.top1.play();
+
   }
 
 }

@@ -1,32 +1,15 @@
 <template>
-  <nav id="header">
-    <div class="container">
-      <div class="logo">
-        <img
-          src="@/assets/images/logo.svg"
-          class="img-fluid"
-        >
-      </div>
-      <div class="partner">
-        <div class="title">贊助機構</div>
-        <img
-          src="@/assets/images/hkjc.svg"
-          class="img-fluid"
-        >
-      </div>
-      <div class="partner">
-        <div class="title">主辦機構</div>
-        <img
-          src="@/assets/images/hhs.svg"
-          class="img-fluid"
-        >
-      </div>
+<header>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <a href="" class="navbar-brand" title="協康會賽馬會 讀寫支援計劃 Heep Hong Society Jockey Club IRead & ILearn Support Programme"><img src="@/assets/images/logo.svg" alt="協康會賽馬會 讀寫支援計劃 Heep Hong Society Jockey Club IRead & ILearn Support Programme"></a>
       <div class="links">
-        <a href="">簡介</a>
-        <a href="">遊戲</a>
+        <a href="/intro" class="intro">簡介</a>
+        <a href="" class="game">遊戲</a>
       </div>
     </div>
   </nav>
+</header>
 </template>
 
 

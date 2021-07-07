@@ -15,10 +15,30 @@ const routes = [
     component: () => import('../views/Intro.vue')
   },
   {
+    path: '/game/intro',
+    name: 'Game Intro',
+    component: () => import('../views/GameIntro.vue')
+  },
+  {
     path: '/game/:id',
     name: 'Game',
     component: () => import('../views/Game.vue')
-  }
+  },
+  {
+    path: '/important-notices',
+    name: 'Important Notices',
+    component: () => import('../views/ImportantNotices.vue')
+  },
+  {
+    path: '/privacy-policy',
+    name: 'Privacy Policy',
+    component: () => import('../views/PrivacyPolicy.vue')
+  },
+  {
+    path: '/sitemap',
+    name: 'Sitemap',
+    component: () => import('../views/Sitemap.vue')
+  },
 ]
 
 const router = new VueRouter({

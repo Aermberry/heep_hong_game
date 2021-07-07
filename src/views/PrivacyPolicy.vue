@@ -1,12 +1,15 @@
 <template>
-  <div class="wrapper h-100">
+  <div class="wrapper">
     <Header />
     <ShareBar />
     <main>
       <div class="container">
-        <div class="content-wrapper landing">
-          <img src="@/assets/images/img_title.svg" alt="">
-          <a href="" class="link-entry"><span class="inner">進入遊戲</span></a>
+        <div class="content-space"></div>
+        <div class="content-wrapper normal">
+          <div class="content">
+            <div class="title">私隱政策</div>
+
+          </div>
         </div>
         <div class="content-space"></div>
       </div>

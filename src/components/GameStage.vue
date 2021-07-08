@@ -1,5 +1,5 @@
 <template>
-  <div class="game-wrapper">
+  <div :class="'game-wrapper ' + gameOrientation">
     <div class="outer">
       <div class="inner">
         <div id="game-container" v-if="downloaded" />
@@ -19,12 +19,18 @@ export default {
     return {
       downloaded: false,
       gameInstance: null,
+      ww:0,
+      wh:0
     }
   },
   computed: {
     gameID: function(){
       let self = this
       return self.$route.params.id
+    },
+    gameOrientation: function(){
+      let self = this
+      return (self.wh > self.ww) && self.ww < 768 ? 'portrait' : 'landscape'
     }
   },
   async mounted() {
@@ -41,9 +47,24 @@ export default {
     }catch (e){
       console.log('Game Not Exit')
     }
+
+    self.windowSizeHandler()
+
+    window.addEventListener('resize', function() {
+      self.windowSizeHandler()
+    })
+
+
   },
   destroyed() {
     this.gameInstance.destroy(false)
+  },
+  methods:{
+    windowSizeHandler: function(){
+      let self = this
+      self.ww = window.innerWidth
+      self.wh = window.innerHeight
+    }
   }
 }
 </script>

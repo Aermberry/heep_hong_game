@@ -14,8 +14,6 @@ export default class PreloaderScene extends Scene {
   preload () {
     let self = this
 
-
-
     self.load.image('tutorBg', require('../assets/tutor_bg.png'))
     self.load.image('gameBg', require('../assets/bg_pnl.png'))
     self.load.image('refBg', require('../assets/ref.png'))
@@ -58,10 +56,26 @@ export default class PreloaderScene extends Scene {
     self.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 })
     self.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 })
 
-    self.load.atlas('tut1',require('../assets/animation/tut1.png'), require('../assets/animation/tut1.json'))
-    self.load.atlas('tut2',require('../assets/animation/tut2.png'), require('../assets/animation/tut2.json'))
-    self.load.atlas('tut3',require('../assets/animation/tut3.png'), require('../assets/animation/tut3.json'))
-    self.load.atlas('tut4',require('../assets/animation/tut4.png'), require('../assets/animation/tut4.json'))
+    self.load.atlas('tut1',require('../assets/tut1.png'), require('../assets/tut1.json'))
+    self.load.atlas('tut2',require('../assets/tut2.png'), require('../assets/tut2.json'))
+    self.load.atlas('tut3',require('../assets/tut3.png'), require('../assets/tut3.json'))
+    self.load.atlas('tut4',require('../assets/tut4.png'), require('../assets/tut4.json'))
+
+
+
+    self.load.atlas('bg_space',require('../assets/bg_space.png'), require('../assets/bg_space.json'))
+
+    self.load.atlas('chipin',require('../assets/chipin.png'), require('../assets/chipin.json'))
+    self.load.atlas('wave',require('../assets/wave.png'), require('../assets/wave.json'))
+
+    self.load.atlas('char_leo',require('../assets/leo.png'), require('../assets/leo.json'))
+    self.load.atlas('char_leo_end',require('../assets/end_pic1.png'), require('../assets/end_pic1.json'))
+    self.load.atlas('char_teddy',require('../assets/teddy.png'), require('../assets/teddy.json'))
+    self.load.atlas('char_teddy_end',require('../assets/end_pic2.png'), require('../assets/end_pic2.json'))
+    self.load.atlas('char_pen',require('../assets/pen.png'), require('../assets/pen.json'))
+    self.load.atlas('char_pen_end',require('../assets/end_pic3.png'), require('../assets/end_pic3.json'))
+
+
 
     self.load.audio('vo_egg', require('../assets/voice/egg.wav'))
     self.load.audio('vo_fish', require('../assets/voice/fish.wav'))
@@ -96,13 +110,13 @@ export default class PreloaderScene extends Scene {
 
     self.load.on('complete', function () {
       loadingText.setText('連接完成')
-      self.time.delayedCall(1000, self.ready, [], self)
+      self.ready()
     }.bind(self))
 
   }
 
   ready () {
-    this.scene.start('Tutor');
+    this.scene.start('Game');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Tutor');

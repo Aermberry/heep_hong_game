@@ -10,6 +10,6 @@ export default class ExitBtn extends BasicBtn {
   }
 
   onClick(){
-    console.log("Exit")
+    window.history.back();
   }
 }

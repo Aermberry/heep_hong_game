@@ -42,7 +42,7 @@ export default class TutorScene extends Scene {
     this.anims.create({
         key: 'tut4',
         frames: this.anims.generateFrameNames('tut4', { prefix: 'frame', start: 0, end: 59 }),
-        frameRate: 25,
+        //frameRate: 25,
         repeat: 1
     });
 

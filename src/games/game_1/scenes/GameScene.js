@@ -15,6 +15,12 @@ export default class GameScene extends Scene {
     let stageBg = self.add.image(config.width/2, config.height/2, 'stageBg').setOrigin(.5, .5)
     stageBg.setDisplaySize(config.width, config.height)
 
+    this.anims.create({
+      key: 'char_create',
+      frames: this.anims.generateFrameNames('char_leo', { prefix: 'frame', start: 0, end: 56 }),
+      repeat: -1
+    });
+
   }
 
   create () {
@@ -33,6 +39,9 @@ export default class GameScene extends Scene {
     //   onComplete: function () { console.log('onComplete'); console.log(arguments); },
     // })
 
+
+    let char = self.add.sprite(config.width/2 + 565, config.height/2 - 160, 'Char')
+    char.play('char_create')
 
     let exitBtn = new ExitBtn(this, 120, 135);
     this.add.existing(exitBtn);

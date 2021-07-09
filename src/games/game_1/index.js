@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import config from './config/Config';
+import Config from './config/Config';
 import GameScene from './scenes/GameScene';
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
@@ -9,7 +9,7 @@ import Model from './Model';
 
 class Game extends Phaser.Game {
    constructor () {
-     super(config);
+     super(Config);
     let model = new Model()
     this.globals = {
       model

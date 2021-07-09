@@ -1,14 +1,23 @@
 export default class Model {
   constructor() {
-    this._world = {}
+    this._character = {};
+    this._level = 1;
   }
 
-  set world(value){
-    this._world = value
+  set character(value){
+    this._character = value;
   }
 
-  get world(){
-    return this._world
+  get character(){
+    return this._character;
+  }
+
+  set level(value){
+    this._level =  parseInt(value);
+  }
+
+  get level(){
+    return this._level;
   }
 
 }

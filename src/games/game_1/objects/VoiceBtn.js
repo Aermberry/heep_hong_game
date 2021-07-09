@@ -19,12 +19,10 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
     });
 
     this.wave = scene.add.sprite(-95, 0, 'Wave')
-    this.wave.play('wave')
 
-    this.vo1 = scene.sound.add('vo_egg');
-    this.vo2 = scene.sound.add('vo_egg');
-    this.vo3 = scene.sound.add('vo_egg');
+     this.vo1 = scene.sound.add('vo_egg');
 
+    this.wave.play('wave');
     this.add(this.background);
     this.add(this.sprite);
     this.add(this.wave);
@@ -46,7 +44,8 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
   down(){
     this.sprite.setFrame(1);
     this.sprite.setTexture('pusBtn');
-    this.top1.play();
+    this.vo1.play();
+
 
   }
 

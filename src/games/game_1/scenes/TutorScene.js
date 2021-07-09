@@ -14,38 +14,28 @@ export default class TutorScene extends Scene {
     let background = self.add.image(config.width/2, config.height/2, 'tutorBg').setOrigin(.5, .5)
     background.setDisplaySize(config.width, config.height)
 
+    this.anims.create({
+        key: 'tut1',
+        frames: this.anims.generateFrameNames('tut1', { prefix: 'frame', start: 0, end: 40 }),
+    });
+    this.anims.create({
+        key: 'tut2',
+        frames: this.anims.generateFrameNames('tut2', { prefix: 'frame', start: 0, end: 40 }),
+    });
+    this.anims.create({
+        key: 'tut3',
+        frames: this.anims.generateFrameNames('tut3', { prefix: 'frame', start: 0, end: 40 }),
+    });
+    this.anims.create({
+        key: 'tut4',
+        frames: this.anims.generateFrameNames('tut4', { prefix: 'frame', start: 0, end: 40 }),
+    });
 
 
   }
 
   create () {
     let self = this
-
-    this.anims.create({
-        key: 'tut1',
-        frames: this.anims.generateFrameNames('tut1', { prefix: 'frame', start: 0, end: 59 }),
-        //frameRate: 50,
-        repeat: 1
-    });
-    this.anims.create({
-        key: 'tut2',
-        frames: this.anims.generateFrameNames('tut2', { prefix: 'frame', start: 0, end: 59 }),
-        //frameRate: 50,
-        repeat: 1
-    });
-    this.anims.create({
-        key: 'tut3',
-        frames: this.anims.generateFrameNames('tut3', { prefix: 'frame', start: 0, end: 59 }),
-        //frameRate: 50,
-        repeat: 1
-    });
-    this.anims.create({
-        key: 'tut4',
-        frames: this.anims.generateFrameNames('tut4', { prefix: 'frame', start: 0, end: 59 }),
-        //frameRate: 25,
-        repeat: 1
-    });
-
 
     let tut1 = self.add.sprite(278, 430, 'tut1')
     let tut2 = self.add.sprite(760, 520, 'tut2')

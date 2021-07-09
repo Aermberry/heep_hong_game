@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Leo",
+    "path":{
+      "char":["leo.png","leo.json"],
+      "end":["end_pic1.png","end_pic1.json"]
+    },
+    "action":{
+      "idle":[0,59],
+      "happy":[60,119],
+      "sad":[120,149],
+      "end":[0,47],
+      "end2":[47,100]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Bear",
+    "path":{
+      "char":["bear.png","bear.json"],
+      "end":["end_pic2.png","end_pic2.json"]
+    },
+    "action":{
+      "idle":[0,59],
+      "happy":[60,119],
+      "sad":[120,149],
+      "end":[0,47],
+      "end2":[47,100]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Pen",
+    "path":{
+      "char":["pen.png","pen.json"],
+      "end":["end_pic3.png","end_pic3.json"]
+    },
+    "action":{
+      "idle":[0,59],
+      "happy":[60,119],
+      "sad":[120,149],
+      "end":[0,47],
+      "end2":[47,100]
+    }
+  }
+]

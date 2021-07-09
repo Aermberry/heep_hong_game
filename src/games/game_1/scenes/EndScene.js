@@ -21,12 +21,12 @@ export default class EndScene extends Scene {
 
     this.anims.create({
       key: 'char_create',
-      frames: this.anims.generateFrameNames('char_leo_end', { prefix: 'frame', start: 0, end: 47 }),
+      frames: this.anims.generateFrameNames('char_end', { prefix: 'frame', start: 0, end: 47 }),
     });
 
     this.anims.create({
       key: 'char_repeat',
-      frames: this.anims.generateFrameNames('char_leo_end', { prefix: 'frame', start: 47, end: 100 }),
+      frames: this.anims.generateFrameNames('char_end', { prefix: 'frame', start: 47, end: 100 }),
       repeat: -1
     });
   }

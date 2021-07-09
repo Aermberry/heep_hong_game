@@ -1,0 +1,56 @@
+[
+  {
+    "type": 1,
+    "name": "rice",
+    "image": "i_ric.png",
+    "voice": "rice.wav"
+  },
+  {
+    "type": 1,
+    "name": "noodle",
+    "image": "i_ndl.png",
+    "voice": "noodle.wav"
+  },
+  {
+    "type": 2,
+    "name": "egg",
+    "image": "i_egg.png",
+    "voice": "egg.wav"
+  },
+  {
+    "type": 2,
+    "name": "fish",
+    "image": "i_fsh.png",
+    "voice": "fish.wav"
+  },
+  {
+    "type": 2,
+    "name": "wing",
+    "image": "i_wng.png",
+    "voice": "wing.wav"
+  },
+  {
+    "type": 2,
+    "name": "vegetable",
+    "image": "i_veg.png",
+    "voice": "vegetable.wav"
+  },
+  {
+    "type": 3,
+    "name": "water",
+    "image": "i_wtr.png",
+    "voice": "water.wav"
+  },
+  {
+    "type": 3,
+    "name": "lemon_tea",
+    "image": "i_it.png",
+    "voice": "tea.wav"
+  },
+  {
+    "type": 3,
+    "name": "juice",
+    "image": "i_oj",
+    "voice": "juice.wav"
+  }
+]

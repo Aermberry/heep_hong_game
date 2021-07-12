@@ -50,7 +50,7 @@
   {
     "type": 3,
     "name": "juice",
-    "image": "i_oj",
+    "image": "i_oj.png",
     "voice": "juice.wav"
   }
 ]

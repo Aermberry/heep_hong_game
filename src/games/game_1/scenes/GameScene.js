@@ -1,9 +1,12 @@
-import { Scene } from 'phaser'
+import { Scene } from 'phaser';
+import _ from 'lodash';
 import config from '../config/Config';
 //import Button from '../objects/Button';
 import ExitBtn from '../objects/ExitBtn';
 import QuestionBase from '../objects/QuestionBase';
 import VoiceBtn from '../objects/VoiceBtn';
+
+import Choice from '../assets/json/choice.json'
 
 export default class GameScene extends Scene {
   constructor () {
@@ -12,6 +15,7 @@ export default class GameScene extends Scene {
 
   init(){
     this.model = this.sys.game.globals.model;
+    this.choice = Choice;
   }
 
   preload () {
@@ -79,7 +83,6 @@ export default class GameScene extends Scene {
 
     self.new();
 
-
     self.exitBtn = new ExitBtn(this, 120, 135)
     self.add.image(115, 175, 'ltpBg')
     self.add.existing(self.exitBtn)
@@ -89,22 +92,30 @@ export default class GameScene extends Scene {
   new(){
     let self = this
 
-    self.questionBase = new QuestionBase(self, -650,  config.height/2);
+    let Answer = []
+
+    if(self.model.level < 2){
+      Answer[0] = _.sample(_.filter(self.choice, { 'type': 1 }))
+      Answer[1] = _.sample(_.filter(self.choice, { 'type': 2 }))
+      Answer[2] = _.sample(_.filter(self.choice, { 'type': 3 }))
+    }else{
+     Answer = _.sampleSize(self.choice, 3)
+    }
+
+    self.questionBase = new QuestionBase(self, -650,  config.height/2, self.model.level, self.choice, Answer);
     self.add.existing(self.questionBase)
 
-    self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195)
+    self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195,Answer)
     self.add.existing(self.voiceBtn)
 
     self.char.play('chip_in').on("animationcomplete", function(){
       self.char.play('char_idle');
-
       self.tweens.add({
         targets: [self.questionBase,self.questionBase],
         x: 585,
         ease: 'Power0',
         duration: 500
       })
-
     });
 
   }

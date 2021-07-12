@@ -2,6 +2,7 @@ import { Scene } from 'phaser';
 import _ from 'lodash';
 import config from '../config/Config';
 import charSet from '../assets/json/character.json';
+import Choice from '../assets/json/choice.json'
 
 export default class PreloaderScene extends Scene {
   constructor () {
@@ -58,30 +59,10 @@ export default class PreloaderScene extends Scene {
 
 
 
-    self.load.image('i_apl', require('../assets/i_apl.png'));
-    self.load.image('i_bgr', require('../assets/i_bgr.png'));
-    self.load.image('i_bnn', require('../assets/i_bnn.png'));
-    self.load.image('i_egg', require('../assets/i_egg.png'));
-    self.load.image('i_fri', require('../assets/i_fri.png'));
-    self.load.image('i_fsh', require('../assets/i_fsh.png'));
-    self.load.image('i_ice', require('../assets/i_ice.png'));
-    self.load.image('i_it', require('../assets/i_it.png'));
-    self.load.image('i_ndl', require('../assets/i_ndl.png'));
-    self.load.image('i_oj', require('../assets/i_oj.png'));
-    self.load.image('i_ric', require('../assets/i_ric.png'));
-    self.load.image('i_veg', require('../assets/i_veg.png'));
-    self.load.image('i_wng', require('../assets/i_wng.png'));
-    self.load.image('i_wtr', require('../assets/i_wtr.png'));
-
-    self.load.audio('vo_egg', require('../assets/voice/egg.wav'));
-    self.load.audio('vo_fish', require('../assets/voice/fish.wav'));
-    self.load.audio('vo_juice', require('../assets/voice/juice.wav'));
-    self.load.audio('vo_noodle', require('../assets/voice/noodle.wav'));
-    self.load.audio('vo_rice', require('../assets/voice/rice.wav'));
-    self.load.audio('vo_tea', require('../assets/voice/tea.wav'));
-    self.load.audio('vo_vegetable', require('../assets/voice/vegetable.wav'));
-    self.load.audio('vo_water', require('../assets/voice/water.wav'));
-    self.load.audio('vo_wing', require('../assets/voice/wing.wav'));
+    _.forEach(Choice, function(item) {
+      self.load.image(item.name, require('../assets/'+item.image));
+      self.load.audio(item.name, require('../assets/voice/'+item.voice));
+    })
 
     let background = self.add.image(config.width/2, config.height/2, 'bootBg').setOrigin(.5, .5);
     background.setDisplaySize(config.width, config.height);

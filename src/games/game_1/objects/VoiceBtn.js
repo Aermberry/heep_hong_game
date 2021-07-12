@@ -2,11 +2,12 @@ import Phaser from 'phaser'
 
 export default class VocieBtn extends Phaser.GameObjects.Container {
 
-  constructor(scene, x, y) {
+  constructor(scene, x, y, answer) {
     super(scene);
     this.scene = scene;
     this.x = x;
     this.y = y;
+    this.answer = answer;
     this.state = 'pause';
 
     this.background = scene.add.image(0, 0, 'sndBg')
@@ -20,7 +21,7 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
 
     this.wave = scene.add.sprite(-95, 0, 'Wave')
 
-     this.vo1 = scene.sound.add('vo_egg');
+     this.vo1 = scene.sound.add('egg');
 
     this.wave.play('wave');
     this.add(this.background);

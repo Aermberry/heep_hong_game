@@ -8,33 +8,41 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
     this.x = x;
     this.y = y;
     this.answer = answer;
-    this.state = 'pause';
+    this.play = false;
 
-    this.background = scene.add.image(0, 0, 'sndBg')
-    this.sprite =  scene.add.sprite(130, 0, 'plyBtn')
+  }
 
-    this.scene.anims.create({
+  init(){
+    let self = this;
+    self.create();
+  }
+
+  create(){
+    let self = this;
+    self.background = self.scene.add.image(0, 0, 'sndBg')
+    self.sprite =  self.scene.add.sprite(130, 0, 'plyBtn')
+
+    self.scene.anims.create({
       key: 'wave',
-      frames: this.scene.anims.generateFrameNames('wave', { prefix: 'frame', start: 0, end: 56 }),
+      frames: self.scene.anims.generateFrameNames('wave', { prefix: 'frame', start: 0, end: 56 }),
       repeat: -1
     });
 
-    this.wave = scene.add.sprite(-95, 0, 'Wave')
+    self.wave = self.scene.add.sprite(-95, 0, 'Wave')
 
-     this.vo1 = scene.sound.add('egg');
+    self.vo1 = self.scene.sound.add('egg');
 
-    this.wave.play('wave');
-    this.add(this.background);
-    this.add(this.sprite);
-    this.add(this.wave);
-    this.scene.add.existing(this);
+    self.add(self.background);
+    self.add(self.sprite);
 
-    this.sprite.setInteractive({
+    self.wave.play('wave');
+    self.add(self.wave);
+
+    self.sprite.setInteractive({
         useHandCursor: true
     })
-    .on('pointerout', this.out.bind(this))
-    .on('pointerdown', this.down.bind(this));
-
+    .on('pointerout', self.out.bind(this))
+    .on('pointerdown', self.down.bind(this));
   }
 
 
@@ -43,11 +51,10 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
   }
 
   down(){
-    this.sprite.setFrame(1);
-    this.sprite.setTexture('pusBtn');
-    this.vo1.play();
-
-
+    let self = this
+    self.sprite.setFrame(1);
+    self.sprite.setTexture('pusBtn');
+    self.vo1.play();
   }
 
 }

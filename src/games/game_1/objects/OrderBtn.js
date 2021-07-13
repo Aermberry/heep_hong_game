@@ -1,32 +1,50 @@
 import Phaser from 'phaser'
 
 export default class OrderBtn extends Phaser.GameObjects.Container {
-  constructor(scene,x,y){
+  constructor(scene,x,y, onClickCallback){
     super(scene, x, y);
+    this.onClickCallback = onClickCallback;
+    this.disable = true;
+  }
 
-    this.sprite =  scene.add.sprite(0, 0, 'cfmBtn');
-    this.add(this.sprite);
+  init(){
+    let self = this;
+    self.create();
+  }
 
+  create(){
+    let self = this;
+    self.sprite =  self.scene.add.sprite(0, 0, 'cfmBtn');
+    self.add(self.sprite);
+    self.sprite.setFrame(2);
+  }
 
-    if(!this.active){
-      this.sprite.setInteractive({
-        useHandCursor: true
-      })
-      .on('pointerout', this.out.bind(this))
-      .on('pointerdown', this.down.bind(this));
-    }else{
-      this.sprite.setFrame(2);
-    }
-
-
+  update(){
+    let self = this
+    self.sprite.setInteractive({
+      useHandCursor: true
+    })
+    .on('pointerout', self.out.bind(this))
+    .on('pointerdown', self.down.bind(this));
   }
 
   out(){
-    this.sprite.setFrame(0);
+    let self = this;
+    self.sprite.setFrame(0);
   }
 
   down(){
-    this.sprite.setFrame(1);
-    console.log("click");
+    let self = this;
+    self.sprite.setFrame(1);
+    self.onClickCallback(self);
+  }
+
+  setDisable(){
+    let self = this;
+    self.disable = true
+  }
+  setEnable(){
+    let self = this;
+    self.disable = false
   }
 }

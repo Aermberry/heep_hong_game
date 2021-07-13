@@ -103,9 +103,11 @@ export default class GameScene extends Scene {
     }
 
     self.questionBase = new QuestionBase(self, -650,  config.height/2, self.model.level, self.choice, Answer);
+    self.questionBase.init();
     self.add.existing(self.questionBase)
 
     self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195,Answer)
+    self.voiceBtn.init();
     self.add.existing(self.voiceBtn)
 
     self.char.play('chip_in').on("animationcomplete", function(){

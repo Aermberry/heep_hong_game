@@ -10,23 +10,23 @@ export default class EndScene extends Scene {
   preload () {
     let self = this
 
-    let background = self.add.image(config.width/2, config.height/2, 'endBg').setOrigin(.5, .5)
-    background.setDisplaySize(config.width, config.height)
+    self.background = self.add.image(config.width/2, config.height/2, 'endBg').setOrigin(.5, .5)
+    self.background.setDisplaySize(config.width, config.height)
 
-    this.anims.create({
+    self.anims.create({
       key: 'bg_space',
-      frames: this.anims.generateFrameNames('bg_space', { prefix: 'frame', start: 0, end: 49 }),
+      frames: self.anims.generateFrameNames('bg_space', { prefix: 'frame', start: 0, end: 49 }),
       repeat: -1
     });
 
-    this.anims.create({
+    self.anims.create({
       key: 'char_create',
-      frames: this.anims.generateFrameNames('char_end', { prefix: 'frame', start: 0, end: 47 }),
+      frames: self.anims.generateFrameNames('char_end', { prefix: 'frame', start: 0, end: 47 }),
     });
 
-    this.anims.create({
+    self.anims.create({
       key: 'char_repeat',
-      frames: this.anims.generateFrameNames('char_end', { prefix: 'frame', start: 47, end: 100 }),
+      frames: self.anims.generateFrameNames('char_end', { prefix: 'frame', start: 47, end: 100 }),
       repeat: -1
     });
   }

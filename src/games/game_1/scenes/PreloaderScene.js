@@ -10,8 +10,6 @@ export default class PreloaderScene extends Scene {
   }
 
   init () {
-    this.readyCount = 0;
-
     this.model = this.sys.game.globals.model;
     this.model.character = charSet[_.random(charSet.length-1)]
   }
@@ -64,11 +62,11 @@ export default class PreloaderScene extends Scene {
       self.load.audio(item.name, require('../assets/voice/'+item.voice));
     })
 
-    let background = self.add.image(config.width/2, config.height/2, 'bootBg').setOrigin(.5, .5);
-    background.setDisplaySize(config.width, config.height);
+    self.background = self.add.image(config.width/2, config.height/2, 'bootBg').setOrigin(.5, .5);
+    self.background.setDisplaySize(config.width, config.height);
 
-    let progressBar = self.add.graphics();
-    let loadingText = self.make.text({
+    self.progressBar = self.add.graphics();
+    self.loadingText = self.make.text({
         x: config.width / 2,
         y: config.height * 0.89,
         text: '連接中',
@@ -77,27 +75,24 @@ export default class PreloaderScene extends Scene {
             fill: '#fff'
         }
     });
-    loadingText.setOrigin(0.5, 0.5);
+    self.loadingText.setOrigin(0.5, 0.5);
 
     self.load.on('progress', function (value) {
-      progressBar.clear();
-      progressBar.fillStyle(0xFC8EFA, 1);
-      progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+      self.progressBar.clear();
+      self.progressBar.fillStyle(0xFC8EFA, 1);
+      self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
     });
 
     self.load.on('complete', function () {
-      loadingText.setText('連接完成');
+      self.loadingText.setText('連接完成');
       self.ready();
     }.bind(self));
 
   }
 
   ready () {
-    this.scene.start('Game');
-    this.readyCount++;
-    if (this.readyCount === 2) {
-      this.scene.start('Tutor');
-    }
+    let self = this
+    self.scene.start('Game');
   }
 
 }

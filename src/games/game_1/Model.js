@@ -20,6 +20,4 @@ export default class Model {
     return this._level;
   }
 
-  set
-
 }

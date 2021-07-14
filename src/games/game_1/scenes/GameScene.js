@@ -111,17 +111,17 @@ export default class GameScene extends Scene {
 
     if(self.model.level == 1){
       self.question = self.questionPool["level1"][_.random(self.questionPool["level1"].length)];
-      _.forEach(self.choicePool, function(item){
-        if(_.includes(self.question ,item.name)){
-          self.questionObj.push(item)
-        }
-      })
+      // _.forEach(self.choicePool, function(item){
+      //   if(_.includes(self.question ,item.name)){
+      //     self.questionObj.push(item)
+      //   }
+      // })
       self.choice = self.choicePool;
 
     }else if(self.model.level == 2){
       self.question = self.questionPool["level2"][_.random(self.questionPool["level2"].length)];
-
       self.choice = _.sampleSize(self.choicePool,12);
+
     }
 
 
@@ -135,7 +135,7 @@ export default class GameScene extends Scene {
 
     self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195)
     self.add.existing(self.voiceBtn)
-    self.voiceBtn.init(self.questionObj);
+    self.voiceBtn.init(self.question);
 
 
      self.char.play('chip_in').on("animationcomplete", function(){

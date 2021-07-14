@@ -5,20 +5,20 @@ import OrderBtn from './OrderBtn';
 
 export default class QuestionBase extends Phaser.GameObjects.Container {
 
-  constructor(scene, x, y, level, choice, answer) {
+  constructor(scene, x, y, callback) {
     super(scene,x,y);
     this.scene = scene;
-    this.level = level;
-    this.choice = choice;
-    this.answer = answer;
-    this.items = [];
-    this.selected = [];
-    this.selectLimit = 3;
+    this.callback = callback;
   }
 
 
-  init(){
+  init(choice, level, limit){
     let self = this;
+    self.level = level;
+    self.choice = choice;
+    self.items = [];
+    self.selectItems = [];
+    self.selectItemsLimit = limit;
     self.create();
   }
 
@@ -48,15 +48,17 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
         }
       }
 
-      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item.name, self.handleChoiceClick.bind(this));
-      self.items.push(choiceBtn);
-
       if(self.level > 1){
         if(self.itemColumn % 4 == 0){
+          if(self.itemColumn > 3){
+            self.itemRow++;
+          }
           self.itemColumn = 0;
-          self.itemRow++;
         }
       }
+
+      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item.name, self.handleChoiceClick.bind(this), self.handleChoiceEnable.bind(this));
+      self.items.push(choiceBtn);
 
       self.itemColumn++;
 
@@ -69,22 +71,33 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
   }
 
 
-  destroy(){
-    console.log('destroy');
-  }
-
   handleChoiceClick(choice){
-    let self = this
+    let self = this;
 
-    if(self.selected.length < self.selectLimit){
-      self.selected.push(choice.name)
-      return  true
+    if(choice.selected){
+      if(self.handleChoiceEnable()){
+        self.selectItems.push(choice.name);
+      }
+    }else{
+      _.pull(self.selectItems, choice.name);
+    }
+
+    if(self.handleChoiceEnable()){
+      self.orderBtn.setDisable();
+    }else{
+      self.orderBtn.setEnable();
     }
 
   }
 
+  handleChoiceEnable(){
+    let self = this;
+    return self.selectItems.length < self.selectItemsLimit;
+  }
+
   handleOrderClick(){
-    console.log("Order")
+    let self = this;
+    self.callback(self.selectItems);
   }
 
 }

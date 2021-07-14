@@ -49,7 +49,7 @@ export default class EndScene extends Scene {
       }
     }, this);
 
-    self.replayButton = new Button(self, config.width/2 - 220, config.height/2 + 310, 'rplBtn')
+    self.replayButton = new Button(self, config.width/2 - 220, config.height/2 + 310, 'rplBtn', 'Game', 'self')
     self.exitButton = new Button(self, config.width/2 + 220, config.height/2 + 310, 'extBtn')
   }
 }

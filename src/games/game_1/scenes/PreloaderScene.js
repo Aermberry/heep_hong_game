@@ -44,8 +44,6 @@ export default class PreloaderScene extends Scene {
     self.load.atlas('tut3',require('../assets/tut3.png'), require('../assets/tut3.json'));
     self.load.atlas('tut4',require('../assets/tut4.png'), require('../assets/tut4.json'));
 
-
-
     self.load.atlas('bg_space',require('../assets/bg_space.png'), require('../assets/bg_space.json'));
 
     self.load.atlas('chipin',require('../assets/chipin.png'), require('../assets/chipin.json'));
@@ -53,9 +51,7 @@ export default class PreloaderScene extends Scene {
 
     self.load.atlas('char_bg',require('../assets/char_bg.png'), require('../assets/char_bg.json'));
     self.load.atlas('char',require('../assets/'+self.model.character.path.char[0]), require('../assets/'+self.model.character.path.char[1]));
-    self.load.atlas('char_end',require('../assets/end_pic1.png'), require('../assets/end_pic1.json'));
-
-
+    self.load.atlas('char_end',require('../assets/'+self.model.character.path.end[0]), require('../assets/'+self.model.character.path.end[1]));
 
     _.forEach(Choice, function(item) {
       self.load.image(item.name, require('../assets/'+item.image));
@@ -92,7 +88,7 @@ export default class PreloaderScene extends Scene {
 
   ready () {
     let self = this
-    self.scene.start('Game');
+    self.scene.start('Tutor');
   }
 
 }

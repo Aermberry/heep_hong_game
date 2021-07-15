@@ -3,36 +3,38 @@ import _ from 'lodash';
 
 export default class VocieBtn extends Phaser.GameObjects.Container {
 
-  constructor(scene, x, y) {
+  constructor(scene, x, y, callback) {
     super(scene);
     this.scene = scene;
     this.x = x;
     this.y = y;
-    this.play = false;
-    this.vo = [];
-    this.voIndex = 0;
-    this.voTotal = 0;
+    this.callback = callback;
 
 
   }
 
   init(question){
     let self = this;
-    this.question = question;
+    self.play = false;
+    self.playTime = 0;
+    self.vo = [];
+    self.voIndex = 0;
+    self.voTotal = 0;
+    self.question = question;
     self.create();
   }
 
   create(){
     let self = this;
-    self.background = self.scene.add.image(0, 0, 'sndBg')
-    self.sprite =  self.scene.add.sprite(130, 0, 'plyBtn')
+    self.background = self.scene.add.image(0, 0, 'sndBg');
+    self.sprite =  self.scene.add.sprite(130, 0, 'plyBtn');
 
 
     _.forEach(self.question, function(item){
-      self.vo.push(self.scene.sound.add(item))
+      self.vo.push(self.scene.sound.add(item));
     })
+    self.voTotal = self.vo.length;
 
-    self.voTotal = self.vo.length
 
 
 
@@ -46,8 +48,9 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
 
     self.add(self.background);
     self.add(self.sprite);
+
     self.add(self.wave);
-    self.wave.play('wave');
+    self.wave.visible = false;
 
 
     self.sprite.setInteractive({
@@ -58,27 +61,42 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
   }
 
   out(){
-    this.sprite.setFrame(0)
+    let self = this;
+    self.sprite.setFrame(0);
   }
 
   down(){
-    let self = this
+    let self = this;
     self.sprite.setFrame(1);
-    if(!this.play){
-      self.sprite.setTexture('pusBtn');
-      self.playVo();
-    }
+    setTimeout(function(){
+      if(!self.play){
+        self.playVo();
+      }else{
+        self.stopVo();
+      }
+    }, 500);
   }
 
   playVo(){
+    let self = this;
+    self.play = true;
+    self.sprite.setTexture('pusBtn');
+    self.wave.play('wave');
+    self.wave.visible = true;
+    self.loopVo();
+
+  }
+
+  loopVo(){
     let self = this
-    if(self.vo[self.voIndex]){
+
+    if(self.vo[self.voIndex] && self.play){
       self.vo[self.voIndex].play();
-      self.vo[self.voIndex].on('complete', function(){
-        if(self.voIndex < self.voTotal){
+      self.vo[self.voIndex].once('complete', function(){
+        if(self.voIndex <= self.voTotal){
           self.voIndex++;
+          self.loopVo();
         }
-        self.playVo();
       });
     }else{
       self.stopVo();
@@ -86,8 +104,18 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
   }
 
   stopVo(){
-
+    let self = this;
+    self.play = false;
+    self.sprite.setTexture('plyBtn');
+    self.wave.stop();
+    self.wave.visible = false;
+    self.voIndex= 0;
+    self.playTime++;
+    if(self.playTime == 1){
+      self.callback()
+    }
   }
+
 
 
 }

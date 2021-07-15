@@ -4,6 +4,7 @@ import config from '../config/Config';
 import ExitBtn from '../objects/ExitBtn';
 import QuestionBase from '../objects/QuestionBase';
 import VoiceBtn from '../objects/VoiceBtn';
+import Tray from '../objects/Tray';
 
 import Choice from '../assets/json/choice.json';
 import Question from '../assets/json/question.json';
@@ -86,8 +87,6 @@ export default class GameScene extends Scene {
     self.char = self.add.sprite(config.width/2 + 564, config.height/2 - 159, 'Char');
     self.char.play('char_idle');
 
-
-
     self.exitBtn = new ExitBtn(this, 120, 135);
     self.add.image(115, 175, 'ltpBg').setDepth(2);
     self.exitBtn.setDepth(3)
@@ -106,59 +105,88 @@ export default class GameScene extends Scene {
     if(typeof self.voiceBtn != 'undefined' && typeof self.voiceBtn.destroy == 'function'){
       self.voiceBtn.destroy();
     }
+    if(typeof self.tray != 'undefined' && typeof self.tray.destroy == 'function'){
+      self.tray.destroy();
+    }
 
-    self.questionObj = []
+    self.choice = []
+    self.question = []
+    let choiceSelect = []
+    let choiceDummy = []
+    let questionAddon = {}
 
     if(self.model.level == 1){
       self.question = self.questionPool["level1"][_.random(self.questionPool["level1"].length)];
-      // _.forEach(self.choicePool, function(item){
-      //   if(_.includes(self.question ,item.name)){
-      //     self.questionObj.push(item)
-      //   }
-      // })
       self.choice = self.choicePool;
-
     }else if(self.model.level == 2){
       self.question = self.questionPool["level2"][_.random(self.questionPool["level2"].length)];
-      self.choice = _.sampleSize(self.choicePool,12);
+      _.forEach(self.choicePool, function(item){
+        if(_.includes(self.question,item.name)){
+          choiceSelect.push(item);
+        }else{
+          choiceDummy.push(item);
+        }
+      })
+      choiceDummy = _.sampleSize(choiceDummy,9)
 
+      questionAddon = choiceDummy[_.random(choiceDummy.length)]['name']
+
+      self.question.push(questionAddon)
+
+      _.forEach(choiceDummy, function(item){
+        choiceSelect.push(item);
+      })
+      self.choice = _.shuffle(choiceSelect);
     }
 
+    if(self.question){
+      console.log(self.question);
 
+      self.questionBase = new QuestionBase(self, -650,  config.height/2, self.submitHandler.bind(this))
+      self.add.existing(self.questionBase)
+      self.questionBase.init(self.choice, self.model.level, self.model.selectLimit);
 
-    console.log(self.question)
+      self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195 ,self.voiceHandler.bind(this))
+      self.add.existing(self.voiceBtn)
+      self.voiceBtn.init(self.question);
 
-
-    self.questionBase = new QuestionBase(self, -650,  config.height/2, self.submit.bind(this))
-    self.add.existing(self.questionBase)
-    self.questionBase.init(self.choice, self.model.level, self.model.selectLimit);
-
-    self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195)
-    self.add.existing(self.voiceBtn)
-    self.voiceBtn.init(self.question);
-
-
-     self.char.play('chip_in').on("animationcomplete", function(){
-      self.char.play('char_idle');
-      self.tweens.add({
-        targets: [self.questionBase,self.questionBase],
-        x: 585,
-        ease: 'Power0',
-        duration: 500
+      self.char.play('chip_in').once("animationcomplete", function(){
+        self.char.play('char_idle');
+        self.voiceBtn.playVo();
       })
-     })
+
+    }else{
+      self.new();
+    }
+
   }
 
-  submit(value){
+  voiceHandler(){
+    let self = this
+
+    self.tweens.add({
+      targets: [self.questionBase,self.questionBase],
+      x: 585,
+      ease: 'Power0',
+      duration: 500
+    })
+
+  }
+
+  submitHandler(value){
     let self = this
 
     if(_.isMatch(self.question, value)){
-      self.correct();
+      self.correct(value);
     }else{
-      self.wrong();
+      self.wrong(value);
     }
 
-    self.model.level = 2
+    self.tray = new Tray(self,config.width/2 + 564, 300);
+    self.add.existing(self.tray)
+    self.tray.init(value);
+
+    self.model.level++;
 
     self.tweens.add({
       targets: [self.questionBase,self.questionBase],
@@ -171,6 +199,7 @@ export default class GameScene extends Scene {
 
   correct(){
     let self = this
+
     self.char.play('char_happy').once("animationcomplete", function(){
       if(self.model.level == 3){
         self.end();
@@ -182,6 +211,7 @@ export default class GameScene extends Scene {
 
   wrong(){
     let self = this
+
     self.char.play('char_sad').once("animationcomplete", function(){
       if(self.model.level == 3){
         self.end();

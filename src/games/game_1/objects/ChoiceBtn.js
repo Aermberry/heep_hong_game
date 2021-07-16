@@ -1,10 +1,10 @@
 import Phaser from 'phaser'
 
 export default class ChoiceBtn extends Phaser.GameObjects.Container {
-  constructor(scene,x,y,name, onClickCallback, onEnableCallback){
+  constructor(scene,x,y,item, onClickCallback, onEnableCallback){
     super(scene, x, y);
     this.scene = scene;
-    this.name = name;
+    this.item = item;
     this.selected = false;
     this.onClickCallback = onClickCallback;
     this.onEnableCallback = onEnableCallback;
@@ -14,7 +14,7 @@ export default class ChoiceBtn extends Phaser.GameObjects.Container {
     self.bg = self.scene.add.graphics();
     self.bg.fillStyle(0xffffff, 1);
     self.bg.fillRoundedRect(-100, -100, 190, 190, 16);
-    self.image  = self.scene.add.image(0, 0, self.name);
+    self.image  = self.scene.add.image(0, 0, self.item.name);
 
     self.add(self.bg);
     self.add(self.image);

@@ -79,7 +79,7 @@ export default class GameScene extends Scene {
   create () {
     let self = this
 
-    self.model.level = 1;
+    //self.model.level = 1;
 
     self.char_bg = self.add.sprite(config.width/2 + 564, config.height/2 - 159, 'char_bg');
     self.char_bg.play('char_bg');
@@ -115,31 +115,38 @@ export default class GameScene extends Scene {
     let choiceDummy = []
     let questionAddon = {}
 
+
     if(self.model.level == 1){
       self.question = self.questionPool["level1"][_.random(self.questionPool["level1"].length)];
       self.choice = self.choicePool;
     }else if(self.model.level == 2){
       self.question = self.questionPool["level2"][_.random(self.questionPool["level2"].length)];
-      _.forEach(self.choicePool, function(item){
-        if(_.includes(self.question,item.name)){
-          choiceSelect.push(item);
-        }else{
-          choiceDummy.push(item);
-        }
-      })
-      choiceDummy = _.sampleSize(choiceDummy,9)
+      do{
+        _.forEach(self.choicePool, function(item){
+          if(_.includes(self.question,item.name)){
+            choiceSelect.push(item);
+          }else{
+            choiceDummy.push(item);
+          }
+        })
+        choiceDummy = _.sampleSize(choiceDummy,9)
 
-      questionAddon = choiceDummy[_.random(choiceDummy.length)]['name']
+        questionAddon = choiceDummy[_.random(choiceDummy.length)];
 
-      self.question.push(questionAddon)
+      }while(choiceDummy.length < 9)
 
       _.forEach(choiceDummy, function(item){
         choiceSelect.push(item);
       })
       self.choice = _.shuffle(choiceSelect);
-    }
 
+    }
     if(self.question){
+
+      if(questionAddon.length > 0){
+        self.question.push(questionAddon.name)
+      }
+
       console.log(self.question);
 
       self.questionBase = new QuestionBase(self, -650,  config.height/2, self.submitHandler.bind(this))
@@ -173,18 +180,22 @@ export default class GameScene extends Scene {
 
   }
 
-  submitHandler(value){
+  submitHandler(items){
     let self = this
 
-    if(_.isMatch(self.question, value)){
-      self.correct(value);
+    let itemsName = _.map(items, 'name');
+
+    let correct = _.isMatch(self.question, itemsName)
+
+    if(correct){
+      self.correct();
     }else{
-      self.wrong(value);
+      self.wrong();
     }
 
     self.tray = new Tray(self,config.width/2 + 564, 300);
-    self.add.existing(self.tray)
-    self.tray.init(value);
+    self.add.existing(self.tray);
+    self.tray.init(itemsName,correct);
 
     self.model.level++;
 
@@ -199,26 +210,27 @@ export default class GameScene extends Scene {
 
   correct(){
     let self = this
-
     self.char.play('char_happy').once("animationcomplete", function(){
-      if(self.model.level == 3){
-        self.end();
-      }else{
-        self.new();
-      }
+      self.next();
     });
   }
 
   wrong(){
     let self = this
-
     self.char.play('char_sad').once("animationcomplete", function(){
+      self.next();
+    });
+  }
+
+  next(){
+    let self = this
+    setTimeout(() => {
       if(self.model.level == 3){
         self.end();
       }else{
         self.new();
       }
-    });
+    }, 2000);
   }
 
   end(){

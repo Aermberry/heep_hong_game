@@ -57,7 +57,7 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
         }
       }
 
-      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item.name, self.handleChoiceClick.bind(this), self.handleChoiceEnable.bind(this));
+      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item, self.handleChoiceClick.bind(this), self.handleChoiceEnable.bind(this));
       self.items.push(choiceBtn);
 
       self.itemColumn++;
@@ -74,12 +74,24 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
   handleChoiceClick(choice){
     let self = this;
 
+
+
     if(choice.selected){
       if(self.handleChoiceEnable()){
-        self.selectItems.push(choice.name);
+
+        self.selectItems.push(choice.item);
+
+        if(self.level == 1){
+          let choiceFind = _.find(self.selectItems, {'type':choice.item.type})
+          let choiceBtnFind = _.find(self.items, {'item':choiceFind})
+          if(choiceBtnFind.item != choice.item){
+            choiceBtnFind.down();
+          }
+        }
+
       }
     }else{
-      _.pull(self.selectItems, choice.name);
+      _.pull(self.selectItems, choice.item);
     }
 
     if(self.handleChoiceEnable()){

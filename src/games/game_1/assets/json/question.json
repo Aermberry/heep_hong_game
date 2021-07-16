@@ -1,0 +1,26 @@
+{
+  "level1":[
+    ["noodle","fish","lemon tea"],
+    ["rice","egg","juice"],
+    ["noodle","vegetable","water"],
+    ["rice","wing","lemon tea"],
+    ["noodle","fish","juice"],
+    ["rice","egg","water"],
+    ["noodle","vegetable","lemon tea"],
+    ["rice","wing","juice"],
+    ["noodle","fish","water"],
+    ["rice","egg","lemon tea"]
+  ],
+  "level2":[
+    ["banner","ice cream","fish"],
+    ["noodle","fries","wing"],
+    ["water","vegetable","lemon tea"],
+    ["egg","burger","juice"],
+    ["burger","vegetable","apple"],
+    ["fries","noodle","ice cream"],
+    ["egg","apple","fries"],
+    ["juice","rice","egg"],
+    ["burger","water","noodle"],
+    ["fries","vegetable","apple"]
+  ]
+}

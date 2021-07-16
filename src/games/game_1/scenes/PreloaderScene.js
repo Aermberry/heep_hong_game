@@ -1,37 +1,8 @@
-import { Scene } from 'phaser'
-
-import tutorBg from '../assets/tutor.png'
-import gameBg from '../assets/bg_pnl.png'
-import refBg from '../assets/ref.png'
-import endBg from '../assets/bg_end.png'
-
-import soundBg from '../assets/snd.gif'
-
-import extBtn from '../assets/btn_ext.png'
-//import extSmBtn from '../assets/btn_ext_1.png'
-import rplBtn from '../assets/btn_rpl.png'
-import strBtn from '../assets/btn_str.png'
-import cfmBtn from '../assets/btn_cfm_on.png'
-//import plyBtn from '../assets/btn_ply.png'
-// import pusBtn from '../assets/btn_pus.png'
-
-import i_apl from '../assets/i_apl.png'
-import i_bgr from '../assets/i_bgr.png'
-import i_bnn from '../assets/i_bnn.png'
-import i_egg from '../assets/i_egg.png'
-import i_fri from '../assets/i_fri.png'
-import i_fsh from '../assets/i_fsh.png'
-import i_ice from '../assets/i_ice.png'
-import i_it from '../assets/i_it.png'
-import i_ndl from '../assets/i_ndl.png'
-import i_oj from '../assets/i_oj.png'
-import i_ric from '../assets/i_ric.png'
-import i_veg from '../assets/i_veg.png'
-import i_wng from '../assets/i_wng.png'
-//import i_wtr from '../assets/i_wtr.png'
-
-import thudMp3 from '../assets/thud.mp3'
-import thudOgg from '../assets/thud.ogg'
+import { Scene } from 'phaser';
+import _ from 'lodash';
+import config from '../config/Config';
+import charSet from '../assets/json/character.json';
+import Choice from '../assets/json/choice.json'
 
 export default class PreloaderScene extends Scene {
   constructor () {
@@ -39,87 +10,85 @@ export default class PreloaderScene extends Scene {
   }
 
   init () {
-    this.readyCount = 0;
+    this.model = this.sys.game.globals.model;
+    this.model.character = charSet[_.random(charSet.length-1)]
   }
 
   preload () {
-    this.load.image('tutorBg', tutorBg)
-    this.load.image('gameBg', gameBg)
-    this.load.image('refBg', refBg)
-    this.load.image('endBg', endBg)
+    let self = this
 
-    this.load.image(tutorBg)
-    this.load.image(gameBg)
-    this.load.image(endBg)
-    this.load.image(soundBg)
-    this.load.image(refBg)
+    self.load.image('tutorBg', require('../assets/tutor_bg.png'));
+    self.load.image('gameBg', require('../assets/bg_pnl.png'));
+    self.load.image('endBg', require('../assets/bg_end.png'));
+    self.load.image('endBoxBg', require('../assets/end_box.png'));
+    self.load.image('ltpBg', require('../assets/bg_ltp.png'));
+    self.load.image('pnlBg', require('../assets/bg_pnl.png'));
+    self.load.image('stageBg', require('../assets/bg_stage.png'));
+    self.load.image('sndBg', require('../assets/bg_snd.png'));
+
+    self.load.image('ph1Bg', require('../assets/bg_ph1.png'));
+    self.load.image('ph2Bg', require('../assets/bg_ph2.png'));
+    self.load.image('tray', require('../assets/tray.png'));
 
 
-    this.load.image(extBtn)
-    //this.load.image(extSmBtn)
-     this.load.image(rplBtn)
-     this.load.image(strBtn)
-     this.load.image(cfmBtn)
-    //this.load.image(plyBtn)
-    //this.load.image(pusBtn)
+    self.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });
+    self.load.spritesheet('strBtn', require('../assets/btn_str.png'),{ frameWidth: 776, frameHeight: 227 });
+    self.load.spritesheet('plyBtn', require('../assets/btn_ply.png'),{ frameWidth: 186, frameHeight: 209 });
+    self.load.spritesheet('pusBtn', require('../assets/btn_pus.png'),{ frameWidth: 186, frameHeight: 209 });
+    self.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 });
+    self.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
+    self.load.spritesheet('cfmBtn', require('../assets/btn_cfm.png'),{ frameWidth: 917, frameHeight: 233 });
 
-    this.load.image(i_apl)
-    this.load.image(i_bgr)
-    this.load.image(i_bnn)
-    this.load.image(i_egg)
-    this.load.image(i_fri)
-    this.load.image(i_fsh)
-    this.load.image(i_ice)
-    this.load.image(i_it)
-    this.load.image(i_ndl)
-    this.load.image(i_oj)
-    this.load.image(i_ric)
-    this.load.image(i_veg)
-    this.load.image(i_wng)
-    //this.load.image(i_wtr)
+    self.load.atlas('tut1',require('../assets/tut1.png'), require('../assets/tut1.json'));
+    self.load.atlas('tut2',require('../assets/tut2.png'), require('../assets/tut2.json'));
+    self.load.atlas('tut3',require('../assets/tut3.png'), require('../assets/tut3.json'));
+    self.load.atlas('tut4',require('../assets/tut4.png'), require('../assets/tut4.json'));
 
-    this.load.audio('thud', [thudMp3, thudOgg])
+    self.load.atlas('bg_space',require('../assets/bg_space.png'), require('../assets/bg_space.json'));
 
-    let world = {
-      width: this.cameras.main.width,
-      height: this.cameras.main.height,
-      centerX: this.cameras.main.centerX,
-      centerY: this.cameras.main.centerY
-    }
+    self.load.atlas('chipin',require('../assets/chipin.png'), require('../assets/chipin.json'));
+    self.load.atlas('wave',require('../assets/wave.png'), require('../assets/wave.json'));
 
-    let background = this.add.image(world.width/2, world.height/2, 'bootBg').setOrigin(.5, .5)
-    background.setDisplaySize(world.width, world.height)
+    self.load.atlas('char_bg',require('../assets/char_bg.png'), require('../assets/char_bg.json'));
+    self.load.atlas('char',require('../assets/'+self.model.character.path.char[0]), require('../assets/'+self.model.character.path.char[1]));
+    self.load.atlas('char_end',require('../assets/'+self.model.character.path.end[0]), require('../assets/'+self.model.character.path.end[1]));
 
-    let progressBar = this.add.graphics();
-    let loadingText = this.make.text({
-        x: world.width / 2,
-        y: world.height * 0.89,
+    _.forEach(Choice, function(item) {
+      self.load.image(item.name, require('../assets/'+item.image));
+      self.load.audio(item.name, require('../assets/voice/'+item.voice));
+    })
+
+    self.background = self.add.image(config.width/2, config.height/2, 'bootBg').setOrigin(.5, .5);
+    self.background.setDisplaySize(config.width, config.height);
+
+    self.progressBar = self.add.graphics();
+    self.loadingText = self.make.text({
+        x: config.width / 2,
+        y: config.height * 0.89,
         text: '連接中',
         style: {
             font: '25px monospace',
             fill: '#fff'
         }
-    })
-    loadingText.setOrigin(0.5, 0.5)
+    });
+    self.loadingText.setOrigin(0.5, 0.5);
 
-    this.load.on('progress', function (value) {
-      progressBar.clear()
-      progressBar.fillStyle(0xFC8EFA, 1)
-      progressBar.fillRect(world.width * 0.118, world.height * 0.92, (world.width * 0.778) * value, 10);
-    })
+    self.load.on('progress', function (value) {
+      self.progressBar.clear();
+      self.progressBar.fillStyle(0xFC8EFA, 1);
+      self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+    });
 
-    this.load.on('complete', function () {
-      this.time.delayedCall(3000, this.ready, [], this);
-    }.bind(this))
+    self.load.on('complete', function () {
+      self.loadingText.setText('連接完成');
+      self.ready();
+    }.bind(self));
 
   }
 
   ready () {
-    this.scene.start('Title');
-    this.readyCount++;
-    if (this.readyCount === 2) {
-      this.scene.start('Title');
-    }
+    let self = this
+    self.scene.start('Tutor');
   }
 
 }

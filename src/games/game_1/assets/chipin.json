@@ -1,0 +1,179 @@
+﻿{"frames": {
+
+"frame0":
+{
+	"frame": {"x":0,"y":0,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame1":
+{
+	"frame": {"x":657,"y":0,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame2":
+{
+	"frame": {"x":1314,"y":0,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame3":
+{
+	"frame": {"x":1971,"y":0,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame4":
+{
+	"frame": {"x":2628,"y":0,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame5":
+{
+	"frame": {"x":3285,"y":0,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame6":
+{
+	"frame": {"x":0,"y":633,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame7":
+{
+	"frame": {"x":657,"y":633,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame8":
+{
+	"frame": {"x":1314,"y":633,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame9":
+{
+	"frame": {"x":1971,"y":633,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame10":
+{
+	"frame": {"x":2628,"y":633,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame11":
+{
+	"frame": {"x":3285,"y":633,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame12":
+{
+	"frame": {"x":0,"y":1266,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame13":
+{
+	"frame": {"x":657,"y":1266,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame14":
+{
+	"frame": {"x":1314,"y":1266,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame15":
+{
+	"frame": {"x":1971,"y":1266,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame16":
+{
+	"frame": {"x":2628,"y":1266,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame17":
+{
+	"frame": {"x":3285,"y":1266,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame18":
+{
+	"frame": {"x":0,"y":1899,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame19":
+{
+	"frame": {"x":657,"y":1899,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+},
+"frame20":
+{
+	"frame": {"x":0,"y":0,"w":655,"h":631},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":655,"h":631},
+	"sourceSize": {"w":655,"h":631}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "21.0.7.42652",
+	"image": "chipin.png",
+	"format": "RGBA8888",
+	"size": {"w":4096,"h":4096},
+	"scale": "1"
+}
+}

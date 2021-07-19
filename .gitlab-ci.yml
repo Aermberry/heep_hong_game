@@ -12,8 +12,8 @@ image: node:latest
 
 stages:
  - build
- - deploy:dev
- - deploy:uat
+ - deploy:master
+
 
 # cache:
 #   key: ${CI_COMMIT_REF_SLUG}
@@ -29,7 +29,6 @@ build:node:
     - npm run build
   only:
     - master
-    - uat
   artifacts:
     name: "$CI_JOB_STAGE-$CI_COMMIT_REF_NAME"
     paths: 
@@ -37,7 +36,7 @@ build:node:
     expire_in: 1 day
     when: always
 
-deploy_dev:
+deploy_master:
   stage: deploy:master
   tags: [general-shell] # Shell Worker to make SSH / SCP
   only:

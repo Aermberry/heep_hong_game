@@ -1,31 +1,33 @@
 export default class Model {
   constructor() {
-    // this._soundOn = true;
-    // this._musicOn = true;
-    // this._bgMusicPlaying = false;
+    this._character = {};
+    this._level = 1;
+    this._selectLimit = 3;
   }
 
-  // set musicOn(value) {
-  //   this._musicOn = value;
-  // }
+  set character(value){
+    this._character = value;
+  }
 
-  // get musicOn() {
-  //   return this._musicOn;
-  // }
+  get character(){
+    return this._character;
+  }
 
-  // set soundOn(value) {
-  //   this._soundOn = value;
-  // }
+  set level(value){
+    this._level =  parseInt(value);
+    if(value > 1){
+      this._selectLimit = 4
+    }else{
+      this._selectLimit = 3
+    }
+  }
 
-  // get soundOn() {
-  //   return this._soundOn;
-  // }
+  get level(){
+    return this._level;
+  }
 
-  // set bgMusicPlaying(value) {
-  //   this._bgMusicPlaying = value;
-  // }
+  get selectLimit(){
+    return this._selectLimit;
+  }
 
-  // get bgMusicPlaying() {
-  //   return this._bgMusicPlaying;
-  // }
 }

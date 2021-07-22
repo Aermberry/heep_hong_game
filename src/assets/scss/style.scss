@@ -1,25 +1,592 @@
-body{
-  margin: 0;
+$gameHeight: 9;
+$gameWidth: 16;
+
+$color-Mosque: #006762;
+$color-WitchHaze: #fff578;
+$color-Cream: #fffcd2;
+$color-BitterSweet: #fe7865;
+$color-CadetBlue: #5C9D9A;
+$color-WhiteSmoke: #E9E9E9;
+$color-Sapphire:#0c2963;
+$color-Dark70: rgba(44, 46, 63, 0.7);
+
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
 }
 
-$height: 9;
-$width: 16;
+
+*, ::after, ::before{
+  box-sizing: border-box;
+}
+
+html,body{
+  height: 100%;
+  font-family: 'Microsoft JhengHei revise', 'Microsoft JhengHei', 'Helvetica', 'sans-serif';
+}
+
+body{
+  margin: 0;
+  font-size: 14px;
+}
+
+.container, .container-fluid{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+
+}
+.container-fluid{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.container{
+  max-width: 1600px;
+}
+
+.d-{
+  &flex{
+    display: flex;
+  }
+}
+
+.h-{
+  &100{
+    height: 100%;
+  }
+}
+
+.img{
+  &-fluid{
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+.navbar{
+  &-nav{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+  }
+  &-brand{
+    img{
+      transition: all 0.25s ease-in-out;
+      @media screen and (max-width: 768px){
+        height: 50px;
+      }
+    }
+  }
+  >.container, .container-fluid{
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+#app{
+  height: 100%;
+  > .wrapper{
+    background-color: #fff578;
+    min-height: 100%;
+    @media screen and (min-width: 768px){
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+header{
+  background-color: white;
+  .links{
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-right: -30px;
+    a{
+      color: #006762;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 4.67px;
+      padding: 30px;
+      &::before{
+        content: "";
+        display: block;
+        height: 60px;
+        width: 60px;
+        margin-bottom: 1rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+      @media screen and (max-width: 768px){
+        font-size: 14px;
+        padding: 15px;
+        &::before{
+          height: 30px;
+          width: 30px;
+        }
+      }
+      &.intro{
+        &::before{
+          background-image: url('../images/ion-ios-book-outline\ -\ Ionicons\ Copy.png');
+        }
+      }
+      &.game{
+        &::before{
+          background-image: url('../images/ion-ios-game-controller-b-outline\ -\ Ionicons.png');
+        }
+      }
+      &:hover{
+        background-color: #E9E9E9;
+      }
+    }
+  }
+}
+
+main{
+  height: 100%;
+  @media screen and (max-width: 768px){
+    height: calc(100% - 90px);
+  }
+  >.container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    >.content-wrapper{
+      height: 100%;
+      width: 100%;
+      @media screen and (max-width: 1024px){
+        height: 100%;
+        width: 100%;
+      }
+    }
+    >.content-space{
+      height: 1.5rem;
+      width: 100%;
+      @media screen and (max-width: 768px){
+        height: 0;
+      }
+    }
+  }
+}
+
+.landing{
+  background-image: url('../images/img_landing.svg');
+  background-repeat: no-repeat;
+  background-position: center -60px;
+  position: relative;
+  display: flex;
+  @media screen and (max-width: 768px){
+    background-position: center bottom;
+  }
+  img{
+    width: 80%;
+    align-self: center;
+    margin: auto;
+  }
+}
+
+.intro{
+    display: flex;
+  @media screen and (max-width: 768px){
+    flex-direction: column;
+  }
+  .cover{
+    background-color: $color-CadetBlue;
+    position: relative;
+    display: flex;
+    @media screen and (max-width: 768px){
+      height: 40%;
+    }
+    @media screen and (min-width: 768px){
+      width: 50%;
+    }
+    img{
+      width: 80%;
+      align-self: center;
+      margin: auto;
+    }
+  }
+  .description{
+    @media screen and (max-width: 768px){
+      height: 60%;
+    }
+    @media screen and (min-width: 768px){
+      width: 50%;
+    }
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 45px;
+    .inner{
+      max-width: 380px;
+    }
+    .sub-title{
+      color: $color-BitterSweet;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 100%;
+      margin-bottom: 1rem;
+    }
+    .title{
+      font-weight: bold;
+      font-size: 4rem;
+      line-height: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .lead{
+      text-align: justify;
+      color: $color-Dark70;
+      font-size: 1rem;
+      line-height: 1.5625;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+
+
+.normal{
+  background-color: white;
+  height: 100%;
+  .content{
+    padding: 30px;
+    height: 100%;
+    .title{
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+}
+
+footer{
+  margin-top: auto;
+  background-color: white;
+  .navbar-nav{
+    flex-wrap: wrap;
+  }
+  .nav-item{
+    &:not(:last-child){
+      &::after{
+        padding: 0 0.5rem;
+        content: "|";
+      }
+    }
+    a{
+      color: black;
+      text-decoration: none;
+    }
+  }
+  .container-fluid{
+    @media screen and (max-width: 768px){
+      flex-direction: column;
+    }
+  }
+}
+
+#share{
+  &-bar{
+    position: fixed;
+    right: 0;
+    top:30%;
+    z-index: 10;
+    a{
+      display: block;
+      background-color: #B4B4B4;
+      &:not(:last-child){
+        margin-bottom: 1px;
+      }
+      img{
+        display: block;
+      }
+    }
+  }
+}
+
+
+.link{
+  &-entry{
+    background-color: #006762;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    background-image: url('../images/arrow-right.png');
+    background-repeat: no-repeat;
+    background-position: 90% center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 350px;
+    font-size: 2rem;
+    white-space: nowrap;
+    @media screen and (max-width: 768px){
+      font-size: 1.5rem;
+      width: 250px;
+      background-size: auto 1.5rem;
+    }
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: (5 / 16) * 100%;
+    }
+    >.inner{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      padding-left: 10%;
+    }
+    &-outline{
+      display: inline-block;
+      border: solid 2px $color-Mosque;
+      color: $color-Mosque;
+      text-decoration: none;
+      margin: 1rem 0;
+      padding: 25px 4rem 25px 2rem;
+      position: relative;
+      font-weight: bold;
+      background: linear-gradient(to right, $color-Mosque 50%, rgba(255,255,255, 0) 50%);
+      background-size: 200% 100%;
+      background-position: right bottom;
+      transition: all 0.25s ease;
+      &::after{
+        content: "";
+        display: block;
+        width: 1.5rem;
+        position: absolute;
+        height: 100%;
+        top:0;
+        right: 1.5rem;
+        background-image: url('../images/arrow-right_gn.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      &:hover,&:focus{
+        background-position: left bottom;
+        color:white;
+        &::after{
+          background-image: url('../images/arrow-right.png');
+        }
+      }
+    }
+  }
+  &-more{
+    display: inline-block;
+    box-shadow: 0 16px 48px 0 rgba(183, 184, 190, 0.46);
+    border: solid 2px $color-BitterSweet;
+    color: $color-Dark70;
+    text-decoration: none;
+    margin: 1rem 0;
+    padding: 25px 4rem;
+    position: relative;
+    &::before{
+      content: "";
+      display: block;
+      width: 1.5rem;
+      position: absolute;
+      height: 100%;
+      top:0;
+      left: 1.5rem;
+      background-image: url('../images/info-circle\ -\ FontAwesome.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    &::after{
+      content: "";
+      display: block;
+      width: 1.5rem;
+      position: absolute;
+      height: 100%;
+      top:0;
+      right: 1.5rem;
+      background-image: url('../images/share-alt\ -\ simple-line-icons.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+
+.partners{
+  display: flex;
+  @media screen and (max-width: 768px){
+    flex-direction: column;
+  }
+}
+.partner{
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+  @media screen and (max-width: 768px){
+    align-items: flex-start;
+  }
+  .title{
+    white-space: nowrap;
+  }
+  img{
+    padding:0 30px;
+  }
+  @media screen and (max-width: 768px){
+    flex-direction: column;
+    padding-bottom: 0;
+    img{
+      padding: 0;
+      height: 50px;
+    }
+  }
+}
+
+// .logo-hkjc{
+//   width: 351px !important;
+//   height: 62px !important;
+//   max-height: none !important;
+//   max-width: none !important;
+// }
 
 
 .game{
+  &-intro{
+    &-header{
+      position: relative;
+      img{
+        max-width: 100%;
+        display: block;
+      }
+    }
+    &-card{
+      position: relative;
+      display: flex;
+      background-color: white;
+      @media screen and (max-width: 768px){
+        flex-direction: column;
+        padding-top: 45px;
+        min-height: 100vh;
+      }
+      &:nth-child(odd){
+        background-color: $color-Cream;
+        @media screen and (min-width: 768px){
+          flex-direction: row-reverse;
+          .description{
+            justify-content: flex-end;
+          }
+        }
+
+        .cover{
+          img{
+            animation-delay: 3s;
+          }
+        }
+      }
+      .cover{
+        position: relative;
+        display: flex;
+        @media screen and (max-width: 768px){
+          height: 40%;
+        }
+        @media screen and (min-width: 768px){
+          width: 50%;
+        }
+        img{
+          max-width: 80%;
+          height: 80%;
+          align-self: center;
+          margin: auto;
+          transform: translatey(0px);
+          animation: float 6s ease-in-out infinite;
+        }
+      }
+      .description{
+        @media screen and (max-width: 768px){
+          height: 60%;
+        }
+        @media screen and (min-width: 768px){
+          width: 50%;
+        }
+        display: flex;
+        align-items: center;
+        padding: 45px;
+        .inner{
+          max-width: 380px;
+        }
+        .sub-title{
+          color: $color-BitterSweet;
+          font-weight: bold;
+          font-size: 2rem;
+          line-height: 100%;
+          margin-bottom: 1rem;
+        }
+        .title{
+          font-weight: bold;
+          font-size: 4rem;
+          line-height: 100%;
+          margin-bottom: 1.5rem;
+          @media screen and (max-width: 768px){
+            font-size: 3rem;
+          }
+        }
+        .lead{
+          text-align: justify;
+          color: $color-Dark70;
+          font-size: 1rem;
+          line-height: 1.5625;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
   &-wrapper{
     height: 100vh;
     display: flex;
     background-color: black;
+    &.portrait{
+      &::before{
+        content: "";
+        background-color:rgba(0, 0, 0, 0.85);
+        background-image: url('../images/screen_rotation_w.svg');
+        background-position: center center;
+        background-size: 50% auto;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 999;
+      }
+    }
     > .outer{
-      max-width: $width / $height *  100vh;
+      max-width: $gameWidth / $gameHeight *  100vh;
       position: relative;
       width: 100%;
       margin: auto;
       &::after{
         content: '';
         display: block;
-        padding-bottom: ($height / $width) * 100%;
+        padding-bottom: ($gameHeight / $gameWidth) * 100%;
       }
       > .inner{
         bottom: 0;
@@ -32,3 +599,4 @@ $width: 16;
     }
   }
 }
+

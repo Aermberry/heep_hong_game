@@ -3,79 +3,79 @@
     "type": 1,
     "name": "rice",
     "image": "i_ric.png",
-    "voice": "rice.wav"
+    "voice": "rice.mp3"
   },
   {
     "type": 1,
     "name": "noodle",
     "image": "i_ndl.png",
-    "voice": "noodle.wav"
+    "voice": "noodle.mp3"
   },
   {
     "type": 2,
     "name": "egg",
     "image": "i_egg.png",
-    "voice": "egg.wav"
+    "voice": "egg.mp3"
   },
   {
     "type": 2,
     "name": "fish",
     "image": "i_fsh.png",
-    "voice": "fish.wav"
+    "voice": "fish.mp3"
   },
   {
     "type": 2,
     "name": "wing",
     "image": "i_wng.png",
-    "voice": "wing.wav"
+    "voice": "wing.mp3"
   },
   {
     "type": 2,
     "name": "vegetable",
     "image": "i_veg.png",
-    "voice": "vegetable.wav"
+    "voice": "vegetable.mp3"
   },
   {
     "type": 3,
     "name": "water",
     "image": "i_wtr.png",
-    "voice": "water.wav"
+    "voice": "water.mp3"
   },
   {
     "type": 3,
     "name": "lemon tea",
     "image": "i_it.png",
-    "voice": "tea.wav"
+    "voice": "tea.mp3"
   },
   {
     "type": 3,
     "name": "juice",
     "image": "i_oj.png",
-    "voice": "juice.wav"
+    "voice": "juice.mp3"
   },
   {
     "name": "banner",
     "image": "i_bnn.png",
-    "voice": "juice.wav"
+    "voice": "juice.mp3"
   },
   {
     "name": "apple",
     "image": "i_apl.png",
-    "voice": "juice.wav"
+    "voice": "juice.mp3"
   },
   {
     "name": "burger",
     "image": "i_bgr.png",
-    "voice": "juice.wav"
+    "voice": "juice.mp3"
   },
   {
     "name": "fries",
     "image": "i_fri.png",
-    "voice": "juice.wav"
+    "voice": "juice.mp3"
   },
   {
     "name": "ice cream",
     "image": "i_ice.png",
-    "voice": "juice.wav"
+    "voice": "juice.mp3"
   }
 ]

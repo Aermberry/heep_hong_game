@@ -29,6 +29,7 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
     self.background = self.scene.add.image(0, 0, 'sndBg');
     self.sprite =  self.scene.add.sprite(130, 0, 'plyBtn');
 
+    self.vo.push(self.scene.sound.add('i_want'));
 
     _.forEach(self.question, function(item){
       self.vo.push(self.scene.sound.add(item));

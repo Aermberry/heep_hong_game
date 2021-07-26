@@ -129,7 +129,7 @@ export default class GameScene extends Scene {
             choiceDummy.push(item);
           }
         })
-        choiceDummy = _.sampleSize(choiceDummy,9)
+        choiceDummy = _.sampleSize(choiceDummy,9);
 
         questionAddon = choiceDummy[_.random(choiceDummy.length)];
 
@@ -141,7 +141,7 @@ export default class GameScene extends Scene {
       self.choice = _.shuffle(choiceSelect);
 
     }
-    if(self.question){
+    if(self.choice){
 
       if(questionAddon.length > 0){
         self.question.push(questionAddon.name)

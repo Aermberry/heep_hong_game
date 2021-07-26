@@ -44,4 +44,9 @@ export default class ChoiceBtn extends Phaser.GameObjects.Container {
     self.onClickCallback(self);
   }
 
+  playVo(){
+    let self = this;
+    self.scene.sound.add(self.item.name)
+  }
+
 }

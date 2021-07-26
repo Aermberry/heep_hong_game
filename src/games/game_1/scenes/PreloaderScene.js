@@ -53,6 +53,8 @@ export default class PreloaderScene extends Scene {
     self.load.atlas('char',require('../assets/'+self.model.character.path.char[0]), require('../assets/'+self.model.character.path.char[1]));
     self.load.atlas('char_end',require('../assets/'+self.model.character.path.end[0]), require('../assets/'+self.model.character.path.end[1]));
 
+    self.load.audio('i_want', require('../assets/voice/g001_00.mp3'));
+
     _.forEach(Choice, function(item) {
       self.load.image(item.name, require('../assets/'+item.image));
       self.load.audio(item.name, require('../assets/voice/'+item.voice));

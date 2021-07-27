@@ -79,7 +79,7 @@ export default class GameScene extends Scene {
   create () {
     let self = this
 
-    //self.model.level = 1;
+    self.model.level = 1;
 
     self.char_bg = self.add.sprite(config.width/2 + 564, config.height/2 - 159, 'char_bg');
     self.char_bg.play('char_bg');
@@ -131,10 +131,12 @@ export default class GameScene extends Scene {
 
       self.choice = _.shuffle(choiceSelect);
 
-      self.question.push(questionAddon.name);
+      if(typeof questionAddon != 'undefined'){
+        self.question.push(questionAddon.name);
+      }
     }
 
-      return true
+      return typeof self.question != 'undefined' ? true : false
   }
 
   new(){

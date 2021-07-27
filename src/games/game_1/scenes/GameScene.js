@@ -96,18 +96,8 @@ export default class GameScene extends Scene {
 
   }
 
-  new(){
+  newQuestion(){
     let self = this
-
-    if(typeof self.questionBase != 'undefined' && typeof self.questionBase.destroy == 'function'){
-      self.questionBase.destroy();
-    }
-    if(typeof self.voiceBtn != 'undefined' && typeof self.voiceBtn.destroy == 'function'){
-      self.voiceBtn.destroy();
-    }
-    if(typeof self.tray != 'undefined' && typeof self.tray.destroy == 'function'){
-      self.tray.destroy();
-    }
 
     self.choice = []
     self.question = []
@@ -137,15 +127,30 @@ export default class GameScene extends Scene {
 
       _.forEach(choiceDummy, function(item){
         choiceSelect.push(item);
-      })
+      });
+
       self.choice = _.shuffle(choiceSelect);
 
+      self.question.push(questionAddon.name);
     }
-    if(self.choice){
 
-      if(questionAddon.length > 0){
-        self.question.push(questionAddon.name)
-      }
+      return true
+  }
+
+  new(){
+    let self = this
+
+    if(typeof self.questionBase != 'undefined' && typeof self.questionBase.destroy == 'function'){
+      self.questionBase.destroy();
+    }
+    if(typeof self.voiceBtn != 'undefined' && typeof self.voiceBtn.destroy == 'function'){
+      self.voiceBtn.destroy();
+    }
+    if(typeof self.tray != 'undefined' && typeof self.tray.destroy == 'function'){
+      self.tray.destroy();
+    }
+
+    if(self.newQuestion()){
 
       console.log(self.question);
 

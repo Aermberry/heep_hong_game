@@ -12,7 +12,8 @@ class Game extends Phaser.Game {
      super(Config);
     let model = new Model()
     this.globals = {
-      model
+      model,
+      bgMusic: null
     }
     this.scene.add('Boot', BootScene)
     this.scene.add('Preloader', PreloaderScene)

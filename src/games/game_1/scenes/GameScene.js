@@ -26,6 +26,14 @@ export default class GameScene extends Scene {
     let stageBg = self.add.image(config.width/2, config.height/2, 'stageBg').setOrigin(.5, .5)
     stageBg.setDisplaySize(config.width, config.height)
 
+    //if (self.model.musicOn === true && self.model.bgMusicPlaying === false) {
+      self.bgMusic = self.sound.add('bgMusic', { volume: 0.2, loop: true });
+      self.bgMusic.play();
+      self.model.bgMusicPlaying = true;
+      self.sys.game.globals.bgMusic = self.bgMusic;
+    //}
+
+
 
     self.anims.create({
       key: 'char_bg',

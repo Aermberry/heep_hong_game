@@ -8,6 +8,10 @@ export default class TutorScene extends Scene {
     super('Tutor');
   }
 
+  init () {
+    this.model = this.sys.game.globals.model;
+  }
+
   preload () {
     let self = this
 
@@ -52,7 +56,7 @@ export default class TutorScene extends Scene {
 
     let exitBtn = new ExitBtn(this, 120, 135);
     let startBtn = new StartBtn(this, config.width/2, config.height * 0.87);
-    this.add.existing(exitBtn);
-    this.add.existing(startBtn);
+    self.add.existing(exitBtn);
+    self.add.existing(startBtn);
   }
 }

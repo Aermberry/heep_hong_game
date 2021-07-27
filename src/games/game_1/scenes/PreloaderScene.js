@@ -60,6 +60,8 @@ export default class PreloaderScene extends Scene {
       self.load.audio(item.name, require('../assets/voice/'+item.voice));
     })
 
+    self.load.audio('bgMusic', require('../assets/voice/bg.mp3'));
+
     self.background = self.add.image(config.width/2, config.height/2, 'bootBg').setOrigin(.5, .5);
     self.background.setDisplaySize(config.width, config.height);
 

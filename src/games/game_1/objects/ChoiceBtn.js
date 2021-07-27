@@ -35,6 +35,7 @@ export default class ChoiceBtn extends Phaser.GameObjects.Container {
       if(enable){
         self.selected = true;
         self.bg.clear().fillStyle(0x0080FF, 1).fillRoundedRect(-100, -100, 190, 190, 16);
+        self.playVo();
       }
     }else{
       self.selected = false;
@@ -42,6 +43,12 @@ export default class ChoiceBtn extends Phaser.GameObjects.Container {
     }
 
     self.onClickCallback(self);
+  }
+
+  playVo(){
+    let self = this;
+    let vo = self.scene.sound.add(self.item.name)
+    vo.play();
   }
 
 }

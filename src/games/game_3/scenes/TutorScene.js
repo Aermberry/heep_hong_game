@@ -1,4 +1,6 @@
-import BasicScene from "./BasicScene";
+import BasicScene from "./BasicScene"
+import StartBtn from "../objects/StartBtn"
+import ExitBtn from '../objects/ExitBtn'
 
 export default class TutorSecene extends BasicScene {
 
@@ -10,9 +12,9 @@ export default class TutorSecene extends BasicScene {
 
     preload() {
 
-        this.bg = this.add.image(0, 0, 'bg_tutor');
-        this.bg.setDisplaySize(this.game.scale.width, this.game.scale.height);
-        this.bg.setOrigin(0, 0);
+        // this.bg = this.add.image(0, 0, 'bg_tutor');
+        // this.bg.setDisplaySize(this.game.scale.width, this.game.scale.height);
+        // this.bg.setOrigin(0, 0);
 
         this.anims.create({
             key: 'tut1',
@@ -35,12 +37,18 @@ export default class TutorSecene extends BasicScene {
     create() {
         super.create();
 
+        this.buildBg('bg_tutor')
 
-        let tut1 = this.add.sprite(this.getColWidth(2), this.getRowHeight(8), 'tut1')
-        let tut2 = this.add.sprite(this.getColWidth(5.8), this.getRowHeight(4), 'tut2')
-        let tut3 = this.add.sprite(this.getColWidth(9.5), this.getRowHeight(7), 'tut3')
+        let tut1 = this.add.sprite(this.getColWidth(2.2), this.getRowHeight(6), 'tut1')
+        let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'tut2')
+        let tut3 = this.add.sprite(this.getColWidth(9.8), this.getRowHeight(5), 'tut3')
 
         this._repeatAnimate({tut1, tut2, tut3})
+        
+        let exitBtn = new ExitBtn(this, 120, 135);
+        let startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10.5));
+        this.add.existing(exitBtn);
+        this.add.existing(startBtn);
 
     }
 

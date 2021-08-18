@@ -6,12 +6,26 @@ export default class BasicScene extends Phaser.Scene {
 
     create() {
 
+        // if(typeof bg === 'string') {
+        //     this.bg = this.add.image(0, 0, bg);
+        //     this.bg.setDisplaySize(this.game.scale.width, this.game.scale.height);
+        //     this.bg.setOrigin(0, 0);
+        // }
+
         const pageWidth = this.cameras.main.width;
         const pageHeight = this.cameras.main.height;
 
         this.widthBlock = pageWidth / 12;
         this.heightBlock = pageHeight / 12;
 
+    }
+
+    buildBg(bg) {
+        if(typeof bg === 'string') {
+            this.bg = this.add.image(0, 0, bg);
+            this.bg.setDisplaySize(this.game.scale.width, this.game.scale.height);
+            this.bg.setOrigin(0, 0);
+        }
     }
 
     /**
@@ -65,13 +79,9 @@ export default class BasicScene extends Phaser.Scene {
         this.load.on('progress', this.onLoadProgress, this);
         this.load.on('complete', this.onLoadComplete, this);
 
-        this.loadingBG = this.add.image(0, 0, 'bg_title');
-        this.loadingBG.setDisplaySize(this.game.scale.width, this.game.scale.height);
-        this.loadingBG.setOrigin(0, 0);
-
         const main = this.cameras.main;
-        this.progressBgRect = new Rectangle(0, 0, 0.5 * main.width, 50);
-        Rectangle.CenterOn(this.progressBgRect, 0.5 * main.width, 0.8 * main.height);
+        this.progressBgRect = new Rectangle(0, 0, 0.5 * main.width, 10);
+        Rectangle.CenterOn(this.progressBgRect, 0.5 * main.width, 0.95 * main.height);
         this.progressRect = Rectangle.Clone(this.progressBgRect);
         this.loadingBar = this.add.graphics();
     }
@@ -80,7 +90,7 @@ export default class BasicScene extends Phaser.Scene {
         console.debug('complete', totalComplete);
         console.debug('failed', totalFailed);
         this.loadingBar.destroy();
-        this.loadingBG.destroy();
+
     }
 
     onLoadProgress(progress) {
@@ -89,7 +99,7 @@ export default class BasicScene extends Phaser.Scene {
             .clear()
             .fillStyle(CONST.hexColors.darkGray)
             .fillRectShape(this.progressBgRect)
-            .fillStyle(this.load.totalFailed ? CONST.hexColors.red : CONST.hexColors.lightBlue)
+            .fillStyle(this.load.totalFailed ? CONST.hexColors.black : CONST.hexColors.red )
             .fillRectShape(this.progressRect);
     }
 }

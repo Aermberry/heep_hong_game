@@ -1,13 +1,14 @@
 import Phaser from 'phaser'
 import config from './config'
 
-import Model from './Model';
+import Model from './Model'
 import BootScene from './scenes/BootScene'
-import PreloaderScene from './scenes/PreloaderScene';
-import TutorSecene from './scenes/TutorScene';
+import PreloaderScene from './scenes/PreloaderScene'
+import TutorSecene from './scenes/TutorScene'
+import GameScene from './scenes/GameScene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene, TutorSecene]
+    scene: [BootScene, PreloaderScene, TutorSecene, GameScene]
 });
 
 class Game3 extends Phaser.Game {

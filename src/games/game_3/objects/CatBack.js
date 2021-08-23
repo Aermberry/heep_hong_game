@@ -34,15 +34,33 @@ export default class CatBack extends Phaser.GameObjects.Container {
         
     }
 
+    strike() {
+
+        return this.catBack.play('cat_shave');
+
+    }
+
 
     moveIn() {
 
-        this.scene.tweens.add({
-            targets: this,
-            x: this.inPosition.x,
-            y: this.inPosition.y,
-            duration: 400,
-            ease: 'Power2'
+        return this.moveTo(this.inPosition.x, this.inPosition.y, 400);
+
+    }
+
+    moveTo(x, y, time = 600) {
+
+        return new Promise((resolve)=> {
+
+            this.scene.tweens.add({
+                targets: this,
+                x: x,
+                y: y,
+                duration: time,
+                ease: 'Power2'
+            }).on('complete', ()=> {
+                resolve(this);
+            })
+        
         })
 
     }

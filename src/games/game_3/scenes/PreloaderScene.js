@@ -13,15 +13,28 @@ export default class PreloaderScene extends BasicScene {
         this.buildBg('bg_title');
 
         const imageFiles = {
-            'bg_base': require('../assets/bg_stage.png'),
-            'bg_end': require('../assets/bg_end.png'),
-            'bg_tutor': require('../assets/bg_tutor.png'),
+            'bg_base': require('../assets/images/bg_stage.png'),
+            'bg_end': require('../assets/images/bg_end.png'),
+            'bg_tutor': require('../assets/images/bg_tutor.png'),
+            'an_BL': require('../assets/images/an_BL.png'),
+            'an_LMR': require('../assets/images/an_LMR.png'),
+            'an_LR': require('../assets/images/an_LR.png'),
+            'an_LsR': require('../assets/images/an_LsR.png'),
+            'an_sLR': require('../assets/images/an_sLR.png'),
+            'an_sUB': require('../assets/images/an_sUB.png'),
+            'an_UB': require('../assets/images/an_UB.png'),
+            'an_UL': require('../assets/images/an_UL.png'),
+            'an_UMB': require('../assets/images/an_UMB.png'),
+            'an_UsB': require('../assets/images/an_UsB.png'),
+            'an_warp': require('../assets/images/an_warp.png'),
+            'an_whole': require('../assets/images/an_whole.png'),
         };
 
         const atlasFiles = {
-            'tut1': { img: require('../assets/tut1.png'), data: require('../assets/tut1.json')},
-            'tut2': { img: require('../assets/tut2.png'), data: require('../assets/tut2.json')},
-            'tut3': { img: require('../assets/tut3.png'), data: require('../assets/tut3.json')},
+            'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
+            'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
+            'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
+            'leaf': { img: require('../assets/anims/leaf.png'), data: require('../assets/anims/leaf.json')}
         }
 
         this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });

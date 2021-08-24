@@ -2,7 +2,7 @@ import DraggableContainer from './DraggableContainer'
 
 export default class CatHand extends DraggableContainer {
 
-    constructor(scene, x, y, handType, dragHandler) {
+    constructor(scene, x, y, handType, dragHandler, answer) {
         super(scene, x + scene.getColWidth(1.5), y);
 
         const catHandImgs = {
@@ -12,6 +12,10 @@ export default class CatHand extends DraggableContainer {
 
         const handKey = typeof catHandImgs[handType] == 'undefined' ? catHandImgs['white'] : catHandImgs[handType];
 
+        this.answer = answer
+
+        console.log(this.answer)
+
         this.inPosition = {
             x,
             y
@@ -20,18 +24,25 @@ export default class CatHand extends DraggableContainer {
         this.setAlpha(0);
 
         let handImg =  scene.add.sprite(0, 0, handKey);
+        let answerPic = scene.add.sprite(handImg.width * 0.135, 0, answer.image)
         this.create({draggableHeight: handImg.height , draggableWidth: handImg.width})
 
-        this.add(handImg)
+        this.add([handImg, answerPic])
 
-        this.setDraggableHandler(()=> {
+        this.setDraggableHandler((pointer, gameObject)=> {
+
+            console.log(pointer, gameObject)
 
             this.toOriginPosTween(500)
-            if(typeof dragHandler == 'function') dragHandler(this);
+            if(typeof dragHandler == 'function') dragHandler(this, pointer);
 
         })
 
 
+    }
+
+    getAnswer() {
+        return this.answer.index;
     }
 
     moveIn() {

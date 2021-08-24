@@ -30,7 +30,17 @@ export default class Cat extends Phaser.GameObjects.Container {
 
         this.add([this.cat]);
 
-        this.moveIn().then(()=> this.cat.play('cat_win'))
+    }
+
+    gameWin() {
+
+        this.cat.play('cat_win')
+
+    }
+
+    gameFail() {
+
+        this.cat.play('cat_lose')
 
     }
 

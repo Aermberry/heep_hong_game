@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 
 export default class ItemBam extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y, children) {
+    constructor(scene, x, y, item, children) {
 
         super(scene, x, scene.getRowHeight(12), children)
 
@@ -15,11 +15,26 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.bamImg = scene.add.image(0, 0, 'itemBam')
         this.whiteBroad = scene.add.rectangle(0, 0, 650, 650, 0xffffff)
 
+        let textPadding = this.whiteBroad.width * 0.05;
+
+        this.textBlock = scene.add.text(
+            0, textPadding * 2, item.value,
+            {
+                fontSize: (this.whiteBroad.width) + 'px',
+                color: '#000000'
+            }
+        )
+
+        this.textBlock.setOrigin(0.5)
+        this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
+
         this.whiteBroad.setAlpha(0);
+        this.textBlock.setAlpha(0);
 
         this.add([
             this.bamImg, 
             this.whiteBroad,
+            this.textBlock
         ]);
 
         this.createCrop();
@@ -75,6 +90,14 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         })
 
+        this.scene.tweens.add({
+            targets: this.textBlock,
+            alpha: 1,
+            delay: 800,
+            duration: 400,
+            ease: 'Power2'
+        });
+
         return this.scene.tweens.add({
             targets: this.whiteBroad,
             alpha: 1,
@@ -101,6 +124,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.bamImg.setAlpha(0);
         this.whiteBroad.setAlpha(0);
+        this.textBlock.setAlpha(0);
 
         this.topHalf.setAlpha(1)
         this.bottomHalf.setAlpha(1)
@@ -119,6 +143,90 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             duration: 600,
             ease: 'Power2'
         })
+
+    }
+
+    getStrike() {
+
+        return new Promise((resolve)=> {
+            
+            let slash = this.scene.add.image( -this.bamImg.width * 0.25, -this.bamImg.height * 0.25, 'slash')
+
+            slash.setScale(0.5)
+            slash.setAlpha(0)
+
+            this.add(slash)
+
+            this.scene.tweens.add({
+                targets: slash,
+                alpha: 1,
+                scaleX: .8,
+                scaleY: .8,
+                duration: 50,
+                x: 0,
+                y: 0,
+                ease: 'Linear'
+
+            }).on('complete',()=> {
+
+                this.scene.tweens.add({
+                    targets: slash,
+                    alpha: 0,
+                    duration: 50,
+                    ease: 'Linear'
+                }).on('complete', ()=> {
+
+                    this.scene.tweens.add({
+                        targets: [this.whiteBroad, this.textBlock],
+                        alpha: 0,
+                        delay: 500,
+                        duration: 400,
+                        ease: 'Power2'
+                    })
+
+                    resolve();
+
+                })
+
+            })
+
+        })
+
+    }
+
+    isInside({x, y}) {
+
+
+        console.log(
+
+            this.inPosition.x,
+
+            this.inPosition.y,
+
+            this.bamImg.getTopLeft()
+,
+            this.bamImg.getBottomRight()
+    
+        )
+
+        let topLeft = this.bamImg.getTopLeft()
+
+        let bottomRight = this.bamImg.getBottomRight()
+
+        let worldBody = {
+            "topLeft": {
+                x: this.inPosition.x + topLeft.x,
+                y: this.inPosition.y + topLeft.y
+            },
+            "bottomRight": {
+                x: this.inPosition.x + bottomRight.x,
+                y: this.inPosition.y + bottomRight.y
+            }
+                        
+        }
+
+        return x >= worldBody.topLeft.x && x <= worldBody.bottomRight.x && y >= worldBody.topLeft.y && y <= worldBody.bottomRight.y;
+
 
     }
 

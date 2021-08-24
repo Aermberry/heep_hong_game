@@ -42,7 +42,7 @@ export default {
         const game = await import('@/games/game_'+self.gameID+'/index')
         self.downloaded = true
         self.$nextTick(() => {
-          self.gameInstance = game.launch()
+          self.gameInstance = game.launch(self.$route.params)
         })
       }
     }catch (e){

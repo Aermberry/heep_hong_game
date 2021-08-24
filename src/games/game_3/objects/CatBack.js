@@ -18,7 +18,7 @@ export default class CatBack extends Phaser.GameObjects.Container {
         });
         scene.anims.create({
             key: 'cat_shave',
-            frames: scene.anims.generateFrameNames('cat_back', { prefix: 'cat_back', start: 0, end: 38, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('cat_back', { prefix: 'cat_back', start: 10, end: 38, zeroPad: 4 }),
         });
 
         this.catBack = scene.add.sprite(0, 0, 'cat_back')

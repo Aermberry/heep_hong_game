@@ -21,7 +21,7 @@ export default class DragBlock extends Phaser.GameObjects.Container {
         this.scene.input.setDraggable(this)
 
         this.scene.input.on('drag', this.handleDrag.bind(this));
-        this.scene.input.on('dragend', this.handleStopDrag.bind(this, this));
+        this.scene.input.on('dragend', this.handleStopDrag.bind(this ));
 
     }
 
@@ -38,10 +38,11 @@ export default class DragBlock extends Phaser.GameObjects.Container {
 
     }
 
-    handleStopDrag(self) {
+    handleStopDrag(pointer, gameObject) {
+        //Check if the gameObject is in the item block
 
         if(typeof this.dragEndCallback == 'function') {
-            this.dragEndCallback(self);
+            this.dragEndCallback(pointer, gameObject);
         }
 
     }

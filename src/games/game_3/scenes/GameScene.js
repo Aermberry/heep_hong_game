@@ -28,9 +28,9 @@ export default class GameScene extends BasicScene {
 
         this.allAnswers = this.dataModal.gameAnswers
 
-        this.allAnswers.some((answer, ind)=> {
+        this.allAnswers.some((answer, ind) => {
 
-            if(answer.index === this.item.answer) {
+            if (answer.index === this.item.answer) {
 
                 this.answers.push(this.allAnswers.splice(ind, 1)[0])
 
@@ -51,6 +51,7 @@ export default class GameScene extends BasicScene {
 
         const imageFiles = {
             'itemBam': require('../assets/images/item_bam.png'),
+            'itemBamBad': require('../assets/images/item_bam_bad.png'),
             'an1': require('../assets/images/an1.png'),
             'an2': require('../assets/images/an2.png'),
             'slash': require('../assets/images/slash.png'),
@@ -61,7 +62,7 @@ export default class GameScene extends BasicScene {
         const atlasFiles = {
             'headband': { img: require('../assets/anims/headband.png'), data: require('../assets/anims/headband.json') },
             'cat_back': { img: require('../assets/anims/cat_back.png'), data: require('../assets/anims/cat_back.json') },
-            'cat': { img: require('../assets/anims/cat.png'), data: require('../assets/anims/cat.json')},
+            'cat': { img: require('../assets/anims/cat.png'), data: require('../assets/anims/cat.json') },
         }
 
         this.preloadFromArr({
@@ -78,11 +79,6 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.buildBg('bg_base');
-
-console.log(
-    this.answers,
-    this.item
-)
 
 
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
@@ -106,22 +102,21 @@ console.log(
         this.add.existing(this.catBack)
 
 
-        this.bam.moveIn().on('complete', () => { 
-            this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(1)); 
-            this.catHandBlack.moveIn().then((itemSelf) => itemSelf.setDepth(1)); 
+        this.bam.moveIn().on('complete', () => {
+            this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(1));
+            this.catHandBlack.moveIn().then((itemSelf) => itemSelf.setDepth(1));
         });
         this.catBack.moveIn();
 
 
     }
 
-    answerSelected(catHand, pointer) {
+    answerSelected(catHand) {
 
         //Need to make sure the catHand is collide with text broad
 
-        console.log('cat answer',catHand.getAnswer(), this.bam.isInside({x: pointer.upX, y: pointer.upY}))
+        if (!this.bam.isInside({ x: catHand.x, y: catHand.y })) return;
 
-        
         this.leafLeft = this.add.image(this.getColWidth(-9), this.getRowHeight(6), 'leafLeft')
         this.leafRight = this.add.image(this.getColWidth(21), this.getRowHeight(6), 'leafRight')
 
@@ -129,7 +124,7 @@ console.log(
         this.leafRight.setDepth(1)
 
         //Cat anime, strike anime, remove hand anime.
-        this.catBack.strike().on('animationcomplete', ()=> {
+        this.catBack.strike().on('animationcomplete', () => {
 
             this.bam.getStrike();
 
@@ -142,7 +137,7 @@ console.log(
             this.catHandBlack.moveOut();
             this.catHandWhite.moveOut();
 
-            setTimeout(()=> {
+            setTimeout(() => {
 
                 this.add.tween({
                     targets: this.leafLeft,
@@ -151,34 +146,50 @@ console.log(
                     duration: 1000,
                     ease: 'Power2'
                 });
-                            
+
                 this.add.tween({
                     targets: this.leafRight,
                     x: this.getColWidth(-9),
                     y: this.getRowHeight(6),
                     duration: 1000,
                     ease: 'Power2'
-                }).on('complete', ()=> {
-    
-                    this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1400).then(()=> {
-                        this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(()=> {
-                            let cat  = new WinCat(this, this.getColWidth(10), this.getRowHeight(8));
-                            this.add.existing(cat);
-                            cat.moveIn().then(()=> {
+                })
+                // .on('complete', ()=> {
+
+                this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
+                    this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
+                        let cat = new WinCat(this, this.getColWidth(10), this.getRowHeight(8));
+                        this.add.existing(cat);
+                        cat.moveIn().then(() => {
+
+                            setTimeout(() => {
+
                                 //Game win or lose anime
-                                this.bam.breakUp()
-                                cat.gameWin()
+                                if (catHand.getAnswer() == this.item.answer) {
 
-                            })
+                                    this.bam.breakUp()
+                                    cat.gameWin()
 
-                            
+                                } else {
+
+                                    this.bam.failedToBreak()
+                                    cat.gameFail()
+
+                                }
+
+                            }, 1000)
+
+
                         })
+
+
                     })
-        
                 })
 
+                // })
+
             }, 800)
-            
+
 
         });
 
@@ -189,7 +200,7 @@ console.log(
     }
 
     onFail() {
-        
+
     }
 
 

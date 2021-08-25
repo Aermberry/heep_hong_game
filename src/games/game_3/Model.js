@@ -14,8 +14,8 @@ export default class Model {
 
         this._gameStage = stage;
         this._gameData.some((gameData, ind)=> {
-
-            if(gameData.gameStage === stage) return this._gameIndex = ind;
+console.log('in gameStage', gameData.gameStage, stage, ind, this._gameIndex)
+            if(gameData.gameStage == stage) return this._gameIndex = ind;
 
         });
 
@@ -45,6 +45,8 @@ export default class Model {
             return this._gameData[0].items;
 
         }
+
+console.log('gameIndex', this._gameIndex)
 
         return this._gameData[this._gameIndex].items;
 

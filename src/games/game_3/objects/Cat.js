@@ -17,11 +17,11 @@ export default class Cat extends Phaser.GameObjects.Container {
         });
         scene.anims.create({
             key: 'cat_win', 
-            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 1, end: 28, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 1, end: 50, zeroPad: 4 }),
         });
         scene.anims.create({
             key: 'cat_lose',
-            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 29, end: 84, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 54, end: 84, zeroPad: 4 }),
         });
 
         this.cat = scene.add.sprite(0, 0, 'cat')

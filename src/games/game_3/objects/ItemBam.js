@@ -13,6 +13,8 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         }
 
         this.bamImg = scene.add.image(0, 0, 'itemBam')
+        this.bamImgBad = scene.add.image(0, 0, 'itemBamBad')
+        
         this.whiteBroad = scene.add.rectangle(0, 0, 650, 650, 0xffffff)
 
         let textPadding = this.whiteBroad.width * 0.05;
@@ -30,8 +32,10 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.whiteBroad.setAlpha(0);
         this.textBlock.setAlpha(0);
+        this.bamImgBad.setAlpha(0);
 
         this.add([
+            this.bamImgBad,
             this.bamImg, 
             this.whiteBroad,
             this.textBlock
@@ -131,18 +135,28 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.scene.tweens.add({
             targets: this.topHalf,
-            x: -50,
-            y: -50,
+            x: -30,
+            y: -30,
             duration: 600,
             ease: 'Power2'
         })
         this.scene.tweens.add({
             targets: this.bottomHalf,
-            x: 50,
-            y:50,
+            x: 30,
+            y: 30,
             duration: 600,
             ease: 'Power2'
         })
+
+    }
+
+    failedToBreak() {
+        
+        this.bamImg.setAlpha(0)
+        this.whiteBroad.setAlpha(0)
+        this.textBlock.setAlpha(0)
+
+        this.bamImgBad.setAlpha(1)
 
     }
 
@@ -195,19 +209,6 @@ export default class ItemBam extends Phaser.GameObjects.Container {
     }
 
     isInside({x, y}) {
-
-
-        console.log(
-
-            this.inPosition.x,
-
-            this.inPosition.y,
-
-            this.bamImg.getTopLeft()
-,
-            this.bamImg.getBottomRight()
-    
-        )
 
         let topLeft = this.bamImg.getTopLeft()
 

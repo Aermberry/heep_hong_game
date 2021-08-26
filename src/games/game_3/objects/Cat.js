@@ -17,12 +17,22 @@ export default class Cat extends Phaser.GameObjects.Container {
         });
         scene.anims.create({
             key: 'cat_win', 
-            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 1, end: 50, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 1, end: 9, zeroPad: 4 }),
+        });
+        scene.anims.create({
+            key: 'cat_win_continue', 
+            repeat: -1,
+            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 10, end: 50, zeroPad: 4 }),
         });
         scene.anims.create({
             key: 'cat_lose',
-            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 54, end: 84, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 51, end: 60, zeroPad: 4 }),
         });
+        scene.anims.create({
+            key: 'cat_lose_continue',
+            repeat: -1,
+            frames: scene.anims.generateFrameNames('cat', { prefix: 'cat', start: 61, end: 81, zeroPad: 4 })
+        })
 
         this.cat = scene.add.sprite(0, 0, 'cat')
 
@@ -34,13 +44,13 @@ export default class Cat extends Phaser.GameObjects.Container {
 
     gameWin() {
 
-        this.cat.play('cat_win')
+        this.cat.play('cat_win').on('animationcomplete', ()=> this.cat.play('cat_win_continue'))
 
     }
 
     gameFail() {
 
-        this.cat.play('cat_lose')
+        this.cat.play('cat_lose').on('animationcomplete', ()=> this.cat.play('cat_lose_continue'))
 
     }
 
@@ -53,7 +63,7 @@ export default class Cat extends Phaser.GameObjects.Container {
                 x: x,
                 y: y,
                 duration: time,
-                ease: 'Power2'
+                ease: 'Circular'
             }).on('complete', ()=> {
                 resolve(this);
             })

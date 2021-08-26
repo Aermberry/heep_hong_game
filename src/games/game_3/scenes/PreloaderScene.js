@@ -28,13 +28,20 @@ export default class PreloaderScene extends BasicScene {
             'an_UsB': require('../assets/images/an_UsB.png'),
             'an_warp': require('../assets/images/an_warp.png'),
             'an_whole': require('../assets/images/an_whole.png'),
+            'an_hfB': require('../assets/images/an_hfB.png'),
+            'an_hfR': require('../assets/images/an_hfR.png'),
+            'an_n': require('../assets/images/an_n.png'),
+            'an_y': require('../assets/images/an_y.png'),
+            'an_tngl': require('../assets/images/an_tngl.png'),
+            'end_box': require('../assets/images/end_box.png')
         };
 
         const atlasFiles = {
             'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
             'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
-            'leaf': { img: require('../assets/anims/leaf.png'), data: require('../assets/anims/leaf.json')}
+            'leaf': { img: require('../assets/anims/leaf.png'), data: require('../assets/anims/leaf.json')},
+            'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json')}
         }
 
         this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });
@@ -52,8 +59,8 @@ export default class PreloaderScene extends BasicScene {
     }
 
     create() {
-
         super.create();
+
         setTimeout(
             ()=> {
                 this.scene.start('Tutor')

@@ -687,6 +687,14 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":53,"y":5,"w":689,"h":598},
 	"sourceSize": {"w":689,"h":598}
+},
+"cat0086":
+{
+	"frame": {"x":2757,"y":2371,"w":502,"h":593},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":81,"y":5,"w":689,"h":598},
+	"sourceSize": {"w":689,"h":598}
 }},
 "meta": {
 	"app": "Adobe Animate",

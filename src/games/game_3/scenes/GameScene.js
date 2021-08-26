@@ -18,6 +18,46 @@ export default class GameScene extends BasicScene {
 
         this.dataModal = this.sys.game.globals.model;
 
+    }
+
+    preload() {
+
+        this.buildBg('bg_tutor')
+
+
+        const imageFiles = {
+            'itemBam': require('../assets/images/item_bam.png'),
+            'itemBamBad': require('../assets/images/item_bam_bad.png'),
+            'bg_rock': require('../assets/images/bg_rock.png'),
+            'an1': require('../assets/images/an1.png'),
+            'an2': require('../assets/images/an2.png'),
+            'slash': require('../assets/images/slash.png'),
+            'leafLeft': require('../assets/images/swipe_leaf1.png'),
+            'leafRight': require('../assets/images/swipe_leaf2.png'),
+        };
+
+        const atlasFiles = {
+            'headband': { img: require('../assets/anims/headband.png'), data: require('../assets/anims/headband.json') },
+            'cat_back': { img: require('../assets/anims/cat_back.png'), data: require('../assets/anims/cat_back.json') },
+            'cat': { img: require('../assets/anims/cat.png'), data: require('../assets/anims/cat.json') },
+        }
+
+        this.preloadFromArr({
+            img: imageFiles,
+            atlas: atlasFiles
+        });
+
+        this.createProgressBar();
+
+    }
+
+    create() {
+
+        super.create();
+
+        this.disableInput = false;
+
+
         const items = this.dataModal.gameItems
 
         let itemInd = Math.floor(Math.random() * items.length)
@@ -42,52 +82,19 @@ export default class GameScene extends BasicScene {
 
         this.answers.push(this.allAnswers[Math.floor(this.allAnswers.length * Math.random())])
 
-    }
-
-    preload() {
-
-        this.buildBg('bg_tutor')
-
-
-        const imageFiles = {
-            'itemBam': require('../assets/images/item_bam.png'),
-            'itemBamBad': require('../assets/images/item_bam_bad.png'),
-            'an1': require('../assets/images/an1.png'),
-            'an2': require('../assets/images/an2.png'),
-            'slash': require('../assets/images/slash.png'),
-            'leafLeft': require('../assets/images/swipe_leaf1.png'),
-            'leafRight': require('../assets/images/swipe_leaf2.png')
-        };
-
-        const atlasFiles = {
-            'headband': { img: require('../assets/anims/headband.png'), data: require('../assets/anims/headband.json') },
-            'cat_back': { img: require('../assets/anims/cat_back.png'), data: require('../assets/anims/cat_back.json') },
-            'cat': { img: require('../assets/anims/cat.png'), data: require('../assets/anims/cat.json') },
-        }
-
-        this.preloadFromArr({
-            img: imageFiles,
-            atlas: atlasFiles
-        });
-
-        this.createProgressBar();
-
-    }
-
-    create() {
-
-        super.create();
 
         this.buildBg('bg_base');
 
 
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
 
+        this.catBack.setDepth(7)
+
         this.catHandWhite = new CatHand(this, this.getColWidth(1.5), this.getRowHeight(7), 'white', this.answerSelected.bind(this), this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0])
         this.catHandBlack = new CatHand(this, this.getColWidth(1.5), this.getRowHeight(9.5), 'black', this.answerSelected.bind(this), this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0])
 
         this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), this.item)
-
+        this.bam.setDepth(5)
 
         // this.physics.world.enable([this.bam, this.catHandWhite, this.catHandBlack])
         // this.physics.add.overlap(this.bam, this.catHandWhite)
@@ -101,13 +108,11 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.bam)
         this.add.existing(this.catBack)
 
-
         this.bam.moveIn().on('complete', () => {
-            this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(1));
-            this.catHandBlack.moveIn().then((itemSelf) => itemSelf.setDepth(1));
+            this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(7));
+            this.catHandBlack.moveIn().then((itemSelf) => itemSelf.setDepth(7));
         });
         this.catBack.moveIn();
-
 
     }
 
@@ -115,13 +120,14 @@ export default class GameScene extends BasicScene {
 
         //Need to make sure the catHand is collide with text broad
 
-        if (!this.bam.isInside({ x: catHand.x, y: catHand.y })) return;
+        if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) return;
+
+        this.disableInput = true;
 
         this.leafLeft = this.add.image(this.getColWidth(-9), this.getRowHeight(6), 'leafLeft')
         this.leafRight = this.add.image(this.getColWidth(21), this.getRowHeight(6), 'leafRight')
-
-        this.leafLeft.setDepth(1)
-        this.leafRight.setDepth(1)
+        this.leafLeft.setDepth(11)
+        this.leafRight.setDepth(11)
 
         //Cat anime, strike anime, remove hand anime.
         this.catBack.strike().on('animationcomplete', () => {
@@ -156,14 +162,17 @@ export default class GameScene extends BasicScene {
                 })
                 // .on('complete', ()=> {
 
+                this.bam.moveOut();
                 this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
                     this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
-                        let cat = new WinCat(this, this.getColWidth(10), this.getRowHeight(8));
+                        let cat = new WinCat(this, this.getColWidth(8), this.getRowHeight(8));
+                        cat.setDepth(4)
                         this.add.existing(cat);
                         cat.moveIn().then(() => {
-
+                            cat.setDepth(10)
+                            // cat.moveTo(this.getColWidth(8), this.getRowHeight(8), 400)
                             setTimeout(() => {
-
+                                // cat.setDepth(10)
                                 //Game win or lose anime
                                 if (catHand.getAnswer() == this.item.answer) {
 
@@ -176,6 +185,11 @@ export default class GameScene extends BasicScene {
                                     cat.gameFail()
 
                                 }
+
+                                setTimeout(()=> {
+                                    this.scene.start('End')
+
+                                }, 3000)
 
                             }, 1000)
 

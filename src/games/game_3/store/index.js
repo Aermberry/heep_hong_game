@@ -12,6 +12,7 @@ export default Object.freeze({
 
     hexColors: Object.freeze({
         darkGray: 0x222222,
+        lightGray: 0xd3d3d3,
         red: 0xff2200,
         white: 0xffffff,
         lightBlue:0x0ca8a3,

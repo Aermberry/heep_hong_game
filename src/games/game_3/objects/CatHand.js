@@ -14,24 +14,37 @@ export default class CatHand extends DraggableContainer {
 
         this.answer = answer
 
-        console.log(this.answer)
-
         this.inPosition = {
             x,
             y
         }
 
         this.setAlpha(0);
+        // this.setScale(0.9);
 
         let handImg =  scene.add.sprite(0, 0, handKey);
         let answerPic = scene.add.sprite(handImg.width * 0.135, 0, answer.image)
         this.create({draggableHeight: handImg.height , draggableWidth: handImg.width})
 
-        this.add([handImg, answerPic])
+        let children = [handImg, answerPic];
 
-        this.setDraggableHandler((pointer, gameObject)=> {
+        if(typeof answer.text == 'string') {
+            let answerText = scene.add.text(
+                handImg.width * 0.135 , handImg.height * 0.05, answer.text,
+                {
+                    fontSize: (answerPic.width * .9) + 'px',
+                    color: '#000000',
+                    fontFamily: "Custom-Han-Serif"
+                }
+            )
+            answerText.setOrigin(0.5)
+            // answerText.setOrigin(0.2, 0.45)
+            children.push(answerText)
+        }
 
-            console.log(pointer, gameObject)
+        this.add(children)
+
+        this.setDraggableHandler((pointer)=> {
 
             this.toOriginPosTween(500)
             if(typeof dragHandler == 'function') dragHandler(this, pointer);
@@ -52,6 +65,16 @@ export default class CatHand extends DraggableContainer {
             this.toOriginPosTween(2000).on('complete', ()=> {
 
                 this.startDraggable();
+
+                this.scene.tweens.add({
+                    targets: this,
+                    // scale: 1,
+                    angle: 10,
+                    // repeat: 1,
+                    yoyo: 1,
+                    ease: 'Bounce.easeInOut',
+                    duration: 250
+                })
 
                 resolve(this);
 

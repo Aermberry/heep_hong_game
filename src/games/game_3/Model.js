@@ -14,7 +14,6 @@ export default class Model {
 
         this._gameStage = stage;
         this._gameData.some((gameData, ind)=> {
-console.log('in gameStage', gameData.gameStage, stage, ind, this._gameIndex)
             if(gameData.gameStage == stage) return this._gameIndex = ind;
 
         });
@@ -28,11 +27,11 @@ console.log('in gameStage', gameData.gameStage, stage, ind, this._gameIndex)
 
             console.log('Game Stage void, set to default stage.')
             
-            return this._gameData[0].answers;
+            return [...this._gameData[0].answers];
 
         }
 
-        return this._gameData[this._gameIndex].answers;
+        return [...this._gameData[this._gameIndex].answers];
 
     }
 
@@ -42,13 +41,11 @@ console.log('in gameStage', gameData.gameStage, stage, ind, this._gameIndex)
 
             console.log('Game Stage void, set to default stage.')
             
-            return this._gameData[0].items;
+            return [...this._gameData[0].items];
 
         }
 
-console.log('gameIndex', this._gameIndex)
-
-        return this._gameData[this._gameIndex].items;
+        return [...this._gameData[this._gameIndex].items];
 
     }
 

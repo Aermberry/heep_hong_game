@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-
+import ItemPic from './ItemPic'
 
 export default class ItemBam extends Phaser.GameObjects.Container {
 
@@ -14,34 +14,65 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.bamImg = scene.add.image(0, 0, 'itemBam')
         this.bamImgBad = scene.add.image(0, 0, 'itemBamBad')
-        
-        this.whiteBroad = scene.add.rectangle(0, 0, 650, 650, 0xffffff)
+        this.rock = scene.add.image(0, this.bamImg.width *0.6, 'bg_rock')
 
-        let textPadding = this.whiteBroad.width * 0.05;
+        this.whiteBroad = new ItemPic(scene, 0, 0, item, this.bamImg.width * 0.8, this.bamImg.height * 0.8)
 
-        this.textBlock = scene.add.text(
-            0, textPadding * 2, item.value,
-            {
-                fontSize: (this.whiteBroad.width) + 'px',
-                color: '#000000'
-            }
-        )
+        // this.whiteBroad = scene.add.rectangle(0, 0, this.bamImg.width * 0.8, this.bamImg.height * 0.8, 0xffffff)
+        // this.hLine = scene.add.line(0, 0, this.whiteBroad.width * 0, 0, this.whiteBroad.width * 0.8, 0, 0x000000)
+        // this.vLine = scene.add.line(0, 0, 0, this.whiteBroad.height * 0, 0, this.whiteBroad.height * 0.8, 0x000000)
 
-        this.textBlock.setOrigin(0.5)
-        this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
+        // let textPadding = this.whiteBroad.width * 0.05;
+
+        // this.textBlock = scene.add.text(
+        //     0, textPadding * 2, item.value,
+        //     {
+        //         fontSize: (this.whiteBroad.width) + 'px',
+        //         color: '#000000',
+        //         fontFamily: "Custom-Han-Serif"
+        //     }
+        // )
+
+        // this.textBlock.setOrigin(0.5)
+        // this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
 
         this.whiteBroad.setAlpha(0);
-        this.textBlock.setAlpha(0);
+        // this.textBlock.setAlpha(0);
         this.bamImgBad.setAlpha(0);
 
+        this.rock.setDepth(1)
+
         this.add([
+            this.rock,
             this.bamImgBad,
             this.bamImg, 
             this.whiteBroad,
-            this.textBlock
+            // this.hLine,
+            // this.vLine,
+            // this.textBlock
         ]);
 
-        this.createCrop();
+
+    }
+
+    twist() {
+
+        let originPosition = {
+            x: this.x,
+            y: this.y
+        }
+
+        this.scene.tweens.add({
+            targets: this,
+            x: this.x - 5,
+            y: this.y - 5,
+            duration: 50,
+            repeat: 1,
+            yoyo: 1,
+            ease: 'Power2'
+        }).on("complete", ()=> {
+            this.setPosition(originPosition.x, originPosition.y)
+        })
 
     }
 
@@ -51,14 +82,14 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.topHalf = this.scene.add.image(0, 0, 'itemBam')
         this.bottomHalf = this.scene.add.image(0, 0, 'itemBam')
 
-        let graphics = this.scene.add.graphics({x: (this.inPosition.x - this.bamImg.width*.65), y: (this.inPosition.y - this.bamImg.height*.65)})
+        let graphics = this.scene.add.graphics({x: (this.x - this.bamImg.width*.65), y: (this.y - this.bamImg.height*.65)})
         graphics.fillTriangle(0, 0, 
             this.bamImg.width *1.2, this.bamImg.height* 1.2, 
             0, this.bamImg.height*1.2,
         )
         graphics.setAlpha(0)
 
-        let altGraphics = this.scene.add.graphics({x: (this.inPosition.x + this.bamImg.width*.65), y: (this.inPosition.y + this.bamImg.height*.65)})
+        let altGraphics = this.scene.add.graphics({x: (this.x + this.bamImg.width*.65), y: (this.y + this.bamImg.height*.65)})
         altGraphics.fillTriangle(0, 0,
             -this.bamImg.width *1.2, -this.bamImg.height*1.2, 
             0, -this.bamImg.height*1.2,
@@ -94,13 +125,13 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         })
 
-        this.scene.tweens.add({
-            targets: this.textBlock,
-            alpha: 1,
-            delay: 800,
-            duration: 400,
-            ease: 'Power2'
-        });
+        // this.scene.tweens.add({
+        //     targets: this.textBlock,
+        //     alpha: 1,
+        //     delay: 800,
+        //     duration: 400,
+        //     ease: 'Power2'
+        // });
 
         return this.scene.tweens.add({
             targets: this.whiteBroad,
@@ -116,10 +147,14 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.scene.tweens.add({
             targets: this,
-            x: this.scene.getColWidth(13),
-            y: this.getRowHeight(13),
-            duration: 400,
+            x: this.inPosition.x - 200,
+            y: this.inPosition.y,
+            duration: 800,
             ease: 'Power2'
+        }).on('complete', ()=> {
+
+            this.createCrop();
+
         })
         
     }
@@ -128,22 +163,22 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.bamImg.setAlpha(0);
         this.whiteBroad.setAlpha(0);
-        this.textBlock.setAlpha(0);
+        // this.textBlock.setAlpha(0);
 
         this.topHalf.setAlpha(1)
         this.bottomHalf.setAlpha(1)
 
-        this.scene.tweens.add({
-            targets: this.topHalf,
-            x: -30,
-            y: -30,
-            duration: 600,
-            ease: 'Power2'
-        })
+        // this.scene.tweens.add({
+        //     targets: this.topHalf,
+        //     x: -30,
+        //     y: -30,
+        //     duration: 600,
+        //     ease: 'Power2'
+        // })
         this.scene.tweens.add({
             targets: this.bottomHalf,
-            x: 30,
-            y: 30,
+            x: 60,
+            y: 60,
             duration: 600,
             ease: 'Power2'
         })
@@ -154,7 +189,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         
         this.bamImg.setAlpha(0)
         this.whiteBroad.setAlpha(0)
-        this.textBlock.setAlpha(0)
+        // this.textBlock.setAlpha(0)
 
         this.bamImgBad.setAlpha(1)
 
@@ -170,6 +205,8 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             slash.setAlpha(0)
 
             this.add(slash)
+
+            this.twist();
 
             this.scene.tweens.add({
                 targets: slash,
@@ -191,7 +228,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
                 }).on('complete', ()=> {
 
                     this.scene.tweens.add({
-                        targets: [this.whiteBroad, this.textBlock],
+                        targets: [this.whiteBroad],
                         alpha: 0,
                         delay: 500,
                         duration: 400,

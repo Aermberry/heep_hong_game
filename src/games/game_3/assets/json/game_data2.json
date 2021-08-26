@@ -386,6 +386,347 @@
                 "answer": 8
             }
         ]
+    },
+    {
+        "gameLogic": 3,
+        "gameStage": 5,
+        "hint": "獨體字",
+        "answers": [
+            {
+                "index": 0,
+                "image": "an_n"
+            },
+            {
+                "index": 1,
+                "image": "an_y"
+            }
+        ],
+        "items": [
+            {
+                "value": "冊",
+                "answer": 1
+            },
+            {
+                "value": "飛",
+                "answer": 1
+            },
+            {
+                "value": "雨",
+                "answer": 1
+            },
+            {
+                "value": "鳥",
+                "answer": 1
+            },
+            {
+                "value": "龜",
+                "answer": 1
+            },
+            {
+                "value": "拍",
+                "answer": 0
+            },
+            {
+                "value": "岩",
+                "answer": 0
+            },
+            {
+                "value": "烈",
+                "answer": 0
+            },
+            {
+                "value": "遊",
+                "answer": 0
+            },
+            {
+                "value": "閃",
+                "answer": 0
+            },
+            {
+                "value": "團",
+                "answer": 0
+            }
+        ]
+    },
+    {
+        "gameLogic": 3,
+        "gameStage": 21,
+        "hint": "部首",
+        "answers": [
+            {
+                "index": 0,
+                "image": "an_whole",
+                "text": "人"
+            },
+            {
+                "index": 1,
+                "image": "an_whole",
+                "text": "水"
+            },
+            {
+                "index": 2,
+                "image": "an_whole",
+                "text": "手"
+            },
+            {
+                "index": 3,
+                "image": "an_whole",
+                "text": "草"
+            },
+            {
+                "index": 4,
+                "image": "an_whole",
+                "text": "心"
+            },
+            {
+                "index": 5,
+                "image": "an_whole",
+                "text": "木"
+            },
+            {
+                "index": 6,
+                "image": "an_whole",
+                "text": "口"
+            },
+            {
+                "index": 7,
+                "image": "an_whole",
+                "text": "目"
+            },
+            {
+                "index": 8,
+                "image": "an_whole",
+                "text": "火"
+            },
+            {
+                "index": 9,
+                "image": "an_whole",
+                "text": "日"
+            }
+        ],
+        "items": [
+            {
+                "value": "傘",
+                "answer": 0
+            },
+            {
+                "value": "令",
+                "answer": 0
+            },
+            {
+                "value": "今",
+                "answer": 0
+            },
+            {
+                "value": "洗",
+                "answer": 1
+            },
+            {
+                "value": "清",
+                "answer": 1
+            },
+            {
+                "value": "湖",
+                "answer": 1
+            },
+            {
+                "value": "拿",
+                "answer": 2
+            },
+            {
+                "value": "拳",
+                "answer": 2
+            },
+            {
+                "value": "掌",
+                "answer": 2
+            },
+            {
+                "value": "蕾",
+                "answer": 3
+            },
+            {
+                "value": "苗",
+                "answer": 3
+            },
+            {
+                "value": "芽",
+                "answer": 3
+            },
+            {
+                "value": "想",
+                "answer": 4
+            },
+            {
+                "value": "忍",
+                "answer": 4
+            },
+            {
+                "value": "念",
+                "answer": 4
+            },
+            {
+                "value": "卓",
+                "answer": 5
+            },
+            {
+                "value": "朵",
+                "answer": 5
+            },
+            {
+                "value": "唱",
+                "answer": 6
+            },
+            {
+                "value": "哼",
+                "answer": 6
+            },
+            {
+                "value": "嗽",
+                "answer": 6
+            },
+            {
+                "value": "合",
+                "answer": 6
+            },
+            {
+                "value": "告",
+                "answer": 6
+            },
+            {
+                "value": "員",
+                "answer": 6
+            },
+            {
+                "value": "另",
+                "answer": 6
+            },
+            {
+                "value": "睛",
+                "answer": 7
+            },
+            {
+                "value": "盼",
+                "answer": 7
+            },
+            {
+                "value": "眠",
+                "answer": 7
+            },
+            {
+                "value": "看",
+                "answer": 7
+            },
+            {
+                "value": "眉",
+                "answer": 7
+            },
+            {
+                "value": "盲",
+                "answer": 7
+            },
+            {
+                "value": "燒",
+                "answer": 8
+            },
+            {
+                "value": "烤",
+                "answer": 8
+            },
+            {
+                "value": "爆",
+                "answer": 8
+            },
+            {
+                "value": "曉",
+                "answer": 9
+            },
+            {
+                "value": "暇",
+                "answer": 9
+            },
+            {
+                "value": "暱",
+                "answer": 9
+            },
+            {
+                "value": "星",
+                "answer": 9
+            },
+            {
+                "value": "晨",
+                "answer": 9
+            },
+            {
+                "value": "智",
+                "answer": 9
+            },
+            {
+                "value": "普",
+                "answer": 9
+            },
+            {
+                "value": "偉",
+                "answer": 0
+            },
+            {
+                "value": "健",
+                "answer": 0
+            },
+            {
+                "value": "伙",
+                "answer": 0
+            },
+            {
+                "value": "掛",
+                "answer": 2
+            },
+            {
+                "value": "拍",
+                "answer": 2
+            },
+            {
+                "value": "找",
+                "answer": 2
+            },
+            {
+                "value": "情",
+                "answer": 4
+            },
+            {
+                "value": "慚",
+                "answer": 4
+            },
+            {
+                "value": "惱",
+                "answer": 4
+            },
+            {
+                "value": "材",
+                "answer": 5
+            },
+            {
+                "value": "樟",
+                "answer": 5
+            },
+            {
+                "value": "椰",
+                "answer": 5
+            },
+            {
+                "value": "熱",
+                "answer": 8
+            },
+            {
+                "value": "熟",
+                "answer": 8
+            },
+            {
+                "value": "烹",
+                "answer": 8
+            }
+        ]
     }
+
     
 ]

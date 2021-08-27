@@ -168,6 +168,10 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.topHalf.setAlpha(1)
         this.bottomHalf.setAlpha(1)
 
+        let strikeSound = this.scene.sound.add('swordUnsheathe')
+        strikeSound.play()
+
+
         // this.scene.tweens.add({
         //     targets: this.topHalf,
         //     x: -30,
@@ -191,6 +195,9 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.whiteBroad.setAlpha(0)
         // this.textBlock.setAlpha(0)
 
+        let strikeSound = this.scene.sound.add('hit')
+        strikeSound.play()
+
         this.bamImgBad.setAlpha(1)
 
     }
@@ -207,6 +214,13 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             this.add(slash)
 
             this.twist();
+
+            let strikeSoundA = this.scene.sound.add('swing')
+
+            strikeSoundA.play();
+
+            this.scene.sound.stopByKey('drums')
+            // setTimeout(strikeSoundB.play, 400)
 
             this.scene.tweens.add({
                 targets: slash,

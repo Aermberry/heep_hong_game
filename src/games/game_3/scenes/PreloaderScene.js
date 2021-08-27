@@ -53,6 +53,13 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('cfmBtn', require('../assets/btn_cfm.png'),{ frameWidth: 917, frameHeight: 233 });
 
+        this.load.audio('hit', require('../assets/audio/hit36.mp3'))
+        this.load.audio('impactSplat', require('../assets/audio/impactsplat05.mp3'))
+        this.load.audio('lightBattle', require('../assets/audio/light_battle.mp3'))
+        this.load.audio('swing', require('../assets/audio/swing3.mp3'))
+        this.load.audio('swordUnsheathe', require('../assets/audio/sword-unsheathe5.mp3'))
+        this.load.audio('drums', require('../assets/audio/taiko-drums.mp3'))
+
         this.preloadFromArr({img: imageFiles, atlas: atlasFiles});
 
         this.createProgressBar();

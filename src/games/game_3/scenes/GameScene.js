@@ -3,7 +3,8 @@ import CatBack from "../objects/CatBack"
 import ItemBam from '../objects/ItemBam'
 import CatHand from "../objects/CatHand"
 import WinCat from '../objects/Cat'
-import Leaf from '../objects/Leaf'
+// import Leaf from '../objects/Leaf'
+import LeafGroup from '../objects/LeafGroup'
 
 export default class GameScene extends BasicScene {
 
@@ -85,6 +86,10 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('bg_base');
 
+        this.leafGroup = new LeafGroup(this, 3, true);
+
+        this.leafGroup.setDepth(12)
+
 
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
 
@@ -95,18 +100,22 @@ export default class GameScene extends BasicScene {
 
         this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), this.item)
         this.bam.setDepth(5)
+        
+        // this.leaf = new Leaf(this, this.getColWidth(6), this.getRowHeight(6))
+        
+        // this.leaf = new Leaf(this, this.getColWidth(2), this.getRowHeight(1))
 
-        // this.physics.world.enable([this.bam, this.catHandWhite, this.catHandBlack])
-        // this.physics.add.overlap(this.bam, this.catHandWhite)
-        // this.physics.add.overlap(this.bam, this.catHandBlack)
+        // this.leaf.setDepth(6)
+        // this.leaf.init();
 
-        this.leaf = new Leaf(this, this.getColWidth(6), this.getRowHeight(6))
-
-        this.add.existing(this.leaf)
+        // this.add.existing(this.leaf)
         this.add.existing(this.catHandWhite)
         this.add.existing(this.catHandBlack)
         this.add.existing(this.bam)
         this.add.existing(this.catBack)
+
+        // this.add.existing(this.leaf);
+        this.add.existing(this.leafGroup)
 
         this.bam.moveIn().on('complete', () => {
             this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(7));
@@ -134,11 +143,13 @@ export default class GameScene extends BasicScene {
 
             this.bam.getStrike();
 
-            let moreLeafA = new Leaf(this, this.getColWidth(4), this.getRowHeight(8))
-            let moreLeafB = new Leaf(this, this.getColWidth(6), this.getRowHeight(4))
+            this.add.existing(new LeafGroup(this, 18, false, 12))
 
-            this.add.existing(moreLeafA)
-            this.add.existing(moreLeafB)
+            // let moreLeafA = new Leaf(this, this.getColWidth(4), this.getRowHeight(8))
+            // let moreLeafB = new Leaf(this, this.getColWidth(6), this.getRowHeight(4))
+
+            // this.add.existing(moreLeafA)
+            // this.add.existing(moreLeafB)
 
             this.catHandBlack.moveOut();
             this.catHandWhite.moveOut();
@@ -216,7 +227,6 @@ export default class GameScene extends BasicScene {
     onFail() {
 
     }
-
 
 
 }

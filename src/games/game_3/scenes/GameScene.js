@@ -154,6 +154,10 @@ export default class GameScene extends BasicScene {
             this.catHandBlack.moveOut();
             this.catHandWhite.moveOut();
 
+            this.sound.stopByKey('drums')
+
+            this.sound.play('lightBattle')
+
             setTimeout(() => {
 
                 this.add.tween({
@@ -176,11 +180,11 @@ export default class GameScene extends BasicScene {
                 this.bam.moveOut();
                 this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
                     this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
-                        let cat = new WinCat(this, this.getColWidth(8), this.getRowHeight(8));
+                        let cat = new WinCat(this, this.getColWidth(8), this.getRowHeight(7));
                         cat.setDepth(4)
                         this.add.existing(cat);
                         cat.moveIn().then(() => {
-                            cat.setDepth(10)
+                            // cat.setDepth(10)
                             // cat.moveTo(this.getColWidth(8), this.getRowHeight(8), 400)
                             setTimeout(() => {
                                 // cat.setDepth(10)

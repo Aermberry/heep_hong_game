@@ -35,6 +35,8 @@ export default class PreloaderScene extends BasicScene {
             'an_tngl': require('../assets/images/an_tngl.png'),
             'end_box': require('../assets/images/end_box.png'),
             'leaf': require('../assets/images/leaf.png'),
+            'end_pic_bg': require('../assets/images/end_pic_bg.png'),
+            'end_pic_fg': require('../assets/images/end_pic_fg.png')
         };
 
         const atlasFiles = {
@@ -42,7 +44,8 @@ export default class PreloaderScene extends BasicScene {
             'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
             'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
             // 'leaf': { img: require('../assets/anims/leaf.png'), data: require('../assets/anims/leaf.json')},
-            'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json')}
+            // 'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json')}
+            'end_cat': { img: require('../assets/anims/end_cat.png'), data: require('../assets/anims/end_cat.json')}
         }
 
         this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });
@@ -55,9 +58,9 @@ export default class PreloaderScene extends BasicScene {
 
         this.load.audio('hit', require('../assets/audio/hit36.mp3'))
         this.load.audio('impactSplat', require('../assets/audio/impactsplat05.mp3'))
-        this.load.audio('lightBattle', require('../assets/audio/light_battle.mp3'))
         this.load.audio('swing', require('../assets/audio/swing3.mp3'))
         this.load.audio('swordUnsheathe', require('../assets/audio/sword-unsheathe5.mp3'))
+        this.load.audio('lightBattle', require('../assets/audio/light_battle.mp3'))
         this.load.audio('drums', require('../assets/audio/taiko-drums.mp3'))
 
         this.preloadFromArr({img: imageFiles, atlas: atlasFiles});

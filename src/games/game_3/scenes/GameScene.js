@@ -5,6 +5,7 @@ import CatHand from "../objects/CatHand"
 import WinCat from '../objects/Cat'
 // import Leaf from '../objects/Leaf'
 import LeafGroup from '../objects/LeafGroup'
+// import Cat from "../objects/Cat"
 
 export default class GameScene extends BasicScene {
 
@@ -40,7 +41,9 @@ export default class GameScene extends BasicScene {
         const atlasFiles = {
             'headband': { img: require('../assets/anims/headband.png'), data: require('../assets/anims/headband.json') },
             'cat_back': { img: require('../assets/anims/cat_back.png'), data: require('../assets/anims/cat_back.json') },
-            'cat': { img: require('../assets/anims/cat.png'), data: require('../assets/anims/cat.json') },
+            // 'cat': { img: require('../assets/anims/cat.png'), data: require('../assets/anims/cat.json') },
+            'cat_win': {img: require('../assets/anims/cat_win.png'), data: require('../assets/anims/cat_win.json')},
+            'cat_sad': {img: require('../assets/anims/cat_sad.png'), data: require('../assets/anims/cat_sad.json')}
         }
 
         this.preloadFromArr({
@@ -88,7 +91,7 @@ export default class GameScene extends BasicScene {
 
         this.leafGroup = new LeafGroup(this, 3, true);
 
-        this.leafGroup.setDepth(12)
+        this.leafGroup.setDepth(8)
 
 
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
@@ -143,18 +146,8 @@ export default class GameScene extends BasicScene {
 
             this.bam.getStrike();
 
-            this.add.existing(new LeafGroup(this, 18, false, 12))
-
-            // let moreLeafA = new Leaf(this, this.getColWidth(4), this.getRowHeight(8))
-            // let moreLeafB = new Leaf(this, this.getColWidth(6), this.getRowHeight(4))
-
-            // this.add.existing(moreLeafA)
-            // this.add.existing(moreLeafB)
-
             this.catHandBlack.moveOut();
             this.catHandWhite.moveOut();
-
-            this.sound.stopByKey('drums')
 
             this.sound.play('lightBattle')
 
@@ -177,17 +170,16 @@ export default class GameScene extends BasicScene {
                 })
                 // .on('complete', ()=> {
 
-                this.bam.moveOut();
+                this.bam.customMoveTo(this.getColWidth(9), this.getRowHeight(6), 1500)
                 this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
                     this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
                         let cat = new WinCat(this, this.getColWidth(8), this.getRowHeight(7));
                         cat.setDepth(4)
                         this.add.existing(cat);
+                        setTimeout(this.bam.moveOut.bind(this.bam), 200)
                         cat.moveIn().then(() => {
-                            // cat.setDepth(10)
-                            // cat.moveTo(this.getColWidth(8), this.getRowHeight(8), 400)
+
                             setTimeout(() => {
-                                // cat.setDepth(10)
                                 //Game win or lose anime
                                 if (catHand.getAnswer() == this.item.answer) {
 

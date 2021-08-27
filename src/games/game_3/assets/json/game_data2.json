@@ -116,7 +116,7 @@
     {
         "gameLogic": 3,
         "gameStage": 8,
-        "hint": "1:半包, 2:全包, 3:品",
+        "hint": "1:左下包, 2:全包, 3:品, 4:上半包, 5:左半包, 6:左上包",
         "answers": [
             {
                 "index": 0,
@@ -128,7 +128,19 @@
             },
             {
                 "index": 2,
-                "image": "an_whole"
+                "image": "an_tngl"
+            },
+            {
+                "index": 3,
+                "image": "an_hfB"
+            },
+            {
+                "index": 4,
+                "image": "an_hfR"
+            },
+            {
+                "index": 5,
+                "image": "an_UL"
             }
         ],
         "items": [
@@ -138,15 +150,15 @@
             },
             {
                 "value": "痛",
-                "answer": 0
+                "answer": 5
             },
             {
                 "value": "廣",
-                "answer": 0
+                "answer": 5
             },
             {
                 "value": "區",
-                "answer": 0
+                "answer": 4
             },
             {
                 "value": "趟",
@@ -154,11 +166,11 @@
             },
             {
                 "value": "閃",
-                "answer": 0
+                "answer": 3
             },
             {
                 "value": "同",
-                "answer": 0
+                "answer": 3
             },
             {
                 "value": "圍",
@@ -241,7 +253,19 @@
             },
             {
                 "index": 8,
-                "image": "an_whole"
+                "image": "an_tngl"
+            },
+            {
+                "index": 9,
+                "image": "an_hfB"
+            },
+            {
+                "index": 10,
+                "image": "an_hfR"
+            },
+            {
+                "index": 11,
+                "image": "an_UL"
             }
         ],
         "items": [
@@ -323,15 +347,15 @@
             },
             {
                 "value": "痛",
-                "answer": 6
+                "answer": 11
             },
             {
                 "value": "廣",
-                "answer": 6
+                "answer": 11
             },
             {
                 "value": "區",
-                "answer": 6
+                "answer": 10
             },
             {
                 "value": "趟",
@@ -339,11 +363,11 @@
             },
             {
                 "value": "閃",
-                "answer": 6
+                "answer": 9
             },
             {
                 "value": "同",
-                "answer": 6
+                "answer": 9
             },
             {
                 "value": "圍",

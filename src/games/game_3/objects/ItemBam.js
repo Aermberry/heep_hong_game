@@ -159,6 +159,26 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         
     }
 
+    customMoveTo(x, y, time) {
+
+        return new Promise((resolve)=> {
+
+            this.scene.tweens.add({
+                targets: this,
+                x: x,
+                y: y,
+                duration: time,
+                ease: 'Power2'
+            }).on('complete', ()=> {
+    
+                resolve()
+    
+            })
+
+        })
+
+    }
+
     breakUp() {
 
         this.bamImg.setAlpha(0);
@@ -215,11 +235,13 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
             this.twist();
 
+            this.scene.sound.stopByKey('drums')
+
             let strikeSoundA = this.scene.sound.add('swing')
 
             strikeSoundA.play();
 
-            this.scene.sound.stopByKey('drums')
+            
             // setTimeout(strikeSoundB.play, 400)
 
             this.scene.tweens.add({

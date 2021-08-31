@@ -39,7 +39,13 @@ export default class TutorSecene extends BasicScene {
 
         this.buildBg('bg_tutor')
 
-        this.sound.play('drums')
+        this.sound.stopAll();
+
+        let music = this.sound.add('drums')
+        music.setLoop(true);
+        music.play();
+
+        // this.sound.play('drums')
 
         let tut1 = this.add.sprite(this.getColWidth(2.2), this.getRowHeight(6), 'tut1')
         let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'tut2')

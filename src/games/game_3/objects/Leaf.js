@@ -23,28 +23,40 @@ import Phaser from 'phaser'
 
 export default class Leaf extends Phaser.GameObjects.Sprite {
 
-    constructor(scene, x, y, fallSpeed = 3) {
-        super(scene, x, y, 'leaf')
+
+    constructor(scene, x, y, fallSpeed = 4) {
+
+        const leafImgs = ['leaf1', 'leaf2'];
+
+        super(scene, x, y, leafImgs[Math.random() > 0.5 ? 1 : 0])
 
         this.originPosition = {
             x,
             y
         }
 
-        this.yMoveDuration = Math.ceil(Math.random() * fallSpeed)
+        this.setAlpha(0)
+
+        this.salt = Math.random();
+
+        // this.setAngle(Math.ceil(360 * this.salt))
+
+        this.yMoveDuration = Math.ceil(this.salt * fallSpeed)
         this.delay = Math.ceil(Math.random() * 3000)
 
     }
 
     swaping() {
 
-        return new Promise((resolve)=> {
+        return new Promise((resolve, reject)=> {
+
+            if(typeof this == 'undefined' || typeof this.scene == 'undefined') return reject(this);
 
             this.scene.tweens.add({
                 targets: this,
                 yoyo: true,
                 repeat: 2,
-                angle: this.angle + 180,
+                angle: this.angle + 90 + Math.ceil(120 * this.salt),
                 x: this.x -200,
                 duration: 1500,
                 ease: Phaser.Math.Easing.Expo.InOut
@@ -58,7 +70,7 @@ export default class Leaf extends Phaser.GameObjects.Sprite {
                     ease: Phaser.Math.Easing.Expo.InOut
                 }).on('complete', ()=> {
 
-                    resolve();
+                    resolve(this);
                     
                 })
     
@@ -76,8 +88,10 @@ export default class Leaf extends Phaser.GameObjects.Sprite {
 
             this.setAlpha(1)
     
-            this.swaping().then(()=> {
-                this.initAnimate()
+            this.swaping().then((self)=> {
+                self.initAnimate()
+            }).catch((self)=> {
+                self.destroy()
             })
         }, this.delay)
 

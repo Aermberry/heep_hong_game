@@ -21,8 +21,6 @@ export default class EndScene extends BasicScene {
 
         this.add.existing(this.endBroad)        
 
-        this.sound.stopAll()
-
         // let bgBroad = 
         // this.add.image(0,0,'end_box');
 

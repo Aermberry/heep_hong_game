@@ -35,6 +35,8 @@ export default class PreloaderScene extends BasicScene {
             'an_tngl': require('../assets/images/an_tngl.png'),
             'end_box': require('../assets/images/end_box.png'),
             'leaf': require('../assets/images/leaf.png'),
+            'leaf1': require('../assets/images/leaf1.png'),
+            'leaf2': require('../assets/images/leaf2.png'),
             'end_pic_bg': require('../assets/images/end_pic_bg.png'),
             'end_pic_fg': require('../assets/images/end_pic_fg.png')
         };
@@ -60,8 +62,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.audio('impactSplat', require('../assets/audio/impactsplat05.mp3'))
         this.load.audio('swing', require('../assets/audio/swing3.mp3'))
         this.load.audio('swordUnsheathe', require('../assets/audio/sword-unsheathe5.mp3'))
-        this.load.audio('lightBattle', require('../assets/audio/light_battle.mp3'))
-        this.load.audio('drums', require('../assets/audio/taiko-drums.mp3'))
+        this.load.audio('lightBattle', require('../assets/audio/light_battle_chopped.mp3'))
+        this.load.audio('drums', require('../assets/audio/taiko-drums_chopped.mp3'))
 
         this.preloadFromArr({img: imageFiles, atlas: atlasFiles});
 

@@ -89,11 +89,6 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('bg_base');
 
-        this.leafGroup = new LeafGroup(this, 3, true);
-
-        this.leafGroup.setDepth(8)
-
-
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
 
         this.catBack.setDepth(7)
@@ -118,13 +113,22 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.catBack)
 
         // this.add.existing(this.leaf);
-        this.add.existing(this.leafGroup)
+
 
         this.bam.moveIn().on('complete', () => {
             this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(7));
             this.catHandBlack.moveIn().then((itemSelf) => itemSelf.setDepth(7));
         });
-        this.catBack.moveIn();
+        this.catBack.moveIn()
+        .then(()=> {
+
+            this.leafGroup = new LeafGroup(this, 3, true);
+
+            this.leafGroup.setDepth(8)
+
+            this.add.existing(this.leafGroup)
+    
+        });
 
     }
 
@@ -149,9 +153,14 @@ export default class GameScene extends BasicScene {
             this.catHandBlack.moveOut();
             this.catHandWhite.moveOut();
 
-            this.sound.play('lightBattle')
+            // this.sound.play('lightBattle')
 
             setTimeout(() => {
+
+                    
+                let music = this.sound.add('lightBattle')
+                music.setLoop(true)
+                music.play()
 
                 this.add.tween({
                     targets: this.leafLeft,

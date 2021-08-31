@@ -215,7 +215,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.whiteBroad.setAlpha(0)
         // this.textBlock.setAlpha(0)
 
-        let strikeSound = this.scene.sound.add('hit')
+        let strikeSound = this.scene.sound.add('impactSplat')
         strikeSound.play()
 
         this.bamImgBad.setAlpha(1)
@@ -226,6 +226,11 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         return new Promise((resolve)=> {
             
+
+            let failSound = this.scene.sound.add('hit')
+
+            let strikeSoundA = this.scene.sound.add('swing')
+
             let slash = this.scene.add.image( -this.bamImg.width * 0.25, -this.bamImg.height * 0.25, 'slash')
 
             slash.setScale(0.5)
@@ -237,13 +242,12 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
             this.scene.sound.stopByKey('drums')
 
-            let strikeSoundA = this.scene.sound.add('swing')
-
-            strikeSoundA.play();
-
+            failSound.play();
             
             // setTimeout(strikeSoundB.play, 400)
 
+
+            
             this.scene.tweens.add({
                 targets: slash,
                 alpha: 1,
@@ -262,6 +266,8 @@ export default class ItemBam extends Phaser.GameObjects.Container {
                     duration: 50,
                     ease: 'Linear'
                 }).on('complete', ()=> {
+
+                    strikeSoundA.play();
 
                     this.scene.tweens.add({
                         targets: [this.whiteBroad],

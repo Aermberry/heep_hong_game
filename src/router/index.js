@@ -54,5 +54,3 @@ const router = new VueRouter({
 
 export default router
 
-
-//world/:wid/game/:gid/[stage]/[:sid]

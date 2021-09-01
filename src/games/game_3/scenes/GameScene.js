@@ -25,6 +25,11 @@ export default class GameScene extends BasicScene {
     preload() {
 
         this.buildBg('bg_tutor')
+        
+        //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
+        let music = this.sound.add('drums')
+        music.setLoop(true)
+        music.play()
 
 
         const imageFiles = {
@@ -41,7 +46,6 @@ export default class GameScene extends BasicScene {
         const atlasFiles = {
             'headband': { img: require('../assets/anims/headband.png'), data: require('../assets/anims/headband.json') },
             'cat_back': { img: require('../assets/anims/cat_back.png'), data: require('../assets/anims/cat_back.json') },
-            // 'cat': { img: require('../assets/anims/cat.png'), data: require('../assets/anims/cat.json') },
             'cat_win': {img: require('../assets/anims/cat_win.png'), data: require('../assets/anims/cat_win.json')},
             'cat_sad': {img: require('../assets/anims/cat_sad.png'), data: require('../assets/anims/cat_sad.json')}
         }
@@ -60,7 +64,6 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.disableInput = false;
-
 
         const items = this.dataModal.gameItems
 
@@ -99,21 +102,10 @@ export default class GameScene extends BasicScene {
         this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), this.item)
         this.bam.setDepth(5)
         
-        // this.leaf = new Leaf(this, this.getColWidth(6), this.getRowHeight(6))
-        
-        // this.leaf = new Leaf(this, this.getColWidth(2), this.getRowHeight(1))
-
-        // this.leaf.setDepth(6)
-        // this.leaf.init();
-
-        // this.add.existing(this.leaf)
         this.add.existing(this.catHandWhite)
         this.add.existing(this.catHandBlack)
         this.add.existing(this.bam)
         this.add.existing(this.catBack)
-
-        // this.add.existing(this.leaf);
-
 
         this.bam.moveIn().on('complete', () => {
             this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(7));
@@ -153,8 +145,6 @@ export default class GameScene extends BasicScene {
             this.catHandBlack.moveOut();
             this.catHandWhite.moveOut();
 
-            // this.sound.play('lightBattle')
-
             setTimeout(() => {
 
                     
@@ -177,7 +167,6 @@ export default class GameScene extends BasicScene {
                     duration: 1000,
                     ease: 'Power2'
                 })
-                // .on('complete', ()=> {
 
                 this.bam.customMoveTo(this.getColWidth(9), this.getRowHeight(6), 1500)
                 this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
@@ -216,20 +205,10 @@ export default class GameScene extends BasicScene {
                     })
                 })
 
-                // })
-
             }, 800)
 
 
         });
-
-    }
-
-    onSuccess() {
-
-    }
-
-    onFail() {
 
     }
 

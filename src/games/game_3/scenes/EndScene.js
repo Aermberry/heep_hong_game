@@ -21,11 +21,6 @@ export default class EndScene extends BasicScene {
 
         this.add.existing(this.endBroad)        
 
-        // let bgBroad = 
-        // this.add.image(0,0,'end_box');
-
-        // bgBroad.setOrigin(0.5)
-
     }
 
 }

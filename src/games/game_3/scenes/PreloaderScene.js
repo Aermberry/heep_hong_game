@@ -45,9 +45,16 @@ export default class PreloaderScene extends BasicScene {
             'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
             'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
-            // 'leaf': { img: require('../assets/anims/leaf.png'), data: require('../assets/anims/leaf.json')},
-            // 'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json')}
             'end_cat': { img: require('../assets/anims/end_cat.png'), data: require('../assets/anims/end_cat.json')}
+        }
+
+        const soundFiles = {
+            'hit': require('../assets/audio/hit36.mp3'),
+            'impactSplat': require('../assets/audio/impactsplat05.mp3'),
+            'swing': require('../assets/audio/swing3.mp3'),
+            'swordUnsheathe': require('../assets/audio/sword-unsheathe5.mp3'),
+            'lightBattle': require('../assets/audio/light_battle_chopped.mp3'),
+            'drums': require('../assets/audio/taiko-drums_chopped.mp3')
         }
 
         this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });
@@ -58,14 +65,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('cfmBtn', require('../assets/btn_cfm.png'),{ frameWidth: 917, frameHeight: 233 });
 
-        this.load.audio('hit', require('../assets/audio/hit36.mp3'))
-        this.load.audio('impactSplat', require('../assets/audio/impactsplat05.mp3'))
-        this.load.audio('swing', require('../assets/audio/swing3.mp3'))
-        this.load.audio('swordUnsheathe', require('../assets/audio/sword-unsheathe5.mp3'))
-        this.load.audio('lightBattle', require('../assets/audio/light_battle_chopped.mp3'))
-        this.load.audio('drums', require('../assets/audio/taiko-drums_chopped.mp3'))
-
-        this.preloadFromArr({img: imageFiles, atlas: atlasFiles});
+        this.preloadFromArr({img: imageFiles, atlas: atlasFiles, sound: soundFiles});
 
         this.createProgressBar();
 

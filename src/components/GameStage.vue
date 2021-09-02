@@ -11,6 +11,13 @@
   </div>
 </template>
 
+<style>
+  @font-face {
+    font-family: "Custom-Han-Serif";
+    src: local("Custom-Han-Serif"),
+    url(../games/game_3/assets/font/game_3.ttf) format("truetype");
+  }
+</style>
 
 <script>
 export default {
@@ -36,12 +43,13 @@ export default {
   async mounted() {
     let self = this
     try{
+      console.log('game load')
       let gameFile = require('@/games/game_'+self.gameID+'/index')
       if(gameFile){
         const game = await import('@/games/game_'+self.gameID+'/index')
         self.downloaded = true
         self.$nextTick(() => {
-          self.gameInstance = game.launch()
+          self.gameInstance = game.launch(self.$route.params)
         })
       }
     }catch (e){

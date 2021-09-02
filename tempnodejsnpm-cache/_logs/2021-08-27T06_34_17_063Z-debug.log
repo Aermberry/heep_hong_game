@@ -1,0 +1,20 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'serve'
+1 verbose cli ]
+2 info using npm@6.14.13
+3 info using node@v14.17.1
+4 verbose run-script [ 'preserve', 'serve', 'postserve' ]
+5 info lifecycle heep-hong@0.1.0~preserve: heep-hong@0.1.0
+6 info lifecycle heep-hong@0.1.0~serve: heep-hong@0.1.0
+7 verbose lifecycle heep-hong@0.1.0~serve: unsafe-perm in lifecycle true
+8 verbose lifecycle heep-hong@0.1.0~serve: PATH: C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\codes\kanhan_work\hhs-jc-game\node_modules\.bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Hayden Chung\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python37\Scripts;C:\Python37;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\PuTTY;C:\Program Files\PowerShell\6;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\dotnet;C:\Go\bin;C:\Program Files\nodejs;C:\Users\Hayden Chung\AppData\Local\Microsoft\WindowsApps;C:\Users\Hayden Chung\AppData\Local\Programs\Microsoft VS Code\bin;C:\src\flutter\flutter\bin;C:\Users\Hayden Chung\AppData\Roaming\Composer\vendor\bin;C:\Users\Hayden Chung\.dotnet\tools;C:\Users\Hayden Chung\go\bin;C:\Users\Hayden Chung\AppData\Local\Microsoft\WindowsApps;C:\Users\Hayden Chung\AppData\Roaming\npm
+9 verbose lifecycle heep-hong@0.1.0~serve: CWD: C:\codes\kanhan_work\hhs-jc-game
+10 silly lifecycle heep-hong@0.1.0~serve: Args: [ '/d /s /c', 'vue-cli-service serve' ]
+11 timing npm Completed in 16358473ms
+12 error cb() never called!
+13 error This is an error with npm itself. Please report this error at:
+14 error <https://npm.community>

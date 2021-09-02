@@ -3,6 +3,7 @@ export default class Model {
     this._character = {};
     this._level = 1;
     this._selectLimit = 3;
+    this._bgMusicPlaying = false;
   }
 
   set character(value){
@@ -28,6 +29,14 @@ export default class Model {
 
   get selectLimit(){
     return this._selectLimit;
+  }
+
+  set bgMusicPlaying(value) {
+    this._bgMusicPlaying = value;
+  }
+
+  get bgMusicPlaying() {
+    return this._bgMusicPlaying;
   }
 
 }

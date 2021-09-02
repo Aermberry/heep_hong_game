@@ -21,6 +21,11 @@ const routes = [
   },
   {
     path: '/game/:id',
+    name: 'World',
+    component: () => import('../views/Game.vue')
+  },
+  {
+    path: '/game/:id/stage/:sid',
     name: 'Game',
     component: () => import('../views/Game.vue')
   },
@@ -48,3 +53,4 @@ const router = new VueRouter({
 })
 
 export default router
+

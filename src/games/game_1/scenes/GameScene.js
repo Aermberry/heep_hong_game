@@ -26,6 +26,14 @@ export default class GameScene extends Scene {
     let stageBg = self.add.image(config.width/2, config.height/2, 'stageBg').setOrigin(.5, .5)
     stageBg.setDisplaySize(config.width, config.height)
 
+    //if (self.model.musicOn === true && self.model.bgMusicPlaying === false) {
+      self.bgMusic = self.sound.add('bgMusic', { volume: 0.2, loop: true });
+      self.bgMusic.play();
+      self.model.bgMusicPlaying = true;
+      self.sys.game.globals.bgMusic = self.bgMusic;
+    //}
+
+
 
     self.anims.create({
       key: 'char_bg',
@@ -79,7 +87,7 @@ export default class GameScene extends Scene {
   create () {
     let self = this
 
-    //self.model.level = 1;
+    self.model.level = 1;
 
     self.char_bg = self.add.sprite(config.width/2 + 564, config.height/2 - 159, 'char_bg');
     self.char_bg.play('char_bg');
@@ -96,18 +104,8 @@ export default class GameScene extends Scene {
 
   }
 
-  new(){
+  newQuestion(){
     let self = this
-
-    if(typeof self.questionBase != 'undefined' && typeof self.questionBase.destroy == 'function'){
-      self.questionBase.destroy();
-    }
-    if(typeof self.voiceBtn != 'undefined' && typeof self.voiceBtn.destroy == 'function'){
-      self.voiceBtn.destroy();
-    }
-    if(typeof self.tray != 'undefined' && typeof self.tray.destroy == 'function'){
-      self.tray.destroy();
-    }
 
     self.choice = []
     self.question = []
@@ -129,7 +127,7 @@ export default class GameScene extends Scene {
             choiceDummy.push(item);
           }
         })
-        choiceDummy = _.sampleSize(choiceDummy,9)
+        choiceDummy = _.sampleSize(choiceDummy,9);
 
         questionAddon = choiceDummy[_.random(choiceDummy.length)];
 
@@ -137,15 +135,32 @@ export default class GameScene extends Scene {
 
       _.forEach(choiceDummy, function(item){
         choiceSelect.push(item);
-      })
+      });
+
       self.choice = _.shuffle(choiceSelect);
 
-    }
-    if(self.question){
-
-      if(questionAddon.length > 0){
-        self.question.push(questionAddon.name)
+      if(typeof questionAddon != 'undefined'){
+        self.question.push(questionAddon.name);
       }
+    }
+
+      return typeof self.question != 'undefined' ? true : false
+  }
+
+  new(){
+    let self = this
+
+    if(typeof self.questionBase != 'undefined' && typeof self.questionBase.destroy == 'function'){
+      self.questionBase.destroy();
+    }
+    if(typeof self.voiceBtn != 'undefined' && typeof self.voiceBtn.destroy == 'function'){
+      self.voiceBtn.destroy();
+    }
+    if(typeof self.tray != 'undefined' && typeof self.tray.destroy == 'function'){
+      self.tray.destroy();
+    }
+
+    if(self.newQuestion()){
 
       console.log(self.question);
 

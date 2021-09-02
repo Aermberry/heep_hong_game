@@ -22,3 +22,12 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### How to Add Game
+Add new game in /src/games/game_[number]
+
+### Testing Server (deploy with master)
+https://heephong-hhs-jc-dev.kanhan.com/
+
+

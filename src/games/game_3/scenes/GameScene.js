@@ -41,18 +41,26 @@ export default class GameScene extends BasicScene {
             'slash': require('../assets/images/slash.png'),
             'leafLeft': require('../assets/images/swipe_leaf1.png'),
             'leafRight': require('../assets/images/swipe_leaf2.png'),
-        };
+            'fail_smoke': require('../assets/images/fail_smoke.png'),
+            'fail_smoke_line': require('../assets/images/fail_smoke_line.png'),
+            'fail_smoke_line_small': require('../assets/images/fail_smoke_line_small.png')
+        }
 
         const atlasFiles = {
-            'headband': { img: require('../assets/anims/headband.png'), data: require('../assets/anims/headband.json') },
             'cat_back': { img: require('../assets/anims/cat_back.png'), data: require('../assets/anims/cat_back.json') },
+            'headband': { img: require('../assets/anims/headband.png'), data: require('../assets/anims/headband.json') },
             'cat_win': {img: require('../assets/anims/cat_win.png'), data: require('../assets/anims/cat_win.json')},
             'cat_sad': {img: require('../assets/anims/cat_sad.png'), data: require('../assets/anims/cat_sad.json')}
         }
 
+        const soundFiles = {
+            'jump': require('../assets/audio/jump_and_run-tropics.mp3'),
+        }
+
         this.preloadFromArr({
             img: imageFiles,
-            atlas: atlasFiles
+            atlas: atlasFiles,
+            sound: soundFiles
         });
 
         this.createProgressBar();
@@ -168,7 +176,7 @@ export default class GameScene extends BasicScene {
                     ease: 'Power2'
                 })
 
-                this.bam.customMoveTo(this.getColWidth(9), this.getRowHeight(6), 1500)
+                this.bam.customMoveTo(this.getColWidth(17), this.getRowHeight(6), 1500)
                 this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
                     this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
                         let cat = new WinCat(this, this.getColWidth(8), this.getRowHeight(7));

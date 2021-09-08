@@ -12,6 +12,8 @@ export default class PreloaderScene extends BasicScene {
 
         this.buildBg('bg_title');
 
+        this.load.plugin('rexglowfilterpipelineplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js', true);
+
         const imageFiles = {
             'bg_base': require('../assets/images/bg_stage.png'),
             'bg_end': require('../assets/images/bg_end.png'),
@@ -38,14 +40,15 @@ export default class PreloaderScene extends BasicScene {
             'leaf1': require('../assets/images/leaf1.png'),
             'leaf2': require('../assets/images/leaf2.png'),
             'end_pic_bg': require('../assets/images/end_pic_bg.png'),
-            'end_pic_fg': require('../assets/images/end_pic_fg.png')
+            'end_pic_fg': require('../assets/images/end_pic_fg.png'),
+            'cat_pose': require('../assets/images/cat_pose.png')
         };
 
         const atlasFiles = {
             'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
-            'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
-            'end_cat': { img: require('../assets/anims/end_cat.png'), data: require('../assets/anims/end_cat.json')}
+            'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')}, 
+            'end_cat': { img: require('../assets/anims/end_cat.png'), data: require('../assets/anims/end_cat.json')},
         }
 
         const soundFiles = {

@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import ItemPic from './ItemPic'
+import FailSmoke from './FailSmoke'
 
 export default class ItemBam extends Phaser.GameObjects.Container {
 
@@ -125,14 +126,6 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         })
 
-        // this.scene.tweens.add({
-        //     targets: this.textBlock,
-        //     alpha: 1,
-        //     delay: 800,
-        //     duration: 400,
-        //     ease: 'Power2'
-        // });
-
         return this.scene.tweens.add({
             targets: this.whiteBroad,
             alpha: 1,
@@ -214,6 +207,21 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.bamImg.setAlpha(0)
         this.whiteBroad.setAlpha(0)
         // this.textBlock.setAlpha(0)
+
+        let failedSmoke = new FailSmoke(this.scene, this.bamImg.width * .65, -this.bamImg.height * .4, 1)
+        let smokeLine = this.scene.add.sprite(-this.bamImg.width * .6, this.bamImg.height * .2, 'fail_smoke_line')
+        let smokeLineSmall = this.scene.add.sprite(this.bamImg.width * .6, this.bamImg.height * .1, 'fail_smoke_line_small')
+
+        this.add([failedSmoke, smokeLineSmall, smokeLine])
+
+        this.scene.tweens.add({
+            targets: [smokeLine, smokeLineSmall],
+            y: 0,
+            duration: 4000,
+            yoyo: 1,
+            repeat: -1,
+            ease: 'Linear'
+        });
 
         let strikeSound = this.scene.sound.add('impactSplat')
         strikeSound.play()

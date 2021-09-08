@@ -2,6 +2,7 @@ import BasicScene from "./BasicScene"
 import StartBtn from "../objects/StartBtn"
 import ExitBtn from '../objects/ExitBtn'
 
+
 export default class TutorSecene extends BasicScene {
 
     constructor() {
@@ -41,8 +42,11 @@ export default class TutorSecene extends BasicScene {
         let tut1 = this.add.sprite(this.getColWidth(2.2), this.getRowHeight(6), 'tut1')
         let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'tut2')
         let tut3 = this.add.sprite(this.getColWidth(9.8), this.getRowHeight(5), 'tut3')
+        let cat = this.add.sprite(this.getColWidth(10.5), this.getRowHeight(6), 'cat_pose')
+        cat.setScale(.5)
+        
 
-        this._repeatAnimate({tut1, tut2, tut3})
+        this._repeatAnimate({tut1, tut2, tut3, cat})
         
         let exitBtn = new ExitBtn(this, 120, 135);
         let startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10.5));

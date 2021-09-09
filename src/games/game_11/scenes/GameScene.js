@@ -89,7 +89,7 @@ export default class GameScene extends BasicScene {
         this.answers.push(this.allAnswers[Math.floor(this.allAnswers.length * Math.random())])
 
 
-        this.buildBg('bg_base');
+        this.buildBg('bgProgressGame');
 
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
 

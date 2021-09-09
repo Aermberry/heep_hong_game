@@ -17,6 +17,7 @@ export default class PreloaderScene extends BasicScene {
         const imageFiles = {
             'bgTutor': require('../assets/images/bg_tutor.png'),
             'iconTutor': require('../assets/images/icon_tutor.png'),
+            'bgProgressGame': require('../assets/images/bg_progress_game.png'),
         };
 
         const atlasFiles = {

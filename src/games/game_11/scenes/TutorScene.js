@@ -20,7 +20,6 @@ export default class TutorSecene extends BasicScene {
         icon_tutor.setScale(0.6)
 
 
-
         //Stop all sound, because game will return to this scene on retry.
         this.sound.stopAll();
 

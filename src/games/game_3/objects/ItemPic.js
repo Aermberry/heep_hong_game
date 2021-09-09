@@ -25,12 +25,52 @@ export default class ItemPic extends Phaser.GameObjects.Container {
         this.textBlock.setOrigin(0.5)
         this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
 
+        
+        this.fxHover = scene.add.image(0, 0, 'fx_hover')
+        this.fxHover.setScale(1.6)
+        this.fxHover.setAlpha(0)
+
         this.add([
             this.whiteBroad,
             this.hLine,
             this.vLine,
+            this.fxHover,
             this.textBlock
         ])
+
+    }
+
+    onHover() {
+
+        if(typeof this.onLeaveTween != 'undefined' && typeof this.onLeaveTween.stop == 'function') this.onLeaveTween.stop();
+
+        this.onHoverTween = this.scene.tweens.add({
+            targets: this.fxHover,
+            alpha: .5,
+            duration: 200,
+            ease: 'Power2'
+        }).on('complete', ()=> {
+
+            this.fxHover.setAlpha(.5)
+
+        })
+
+    }
+
+    onLeave() {
+
+        if(typeof this.onHoverTween != 'undefined' && typeof this.onHoverTween.stop == 'function') this.onHoverTween.stop();
+
+        this.onLeaveTween = this.scene.tweens.add({
+            targets: this.fxHover,
+            alpha: 0,
+            duration: 200,
+            ease: 'Power2'
+        }).on('complete', ()=> {
+
+            this.fxHover.setAlpha(0)
+
+        })
 
     }
 

@@ -19,6 +19,7 @@ export default class GameScene extends BasicScene {
     init() {
 
         this.dataModal = this.sys.game.globals.model;
+        this.handInBroad = false;
 
     }
 
@@ -43,7 +44,8 @@ export default class GameScene extends BasicScene {
             'leafRight': require('../assets/images/swipe_leaf2.png'),
             'fail_smoke': require('../assets/images/fail_smoke.png'),
             'fail_smoke_line': require('../assets/images/fail_smoke_line.png'),
-            'fail_smoke_line_small': require('../assets/images/fail_smoke_line_small.png')
+            'fail_smoke_line_small': require('../assets/images/fail_smoke_line_small.png'),
+            'fx_hover': require('../assets/images/fx_hover.png')
         }
 
         const atlasFiles = {
@@ -104,8 +106,24 @@ export default class GameScene extends BasicScene {
 
         this.catBack.setDepth(7)
 
-        this.catHandWhite = new CatHand(this, this.getColWidth(1.5), this.getRowHeight(7), 'white', this.answerSelected.bind(this), this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0])
-        this.catHandBlack = new CatHand(this, this.getColWidth(1.5), this.getRowHeight(9.5), 'black', this.answerSelected.bind(this), this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0])
+        this.catHandWhite = new CatHand(
+            this, 
+            this.getColWidth(1.5), 
+            this.getRowHeight(7), 
+            'white', 
+            this.answerSelected.bind(this), 
+            this.onSelectingAnswer.bind(this),
+            this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0]
+        )
+        this.catHandBlack = new CatHand(
+            this, 
+            this.getColWidth(1.5), 
+            this.getRowHeight(9.5), 
+            'black', 
+            this.answerSelected.bind(this), 
+            this.onSelectingAnswer.bind(this),
+            this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0]
+        )
 
         this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), this.item)
         this.bam.setDepth(5)
@@ -129,6 +147,26 @@ export default class GameScene extends BasicScene {
             this.add.existing(this.leafGroup)
     
         });
+
+    }
+
+    onSelectingAnswer(catHand, pointer , gameObject) {
+
+        if (this.disableInput == true) return;
+
+        if(this.bam.isInside({ x: gameObject.x, y: gameObject.y}) && this.handInBroad == false) {
+
+            this.handInBroad = true;
+            this.bam.onHover();
+
+        }
+
+        if(!this.bam.isInside({ x: gameObject.x, y: gameObject.y}) && this.handInBroad == true) {
+         
+            this.handInBroad = false;
+            this.bam.onLeave();
+            
+        }
 
     }
 

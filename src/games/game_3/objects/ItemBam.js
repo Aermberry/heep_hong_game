@@ -19,27 +19,11 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.whiteBroad = new ItemPic(scene, 0, 0, item, this.bamImg.width * 0.8, this.bamImg.height * 0.8)
 
-        // this.whiteBroad = scene.add.rectangle(0, 0, this.bamImg.width * 0.8, this.bamImg.height * 0.8, 0xffffff)
-        // this.hLine = scene.add.line(0, 0, this.whiteBroad.width * 0, 0, this.whiteBroad.width * 0.8, 0, 0x000000)
-        // this.vLine = scene.add.line(0, 0, 0, this.whiteBroad.height * 0, 0, this.whiteBroad.height * 0.8, 0x000000)
 
-        // let textPadding = this.whiteBroad.width * 0.05;
+        this.whiteBroad.setAlpha(0)
+        this.bamImgBad.setAlpha(0)
 
-        // this.textBlock = scene.add.text(
-        //     0, textPadding * 2, item.value,
-        //     {
-        //         fontSize: (this.whiteBroad.width) + 'px',
-        //         color: '#000000',
-        //         fontFamily: "Custom-Han-Serif"
-        //     }
-        // )
 
-        // this.textBlock.setOrigin(0.5)
-        // this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
-
-        this.whiteBroad.setAlpha(0);
-        // this.textBlock.setAlpha(0);
-        this.bamImgBad.setAlpha(0);
 
         this.rock.setDepth(1)
 
@@ -47,10 +31,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             this.rock,
             this.bamImgBad,
             this.bamImg, 
-            this.whiteBroad,
-            // this.hLine,
-            // this.vLine,
-            // this.textBlock
+            this.whiteBroad
         ]);
 
 
@@ -208,7 +189,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.whiteBroad.setAlpha(0)
         // this.textBlock.setAlpha(0)
 
-        let failedSmoke = new FailSmoke(this.scene, this.bamImg.width * .65, -this.bamImg.height * .4, 1)
+        let failedSmoke = new FailSmoke(this.scene, this.bamImg.width * .65, -this.bamImg.height * .35, 1)
         let smokeLine = this.scene.add.sprite(-this.bamImg.width * .6, this.bamImg.height * .2, 'fail_smoke_line')
         let smokeLineSmall = this.scene.add.sprite(this.bamImg.width * .6, this.bamImg.height * .1, 'fail_smoke_line_small')
 
@@ -314,8 +295,14 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         }
 
         return x >= worldBody.topLeft.x && x <= worldBody.bottomRight.x && y >= worldBody.topLeft.y && y <= worldBody.bottomRight.y;
+    }
 
+    onHover() {
+        this.whiteBroad.onHover()
+    }
 
+    onLeave() {
+        this.whiteBroad.onLeave()
     }
 
 }

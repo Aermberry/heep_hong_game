@@ -2,10 +2,12 @@ import Phaser from 'phaser'
 
 export default class DragBlock extends Phaser.GameObjects.Container {
     
-    constructor(scene, x, y, dragEndCallback, children) {
-        super(scene, x, y, children);
+    constructor(scene, x, y, dragEndCallback = null, onDragCallabck = null) {
+        super(scene, x, y, []);
 
         this.dragEndCallback = dragEndCallback;
+
+        this.onDragCallback = onDragCallabck;
 
     }
 
@@ -36,6 +38,10 @@ export default class DragBlock extends Phaser.GameObjects.Container {
         gameObject.x = dragX;
         gameObject.y = dragY;
 
+        if(typeof this.onDragCallback == 'function') {
+            this.onDragCallback(pointer, gameObject, dragX, dragY);
+        }
+
     }
 
     handleStopDrag(pointer, gameObject) {
@@ -47,10 +53,18 @@ export default class DragBlock extends Phaser.GameObjects.Container {
 
     }
 
-    setDraggableHandler(handler) {
+    setDragEndHandler(handler) {
 
         if(typeof handler == 'function') {
             this.dragEndCallback = handler;
+        }
+
+    }
+
+    setOnDragHandler(handler) {
+
+        if(typeof handler == 'function') {
+            this.onDragCallback = handler;
         }
 
     }

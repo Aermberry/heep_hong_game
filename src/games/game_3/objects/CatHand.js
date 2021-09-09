@@ -2,7 +2,7 @@ import DraggableContainer from './DraggableContainer'
 
 export default class CatHand extends DraggableContainer {
 
-    constructor(scene, x, y, handType, dragHandler, answer) {
+    constructor(scene, x, y, handType, dragHandler, onDragHandler,answer) {
         super(scene, x + scene.getColWidth(1.5), y);
 
         const catHandImgs = {
@@ -44,12 +44,19 @@ export default class CatHand extends DraggableContainer {
 
         this.add(children)
 
-        this.setDraggableHandler((pointer)=> {
+        if(typeof dragHandler == 'function') {
+            this.setDragEndHandler((pointer)=> { 
+                this.toOriginPosTween(500)
+                dragHandler(this, pointer)
+            });
+        }
 
-            this.toOriginPosTween(500)
-            if(typeof dragHandler == 'function') dragHandler(this, pointer);
-
-        })
+        if(typeof onDragHandler == 'function') {
+            this.setOnDragHandler((pointer, gameObject)=> {
+                
+                onDragHandler(this, pointer, gameObject)
+            });    
+        }
 
 
     }

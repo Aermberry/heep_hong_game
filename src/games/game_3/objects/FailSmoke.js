@@ -19,9 +19,10 @@ export default class FailSmoke extends Phaser.GameObjects.Sprite {
         scene.tweens.add({
             targets: this,
             angle: this.angle + 360,
-            duration: 1000,
+            duration: 2000,
             repeat: -1,
-            ease: 'Linear'
+            ease: Phaser.Math.Easing.Linear
+
         })
 
     }

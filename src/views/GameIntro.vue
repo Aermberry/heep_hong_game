@@ -8,7 +8,7 @@
         <div class="content-wrapper game-intro">
           <div class="game-intro-header">
             <img src="@/assets/images/world notext.svg" alt="">
-            <a href="" class="link-entry"><span class="inner">進入遊戲</span></a>
+            <a href="./world" class="link-entry"><span class="inner">進入遊戲</span></a>
           </div>
 
           <div class="game-intro-card">

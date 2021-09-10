@@ -174,7 +174,12 @@ export default class GameScene extends BasicScene {
 
         //Need to make sure the catHand is collide with text broad
 
-        if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) return;
+        if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) {
+
+            catHand.toOriginPosTween();
+
+            return;
+        }
 
         this.disableInput = true;
 
@@ -183,13 +188,17 @@ export default class GameScene extends BasicScene {
         this.leafLeft.setDepth(11)
         this.leafRight.setDepth(11)
 
+        catHand.disappear();
+
+
         //Cat anime, strike anime, remove hand anime.
         this.catBack.strike().on('animationcomplete', () => {
 
             this.bam.getStrike();
 
-            this.catHandBlack.moveOut();
-            this.catHandWhite.moveOut();
+
+            // this.catHandBlack.moveOut();
+            // this.catHandWhite.moveOut();
 
             setTimeout(() => {
 

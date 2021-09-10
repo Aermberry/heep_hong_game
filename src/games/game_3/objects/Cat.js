@@ -67,8 +67,6 @@ export default class Cat extends Phaser.GameObjects.Container {
 
     gameFail() {
 
-        // this.headBand.setAlpha(0)
-
         this.cat.play('cat_lose').on('animationcomplete', ()=> {
             this.headBand.setPosition(this.headBand.x - 1, this.headBand.y + 0.5)
             this.cat.play('cat_lose_continue')

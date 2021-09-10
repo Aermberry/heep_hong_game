@@ -46,7 +46,7 @@ export default class CatHand extends DraggableContainer {
 
         if(typeof dragHandler == 'function') {
             this.setDragEndHandler((pointer)=> { 
-                this.toOriginPosTween(500)
+                // this.toOriginPosTween(500)
                 dragHandler(this, pointer)
             });
         }
@@ -103,6 +103,26 @@ export default class CatHand extends DraggableContainer {
 
             })
 
+        });
+
+    }
+
+    disappear() {
+
+        return new Promise((resolve)=> {
+
+            this.scene.tweens.add({
+                targets: this,
+                scale: .05,
+                duration: 400,
+                ease: 'Power2'
+            }).on('complete', ()=> {
+
+                this.destroy();
+
+                resolve();
+
+            });
         });
 
     }

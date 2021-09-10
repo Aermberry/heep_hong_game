@@ -72,7 +72,10 @@ export default class GameScene extends BasicScene {
 
         this.exitBtn = new ExitBtn(this, 120, 135);
         this.leftMoveBtn=new LeftMoveBtn(this,1600,250);
-        this.rightMoveBtn=new RightMoveBtn(this,1600,900);
+        this.rightMoveBtn=new RightMoveBtn(this,1600,600);
+
+        let container = this.add.container(1600, 1600);
+        container.add([ this.leftMoveBtn, this.rightMoveBtn])
 
 
         this.disableInput = false;

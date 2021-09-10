@@ -18,6 +18,8 @@ export default class PreloaderScene extends BasicScene {
             'bgTutor': require('../assets/images/bg_tutor.png'),
             'iconTutor': require('../assets/images/icon_tutor.png'),
             'bgProgressGame': require('../assets/images/bg_progress_game.png'),
+            'dialogTipBox': require('../assets/images/dialog_tip_box.png'),
+            'bgTipBox': require('../assets/images/icon_tip_dialog.png'),
         };
 
         const atlasFiles = {
@@ -38,12 +40,14 @@ export default class PreloaderScene extends BasicScene {
 
         this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('extBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('gameProgressExitBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('gameEndExitBtn', require('../assets/images/btn_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
+        this.load.spritesheet('moveBtn', require('../assets/images/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
 
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
-        self.loadingText = self.make.text({
+        this.loadingText = self.make.text({
             x: config.width / 2,
             y: config.height * 0.89,
             text: '連接中',
@@ -55,22 +59,11 @@ export default class PreloaderScene extends BasicScene {
 
         this.createProgressBar();
 
-        console.log(self);
-
-        self.load.on('complete', function () {
-            self.loadingText.setText('連接完成');
+        this.load.on('complete', function () {
+            self.loadingText.setText('連接完成')
+            self.scene.start('Tutor')
         });
 
-    }
-
-    create() {
-        super.create();
-
-        setTimeout(
-            () => {
-                this.scene.start('Tutor')
-            }, 1
-        )
     }
 
 }

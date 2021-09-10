@@ -1,9 +1,12 @@
 import BasicScene from "./BasicScene"
+import ExitBtn from '../objects/ExitBtn'
+import LeftMoveBtn from '../objects/LeftMoveBtn'
 import CatBack from "../objects/CatBack"
 import ItemBam from '../objects/ItemBam'
 import CatHand from "../objects/CatHand"
 import WinCat from '../objects/Cat'
 import LeafGroup from '../objects/LeafGroup'
+import RightMoveBtn from '../objects/RightMoveBtn'
 
 export default class GameScene extends BasicScene {
 
@@ -11,6 +14,11 @@ export default class GameScene extends BasicScene {
         super({
             key: 'Game'
         });
+
+        this.exitBtn = undefined
+
+        this.leftMoveBtn = undefined
+        this.rightMoveBtn = undefined
 
     }
 
@@ -62,6 +70,11 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
+        this.exitBtn = new ExitBtn(this, 120, 135);
+        this.leftMoveBtn=new LeftMoveBtn(this,1600,250);
+        this.rightMoveBtn=new RightMoveBtn(this,1600,900);
+
+
         this.disableInput = false;
 
         const items = this.dataModal.gameItems
@@ -91,7 +104,7 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('bgProgressGame');
 
-        this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
+        this.catBack = new CatBack(this, this.getColWidth(30), this.getRowHeight(9))
 
         this.catBack.setDepth(7)
 
@@ -101,10 +114,19 @@ export default class GameScene extends BasicScene {
         this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), this.item)
         this.bam.setDepth(5)
 
+        this.add.existing(this.exitBtn);
+        this.add.existing(this.rightMoveBtn)
+        this.add.existing(this.leftMoveBtn)
         this.add.existing(this.catHandWhite)
         this.add.existing(this.catHandBlack)
         this.add.existing(this.bam)
         this.add.existing(this.catBack)
+
+
+        // this.leftMoveBtn = this.add.sprite(1500, 250, 'moveBtn', 0);
+        // this.rightMoveBtn = this.add.sprite(1500, 500, 'moveBtn', 1);
+        
+
 
         this.bam.moveIn().on('complete', () => {
             this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(7));
@@ -120,6 +142,8 @@ export default class GameScene extends BasicScene {
                 this.add.existing(this.leafGroup)
 
             });
+
+           
 
     }
 

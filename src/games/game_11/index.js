@@ -4,13 +4,12 @@ import config from './config'
 import Model from './Model'
 import BootScene from './scenes/BootScene'
 import PreloaderScene from './scenes/PreloaderScene'
-import TutorSecene from './scenes/TutorScene'
+import TutorScene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
-// import EndScene from './scenes/EndScene'
+import EndScene from './scenes/EndScene'
 
 const gameConfig = Object.assign(config, {
-    // scene: [BootScene, PreloaderScene, TutorSecene, GameScene, EndScene]
-    scene: [BootScene, PreloaderScene, TutorSecene, GameScene]
+    scene: [BootScene, PreloaderScene,TutorScene, GameScene,EndScene]
 });
 
 /**

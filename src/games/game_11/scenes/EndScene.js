@@ -1,5 +1,5 @@
 import BasicScene from './BasicScene'
-import EndBroad from '../objects/EndGameBroad'
+import EndBroad from '../objects/DialogTipBox'
 
 export default class EndScene extends BasicScene {
 
@@ -15,7 +15,7 @@ export default class EndScene extends BasicScene {
         super.create();
 
 
-        this.buildBg('bg_base')
+        this.buildBg('bgTutor')
 
         this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
 

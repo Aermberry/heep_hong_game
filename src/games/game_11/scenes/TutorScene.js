@@ -15,10 +15,8 @@ export default class TutorSecene extends BasicScene {
         super.create();
 
         this.buildBg('bgTutor')
-
-        const icon_tutor = this.add.image(this.getColWidth(6), this.getRowHeight(5), 'iconTutor')
-        icon_tutor.setScale(0.6)
-
+        
+        this.add.image(this.getColWidth(6), this.getRowHeight(5), 'iconTutor').setScale(0.6)
 
         //Stop all sound, because game will return to this scene on retry.
         this.sound.stopAll();
@@ -27,5 +25,6 @@ export default class TutorSecene extends BasicScene {
         let startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10.5));
         this.add.existing(exitBtn);
         this.add.existing(startBtn);
+        
     }
 }

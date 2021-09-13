@@ -20,6 +20,7 @@ export default class PreloaderScene extends BasicScene {
             'bgProgressGame': require('../assets/images/bg_progress_game.png'),
             'dialogTipBox': require('../assets/images/dialog_tip_box.png'),
             'bgTipBox': require('../assets/images/icon_tip_dialog.png'),
+            'stageSalver':require('../assets/images/stage_salver.png')
         };
 
         const atlasFiles = {

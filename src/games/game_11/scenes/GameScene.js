@@ -1,11 +1,6 @@
 import BasicScene from "./BasicScene"
 import ExitBtn from '../objects/ExitBtn'
 import LeftMoveBtn from '../objects/LeftMoveBtn'
-import CatBack from "../objects/CatBack"
-import ItemBam from '../objects/ItemBam'
-import CatHand from "../objects/CatHand"
-import WinCat from '../objects/Cat'
-import LeafGroup from '../objects/LeafGroup'
 import RightMoveBtn from '../objects/RightMoveBtn'
 
 export default class GameScene extends BasicScene {
@@ -16,9 +11,13 @@ export default class GameScene extends BasicScene {
         });
 
         this.exitBtn = undefined
-
         this.leftMoveBtn = undefined
         this.rightMoveBtn = undefined
+        this.stageSlaver = undefined
+        this.backgroundLayer = undefined
+        this.buttonLayer = undefined
+        this.playLayer = undefined
+
 
     }
 
@@ -70,15 +69,8 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.exitBtn = new ExitBtn(this, 120, 135);
-        this.leftMoveBtn=new LeftMoveBtn(this,1600,250);
-        this.rightMoveBtn=new RightMoveBtn(this,1600,600);
-
-        let container = this.add.container(1600, 1600);
-        container.add([ this.leftMoveBtn, this.rightMoveBtn])
 
 
-        this.disableInput = false;
 
         const items = this.dataModal.gameItems
 
@@ -104,138 +96,48 @@ export default class GameScene extends BasicScene {
 
         this.answers.push(this.allAnswers[Math.floor(this.allAnswers.length * Math.random())])
 
-
-        this.buildBg('bgProgressGame');
-
-        this.catBack = new CatBack(this, this.getColWidth(30), this.getRowHeight(9))
-
-        this.catBack.setDepth(7)
-
-        this.catHandWhite = new CatHand(this, this.getColWidth(1.5), this.getRowHeight(7), 'white', this.answerSelected.bind(this), this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0])
-        this.catHandBlack = new CatHand(this, this.getColWidth(1.5), this.getRowHeight(9.5), 'black', this.answerSelected.bind(this), this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0])
-
-        this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), this.item)
-        this.bam.setDepth(5)
-
-        this.add.existing(this.exitBtn);
-        this.add.existing(this.rightMoveBtn)
-        this.add.existing(this.leftMoveBtn)
-        this.add.existing(this.catHandWhite)
-        this.add.existing(this.catHandBlack)
-        this.add.existing(this.bam)
-        this.add.existing(this.catBack)
-
-
-        // this.leftMoveBtn = this.add.sprite(1500, 250, 'moveBtn', 0);
-        // this.rightMoveBtn = this.add.sprite(1500, 500, 'moveBtn', 1);
-        
-
-
-        this.bam.moveIn().on('complete', () => {
-            this.catHandWhite.moveIn().then((itemSelf) => itemSelf.setDepth(7));
-            this.catHandBlack.moveIn().then((itemSelf) => itemSelf.setDepth(7));
-        });
-        this.catBack.moveIn()
-            .then(() => {
-
-                this.leafGroup = new LeafGroup(this, 3, true);
-
-                this.leafGroup.setDepth(8)
-
-                this.add.existing(this.leafGroup)
-
-            });
-
-           
+        this.paintGameScene();
 
     }
 
-    answerSelected(catHand) {
+    // /// 绘制场景
+    // paintGameScene() {
 
-        //Need to make sure the catHand is collide with text broad
+    //     this.exitBtn = new ExitBtn(this, 120, 135);
+    //     this.leftMoveBtn = new LeftMoveBtn(this, this.getColWidth(10), this.getRowHeight(11));
+    //     this.rightMoveBtn = new RightMoveBtn(this, this.getColWidth(11), this.getRowHeight(11));
 
-        if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) return;
-
-        this.disableInput = true;
-
-        this.leafLeft = this.add.image(this.getColWidth(-9), this.getRowHeight(6), 'leafLeft')
-        this.leafRight = this.add.image(this.getColWidth(21), this.getRowHeight(6), 'leafRight')
-        this.leafLeft.setDepth(11)
-        this.leafRight.setDepth(11)
-
-        //Cat anime, strike anime, remove hand anime.
-        this.catBack.strike().on('animationcomplete', () => {
-
-            this.bam.getStrike();
-
-            this.catHandBlack.moveOut();
-            this.catHandWhite.moveOut();
-
-            setTimeout(() => {
+    //     var layer = this.add.layer().setDepth(1);
 
 
-                let music = this.sound.add('lightBattle')
-                music.setLoop(true)
-                music.play()
 
-                this.add.tween({
-                    targets: this.leafLeft,
-                    x: this.getColWidth(21),
-                    y: this.getRowHeight(6),
-                    duration: 1000,
-                    ease: 'Power2'
-                });
+    //     this.buildBg('bgProgressGame');
 
-                this.add.tween({
-                    targets: this.leafRight,
-                    x: this.getColWidth(-9),
-                    y: this.getRowHeight(6),
-                    duration: 1000,
-                    ease: 'Power2'
-                })
+    //     layer.add([this.stageSlaver = this.add.image(this.getColWidth(9), this.getRowHeight(2.5), 'stageSalver').setScale(0.5), this.exitBtn, this.rightMoveBtn, this.leftMoveBtn])
+    // }
 
-                this.bam.customMoveTo(this.getColWidth(9), this.getRowHeight(6), 1500)
-                this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
-                    this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
-                        let cat = new WinCat(this, this.getColWidth(8), this.getRowHeight(7));
-                        cat.setDepth(4)
-                        this.add.existing(cat);
-                        setTimeout(this.bam.moveOut.bind(this.bam), 200)
-                        cat.moveIn().then(() => {
+    /**
+     * paint all game ui element in this scene
+     * 绘制GameScene的所有Ui元素
+    */
+    paintGameScene() {
 
-                            setTimeout(() => {
-                                //Game win or lose anime
-                                if (catHand.getAnswer() == this.item.answer) {
+        this.playLayer = this.add.layer().setDepth(1);
+        this.buttonLayer = this.add.layer().setDepth(2);
+        this.backgroundLayer = this.add.layer().setDepth(0);
 
-                                    this.bam.breakUp()
-                                    cat.gameWin()
+        this.exitButton = new ExitBtn(this, 120, 135);
+        this.leftMoveButton = new LeftMoveBtn(this, this.getColWidth(10), this.getRowHeight(11));
+        this.rightMoveButton = new RightMoveBtn(this, this.getColWidth(11), this.getRowHeight(11));
+        this.stageSlaverSprite = this.add.image(this.getColWidth(9), this.getRowHeight(2.5), 'stageSalver').setScale(0.5)
 
-                                } else {
+        this.backgroundLayer.add(this.buildBg('bgProgressGame'));
+        this.buttonLayer.add([this.exitButton, this.rightMoveButton, this.leftMoveButton])
+        this.playLayer.add([this.stageSlaverSprite])
 
-                                    this.bam.failedToBreak()
-                                    cat.gameFail()
-
-                                }
-
-                                setTimeout(() => {
-                                    this.scene.start('End')
-
-                                }, 3000)
-
-                            }, 1000)
-
-
-                        })
-
-
-                    })
-                })
-
-            }, 800)
-
-
-        });
-
+        this.add.existing(this.playLayer);
+        this.add.existing(this.buttonLayer);
+        this.add.existing(this.backgroundLayer);
     }
 
 

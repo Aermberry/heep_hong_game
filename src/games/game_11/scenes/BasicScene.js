@@ -19,7 +19,10 @@ export default class BasicScene extends Phaser.Scene {
             this.bg = this.add.image(0, 0, bg);
             this.bg.setDisplaySize(this.game.scale.width, this.game.scale.height);
             this.bg.setOrigin(0, 0);
+
         }
+
+        return this.bg;
     }
 
     /**

@@ -20,11 +20,11 @@ export default class BasicBtn extends Phaser.GameObjects.Container {
   }
 
   out(){
-    this.origSprite.setFrame(0)
+    // this.origSprite.setFrame(0)
   }
 
   down(clickEvent){
-    this.origSprite.setFrame(1)
+    // this.origSprite.setFrame(1)
     if(typeof clickEvent == 'function') {
       setTimeout(() => {
         clickEvent()

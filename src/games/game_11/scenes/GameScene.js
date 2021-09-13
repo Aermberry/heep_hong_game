@@ -100,22 +100,6 @@ export default class GameScene extends BasicScene {
 
     }
 
-    // /// 绘制场景
-    // paintGameScene() {
-
-    //     this.exitBtn = new ExitBtn(this, 120, 135);
-    //     this.leftMoveBtn = new LeftMoveBtn(this, this.getColWidth(10), this.getRowHeight(11));
-    //     this.rightMoveBtn = new RightMoveBtn(this, this.getColWidth(11), this.getRowHeight(11));
-
-    //     var layer = this.add.layer().setDepth(1);
-
-
-
-    //     this.buildBg('bgProgressGame');
-
-    //     layer.add([this.stageSlaver = this.add.image(this.getColWidth(9), this.getRowHeight(2.5), 'stageSalver').setScale(0.5), this.exitBtn, this.rightMoveBtn, this.leftMoveBtn])
-    // }
-
     /**
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
@@ -134,10 +118,6 @@ export default class GameScene extends BasicScene {
         this.backgroundLayer.add(this.buildBg('bgProgressGame'));
         this.buttonLayer.add([this.exitButton, this.rightMoveButton, this.leftMoveButton])
         this.playLayer.add([this.stageSlaverSprite])
-
-        this.add.existing(this.playLayer);
-        this.add.existing(this.buttonLayer);
-        this.add.existing(this.backgroundLayer);
     }
 
 

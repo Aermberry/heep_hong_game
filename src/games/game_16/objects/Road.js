@@ -1,28 +1,35 @@
-import DraggableContainer from './DraggableContainer'
 
-export default class Road extends DraggableContainer {
+export default class Road {
 
-    constructor(scene, x, y, item) {
-        super(scene, x + scene.getColWidth(1.5), y);
-
-        this.inPosition = {
-            x,
-            y
-        }
-
-        this.setAlpha(0);
-        // this.setScale(0.9);
-        let roadImg = scene.add.sprite(x, y, 'road');
-        this.create({ draggableHeight: roadImg.height, draggableWidth: roadImg.width })
-
-        let roadText = scene.add.text(x - 110, y - 20, item, {
+    constructor(scene, x, y, item, onDragCallback, dragEndCallback) {
+        let roadImg = scene.add.sprite(0, 0, 'road');
+        let roadText = scene.add.text(-110, -20, item, {
             fontSize: '30px',
             color: '#ffffff',
             fontFamily: "Custom-Han-Serif"
         });
-        let children = [roadImg, roadText];
-        this.add(children)
+        var container = scene.add.container(x, y, [roadImg, roadText]);
 
+        container.setSize(roadImg.width, roadImg.height);
+        container.setInteractive({
+            useHandCursor: true
+        })
+
+        scene.input.setDraggable(container);
+        scene.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+            gameObject.x = dragX;
+            gameObject.y = dragY;
+            if (typeof onDragCallback == 'function') {
+                onDragCallback(pointer, gameObject, dragX, dragY);
+            }
+        });
+
+        scene.input.on('dragend', function (pointer, gameObject) {
+            //Check if the gameObject is in the item block
+            if (typeof dragEndCallback == 'function') {
+                dragEndCallback(pointer, gameObject);
+            }
+        });
 
     }
 

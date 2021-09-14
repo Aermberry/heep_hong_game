@@ -2,15 +2,15 @@ import Phaser from 'phaser'
 
 export default class DragBlock extends Phaser.GameObjects.Container {
     
-    constructor(scene, x, y, dragEndCallback, children) {
-        super(scene, x, y, children);
+    constructor(scene, x, y, dragEndCallback = null, onDragCallabck = null) {
+        super(scene, x, y, []);
 
         this.dragEndCallback = dragEndCallback;
 
+        this.onDragCallback = onDragCallabck;
     }
 
     create({draggableWidth, draggableHeight}) {
-
         this.setSize(draggableWidth, draggableHeight);
 
     }
@@ -21,7 +21,7 @@ export default class DragBlock extends Phaser.GameObjects.Container {
         this.scene.input.setDraggable(this)
 
         this.scene.input.on('drag', this.handleDrag.bind(this));
-        this.scene.input.on('dragend', this.handleStopDrag.bind(this ));
+        this.scene.input.on('dragend', this.handleStopDrag.bind(this));
 
     }
 
@@ -36,6 +36,10 @@ export default class DragBlock extends Phaser.GameObjects.Container {
         gameObject.x = dragX;
         gameObject.y = dragY;
 
+        if(typeof this.onDragCallback == 'function') {
+            this.onDragCallback(pointer, gameObject, dragX, dragY);
+        }
+
     }
 
     handleStopDrag(pointer, gameObject) {
@@ -47,10 +51,18 @@ export default class DragBlock extends Phaser.GameObjects.Container {
 
     }
 
-    setDraggableHandler(handler) {
+    setDragEndHandler(handler) {
 
         if(typeof handler == 'function') {
             this.dragEndCallback = handler;
+        }
+
+    }
+
+    setOnDragHandler(handler) {
+
+        if(typeof handler == 'function') {
+            this.onDragCallback = handler;
         }
 
     }

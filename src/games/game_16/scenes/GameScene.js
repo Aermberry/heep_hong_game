@@ -1,6 +1,6 @@
 import BasicScene from "./BasicScene"
 import Answers from "../objects/Answers";
-
+import BlankRoad from "../objects/BlankRoad";
 
 export default class GameScene extends BasicScene {
     constructor() {
@@ -12,13 +12,11 @@ export default class GameScene extends BasicScene {
 
 
     init() {
-
         this.dataModal = this.sys.game.globals.model;
 
     }
 
     preload() {
-
         this.buildBg('bg_tutor')
 
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
@@ -61,12 +59,22 @@ export default class GameScene extends BasicScene {
         this.buildBg('bg_L1');
         this.disableInput = false;
         let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
-        new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8));
+        this.add.sprite(this.getColWidth(1), this.getRowHeight(5.5), `car_${parseInt(Math.random() * (6 - 1 + 1) + 1, 10)}`)
+        this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.onSelectingAnswer.bind(this), this.answerSelected.bind(this));
+        this.blankRoad = new BlankRoad(this, this.getColWidth(3), this.getRowHeight(6));
+        this.add.existing(this.answers)
+        this.add.existing(this.blankRoad)
         sky.play('sun');
-
     }
 
 
-    
+    onSelectingAnswer(catHand, pointer, dragX, dragY) {
+        // console.log(catHand, pointer, dragX, dragY)
+        this.blankRoad.isInside({x: dragX, y: dragY })
+    }
+
+    answerSelected(catHand) {
+        console.log(catHand)
+    }
 
 }

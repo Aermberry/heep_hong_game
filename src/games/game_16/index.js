@@ -38,6 +38,7 @@ class Game3 extends Phaser.Game {
             model
         }
 
+
         this.globals.model.gameStage = urlParams.sid;
     }
 }
@@ -46,7 +47,6 @@ class Game3 extends Phaser.Game {
 function launch(urlParams) {
 
     let game = new Game3(gameConfig, urlParams)
-
     return game
 }
 

@@ -1,5 +1,5 @@
 import BasicScene from './BasicScene'
-import EndBroad from '../objects/DialogTipBox'
+import EndBroad from '../components/DialogTipBox'
 
 export default class EndScene extends BasicScene {
 

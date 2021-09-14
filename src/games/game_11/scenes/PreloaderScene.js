@@ -20,15 +20,9 @@ export default class PreloaderScene extends BasicScene {
             'bgProgressGame': require('../assets/images/bg_progress_game.png'),
             'dialogTipBox': require('../assets/images/dialog_tip_box.png'),
             'bgTipBox': require('../assets/images/icon_tip_dialog.png'),
-            'stageSalver':require('../assets/images/stage_salver.png')
+            'stageSalver': require('../assets/images/stage_salver.png'),
+            'crocodileMouth': require('../assets/images/animal_crocodile_mouth.png'),
         };
-
-        const atlasFiles = {
-            'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json') },
-            'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json') },
-            'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json') },
-            'end_cat': { img: require('../assets/anims/end_cat.png'), data: require('../assets/anims/end_cat.json') }
-        }
 
         const soundFiles = {
             'hit': require('../assets/audio/hit36.mp3'),
@@ -46,9 +40,9 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('moveBtn', require('../assets/images/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
 
 
-        this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
+        this.preloadFromArr({ img: imageFiles, sound: soundFiles });
 
-        this.loadingText = self.make.text({
+        this.loadingText = this.make.text({
             x: config.width / 2,
             y: config.height * 0.89,
             text: '連接中',
@@ -62,7 +56,11 @@ export default class PreloaderScene extends BasicScene {
 
         this.load.on('complete', function () {
             self.loadingText.setText('連接完成')
-            self.scene.start('Tutor')
+            self.time.addEvent({
+                delay: 500,
+                callback: () => self.scene.start('Tutor')
+            })
+
         });
 
     }

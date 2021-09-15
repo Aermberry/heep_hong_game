@@ -58,7 +58,7 @@ export default class GameScene extends BasicScene {
                 itemBad: require('../assets/images/item_tile_bad.png')
             }
         }
-
+console.log('gameStage',this.dataModal.gameStage);
 
         const imageFiles = {
             'itemBam': itemImgList[this.dataModal.gameStage].item,

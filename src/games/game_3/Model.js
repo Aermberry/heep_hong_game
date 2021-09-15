@@ -7,7 +7,7 @@ export default class Model {
     }
 
     get gameStage() {
-        if(this._gameStage === null) return this._gameData[0].gameStage;
+        if(typeof this._gameStage === 'undefined' || this._gameStage == null) return this._gameData[0].gameStage;
         return this._gameStage;
     }
 

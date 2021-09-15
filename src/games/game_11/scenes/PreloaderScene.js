@@ -17,10 +17,12 @@ export default class PreloaderScene extends BasicScene {
         const imageFiles = {
             'bgTutor': require('../assets/images/bg_tutor.png'),
             'iconTutor': require('../assets/images/icon_tutor.png'),
-            'bgProgressGame': require('../assets/images/bg_progress_game.png'),
-            'dialogTipBox': require('../assets/images/dialog_tip_box.png'),
-            'bgTipBox': require('../assets/images/icon_tip_dialog.png'),
             'stageSalver': require('../assets/images/stage_salver.png'),
+            'bgTipBox': require('../assets/images/icon_tip_dialog.png'),
+            'dialogTipBox': require('../assets/images/dialog_tip_box.png'),
+            'stageBigTooth':require('../assets/images/stage_big_tooth.png'),
+            'bgProgressGame': require('../assets/images/bg_progress_game.png'),
+            'stageSmallTooth':require('../assets/images/stage_small_tooth.png'),
             'crocodileMouth': require('../assets/images/animal_crocodile_mouth.png'),
         };
 

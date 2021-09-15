@@ -32,38 +32,37 @@ export default class GameScene extends BasicScene {
         music.setLoop(true)
         music.play()
 
-console.log('gameStage', this.dataModal.gameStage)
-
         const itemImgList = {
-            5:'item_bam',
-            6:'item_board',
-            7:'item_brick',
-            8:'item_log',
-            9:'item_rock',
-            21:'item_tile'
+            5: {
+                item: require('../assets/images/item_bam.png'),
+                itemBad: require('../assets/images/item_bam_bad.png')
+            },
+            6: {
+                item: require('../assets/images/item_board.png'),
+                itemBad: require('../assets/images/item_board_bad.png')
+            },
+            7: {
+                item: require('../assets/images/item_brick.png'),
+                itemBad: require('../assets/images/item_brick_bad.png')
+            },
+            8: {
+                item: require('../assets/images/item_log.png'),
+                itemBad: require('../assets/images/item_log_bad.png')
+            },
+            9: {
+                item: require('../assets/images/item_rock.png'),
+                itemBad: require('../assets/images/item_rock_bad.png')
+            },
+            21: {
+                item: require('../assets/images/item_tile.png'),
+                itemBad: require('../assets/images/item_tile_bad.png')
+            }
         }
-
-        // itemImgList = [
-        //     'item_bam',
-        //     'item_board',
-        //     'item_brick',
-        //     'item_log',
-        //     'item_rock',
-        //     'item_tile'
-        // ]
-
-        // let curItemImgName = itemImgList[Math.floor(Math.random() * itemImgList.length)]
-
-        const curItemImgName = itemImgList[this.dataModal.gameStage];
-
-        const itemImg = `${curItemImgName}.png`
-        const itemBadImg = `${curItemImgName}_bad.png`
-
 
 
         const imageFiles = {
-            'itemBam': require(`../assets/images/${itemImg}`),
-            'itemBamBad': require(`../assets/images/${itemBadImg}`),
+            'itemBam': itemImgList[this.dataModal.gameStage].item,
+            'itemBamBad': itemImgList[this.dataModal.gameStage].itemBad,
             'bg_rock': require('../assets/images/bg_rock.png'),
             'an1': require('../assets/images/an1.png'),
             'an2': require('../assets/images/an2.png'),

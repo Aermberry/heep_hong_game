@@ -32,10 +32,38 @@ export default class GameScene extends BasicScene {
         music.setLoop(true)
         music.play()
 
+console.log('gameStage', this.dataModal.gameStage)
+
+        const itemImgList = {
+            5:'item_bam',
+            6:'item_board',
+            7:'item_brick',
+            8:'item_log',
+            9:'item_rock',
+            21:'item_tile'
+        }
+
+        // itemImgList = [
+        //     'item_bam',
+        //     'item_board',
+        //     'item_brick',
+        //     'item_log',
+        //     'item_rock',
+        //     'item_tile'
+        // ]
+
+        // let curItemImgName = itemImgList[Math.floor(Math.random() * itemImgList.length)]
+
+        const curItemImgName = itemImgList[this.dataModal.gameStage];
+
+        const itemImg = `${curItemImgName}.png`
+        const itemBadImg = `${curItemImgName}_bad.png`
+
+
 
         const imageFiles = {
-            'itemBam': require('../assets/images/item_bam.png'),
-            'itemBamBad': require('../assets/images/item_bam_bad.png'),
+            'itemBam': require(`../assets/images/${itemImg}`),
+            'itemBamBad': require(`../assets/images/${itemBadImg}`),
             'bg_rock': require('../assets/images/bg_rock.png'),
             'an1': require('../assets/images/an1.png'),
             'an2': require('../assets/images/an2.png'),
@@ -176,7 +204,7 @@ export default class GameScene extends BasicScene {
 
         if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) {
 
-            catHand.toOriginPosTween();
+            catHand.toOriginPosTween(1000);
 
             return;
         }
@@ -188,14 +216,15 @@ export default class GameScene extends BasicScene {
         this.leafLeft.setDepth(11)
         this.leafRight.setDepth(11)
 
-        catHand.disappear();
-
+        
+        this.catHandWhite.disappear();
+        this.catHandBlack.disappear();
+        // catHand.disappear();
 
         //Cat anime, strike anime, remove hand anime.
         this.catBack.strike().on('animationcomplete', () => {
 
-            this.bam.getStrike();
-
+            this.bam.getStrike()
 
             // this.catHandBlack.moveOut();
             // this.catHandWhite.moveOut();
@@ -221,46 +250,48 @@ export default class GameScene extends BasicScene {
                     y: this.getRowHeight(6),
                     duration: 1000,
                     ease: 'Power2'
-                })
+                });
 
-                this.bam.customMoveTo(this.getColWidth(17), this.getRowHeight(6), 1500)
-                this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
-                    this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
-                        let cat = new WinCat(this, this.getColWidth(8), this.getRowHeight(7));
-                        cat.setDepth(4)
-                        this.add.existing(cat);
-                        setTimeout(this.bam.moveOut.bind(this.bam), 200)
-                        cat.moveIn().then(() => {
+                setTimeout(()=> {
 
-                            setTimeout(() => {
-                                //Game win or lose anime
-                                if (catHand.getAnswer() == this.item.answer) {
-
-                                    this.bam.breakUp()
-                                    cat.gameWin()
-
-                                } else {
-
-                                    this.bam.failedToBreak()
-                                    cat.gameFail()
-
-                                }
-
-                                setTimeout(()=> {
-                                    this.scene.start('End')
-
-                                }, 3000)
-
-                            }, 1000)
-
-
+                    this.bam.customMoveTo(this.getColWidth(17), this.getRowHeight(6), 1500)
+                    this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
+                        this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
+                            let cat = new WinCat(this, this.getColWidth(8.5), this.getRowHeight(7));
+                            cat.setDepth(4)
+                            this.add.existing(cat);
+                            setTimeout(this.bam.moveOut.bind(this.bam), 200)
+                            cat.moveIn().then(() => {
+    
+                                setTimeout(() => {
+                                    //Game win or lose anime
+                                    if (catHand.getAnswer() == this.item.answer) {
+    
+                                        this.bam.breakUp()
+                                        cat.gameWin()
+    
+                                    } else {
+    
+                                        this.bam.failedToBreak()
+                                        cat.gameFail()
+    
+                                    }
+    
+                                    setTimeout(()=> {
+                                        this.scene.start('End')
+    
+                                    }, 3000)
+    
+                                }, 1000)
+    
+                            })
+    
                         })
-
-
                     })
-                })
+                }, 400)
 
-            }, 800)
+
+            }, 2000)
 
 
         });

@@ -114,7 +114,7 @@ export default class CatHand extends DraggableContainer {
             this.scene.tweens.add({
                 targets: this,
                 scale: .05,
-                duration: 400,
+                duration: 200,
                 ease: 'Power2'
             }).on('complete', ()=> {
 

@@ -27,7 +27,7 @@ export default class ItemPic extends Phaser.GameObjects.Container {
 
         
         this.fxHover = scene.add.image(0, 0, 'fx_hover')
-        this.fxHover.setScale(1.6)
+        this.fxHover.setScale(1.4)
         this.fxHover.setAlpha(0)
 
         this.add([

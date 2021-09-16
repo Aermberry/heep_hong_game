@@ -2,6 +2,7 @@ import BasicScene from "./BasicScene"
 import Answers from "../objects/Answers";
 import BlankRoad from "../objects/BlankRoad";
 import Phaser from "phaser";
+import ExitBtn from '../objects/ExitBtn'
 
 export default class GameScene extends BasicScene {
     constructor() {
@@ -73,6 +74,9 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.answers)
         this.add.existing(this.blankRoad)
         sky.play('sun');
+        let exitBtn = new ExitBtn(this, 120, 135);
+        this.add.existing(exitBtn);
+
     }
 
     winnerCallBack() {

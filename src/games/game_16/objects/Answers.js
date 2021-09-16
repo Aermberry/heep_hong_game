@@ -10,9 +10,6 @@ export default class Answers {
         this.item = data[Math.floor(Math.random() * data.length)];
         let afterItem = this.shuffleArray(this.item);
 
-
-
-
         this.answers = []
         for (let i = 0; i < afterItem.length; i++) {
             if (i <= 3) {
@@ -24,7 +21,6 @@ export default class Answers {
             }
         }
         let that = this;
-
         scene.input.on('drop', function (pointer, gameObject, dropZone) {
             if (!selectItems.includes(gameObject)) {
                 let x = 480;

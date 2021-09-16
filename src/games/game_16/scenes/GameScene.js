@@ -1,6 +1,7 @@
 import BasicScene from "./BasicScene"
 import Answers from "../objects/Answers";
 import BlankRoad from "../objects/BlankRoad";
+import Phaser from "phaser";
 
 export default class GameScene extends BasicScene {
     constructor() {
@@ -40,7 +41,8 @@ export default class GameScene extends BasicScene {
             'doneBtn': require('../assets/img/Done.png'),
             'bg_L1': require('../assets/img/bg_L1.png'),
             'bg_L2': require('../assets/img/bg_L2.png'),
-            'road': require('../assets/img/road.png')
+            'road': require('../assets/img/road.png'),
+            'blankRoad1': require('../assets/img/raod1.png')
         };
 
         const atlasFiles = {
@@ -59,22 +61,33 @@ export default class GameScene extends BasicScene {
         this.buildBg('bg_L1');
         this.disableInput = false;
         let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
-        this.add.sprite(this.getColWidth(1), this.getRowHeight(5.5), `car_${parseInt(Math.random() * (6 - 1 + 1) + 1, 10)}`)
-        this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.onSelectingAnswer.bind(this), this.answerSelected.bind(this));
-        this.blankRoad = new BlankRoad(this, this.getColWidth(3), this.getRowHeight(6));
+        let y = this.getRowHeight(5.5);
+        let startX = this.getColWidth(1.7);
+        let points = [
+            startX, y, 2200, y
+        ];
+        let curve = new Phaser.Curves.Spline(points);
+        this.car = this.add.follower(curve, this.getColWidth(1), this.getRowHeight(5.5), `car_${parseInt(Math.random() * (6 - 1 + 1) + 1, 10)}`).setDepth(10)
+        this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.winnerCallBack.bind(this));
+        this.blankRoad = new BlankRoad(this, this.getColWidth(6), this.getRowHeight(6));
         this.add.existing(this.answers)
         this.add.existing(this.blankRoad)
         sky.play('sun');
     }
 
-
-    onSelectingAnswer(catHand, pointer, dragX, dragY) {
-        // console.log(catHand, pointer, dragX, dragY)
-        this.blankRoad.isInside({x: dragX, y: dragY })
+    winnerCallBack() {
+        setTimeout(()=> {
+            this.scene.start('End')
+        }, 3000)
+        this.car.startFollow({
+            duration: 3000,
+            yoyo: false,
+            repeat: 0,
+            rotateToPath: true,
+            verticalAdjust: true
+        })
     }
 
-    answerSelected(catHand) {
-        console.log(catHand)
-    }
+
 
 }

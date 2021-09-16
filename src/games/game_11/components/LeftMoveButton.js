@@ -20,7 +20,7 @@ export default class LeftMoveButton extends BasicButton {
      * 往左移动
       */
   moveToLeft() {
-    // this.scene.stageSlaver.setDisplayOrigin(this.scene.stageSlaverSprite.displayOriginX + 100, this.scene.stageSlaverSprite.displayOriginY)
-    this.gameObject.setDisplayOrigin(this.gameObject.displayOriginX + 100, this.gameObject.displayOriginY)
+    // this.gameObject.setDisplayOrigin(this.gameObject.displayOriginX + 100, this.gameObject.displayOriginY)
+    this.gameObject.x = this.gameObject.x - 100
   }
 }

@@ -18,7 +18,10 @@ export default class RightMoveButton extends BasicButton {
      * 往右移动
       */
   moveToRight() {
-    this.gameObject.setDisplayOrigin(this.gameObject.displayOriginX - 100, this.gameObject.displayOriginY)
+    // console.log(this.gameObject)
+    // this.gameObject.setDisplayOrigin(this.gameObject.displayOriginX - 100, this.gameObject.displayOriginY)
+    // this.gameObject.x = this.gameObject.x - 100;
+    this.gameObject.x = this.gameObject.x + 100
   }
 
 

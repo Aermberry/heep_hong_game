@@ -13,11 +13,7 @@ export default class Model {
     set gameStage(stage) {
 
         this._gameStage = stage;
-        console.log(this._gameData);
-        console.log('');
         this._gameData.some((gameData, ind)=> {
-            console.log(ind);
-            console.log('dsd');
             if(gameData.gameStage == stage) return this._gameIndex = ind;
 
         });

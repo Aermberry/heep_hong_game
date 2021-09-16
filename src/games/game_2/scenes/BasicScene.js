@@ -58,9 +58,7 @@ export default class BasicScene extends Phaser.Scene {
 
         if(atlas != null) {
             Object.keys(atlas).forEach((fileName) => {
-                console.log(fileName,atlas[fileName]['img'], atlas[fileName]['data'])
                 this.load.atlas(fileName, atlas[fileName]['img'], atlas[fileName]['data'])
-                console.log(fileName, atlas[fileName]['img'], atlas[fileName]['data']);
             })
         }
 

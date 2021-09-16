@@ -15,17 +15,17 @@ export default class TutorSecene extends BasicScene {
         this.anims.create({
             key: 'tut1',
             delay: 200,
-            frames: this.anims.generateFrameNames('tut_1', { prefix: 'tut1', start: 0, end: 33, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('tut_1', { prefix: 'tut1', start: 0, end: 64, zeroPad: 4 }),
         });
         this.anims.create({
             key: 'tut2',
             delay: 200,
-            frames: this.anims.generateFrameNames('tut_2', { prefix: 'tut2', start: 0, end: 34, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('tut_2', { prefix: 'tut2', start: 0, end: 64, zeroPad: 4 }),
         });
         this.anims.create({
             key: 'tut3',
             delay: 200,
-            frames: this.anims.generateFrameNames('tut_3', { prefix: 'tut3', start: 0, end: 50, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('tut_3', { prefix: 'tut3', start: 0, end: 64, zeroPad: 4 }),
         });
 
     }

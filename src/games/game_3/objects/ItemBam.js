@@ -292,6 +292,8 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         let topLeft = this.bamImg.getTopLeft()
 
         let bottomRight = this.bamImg.getBottomRight()
+        console.log(topLeft.x,topLeft.y);
+        console.log(this.inPosition.x,this.inPosition.y);
 
         let worldBody = {
             "topLeft": {

@@ -32,6 +32,7 @@ export default class PreloaderScene extends BasicScene {
             'tut_2': { img: require('../assets/tut_2.png'), data: require('../assets/tut_2.json') },
             'tut_3': { img: require('../assets/tut_3.png'), data: require('../assets/tut_3.json') },
             'house_a': { img: require('../assets/house_a.png'), data: require('../assets/house_a.json') },
+            'house_b': { img: require('../assets/house_b.png'), data: require('../assets/house_b.json') },
             'wrong': { img: require('../assets/wrong.png'), data: require('../assets/wrong.json') },
             'yes': { img: require('../assets/yes.png'), data: require('../assets/yes.json') },
             'bear_job': { img: require('../assets/bear_job.png'), data: require('../assets/bear_job.json') },

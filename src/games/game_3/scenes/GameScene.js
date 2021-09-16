@@ -125,7 +125,7 @@ export default class GameScene extends BasicScene {
     }
 
     answerSelected(catHand) {
-
+        console.log(catHand);
         //Need to make sure the catHand is collide with text broad
 
         if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) return;

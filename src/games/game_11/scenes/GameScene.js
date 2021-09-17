@@ -23,15 +23,7 @@ export default class GameScene extends BasicScene {
         this.playLayer = undefined
         this.crocodileMouth = undefined
         this.localRepository = new LocalRepository()
-        this.questions = undefined
-
-    }
-
-    init() {
-
-        // this.dataModal = this.sys.game.globals.model;
-        // console.log("dataModal:")
-        // console.log(this.dataModal.gameItems);
+        this.question = undefined
 
     }
 
@@ -42,7 +34,7 @@ export default class GameScene extends BasicScene {
             sound: this.sound.add('drums').setLoop(true).play()
         });
 
-        this.questions = this.localRepository.loadData();
+        this.question = this.generateQuestion(this.localRepository.loadData());
 
         this.createProgressBar();
 
@@ -51,32 +43,8 @@ export default class GameScene extends BasicScene {
     create() {
 
         super.create();
-
-        // const items = this.dataModal.gameItems
-
-        // let itemInd = Math.floor(Math.random() * items.length)
-
-        // this.item = items[itemInd]
-
-        // this.answers = [];
-
-        // this.allAnswers = this.dataModal.gameAnswers
-
-        // this.allAnswers.some((answer, ind) => {
-
-        //     if (answer.index === this.item.answer) {
-
-        //         this.answers.push(this.allAnswers.splice(ind, 1)[0])
-
-        //         return true;
-
-        //     }
-
-        // })
-
-        // this.answers.push(this.allAnswers[Math.floor(this.allAnswers.length * Math.random())])
-
-        this.paintGameScene();
+        let self = this;
+        this.paintGameScene(self);
 
     }
 
@@ -86,7 +54,7 @@ export default class GameScene extends BasicScene {
       */
     generateQuestion(data) {
         if (data != undefined) {
-            return data[Phaser.Math.Between(0, this.questions.length)];
+            return data[Phaser.Math.Between(0, data.length)];
         } else {
             console.log('ddddddd')
         }
@@ -97,8 +65,7 @@ export default class GameScene extends BasicScene {
      * 绘制牙齿
      * 
      */
-    pintTooth(value) {
-        const originalSentence = this.generateQuestion(value).originalSentence;
+    pintTooth(question) {
         let container = this.add.container(0, 0);
         let previousToothWidth = 0;
         let currentToothWidth = 0;
@@ -136,11 +103,10 @@ export default class GameScene extends BasicScene {
         //     nextToothOffsetX += previousToothWidth
         // })
 
-        for (let index = 0; index < originalSentence.length; index++) {
-            const element = originalSentence[index];
+        for (let index = 0; index < question.originalSentence.length; index++) {
+            const element = question.originalSentence[index];
 
             // console.log(container.getAll())
-
             if (element.length > 3) {
                 currentTooth = new BigTooth(this, nextToothOffsetX, 680, element, 'stageBigTooth')
 
@@ -174,65 +140,10 @@ export default class GameScene extends BasicScene {
                     previousToothWidth = currentToothWidth;
                 }
             }
-
             nextToothOffsetX += previousToothWidth
         }
 
-        // 216 352.5
-        // // for (let i = 0; i < originalSentence.length; i++) {
-
-        // //     if (i == 0) {
-        // //         if (originalSentence[i].length > 3) {
-        // //             currentTooth = new BigTooth(this, nextToothOffsetX, 680, originalSentence[i], 'stageBigTooth');
-        // //         }
-        // //         else {
-        // //             currentTooth = new SmallTooth(this, nextToothOffsetX, 680, originalSentence[i], 'stageSmallTooth');
-        // //         }
-        // //         previousToothWidth = currentToothWidth = currentTooth.getImageWidth();
-
-        // //         console.log(i)
-        // //         console.log(i + ":" + previousToothWidth)
-        // //         console.log("nextToothOffsetX:" + nextToothOffsetX)
-        // //         console.log('-------')
-        // //     }
-        // //     // previousTooth = currentTooth;
-        // //     if (originalSentence[i].length > 3) {
-        // //         console.log("index:" + i)
-        // //         console.log("bigTooth:")
-        // //         console.log("previousToothWidth:" + previousToothWidth)
-        // //         console.log("offset:" + nextToothOffsetX)
-        // //         currentTooth = new BigTooth(this, nextToothOffsetX, 680, originalSentence[i]);
-        // //         console.log("第" + i + "个的With:" + currentTooth.getImageWidth())
-        // //         console.log(currentTooth.originX)
-        // //         console.log(currentTooth.displayOriginX)
-
-        // //     }
-        // //     else {
-        // //         console.log("index:" + i)
-        // //         console.log("smallTooth:")
-        // //         console.log("previousToothWidth:" + previousToothWidth)
-        // //         console.log("offset:" + nextToothOffsetX)
-        // //         currentTooth = new SmallTooth(this, nextToothOffsetX, 680, originalSentence[i]);
-        // //         console.log("第" + i + "个的With:" + currentTooth.getImageWidth())
-        // //         console.log(currentTooth.originX)
-        // //         console.log(currentTooth.displayOriginX)
-        // //     }
-
-        // //     if (currentToothWidth != previousToothWidth) {
-        // //         nextToothOffsetX = nextToothOffsetX + currentToothWidth - 70;
-        // //         previousToothWidth = currentToothWidth
-        // //     } else {
-
-        // //         //下一个的坐标
-        // //         currentToothWidth = currentTooth.getImageWidth();
-        // //         nextToothOffsetX += currentToothWidth;
-        // //         console.log("nextToothOffsetX:" + nextToothOffsetX)
-        // //         console.log('..');
-        // //     }
-
-        //     container.add(currentTooth);
-
-        // }
+        console.log(container.getAll());
 
         return container
     }
@@ -241,31 +152,66 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
     */
-    paintGameScene() {
+    paintGameScene(self) {
 
-        this.playLayer = this.add.layer().setDepth(1);
-        this.uiLayer = this.add.layer().setDepth(2);
+        this.playLayer = this.add.layer().setDepth(2);
+        this.uiLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        this.stageSlaverSprite = this.add.image(this.getColWidth(9), this.getRowHeight(2.5), 'stageSalver').setScale(0.5);
+        this.stageSlaverSprite = this.add.image(this.getColWidth(8.5), this.getRowHeight(2.5), 'stageSalver').setScale(0.6);
+
+        var zone = this.add.zone(this.getColWidth(8.5) + 100, this.getRowHeight(2.5) + 100, this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight).setRectangleDropZone(this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight);
+
+        this.input.on('drop', function (pointer, gameObject, dropZone) {
+
+            console.log(self.question.modifier)
+            console.log(gameObject.labelText.text)
+
+            if (self.question.modifier.indexOf(gameObject.labelText.text) > -1) {
+                // gameObject.toothTexture.setScale(0.3)
+                // gameObject.labelText.style.fontSize = '1px'
+                gameObject.changeStyle(0.3, '35px')
+                console.log(gameObject)
+                console.log("---------")
+                console.log(gameObject.getImageWidth())
+                console.log(gameObject.labelText.text)
+                console.log("---------")
+                console.log(gameObject.x);
+                let dropPoint = { x: gameObject.x, y: gameObject.y }
+                gameObject.x = dropPoint.x
+                gameObject.y = dropPoint.y
+
+                console.log(dropZone.displayOriginX)
+                console.log(dropZone.displayOriginY)
+                console.log(gameObject)
+                console.log(dropZone.x)
+                console.log(dropZone.y)
+                console.log(dropZone)
+
+                gameObject.input.enabled = false;
+            } else {
+                gameObject.x = gameObject.originPoint.originPointX
+                gameObject.y = gameObject.originPoint.originPointY
+            }
+
+        })
+
         this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
 
         this.container = this.add.container(0, 0, [
-            this.pintTooth(this.questions),
+            this.pintTooth(this.question),
             this.crocodileMouth]);
+
+
+
 
         this.exitButton = new ExitButton(this, 120, 135);
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.container);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.container);
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
-        this.uiLayer.add([this.stageSlaverSprite, this.rightMoveButton, this.leftMoveButton])
+        this.uiLayer.add([this.stageSlaverSprite, zone, this.rightMoveButton, this.leftMoveButton])
         this.playLayer.add([this.container])
 
     }
-
-    /**
-     * 生成题目
-     * generate a question from question json file
-      */
 }

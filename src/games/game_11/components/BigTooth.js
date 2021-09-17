@@ -6,8 +6,7 @@ export default class BigTooth extends Tooth {
         
         super(scene, x, y, label, 'stageBigTooth');
 
-        this.type='bigTooth';
-        
+        this.type='bigTooth'
         this.create()
     }
 }

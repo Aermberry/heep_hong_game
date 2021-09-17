@@ -4,7 +4,7 @@ import LeftMoveButton from '../components/LeftMoveButton'
 import RightMoveButton from '../components/RightMoveButton'
 import BigTooth from "../components/BigTooth"
 import SmallTooth from "../components/SmallTooth"
-import LocalRepository from "../repository/local_repository"
+import LocalRepository from "../repository/LocalRepository"
 import Phaser from 'phaser'
 
 export default class GameScene extends BasicScene {
@@ -52,9 +52,6 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-
-
-
         // const items = this.dataModal.gameItems
 
         // let itemInd = Math.floor(Math.random() * items.length)
@@ -81,11 +78,6 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene();
 
-        // console.log(this.questions)
-        // console.log(this.questions.length)
-
-        // console.log(this.generateQuestion(this.questions))
-
     }
 
     /**
@@ -111,80 +103,137 @@ export default class GameScene extends BasicScene {
         let previousToothWidth = 0;
         let currentToothWidth = 0;
         let currentTooth = undefined;
-        // let previousTooth = undefined;
         let nextToothOffsetX = 280;
 
-        let origin = this.crocodileMouth.getTopLeft(origin);
-
-        console.log("origin:" + origin);
-
-        // originalSentence.map(value => console.log(value + ":" + value.length))
         // originalSentence.map(value => {
-        //     currentTooth = value.length > 3 ? new BigTooth(this, OffsetFromTheFirst, 680, value, 'stageBigTooth') : new SmallTooth(this, OffsetFromTheFirst, 680, value, 'stageSmallTooth');
+        //     currentTooth = value.length > 3 ? new BigTooth(this, nextToothOffsetX, 680, value, 'stageBigTooth') : new SmallTooth(this, nextToothOffsetX, 680, value, 'stageSmallTooth');
         //     currentToothWidth = currentTooth.getImageWidth();
         //     previousToothWidth = currentToothWidth;
-        //     OffsetFromTheFirst += previousToothWidth
+        //     nextToothOffsetX += previousToothWidth
 
         // })
+        // originalSentence.map(value => {
 
-        // 216 352.5
-        for (let i = 0; i < originalSentence.length; i++) {
+        //     if (previousTooth != undefined) {
+        //         console.log(currentTooth.type);
+        //         console.log(previousTooth.type);
+        //         console.log('dsdsdsdsd')
+        //         if (currentTooth.type != previousTooth.type) {
+        //             nextToothOffsetX += 70
+        //         }
+        //     }
 
-            if (i == 0) {
-                if (originalSentence[i].length > 3) {
-                    currentTooth = new BigTooth(this, nextToothOffsetX, 680, originalSentence[i], 'stageBigTooth');
+        //     currentTooth = value.length > 3 ? new BigTooth(this, nextToothOffsetX, 680, value, 'stageBigTooth') : new SmallTooth(this, nextToothOffsetX, 680, value, 'stageSmallTooth');
+        //     // currentTooth= new BigTooth(this, nextToothOffsetX, 680, value, 'stageBigTooth')
+        //     container.add(currentTooth);
+
+        //     currentToothWidth = currentTooth.getImageWidth();
+        //     previousToothWidth = currentToothWidth;
+        //     previousTooth = currentTooth;
+
+        //     console.log(container.count('visible', true))
+
+        //     nextToothOffsetX += previousToothWidth
+        // })
+
+        for (let index = 0; index < originalSentence.length; index++) {
+            const element = originalSentence[index];
+
+            // console.log(container.getAll())
+
+            if (element.length > 3) {
+                currentTooth = new BigTooth(this, nextToothOffsetX, 680, element, 'stageBigTooth')
+
+            } else {
+                currentTooth = new SmallTooth(this, nextToothOffsetX, 680, element, 'stageBigTooth')
+            }
+
+
+
+            container.add(currentTooth);
+
+            currentToothWidth = currentTooth.getImageWidth();
+
+
+
+            if (index != 0) {
+                console.log(container.getAll()[index - 1])
+
+
+                if (currentToothWidth != container.getAll()[index - 1].getImageWidth()) {
+                    let offsetValue = Math.abs(currentToothWidth - container.getAll()[index - 1].getImageWidth())
+                    if (currentToothWidth > container.getAll()[index - 1].getImageWidth()) {
+
+                        previousToothWidth = currentToothWidth + offsetValue;
+                    }
+                    else if (currentToothWidth < container.getAll()[index - 1].getImageWidth()) {
+                        previousToothWidth = currentToothWidth - offsetValue;
+                    }
                 }
                 else {
-                    currentTooth = new SmallTooth(this, nextToothOffsetX, 680, originalSentence[i], 'stageSmallTooth');
+                    previousToothWidth = currentToothWidth;
                 }
-                previousToothWidth = currentToothWidth = currentTooth.getImageWidth();
-
-                console.log(i)
-                console.log(i + ":" + previousToothWidth)
-                console.log("nextToothOffsetX:" + nextToothOffsetX)
-                console.log('-------')
-            }
-            // previousTooth = currentTooth;
-            if (originalSentence[i].length > 3) {
-                console.log("index:" + i)
-                console.log("bigTooth:")
-                console.log("previousToothWidth:" + previousToothWidth)
-                console.log("offset:" + nextToothOffsetX)
-                currentTooth = new BigTooth(this, nextToothOffsetX, 680, originalSentence[i]);
-                console.log("第" + i + "个的With:" + currentTooth.getImageWidth())
-                console.log(currentTooth.originX)
-                console.log(currentTooth.displayOriginX)
-
-            }
-            else {
-                console.log("index:" + i)
-                console.log("smallTooth:")
-                console.log("previousToothWidth:" + previousToothWidth)
-                console.log("offset:" + nextToothOffsetX)
-                currentTooth = new SmallTooth(this, nextToothOffsetX, 680, originalSentence[i]);
-                console.log("第" + i + "个的With:" + currentTooth.getImageWidth())
-                console.log(currentTooth.originX)
-                console.log(currentTooth.displayOriginX)
             }
 
-
-
-
-
-
-            if (currentToothWidth != previousToothWidth) {
-                nextToothOffsetX = nextToothOffsetX + currentToothWidth - 70;
-                previousToothWidth = currentToothWidth
-            } else {
-
-                //下一个的坐标
-                currentToothWidth = currentTooth.getImageWidth();
-                nextToothOffsetX += currentToothWidth;
-                console.log("nextToothOffsetX:" + nextToothOffsetX)
-                console.log('..');
-            }
-            container.add(currentTooth);
+            nextToothOffsetX += previousToothWidth
         }
+
+        // 216 352.5
+        // // for (let i = 0; i < originalSentence.length; i++) {
+
+        // //     if (i == 0) {
+        // //         if (originalSentence[i].length > 3) {
+        // //             currentTooth = new BigTooth(this, nextToothOffsetX, 680, originalSentence[i], 'stageBigTooth');
+        // //         }
+        // //         else {
+        // //             currentTooth = new SmallTooth(this, nextToothOffsetX, 680, originalSentence[i], 'stageSmallTooth');
+        // //         }
+        // //         previousToothWidth = currentToothWidth = currentTooth.getImageWidth();
+
+        // //         console.log(i)
+        // //         console.log(i + ":" + previousToothWidth)
+        // //         console.log("nextToothOffsetX:" + nextToothOffsetX)
+        // //         console.log('-------')
+        // //     }
+        // //     // previousTooth = currentTooth;
+        // //     if (originalSentence[i].length > 3) {
+        // //         console.log("index:" + i)
+        // //         console.log("bigTooth:")
+        // //         console.log("previousToothWidth:" + previousToothWidth)
+        // //         console.log("offset:" + nextToothOffsetX)
+        // //         currentTooth = new BigTooth(this, nextToothOffsetX, 680, originalSentence[i]);
+        // //         console.log("第" + i + "个的With:" + currentTooth.getImageWidth())
+        // //         console.log(currentTooth.originX)
+        // //         console.log(currentTooth.displayOriginX)
+
+        // //     }
+        // //     else {
+        // //         console.log("index:" + i)
+        // //         console.log("smallTooth:")
+        // //         console.log("previousToothWidth:" + previousToothWidth)
+        // //         console.log("offset:" + nextToothOffsetX)
+        // //         currentTooth = new SmallTooth(this, nextToothOffsetX, 680, originalSentence[i]);
+        // //         console.log("第" + i + "个的With:" + currentTooth.getImageWidth())
+        // //         console.log(currentTooth.originX)
+        // //         console.log(currentTooth.displayOriginX)
+        // //     }
+
+        // //     if (currentToothWidth != previousToothWidth) {
+        // //         nextToothOffsetX = nextToothOffsetX + currentToothWidth - 70;
+        // //         previousToothWidth = currentToothWidth
+        // //     } else {
+
+        // //         //下一个的坐标
+        // //         currentToothWidth = currentTooth.getImageWidth();
+        // //         nextToothOffsetX += currentToothWidth;
+        // //         console.log("nextToothOffsetX:" + nextToothOffsetX)
+        // //         console.log('..');
+        // //     }
+
+        //     container.add(currentTooth);
+
+        // }
+
         return container
     }
 
@@ -201,12 +250,14 @@ export default class GameScene extends BasicScene {
         this.stageSlaverSprite = this.add.image(this.getColWidth(9), this.getRowHeight(2.5), 'stageSalver').setScale(0.5);
         this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
 
-        this.container = this.add.container(0, 0, [this.pintTooth(this.questions), this.crocodileMouth]);
+        this.container = this.add.container(0, 0, [
+            this.pintTooth(this.questions),
+            this.crocodileMouth]);
 
         this.exitButton = new ExitButton(this, 120, 135);
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.container);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.container);
-      
+
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
         this.uiLayer.add([this.stageSlaverSprite, this.rightMoveButton, this.leftMoveButton])
         this.playLayer.add([this.container])

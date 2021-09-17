@@ -35,4 +35,8 @@ export default class Tooth extends Phaser.GameObjects.Container {
     getImageWidth() {
         return this.toothTexture.displayWidth;
     }
+
+    startDrag(){
+        
+    }
 }

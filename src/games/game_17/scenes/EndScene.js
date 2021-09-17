@@ -21,7 +21,10 @@ export default class EndScene extends BasicScene {
         // music.setLoop(true)
         // music.play()
 
+
         this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
+        console.log(this)
+        this.add.rectangle(0,0,10000,10000, 0x0d6f3f, 0.9)
 
         this.add.existing(this.endBroad)        
 

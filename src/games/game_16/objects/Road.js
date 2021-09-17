@@ -23,11 +23,13 @@ export default class Road {
         scene.input.setDraggable(this.container);
         let that = this;
         this.container.on('drag', function (gameObject, dragX, dragY) {
+            that.container.setDepth(100)
             that.container.x = dragX;
             that.container.y = dragY;
         });
 
         this.container.on('dragend', function (pointer, dragX, dragY, dropped) {
+            that.container.setDepth(4)
             if (!dropped) {
                 that.container.x =  that.container.input.dragStartX;
                 that.container.y =  that.container.input.dragStartY;

@@ -7,6 +7,8 @@ import SmallTooth from "../components/SmallTooth"
 import LocalRepository from "../repository/LocalRepository"
 import Phaser from 'phaser'
 
+import AnswerDropZone from "../components/AnswerDropZone"
+
 export default class GameScene extends BasicScene {
 
     constructor() {
@@ -24,6 +26,8 @@ export default class GameScene extends BasicScene {
         this.crocodileMouth = undefined
         this.localRepository = new LocalRepository()
         this.question = undefined
+        this.dragContainer = undefined
+        this.dropContainer = undefined
 
     }
 
@@ -43,9 +47,8 @@ export default class GameScene extends BasicScene {
     create() {
 
         super.create();
-        let self = this;
-        this.paintGameScene(self);
 
+        this.paintGameScene(this);
     }
 
     /**
@@ -148,71 +151,34 @@ export default class GameScene extends BasicScene {
         return container
     }
 
+
     /**
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
     */
-    paintGameScene(self) {
-
-        let that=this;
+    paintGameScene() {
 
         this.playLayer = this.add.layer().setDepth(2);
         this.uiLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        this.stageSlaverSprite = this.add.image(this.getColWidth(8.5), this.getRowHeight(2.5), 'stageSalver').setScale(0.6);
+        this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question)
 
-        var zone = this.add.zone(this.getColWidth(8.5) + 100, this.getRowHeight(2.5) + 100, this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight).setRectangleDropZone(this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight);
-
-        this.input.on('drop', function (pointer, gameObject, dropZone) {
-
-            console.log(self.question.modifier)
-            console.log(gameObject.labelText.text)
-
-            if (self.question.modifier.indexOf(gameObject.labelText.text) > -1) {
-                gameObject.changeStyle(0.3, '35px')
-                console.log(gameObject)
-                console.log("---------")
-                console.log(gameObject.getImageWidth())
-                console.log(gameObject.labelText.text)
-                console.log("---------")
-                console.log(gameObject.x);
-                let dropPoint = { x: gameObject.x, y: gameObject.y }
-                gameObject.x = dropPoint.x
-                gameObject.y = dropPoint.y
-                that.container.first.remove(gameObject)
-                console.log(that.container.first.list)
-                console.log(dropZone.displayOriginX)
-                console.log(dropZone.displayOriginY)
-                console.log(gameObject)
-                console.log(dropZone.x)
-                console.log(dropZone.y)
-                console.log(dropZone)
-
-                gameObject.input.enabled = false;
-            } else {
-                gameObject.x = gameObject.originPoint.originPointX
-                gameObject.y = gameObject.originPoint.originPointY
-            }
-
-        })
 
         this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
 
-        this.container = this.add.container(0, 0, [
+        this.dragContainer = this.add.container(0, 0, [
             this.pintTooth(this.question),
             this.crocodileMouth]);
 
-
-
-
         this.exitButton = new ExitButton(this, 120, 135);
-        this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.container);
-        this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.container);
+        this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer);
+        this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer);
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
-        this.uiLayer.add([this.stageSlaverSprite, zone, ])
-        this.playLayer.add([this.container,this.rightMoveButton, this.leftMoveButton])
-
+        this.uiLayer.add([
+            this.dropContainer
+        ])
+        this.playLayer.add([this.dragContainer, this.rightMoveButton, this.leftMoveButton])
     }
 }

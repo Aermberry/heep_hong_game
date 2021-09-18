@@ -40,6 +40,7 @@ export default class GameScene extends BasicScene {
             key: 'bearJob',
             delay: 200,
             frames: this.anims.generateFrameNames('bear_job', { prefix: 'bear1', start: 0, end: 33, zeroPad: 4 }),
+            repeat: -1
         });
         this.anims.create({
             key: 'wrong',
@@ -76,10 +77,10 @@ export default class GameScene extends BasicScene {
         this.add.sprite(this.getColWidth(8.7), this.getRowHeight(5.8), 'bear_job');
         this.add.image(this.getColWidth(3.8), this.getRowHeight(8.5), 'home');
         this.answers = new Answers(this, this.getColWidth(7.8), this.getRowHeight(6), this.currentQuestionGroup[this.currentIndex], this.CompleteAnswerAnimation.bind(this));
-        this.blankRoad = new AnswerBox(this, this.getColWidth(2.6), this.getRowHeight(7.7),);
-        this.blankRoad2 = new AnswerBox(this, this.getColWidth(5.1), this.getRowHeight(7.7),);
-        this.add.existing(this.blankRoad);
-        this.add.existing(this.blankRoad2);
+        this.AnswerBox1 = new AnswerBox(this, this.getColWidth(2.6), this.getRowHeight(7.7),);
+        this.AnswerBox2 = new AnswerBox(this, this.getColWidth(5.1), this.getRowHeight(7.7),);
+        this.add.existing(this.AnswerBox1);
+        this.add.existing(this.AnswerBox2);
         this.add.existing(this.answers)
         this.add.existing(exitBtn);
         this.add.existing(speakerBtn);

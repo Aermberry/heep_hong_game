@@ -8,6 +8,7 @@ import LocalRepository from "../repository/LocalRepository"
 import Phaser from 'phaser'
 
 import AnswerDropZone from "../components/AnswerDropZone"
+import RetryBtn from "../components/RetryButton"
 
 export default class GameScene extends BasicScene {
 
@@ -19,11 +20,14 @@ export default class GameScene extends BasicScene {
         this.exitButton = undefined
         this.leftMoveButton = undefined
         this.rightMoveButton = undefined
+        this.retryButton = undefined
         this.stageSlaverSprite = undefined
         this.backgroundLayer = undefined
         this.uiLayer = undefined
         this.playLayer = undefined
         this.crocodileMouth = undefined
+        this.gameFailed = undefined
+        this.gameFailedLayer = undefined
         this.localRepository = new LocalRepository()
         this.question = undefined
         this.dragContainer = undefined
@@ -151,6 +155,15 @@ export default class GameScene extends BasicScene {
         return container
     }
 
+    paintGameFailed() {
+
+        this.playLayer.setVisible(false);
+        this.uiLayer.setVisible(false);
+
+        this.gameFailed.setVisible(true);
+
+    }
+
 
     /**
      * paint all game ui element in this scene
@@ -158,15 +171,15 @@ export default class GameScene extends BasicScene {
     */
     paintGameScene() {
 
-        this.playLayer = this.add.layer().setDepth(2);
-        this.uiLayer = this.add.layer().setDepth(1);
+        this.playLayer = this.add.layer().setDepth(1);
+        this.uiLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
-
-        this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question)
-
+        this.gameFailedLayer = this.add.layer().setDepth(1).setVisible(false);
 
         this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
+        this.gameFailed = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'bgGameFailed').setScale(0.4)
 
+        this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question)
         this.dragContainer = this.add.container(0, 0, [
             this.pintTooth(this.question),
             this.crocodileMouth]);
@@ -174,11 +187,11 @@ export default class GameScene extends BasicScene {
         this.exitButton = new ExitButton(this, 120, 135);
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer);
+        this.retryButton = new RetryBtn(this, this.getColWidth(10), this.getRowHeight(11));
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
-        this.uiLayer.add([
-            this.dropContainer
-        ])
-        this.playLayer.add([this.dragContainer, this.rightMoveButton, this.leftMoveButton])
+        this.playLayer.add([this.dropContainer, this.dragContainer])
+        this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
+        this.gameFailedLayer.add([this.gameFailed]);
     }
 }

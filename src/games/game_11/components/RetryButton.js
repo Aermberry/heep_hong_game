@@ -18,5 +18,4 @@ export default class RetryBtn extends BasicButton {
         this.origSprite.setFrame(1)
         super.down(clickEvent)
       }
-
 }

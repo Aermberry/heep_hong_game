@@ -12,8 +12,8 @@ export default class Answers {
         this.errorFrequency = 0;
 
         this.answersArea = scene.add.zone(x, y, 260 *
-            6, 110 * 3);
-        this.answersArea.setRectangleDropZone(260 * 6, 110 * 2);
+            8, 110 * 3);
+        this.answersArea.setRectangleDropZone(260 * 8, 110 * 3);
 
         this.hoverArea = scene.add.rectangle(670, y + 50, 1200, this.answersArea.height - 50, 0xffffff, 1);
         this.hoverArea.setAlpha(0)
@@ -95,7 +95,12 @@ export default class Answers {
             })
             if (answers.join('|') == this.item.join('|')) {
                 this.scene.doneBtn.destroy();
-
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
                 this.winnerHandler();
             } else {
                 this.errorFrequency++;
@@ -108,6 +113,9 @@ export default class Answers {
                 })
                 if (this.errorFrequency > 1) {
                     this.scene.doneBtn.destroy();
+                    this.answers.forEach((item) => {
+                        this.scene.input.setDraggable(item.container, false)
+                    })
                     this.badEnd();
                 }
             }
@@ -122,6 +130,9 @@ export default class Answers {
             })
             if (this.errorFrequency > 1) {
                 this.scene.doneBtn.destroy();
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
                 this.badEnd();
             }
         }

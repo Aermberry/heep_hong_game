@@ -126,7 +126,12 @@ export default class Answers {
             })
             if (answers.join('|') == this.item.join('|')) {
                 this.scene.doneBtn.destroy();
-
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
                 this.goodEnd();
             } else {
                 this.errorFrequency++;
@@ -141,6 +146,9 @@ export default class Answers {
                 })
                 if (this.errorFrequency > 1) {
                     this.scene.doneBtn.destroy();
+                    this.answers.forEach((item) => {
+                        this.scene.input.setDraggable(item.container, false)
+                    })
                     this.badEnd();
                 }
             }
@@ -156,6 +164,9 @@ export default class Answers {
             })
             if (this.errorFrequency > 1) {
                 this.scene.doneBtn.destroy();
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
                 this.badEnd();
             }
         }
@@ -171,7 +182,7 @@ export default class Answers {
                 new Road(this.scene, x2 + (243 * (this.selectItems2.length + i)), y2, '')
             }
         }
-        setTimeout(this.winnerHandler, 5000);
+        this.winnerHandler();
 
     }
 

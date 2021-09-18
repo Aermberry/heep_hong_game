@@ -154,6 +154,8 @@ export default class GameScene extends BasicScene {
     */
     paintGameScene(self) {
 
+        let that=this;
+
         this.playLayer = this.add.layer().setDepth(2);
         this.uiLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
@@ -168,8 +170,6 @@ export default class GameScene extends BasicScene {
             console.log(gameObject.labelText.text)
 
             if (self.question.modifier.indexOf(gameObject.labelText.text) > -1) {
-                // gameObject.toothTexture.setScale(0.3)
-                // gameObject.labelText.style.fontSize = '1px'
                 gameObject.changeStyle(0.3, '35px')
                 console.log(gameObject)
                 console.log("---------")
@@ -180,7 +180,8 @@ export default class GameScene extends BasicScene {
                 let dropPoint = { x: gameObject.x, y: gameObject.y }
                 gameObject.x = dropPoint.x
                 gameObject.y = dropPoint.y
-
+                that.container.first.remove(gameObject)
+                console.log(that.container.first.list)
                 console.log(dropZone.displayOriginX)
                 console.log(dropZone.displayOriginY)
                 console.log(gameObject)
@@ -210,8 +211,8 @@ export default class GameScene extends BasicScene {
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.container);
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
-        this.uiLayer.add([this.stageSlaverSprite, zone, this.rightMoveButton, this.leftMoveButton])
-        this.playLayer.add([this.container])
+        this.uiLayer.add([this.stageSlaverSprite, zone, ])
+        this.playLayer.add([this.container,this.rightMoveButton, this.leftMoveButton])
 
     }
 }

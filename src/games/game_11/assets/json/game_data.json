@@ -1,1 +1,388 @@
-"[{\"gameLogic\":3,\"gameStage\":7,\"hint\":\"1:左右相等, 2:左小右大, 3:左大右小\",\"answers\":[{\"index\":0,\"image\":\"an_LR\"},{\"index\":1,\"image\":\"an_LsR\"},{\"index\":2,\"image\":\"an_sLR\"}],\"items\":[{\"value\":\"明\",\"answer\":0},{\"value\":\"放\",\"answer\":0},{\"value\":\"叫\",\"answer\":0},{\"value\":\"洗\",\"answer\":2},{\"value\":\"喝\",\"answer\":2},{\"value\":\"拍\",\"answer\":2},{\"value\":\"到\",\"answer\":1},{\"value\":\"剛\",\"answer\":1},{\"value\":\"鄰\",\"answer\":1}]},{\"gameLogic\":3,\"gameStage\":6,\"hint\":\"1:上下相等, 2:上小下大, 3:上大下小\",\"answers\":[{\"index\":0,\"image\":\"an_UB\"},{\"index\":1,\"image\":\"an_sUB\"},{\"index\":2,\"image\":\"an_UsB\"}],\"items\":[{\"value\":\"岩\",\"answer\":0},{\"value\":\"樂\",\"answer\":0},{\"value\":\"香\",\"answer\":0},{\"value\":\"花\",\"answer\":1},{\"value\":\"箏\",\"answer\":1},{\"value\":\"前\",\"answer\":1},{\"value\":\"烈\",\"answer\":2},{\"value\":\"盟\",\"answer\":2},{\"value\":\"書\",\"answer\":2}]},{\"gameLogic\":3,\"gameStage\":8,\"hint\":\"1:左下包, 2:全包, 3:品, 4:上半包, 5:左半包, 6:左上包\",\"answers\":[{\"index\":0,\"image\":\"an_BL\"},{\"index\":1,\"image\":\"an_warp\"},{\"index\":2,\"image\":\"an_tngl\"},{\"index\":3,\"image\":\"an_hfB\"},{\"index\":4,\"image\":\"an_hfR\"},{\"index\":5,\"image\":\"an_UL\"}],\"items\":[{\"value\":\"遊\",\"answer\":0},{\"value\":\"痛\",\"answer\":5},{\"value\":\"廣\",\"answer\":5},{\"value\":\"區\",\"answer\":4},{\"value\":\"趟\",\"answer\":0},{\"value\":\"閃\",\"answer\":3},{\"value\":\"同\",\"answer\":3},{\"value\":\"圍\",\"answer\":1},{\"value\":\"團\",\"answer\":1},{\"value\":\"回\",\"answer\":1},{\"value\":\"國\",\"answer\":1},{\"value\":\"圓\",\"answer\":1},{\"value\":\"淼\",\"answer\":2},{\"value\":\"森\",\"answer\":2},{\"value\":\"焱\",\"answer\":2},{\"value\":\"磊\",\"answer\":2},{\"value\":\"晶\",\"answer\":2}]},{\"gameLogic\":3,\"gameStage\":9,\"hint\":\"1:左右相等, 2:左小右大, 3:左大右小, 4:上下相等, 5:上小下大, 6:上大下小, 7:半包, 8:全包, 9:品\",\"answers\":[{\"index\":0,\"image\":\"an_LR\"},{\"index\":1,\"image\":\"an_LsR\"},{\"index\":2,\"image\":\"an_sLR\"},{\"index\":3,\"image\":\"an_UB\"},{\"index\":4,\"image\":\"an_sUB\"},{\"index\":5,\"image\":\"an_UsB\"},{\"index\":6,\"image\":\"an_BL\"},{\"index\":7,\"image\":\"an_warp\"},{\"index\":8,\"image\":\"an_tngl\"},{\"index\":9,\"image\":\"an_hfB\"},{\"index\":10,\"image\":\"an_hfR\"},{\"index\":11,\"image\":\"an_UL\"}],\"items\":[{\"value\":\"明\",\"answer\":0},{\"value\":\"放\",\"answer\":0},{\"value\":\"叫\",\"answer\":0},{\"value\":\"洗\",\"answer\":2},{\"value\":\"喝\",\"answer\":2},{\"value\":\"拍\",\"answer\":2},{\"value\":\"到\",\"answer\":1},{\"value\":\"剛\",\"answer\":1},{\"value\":\"鄰\",\"answer\":1},{\"value\":\"岩\",\"answer\":3},{\"value\":\"樂\",\"answer\":3},{\"value\":\"香\",\"answer\":3},{\"value\":\"花\",\"answer\":4},{\"value\":\"箏\",\"answer\":4},{\"value\":\"前\",\"answer\":4},{\"value\":\"烈\",\"answer\":5},{\"value\":\"盟\",\"answer\":5},{\"value\":\"書\",\"answer\":5},{\"value\":\"遊\",\"answer\":6},{\"value\":\"痛\",\"answer\":11},{\"value\":\"廣\",\"answer\":11},{\"value\":\"區\",\"answer\":10},{\"value\":\"趟\",\"answer\":6},{\"value\":\"閃\",\"answer\":9},{\"value\":\"同\",\"answer\":9},{\"value\":\"圍\",\"answer\":7},{\"value\":\"團\",\"answer\":7},{\"value\":\"回\",\"answer\":7},{\"value\":\"國\",\"answer\":7},{\"value\":\"圓\",\"answer\":7},{\"value\":\"淼\",\"answer\":8},{\"value\":\"森\",\"answer\":8},{\"value\":\"焱\",\"answer\":8},{\"value\":\"磊\",\"answer\":8},{\"value\":\"晶\",\"answer\":8}]},{\"gameLogic\":3,\"gameStage\":5,\"hint\":\"獨體字\",\"answers\":[{\"index\":0,\"image\":\"an_n\"},{\"index\":1,\"image\":\"an_y\"}],\"items\":[{\"value\":\"冊\",\"answer\":1},{\"value\":\"飛\",\"answer\":1},{\"value\":\"雨\",\"answer\":1},{\"value\":\"鳥\",\"answer\":1},{\"value\":\"龜\",\"answer\":1},{\"value\":\"拍\",\"answer\":0},{\"value\":\"岩\",\"answer\":0},{\"value\":\"烈\",\"answer\":0},{\"value\":\"遊\",\"answer\":0},{\"value\":\"閃\",\"answer\":0},{\"value\":\"團\",\"answer\":0}]},{\"gameLogic\":3,\"gameStage\":21,\"hint\":\"部首\",\"answers\":[{\"index\":0,\"image\":\"an_whole\",\"text\":\"人\"},{\"index\":1,\"image\":\"an_whole\",\"text\":\"水\"},{\"index\":2,\"image\":\"an_whole\",\"text\":\"手\"},{\"index\":3,\"image\":\"an_whole\",\"text\":\"草\"},{\"index\":4,\"image\":\"an_whole\",\"text\":\"心\"},{\"index\":5,\"image\":\"an_whole\",\"text\":\"木\"},{\"index\":6,\"image\":\"an_whole\",\"text\":\"口\"},{\"index\":7,\"image\":\"an_whole\",\"text\":\"目\"},{\"index\":8,\"image\":\"an_whole\",\"text\":\"火\"},{\"index\":9,\"image\":\"an_whole\",\"text\":\"日\"}],\"items\":[{\"value\":\"傘\",\"answer\":0},{\"value\":\"令\",\"answer\":0},{\"value\":\"今\",\"answer\":0},{\"value\":\"洗\",\"answer\":1},{\"value\":\"清\",\"answer\":1},{\"value\":\"湖\",\"answer\":1},{\"value\":\"拿\",\"answer\":2},{\"value\":\"拳\",\"answer\":2},{\"value\":\"掌\",\"answer\":2},{\"value\":\"蕾\",\"answer\":3},{\"value\":\"苗\",\"answer\":3},{\"value\":\"芽\",\"answer\":3},{\"value\":\"想\",\"answer\":4},{\"value\":\"忍\",\"answer\":4},{\"value\":\"念\",\"answer\":4},{\"value\":\"卓\",\"answer\":5},{\"value\":\"朵\",\"answer\":5},{\"value\":\"唱\",\"answer\":6},{\"value\":\"哼\",\"answer\":6},{\"value\":\"嗽\",\"answer\":6},{\"value\":\"合\",\"answer\":6},{\"value\":\"告\",\"answer\":6},{\"value\":\"員\",\"answer\":6},{\"value\":\"另\",\"answer\":6},{\"value\":\"睛\",\"answer\":7},{\"value\":\"盼\",\"answer\":7},{\"value\":\"眠\",\"answer\":7},{\"value\":\"看\",\"answer\":7},{\"value\":\"眉\",\"answer\":7},{\"value\":\"盲\",\"answer\":7},{\"value\":\"燒\",\"answer\":8},{\"value\":\"烤\",\"answer\":8},{\"value\":\"爆\",\"answer\":8},{\"value\":\"曉\",\"answer\":9},{\"value\":\"暇\",\"answer\":9},{\"value\":\"暱\",\"answer\":9},{\"value\":\"星\",\"answer\":9},{\"value\":\"晨\",\"answer\":9},{\"value\":\"智\",\"answer\":9},{\"value\":\"普\",\"answer\":9},{\"value\":\"偉\",\"answer\":0},{\"value\":\"健\",\"answer\":0},{\"value\":\"伙\",\"answer\":0},{\"value\":\"掛\",\"answer\":2},{\"value\":\"拍\",\"answer\":2},{\"value\":\"找\",\"answer\":2},{\"value\":\"情\",\"answer\":4},{\"value\":\"慚\",\"answer\":4},{\"value\":\"惱\",\"answer\":4},{\"value\":\"材\",\"answer\":5},{\"value\":\"樟\",\"answer\":5},{\"value\":\"椰\",\"answer\":5},{\"value\":\"熱\",\"answer\":8},{\"value\":\"熟\",\"answer\":8},{\"value\":\"烹\",\"answer\":8}]}]"
+[
+    {
+      "originalSentence": [
+        "頑皮的",
+        "妹妹",
+        "把牆",
+        "畫花了。"
+      ],
+      "modifier": [
+        "頑皮的"
+      ],
+      "answer": [
+        "妹妹",
+        "把牆",
+        "畫花了。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "色彩繽紛的",
+        "蝴蝶",
+        "在花間",
+        "飛舞。"
+      ],
+      "modifier": [
+        "色彩繽紛的"
+      ],
+      "answer": [
+        "蝴蝶",
+        "在花間",
+        "飛舞。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "我",
+        "愛吃",
+        "香噴噴的",
+        "雞腿。"
+      ],
+      "modifier": [
+        "香噴噴的"
+      ],
+      "answer": [
+        "我",
+        "愛吃",
+        "雞腿。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "小寶寶",
+        "像蝸牛一樣",
+        "慢慢地",
+        "在草地上",
+        "爬行。"
+      ],
+      "modifier": [
+        "像蝸牛一樣",
+        "慢慢地"
+      ],
+      "answer":  [
+        "小寶寶",
+        "在草地上",
+        "爬行。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "彎彎的",
+        "月亮",
+        "掛在",
+        "天空上。"
+      ],
+      "modifier": [
+        "彎彎的"
+      ],
+      "answer":  [
+        "月亮",
+        "掛在",
+        "天空上。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "大地",
+        "像母親一樣",
+        "孕育了",
+        "很多生命。"
+      ],
+      "modifier": [
+        "像母親一樣"
+      ],
+      "answer": [
+        "大地",
+        "孕育了",
+        "很多生命。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "令人期待的",
+        "聖誕節",
+        "到了，",
+        "大廈",
+        "都掛上了",
+        "五光十色的",
+        "燈飾。"
+      ],
+      "modifier": [
+        "令人期待的",
+        "五光十色的"
+      ],
+      "answer": [
+        "聖誕節",
+        "到了，",
+        "大廈",
+        "都掛上了",
+        "燈飾。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "我",
+        "飛快地",
+        "把",
+        "冰凍的",
+        "可樂",
+        "喝掉。"
+      ],
+      "modifier": [
+        "飛快地",
+        "冰凍的"
+      ],
+      "answer": [
+        "我",
+        "把",
+        "可樂",
+        "喝掉。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "橙紅色的",
+        "太陽",
+        "從",
+        "平靜的",
+        "海面上",
+        "緩緩",
+        "升起。"
+      ],
+      "modifier": [
+        "橙紅色的",
+        "平靜的",
+        "緩緩"
+      ],
+      "answer": [
+        "太陽",
+        "從",
+        "海面上",
+        "升起。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "翠綠的",
+        "山坡旁",
+        "是",
+        "红色的",
+        "花海。"
+      ],
+      "modifier": [
+        "翠綠的",
+        "红色的"
+      ],
+      "answer": [
+        "山坡旁",
+        "是",
+        "花海。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "媽媽",
+        "給我買了",
+        "一套",
+        "漂亮的",
+        "新校服，",
+        "有",
+        "潔白的",
+        "襯衣、",
+        "藍色的",
+        "褲子",
+        "和",
+        "紅色的",
+        "領帶。"
+      ],
+      "modifier": [
+        "漂亮的",
+        "潔白的",
+        "藍色的",
+        "紅色的"
+      ],
+      "answer": [
+        "媽媽",
+        "給我買了",
+        "一套",
+        "新校服，",
+        "有",
+        "襯衣、",
+        "褲子",
+        "和",
+        "領帶。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "樹木",
+        "仿似",
+        "一把大傘，",
+        "為花草們",
+        "遮蔭擋雨。"
+      ],
+      "modifier": [
+        "仿似","一把大傘"
+      ],
+      "answer": [
+        "樹木",
+        "為花草們",
+        "遮蔭擋雨。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "漆黑的",
+        "夜空下",
+        "有一間",
+        "燈火通明的",
+        "小屋。"
+      ],
+      "modifier": [
+        "漆黑的",
+        "燈火通明的"
+      ],
+      "answer": [
+        "夜空下",
+        "有一間",
+        "小屋。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "炎熱的",
+        "夏天",
+        "到來了，",
+        "市民",
+        "興致勃勃地",
+        "湧到",
+        "沙灘",
+        "遊玩。"
+      ],
+      "modifier": [
+        "炎熱的",
+        "興致勃勃地"
+      ],
+      "answer": [
+        "夏天",
+        "到來了，",
+        "市民",
+        "湧到",
+        "沙灘",
+        "遊玩。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "我們",
+        "沿着",
+        "彎彎曲曲的",
+        "小徑",
+        "走出了",
+        "茂密的",
+        "樹林。"
+      ],
+      "modifier": [
+        "彎彎曲曲的",
+        "茂密的"
+      ],
+      "answer": [
+        "我們",
+        "沿着",
+        "小徑",
+        "走出了",
+        "樹林。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "奇奇",
+        "像一隻",
+        "小貓，",
+        "懶洋洋地",
+        "躺在",
+        "梳化上。"
+      ],
+      "modifier": [
+        "像一隻小貓",
+        "懶洋洋地"
+      ],
+      "answer": [
+        "奇奇",
+        "躺在",
+        "梳化上。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "小狗",
+        "不停地",
+        "擺動",
+        "短短的",
+        "尾巴。"
+      ],
+      "modifier": [
+        "不停地",
+        "短短的"
+      ],
+      "answer":  [
+        "小狗",
+        "擺動",
+        "尾巴。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "風一吹，",
+        "大門",
+        "砰的",
+        "一聲",
+        "關上了。"
+      ],
+      "modifier": [
+        "砰的",
+        "一聲"
+      ],
+      "answer": [
+        "風一吹，",
+        "大門",
+        "關上了。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "撲通一聲，",
+        "受驚的",
+        "小青蛙",
+        "跳進",
+        "水裏去。"
+      ],
+      "modifier": [
+        "撲通一聲，",
+        "受驚的"
+      ],
+      "answer": [
+        "小青蛙",
+        "跳進",
+        "水裏去。"
+      ]
+    },
+    {
+      "originalSentence": [
+        "綿羊",
+        "有一身",
+        "像綿花一樣",
+        "雪白的",
+        "羊毛。"
+      ],
+      "modifier": [
+        "像綿花一樣",
+        "雪白的"
+      ],
+      "answer": [
+        "綿羊",
+        "有一身",
+        "羊毛。"
+      ]
+    }
+  ]

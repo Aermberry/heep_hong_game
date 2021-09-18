@@ -8,7 +8,7 @@ export default class Answers {
         this.selectItems = [];
         this.selectItems2 = [];
         this.item = item;
-     
+
         let afterItem = this.shuffleArray(this.item);
         this.answersStartPoint = [];
         this.errorFrequency = 0;
@@ -125,7 +125,9 @@ export default class Answers {
                 answers.push(item.last.text);
             })
             if (answers.join('|') == this.item.join('|')) {
-                this.winnerHandler();
+                this.scene.doneBtn.destroy();
+
+                this.goodEnd();
             } else {
                 this.errorFrequency++;
 
@@ -137,7 +139,8 @@ export default class Answers {
                         item.container.y = this.answersStartPoint[index].y
                     }
                 })
-                if (this.errorFrequency > 2) {
+                if (this.errorFrequency > 1) {
+                    this.scene.doneBtn.destroy();
                     this.badEnd();
                 }
             }
@@ -151,10 +154,24 @@ export default class Answers {
                     item.container.y = this.answersStartPoint[index].y
                 }
             })
-            if (this.errorFrequency > 2) {
+            if (this.errorFrequency > 1) {
+                this.scene.doneBtn.destroy();
                 this.badEnd();
             }
         }
+
+    }
+
+    goodEnd() {
+        let x2 = 770;
+        let y2 = 675;
+        if (this.selectItems2.length < 4) {
+            let differNum = 4 - this.selectItems2.length;
+            for (let i = 0; i < differNum; i++) {
+                new Road(this.scene, x2 + (243 * (this.selectItems2.length + i)), y2, '')
+            }
+        }
+        setTimeout(this.winnerHandler, 5000);
 
     }
 

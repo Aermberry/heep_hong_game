@@ -94,6 +94,8 @@ export default class Answers {
                 answers.push(item.last.text);
             })
             if (answers.join('|') == this.item.join('|')) {
+                this.scene.doneBtn.destroy();
+
                 this.winnerHandler();
             } else {
                 this.errorFrequency++;
@@ -104,7 +106,8 @@ export default class Answers {
                         item.container.y = this.answersStartPoint[index].y
                     }
                 })
-                if (this.errorFrequency > 2) {
+                if (this.errorFrequency > 1) {
+                    this.scene.doneBtn.destroy();
                     this.badEnd();
                 }
             }
@@ -117,7 +120,8 @@ export default class Answers {
                     item.container.y = this.answersStartPoint[index].y
                 }
             })
-            if (this.errorFrequency > 2) {
+            if (this.errorFrequency > 1) {
+                this.scene.doneBtn.destroy();
                 this.badEnd();
             }
         }
@@ -141,6 +145,7 @@ export default class Answers {
             item.x = x + (243 * index)
             item.y = y
         })
+
 
         setTimeout(this.winnerHandler, 3000);
 

@@ -96,9 +96,9 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.blankRoad)
         sky.play('sun');
         let exitBtn = new ExitBtn(this, 120, 135);
-        let doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
+        this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
         this.add.existing(exitBtn);
-        this.add.existing(doneBtn);   
+        this.add.existing(this.doneBtn);   
 
     }
 

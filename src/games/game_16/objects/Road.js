@@ -1,7 +1,7 @@
 
 export default class Road {
 
-    constructor(scene, x, y, item,) {
+    constructor(scene, x, y, item, onDragHandler, onEndDragHandler) {
         this.inPosition = {
             x,
             y
@@ -26,14 +26,16 @@ export default class Road {
             that.container.setDepth(100)
             that.container.x = dragX;
             that.container.y = dragY;
+            onDragHandler(dragX, dragY)
         });
 
         this.container.on('dragend', function (pointer, dragX, dragY, dropped) {
             that.container.setDepth(4)
             if (!dropped) {
-                that.container.x =  that.container.input.dragStartX;
-                that.container.y =  that.container.input.dragStartY;
+                that.container.x = that.container.input.dragStartX;
+                that.container.y = that.container.input.dragStartY;
             }
+            onEndDragHandler(dragX, dragY)
         });
 
 

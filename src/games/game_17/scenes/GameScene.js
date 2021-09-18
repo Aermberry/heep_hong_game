@@ -14,8 +14,14 @@ export default class GameScene extends BasicScene {
     }
 
 
-    init() {
-        
+    init(data) {
+        if(data.level) {
+            this.pastProblems = data.pastProblems;
+            this.currentLevel = data.level;
+        } else {
+            this.pastProblems = [];
+            this.currentLevel = 1;
+        }
         this.dataModal = this.sys.game.globals.model;
 
     }
@@ -71,7 +77,22 @@ export default class GameScene extends BasicScene {
         ];
         let curve = new Phaser.Curves.Spline(points);
         this.car = this.add.follower(curve, this.getColWidth(0.5), this.getRowHeight(4.5), `car_${parseInt(Math.random() * (6 - 1 + 1) + 1, 10)}`).setDepth(10)
-        this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.winnerCallBack.bind(this));
+        
+        
+        let data = this.dataModal.gameItems;
+        this.pastProblems.forEach((item) => {
+            data = data.filter((problems) => {
+                if(item.join('|') !== problems.join('|')) {
+                    return problems
+                }
+            })
+        })
+
+        data.splice(data.indexOf(this.pastProblems), 0);
+        let item = data[Math.floor(Math.random() * data.length)];
+        this.pastProblems.push(item)
+
+        this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.winnerCallBack.bind(this), item);
         this.blankRoad1 = new BlankRoad(this, this.getColWidth(4.34), this.getRowHeight(4.8));
         this.blankRoad2 = new BlankRoad(this, this.getColWidth(7.1), this.getRowHeight(7.5));
         this.add.existing(this.answers)
@@ -85,7 +106,7 @@ export default class GameScene extends BasicScene {
 
     winnerCallBack() {
         setTimeout(() => {
-            this.scene.start('End')
+          this.endGame()
         }, 3000)
         this.car.startFollow({
             duration: 3000,
@@ -94,6 +115,17 @@ export default class GameScene extends BasicScene {
             rotateToPath: false,
             verticalAdjust: false
         })
+    }
+
+    endGame() {
+        if(this.currentLevel == 5) {
+            this.scene.start('End')
+        } else {
+            this.scene.start('Game', { 
+                level: this.currentLevel + 1,
+                pastProblems: this.pastProblems
+            })
+        }
     }
 
 

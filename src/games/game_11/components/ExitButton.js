@@ -13,4 +13,9 @@ export default class ExitButton extends BasicButton {
   onClick(){
     window.history.back();
   }
+
+  down(clickEvent) {
+    this.origSprite.setFrame(1)
+    super.down(clickEvent)
+  }
 }

@@ -14,4 +14,9 @@ export default class RetryBtn extends BasicButton {
         this.scene.scene.start('Tutor')
     }
 
+    down(clickEvent) {
+        this.origSprite.setFrame(1)
+        super.down(clickEvent)
+      }
+
 }

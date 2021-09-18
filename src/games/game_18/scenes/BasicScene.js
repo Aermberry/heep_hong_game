@@ -15,7 +15,6 @@ export default class BasicScene extends Phaser.Scene {
     }
 
     buildBg(bg) {
-        console.log(bg);
         if(typeof bg === 'string') {
             this.bg = this.add.image(0, 0, bg);
             this.bg.setDisplaySize(this.game.scale.width, this.game.scale.height);

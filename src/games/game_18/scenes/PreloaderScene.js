@@ -51,7 +51,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('strBtn', require('../assets/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('extBtn', require('../assets/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('speakerBtn',require('../assets/btn_speaker.png'), { frameWidth: 35, frameHeight: 40 });
+        this.load.spritesheet('speakerBtn',require('../assets/btn_speaker.png'), { frameWidth: 187, frameHeight: 225 });
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
         this.createProgressBar();

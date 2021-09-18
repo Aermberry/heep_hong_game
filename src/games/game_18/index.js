@@ -32,14 +32,13 @@ class Game2 extends Phaser.Game {
 
     // private globals: { model: Model }
 
-    constructor(config) {
+    constructor(config,urlParams) {
         super(config);
         let model = new Model()
         this.globals = {
             model
         }
-
-        // this.globals.model.gameStage = urlParams.sid;
+        this.globals.model.gameStage = urlParams.sid;
     }
 }
 
@@ -47,7 +46,6 @@ class Game2 extends Phaser.Game {
 function launch(urlParams) {
 
     let game = new Game2(gameConfig, urlParams)
-    console.log(urlParams)
     return game
 }
 

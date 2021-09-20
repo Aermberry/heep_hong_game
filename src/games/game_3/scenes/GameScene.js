@@ -196,7 +196,7 @@ console.log('gameStage',this.dataModal.gameStage);
     }
 
     answerSelected(catHand) {
-
+        console.log(catHand);
         //Need to make sure the catHand is collide with text broad
 
         if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) {

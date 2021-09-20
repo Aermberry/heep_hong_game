@@ -15,7 +15,6 @@ export default class BasicScene extends Phaser.Scene {
     }
 
     buildBg(bg) {
-        console.log(bg);
         if(typeof bg === 'string') {
             this.bg = this.add.image(0, 0, bg);
             this.bg.setDisplaySize(this.game.scale.width, this.game.scale.height);
@@ -58,9 +57,7 @@ export default class BasicScene extends Phaser.Scene {
 
         if(atlas != null) {
             Object.keys(atlas).forEach((fileName) => {
-                console.log(fileName,atlas[fileName]['img'], atlas[fileName]['data'])
                 this.load.atlas(fileName, atlas[fileName]['img'], atlas[fileName]['data'])
-                console.log(fileName, atlas[fileName]['img'], atlas[fileName]['data']);
             })
         }
 

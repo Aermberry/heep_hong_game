@@ -182,14 +182,12 @@ console.log('gameStage',this.dataModal.gameStage);
         if (this.disableInput == true) return;
 
         if(this.bam.isInside({ x: gameObject.x, y: gameObject.y}) && this.handInBroad == false) {
-
             this.handInBroad = true;
             this.bam.onHover();
 
         }
 
         if(!this.bam.isInside({ x: gameObject.x, y: gameObject.y}) && this.handInBroad == true) {
-         
             this.handInBroad = false;
             this.bam.onLeave();
             

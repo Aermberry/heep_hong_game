@@ -53,7 +53,17 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.paintGameScene(this);
+
+
+        // var emitter=new Phaser.Events.EventEmitter();
+        // this.bg.on('addImage',this.handler,this);
+
+        // emitter.emit('addImage',200,300);
     }
+
+    // handler(x,y){
+    //     this.add.image(x,y,'stageSmallTooth');
+    // }
 
     /**
      * generate a question from the local question data
@@ -113,7 +123,6 @@ export default class GameScene extends BasicScene {
         for (let index = 0; index < question.originalSentence.length; index++) {
             const element = question.originalSentence[index];
 
-            // console.log(container.getAll())
             if (element.length > 3) {
                 currentTooth = new BigTooth(this, nextToothOffsetX, 680, element, 'stageBigTooth')
 
@@ -174,10 +183,10 @@ export default class GameScene extends BasicScene {
         this.playLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
-        this.gameFailedLayer = this.add.layer().setDepth(1).setVisible(false);
+        this.gameFailedLayer = this.add.layer().setDepth(1);
 
         this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
-        this.gameFailed = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'bgGameFailed').setScale(0.4)
+        this.gameFailed = this.add.image(this.getColWidth(5), this.getRowHeight(4), 'bgGameFailed').setScale(0.4);
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question)
         this.dragContainer = this.add.container(0, 0, [

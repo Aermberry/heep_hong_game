@@ -22,12 +22,40 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
 
         self.add([this.stageSlaverSprite, this.dropZone]);
 
-        this.addDropEventListener(scene, this.checkAnswer, question, self)
+        this.addDropEventListener(scene, this.checkAnswer, question, self);
+
+        this.addSuccessEventListener(scene);
+        this.addFailedEventListener(scene);
+
     }
 
-
+    /*
+     *
+        set drop event listener
+      */
     addDropEventListener(scene, callback, question, self) {
         scene.input.on('drop', (pointer, gameObject, dropZone) => callback(pointer, gameObject, dropZone, scene, question, self))
+    }
+
+    /*
+     * 
+        set success event listener
+     */
+    addSuccessEventListener(scene) {
+        this.on('gameSuccess', () => {
+            scene.scene.start('End')
+        })
+    }
+
+    /*
+     * 
+       set failed event listener
+     */
+    addFailedEventListener(scene) {
+        this.on('gameFailed', () => {
+            console.log('failed')
+            scene.paintGameFailed()
+        })
     }
 
     /** 
@@ -58,17 +86,14 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
             gameObject.input.enabled = false;
 
             if (self.count('visible', true) - 2 == question.modifier.length) {
-                /**
-                 * 繪製新頁面 
-                 * 
-                 */
-                console.log("繪製新頁面 ")
+                self.emit('gameSuccess')
             }
         } else {
             gameObject.x = gameObject.originPoint.originPointX
             gameObject.y = gameObject.originPoint.originPointY
 
             /* 顯示打錯的頁面 */
+            self.emit('gameFailed')
         }
     }
 

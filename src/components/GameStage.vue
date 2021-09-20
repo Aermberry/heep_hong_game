@@ -14,8 +14,7 @@
 <style>
   @font-face {
     font-family: "Custom-Han-Serif";
-    src: local("Custom-Han-Serif"),
-    url(../games/game_3/assets/font/game_3.ttf) format("truetype");
+    src: url(../games/game_3/assets/font/game_3.ttf) format("truetype");
   }
 </style>
 
@@ -49,7 +48,7 @@ export default {
         const game = await import('@/games/game_'+self.gameID+'/index')
         self.downloaded = true
         self.$nextTick(() => {
-          self.gameInstance = game.launch(self.$route.params)
+          self.gameInstance = game.launch(self.$route.params)          
         })
       }
     }catch (e){

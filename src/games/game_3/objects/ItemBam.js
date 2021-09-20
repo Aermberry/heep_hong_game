@@ -17,10 +17,10 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.bamImgBad = scene.add.image(0, 0, 'itemBamBad')
         this.rock = scene.add.image(0, this.bamImg.width *0.6, 'bg_rock')
 
-        this.whiteBroad = new ItemPic(scene, 0, 0, item, this.bamImg.width * 0.8, this.bamImg.height * 0.8)
+        this.whiteBroad = new ItemPic(scene, 0, 0, item, this.bamImg.width * 0.7, this.bamImg.height * 0.7)
 
 
-        this.whiteBroad.setAlpha(0)
+        // this.whiteBroad.setAlpha(0)
         this.bamImgBad.setAlpha(0)
 
 
@@ -98,7 +98,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
     }
 
     moveIn() {
-        this.scene.tweens.add({
+        return this.scene.tweens.add({
             targets: this,
             x: this.inPosition.x,
             y: this.inPosition.y,
@@ -106,14 +106,6 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             ease: 'Power2'
 
         })
-
-        return this.scene.tweens.add({
-            targets: this.whiteBroad,
-            alpha: 1,
-            delay:800,
-            duration: 400,
-            ease: 'Power2'
-        });
 
     }
 
@@ -261,7 +253,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
                     this.scene.tweens.add({
                         targets: [this.whiteBroad],
                         alpha: 0,
-                        delay: 500,
+                        delay: 2000,
                         duration: 400,
                         ease: 'Power2'
                     })

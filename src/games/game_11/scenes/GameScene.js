@@ -121,7 +121,7 @@ export default class GameScene extends BasicScene {
         //     nextToothOffsetX += previousToothWidth
         // })
 
-        for (let index = 0; index < question.originalSentence.length; index++) {
+        for (let index = 1; index < question.originalSentence.length; index++) {
             const element = question.originalSentence[index];
 
             if (element.length > 3) {
@@ -131,16 +131,18 @@ export default class GameScene extends BasicScene {
                 currentTooth = new SmallTooth(this, nextToothOffsetX, 680, element, 'stageBigTooth')
             }
 
-
-
+            console.log("-----------------")
+            console.log("x:"+currentTooth.x)
+            console.log("y:"+currentTooth.y)
+            console.log("-----------------")
             container.add(currentTooth);
 
             currentToothWidth = currentTooth.getImageWidth();
 
 
 
-            if (index != 0) {
-                console.log(container.getAll()[index - 1])
+            // if (index != 0) {
+            //     console.log(container.getAll()[index - 1])
 
 
                 if (currentToothWidth != container.getAll()[index - 1].getImageWidth()) {
@@ -156,7 +158,7 @@ export default class GameScene extends BasicScene {
                 else {
                     previousToothWidth = currentToothWidth;
                 }
-            }
+            // }
             nextToothOffsetX += previousToothWidth
         }
 

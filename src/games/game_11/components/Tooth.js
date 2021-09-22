@@ -68,10 +68,6 @@ export default class Tooth extends Phaser.GameObjects.Container {
         })  
     }
 
-    getImageWidth() {
-        return this.toothTexture.displayWidth;
-    }
-
     changeStyle(scale,fontSize){
         this.toothTexture.setScale(scale);
         this.labelText.setFontSize(fontSize);

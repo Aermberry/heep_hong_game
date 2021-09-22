@@ -53,6 +53,7 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.paintGameScene(this);
+        // this.paintGameFailed()
 
 
         // var emitter=new Phaser.Events.EventEmitter();
@@ -169,8 +170,25 @@ export default class GameScene extends BasicScene {
         this.playLayer.setVisible(false);
         this.uiLayer.setVisible(false);
 
-        this.gameFailed.setVisible(true);
+        this.buildBg('bgProgressGame')
 
+        this.retryButton = new RetryBtn(this, this.cameras.main.width / 2+80, this.cameras.main.height / 2+180);
+        this.gameFailedLayer = this.add.layer().setDepth(1);
+        this.gameFailed = this.add.image(1450, 350, 'bgGameFailed').setScale(0.35);
+
+        this.failedText = this.make.text({
+            x: this.cameras.main.width / 2,
+            y: this.cameras.main.height / 2,
+            text: '失败了',
+            style: {
+                font: '60px',
+                fill: '#fff'
+            }
+        });
+        console.log(this.cameras.main.width / 2);
+        console.log(this.cameras.main.height / 2);
+
+        this.gameFailedLayer.add([this.gameFailed, this.retryButton, this.failedText,this.exitButton]);
     }
 
 
@@ -183,10 +201,12 @@ export default class GameScene extends BasicScene {
         this.playLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
-        this.gameFailedLayer = this.add.layer().setDepth(1);
+
+
+
 
         this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
-        this.gameFailed = this.add.image(this.getColWidth(5), this.getRowHeight(4), 'bgGameFailed').setScale(0.4);
+
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question)
         this.dragContainer = this.add.container(0, 0, [
@@ -196,11 +216,10 @@ export default class GameScene extends BasicScene {
         this.exitButton = new ExitButton(this, 120, 135);
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer);
-        this.retryButton = new RetryBtn(this, this.getColWidth(10), this.getRowHeight(11));
+
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
         this.playLayer.add([this.dropContainer, this.dragContainer])
         this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
-        this.gameFailedLayer.add([this.gameFailed]);
     }
 }

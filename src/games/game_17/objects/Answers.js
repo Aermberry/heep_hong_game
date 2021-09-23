@@ -53,11 +53,14 @@ export default class Answers {
                 if (!arr.includes(gameObject)) {
                     arr.push(gameObject);
                 }
+
                 arr.sort(that.sortY);
+
+
                 that.selectItems = arr.slice(0, 4)
                 that.selectItems2 = arr.slice(4)
                 if (that.selectItems2.length >= 2) {
-                    if (!that.selectItems2[0].y - that.selectItems2[1].y) {
+                    if (that.selectItems2[1].y - that.selectItems2[0].y >= 675 - 432) {
                         that.selectItems2[0].x = that.selectItems2[1].x - 1;
                     }
                 }

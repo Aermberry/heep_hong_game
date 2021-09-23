@@ -42,7 +42,7 @@ export default class Model {
 
             console.log('Game Stage void, set to default stage.')
             
-            return [...this._gameData[0].items];
+            return [...this._gameData[0].gameData];
 
         }
 

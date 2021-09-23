@@ -43,11 +43,24 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      */
     addSuccessEventListener(scene) {
         this.on('gameSuccess', () => {
+
+            let gamePlayTotal = JSON.parse(localStorage.getItem('gamePlayTotal'));
             scene.paintGameSuccess()
-            // scene.time.addEvent({
-            //     delay: 500,
-            //     callback: () => scene.scene.start('End')
-            // })
+            
+            if (gamePlayTotal == 0) {
+                
+                scene.time.addEvent({
+                    delay: 5000,
+                    callback: () => scene.scene.start('End')
+                })
+            } else {
+                localStorage.setItem('gamePlayTotal', JSON.stringify(gamePlayTotal - 1));
+                scene.time.addEvent({
+                    delay: 5000,
+                    callback: () => scene.scene.start('Game')
+                })
+            }
+
         })
     }
 

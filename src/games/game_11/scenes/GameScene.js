@@ -32,16 +32,20 @@ export default class GameScene extends BasicScene {
         this.question = undefined
         this.dragContainer = undefined
         this.dropContainer = undefined
+        this.moveStep = undefined
+        this.questionIndex = undefined
+        this.questionNumberList = []
     }
 
     preload() {
 
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
-        this.preloadFromArr({
-            sound: this.sound.add('drums').setLoop(true).play()
-        });
+        // this.preloadFromArr({
+        // sound: this.sound.add('drums').setLoop(true).play()
+        // });
 
-        this.question = this.generateQuestion(this.localRepository.loadData());
+        this.question = this.generateQuestion();
+        console.log(this.questionIndex)
 
         this.createProgressBar();
 
@@ -52,18 +56,35 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.paintGameScene(this);
+
+        // this.input.setDefaultCursor('url(assets/images/cursor_hand.cur), pointer');
     }
 
     /**
      * generate a question from the local question data
      * 从题库中随机抽取一道题目
       */
-    generateQuestion(data) {
-        if (data != undefined) {
-            return data[Phaser.Math.Between(0, data.length)];
+    generateQuestion() {
+
+        let errorQuestionIndex = JSON.parse(localStorage.getItem('errorQuestionIndex'));
+
+        if (errorQuestionIndex == null) {
+            this.questionNumberList = JSON.parse(localStorage.getItem('questionNumberList'));
+            this.questionIndex = this.questionNumberList[Phaser.Math.Between(0, this.questionNumberList.length)]
+            console.log("新题目")
+
         } else {
-            console.log('ddddddd')
+            this.questionIndex = errorQuestionIndex;
+            console.log(errorQuestionIndex);
+            console.log("错题目 重做")
+
         }
+
+        console.log(JSON.parse(localStorage.getItem(this.questionIndex)))
+
+        return JSON.parse(localStorage.getItem(this.questionIndex));
+
+
     }
 
     /* 
@@ -84,6 +105,8 @@ export default class GameScene extends BasicScene {
 
         let bigToothWidth = bigTooth.displayWidth;
         let smallToothWidth = smallTooth.displayWidth;
+
+        this.moveStep = (bigToothWidth + smallToothWidth) / 2
 
         bigTooth.destroy();
         smallTooth.destroy();
@@ -132,18 +155,22 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameSuccess() {
-        this.dragContainer.removeAt(0,true)
+        this.questionNumberList.slice(this.questionIndex, 1);
+        localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
+        this.dragContainer.removeAt(0, true)
         this.dragContainer.addAt(this.pintTooth(this.question.answer), 0);
     }
 
     paintGameFailed() {
+
+        localStorage.setItem('errorQuestionIndex', JSON.stringify(this.questionIndex));
 
         this.playLayer.setVisible(false);
         this.uiLayer.setVisible(false);
 
         this.buildBg('bgProgressGame')
 
-        this.retryButton = new RetryBtn(this, this.cameras.main.width / 2 + 80, this.cameras.main.height / 2 + 180);
+        this.retryButton = new RetryBtn(this, this.cameras.main.width / 2 + 80, this.cameras.main.height / 2 + 180, 'Game');
         this.gameFailedLayer = this.add.layer().setDepth(1);
         this.gameFailed = this.add.image(1450, 350, 'bgGameFailed').setScale(0.35);
 
@@ -156,8 +183,6 @@ export default class GameScene extends BasicScene {
                 fill: '#fff'
             }
         });
-        console.log(this.cameras.main.width / 2);
-        console.log(this.cameras.main.height / 2);
 
         this.gameFailedLayer.add([this.gameFailed, this.retryButton, this.failedText, this.exitButton]);
     }
@@ -182,9 +207,13 @@ export default class GameScene extends BasicScene {
             this.crocodileMouth]);
 
         this.exitButton = new ExitButton(this, 120, 135);
-        this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer);
-        this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer);
+        this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
+        this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
 
+        console.log('--------')
+        console.log(this.dragContainer.x);
+        console.log(this.dragContainer.y);
+        console.log('--------')
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
         this.playLayer.add([this.dropContainer, this.dragContainer])

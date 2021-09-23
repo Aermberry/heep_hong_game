@@ -1,6 +1,7 @@
 import BasicScene from "./BasicScene"
 import StartButton from "../components/StartButton"
 import ExitButton from '../components/ExitButton'
+import LocalRepository from "../repository/LocalRepository"
 
 export default class TutorSecene extends BasicScene {
 
@@ -11,9 +12,11 @@ export default class TutorSecene extends BasicScene {
 
         this.buttonLayer = undefined;
         this.backgroundLayer = undefined;
+        this.localRepository = new LocalRepository()
+        this.questionNumberList = [];
     }
 
-    create() {
+    async create() {
 
         super.create();
 
@@ -23,7 +26,17 @@ export default class TutorSecene extends BasicScene {
         this.sound.stopAll();
 
         this.#paintGameScene();
+        localStorage.clear();
+        localStorage.setItem('gamePlayTotal', JSON.stringify(5));
 
+        this.questions = await this.localRepository.loadData();
+
+        for (const key in this.questions) {
+            localStorage.setItem(key, JSON.stringify(this.questions[key]));
+            this.questionNumberList.push(key)
+        }
+
+        localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
     }
 
 

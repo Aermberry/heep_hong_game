@@ -6,7 +6,7 @@ export default class LocalRepository {
        加载本地数据
        load game data from json file
      */
-    loadData() {
+    async loadData() {
         return require('../assets/json/QuestionData.json')
     }
 }

@@ -4,7 +4,6 @@ import LeftMoveButton from '../components/LeftMoveButton'
 import RightMoveButton from '../components/RightMoveButton'
 import BigTooth from "../components/BigTooth"
 import SmallTooth from "../components/SmallTooth"
-import LocalRepository from "../repository/LocalRepository"
 import Phaser from 'phaser'
 
 import AnswerDropZone from "../components/AnswerDropZone"
@@ -28,7 +27,6 @@ export default class GameScene extends BasicScene {
         this.crocodileMouth = undefined
         this.gameFailed = undefined
         this.gameFailedLayer = undefined
-        this.localRepository = new LocalRepository()
         this.question = undefined
         this.dragContainer = undefined
         this.dropContainer = undefined

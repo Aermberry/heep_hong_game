@@ -31,6 +31,8 @@ export default class Road {
 
         this.container.on('dragend', function (pointer, dragX, dragY, dropped) {
             that.container.setDepth(4)
+            let music = scene.sound.add('seal');
+            music.play();
             if (!dropped) {
                 that.container.x =  that.container.input.dragStartX;
                 that.container.y =  that.container.input.dragStartY;

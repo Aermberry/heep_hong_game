@@ -138,7 +138,14 @@ export default class Answers {
                 this.goodEnd();
             } else {
                 this.errorFrequency++;
-
+                this.scene.car.play('car_1_stop');
+                let stop = this.scene.sound.add('stop');
+                stop.addMarker({
+                    name: 'stop',
+                    start: 0.1,
+                    duration: 0.5
+                });
+                stop.play('stop');
                 this.selectItems = [];
                 this.selectItems2 = [];
                 this.answers.forEach((item, index) => {
@@ -157,6 +164,14 @@ export default class Answers {
             }
         } else {
             this.errorFrequency++;
+            this.scene.car.play('car_1_stop');
+            let stop = this.scene.sound.add('stop');
+            stop.addMarker({
+                name: 'stop',
+                start: 0.1,
+                duration: 0.5
+            });
+            stop.play('stop');
             this.selectItems = [];
             this.selectItems2 = [];
             this.answers.forEach((item, index) => {

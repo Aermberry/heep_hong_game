@@ -24,10 +24,17 @@ export default class PreloaderScene extends BasicScene {
             'tut3': { img: require('../assets/img/tut_3.png'), data: require('../assets/img/tut_3.json') },
             'sun': { img: require('../assets/img/sky_bg.png'), data: require('../assets/img/sky_bg.json') },
             'end_pic':{ img: require('../assets/img/end_pic.png'), data: require('../assets/img/end_pic.json') },
+            'car_1_idle': { img: require('../assets/img/car_1.png'), data: require('../assets/img/car_1.json') },
+            'car_1_stop': { img: require('../assets/img/car_1_stop.png'), data: require('../assets/img/car_1_stop.json') },
+            'car_1_run': { img: require('../assets/img/car_1_run.png'), data: require('../assets/img/car_1_run.json') },
         }
 
         const soundFiles = {
-
+            'bgm': require('../assets/audio/Enchanted Festival_short.mp3'),
+            'seal': require('../assets/audio/蓋章.mp3'),
+            'run': require('../assets/audio/bbc_comedy-sou_07005101.mp3'),
+            'stop': require('../assets/audio/bbc_dial-999--_07045249.mp3'),
+            'end_pic': require('../assets/audio/Riverside Ride_short.mp3')
         }
 
 

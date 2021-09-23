@@ -32,7 +32,6 @@ export default class GameScene extends BasicScene {
         this.question = undefined
         this.dragContainer = undefined
         this.dropContainer = undefined
-
     }
 
     preload() {
@@ -93,9 +92,9 @@ export default class GameScene extends BasicScene {
         console.log(smallToothWidth);
 
 
-        for (let index = 0; index < question.originalSentence.length; index++) {
+        for (let index = 0; index < question.length; index++) {
 
-            const element = question.originalSentence[index];
+            const element = question[index];
 
             if (element.length > 3) {
                 currentToothWidth = bigToothWidth;
@@ -103,18 +102,6 @@ export default class GameScene extends BasicScene {
             } else {
                 currentToothWidth = smallToothWidth;
             }
-
-            // console.log("-----------------")
-            // console.log("x:" + currentTooth.x)
-            // console.log("y:" + currentTooth.y)
-            // console.log("-----------------")
-            // container.add(currentTooth);
-
-            // currentToothWidth = currentTooth.displayWidth;
-            // console.log(currentToothWidth);
-            // console.log(previousToothWidth);
-            // console.log(container.getAll());
-
 
             if (container.getAll().length > 0) {
                 console.log(index);
@@ -142,6 +129,11 @@ export default class GameScene extends BasicScene {
         console.log(container.getAll());
 
         return container
+    }
+
+    paintGameSuccess() {
+        this.dragContainer.removeAt(0,true)
+        this.dragContainer.addAt(this.pintTooth(this.question.answer), 0);
     }
 
     paintGameFailed() {
@@ -181,15 +173,12 @@ export default class GameScene extends BasicScene {
         this.uiLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-
-
-
         this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
 
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question)
         this.dragContainer = this.add.container(0, 0, [
-            this.pintTooth(this.question),
+            this.pintTooth(this.question.originalSentence),
             this.crocodileMouth]);
 
         this.exitButton = new ExitButton(this, 120, 135);

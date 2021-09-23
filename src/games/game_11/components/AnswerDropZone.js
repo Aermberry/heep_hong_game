@@ -43,7 +43,11 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      */
     addSuccessEventListener(scene) {
         this.on('gameSuccess', () => {
-            scene.scene.start('End')
+            scene.paintGameSuccess()
+            // scene.time.addEvent({
+            //     delay: 500,
+            //     callback: () => scene.scene.start('End')
+            // })
         })
     }
 

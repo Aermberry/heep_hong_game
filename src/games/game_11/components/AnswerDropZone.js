@@ -55,6 +55,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
                     delay: 5000,
                     callback: () => scene.scene.start('End')
                 })
+                
             } else {
                 console.log("gamePlayTotal")
                 console.log(localStorage.getItem('gamePlayTotal'))

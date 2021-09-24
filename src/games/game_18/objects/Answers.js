@@ -47,9 +47,10 @@ export default class Answers extends Phaser.GameObjects.Container {
                         if (gameObject.type != that.answers[i].type) {
                             that.answers[i].input.draggable = true;
                         }
-                    }
-                    if (selectItems.length == 2) { //答案数组两个，表示答题正确执行盖楼动画
-                        completeAnswerAnimation();
+                        if (selectItems.length == 2) { //答案数组两个，表示答题正确执行盖楼动画
+                            that.answers[i].input.draggable = false;
+                            completeAnswerAnimation();
+                        }
                     }
                 });
             } else {

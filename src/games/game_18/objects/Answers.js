@@ -13,21 +13,27 @@ export default class Answers extends Phaser.GameObjects.Container {
         let errorNumber = 0;
         this.answers = []
         for (let i = 0; i < answer.length; i++) {
-            this.answers.push(new Question(scene, x, y + (200 * i), answer[i], i).container)
+            this.answers.push(new Question(scene, x, y + (198 * i), answer[i], i).container)
         }
         let that = this;
         scene.input.on('drop', function (pointer, gameObject, dropZone) {
             that.answers[0].input.draggable = false;
             that.answers[1].input.draggable = false;
             let type = dropZone.x == 416 ? 1 : 2; //根据位置判断主语谓语框；
-            gameObject.x = dropZone.x - 10;  //拖拽定位X
+            gameObject.x = dropZone.x - (gameObject.type == 1 ? 8 : 11);  //拖拽定位X
             gameObject.y = dropZone.y + 100; //拖拽定位Y
+            let music = that.scene.sound.add('complete')
+            music.setLoop(false)
+            music.play()
             if (gameObject.type == type) {
                 let children = [];
                 let yes = that.scene.add.sprite(0, 0, 'yes');
                 children.push(yes);
                 that.add(children);
                 that.setPosition(dropZone.x, dropZone.y - 100)
+                let music = that.scene.sound.add('yes')
+                music.setLoop(false)
+                music.play()
                 yes.play('yes').on('animationcomplete', () => {
                     selectItems.push(gameObject); //答案正确添加选择数组
                     for (var i = 0; i < that.answers.length; i++) {
@@ -46,15 +52,18 @@ export default class Answers extends Phaser.GameObjects.Container {
                 children.push(wrong);
                 that.add(children);
                 that.setPosition(dropZone.x, dropZone.y - 100)
+                let music = that.scene.sound.add('wrong')
+                music.setLoop(false)
+                music.play();
                 wrong.play('wrong').on('animationcomplete', () => {
                     if (errorNumber == 2) { //错误两次自动完成答题进入下一题；
                         for (var i = 0; i < that.answers.length; i++) {
                             if (that.answers[i].type == 1) {
-                                that.answers[i].x = 406;
-                                that.answers[i].y = 793;
+                                that.answers[i].x = 408;408 
+                                that.answers[i].y = 802;
                             } else {
-                                that.answers[i].x = 806;
-                                that.answers[i].y = 793;
+                                that.answers[i].x = 803;
+                                that.answers[i].y = 802;
                             }
                         }
                         completeAnswerAnimation();
@@ -71,10 +80,10 @@ export default class Answers extends Phaser.GameObjects.Container {
                             for (var j = 0; j < that.answers.length; j++) {
                                 that.answers[j].input.draggable = true;
                             }
-                        }else {
+                        } else {
                             gameObject.input.draggable = true;
                         }
-                        
+
                     }
 
                 });

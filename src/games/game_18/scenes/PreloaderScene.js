@@ -11,7 +11,6 @@ export default class PreloaderScene extends BasicScene {
     preload() {
 
         this.buildBg('bootBg');
-
         const imageFiles = {
             'bg': require('../assets/bg.png'),
             'btn_speaker': require('../assets/btn_speaker.png'),
@@ -40,12 +39,11 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-            // 'hit': require('../assets/audio/hit36.mp3'),
-            // 'impactSplat': require('../assets/audio/impactsplat05.mp3'),
-            // 'swing': require('../assets/audio/swing3.mp3'),
-            // 'swordUnsheathe': require('../assets/audio/sword-unsheathe5.mp3'),
-            // 'lightBattle': require('../assets/audio/light_battle_chopped.mp3'),
-            // 'drums': require('../assets/audio/taiko-drums_chopped.mp3')
+            'complete': require('../assets/audio/complete.mp3'),
+            'fanfare': require('../assets/audio/fanfare.mp3'),
+            'one_0_short': require('../assets/audio/one_0_short.mp3'),
+            'wrong': require('../assets/audio/wrong.mp3'),
+            'yes': require('../assets/audio/yes.mp3')
         }
         this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('strBtn', require('../assets/btn_str.png'), { frameWidth: 776, frameHeight: 227 });

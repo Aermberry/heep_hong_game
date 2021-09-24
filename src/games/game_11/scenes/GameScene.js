@@ -5,10 +5,9 @@ import RightMoveButton from '../components/RightMoveButton'
 import BigTooth from "../components/BigTooth"
 import SmallTooth from "../components/SmallTooth"
 import Phaser from 'phaser'
-
 import AnswerDropZone from "../components/AnswerDropZone"
 import RetryBtn from "../components/RetryButton"
-
+// import FF from '../assets/images/cursor_hand1.png'
 export default class GameScene extends BasicScene {
 
     constructor() {
@@ -33,6 +32,7 @@ export default class GameScene extends BasicScene {
         this.moveStep = undefined
         this.questionIndex = undefined
         this.questionNumberList = []
+        this.cursorHandIcon = undefined
     }
 
     preload() {
@@ -43,10 +43,10 @@ export default class GameScene extends BasicScene {
         // });
 
         this.question = this.generateQuestion();
+        this.cursorHandIcon = require('../assets/images/cursor_hand.png');
         console.log(this.questionIndex)
 
         this.createProgressBar();
-
     }
 
     create() {
@@ -55,8 +55,11 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene(this);
 
-        // this.input.setDefaultCursor('url(assets/images/cursor_hand.cur), pointer');
+        // this.input.setDefaultCursor(`url(${FF}), pointer`);
+        this.input.setDefaultCursor(`url(${this.cursorHandIcon}), pointer`);
+
     }
+
 
     /**
      * generate a question from the local question data
@@ -68,7 +71,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionNumberList = JSON.parse(localStorage.getItem('questionNumberList'));
-            this.questionIndex = this.questionNumberList[Phaser.Math.Between(0, this.questionNumberList.length)]
+            this.questionIndex = Phaser.Math.RND.pick(this.questionNumberList);
             console.log("新题目")
 
         } else {
@@ -153,13 +156,33 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameSuccess() {
-        this.questionNumberList.slice(this.questionIndex, 1);
+        console.log("-------question-------")
+        console.log(this.questionIndex)
+        console.log("-------index-------")
+
+        this.questionNumberList.splice(this.questionNumberList.indexOf(this.questionIndex), 1);
+        console.log(this.questionNumberList)
+
         localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
+
+        if (localStorage.getItem('errorQuestionIndex') != null) {
+            localStorage.removeItem('errorQuestionIndex')
+        }
+
         this.dragContainer.removeAt(0, true)
-        this.dragContainer.addAt(this.pintTooth(this.question.answer), 0);
+
+        let paintToothContainer = this.pintTooth(this.question.answer);
+
+        paintToothContainer.list.forEach((item => {
+            item.input.enabled = false;
+        }))
+
+        this.dragContainer.addAt(paintToothContainer, 0);
     }
 
     paintGameFailed() {
+
+        this.input.setDefaultCursor(`url(), auto`);
 
         localStorage.setItem('errorQuestionIndex', JSON.stringify(this.questionIndex));
 

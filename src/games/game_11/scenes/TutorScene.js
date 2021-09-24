@@ -20,7 +20,7 @@ export default class TutorSecene extends BasicScene {
 
         super.create();
 
-
+        this.input.setDefaultCursor(`url(), auto`);
 
         //Stop all sound, because game will return to this scene on retry.
         this.sound.stopAll();

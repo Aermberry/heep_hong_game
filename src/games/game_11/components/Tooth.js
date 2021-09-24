@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import CursorHand from '../assets/images/cursor_hand.png'
 
 export default class Tooth extends Phaser.GameObjects.Container {
 
@@ -33,7 +34,12 @@ export default class Tooth extends Phaser.GameObjects.Container {
         )
 
         this.setSize(this.toothTexture.displayWidth, this.toothTexture.displayHeight);
-        this.setInteractive()
+        this.setInteractive(
+            {
+                cursor: `url(${CursorHand}), pointer`,
+                // useHandCursor: true
+            }
+        )
         this.scene.input.setDraggable(this);
 
         this.on('pointerover', function () {
@@ -65,10 +71,10 @@ export default class Tooth extends Phaser.GameObjects.Container {
             }
 
 
-        })  
+        })
     }
 
-    changeStyle(scale,fontSize){
+    changeStyle(scale, fontSize) {
         this.toothTexture.setScale(scale);
         this.labelText.setFontSize(fontSize);
     }

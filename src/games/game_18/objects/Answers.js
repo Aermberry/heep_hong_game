@@ -20,8 +20,15 @@ export default class Answers extends Phaser.GameObjects.Container {
             that.answers[0].input.draggable = false;
             that.answers[1].input.draggable = false;
             let type = dropZone.x == 416 ? 1 : 2; //根据位置判断主语谓语框；
-            gameObject.x = dropZone.x - (gameObject.type == 1 ? 8 : 11);  //拖拽定位X
-            gameObject.y = dropZone.y + 100; //拖拽定位Y
+            // gameObject.x = dropZone.x - (gameObject.type == 1 ? 8 : 11);  //拖拽定位X
+            // gameObject.y = dropZone.y + 100; //拖拽定位Y
+            that.scene.tweens.add({
+                targets: gameObject,
+                x: dropZone.x - (gameObject.type == 1 ? 8 : 11),
+                y: dropZone.y + 100,
+                duration: 500,
+                ease: 'Power2'
+            })
             let music = that.scene.sound.add('complete')
             music.setLoop(false)
             music.play()
@@ -59,22 +66,50 @@ export default class Answers extends Phaser.GameObjects.Container {
                     if (errorNumber == 2) { //错误两次自动完成答题进入下一题；
                         for (var i = 0; i < that.answers.length; i++) {
                             if (that.answers[i].type == 1) {
-                                that.answers[i].x = 408;408 
-                                that.answers[i].y = 802;
+                                that.scene.tweens.add({
+                                    targets: that.answers[i],
+                                    x: 408,
+                                    y: 802,
+                                    duration: 500,
+                                    ease: 'Power2'
+                                });
+                                // that.answers[i].x = 408;
+                                // that.answers[i].y = 802;
                             } else {
-                                that.answers[i].x = 803;
-                                that.answers[i].y = 802;
+                                that.scene.tweens.add({
+                                    targets: that.answers[i],
+                                    x: 803,
+                                    y: 802,
+                                    duration: 500,
+                                    ease: 'Power2'
+                                });
+                                // that.answers[i].x = 803;
+                                // that.answers[i].y = 802;
                             }
                         }
                         completeAnswerAnimation();
                     } else {
                         //错误，复位；重新选择；
                         if (gameObject.name == 'up') {
-                            gameObject.x = x;
-                            gameObject.y = y;
+                            that.scene.tweens.add({
+                                targets: gameObject,
+                                x: x,
+                                y: y,
+                                duration: 500,
+                                ease: 'Power2'
+                            });
+                            // gameObject.x = x;
+                            // gameObject.y = y;
                         } else {
-                            gameObject.x = x;
-                            gameObject.y = y + 200;
+                            that.scene.tweens.add({
+                                targets: gameObject,
+                                x: x,
+                                y: y + 200,
+                                duration: 500,
+                                ease: 'Power2'
+                            });
+                            // gameObject.x = x;
+                            // gameObject.y = y + 200;
                         }
                         if (selectItems.length == 0) {
                             for (var j = 0; j < that.answers.length; j++) {

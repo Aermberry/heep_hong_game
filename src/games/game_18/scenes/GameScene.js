@@ -114,7 +114,7 @@ export default class GameScene extends BasicScene {
     CompleteAnswerAnimation() {
         this.currentIndex++;
         let house_a = this.add.sprite(this.getColWidth(2.6), this.getRowHeight(5.7), 'house_a');
-        let house_b = this.add.sprite(this.getColWidth(5.1), this.getRowHeight(5.7), 'house_b');
+        let house_b = this.add.sprite(this.getColWidth(5.11), this.getRowHeight(5.7), 'house_b');
         house_a.play('house_a');
         house_b.play('house_b').on('animationcomplete', () => {
             setTimeout(

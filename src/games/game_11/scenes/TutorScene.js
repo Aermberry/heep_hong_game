@@ -36,7 +36,7 @@ export default class TutorSecene extends BasicScene {
             this.questionNumberList.push(key)
         }
 
-        localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
+        localStorage.setItem('questionNumberList', JSON.stringify(Array.from(new Set(this.questionNumberList))));
     }
 
 

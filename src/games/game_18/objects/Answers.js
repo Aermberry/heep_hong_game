@@ -105,7 +105,7 @@ export default class Answers extends Phaser.GameObjects.Container {
                             that.scene.tweens.add({
                                 targets: gameObject,
                                 x: x,
-                                y: y + 200,
+                                y: y + 198,
                                 duration: 500,
                                 ease: 'Power2'
                             });

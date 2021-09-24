@@ -17,6 +17,11 @@
     src: local("Custom-Han-Serif"),
     url(../games/game_3/assets/font/game_3.ttf) format("truetype");
   }
+  @font-face {
+    font-family: "STKaitiTC-Black";
+    src: local("STKaitiTC-Black"),
+    url(../games/game_18/assets/font/game_18.ttf) format("truetype");
+  }
 </style>
 
 <script>

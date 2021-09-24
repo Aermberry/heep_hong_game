@@ -24,7 +24,7 @@ export default class Answers extends Phaser.GameObjects.Container {
             // gameObject.y = dropZone.y + 100; //拖拽定位Y
             that.scene.tweens.add({
                 targets: gameObject,
-                x: dropZone.x - (gameObject.type == 1 ? 8 : 11),
+                x: dropZone.x - (gameObject.type == 1 ? 7 : 11),
                 y: dropZone.y + 100,
                 duration: 500,
                 ease: 'Power2'
@@ -47,10 +47,11 @@ export default class Answers extends Phaser.GameObjects.Container {
                         if (gameObject.type != that.answers[i].type) {
                             that.answers[i].input.draggable = true;
                         }
-                        if (selectItems.length == 2) { //答案数组两个，表示答题正确执行盖楼动画
-                            that.answers[i].input.draggable = false;
-                            completeAnswerAnimation();
-                        }
+                    }
+                    if (selectItems.length == 2) { //答案数组两个，表示答题正确执行盖楼动画
+                        that.answers[0].input.draggable = false;
+                        that.answers[1].input.draggable = false;
+                        completeAnswerAnimation();
                     }
                 });
             } else {

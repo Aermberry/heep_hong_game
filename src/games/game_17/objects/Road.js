@@ -6,8 +6,13 @@ export default class Road {
             x,
             y
         }
-
-        let roadImg = scene.add.sprite(0, 0, 'road');
+        let roadImg;
+        if (item == null) {
+            roadImg = scene.add.sprite(0, 0, 'line_road');
+        } else {
+            roadImg = scene.add.sprite(0, 0, 'road');
+        }
+        
         let roadText = scene.add.text(-110, -20, item, {
             fontSize: '30px',
             color: '#ffffff',
@@ -31,11 +36,13 @@ export default class Road {
 
         this.container.on('dragend', function (pointer, dragX, dragY, dropped) {
             that.container.setDepth(4)
-            let music = scene.sound.add('seal');
-            music.play();
+
             if (!dropped) {
-                that.container.x =  that.container.input.dragStartX;
-                that.container.y =  that.container.input.dragStartY;
+                that.container.x = that.container.input.dragStartX;
+                that.container.y = that.container.input.dragStartY;
+            } else {
+                let music = scene.sound.add('seal');
+                music.play();
             }
             onEndDragHandler(dragX, dragY)
         });

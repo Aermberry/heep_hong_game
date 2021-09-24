@@ -1,7 +1,6 @@
 import BasicScene from "./BasicScene"
 import Answers from "../objects/Answers";
 import BlankRoad from "../objects/BlankRoad";
-import Phaser from "phaser";
 import ExitBtn from '../objects/ExitBtn'
 import DoneBtn from '../objects/DoneBtn'
 
@@ -43,20 +42,25 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'car_1_idle',
             frames: this.anims.generateFrameNames('car_1_idle', { prefix: 'car1', start: 0, end: 6, zeroPad: 4 }),
-            repeat: -1
+            repeat: -1,
+            delay: 200
+
         });
 
         this.anims.create({
             key: 'car_1_run',
             frames: this.anims.generateFrameNames('car_1_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
-            repeat: -1
+            repeat: -1,
+            delay: 200
+
         });
 
 
         this.anims.create({
             key: 'car_1_stop',
             frames: this.anims.generateFrameNames('car_1_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
-            repeat: 0
+            repeat: 0,
+            delay: 500
         });
 
 
@@ -70,6 +74,7 @@ export default class GameScene extends BasicScene {
             'doneBtn': require('../assets/img/Done.png'),
             'bg_L1': require('../assets/img/bg_L1.png'),
             'bg_L2': require('../assets/img/bg_L2.png'),
+            'line_road': require('../assets/img/road_line.png'),
             'road': require('../assets/img/road.png'),
             'blankRoad2': require('../assets/img/road2.png')
         };
@@ -88,22 +93,21 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         this.sound.stopAll();
+        this.hoverArea = [];
+
         this.buildBg('bg_L2');
-        this.music = this.sound.add('bgm')
+        this.music = this.sound.add('bgm', {
+            volume: 0.1
+        })
         this.music.setLoop(true)
         this.music.play();
 
 
         this.disableInput = false;
         let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
-        let y = this.getRowHeight(4.5);
-        let startX = this.getColWidth(0.5);
-        let points = [
-            startX, y, 1200, y, 1100, y + 100, 700, y + 100, 700, y + 240, 2000, y + 240
-        ];
-        let curve = new Phaser.Curves.Spline(points);
+   
         this.currentCar = parseInt(Math.random() * (6 - 1 + 1) + 1, 10);
-        this.car = this.add.follower(curve, this.getColWidth(0.5), this.getRowHeight(4.5), `car_${this.currentCar}`).setDepth(10)
+        this.car = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(4.5), `car_${this.currentCar}`).setDepth(10)
         // this.car = this.add.follower(curve, this.getColWidth(0.5), this.getRowHeight(4.5), `car_1_idle`).setDepth(10)
 
         // this.car.animations.add('car_1_idle', [0,1,2,3]);
@@ -131,6 +135,12 @@ export default class GameScene extends BasicScene {
 
         // this.car.play(`car_${this.currentCar}_idle`) 
         this.car.play('car_1_idle')
+        // this.car.flipX = -1
+
+        // let points = [
+        //     startX, y, 1200, y, 1100, y + 100, 700, y + 100, 700, y + 240, 2000, y + 240
+        // ];
+        
         let exitBtn = new ExitBtn(this, 120, 135);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
         this.add.existing(exitBtn);
@@ -149,13 +159,43 @@ export default class GameScene extends BasicScene {
         music.play('run1')
         setTimeout(() => {
             this.endGame()
-        }, 3000)
-        this.car.play('car_1_run').startFollow({
-            duration: 3000,
-            yoyo: false,
-            repeat: 0,
-            rotateToPath: false,
-            verticalAdjust: false
+        }, 3400)
+        this.car.play('car_1_run');
+        this.tweens.add({
+            targets: this.car,
+            x: 1200,
+            duration: 1000,
+            ease: 'Power2'
+        }).on('complete', () => {
+            this.tweens.add({
+                targets: this.car,
+                y: this.car.y + 100,
+                duration: 200,
+                ease: 'Power2'
+            }).on('complete', () => {
+                this.car.flipX = -1;
+                this.tweens.add({
+                    targets: this.car,
+                    x: 600,
+                    duration: 1000,
+                    ease: 'Power2'
+                }).on('complete', () => {
+                    this.tweens.add({
+                        targets: this.car,
+                        y: this.car.y + 140,
+                        duration: 200,
+                        ease: 'Power2'
+                    }).on('complete', () => {
+                        this.car.flipX = 0
+                        this.tweens.add({
+                            targets: this.car,
+                            x: 2000,
+                            duration: 1000,
+                            ease: 'Power2'
+                        })
+                    })
+                })
+            })
         })
     }
 

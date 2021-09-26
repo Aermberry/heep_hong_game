@@ -178,6 +178,8 @@ export default class Answers {
                             x: this.scene.car.x - 100,
                             duration: 100,
                             ease: 'Power2'
+                        }).on('complete', () => {
+                            this.scene.car.play('car_1_idle')
                         })
                     }, 4000);
                     this.answers.forEach((item, index) => {
@@ -221,6 +223,8 @@ export default class Answers {
                         x: this.scene.car.x - 100,
                         duration: 100,
                         ease: 'Power2'
+                    }).on('complete', () => {
+                        this.scene.car.play('car_1_idle')
                     })
                 }, 4000);
                 this.answers.forEach((item, index) => {

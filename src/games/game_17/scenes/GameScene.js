@@ -136,10 +136,6 @@ export default class GameScene extends BasicScene {
         // this.car.play(`car_${this.currentCar}_idle`) 
         this.car.play('car_1_idle')
         // this.car.flipX = -1
-
-        // let points = [
-        //     startX, y, 1200, y, 1100, y + 100, 700, y + 100, 700, y + 240, 2000, y + 240
-        // ];
         
         let exitBtn = new ExitBtn(this, 120, 135);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))

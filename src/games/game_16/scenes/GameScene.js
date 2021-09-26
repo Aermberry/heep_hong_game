@@ -4,6 +4,7 @@ import BlankRoad from "../objects/BlankRoad";
 import Phaser from "phaser";
 import ExitBtn from '../objects/ExitBtn'
 import DoneBtn from '../objects/DoneBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 
 export default class GameScene extends BasicScene {
     constructor() {
@@ -15,7 +16,7 @@ export default class GameScene extends BasicScene {
 
 
     init(data) {
-        if(data.level) {
+        if (data.level) {
             this.pastProblems = data.pastProblems;
             this.currentLevel = data.level;
         } else {
@@ -38,6 +39,30 @@ export default class GameScene extends BasicScene {
             delay: 200,
             frames: this.anims.generateFrameNames('sun', { prefix: 'sun', start: 0, end: 34, zeroPad: 4 }),
             repeat: -1
+        });
+
+        this.anims.create({
+            key: 'car_1_idle',
+            frames: this.anims.generateFrameNames('car_1_idle', { prefix: 'car1', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+
+        this.anims.create({
+            key: 'car_1_run',
+            frames: this.anims.generateFrameNames('car_1_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+
+
+        this.anims.create({
+            key: 'car_1_stop',
+            frames: this.anims.generateFrameNames('car_1_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
         });
 
         const imageFiles = {
@@ -68,6 +93,19 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         this.buildBg('bg_L1');
+        this.hoverArea = [];
+
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            })
+            this.music.setLoop(true)
+            this.music.play();
+        }
+
+
         this.disableInput = false;
         let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
         let y = this.getRowHeight(5.5);
@@ -77,11 +115,12 @@ export default class GameScene extends BasicScene {
         ];
         let curve = new Phaser.Curves.Spline(points);
         this.car = this.add.follower(curve, this.getColWidth(1), this.getRowHeight(5.5), `car_${parseInt(Math.random() * (6 - 1 + 1) + 1, 10)}`).setDepth(10)
-    
+        this.car.play('car_1_idle')
+
         let data = this.dataModal.gameItems;
         this.pastProblems.forEach((item) => {
             data = data.filter((problems) => {
-                if(item.join('|') !== problems.join('|')) {
+                if (item.join('|') !== problems.join('|')) {
                     return problems
                 }
             })
@@ -97,16 +136,17 @@ export default class GameScene extends BasicScene {
         sky.play('sun');
         let exitBtn = new ExitBtn(this, 120, 135);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135, this.musicPause.bind(this));
         this.add.existing(exitBtn);
-        this.add.existing(this.doneBtn);   
-
+        this.add.existing(this.doneBtn);
+        this.add.existing(this.speakerBtn);
     }
 
     winnerCallBack() {
-        setTimeout(()=> {
-         this.endGame();
+        setTimeout(() => {
+            this.endGame();
         }, 3000)
-        this.car.startFollow({
+        this.car.play('car_1_run').startFollow({
             duration: 3000,
             yoyo: false,
             repeat: 0,
@@ -116,16 +156,28 @@ export default class GameScene extends BasicScene {
     }
 
     endGame() {
-        if(this.currentLevel == 5) {
+        if (this.currentLevel == 5) {
             this.scene.start('End')
         } else {
-            this.scene.start('Game', { 
+            this.scene.start('Game', {
                 level: this.currentLevel + 1,
                 pastProblems: this.pastProblems
             })
         }
     }
 
+    musicPause() {
+        this.stopAll = !this.stopAll;
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            });
+            this.music.setLoop(true);
+            this.music.play();
+        }
+    }
 
 
 }

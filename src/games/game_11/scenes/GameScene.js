@@ -131,10 +131,10 @@ export default class GameScene extends BasicScene {
                 console.log(index);
                 console.log(container.getAll().length);
                 if (currentToothWidth != container.getAll()[index - 1].displayWidth) {
-                    currentOffsetX += (currentToothWidth + container.getAll()[index - 1].displayWidth) / 2;
+                    currentOffsetX += (currentToothWidth + container.getAll()[index - 1].displayWidth) / 2-20;
                 }
                 else {
-                    currentOffsetX += currentToothWidth;
+                    currentOffsetX += currentToothWidth-10;
                 }
             }
             else {
@@ -142,11 +142,17 @@ export default class GameScene extends BasicScene {
             }
 
             if (element.length > 3) {
-                currentTooth = new BigTooth(this, currentOffsetX, 680, element)
+                // currentTooth = new BigTooth(this, currentOffsetX, 690, element)
+                currentTooth = new BigTooth(this, currentOffsetX, this.produceToothYValue(currentOffsetX), element)
             }
             else {
-                currentTooth = new SmallTooth(this, currentOffsetX, 680, element)
+                // currentTooth = new SmallTooth(this, currentOffsetX, 690, element)
+                currentTooth = new SmallTooth(this, currentOffsetX, this.produceToothYValue(currentOffsetX), element)
             }
+
+            console.log('-------produceToothYValue------')
+            console.log(this.produceToothYValue(currentTooth.x))
+            console.log('-------produceToothYValue------')
 
             container.add(currentTooth);
         }
@@ -154,6 +160,18 @@ export default class GameScene extends BasicScene {
 
         return container
     }
+
+
+    produceToothYValue(x) {
+        const a = 793.684511962041;
+        const b = -1.04057325728351;
+        const c =0.00330010946952588;
+        const d = -3.59245840559894E-06;
+        const e = 1.24419115709544E-09;
+        return a + b * x + c * x ** 2 + d * x ** 3 + e * x ** 4
+    }
+
+
 
     paintGameSuccess() {
         console.log("-------question-------")

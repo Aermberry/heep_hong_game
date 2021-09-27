@@ -3,7 +3,7 @@ import StartButton from "../components/StartButton"
 import ExitButton from '../components/ExitButton'
 import LocalRepository from "../repository/LocalRepository"
 
-export default class TutorSecene extends BasicScene {
+export default class TutorScene extends BasicScene {
 
     constructor() {
         super({

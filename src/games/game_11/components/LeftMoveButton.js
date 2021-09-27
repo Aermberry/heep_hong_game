@@ -5,7 +5,7 @@ export default class LeftMoveButton extends BasicButton {
 
     super(scene, x, y);
     this.gameObject = gameObject;
-    this.allowableMovingDistance = step * 3;
+    this.allowableMovingDistance = step ;
     this.gameObjectOriginPosition = { "x": gameObject.x, "y": gameObject.y }
     this.step = step
     this.create(scene.add.sprite(0, 0, 'moveBtn', 0).setScale(0.5),

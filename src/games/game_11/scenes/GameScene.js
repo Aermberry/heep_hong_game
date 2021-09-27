@@ -131,10 +131,10 @@ export default class GameScene extends BasicScene {
                 console.log(index);
                 console.log(container.getAll().length);
                 if (currentToothWidth != container.getAll()[index - 1].displayWidth) {
-                    currentOffsetX += (currentToothWidth + container.getAll()[index - 1].displayWidth) / 2-20;
+                    currentOffsetX += (currentToothWidth + container.getAll()[index - 1].displayWidth) / 2 - 20;
                 }
                 else {
-                    currentOffsetX += currentToothWidth-10;
+                    currentOffsetX += currentToothWidth - 10;
                 }
             }
             else {
@@ -162,16 +162,27 @@ export default class GameScene extends BasicScene {
     }
 
 
-    produceToothYValue(x) {
-        const a = 793.684511962041;
-        const b = -1.04057325728351;
-        const c =0.00330010946952588;
-        const d = -3.59245840559894E-06;
-        const e = 1.24419115709544E-09;
-        return a + b * x + c * x ** 2 + d * x ** 3 + e * x ** 4
+    // produceToothYValue(x) {
+    //     const a = 542.923767776076;
+    //     const b = 0.874873444090501;
+    //     const c = -0.00129911976352851;
+    //     const d = 7.26209822672699E-07;
+    //     const e = -1.38062230433894E-10;
+    //     return a + b * x + c * x ** 2 + d * x ** 3 + e * x ** 4
+    // }
+
+    produceToothYValue(value) {
+        let x = value / 1920;
+        const a = 1.09723441576348;
+        const b = -8.16263542409481;
+        const c = 51.3152050661493;
+        const d = -145.528057940444;
+        const e = 203.373112722683;
+        const f = -137.101168402638;
+        const g = 35.6243684276349;
+
+        return (a + b * x + c * x ** 2 + d * x ** 3 + e * x ** 4 + f * x ** 5 + g * x ** 6) * 1080;
     }
-
-
 
     paintGameSuccess() {
         console.log("-------question-------")

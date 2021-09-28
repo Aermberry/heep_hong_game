@@ -17,7 +17,7 @@ export default class Question {
             {
                 fontSize: '30px',
                 color: '#000000',
-                fontFamily: "Custom-Han-Serif"
+                fontFamily: "STKaitiTC-Black"
             }
         )
         this.container = scene.add.container(x, y, [roadImg, roadText]);

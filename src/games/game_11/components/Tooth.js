@@ -19,13 +19,15 @@ export default class Tooth extends Phaser.GameObjects.Container {
         this.toothTexture = this.scene.add.image(0, 0, this.image).setName('toothTexture').setScale(0.5);
         this.labelText = this.scene.make.text({
             x: 0,
-            y: -15,
+            y: -20,
             text: this.labelText,
             style: {
+                align: 'center',
                 color: 'black',
-                fontSize: '50px'
+                fontSize: '50px',
+                padding:{x:100,y:100}
             }
-        }).setOrigin(0.5);
+        }).setOrigin(0.5,0.5);
 
 
 

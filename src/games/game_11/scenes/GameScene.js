@@ -55,6 +55,7 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene(this);
 
+
         // this.input.setDefaultCursor(`url(${FF}), pointer`);
         this.input.setDefaultCursor(`url(${this.cursorHandIcon}), pointer`);
 

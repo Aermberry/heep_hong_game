@@ -15,7 +15,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
         this.bamImg = scene.add.image(0, 0, 'itemBam')
         this.bamImgBad = scene.add.image(0, 0, 'itemBamBad')
-        this.rock = scene.add.image(0, this.bamImg.width *0.6, 'bg_rock')
+        this.rock = scene.add.image(0, this.bamImg.height *0.57, 'bg_rock')
 
         this.whiteBroad = new ItemPic(scene, 0, 0, item, this.bamImg.width * 0.7, this.bamImg.height * 0.7)
 
@@ -251,7 +251,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
                     strikeSoundA.play();
 
                     this.scene.tweens.add({
-                        targets: [this.whiteBroad],
+                        targets: this.whiteBroad,
                         alpha: 0,
                         delay: 2000,
                         duration: 400,

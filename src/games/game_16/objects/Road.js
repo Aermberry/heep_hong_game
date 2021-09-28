@@ -34,6 +34,9 @@ export default class Road {
             if (!dropped) {
                 that.container.x = that.container.input.dragStartX;
                 that.container.y = that.container.input.dragStartY;
+            } else {
+                let music = scene.sound.add('seal');
+                music.play();
             }
             onEndDragHandler(dragX, dragY)
         });

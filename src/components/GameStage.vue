@@ -3,75 +3,72 @@
     <div class="outer">
       <div class="inner">
         <div id="game-container" v-if="downloaded" />
-        <div class="placeholder" v-else>
-          Downloading ...
-        </div>
+        <div class="placeholder" v-else>Downloading ...</div>
       </div>
     </div>
   </div>
 </template>
 
 <style>
-  @font-face {
-    font-family: "Custom-Han-Serif";
-    src: url(../games/game_3/assets/font/game_3.ttf) format("truetype");
-  }
+@font-face {
+  font-family: "Custom-Han-Serif";
+  src: local("Custom-Han-Serif"),
+    url(../games/game_3/assets/font/game_3.ttf) format("truetype");
+}
 </style>
 
 <script>
 export default {
-  name: 'Game',
+  name: "Game",
   data() {
     return {
       downloaded: false,
       gameInstance: null,
-      ww:0,
-      wh:0
-    }
+      ww: 0,
+      wh: 0,
+    };
   },
   computed: {
-    gameID: function(){
-      let self = this
-      return self.$route.params.id
+    gameID: function () {
+      let self = this;
+      return self.$route.params.id;
     },
-    gameOrientation: function(){
-      let self = this
-      return (self.wh > self.ww) && self.ww < 768 ? 'portrait' : 'landscape'
-    }
+    gameOrientation: function () {
+      let self = this;
+      return self.wh > self.ww && self.ww < 768 ? "portrait" : "landscape";
+    },
   },
   async mounted() {
-    let self = this
-    try{
-      console.log('game load')
-      let gameFile = require('@/games/game_'+self.gameID+'/index')
-      if(gameFile){
-        const game = await import('@/games/game_'+self.gameID+'/index')
-        self.downloaded = true
+    let self = this;
+    try {
+      console.log("game load");
+      let gameFile = require("@/games/game_" + self.gameID + "/index");
+      if (gameFile) {
+        const game = await import("@/games/game_" + self.gameID + "/index");
+        self.downloaded = true;
         self.$nextTick(() => {
-          self.gameInstance = game.launch(self.$route.params)          
-        })
+          self.gameInstance = game.launch(self.$route.params);
+        });
       }
-    }catch (e){
-      console.log('Game Not Exit')
+    } catch (e) {
+      console.log("Game Not Exit");
     }
 
-    self.windowSizeHandler()
+    self.windowSizeHandler();
 
-    window.addEventListener('resize', function() {
-      self.windowSizeHandler()
-    })
-
-
+    window.addEventListener("resize", function () {
+      self.windowSizeHandler();
+    });
   },
   destroyed() {
-    this.gameInstance.destroy(false)
+    this.gameInstance.destroy(false);
   },
-  methods:{
-    windowSizeHandler: function(){
-      let self = this
-      self.ww = window.innerWidth
-      self.wh = window.innerHeight
-    }
-  }
-}
+  methods: {
+    windowSizeHandler: function () {
+      let self = this;
+      self.ww = window.innerWidth;
+      self.wh = window.innerHeight;
+    },
+  },
+};
 </script>

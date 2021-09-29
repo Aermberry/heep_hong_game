@@ -41,11 +41,37 @@ export default {
   },
   async mounted() {
     let self = this
+
+    const gameFileMapping = {
+      5: 5,
+      6: 5,
+      7: 5,
+      8: 5,
+      9: 5,
+      21: 5,
+      11: 11,
+      12: 11,
+      13: 11,
+      14: 11,
+      15: 11
+    };
+
+    let gameId = self.gameID;
+
+    if(typeof gameFileMapping[self.gameID] != 'undefined') {
+
+      gameId = gameFileMapping[self.gameID];
+
+      console.log(gameId)
+
+    }
+
     try{
       console.log('game load')
-      let gameFile = require('@/games/game_'+self.gameID+'/index')
+
+      let gameFile = require('@/games/game_'+gameId+'/index')
       if(gameFile){
-        const game = await import('@/games/game_'+self.gameID+'/index')
+        const game = await import('@/games/game_'+gameId+'/index')
         self.downloaded = true
         self.$nextTick(() => {
           self.gameInstance = game.launch(self.$route.params)          

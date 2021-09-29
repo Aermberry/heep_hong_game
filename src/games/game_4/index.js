@@ -5,7 +5,7 @@ import Model from './Model'
 import BootScene from './scenes/BootScene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene, TutorSecene, GameScene, EndScene]
+    scene: [BootScene]
 });
 
 /**
@@ -24,7 +24,7 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
     this.create(scene)
 }
 
-class Game4 extends Phaser.Game {
+class Game11 extends Phaser.Game {
 
     // private globals: { model: Model }
 
@@ -42,7 +42,7 @@ class Game4 extends Phaser.Game {
 
 function launch(urlParams) {
 
-    let game = new Game4(gameConfig, urlParams)
+    let game = new Game11(gameConfig, urlParams)
 
     return game
 }

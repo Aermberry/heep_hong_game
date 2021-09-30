@@ -1,19 +1,23 @@
 import BasicScene from "./BasicScene"
 import Truck from "../objects/players/Truck"
+import Scene1Block from "../objects/targets/Scene1Block"
 
 export default class GameScene extends BasicScene {
 
 
-    constructor () {
+    constructor() {
         super('Game');
 
         // this.dataModal = this.sys.game.globals.model;
         this.cursorKeys = null
         this.playerOnLeft = true
+        this.totalSocre = 0
 
     }
 
     init() {
+
+        this.roadBlock = null
 
         this.dataModel = this.sys.game.globals.model;
 
@@ -30,31 +34,35 @@ export default class GameScene extends BasicScene {
         const imageFiles = {
             'scene1_1': require('../assets/images/stage1/scene1_1.png'),
             'scene1_2': require('../assets/images/stage1/scene1_2.png'),
-            'scene1_box': require('../assets/images/stage1/scene1_box.png')
+            'scene1_box': require('../assets/images/stage1/scene1_box.png'),
         }
 
         const atlasFiles = {
-            'truck': { img: require('../assets/anims/stage1/truck.png'), data: require('../assets/anims/stage1/truck.json')}
+            'truck': { img: require('../assets/anims/stage1/truck.png'), data: require('../assets/anims/stage1/truck.json') },
+            'scene1_correct': { img: require('../assets/anims/stage1/right.png'), data: require('../assets/anims/stage1/right.json') },
+            'scene1_wrong': { img: require('../assets/anims/stage1/wrong.png'), data: require('../assets/anims/stage1/wrong.json') }
         }
 
         this.preloadFromArr({
             img: imageFiles,
             atlas: atlasFiles
         })
+        
 
     }
 
     create() {
 
         super.create()
-// console.log('getColWidth', this.getColWidth(1), this.widthBlock, this.heightBlock)
-//         this.add.image(0, 0, 'scene1_1')
-//         this.add.image(0, 0, 'scene1_2')
-        // this.add.image(0, 0, 'scene1_box')
+
 
         let backGround = this.add.image(this.getColWidth(6), this.getRowHeight(3), 'scene1_1')
         let foreGround = this.add.image(this.getColWidth(0), this.getRowHeight(4), 'scene1_2')
         let road = this.add.sprite(this.getColWidth(6), this.getRowHeight(9.4), 'road')
+
+        backGround.setDepth(0)
+        foreGround.setDepth(2)
+        road.setDepth(3)
 
 
         // this.add.image(this.getColWidth(6), this.getRowHeight(6), 'scene1_box')
@@ -65,39 +73,74 @@ export default class GameScene extends BasicScene {
 
         road.play('road')
 
-        this.truck = new Truck(this, this.getColWidth(4.5), this.getRowHeight(9.5))
+        this.player = new Truck(this, this.getColWidth(4.5), this.getRowHeight(9.5))
 
-        this.add.existing(this.truck)
+        this.player.setDepth(5)
 
-
+        this.add.existing(this.player)
 
 
         this.cursorKeys = this.input.keyboard.createCursorKeys()
 
-        
 
-
-        // let gameStage = this.dataModal.gameStage
-        // console.log('gameStage', gameStage)
+        this.recurringAnswerBlock([
+            {answers:['A', 'B'], correctAnswer: 'A'},
+            {answers:['A', 'B'], correctAnswer: 'A'},
+            {answers:['A', 'B'], correctAnswer: 'B'},
+            {answers:['A', 'B'], correctAnswer: 'A'},
+            {answers:['A', 'B'], correctAnswer: 'B'}
+        ])
 
     }
 
 
     update() {
 
-        if(this.cursorKeys.left.isDown && !this.playerOnLeft) {
-            console.log('left')
-            this.playerOnLeft = true
-            this.truck.toLeft(this.truck.x - 500)
+        if (this.cursorKeys.left.isDown && !this.playerOnLeft) {
+            this.player.toLeft(this.player.x - 500).then(()=> this.playerOnLeft = true)
+        }
+
+        if (this.cursorKeys.right.isDown && this.playerOnLeft) {
+            this.player.toRight(this.player.x + 500).then(()=> this.playerOnLeft = false)
 
         }
 
-        if(this.cursorKeys.right.isDown && this.playerOnLeft) {
-            console.log('right')
-            this.playerOnLeft = false
-            this.truck.toRight(this.truck.x + 500)
+    }
 
-        }
+    recurringAnswerBlock(gameDataArr= []) {
+
+        gameDataArr.reduce((lastPromise, nextAnswer)=> {
+
+            return lastPromise.then(()=> {
+
+                if(this.roadBlock != null && typeof this.roadBlock.destroy == 'function') this.roadBlock.destroy()
+
+                this.roadBlock = new Scene1Block(
+                    this, 
+                    this.getColWidth(5.95), 
+                    this.getRowHeight(5), 
+                    ()=> {
+                        let attempedItem = this.roadBlock.getItem(this.playerOnLeft ? 'left' : 'right')
+
+                        let currentResult = attempedItem.getAnswerValue() === nextAnswer.correctAnswer
+
+                        if(currentResult) {
+                            attempedItem.playCorrect()
+                            this.totalSocre++;
+                        }else{
+                            attempedItem.playWrong()
+                        }
+                    },
+                    nextAnswer
+                )
+
+                this.add.existing(this.roadBlock)
+                
+                return this.roadBlock.getEndPromise()
+
+            })
+
+        }, Promise.resolve())
 
     }
 

@@ -12,49 +12,56 @@ export default class BasicPlayer extends Phaser.GameObjects.Sprite {
 
     }
 
-    toLeft(x, y= null) {
+    toLeft(x, y = null) {
 
-        if(this.freezeInput) return
+        if (this.freezeInput) return Promise.resolve()
 
         this.freezeInput = true
 
-        this.moveWithAnim({
-            x, y, time: this.getMovementDuration()
+
+        this.toLeftAnimate()
+
+        return new Promise((resolve) => {
+            this.moveWithAnim({
+                x, y, time: this.getMovementDuration()
+            }).then(() => {
+                this.freezeInput = false
+                resolve()
+            })
+
         })
 
-        this.toLeftAnimate().then(()=> {
-            this.freezeInput = false
-        })
-
-        return 'turn_left_anime'
     }
 
-    toRight(x, y= null) {
+    toRight(x, y = null) {
 
-        if(this.freezeInput) return
+        if (this.freezeInput) return Promise.resolve()
 
         this.freezeInput = true
 
-        this.moveWithAnim({
-            x, y, time: this.getMovementDuration()
+        this.toRightAnimate()
+
+        return new Promise((resolve) => {
+
+            this.moveWithAnim({
+                x, y, time: this.getMovementDuration()
+            }).then(()=> {
+                this.freezeInput = false
+                resolve()
+            })
         })
 
-        this.toRightAnimate().then(()=> {
-            this.freezeInput = false
-        })
-
-        return 'turn_right_anime'
     }
 
     toLeftAnimate() {
-        return Promise((resolve)=> resolve())
+        return Promise((resolve) => resolve())
     }
 
     toRightAnimate() {
-        return Promise((resolve)=> resolve())
+        return Promise((resolve) => resolve())
     }
 
-    moveWithAnim({x, y, time= 1000}) {
+    moveWithAnim({ x, y, time = 1000 }) {
 
         let self = this
 
@@ -63,26 +70,14 @@ export default class BasicPlayer extends Phaser.GameObjects.Sprite {
             duration: time,
         }
 
-        if(typeof x !=  'undefined' && x != null) tweenObj['x'] = x
-        if(typeof y != 'undefined' && y != null) tweenObj['y'] = y
+        if (typeof x != 'undefined' && x != null) tweenObj['x'] = x
+        if (typeof y != 'undefined' && y != null) tweenObj['y'] = y
 
-    console.log(
-        'tweenObj',
-        tweenObj)
-
-        this.scene.tweens.add(tweenObj).on('complete', ()=> {
-
-
-
-        })
-    
-        return new Promise((resolve)=> {
-            // this.scene.tween.add(tweenObj).on('complete', ()=> {
-            //         resolve()
-            //     })
-
+        return new Promise((resolve) => {
+            this.scene.tweens.add(tweenObj).on('complete', ()=> {
                 resolve()
-            }
+            })
+        }
         )
 
     }

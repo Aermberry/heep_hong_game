@@ -1,4 +1,5 @@
 import BasicScene from "./BasicScene"
+import Truck from "../objects/players/Truck"
 
 export default class GameScene extends BasicScene {
 
@@ -7,6 +8,8 @@ export default class GameScene extends BasicScene {
         super('Game');
 
         // this.dataModal = this.sys.game.globals.model;
+        this.cursorKeys = null
+        this.playerOnLeft = true
 
     }
 
@@ -30,8 +33,13 @@ export default class GameScene extends BasicScene {
             'scene1_box': require('../assets/images/stage1/scene1_box.png')
         }
 
+        const atlasFiles = {
+            'truck': { img: require('../assets/anims/stage1/truck.png'), data: require('../assets/anims/stage1/truck.json')}
+        }
+
         this.preloadFromArr({
-            img: imageFiles
+            img: imageFiles,
+            atlas: atlasFiles
         })
 
     }
@@ -57,8 +65,39 @@ export default class GameScene extends BasicScene {
 
         road.play('road')
 
+        this.truck = new Truck(this, this.getColWidth(4.5), this.getRowHeight(9.5))
+
+        this.add.existing(this.truck)
+
+
+
+
+        this.cursorKeys = this.input.keyboard.createCursorKeys()
+
+        
+
+
         // let gameStage = this.dataModal.gameStage
         // console.log('gameStage', gameStage)
+
+    }
+
+
+    update() {
+
+        if(this.cursorKeys.left.isDown && !this.playerOnLeft) {
+            console.log('left')
+            this.playerOnLeft = true
+            this.truck.toLeft(this.truck.x - 500)
+
+        }
+
+        if(this.cursorKeys.right.isDown && this.playerOnLeft) {
+            console.log('right')
+            this.playerOnLeft = false
+            this.truck.toRight(this.truck.x + 500)
+
+        }
 
     }
 

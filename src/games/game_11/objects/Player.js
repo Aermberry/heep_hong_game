@@ -15,6 +15,6 @@ export default class Player extends Phaser.GameObjects.Container {
         this.playerSprite.toRight()
     }
 
-
+    
 
 }

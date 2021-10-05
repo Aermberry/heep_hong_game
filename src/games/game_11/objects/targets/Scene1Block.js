@@ -20,4 +20,24 @@ export default class Scene1Block extends BasicTarget {
         return 7000
     }
 
+    static getAssetArray() {
+
+        return {
+            img: {
+                'scene1_1': require('../../assets/images/stage1/scene1_1.png'),
+                'scene1_2': require('../../assets/images/stage1/scene1_2.png'),
+                'scene1_box': require('../../assets/images/stage1/scene1_box.png'),
+            },
+            atlas: {
+                'road': { img: require('../../assets/anims/stage1/road.png'), data: require('../../assets/anims/stage1/road.json')},
+                'scene1_correct': { img: require('../../assets/anims/stage1/right.png'), data: require('../../assets/anims/stage1/right.json') },
+                'scene1_wrong': { img: require('../../assets/anims/stage1/wrong.png'), data: require('../../assets/anims/stage1/wrong.json') },
+            },
+            sound: {
+                
+            }
+        }
+
+    }
+
 }

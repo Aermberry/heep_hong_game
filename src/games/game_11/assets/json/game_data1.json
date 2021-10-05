@@ -1,22 +1,177 @@
 [
     {
         "gameLogic": 11,
-        "gameStage": 11
+        "gameStage": 11,
+        "blockItem": "Scene1Block",
+        "playerItem": "Truck",
+        "gameQuestion": {
+            "name": "名詞"
+        },
+        "gameAnswers": {
+            "correct": [
+                "老師",
+                "公園",
+                "太陽",
+                "書包",
+                "蝴蝶",
+                "樹木",
+                "顏色",
+                "故事",
+                "夏天",
+                "音樂"
+            ],
+            "misc": [
+                "游泳",
+                "玩耍",
+                "洗澡",
+                "可愛",
+                "活潑",
+                "有趣",
+                "何時",
+                "怎樣",
+                "哪裏",
+                "唱歌"
+            ]
+        }
     },
     {
         "gameLogic": 11,
-        "gameStage": 12
+        "gameStage": 12,
+        "blockItem": "Scene1Block",
+        "playerItem": "Truck",
+        "gameQuestion": {
+            "name": "動詞"
+        },
+        "gameAnswers": {
+            "correct": [
+                "吃",
+                "喝",
+                "跑",
+                "唱歌",
+                "游泳",
+                "說話",
+                "玩耍",
+                "跳舞",
+                "洗澡",
+                "走路"
+            ],
+            "misc": [
+                "可愛",
+                "聰明",
+                "有趣",
+                "書包",
+                "故事",
+                "什麽事",
+                "何時",
+                "為什麽",
+                "輛",
+                "瓶"
+            ]
+        }
     },
     {
         "gameLogic": 11,
-        "gameStage": 13
+        "gameStage": 13,
+        "blockItem": "Scene1Block",
+        "playerItem": "Truck",
+        "gameQuestion": {
+            "name": "形容詞"
+        },
+        "gameAnswers": {
+            "correct": [
+                "可愛",
+                "開心的",
+                "憤怒的",
+                "聰明",
+                "活潑",
+                "勇敢的",
+                "美味",
+                "有趣",
+                "健康的",
+                "漂亮"
+            ],
+            "misc": [
+                "老師",
+                "太陽",
+                "樹木",
+                "喝",
+                "游泳",
+                "走路",
+                "張",
+                "本",
+                "如何",
+                "為什麽"
+            ]
+        }
     },
     {
         "gameLogic": 11,
-        "gameStage": 14
+        "gameStage": 14,
+        "blockItem": "Scene1Block",
+        "playerItem": "Truck",
+        "gameQuestion": {
+            "name": "量詞"
+        },
+        "gameAnswers": {
+            "correct": [
+                "個",
+                "隻",
+                "朵",
+                "張",
+                "件",
+                "粒",
+                "條",
+                "瓶",
+                "本",
+                "輛"
+            ],
+            "misc": [
+                "公園",
+                "音樂",
+                "喝",
+                "洗澡",
+                "開心的",
+                "美味",
+                "漂亮",
+                "如何",
+                "做什麽",
+                "樹木"
+            ]
+        }
     },
     {
         "gameLogic": 11,
-        "gameStage": 15
+        "gameStage": 15,
+        "blockItem": "Scene1Block",
+        "playerItem": "Truck",
+        "gameQuestion": {
+            "name": "疑問代詞"
+        },
+        "gameAnswers": {
+            "correct": [
+                "何時",
+                "什麼時侯",
+                "如何",
+                "怎樣",
+                "休麼事",
+                "做甚麼",
+                "哪兒",
+                "哪裏",
+                "為休麼",
+                "為何"
+            ],
+            "misc": [
+                "書包",
+                "顔色",
+                "跑",
+                "玩耍",
+                "憤怒的",
+                "健康的",
+                "可愛",
+                "隻",
+                "件",
+                "條"
+            ]
+        }
     }
 ]

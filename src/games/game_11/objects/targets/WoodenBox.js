@@ -19,38 +19,58 @@ export default class WoodenBox extends Phaser.GameObjects.Container {
         })
 
         this.box = scene.add.image(0, 0, 'scene1_box')
-        this.correct = scene.add.sprite(0, this.box.height * -0.2, 'scene1_correct')
-        this.wrong = scene.add.sprite(0, this.box.height * -0.2, 'scene1_wrong')
+        this.correct = scene.add.sprite(this.box.width * 0.14, this.box.height * -0.16, 'scene1_correct')
+        this.wrong = scene.add.sprite(this.box.width * 0.14, this.box.height * -0.16, 'scene1_wrong')
+
+        this.correct.setScale(1.05)
+        this.wrong.setScale(1.05)
 
         this.correct.setAlpha(0)
         this.wrong.setAlpha(0)
 
-        this.add([this.box, this.correct, this.wrong])
+        let textPadding = this.box.width * 0.05;
+
+        this.textBlock = scene.add.text(
+            this.box.width * -0.1, textPadding * 1, this.answer,
+            {
+                fontSize: (this.box.width * 0.35) + 'px',
+                color: '#000000',
+                // fontFamily: "Custom-Han-Serif"
+            }
+        )
+
+        this.textBlock.setOrigin(0.5)
+        this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
+
+        this.add([this.box, this.correct, this.wrong, this.textBlock])
     }
 
     playCorrect() {
-        this.box.setAlpha(0)
+        this.box.setAlpha(.5)
+        this.textBlock.setAlpha(.5)
         this.correct.setAlpha(1)
 
         this.correct.play('correct').on('animationcomplete', ()=> {
-            this.correct.setAlpha(0)
+            // this.correct.setAlpha(0)
         })
     }
 
     playWrong() {
-        this.box.setAlpha(0)
+        this.box.setAlpha(.5)
+        this.textBlock.setAlpha(.5)
         this.wrong.setAlpha(1)
 
         this.wrong.play('wrong').on('animationcomplete', ()=> {
-            this.wrong.setAlpha(0)
+            // this.wrong.setAlpha(0)
         })
     }
 
     setFlip(isFlap) {
         if(isFlap) {
             this.box.setFlip(1)
-            this.correct.setX(this.box.width * 0.3)
-            this.wrong.setX(this.box.width * 0.3)
+            this.textBlock.setX(this.box.width * 0.1)
+            this.correct.setX(this.box.width * 0.24)
+            this.wrong.setX(this.box.width * 0.24)
         }
     }
 

@@ -1,9 +1,9 @@
 import Phaser from 'phaser'
 
-export default class BasicPlayer extends Phaser.GameObjects.Sprite {
+export default class BasicPlayer extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y, spriteKey) {
-        super(scene, x, y, spriteKey)
+    constructor(scene, x, y) {
+        super(scene, x, y, [])
 
         this.leftAnimationKey = null
         this.rightAnimationKey = null
@@ -53,11 +53,19 @@ export default class BasicPlayer extends Phaser.GameObjects.Sprite {
 
     }
 
+    checkWrong() {
+
+    }
+
     toLeftAnimate() {
         return Promise((resolve) => resolve())
     }
 
     toRightAnimate() {
+        return Promise((resolve) => resolve())
+    }
+
+    wrongAnimate() {
         return Promise((resolve) => resolve())
     }
 
@@ -84,6 +92,27 @@ export default class BasicPlayer extends Phaser.GameObjects.Sprite {
 
     getMovementDuration() {
         return 1000
+    }
+
+    
+    /**
+     * Provide an array for preloadFromArr function
+     * @return      {img, atlas, sound}
+     */
+     static getAssetArray() {
+
+        return {
+            img: {
+
+            },
+            atlas: {
+
+            },
+            sound: {
+                
+            }
+        }
+
     }
 
 }

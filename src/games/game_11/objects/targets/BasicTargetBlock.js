@@ -49,7 +49,7 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
     }
 
     moveInAnime() {
-console.log(this.getMovementDurationAfterFactor())
+
         this.scene.tweens.add({
             targets: this,
             y: this.y - this.scene.getRowHeight(2),
@@ -119,6 +119,26 @@ console.log(this.getMovementDurationAfterFactor())
             return this.leftSprite
         }else if(direction === 'right') {
             return this.rightSprite
+        }
+
+    }
+
+    /**
+     * Provide an array for preloadFromArr function
+     * @return      {img, atlas, sound}
+     */
+    static getAssetArray() {
+
+        return {
+            img: {
+
+            },
+            atlas: {
+
+            },
+            sound: {
+                
+            }
         }
 
     }

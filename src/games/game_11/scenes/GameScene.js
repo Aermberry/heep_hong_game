@@ -35,12 +35,14 @@ export default class GameScene extends BasicScene {
             'scene1_1': require('../assets/images/stage1/scene1_1.png'),
             'scene1_2': require('../assets/images/stage1/scene1_2.png'),
             'scene1_box': require('../assets/images/stage1/scene1_box.png'),
+            'end_box': require('../assets/images/end_box.png')
         }
 
         const atlasFiles = {
             'truck': { img: require('../assets/anims/stage1/truck.png'), data: require('../assets/anims/stage1/truck.json') },
             'scene1_correct': { img: require('../assets/anims/stage1/right.png'), data: require('../assets/anims/stage1/right.json') },
-            'scene1_wrong': { img: require('../assets/anims/stage1/wrong.png'), data: require('../assets/anims/stage1/wrong.json') }
+            'scene1_wrong': { img: require('../assets/anims/stage1/wrong.png'), data: require('../assets/anims/stage1/wrong.json') },
+            'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json') }
         }
 
         this.preloadFromArr({
@@ -48,7 +50,6 @@ export default class GameScene extends BasicScene {
             atlas: atlasFiles
         })
         
-
     }
 
     create() {
@@ -88,7 +89,12 @@ export default class GameScene extends BasicScene {
             {answers:['A', 'B'], correctAnswer: 'A'},
             {answers:['A', 'B'], correctAnswer: 'B'},
             {answers:['A', 'B'], correctAnswer: 'A'},
-            {answers:['A', 'B'], correctAnswer: 'B'}
+            {answers:['A', 'B'], correctAnswer: 'B'},
+            {answers:['A', 'B'], correctAnswer: 'B'},
+            {answers:['A', 'B'], correctAnswer: 'A'},
+            {answers:['A', 'B'], correctAnswer: 'A'},
+            {answers:['A', 'B'], correctAnswer: 'B'},
+            {answers:['A', 'B'], correctAnswer: 'A'},
         ])
 
     }
@@ -109,7 +115,7 @@ export default class GameScene extends BasicScene {
 
     recurringAnswerBlock(gameDataArr= []) {
 
-        gameDataArr.reduce((lastPromise, nextAnswer)=> {
+        gameDataArr.reduce((lastPromise, nextAnswer, ind)=> {
 
             return lastPromise.then(()=> {
 
@@ -119,19 +125,22 @@ export default class GameScene extends BasicScene {
                     this, 
                     this.getColWidth(5.95), 
                     this.getRowHeight(5), 
-                    ()=> {
-                        let attempedItem = this.roadBlock.getItem(this.playerOnLeft ? 'left' : 'right')
-
-                        let currentResult = attempedItem.getAnswerValue() === nextAnswer.correctAnswer
-
-                        if(currentResult) {
-                            attempedItem.playCorrect()
-                            this.totalSocre++;
-                        }else{
-                            attempedItem.playWrong()
-                        }
-                    },
-                    nextAnswer
+                    nextAnswer,
+                    {
+                        checkAnswer: ()=> {
+                            let attempedItem = this.roadBlock.getItem(this.playerOnLeft ? 'left' : 'right')
+    
+                            let currentResult = attempedItem.getAnswerValue() === nextAnswer.correctAnswer
+    
+                            if(currentResult) {
+                                attempedItem.playCorrect()
+                                this.totalSocre++;
+                            }else{
+                                attempedItem.playWrong()
+                            }
+                        },
+                        speedFactor: 1 - (0.05 * ind)
+                    }
                 )
 
                 this.add.existing(this.roadBlock)
@@ -141,6 +150,7 @@ export default class GameScene extends BasicScene {
             })
 
         }, Promise.resolve())
+        .then(()=> this.scene.start('End'))
 
     }
 

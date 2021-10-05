@@ -10,7 +10,7 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
      * @param {*} onComplete 
      * 
      */
-    constructor(scene, x, y, checkAnswer = null) {
+    constructor(scene, x, y, checkAnswer = null, speedFactor = 1) {
         super(scene, x, y)
 
         this.rightSprite = null
@@ -18,6 +18,7 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
         this.onCheckAnswerCallback = null
         this.resolve = null
         this.result = false
+        this.speedFactor = speedFactor
 
         this.setScale(0.4)
 
@@ -48,12 +49,12 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
     }
 
     moveInAnime() {
-
+console.log(this.getMovementDurationAfterFactor())
         this.scene.tweens.add({
             targets: this,
             y: this.y - this.scene.getRowHeight(2),
             scale: 0.6,
-            duration: this.getMovementDuration() * 0.25,
+            duration: this.getMovementDurationAfterFactor() * 0.25,
         }).on('complete', ()=> {
 
             this.setDepth(4)
@@ -62,7 +63,7 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
                 targets: this,
                 y: this.y + this.scene.getRowHeight(6),
                 scale: 1.2,
-                duration: this.getMovementDuration() * 0.8
+                duration: this.getMovementDurationAfterFactor() * 0.8
             }).on('complete', ()=> {
 
                 this.result = this.checkAnswer()
@@ -73,7 +74,7 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
                     targets: this,
                     y: this.y + this.scene.getRowHeight(6),
                     scale: 1.5,
-                    duration: this.getMovementDuration() * 0.4
+                    duration: this.getMovementDurationAfterFactor() * 0.4
                 }).on('complete', ()=> {
                     
                     this.resolve(this.result)
@@ -88,6 +89,10 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
 
     getMovementDuration() {
         return 8000
+    }
+
+    getMovementDurationAfterFactor() {
+        return this.getMovementDuration() * this.speedFactor
     }
 
     /**

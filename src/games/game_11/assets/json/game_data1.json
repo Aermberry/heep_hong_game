@@ -4,6 +4,8 @@
         "gameStage": 11,
         "blockItem": "Scene1Block",
         "playerItem": "Truck",
+        "backgroundItem": "TruckBg",
+        "foregroundItem": "TruckFg",
         "gameQuestion": {
             "name": "名詞"
         },
@@ -37,8 +39,10 @@
     {
         "gameLogic": 11,
         "gameStage": 12,
-        "blockItem": "Scene1Block",
-        "playerItem": "Truck",
+        "blockItem": "ShipTargets",
+        "playerItem": "Ship",
+        "backgroundItem": "ShipBg",
+        "foregroundItem": "ShipFg",
         "gameQuestion": {
             "name": "動詞"
         },
@@ -72,8 +76,10 @@
     {
         "gameLogic": 11,
         "gameStage": 13,
-        "blockItem": "Scene1Block",
-        "playerItem": "Truck",
+        "blockItem": "UfoTargets",
+        "playerItem": "Ufo",
+        "backgroundItem": "UfoBg",
+        "foregroundItem": "UfoFg",
         "gameQuestion": {
             "name": "形容詞"
         },
@@ -109,6 +115,8 @@
         "gameStage": 14,
         "blockItem": "Scene1Block",
         "playerItem": "Truck",
+        "backgroundItem": "TruckBg",
+        "foregroundItem": "TruckFg",
         "gameQuestion": {
             "name": "量詞"
         },
@@ -144,6 +152,8 @@
         "gameStage": 15,
         "blockItem": "Scene1Block",
         "playerItem": "Truck",
+        "backgroundItem": "TruckBg",
+        "foregroundItem": "TruckFg",
         "gameQuestion": {
             "name": "疑問代詞"
         },

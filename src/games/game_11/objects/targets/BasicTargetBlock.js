@@ -19,12 +19,9 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
         this.resolve = null
         this.result = false
         this.speedFactor = speedFactor
+        this.targetsContainer = null
 
-        this.setScale(0.4)
-
-        this.moveInAnime()
-
-        this.setDepth(1)
+        // this.setScale(0.4)
 
         if(checkAnswer != null) this.onCheckAnswerCallback = checkAnswer
 
@@ -33,6 +30,7 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
     getEndPromise() {
         return new Promise((resolve)=> {
             this.resolve = resolve
+            this.blockMoveIn()
         })
     }
 
@@ -41,50 +39,23 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
         this.rightSprite = rightSprite
         this.leftSprite = leftSprite
 
-        rightSprite.setPosition(this.scene.getColWidth(1),0)
-        leftSprite.setPosition(-this.scene.getColWidth(1),0)
+        this.targetsContainer = new Phaser.GameObjects.Container(this.scene, 0, 0, [rightSprite, leftSprite])
 
-        this.add([rightSprite, leftSprite])
+        // rightSprite.setPosition(this.scene.getColWidth(1),0)
+        // leftSprite.setPosition(-this.scene.getColWidth(1),0)
+
+        this.add(this.targetsContainer)
+
+    }
+
+    blockMoveIn() {
+
+        this.moveInAnime()
 
     }
 
     moveInAnime() {
-
-        this.scene.tweens.add({
-            targets: this,
-            y: this.y - this.scene.getRowHeight(2),
-            scale: 0.6,
-            duration: this.getMovementDurationAfterFactor() * 0.25,
-        }).on('complete', ()=> {
-
-            this.setDepth(4)
-
-            this.scene.tweens.add({
-                targets: this,
-                y: this.y + this.scene.getRowHeight(6),
-                scale: 1.2,
-                duration: this.getMovementDurationAfterFactor() * 0.8
-            }).on('complete', ()=> {
-
-                this.result = this.checkAnswer()
-
-                this.setDepth(6)
-
-                this.scene.tweens.add({
-                    targets: this,
-                    y: this.y + this.scene.getRowHeight(6),
-                    scale: 1.5,
-                    duration: this.getMovementDurationAfterFactor() * 0.4
-                }).on('complete', ()=> {
-                    
-                    this.resolve(this.result)
-
-                })
-
-            })
-
-        })
-
+        this.resolve(this.result)
     }
 
     getMovementDuration() {

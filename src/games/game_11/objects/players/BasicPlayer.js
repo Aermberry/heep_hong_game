@@ -18,7 +18,6 @@ export default class BasicPlayer extends Phaser.GameObjects.Container {
 
         this.freezeInput = true
 
-
         this.toLeftAnimate()
 
         return new Promise((resolve) => {

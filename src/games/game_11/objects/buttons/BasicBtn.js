@@ -12,6 +12,7 @@ export default class BasicBtn extends Phaser.GameObjects.Container {
   create(sprite, clickEvent){
     this.origSprite = sprite;
     this.add(this.origSprite)
+    
     this.origSprite.setInteractive({
         useHandCursor: true
     })

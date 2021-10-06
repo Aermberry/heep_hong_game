@@ -38,4 +38,12 @@ export default class Model {
         return this._gameData[this._gameIndex].blockItem;
     }
 
+    get backgroundItem() {
+        return this._gameData[this._gameIndex].backgroundItem
+    }
+
+    get foregroundItem() {
+        return this._gameData[this._gameIndex].foregroundItem
+    }
+
 }

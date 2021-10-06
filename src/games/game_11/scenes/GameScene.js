@@ -1,27 +1,67 @@
 import BasicScene from "./BasicScene"
+
 import Truck from "../objects/players/Truck"
+import Ship from "../objects/players/Ship"
+
 import Scene1Block from "../objects/targets/Scene1Block"
-import Untils from "../../common/Untils";
+import ShipTargets from "../objects/targets/ShipTargets"
+import UfoTargets from "../objects/targets/UfoTargets"
+
+import TruckBg from "../objects/backgrounds/TruckBg"
+import ShipBg from "../objects/backgrounds/ShipBg"
+
+import TruckFg from "../objects/foregrounds/TruckFg"
+import ShipFg from "../objects/foregrounds/ShipFg"
+
+import Untils from "../../common/Untils"
+import ToLeftBtn from "../objects/buttons/ToLeftBtn"
+import ToRightBtn from "../objects/buttons/ToRightBtn"
+import Ufo from "../objects/players/Ufo"
+import UfoBg from "../objects/backgrounds/UfoBg"
+import UfoFg from "../objects/foregrounds/UfoFg"
+import BalloonBg from "../objects/backgrounds/BalloonBg"
+import IcemanBg from "../objects/backgrounds/IcemanBg"
+import BalloonFg from "../objects/foregrounds/BalloonFg"
+import IcemanFg from "../objects/foregrounds/IcemanFg"
 export default class GameScene extends BasicScene {
 
 
     constructor() {
-        super('Game');
+        super('Game')
 
         // this.dataModal = this.sys.game.globals.model;
         this.cursorKeys = null
         this.playerOnLeft = true
         this.totalSocre = 0
+        
         this.blockClassMap = {
-            'Scene1Block': Scene1Block
+            'Scene1Block': Scene1Block,
+            'ShipTargets': ShipTargets,
+            'UfoTargets': UfoTargets
         }
         this.playerClassMap = {
-            'Truck': Truck
+            'Truck': Truck,
+            'Ship': Ship,
+            'Ufo': Ufo
         }
-
+        this.bgClassMap = {
+            'TruckBg':TruckBg,
+            'ShipBg': ShipBg,
+            'UfoBg': UfoBg,
+            'BalloonBg': BalloonBg,
+            'IcemanBg': IcemanBg
+        }
+        this.fgClassMap = {
+            'TruckFg': TruckFg,
+            'ShipFg': ShipFg,
+            'UfoFg': UfoFg,
+            'BalloonFg': BalloonFg,
+            'IcemanFg': IcemanFg
+        }
 
         this.itemBlockClass = null
         this.playerClass = null
+        this.bgClass = null
 
     }
 
@@ -33,12 +73,15 @@ export default class GameScene extends BasicScene {
 
         this.itemBlockClass = this.blockClassMap[this.dataModel.blockItem]
         this.playerClass = this.playerClassMap[this.dataModel.playerItem]
+        this.bgClass = this.bgClassMap[this.dataModel.backgroundItem]
+        this.fgClass = this.fgClassMap[this.dataModel.foregroundItem]
 
-        this.anims.create({
-            key: 'road',
-            repeat: -1,
-            frames: this.anims.generateFrameNames('road', { prefix: 'road_move', start: 0, end: 5, zeroPad: 4 }),
-        });
+
+        // this.anims.create({
+        //     key: 'road',
+        //     repeat: -1,
+        //     frames: this.anims.generateFrameNames('road', { prefix: 'road_move', start: 0, end: 5, zeroPad: 4 }),
+        // });
 
     }
 
@@ -46,23 +89,33 @@ export default class GameScene extends BasicScene {
 
         let blockAssets = this.itemBlockClass.getAssetArray()
         let playerAssets = this.playerClass.getAssetArray()
+        let bgAssets = this.bgClass.getAssetArray()
+        let fgAssets = this.fgClass.getAssetArray()
 
         const imageFiles = {
             'end_box': require('../assets/images/end_box.png'),
             ...blockAssets.img,
-            ...playerAssets.img
+            ...playerAssets.img,
+            ...bgAssets.img,
+            ...fgAssets.img
         }
 
         const atlasFiles = {
             'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json') },
+
             ...blockAssets.atlas,
-            ...playerAssets.atlas
+            ...playerAssets.atlas,
+            ...bgAssets.atlas,
+            ...fgAssets.atlas
         }
 
         this.preloadFromArr({
             img: imageFiles,
             atlas: atlasFiles
         })
+
+        this.createProgressBar();
+
 
     }
 
@@ -93,22 +146,15 @@ export default class GameScene extends BasicScene {
 
         super.create()
 
-        let backGround = this.add.image(this.getColWidth(6), this.getRowHeight(3), 'scene1_1')
-        let foreGround = this.add.image(this.getColWidth(0), this.getRowHeight(4), 'scene1_2')
-        let road = this.add.sprite(this.getColWidth(6), this.getRowHeight(9.4), 'road')
+        let bg = new this.bgClass(this, 0, 0);
 
-        backGround.setDepth(0)
-        foreGround.setDepth(2)
-        road.setDepth(3)
+        this.add.existing(bg)
 
+        let fg = new this.fgClass(this, 0, 0)
 
-        // this.add.image(this.getColWidth(6), this.getRowHeight(6), 'scene1_box')
+        this.add.existing(fg)
 
-        foreGround.setOrigin(0)
-        backGround.setOrigin(0.5)
-        road.setOrigin(0.5)
-
-        road.play('road')
+        // road.play('road')
 
         this.player = new this.playerClass(this, this.getColWidth(4.5), this.getRowHeight(9.5), this.dataModel.gameQuestion)
 
@@ -121,26 +167,43 @@ export default class GameScene extends BasicScene {
 
 
 
-
-
         let gameData = this._handleGameData(Untils.shuffle(this.dataModel.gameAnswers.correct), Untils.shuffle(this.dataModel.gameAnswers.misc))
 
         this.recurringAnswerBlock(gameData)
+
+        
+        this.toLeftBtn = new ToLeftBtn(this, this.getColWidth(9.5), this.getRowHeight(10), this._playerToLeft.bind(this, 500))
+        this.toRightBtn = new ToRightBtn(this, this.getColWidth(11), this.getRowHeight(10), this._playerToRight.bind(this, 500))
+
+        this.toLeftBtn.setDepth(2)
+        this.toRightBtn.setDepth(2)
+
+        this.add.existing(this.toLeftBtn)
+        this.add.existing(this.toRightBtn)
 
     }
 
 
     update() {
 
-        if (this.cursorKeys.left.isDown && !this.playerOnLeft) {
-            this.player.toLeft(this.player.x - 500).then(() => this.playerOnLeft = true)
+        if (this.cursorKeys.left.isDown) {
+            this._playerToLeft(500)
         }
 
-        if (this.cursorKeys.right.isDown && this.playerOnLeft) {
-            this.player.toRight(this.player.x + 500).then(() => this.playerOnLeft = false)
-
+        if (this.cursorKeys.right.isDown) {
+            this._playerToRight(500)
         }
 
+    }
+
+    _playerToLeft(distance) {
+        if(this.playerOnLeft) return
+        this.player.toLeft(this.player.x - distance).then(()=> this.playerOnLeft = true)
+    }
+
+    _playerToRight(distance) {
+        if(!this.playerOnLeft) return
+        this.player.toRight(this.player.x + distance).then(() => this.playerOnLeft = false)
     }
 
     recurringAnswerBlock(gameDataArr = []) {

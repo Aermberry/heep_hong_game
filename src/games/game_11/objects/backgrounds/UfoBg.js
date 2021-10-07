@@ -27,7 +27,6 @@ export default class UfoBg extends BasicBg {
     }
 
     _init() {
-
         
         this.scene.anims.create({
             key: 'farm_cloud',
@@ -52,8 +51,9 @@ export default class UfoBg extends BasicBg {
 
         this.scene.tweens.add({
             targets: background,
-            x: - background.width + this.scene.getColWidth(9),
-            duration: 240000
+            x: - background.width * 0.3,
+            duration: 80000,
+            yoyo: 1
         })
     }
 

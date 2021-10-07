@@ -7,6 +7,7 @@ export default class ShipFg extends BasicFg {
 
         this.setDepth(2)
 
+
         this._init()
 
     }
@@ -19,18 +20,25 @@ export default class ShipFg extends BasicFg {
         });
 
 
-        let water = this.scene.add.sprite(this.scene.getColWidth(6), this.scene.getRowHeight(8.2), 'water')
+        let water = this.scene.add.sprite(this.scene.getColWidth(5.95), this.scene.getRowHeight(8.2), 'water')
 
         water.play('water')
 
-        this.add([water])
+        let foreground = this.scene.add.image(this.scene.getColWidth(0), this.scene.getRowHeight(1.5), 'scene2_2')
+
+        
+        foreground.setOrigin(0)
+        
+        water.setScale(1.05)
+
+        this.add([water, foreground])
     }
     
     static getAssetArray() {
 
         return {
             img: {
-
+                'scene2_2': require('../../assets/images/stage2/scene2_2.png'),
             },
             atlas: {
                 'water': { img: require('../../assets/anims/stage2/water.png'), data: require('../../assets/anims/stage2/water.json')},

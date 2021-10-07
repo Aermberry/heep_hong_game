@@ -14,7 +14,7 @@ export default class ShipBg extends BasicBg {
         return {
             img: {
                 'scene2_1': require('../../assets/images/stage2/scene2_1.png'),
-                'scene2_2': require('../../assets/images/stage2/scene2_2.png'),
+                // 'scene2_2': require('../../assets/images/stage2/scene2_2.png'),
                 
             },
             atlas: {
@@ -36,10 +36,10 @@ export default class ShipBg extends BasicBg {
         });
         
         let background = this.scene.add.image(this.scene.getColWidth(6), this.scene.getRowHeight(6), 'scene2_1')
-        let foreground = this.scene.add.image(this.scene.getColWidth(0), this.scene.getRowHeight(1.5), 'scene2_2')
+        // let foreground = this.scene.add.image(this.scene.getColWidth(0), this.scene.getRowHeight(1.5), 'scene2_2')
 
         
-        foreground.setOrigin(0)
+        // foreground.setOrigin(0)
         background.setOrigin(0.5)
 
         let bird = this.scene.add.sprite(this.scene.getColWidth(6), this.scene.getRowHeight(1),'bird')
@@ -49,7 +49,7 @@ export default class ShipBg extends BasicBg {
 
         this.add([
             background, 
-            foreground, 
+            // foreground, 
             bird
         ])
     }

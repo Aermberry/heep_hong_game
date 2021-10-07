@@ -1,5 +1,5 @@
 import BasicTarget from "./BasicTargetBlock";
-import WoodenBox from "./WoodenBox"
+import CowBox from "./CowBox";
 
 export default class UfoTargets extends BasicTarget {
 
@@ -8,9 +8,9 @@ export default class UfoTargets extends BasicTarget {
 
         this.setDepth(1)
 
-        let leftSprite = new WoodenBox(scene, -this.scene.getColWidth(1), 0, answerData.answers[0])
+        let leftSprite = new CowBox(scene, -this.scene.getColWidth(1.5), 0, answerData.answers[0])
 
-        let rightSprite = new WoodenBox(scene, this.scene.getColWidth(1), 0, answerData.answers[1])
+        let rightSprite = new CowBox(scene, this.scene.getColWidth(1.5), 0, answerData.answers[1])
 
         rightSprite.setFlip(1)
 
@@ -65,11 +65,11 @@ export default class UfoTargets extends BasicTarget {
 
         return {
             img: {
-                'scene1_box': require('../../assets/images/stage1/scene1_box.png'),
+                'scene3_cow': require('../../assets/images/stage3/scene3_cow.png'),
             },
             atlas: {
-                'scene1_correct': { img: require('../../assets/anims/stage1/right.png'), data: require('../../assets/anims/stage1/right.json') },
-                'scene1_wrong': { img: require('../../assets/anims/stage1/wrong.png'), data: require('../../assets/anims/stage1/wrong.json') },
+                'cow_correct': { img: require('../../assets/anims/stage3/cow_right.png'), data: require('../../assets/anims/stage3/cow_right.json') },
+                'cow_wrong': { img: require('../../assets/anims/stage3/cow_wrong.png'), data: require('../../assets/anims/stage3/cow_wrong.json') },
             },
             sound: {
                 

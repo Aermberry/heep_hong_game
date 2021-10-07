@@ -2,7 +2,7 @@ import BasicPlayer from "./BasicPlayer"
 
 export default class Ship extends BasicPlayer {
 
-    constructor(scene, x, y, title= 'title') {
+    constructor(scene, x, y) {
         super(scene, x, y)
 
 
@@ -28,23 +28,7 @@ export default class Ship extends BasicPlayer {
 
         this.boat = scene.add.sprite(0, 0, 'boat')
 
-        let textPadding = this.boat.width * 0.05;
-
-        this.textBlock = scene.add.text(
-            this.boat.width * -0.2, 
-            this.boat.height * -0.26, 
-            title,
-            {
-                fontSize: (this.boat.width * 0.18) + 'px',
-                color: '#000000',
-                // fontFamily: "Custom-Han-Serif"
-            }
-        )
-
-        this.textBlock.setOrigin(0.5)
-        this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
-
-        this.add([this.boat, this.textBlock])
+        this.add([this.boat])
 
         this.boat.play('boat_sail_left')
 
@@ -67,8 +51,6 @@ export default class Ship extends BasicPlayer {
                 innerReslove()
             })
         })
-        
-
 
     }
 
@@ -76,11 +58,6 @@ export default class Ship extends BasicPlayer {
         return new Promise((innerResolve)=> {
 
             new Promise((resolve)=> {
-                this.scene.tweens.add({
-                    targets: this.textBlock,
-                    x: this.boat.width * 0.1,
-                    duration: this.getMovementDuration()
-                })
                 this.boat.play('boat_turn').on('animationcomplete', ()=> {
                     resolve()
                 })

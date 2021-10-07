@@ -17,7 +17,7 @@ export default class TruckBg extends BasicBg {
                 'scene1_2': require('../../assets/images/stage1/scene1_2.png'),
             },
             atlas: {
-                // 'road': { img: require('../../assets/anims/stage1/road.png'), data: require('../../assets/anims/stage1/road.json')},
+
             },
             sound: {
                 
@@ -28,13 +28,23 @@ export default class TruckBg extends BasicBg {
 
     _init() {
         
-        let background = this.scene.add.image(this.scene.getColWidth(6), this.scene.getRowHeight(3), 'scene1_1')
+        let background = this.scene.add.image(this.scene.getColWidth(0), this.scene.getRowHeight(0), 'scene1_1')
         let foreground = this.scene.add.image(this.scene.getColWidth(0), this.scene.getRowHeight(4), 'scene1_2')
 
         foreground.setOrigin(0)
-        background.setOrigin(0.5)
+        background.setOrigin(0)
+
+        background.setScale(1.2)
 
         this.add([background, foreground])
+
+        this.scene.tweens.add({
+            targets: background,
+            x: - background.width * 0.2,
+            duration: 80000,
+            yoyo: 1
+        })
+
     }
 
 }

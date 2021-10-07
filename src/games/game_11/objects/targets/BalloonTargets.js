@@ -1,5 +1,5 @@
 import BasicTarget from "./BasicTargetBlock";
-import WoodenBox from "./WoodenBox"
+import FlyWoodenBox from "./FlyWoodenBox"
 
 export default class BalloonTargets extends BasicTarget {
 
@@ -8,15 +8,17 @@ export default class BalloonTargets extends BasicTarget {
 
         this.setDepth(1)
 
-        let leftSprite = new WoodenBox(scene, -this.scene.getColWidth(1), 0, answerData.answers[0])
+        let leftSprite = new FlyWoodenBox(scene, -this.scene.getColWidth(1.5), 0, answerData.answers[0])
 
-        let rightSprite = new WoodenBox(scene, this.scene.getColWidth(1), 0, answerData.answers[1])
+        let rightSprite = new FlyWoodenBox(scene, this.scene.getColWidth(1.5), 0, answerData.answers[1])
 
         rightSprite.setFlip(1)
 
         this.setTarget({leftSprite, rightSprite})
 
         this.targetsContainer.setScale(0.4)
+
+        this.targetsContainer.setY(this.scene.getRowHeight(-6))
 
     }
 
@@ -27,7 +29,7 @@ export default class BalloonTargets extends BasicTarget {
     moveInAnime() {
         this.scene.tweens.add({
             targets: this.targetsContainer,
-            y: this.targetsContainer.y - this.scene.getRowHeight(2),
+            y: this.targetsContainer.y + this.scene.getRowHeight(2),
             scale: 0.6,
             duration: this.getMovementDurationAfterFactor() * 0.25,
         }).on('complete', ()=> {
@@ -47,7 +49,7 @@ export default class BalloonTargets extends BasicTarget {
 
                 this.scene.tweens.add({
                     targets: this.targetsContainer,
-                    y: this.targetsContainer.y + this.scene.getRowHeight(6),
+                    y: this.targetsContainer.y + this.scene.getRowHeight(8),
                     scale: 1.5,
                     duration: this.getMovementDurationAfterFactor() * 0.4
                 }).on('complete', ()=> {
@@ -65,11 +67,11 @@ export default class BalloonTargets extends BasicTarget {
 
         return {
             img: {
-                'scene1_box': require('../../assets/images/stage1/scene1_box.png'),
+                'scene4_box': require('../../assets/images/stage4/scene4_box.png')
             },
             atlas: {
-                'scene1_correct': { img: require('../../assets/anims/stage1/right.png'), data: require('../../assets/anims/stage1/right.json') },
-                'scene1_wrong': { img: require('../../assets/anims/stage1/wrong.png'), data: require('../../assets/anims/stage1/wrong.json') },
+                'box_correct': { img: require('../../assets/anims/stage4/flybox_right.png'), data: require('../../assets/anims/stage4/flybox_right.json') },
+                'box_wrong': { img: require('../../assets/anims/stage4/flybox_wrong.png'), data: require('../../assets/anims/stage4/flybox_wrong.json') },
             },
             sound: {
                 

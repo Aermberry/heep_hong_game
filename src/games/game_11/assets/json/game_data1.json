@@ -113,10 +113,10 @@
     {
         "gameLogic": 11,
         "gameStage": 14,
-        "blockItem": "Scene1Block",
-        "playerItem": "Truck",
-        "backgroundItem": "TruckBg",
-        "foregroundItem": "TruckFg",
+        "blockItem": "BalloonTargets",
+        "playerItem": "FlyPen",
+        "backgroundItem": "BalloonBg",
+        "foregroundItem": "BalloonFg",
         "gameQuestion": {
             "name": "量詞"
         },
@@ -150,10 +150,10 @@
     {
         "gameLogic": 11,
         "gameStage": 15,
-        "blockItem": "Scene1Block",
-        "playerItem": "Truck",
-        "backgroundItem": "TruckBg",
-        "foregroundItem": "TruckFg",
+        "blockItem": "IcemanTargets",
+        "playerItem": "SkiPen",
+        "backgroundItem": "IcemanBg",
+        "foregroundItem": "IcemanFg",
         "gameQuestion": {
             "name": "疑問代詞"
         },

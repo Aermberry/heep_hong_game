@@ -1,5 +1,5 @@
 import BasicTarget from "./BasicTargetBlock";
-import WoodenBox from "./WoodenBox"
+import Iceman from "./Iceman"
 
 export default class IcemanTargets extends BasicTarget {
 
@@ -8,9 +8,9 @@ export default class IcemanTargets extends BasicTarget {
 
         this.setDepth(1)
 
-        let leftSprite = new WoodenBox(scene, -this.scene.getColWidth(1), 0, answerData.answers[0])
+        let leftSprite = new Iceman(scene, -this.scene.getColWidth(1), 0, answerData.answers[0])
 
-        let rightSprite = new WoodenBox(scene, this.scene.getColWidth(1), 0, answerData.answers[1])
+        let rightSprite = new Iceman(scene, this.scene.getColWidth(1), 0, answerData.answers[1])
 
         rightSprite.setFlip(1)
 
@@ -36,7 +36,7 @@ export default class IcemanTargets extends BasicTarget {
 
             this.scene.tweens.add({
                 targets: this.targetsContainer,
-                y: this.targetsContainer.y + this.scene.getRowHeight(6),
+                y: this.targetsContainer.y + this.scene.getRowHeight(5),
                 scale: 1.2,
                 duration: this.getMovementDurationAfterFactor() * 0.8
             }).on('complete', ()=> {
@@ -65,11 +65,11 @@ export default class IcemanTargets extends BasicTarget {
 
         return {
             img: {
-                'scene1_box': require('../../assets/images/stage1/scene1_box.png'),
+                'iceman': require('../../assets/images/stage5/sm.png'),
             },
             atlas: {
-                'scene1_correct': { img: require('../../assets/anims/stage1/right.png'), data: require('../../assets/anims/stage1/right.json') },
-                'scene1_wrong': { img: require('../../assets/anims/stage1/wrong.png'), data: require('../../assets/anims/stage1/wrong.json') },
+                'iceman_correct': { img: require('../../assets/anims/stage5/sm_right.png'), data: require('../../assets/anims/stage5/sm_right.json') },
+                'iceman_wrong': { img: require('../../assets/anims/stage5/sm_wrong.png'), data: require('../../assets/anims/stage5/sm_wrong.json') },
             },
             sound: {
                 

@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
-// import ExistBigBtn  from './ExistBigBtn'
-// import RetryBtn from './RetryBtn'
-
+import RetryBtn from './buttons/RetryBtn';
+import ExistBigBtn from './buttons/ExistBigBtn';
 export default class EndGameBroad extends Phaser.GameObjects.Container {
 
     constructor(scene, x, y, children) {
@@ -22,6 +21,10 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
         // let retryBtn = new RetryBtn(scene, - endBox.width * 0.22, endBox.height * 0.35)
         // let existBtn = new ExistBigBtn(scene, endBox.width * 0.22, endBox.height * 0.35)
 
+        
+        let retryBtn = new RetryBtn(scene, - endBox.width * 0.22, endBox.height * 0.35)
+        let existBtn = new ExistBigBtn(scene, endBox.width * 0.22, endBox.height * 0.35)
+
         animate.play('end_game_anime')
 
         this.add([
@@ -29,8 +32,8 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
             // bg,
             animate,
             // fg,
-            // retryBtn,
-            // existBtn
+            retryBtn,
+            existBtn
         ])
 
     }

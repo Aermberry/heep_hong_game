@@ -14,7 +14,7 @@ export default class EndScene extends BasicScene {
 
         super.create();
 
-        // this.buildBg('bg_base')
+        this.buildBg('end_bg')
 
         // this.sound.stopByKey('lightBattle')
 

@@ -23,6 +23,10 @@ import BalloonBg from "../objects/backgrounds/BalloonBg"
 import IcemanBg from "../objects/backgrounds/IcemanBg"
 import BalloonFg from "../objects/foregrounds/BalloonFg"
 import IcemanFg from "../objects/foregrounds/IcemanFg"
+import BalloonTargets from "../objects/targets/BalloonTargets"
+import IcemanTargets from "../objects/targets/IcemanTargets"
+import FlyPen from "../objects/players/FlyPen"
+import SkiPen from "../objects/players/SkiPen"
 export default class GameScene extends BasicScene {
 
 
@@ -37,12 +41,16 @@ export default class GameScene extends BasicScene {
         this.blockClassMap = {
             'Scene1Block': Scene1Block,
             'ShipTargets': ShipTargets,
-            'UfoTargets': UfoTargets
+            'UfoTargets': UfoTargets,
+            'BalloonTargets': BalloonTargets,
+            'IcemanTargets': IcemanTargets
         }
         this.playerClassMap = {
             'Truck': Truck,
             'Ship': Ship,
-            'Ufo': Ufo
+            'Ufo': Ufo,
+            'FlyPen': FlyPen,
+            'SkiPen': SkiPen
         }
         this.bgClassMap = {
             'TruckBg':TruckBg,
@@ -86,6 +94,9 @@ export default class GameScene extends BasicScene {
     }
 
     preload() {
+
+        this.buildBg('bg_title')
+
 
         let blockAssets = this.itemBlockClass.getAssetArray()
         let playerAssets = this.playerClass.getAssetArray()
@@ -166,8 +177,12 @@ export default class GameScene extends BasicScene {
         this.cursorKeys = this.input.keyboard.createCursorKeys()
 
 
+        const correctAns = [...this.dataModel.gameAnswers.correct]
 
-        let gameData = this._handleGameData(Untils.shuffle(this.dataModel.gameAnswers.correct), Untils.shuffle(this.dataModel.gameAnswers.misc))
+        const miscAns = [...this.dataModel.gameAnswers.misc]
+
+
+        let gameData = this._handleGameData(Untils.shuffle(correctAns), Untils.shuffle(miscAns))
 
         this.recurringAnswerBlock(gameData)
 

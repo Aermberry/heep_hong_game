@@ -16,6 +16,7 @@ export default class IcemanFg extends BasicFg {
         this.scene.anims.create({
             key: 'snow',
             repeat: -1,
+            duration: 12000,
             frames: this.scene.anims.generateFrameNames('snow', { prefix: 'snow', start: 0, end: 59, zeroPad: 4 }),
         });
 

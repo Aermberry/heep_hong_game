@@ -19,6 +19,7 @@ export default class CowBox extends Phaser.GameObjects.Container {
         })
 
         this.box = scene.add.image(0, 0, 'scene3_cow')
+
         this.correct = scene.add.sprite(this.box.width * 0.115, this.box.height * -0.19, 'cow_correct')
         this.wrong = scene.add.sprite(this.box.width * 0.115, this.box.height * -0.19, 'cow_wrong')
 

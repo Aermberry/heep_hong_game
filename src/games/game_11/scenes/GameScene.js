@@ -190,8 +190,8 @@ export default class GameScene extends BasicScene {
         this.toLeftBtn = new ToLeftBtn(this, this.getColWidth(9.5), this.getRowHeight(10), this._playerToLeft.bind(this, 500))
         this.toRightBtn = new ToRightBtn(this, this.getColWidth(11), this.getRowHeight(10), this._playerToRight.bind(this, 500))
 
-        this.toLeftBtn.setDepth(2)
-        this.toRightBtn.setDepth(2)
+        this.toLeftBtn.setDepth(8)
+        this.toRightBtn.setDepth(8)
 
         this.add.existing(this.toLeftBtn)
         this.add.existing(this.toRightBtn)

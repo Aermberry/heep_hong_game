@@ -105,7 +105,7 @@ export default class Answers {
                 this.winnerHandler();
             } else {
                 this.errorFrequency++;
-                this.scene.car.play('car_1_run');
+                this.scene.car.play(`car_${this.scene.currentCar}_run`);
                 this.scene.tweens.add({
                     targets: this.scene.car,
                     x: this.scene.car.x + 100,
@@ -119,7 +119,7 @@ export default class Answers {
                         duration: 0.5,
                     });
                     stop.play('stop');
-                    this.scene.car.play('car_1_stop');
+                    this.scene.car.play(`car_${this.scene.currentCar}_stop`);
                     setTimeout(() => {
                         this.scene.tweens.add({
                             targets: this.scene.car,
@@ -127,7 +127,7 @@ export default class Answers {
                             duration: 100,
                             ease: 'Power2'
                         }).on('complete', () => {
-                            this.scene.car.play('car_1_idle')
+                            this.scene.car.play(`car_${this.scene.currentCar}_idle`)
 
                         })
                     }, 2000);
@@ -151,9 +151,8 @@ export default class Answers {
                 })
             }
         } else {
-            console.log('进入')
             this.errorFrequency++;
-            this.scene.car.play('car_1_run')
+            this.scene.car.play(`car_${this.scene.currentCar}_run`)
             this.scene.tweens.add({
                 targets: this.scene.car,
                 x: this.scene.car.x + 100,
@@ -167,10 +166,10 @@ export default class Answers {
                     duration: 0.5,
                 });
                 stop.play('stop');
-                this.scene.car.play('car_1_stop');
+                this.scene.car.play(`car_${this.scene.currentCar}_stop`);
                 setTimeout(() => {
                     this.scene.car.x = this.scene.car.x - 100;
-                    this.scene.car.play('car_1_idle')
+                    this.scene.car.play(`car_${this.scene.currentCar}_idle`)
                 }, 2000);
 
                 this.answers.forEach((item, index) => {

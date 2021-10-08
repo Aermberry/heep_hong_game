@@ -27,6 +27,22 @@ export default class PreloaderScene extends BasicScene {
             'car_1_idle': { img: require('../assets/img/car_1.png'), data: require('../assets/img/car_1.json') },
             'car_1_stop': { img: require('../assets/img/car_1_stop.png'), data: require('../assets/img/car_1_stop.json') },
             'car_1_run': { img: require('../assets/img/car_1_run.png'), data: require('../assets/img/car_1_run.json') },
+
+            'car_2_idle': { img: require('../assets/img/car_2.png'), data: require('../assets/img/car_2.json') },
+            'car_2_stop': { img: require('../assets/img/car_2_stop.png'), data: require('../assets/img/car_2_stop.json') },
+            'car_2_run': { img: require('../assets/img/car_2_run.png'), data: require('../assets/img/car_2_run.json') },
+            'car_3_idle': { img: require('../assets/img/car_3.png'), data: require('../assets/img/car_3.json') },
+            'car_3_stop': { img: require('../assets/img/car_3_stop.png'), data: require('../assets/img/car_3_stop.json') },
+            'car_3_run': { img: require('../assets/img/car_3_run.png'), data: require('../assets/img/car_3_run.json') },
+            'car_4_idle': { img: require('../assets/img/car_4.png'), data: require('../assets/img/car_4.json') },
+            'car_4_stop': { img: require('../assets/img/car_4_stop.png'), data: require('../assets/img/car_4_stop.json') },
+            'car_4_run': { img: require('../assets/img/car_4_run.png'), data: require('../assets/img/car_4_run.json') },
+            'car_5_idle': { img: require('../assets/img/car_5.png'), data: require('../assets/img/car_5.json') },
+            'car_5_stop': { img: require('../assets/img/car_5_stop.png'), data: require('../assets/img/car_5_stop.json') },
+            'car_5_run': { img: require('../assets/img/car_5_run.png'), data: require('../assets/img/car_5_run.json') },
+            'car_6_idle': { img: require('../assets/img/car_6.png'), data: require('../assets/img/car_6.json') },
+            'car_6_stop': { img: require('../assets/img/car_6_stop.png'), data: require('../assets/img/car_6_stop.json') },
+            'car_6_run': { img: require('../assets/img/car_6_run.png'), data: require('../assets/img/car_6_run.json') },
         }
 
         const soundFiles = {

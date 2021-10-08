@@ -38,7 +38,6 @@ export default class GameScene extends BasicScene {
             frames: this.anims.generateFrameNames('sun', { prefix: 'sun', start: 0, end: 34, zeroPad: 4 }),
             repeat: -1
         });
-
         this.anims.create({
             key: 'car_1_idle',
             frames: this.anims.generateFrameNames('car_1_idle', { prefix: 'car1', start: 0, end: 6, zeroPad: 4 }),
@@ -46,7 +45,6 @@ export default class GameScene extends BasicScene {
             delay: 200
 
         });
-
         this.anims.create({
             key: 'car_1_run',
             frames: this.anims.generateFrameNames('car_1_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
@@ -54,11 +52,114 @@ export default class GameScene extends BasicScene {
             delay: 200
 
         });
-
-
         this.anims.create({
             key: 'car_1_stop',
             frames: this.anims.generateFrameNames('car_1_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_2_idle',
+            frames: this.anims.generateFrameNames('car_2_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_2_run',
+            frames: this.anims.generateFrameNames('car_2_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_2_stop',
+            frames: this.anims.generateFrameNames('car_2_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_3_idle',
+            frames: this.anims.generateFrameNames('car_3_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_3_run',
+            frames: this.anims.generateFrameNames('car_3_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_3_stop',
+            frames: this.anims.generateFrameNames('car_3_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_4_idle',
+            frames: this.anims.generateFrameNames('car_4_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_4_run',
+            frames: this.anims.generateFrameNames('car_4_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_4_stop',
+            frames: this.anims.generateFrameNames('car_4_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_5_idle',
+            frames: this.anims.generateFrameNames('car_5_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_5_run',
+            frames: this.anims.generateFrameNames('car_5_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_5_stop',
+            frames: this.anims.generateFrameNames('car_5_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_6_idle',
+            frames: this.anims.generateFrameNames('car_6_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_6_run',
+            frames: this.anims.generateFrameNames('car_6_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_6_stop',
+            frames: this.anims.generateFrameNames('car_6_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
             repeat: 0,
             delay: 500
         });
@@ -108,10 +209,6 @@ export default class GameScene extends BasicScene {
    
         this.currentCar = parseInt(Math.random() * (6 - 1 + 1) + 1, 10);
         this.car = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(4.5), `car_${this.currentCar}`).setDepth(10)
-        // this.car = this.add.follower(curve, this.getColWidth(0.5), this.getRowHeight(4.5), `car_1_idle`).setDepth(10)
-
-        // this.car.animations.add('car_1_idle', [0,1,2,3]);
-        // this.car.play('car_1_idle')
 
         let data = this.dataModal.gameItems;
         this.pastProblems.forEach((item) => {
@@ -133,8 +230,8 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.blankRoad1)
         sky.play('sun');
 
-        // this.car.play(`car_${this.currentCar}_idle`) 
-        this.car.play('car_1_idle')
+
+        this.car.play(`car_${this.currentCar}_idle`) 
         // this.car.flipX = -1
         
         let exitBtn = new ExitBtn(this, 120, 135);
@@ -156,7 +253,7 @@ export default class GameScene extends BasicScene {
         setTimeout(() => {
             this.endGame()
         }, 3400)
-        this.car.play('car_1_run');
+        this.car.play(`car_${this.currentCar}_run`);
         this.tweens.add({
             targets: this.car,
             x: 1200,

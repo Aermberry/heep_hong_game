@@ -14,7 +14,7 @@
 <style>
   @font-face {
     font-family: "Custom-Han-Serif";
-    src: url(../games/game_3/assets/font/game_3.ttf) format("truetype");
+    src: url(../games/game_5/assets/font/game_5.ttf) format("truetype");
   }
 </style>
 

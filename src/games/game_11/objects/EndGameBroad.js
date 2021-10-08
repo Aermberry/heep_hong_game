@@ -10,7 +10,7 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
 
         scene.anims.create({
             key: 'end_game_anime', 
-            frames: scene.anims.generateFrameNames('end_pic', { prefix: 'end_pic', start: 0, end: 39, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('end_pic', { prefix: 'end_pic', start: 0, end: 29, zeroPad: 4 }),
         });
 
 

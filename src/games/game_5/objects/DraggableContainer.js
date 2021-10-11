@@ -33,7 +33,11 @@ export default class DragBlock extends Phaser.GameObjects.Container {
 
     }
 
+
     handleDrag(pointer, gameObject, dragX, dragY) {
+        
+        //this.destroy fail to disable/remove the input on-drag listener, need to find a better way to implement this method
+        if(typeof this.scene == 'undefined') return
 
         gameObject.x = dragX;
         gameObject.y = dragY;
@@ -45,8 +49,11 @@ export default class DragBlock extends Phaser.GameObjects.Container {
     }
 
     handleStopDrag(pointer, gameObject) {
-        //Check if the gameObject is in the item block
 
+        //this.destroy fail to disable/remove the input on-drag listener, need to find a better way to implement this method
+        if(typeof this.scene == 'undefined') return
+
+        //Callback need to check if the gameObject is in the item block
         if(typeof this.dragEndCallback == 'function') {
             this.dragEndCallback(pointer, gameObject);
         }
@@ -55,7 +62,7 @@ export default class DragBlock extends Phaser.GameObjects.Container {
 
     setDragEndHandler(handler) {
 
-        if(typeof handler == 'function') {
+        if(typeof this.scene != 'undefined' && typeof handler == 'function') {
             this.dragEndCallback = handler;
         }
 

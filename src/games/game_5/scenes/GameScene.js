@@ -6,6 +6,7 @@ import WinCat from '../objects/Cat'
 // import Leaf from '../objects/Leaf'
 import LeafGroup from '../objects/LeafGroup'
 // import Cat from "../objects/Cat"
+import Untils from '../../common/Untils'
 
 export default class GameScene extends BasicScene {
 
@@ -20,6 +21,14 @@ export default class GameScene extends BasicScene {
 
         this.dataModal = this.sys.game.globals.model;
         this.handInBroad = false;
+        this.catHandWhite = null
+        this.catHandBlack = null
+        this.bam = null
+        this.catBack = null
+        this.items = []
+        this.answers = []
+        this.curItem = null
+        this.cat = null
 
     }
 
@@ -28,9 +37,13 @@ export default class GameScene extends BasicScene {
         this.buildBg('bg_tutor')
         
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
-        let music = this.sound.add('drums')
-        music.setLoop(true)
-        music.play()
+        let gameMusic = this.sound.add('drums')
+        gameMusic.setLoop(true)
+        gameMusic.play()
+
+        let afterMatchMusic = this.sound.add('lightBattle')
+        afterMatchMusic.setLoop(true)
+
 
         const itemImgList = {
             5: {
@@ -96,38 +109,63 @@ export default class GameScene extends BasicScene {
 
     }
 
-    create() {
+    /**
+    *   Clear and mutate this.items and this.answers to re-initial game data
+    *
+    */
+    handleGameData(itemLimit) {
+        
+        // let allItems = this.dataModal.gameItems
+        this.items = this.dataModal.gameItems
+        
+        this.items = Untils.shuffle(this.items)
 
-        super.create();
+        this.items = this.items.splice(0,itemLimit)
 
-        this.disableInput = false;
+        // this.item = allItems.splice(Math.floor(Math.random() * allItems.length), 1)[0]
 
-        const items = this.dataModal.gameItems
+        let allAnswers = this.dataModal.gameAnswers
 
-        let itemInd = Math.floor(Math.random() * items.length)
+        this.items.forEach((item)=> {
 
-        this.item = items[itemInd]
+            let answers = [...allAnswers]
 
-        this.answers = [];
+            let temp = []
 
-        this.allAnswers = this.dataModal.gameAnswers
+            answers.some((answer, ind) => {
 
-        this.allAnswers.some((answer, ind) => {
+                if (answer.index === item.answer) {
 
-            if (answer.index === this.item.answer) {
+                    temp.push(answers.splice(ind, 1)[0])
 
-                this.answers.push(this.allAnswers.splice(ind, 1)[0])
+                    return true
 
-                return true;
+                }
 
-            }
+            })
+
+            temp.push(answers[Math.floor(answers.length * Math.random())])
+
+            this.answers.push(temp)
 
         })
 
-        this.answers.push(this.allAnswers[Math.floor(this.allAnswers.length * Math.random())])
+    }
 
+    initGameRender(item, answers) {
 
-        this.buildBg('bg_base');
+        this.curItem = item
+
+        //Remove and rendering for catHand,catBack,bamItem, 
+
+        if(this.catBack != null && typeof this.catBack.destroy === 'function') this.catBack.destroy()
+        if(this.catHandWhite != null && typeof this.catHandWhite.destroy === 'function') this.catHandWhite.destroy()
+        if(this.catHandBlack != null && typeof this.catHandBlack.destroy === 'function') this.catHandBlack.destroy()
+        if(this.bam != null && typeof this.bam.destroy === 'function') this.bam.destroy()
+        if(this.cat != null && typeof this.cat.destroy === 'function') this.cat.destroy()
+
+        this.sound.stopAll()
+        this.sound.play('drums')
 
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
 
@@ -140,7 +178,7 @@ export default class GameScene extends BasicScene {
             'white', 
             this.answerSelected.bind(this), 
             this.onSelectingAnswer.bind(this),
-            this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0]
+            answers.splice(Math.floor(Math.random() * answers.length), 1)[0]
         )
         this.catHandBlack = new CatHand(
             this, 
@@ -149,10 +187,10 @@ export default class GameScene extends BasicScene {
             'black', 
             this.answerSelected.bind(this), 
             this.onSelectingAnswer.bind(this),
-            this.answers.splice(Math.floor(Math.random() * this.answers.length), 1)[0]
+            answers.splice(Math.floor(Math.random() * answers.length), 1)[0]
         )
 
-        this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), this.item)
+        this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), item)
         this.bam.setDepth(5)
         
         this.add.existing(this.catHandWhite)
@@ -165,15 +203,30 @@ export default class GameScene extends BasicScene {
             this.catHandBlack.moveIn().then((itemSelf) => itemSelf.setDepth(7));
         });
         this.catBack.moveIn()
-        .then(()=> {
+        this.disableInput = false
 
-            this.leafGroup = new LeafGroup(this, 3, true);
+    }
 
-            this.leafGroup.setDepth(8)
+    create() {
 
-            this.add.existing(this.leafGroup)
-    
-        });
+        super.create();
+
+        this.disableInput = false;
+        this.items = []
+        this.answers = []
+
+        this.handleGameData(5)
+
+        this.buildBg('bg_base');
+
+        this.initGameRender(this.items.pop(), this.answers.pop())
+
+        this.leafGroup = new LeafGroup(this, 3, true);
+
+        this.leafGroup.setDepth(8)
+
+        this.add.existing(this.leafGroup)
+
 
     }
 
@@ -231,9 +284,9 @@ export default class GameScene extends BasicScene {
             setTimeout(() => {
 
                     
-                let music = this.sound.add('lightBattle')
-                music.setLoop(true)
-                music.play()
+                this.sound.stopAll()
+                this.sound.play('lightBattle')
+
 
                 this.add.tween({
                     targets: this.leafLeft,
@@ -256,28 +309,40 @@ export default class GameScene extends BasicScene {
                     this.bam.customMoveTo(this.getColWidth(17), this.getRowHeight(6), 1500)
                     this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
                         this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
-                            let cat = new WinCat(this, this.getColWidth(8.5), this.getRowHeight(7));
-                            cat.setDepth(4)
-                            this.add.existing(cat);
+                            this.cat = new WinCat(this, this.getColWidth(8.5), this.getRowHeight(7));
+                            this.cat.setDepth(4)
+                            this.add.existing(this.cat);
                             setTimeout(this.bam.moveOut.bind(this.bam), 200)
-                            cat.moveIn().then(() => {
+                            this.cat.moveIn().then(() => {
     
                                 setTimeout(() => {
                                     //Game win or lose anime
-                                    if (catHand.getAnswer() == this.item.answer) {
+                                    if (catHand.getAnswer() == this.curItem.answer) {
     
                                         this.bam.breakUp()
-                                        cat.gameWin()
+                                        this.cat.gameWin()
     
                                     } else {
     
                                         this.bam.failedToBreak()
-                                        cat.gameFail()
+                                        this.cat.gameFail()
     
                                     }
     
                                     setTimeout(()=> {
-                                        this.scene.start('End')
+                                        
+                                        //Re-initial game stage or end game
+                                        if(typeof this.items.length != 'undefined' && this.items.length > 0) {
+
+                                            this.initGameRender(this.items.pop(), this.answers.pop())
+
+                                        }else {
+                                            this.scene.start('End')
+                                        }
+
+
+                                        // endPromise()
+                                        // this.scene.start('End')
     
                                     }, 3000)
     

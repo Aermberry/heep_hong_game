@@ -128,7 +128,6 @@ export default class CatHand extends DraggableContainer {
     }
 
     toOriginPosTween(time) {
-
         return this.scene.tweens.add({
             targets: this,
             x: this.inPosition.x,

@@ -20,7 +20,7 @@ export default class Iceman extends Phaser.GameObjects.Container {
 
         this.box = scene.add.image(0, 0, 'iceman')
         this.correct = scene.add.sprite(this.box.width * 0.15, 0, 'correct')
-        this.wrong = scene.add.sprite(this.box.width * 0.2, 0, 'wrong')
+        this.wrong = scene.add.sprite(this.box.width * 0.21, 0, 'wrong')
 
         this.correct.setAlpha(0)
         this.wrong.setAlpha(0)
@@ -67,7 +67,7 @@ export default class Iceman extends Phaser.GameObjects.Container {
             this.box.setFlip(1)
             // this.textBlock.setX(this.box.width * 0.1)
             this.correct.setX(this.box.width * .155)
-            this.wrong.setX(this.box.width * 0.18)
+            this.wrong.setX(this.box.width * 0.20)
         }
     }
 

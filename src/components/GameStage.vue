@@ -10,11 +10,6 @@
 </template>
 
 <style>
-@font-face {
-  font-family: "Custom-Han-Serif";
-  src: local("Custom-Han-Serif"),
-    url(../games/game_3/assets/font/game_3.ttf) format("truetype");
-  }
   @font-face {
     font-family: "STKaitiTC-Black";
     src: local("STKaitiTC-Black"),

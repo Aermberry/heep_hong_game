@@ -55,6 +55,7 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene(this);
 
+
         // this.input.setDefaultCursor(`url(${FF}), pointer`);
         this.input.setDefaultCursor(`url(${this.cursorHandIcon}), pointer`);
 
@@ -160,16 +161,6 @@ export default class GameScene extends BasicScene {
 
         return container
     }
-
-
-    // produceToothYValue(x) {
-    //     const a = 542.923767776076;
-    //     const b = 0.874873444090501;
-    //     const c = -0.00129911976352851;
-    //     const d = 7.26209822672699E-07;
-    //     const e = -1.38062230433894E-10;
-    //     return a + b * x + c * x ** 2 + d * x ** 3 + e * x ** 4
-    // }
 
     produceToothYValue(value) {
         let x = value / 1920;

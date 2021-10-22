@@ -15,7 +15,9 @@ export default class PreloaderScene extends BasicScene {
         const imageFiles = {
             'bg_tutor': require('../assets/img/bg_tutor.png'),
             'end_box': require('../assets/img/end_box.png'),
-            'bg': require('../assets/img/bg.png')
+            'bg': require('../assets/img/bg.png'),
+            'bg_L1': require('../assets/img/end_bg.png'),
+
         };
 
         const atlasFiles = {

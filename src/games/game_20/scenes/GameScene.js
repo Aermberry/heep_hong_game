@@ -22,7 +22,7 @@ export default class GameScene extends BasicScene {
             this.currentLevel = 1;
         }
         this.dataModal = this.sys.game.globals.model;
-        
+
     }
 
     preload() {
@@ -72,17 +72,24 @@ export default class GameScene extends BasicScene {
         // this.add.existing(this.doneBtn);
         // this.add.existing(this.speakerBtn);
 
-        /**
-         * 251，21，0
-            90，170，255
-            0，0，0
-            160，197，92
-         */
-
         let dog = this.add.sprite(this.getColWidth(1.5), this.getRowHeight(9), 'dog')
         dog.play('dog');
-        var hanziData = require(`hanzi-writer-data/思`)
-        var writer = HanziWriter.create("grid-background-target", '思', {
+
+        let data = this.dataModal.gameItems;
+
+        this.pastProblems.forEach((item) => {
+            data = data.filter((problems) => {
+                if (item[0] !== problems[0]) {
+                    return problems
+                }
+            })
+        })
+
+        let item = data[Math.floor(Math.random() * data.length)];
+        this.pastProblems.push(item)
+
+        var hanziData = require(`hanzi-writer-data/${item[0]}`)
+        var writer = HanziWriter.create("grid-background-target", `${item[0]}`, {
             width: 650,
             height: 650,
             padding: 0,
@@ -98,6 +105,7 @@ export default class GameScene extends BasicScene {
             charDataLoader: () => hanziData
           });
 
+          let that = this;
           writer.quiz({
             onMistake: function(strokeData) {
                 console.log(hanziData);
@@ -108,11 +116,24 @@ export default class GameScene extends BasicScene {
                 // console.log("本次测验共错了 " + strokeData.totalMistakes + " 次");
                 // console.log("此字还剩 " + strokeData.strokesRemaining + "笔");
             },
-            onComplete: function(summaryData) {
-                alert(`你完成了本次测试 ${summaryData.character}`)
+            onComplete: function() {
+                setTimeout(() => {
+                    that.endGame();
+                }, 3000)
             },
           });
 
+    }
+
+    endGame() {
+        if (this.currentLevel == 5) {
+            this.scene.start('End')
+        } else {
+            this.scene.start('Game', {
+                level: this.currentLevel + 1,
+                pastProblems: this.pastProblems
+            })
+        }
     }
 
 

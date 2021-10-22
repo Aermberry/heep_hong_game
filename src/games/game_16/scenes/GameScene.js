@@ -225,6 +225,7 @@ export default class GameScene extends BasicScene {
 
 
         let data = this.dataModal.gameItems;
+
         this.pastProblems.forEach((item) => {
             data = data.filter((problems) => {
                 if (item.join('|') !== problems.join('|')) {
@@ -233,7 +234,7 @@ export default class GameScene extends BasicScene {
             })
         })
 
-        data.splice(data.indexOf(this.pastProblems), 0);
+        // data.splice(data.indexOf(this.pastProblems), 0);
         let item = data[Math.floor(Math.random() * data.length)];
         this.pastProblems.push(item)
         this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.winnerCallBack.bind(this), item);

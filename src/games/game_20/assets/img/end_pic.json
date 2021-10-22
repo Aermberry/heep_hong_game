@@ -1,6 +1,6 @@
 ﻿{"frames": {
 
-"Symbol 10000":
+"end_pic0000":
 {
 	"frame": {"x":2,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10001":
+"end_pic0001":
 {
 	"frame": {"x":935,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10002":
+"end_pic0002":
 {
 	"frame": {"x":935,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10003":
+"end_pic0003":
 {
 	"frame": {"x":935,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10004":
+"end_pic0004":
 {
 	"frame": {"x":1868,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -40,7 +40,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10005":
+"end_pic0005":
 {
 	"frame": {"x":1868,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -48,7 +48,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10006":
+"end_pic0006":
 {
 	"frame": {"x":1868,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10007":
+"end_pic0007":
 {
 	"frame": {"x":2801,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10008":
+"end_pic0008":
 {
 	"frame": {"x":2801,"y":2,"w":933,"h":972},
 	"rotated": false,
@@ -72,7 +72,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10009":
+"end_pic0009":
 {
 	"frame": {"x":2,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -80,7 +80,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10010":
+"end_pic0010":
 {
 	"frame": {"x":2,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -88,7 +88,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10011":
+"end_pic0011":
 {
 	"frame": {"x":935,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -96,7 +96,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10012":
+"end_pic0012":
 {
 	"frame": {"x":935,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -104,7 +104,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10013":
+"end_pic0013":
 {
 	"frame": {"x":1868,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -112,7 +112,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10014":
+"end_pic0014":
 {
 	"frame": {"x":1868,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -120,7 +120,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10015":
+"end_pic0015":
 {
 	"frame": {"x":1868,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -128,7 +128,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10016":
+"end_pic0016":
 {
 	"frame": {"x":2801,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -136,7 +136,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10017":
+"end_pic0017":
 {
 	"frame": {"x":2801,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -144,7 +144,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10018":
+"end_pic0018":
 {
 	"frame": {"x":2,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -152,7 +152,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10019":
+"end_pic0019":
 {
 	"frame": {"x":2801,"y":974,"w":933,"h":972},
 	"rotated": false,
@@ -160,7 +160,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10020":
+"end_pic0020":
 {
 	"frame": {"x":2,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -168,7 +168,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10021":
+"end_pic0021":
 {
 	"frame": {"x":935,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -176,7 +176,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10022":
+"end_pic0022":
 {
 	"frame": {"x":935,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -184,7 +184,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10023":
+"end_pic0023":
 {
 	"frame": {"x":935,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -192,7 +192,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10024":
+"end_pic0024":
 {
 	"frame": {"x":1868,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -200,7 +200,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10025":
+"end_pic0025":
 {
 	"frame": {"x":1868,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -208,7 +208,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10026":
+"end_pic0026":
 {
 	"frame": {"x":1868,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -216,7 +216,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10027":
+"end_pic0027":
 {
 	"frame": {"x":2801,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -224,7 +224,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10028":
+"end_pic0028":
 {
 	"frame": {"x":2801,"y":1946,"w":933,"h":972},
 	"rotated": false,
@@ -232,7 +232,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":933,"h":972},
 	"sourceSize": {"w":933,"h":972}
 },
-"Symbol 10029":
+"end_pic0029":
 {
 	"frame": {"x":2801,"y":1946,"w":933,"h":972},
 	"rotated": false,

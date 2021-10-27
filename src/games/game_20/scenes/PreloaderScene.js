@@ -22,7 +22,10 @@ export default class PreloaderScene extends BasicScene {
 
         const atlasFiles = {
             'dog': { img: require('../assets/img/dog.png'), data: require('../assets/img/dog.json') },
+            'crab': { img: require('../assets/img/crab.png'), data: require('../assets/img/crab.json') },
 
+            'wrong': { img: require('../assets/img/wrong.png'), data: require('../assets/img/wrong.json') },
+            'done': { img: require('../assets/img/Done.png'), data: require('../assets/img/Done.json') },
             'tut1': { img: require('../assets/img/tut_1.png'), data: require('../assets/img/tut_1.json') },
             'tut2': { img: require('../assets/img/tut_2.png'), data: require('../assets/img/tut_2.json') },
             'end_pic':{ img: require('../assets/img/end_pic.png'), data: require('../assets/img/end_pic.json') },
@@ -37,7 +40,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('strBtn', require('../assets/img/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/img/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('doneBtn', require('../assets/img/Done.png'), { frameWidth: 570, frameHeight: 163.5 });
+        this.load.spritesheet('tipsBtn', require('../assets/img/tips.png'), { frameWidth: 560, frameHeight: 163 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 

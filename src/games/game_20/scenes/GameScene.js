@@ -1,6 +1,6 @@
 import BasicScene from "./BasicScene"
 import ExitBtn from '../objects/ExitBtn'
-// import DoneBtn from '../objects/DoneBtn'
+import TipsBtn from '../objects/TipsBtn'
 // import SpeakerBtn from '../objects/SpeakerBtn'
 import HanziWriter from "../hanzi-writer/index.cjs";
 
@@ -39,7 +39,32 @@ export default class GameScene extends BasicScene {
             frames: this.anims.generateFrameNames('dog', { prefix: 'dog', start: 0, end: 29, zeroPad: 4 }),
             repeat: -1
         });
+        this.anims.create({
+            key: 'crab',
+            delay: 200,
+            frames: this.anims.generateFrameNames('crab', { prefix: 'crab', start: 0, end: 30, zeroPad: 4 }),
+            repeat: -1
+        });
 
+        this.anims.create({
+            key: 'dog',
+            delay: 200,
+            frames: this.anims.generateFrameNames('dog', { prefix: 'dog', start: 0, end: 29, zeroPad: 4 }),
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'wrong',
+            delay: 200,
+            frames: this.anims.generateFrameNames('wrong', { prefix: 'wrong', start: 0, end: 24, zeroPad: 4 }),
+            repeat: 0
+        });
+
+        this.anims.create({
+            key: 'done',
+            delay: 200,
+            frames: this.anims.generateFrameNames('done', { prefix: 'done', start: 0, end: 29, zeroPad: 4 }),
+            repeat: 0
+        });
         const imageFiles = {
 
         };
@@ -58,22 +83,37 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         this.buildBg('bg');
+        let gameCanvas = document.getElementById('game-container').lastElementChild;
+        gameCanvas.setAttributeNS(null,'id', 'gameCanvas')
+        this.size = null;
+        this.getGameCanvas()
+        //获取游戏画布大小
+        this.g = document.createElement('div');
+        this.g.setAttribute('id', 'grid-background-target');
+        this.g.style.zIndex = 999;
+        this.g.style.position = 'absolute';
+        this.g.style.top = "0"
+        this.g.style.marginLeft = "33%";
+        this.g.style.marginTop = "11%";
+        let body = document.getElementById('game-container');
+        body.appendChild(this.g);
+        //监听可视窗口变化
+        this.addListernerWindowSize()
 
-        // let canvas = this.add.zone(this.getColWidth(6), this.getRowHeight(6), 650, 650);
-        let g = document.createElement('div');
-        g.setAttribute('id', 'grid-background-target');
-        g.style.zIndex = 999;
-        g.style.position = 'absolute';
-        this.add.dom(this.getColWidth(6), this.getRowHeight(6),g,'width:650px;height:650px;')
+        // this.add.dom(this.getColWidth(6), this.getRowHeight(6), g, 'width:650px;height:650px;')
+
         let exitBtn = new ExitBtn(this, 120, 135);
-        // this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
+        this.tipsBtn = new TipsBtn(this, this.getColWidth(10), this.getRowHeight(10))
         // this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135);
         this.add.existing(exitBtn);
-        // this.add.existing(this.doneBtn);
+        this.add.existing(this.tipsBtn);
         // this.add.existing(this.speakerBtn);
 
         let dog = this.add.sprite(this.getColWidth(1.5), this.getRowHeight(9), 'dog')
         dog.play('dog');
+
+        let crab = this.add.sprite(this.getColWidth(11), this.getRowHeight(7), 'crab')
+        crab.play('crab');
 
         let data = this.dataModal.gameItems;
 
@@ -88,13 +128,15 @@ export default class GameScene extends BasicScene {
         let item = data[Math.floor(Math.random() * data.length)];
         this.pastProblems.push(item)
 
+        this.strokeNum = 0;
         var hanziData = require(`hanzi-writer-data/${item[0]}`)
-        var writer = HanziWriter.create("grid-background-target", `${item[0]}`, {
-            width: 650,
-            height: 650,
+        console.log(this.size)
+        this.writer = HanziWriter.create("grid-background-target", `${item[0]}`, {
+            width: this.size,
+            height: this.size,
             padding: 0,
             drawingWidth: 30,
-            leniency: 0.5, //难度
+            leniency: 0.6, //难度
             strokeHighlightSpeed: 0.4, //绘制速度
             // highlightColor: '#126bae',
             highlightColor: '#000000',
@@ -102,30 +144,67 @@ export default class GameScene extends BasicScene {
             drawingColor: '#FF7F74',
             // strokeColor: '#EE00FF',
             // radicalColor: '#168F16',
+            highlightOnComplete: false,
             charDataLoader: () => hanziData
-          });
+        });
 
-          let that = this;
-          writer.quiz({
-            onMistake: function(strokeData) {
-                console.log(hanziData);
-                console.log('您在第' + strokeData.strokeNum + '画时出错');
+        let that = this;
+        this.writer.quiz({
+            onCorrectStroke: function (strokeData) {
+                if (strokeData.strokesRemaining > 0) {
+                    that.strokeNum = strokeData.strokeNum + 1;
+                }
+            },
+            onMistake: function () {
+                that.strokeError();
                 // document.getElementById('grid-background-target').
 
                 // console.log("您在该笔画上错了 " + strokeData.mistakesOnStroke + " 次");
                 // console.log("本次测验共错了 " + strokeData.totalMistakes + " 次");
                 // console.log("此字还剩 " + strokeData.strokesRemaining + "笔");
             },
-            onComplete: function() {
+            onComplete: function () {
+                that.characterSuccess();
                 setTimeout(() => {
                     that.endGame();
                 }, 3000)
             },
-          });
+        });
 
     }
 
+    getGameCanvas() {
+        let a = document.getElementById('gameCanvas');
+        this.size = Number(a.style.width.split('px')[0]) / 2.953;
+    }
+
+    addListernerWindowSize() {
+        let that = this;
+        window.onresize = function() {
+            that.getGameCanvas();
+            that.writer.updateDimensions({width: that.size, height: that.size});
+        }
+    }
+
+    strokeError() {
+        let wrong = this.add.sprite(this.getColWidth(7.7), this.getRowHeight(2), 'wrong')
+        wrong.play('wrong');
+    }
+
+    characterSuccess() {
+        let done = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'done')
+        done.play('done');
+    }
+
+    showHighlightStroke() {
+        this.writer.highlightStroke(this.strokeNum);
+    }
+
+
+
     endGame() {
+        let body = document.getElementById('game-container');
+        body.removeChild(this.g);
         if (this.currentLevel == 5) {
             this.scene.start('End')
         } else {

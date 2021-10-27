@@ -1734,6 +1734,7 @@ class RenderTargetBase {
     } = this.getBoundingClientRect();
     const x = evt.clientX - left;
     const y = evt.clientY - top;
+
     return {
       x,
       y
@@ -1747,6 +1748,7 @@ class RenderTargetBase {
     } = this.getBoundingClientRect();
     const x = evt.touches[0].clientX - left;
     const y = evt.touches[0].clientY - top;
+
     return {
       x,
       y

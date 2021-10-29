@@ -87,18 +87,19 @@ export default class GameScene extends BasicScene {
         gameCanvas.setAttributeNS(null,'id', 'gameCanvas')
         this.size = null;
         this.getGameCanvas()
+        this.observerWatch();
         //获取游戏画布大小
         this.g = document.createElement('div');
         this.g.setAttribute('id', 'grid-background-target');
         this.g.style.zIndex = 999;
         this.g.style.position = 'absolute';
         this.g.style.top = "0"
-        this.g.style.marginLeft = "33%";
+        this.g.style.marginLeft = "33.3%";
         this.g.style.marginTop = "11%";
         let body = document.getElementById('game-container');
         body.appendChild(this.g);
         //监听可视窗口变化
-        this.addListernerWindowSize()
+        // this.addListernerWindowSize()
 
         // this.add.dom(this.getColWidth(6), this.getRowHeight(6), g, 'width:650px;height:650px;')
 
@@ -130,13 +131,12 @@ export default class GameScene extends BasicScene {
 
         this.strokeNum = 0;
         var hanziData = require(`hanzi-writer-data/${item[0]}`)
-        console.log(this.size)
         this.writer = HanziWriter.create("grid-background-target", `${item[0]}`, {
             width: this.size,
             height: this.size,
             padding: 0,
             drawingWidth: 30,
-            leniency: 0.6, //难度
+            leniency: 0.8, //难度
             strokeHighlightSpeed: 0.4, //绘制速度
             // highlightColor: '#126bae',
             highlightColor: '#000000',
@@ -173,18 +173,33 @@ export default class GameScene extends BasicScene {
 
     }
 
+    observerWatch() {
+        let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+        let element = document.querySelector('#gameCanvas')
+        let that = this;
+        this.observer = new MutationObserver(() => {
+          let width = getComputedStyle(element).getPropertyValue('width')
+          that.size = Number(width.split('px')[0]) / 2.953;
+          that.writer.updateDimensions({width: that.size, height: that.size});
+        })
+        this.observer.observe(element, { attributes: true, attributeFilter: ['style'], attributeOldValue: true })
+    
+     
+    }
+
+
     getGameCanvas() {
         let a = document.getElementById('gameCanvas');
         this.size = Number(a.style.width.split('px')[0]) / 2.953;
     }
 
-    addListernerWindowSize() {
-        let that = this;
-        window.onresize = function() {
-            that.getGameCanvas();
-            that.writer.updateDimensions({width: that.size, height: that.size});
-        }
-    }
+    // addListernerWindowSize() {
+    //     let that = this;
+    //     window.onresize = function() {
+    //         that.getGameCanvas();
+    //         that.writer.updateDimensions({width: that.size, height: that.size});
+    //     }
+    // }
 
     strokeError() {
         let wrong = this.add.sprite(this.getColWidth(7.7), this.getRowHeight(2), 'wrong')

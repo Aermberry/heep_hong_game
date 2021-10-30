@@ -1374,6 +1374,22 @@ class StrokeRenderer extends StrokeRendererBase {
 
     this._clip.appendChild(this._strokePath);
 
+
+    if(target.defs.childNodes.length == 0 ) {
+      const marker = createElm('marker');
+      attr(marker, 'id', 'arrow')
+      attr(marker, 'markerWidth', '10')
+      attr(marker, 'imarkerHeightd', '10')
+      attr(marker, 'refY', '1.5')
+      attr(marker, 'orient', 'auto')
+      attr(marker, 'markerUnits', 'strokeWidth')
+      const arrow = createElm('path');
+      attr(arrow, 'd', 'M 0,0 L 0,3 L 4,2 z');
+      attr(arrow, 'fill', '#000')
+      marker.appendChild(arrow);
+      target.defs.appendChild(marker);
+    }
+
     target.defs.appendChild(this._clip);
     target.svg.appendChild(this._animationPath);
     return this;
@@ -1808,10 +1824,9 @@ class RenderTarget extends RenderTargetBase {
     attr(marker, 'markerUnits', 'strokeWidth')
     const arrow = createElm('path');
     attr(arrow, 'd', 'M 0,0 L 0,3 L 4,2 z');
-    //箭头颜色
     attr(arrow, 'fill', '#000')
-    
     marker.appendChild(arrow);
+
     defs.appendChild(marker);
 
     return new RenderTarget(svg, defs);
@@ -2525,7 +2540,6 @@ class HanziWriter {
 
     if (this._character && this._renderState && this._hanziWriterRenderer && this._positioner) {
       this._hanziWriterRenderer.destroy();
-
       const hanziWriterRenderer = this._initAndMountHanziWriterRenderer(this._character); // TODO: this should probably implement EventEmitter instead of manually tracking updates like this
 
 

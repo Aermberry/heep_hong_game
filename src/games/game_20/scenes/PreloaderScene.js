@@ -1,4 +1,6 @@
 import BasicScene from './BasicScene'
+import config from '../config/index';
+
 
 export default class PreloaderScene extends BasicScene {
 
@@ -40,21 +42,40 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('strBtn', require('../assets/img/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/img/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('tipsBtn', require('../assets/img/tips.png'), { frameWidth: 560, frameHeight: 163 });
+        this.load.spritesheet('tipsBtn', require('../assets/img/tips.png'), { frameWidth: 560, frameHeight: 190 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
-        this.createProgressBar();
-
-    }
-
-    create() {
-        super.create();
-        setTimeout(
-            () => {
-                this.scene.start('Tutor')
-            }, 1
-        )
-    }
+        let self = this;
+        self.progressBar = self.add.graphics();
+        self.loadingText = self.make.text({
+            x: config.width / 2,
+            y: config.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+        self.loadingText.setOrigin(0.5, 0.5);
+    
+        self.load.on('progress', function (value) {
+          self.progressBar.clear();
+          self.progressBar.fillStyle(0xFC8EFA, 1);
+          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+        });
+    
+        self.load.on('complete', function () {
+          self.loadingText.setText('連接完成');
+          self.ready();
+        }.bind(self));
+    
+      }
+    
+      ready () {
+        let self = this
+        self.scene.start('Tutor');
+      }
+    
 
 }

@@ -1,0 +1,292 @@
+{
+    "level1": [
+        {
+            "name": "橙",
+            "logo": "i_orange.png",
+            "shadow": "i_orange gy.png"
+        },
+        {
+            "name": "香蕉",
+            "logo": "i_banana.png",
+            "shadow": "i_banana gy.png"
+        },
+        {
+            "name": "士多啤梨",
+            "logo": "i_sberry.png",
+            "shadow": "i_sberry gy.png"
+        },
+        {
+            "name": "雞蛋",
+            "logo": "i_egg.png",
+            "shadow": "i_egg gy.png"
+        },
+        {
+            "name": "間尺",
+            "logo": "i_ruler.png",
+            "shadow": "i_ruler gy.png"
+        },
+        {
+            "name": "剪刀",
+            "logo": "i_scissor.png",
+            "shadow": "i_scissor gy.png"
+        },
+        {
+            "name": "顏色筆",
+            "logo": "i_crayon.png",
+            "shadow": "i_crayon gy.png"
+        },
+        {
+            "name": "釘書機",
+            "logo": "i_staple.png",
+            "shadow": "i_staple gy.png"
+        }
+    ,
+    
+        {
+            "name": "泡泡槍",
+            "logo": "i_bbgun.png",
+            "shadow": "i_bbgun gy.png"
+        },
+        {
+            "name": "拼圖",
+            "logo": "i_puzzle.png",
+            "shadow": "i_puzzle gy.png"
+        },
+        {
+            "name": "玩具熊",
+            "logo": "i_ted.png",
+            "shadow": "i_ted gy.png"
+        },
+        {
+            "name": "超人公仔",
+            "logo": "i_hero.png",
+            "shadow": "i_hero gy.png"
+        }
+    ,
+    
+        {
+            "name": "漢堡包",
+            "logo": "i_bgr.png",
+            "shadow": "i_bgr gy.png"
+        },
+        {
+            "name": "薯條",
+            "logo": "i_fries.png",
+            "shadow": "i_fries gy.png"
+        },
+        {
+            "name": "雪糕",
+            "logo": "i_icream.png",
+            "shadow": "i_icream gy.png"
+        },
+        {
+            "name": "可樂",
+            "logo": "i_coke.png",
+            "shadow": "i_coke gy.png"
+        }
+    ,
+    
+        {
+            "name": "掃把",
+            "logo": "i_broom.png",
+            "shadow": "i_broom gy.png"
+        },
+        {
+            "name": "牙刷",
+            "logo": "i_tbrush.png",
+            "shadow": "i_tbrush gy.png"
+        },
+        {
+            "name": "水壺",
+            "logo": "i_bottle.png",
+            "shadow": "i_bottle gy.png"
+        },
+        {
+            "name": "毛巾",
+            "logo": "i_towel.png",
+            "shadow": "i_towel gy.png"
+        }
+    ],
+    "level2": [
+        {
+            "name": "衣服",
+            "logo": "i_tee.png",
+            "shadow": "i_tee gy.png"
+        },
+        {
+            "name": "運動鞋",
+            "logo": "i_sneaker.png",
+            "shadow": "i_sneaker gy.png"
+        },
+        {
+            "name": "手機充電器",
+            "logo": "i_charger.png",
+            "shadow": "i_charger gy.png"
+        },
+        {
+            "name": "八達通",
+            "logo": "i_otp.png",
+            "shadow": "i_otp gy.png"
+        },
+        {
+            "name": "藥物",
+            "logo": "i_pill.png",
+            "shadow": "i_pill gy.png"
+        },
+        {
+            "name": "帽",
+            "logo": "i_hat.png",
+            "shadow": "i_hat gy.png"
+        },
+        {
+            "name": "雨傘",
+            "logo": "i_umbralla.png",
+            "shadow": "i_umbralla gy.png"
+        },
+        {
+            "name": "太陽眼鏡",
+            "logo": "i_sung.png",
+            "shadow": "i_sung gy.png"
+        },
+        {
+            "name": "泳衣/泳褲",
+            "logo": "i_bsuit.png",
+            "shadow": "i_bsuit gy.png"
+        },
+        {
+            "name": "泳鏡",
+            "logo": "i_swimg.png",
+            "shadow": "i_swimg gy.png"
+        },
+        {
+            "name": "拖鞋",
+            "logo": "i_slipper.png",
+            "shadow": "i_slipper gy.png"
+        },
+
+        {
+            "name": "大毛巾",
+            "logo": "i_xltowel.png",
+            "shadow": "i_xltowel gy.png"
+        },
+        {
+            "name": "鞋",
+            "logo": "i_shoes.png",
+            "shadow": "i_shoes gy.png"
+        },
+        {
+            "name": "冷帽",
+            "logo": "i_beanie.png",
+            "shadow": "i_beanie gy.png"
+        },
+        {
+            "name": "頸巾",
+            "logo": "i_scarf.png",
+            "shadow": "i_scarf gy.png"
+        },
+        {
+            "name": "保暖手套",
+            "logo": "i_mitten.png",
+            "shadow": "i_mitten gy.png"
+        },
+        {
+            "name": "紙巾",
+            "logo": "i_tissue.png",
+            "shadow": "i_tissue gy.png"
+        }
+    ],
+    "level3": [
+        {
+            "name": "筆袋",
+            "logo": "i_pcase.png",
+            "shadow": "i_pcase gy.png"
+        },
+        {
+            "name": "水壺",
+            "logo": "i_bottle.png",
+            "shadow": "i_bottle gy.png"
+        },
+        {
+            "name": "手冊",
+            "logo": "i_hb.png",
+            "shadow": "i_hb gy.png"
+        },
+        {
+            "name": "消毒搓手液",
+            "logo": "i_sanitizer.png",
+            "shadow": "i_sanitizer gy.png"
+        },
+        {
+            "name": "中文書",
+            "logo": "i_bkchi.png",
+            "shadow": "i_bkchi gy.png"
+        },
+        {
+            "name": "食物盒",
+            "logo": "i_fbox.png",
+            "shadow": "i_fbox gy.png"
+        },
+        {
+            "name": "英文書",
+            "logo": "i_bkeng.png",
+            "shadow": "i_bkeng gy.png"
+        },
+        {
+            "name": "功課袋",
+            "logo": "i_baghw.png",
+            "shadow": "i_baghw gy.png"
+        },
+        {
+            "name": "學生證",
+            "logo": "i_card.png",
+            "shadow": "i_card gy.png"
+        },
+        {
+            "name": "音樂書",
+            "logo": "i_bkmusic.png",
+            "shadow": "i_bkmusic gy.png"
+        },
+        {
+            "name": "通告袋",
+            "logo": "i_bagmemo.png",
+            "shadow": "i_bagmemo gy.png"
+        },
+        {
+            "name": "紙巾",
+            "logo": "i_tissue.png",
+            "shadow": "i_tissue gy.png"
+        },
+        {
+            "name": "常識書",
+            "logo": "i_bkcom.png",
+            "shadow": "i_bkcom gy.png"
+        },
+        {
+            "name": "濕紙巾",
+            "logo": "i_wet.png",
+            "shadow": "i_wet gy.png"
+        },
+        {
+            "name": "銀包",
+            "logo": "i_wallet.png",
+            "shadow": "i_wallet gy.png"
+        },
+        {
+            "name": "數學書",
+            "logo": "i_bkmaths.png",
+            "shadow": "i_bkmaths gy.png"
+        },
+        {
+            "name": "音樂書",
+            "logo": "i_bkmusic.png",
+            "shadow": "i_bkmusic gy.png"
+        },
+        {
+            "name": "口罩",
+            "logo": "i_mask.png",
+            "shadow": "i_mask gy.png"
+        }
+    ]
+    
+
+}

@@ -130,7 +130,7 @@ export default class GameScene extends BasicScene {
         this.pastProblems.push(item)
 
         this.strokeNum = 0;
-        var hanziData = require(`hanzi-writer-data/${item[0]}`)
+        var hanziData = require(`../assets/json/${item[0]}`)
         this.writer = HanziWriter.create("grid-background-target", `${item[0]}`, {
             width: this.size,
             height: this.size,

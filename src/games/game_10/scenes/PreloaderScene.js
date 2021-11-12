@@ -35,6 +35,10 @@ export default class PreloaderScene extends BasicScene {
           's2_sign': require('../assets/img/s2_sign.png'),
           's3_shelf': require('../assets/img/s3_shelf.png'),
           's3_sign': require('../assets/img/s3_sign.png'),
+          'pack_bg_1': require('../assets/img/pack_bg_1.svg'),
+          'pack_bg_2': require('../assets/img/pack_bg_2.svg'),
+          'pack_bg_3': require('../assets/img/pack_bg_3.svg'),
+          'cover_bg': require('../assets/img/cover_bg.png'),
 
         };
 
@@ -48,14 +52,26 @@ export default class PreloaderScene extends BasicScene {
             'owl_swing':  { img: require('../assets/img/owl_swing.png'), data: require('../assets/img/owl_swing.json') },
             'pack_class':  { img: require('../assets/img/pack_class.png'), data: require('../assets/img/pack_class.json') },
             'pack_dog':  { img: require('../assets/img/pack_dog.png'), data: require('../assets/img/pack_dog.json') },
-            'pack_marekt':  { img: require('../assets/img/pack_market.png'), data: require('../assets/img/pack_market.json') },
+            'pack_market':  { img: require('../assets/img/pack_market.png'), data: require('../assets/img/pack_market.json') },
             'pack_star':  { img: require('../assets/img/pack_star.png'), data: require('../assets/img/pack_star.json') },
             'pack_travel':  { img: require('../assets/img/pack_travel.png'), data: require('../assets/img/pack_travel.json') },
             'wrong': { img: require('../assets/img/wrong.png'), data: require('../assets/img/wrong.json') },     
+            'bb': { img: require('../assets/img/bb.png'), data: require('../assets/img/bb.json') },     
+
         }
 
         const soundFiles = {
-
+          'loading': require('../assets/audio/Lonely Witch_short.mp3'),
+          'dog_walk_in': require('../assets/audio/Shop Door Bell PE802601.mp3'),
+          'stage_items': require('../assets/audio/Magic Bells 03.mp3'),
+          'bgm': require('../assets/audio/Bone Yard Waltz - Loopable.mp3'),
+          'bubble_hints': require('../assets/audio/owl_1.mp3'),
+          'confirm_counting': require('../assets/audio/double_pop.mp3'),
+          'wrong': require('../assets/audio/Magic experiment explosion.mp3'),
+          'correct': require('../assets/audio/Magic Game Potion Pop Off 4 Cork.mp3'),
+          'level_up': require('../assets/audio/Magic.mp3'),
+          'level_up_bgm': require('../assets/audio/levelup.mp3'),
+          'end_pic': require('../assets/audio/which_brand_of_mustard_shall_i_buy.mp3')
         }
 
         
@@ -65,7 +81,6 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
-
 
         let self = this;
 
@@ -96,10 +111,13 @@ export default class PreloaderScene extends BasicScene {
         });
         self.loadingText.setOrigin(0.5, 0.5);
     
+
+   
         self.load.on('progress', function (value) {
           self.progressBar.clear();
           self.progressBar.fillStyle(0xFC8EFA, 1);
           self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+
         });
     
         self.load.on('complete', function () {
@@ -111,9 +129,8 @@ export default class PreloaderScene extends BasicScene {
     
       ready () {
         let self = this
-        // self.scene.start('Tutor');
-        self.scene.start('Game');
-
+        self.scene.start('Tutor');
+        // self.scene.start('Game');
       }
 
 }

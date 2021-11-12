@@ -31,6 +31,10 @@ export default class Choice {
             if(!dropped) {
                 self.answera.x = self.answera.input.dragStartX;
                 self.answera.y = self.answera.input.dragStartY;
+            } 
+            else {
+                let music = this.scene.sound.add('confirm_counting');
+                music.play();
             }
             self.answera.setDepth(4)
         });

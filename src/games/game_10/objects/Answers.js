@@ -5,7 +5,7 @@ export default class Answers {
         let gameData = require('../assets/json/choice.json');
         gameData = gameData[`level${scene.currentLevel}`];
         this.currentLevel = scene.currentLevel;
-        this.myCartLength = scene.currentLevel == 1 ? 4 : scene.currentLevel == 2 ? 5: 6
+        this.myCartLength = scene.currentLevel == 1 ? 4 : scene.currentLevel == 2 ? 5 : 6
         this.scene = scene;
         this.answers = [];
         scene.question.forEach(item => {
@@ -46,10 +46,10 @@ export default class Answers {
             if (shelf == dropZone) {
                 if (self.playerSelectAnswers.includes(gameObject.name)) {
                     self.playerSelectAnswers.splice(self.playerSelectAnswers.indexOf(gameObject.name), 1);
-                    self.scene.bag.toggleStatus(false); 
-                    self.playerSelectAnswers.forEach((name,i)=> {
+                    self.scene.bag.toggleStatus(false);
+                    self.playerSelectAnswers.forEach((name, i) => {
                         self.answersView.forEach(o => {
-                            if(o.answera.name == name) {
+                            if (o.answera.name == name) {
                                 o.answera.x = 600 + i * 200;
                                 o.answera.y = 950;
                                 return;
@@ -60,17 +60,39 @@ export default class Answers {
                 gameObject.x = gameObject.inPosition.x;
                 gameObject.y = gameObject.inPosition.y;
             } else {
-                if (self.playerSelectAnswers.length == self.myCartLength) {
-                    gameObject.x = gameObject.inPosition.x;
-                    gameObject.y = gameObject.inPosition.y;
+                if (self.playerSelectAnswers.includes(gameObject.name)) {
+                    self.playerSelectAnswers.splice(self.playerSelectAnswers.indexOf(gameObject.name), 1);
+                    self.scene.bag.toggleStatus(false);
+                    self.answersView.forEach(o => {
+                        if (o.answera.name == gameObject.name) {
+                            o.answera.x = o.inPosition.x
+                            o.answera.y = o.inPosition.y;
+                            return;
+                        }
+                    });
+                    self.playerSelectAnswers.forEach((name, i) => {
+                        self.answersView.forEach(o => {
+                            if (o.answera.name == name) {
+                                o.answera.x = 600 + i * 200;
+                                o.answera.y = 950;
+                                return;
+                            }
+                        });
+                    })
                 } else {
-                    self.playerSelectAnswers.push(gameObject.name);
-                    gameObject.x = 400 + self.playerSelectAnswers.length * 200;
-                    gameObject.y = 950;
-                    if(self.playerSelectAnswers.length == self.myCartLength) {
-                       self.scene.bag.toggleStatus(true); 
-                    }  
+                    if (self.playerSelectAnswers.length == self.myCartLength) {
+                        gameObject.x = gameObject.inPosition.x;
+                        gameObject.y = gameObject.inPosition.y;
+                    } else {
+                        self.playerSelectAnswers.push(gameObject.name);
+                        gameObject.x = 400 + self.playerSelectAnswers.length * 200;
+                        gameObject.y = 950;
+                        if (self.playerSelectAnswers.length == self.myCartLength) {
+                            self.scene.bag.toggleStatus(true);
+                        }
+                    }
                 }
+
             }
         });
     }

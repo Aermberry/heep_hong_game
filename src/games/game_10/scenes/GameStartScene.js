@@ -45,6 +45,9 @@ export default class GameStarScene extends BasicScene {
 
     create() {
         super.create();
+        this.sound.stopAll();
+        let music = this.sound.add('dog_walk_in');
+        music.play();
         this.gameStart();
 
     }
@@ -57,12 +60,12 @@ export default class GameStarScene extends BasicScene {
         let entrance_dog = this.add.sprite(this.getColWidth(2), this.getRowHeight(7.2), 'entrance_dog');
         entrance_dog.play('entrance_dog');
         entrance_owl.play('entrance_owl');
-        this.moveDog(entrance_dog, entrance_dog.x + 400)
+        this.moveDog(entrance_dog, entrance_dog.x + 600)
     }
 
     moveDog(o, x) {
         this.moveUp(o, x, () => {
-            this.scene.start('Game');
+            this.scene.start('Game', {level: 1});
         });
     }
     moveUp(o, x, callback) {

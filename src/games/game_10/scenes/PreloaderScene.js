@@ -106,9 +106,9 @@ export default class PreloaderScene extends BasicScene {
             text: '連接中',
             style: {
                 font: '25px monospace',
-                fill: '#fff'
+                fill: '#fff' 
             }
-        });
+        }); 
         self.loadingText.setOrigin(0.5, 0.5);
     
 

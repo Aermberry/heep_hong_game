@@ -10,6 +10,7 @@ export default class Answers {
         let afterItem = this.shuffleArray(this.item);
         this.answersStartPoint = [];
         this.errorFrequency = 0;
+        this.doneBtnFlag = true;
 
         this.answersArea = scene.add.zone(x, y, 260 *
             8, 110 * 3);
@@ -21,21 +22,21 @@ export default class Answers {
         this.answers = []
         for (let i = 0; i < afterItem.length; i++) {
             if (i <= 3) {
-                this.answers.push(new Road(scene, x + (260 * i), y, afterItem[i],
+                this.answers.push(new Road(scene, x + (275 * i), y, afterItem[i],
                     this.onDragHandler.bind(this),
                     this.onEndDragHandler.bind(this)
                 ))
                 this.answersStartPoint.push({
-                    x: x + (260 * i),
+                    x: x + (275 * i),
                     y: y
                 })
             } else {
-                this.answers.push(new Road(scene, x + (260 * (i - 4)), y + 110, afterItem[i],
+                this.answers.push(new Road(scene, x + (275 * (i - 4)), y + 110, afterItem[i],
                     this.onDragHandler.bind(this),
                     this.onEndDragHandler.bind(this)
                 ));
                 this.answersStartPoint.push({
-                    x: x + (260 * (i - 4)),
+                    x: x + (275 * (i - 4)),
                     y: y + 110
                 })
             }
@@ -70,7 +71,7 @@ export default class Answers {
     }
 
     onDragHandler(x, y) {
-        x,y
+        x, y
         // if (x >= this.answersArea.x && x <= this.answersArea.width + x && y >= this.answersArea.y && x <= this.answersArea.height + x) {
         //     this.hoverArea.setAlpha(0.7);
         // } else {
@@ -88,23 +89,25 @@ export default class Answers {
 
 
     onDoneBtnClicked() {
+
         let array = this.selectItems;
-        if (array.length == this.answers.length) {
+        if (array.length == this.answers.length && this.doneBtnFlag) {
+            this.doneBtnFlag = false;
             let answers = [];
             array.forEach((item) => {
                 answers.push(item.last.text);
             })
             if (answers.join('|') == this.item.join('|')) {
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
                 this.scene.doneBtn.destroy();
-                this.answers.forEach((item) => {
-                    this.scene.input.setDraggable(item.container, false)
-                })
-                this.answers.forEach((item) => {
-                    this.scene.input.setDraggable(item.container, false)
-                })
                 this.winnerHandler();
             } else {
                 this.errorFrequency++;
+                this.answers.forEach((item) => {
+                    this.scene.input.setDraggable(item.container, false)
+                })
                 this.scene.car.play(`car_${this.scene.currentCar}_run`);
                 this.scene.tweens.add({
                     targets: this.scene.car,
@@ -131,6 +134,7 @@ export default class Answers {
 
                         })
                     }, 2000);
+
                     this.answers.forEach((item, index) => {
                         if (this.selectItems.includes(item.container)) {
                             this.roadReset(item, index)
@@ -146,51 +150,12 @@ export default class Answers {
                             this.badEnd();
                         }
                         this.selectItems = [];
-
-                    }, 5000)
+                        this.doneBtnFlag = true;
+                    }, 3000)
                 })
             }
-        } else {
-            this.errorFrequency++;
-            this.scene.car.play(`car_${this.scene.currentCar}_run`)
-            this.scene.tweens.add({
-                targets: this.scene.car,
-                x: this.scene.car.x + 100,
-                duration: 500,
-                ease: 'Power2'
-            }).on('complete', () => {
-                let stop = this.scene.sound.add('stop');
-                stop.addMarker({
-                    name: 'stop',
-                    start: 0.1,
-                    duration: 0.5,
-                });
-                stop.play('stop');
-                this.scene.car.play(`car_${this.scene.currentCar}_stop`);
-                setTimeout(() => {
-                    this.scene.car.x = this.scene.car.x - 100;
-                    this.scene.car.play(`car_${this.scene.currentCar}_idle`)
-                }, 2000);
-
-                this.answers.forEach((item, index) => {
-                    if (this.selectItems.includes(item.container)) {
-                        this.roadReset(item, index)
-                    }
-                })
-
-                setTimeout(() => {
-                    if (this.errorFrequency > 1) {
-                        this.scene.doneBtn.destroy();
-                        this.answers.forEach((item) => {
-                            this.scene.input.setDraggable(item.container, false)
-                        })
-                        this.badEnd();
-                    }
-                    this.selectItems = [];
-
-                }, 5000)
-            })
         }
+
     }
 
     badEnd() {
@@ -264,8 +229,12 @@ export default class Answers {
                                 targets: item.container,
                                 x: this.answersStartPoint[index].x,
                                 y: this.answersStartPoint[index].y,
-                                duration: 3000,
+                                duration: 1000,
                                 ease: 'Power2'
+                            }).on('complete', () => {
+                                this.answers.forEach((item) => {
+                                    this.scene.input.setDraggable(item.container, true)
+                                })
                             })
                         })
                     })

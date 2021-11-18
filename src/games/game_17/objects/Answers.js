@@ -44,15 +44,15 @@ export default class Answers {
             }
         }
 
-        if(afterItem.length < 8) {
+        if (afterItem.length < 8) {
             this.answers.push(new Road(scene, x + (275 * (7 - 4)), y + 110, null,
-            this.onDragHandler.bind(this),
-            this.onEndDragHandler.bind(this)
-        ));
-        this.answersStartPoint.push({
-            x: x + (275 * (7 - 4)),
-            y: y + 110
-        })
+                this.onDragHandler.bind(this),
+                this.onEndDragHandler.bind(this)
+            ));
+            this.answersStartPoint.push({
+                x: x + (275 * (7 - 4)),
+                y: y + 110
+            })
         }
 
         this.scene = scene;
@@ -148,7 +148,7 @@ export default class Answers {
             array.forEach((item) => {
                 answers.push(item.last.text);
             })
-            if (answers.filter((e)=>e).join('|') == this.item.join('|')) {
+            if (answers.filter((e) => e).join('|') == this.item.join('|')) {
                 this.scene.doneBtn.destroy();
                 this.answers.forEach((item) => {
                     this.scene.input.setDraggable(item.container, false)
@@ -204,7 +204,7 @@ export default class Answers {
                         this.selectItems2 = [];
                         this.doneBtnFlag = true;
                     }, 3000)
-       
+
                 });
             }
         }
@@ -298,8 +298,8 @@ export default class Answers {
         })
 
         if (this.selectItems2.length < 4) {
-              this.answers[7].container.x = x2 + (243 * 3)
-              this.answers[7].container.y = y2
+            this.answers[7].container.x = x2 + (243 * 3)
+            this.answers[7].container.y = y2
         }
         setTimeout(this.winnerHandler, 5000);
 

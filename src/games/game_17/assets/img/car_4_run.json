@@ -1,0 +1,83 @@
+﻿{"frames": {
+
+"run0000":
+{
+	"frame": {"x":0,"y":0,"w":207,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":40,"y":0,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0001":
+{
+	"frame": {"x":209,"y":0,"w":219,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":40,"y":1,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0002":
+{
+	"frame": {"x":430,"y":0,"w":230,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":40,"y":2,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0003":
+{
+	"frame": {"x":662,"y":0,"w":219,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":40,"y":1,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0004":
+{
+	"frame": {"x":0,"y":136,"w":228,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0005":
+{
+	"frame": {"x":230,"y":136,"w":240,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":1,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0006":
+{
+	"frame": {"x":472,"y":136,"w":263,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":2,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0007":
+{
+	"frame": {"x":737,"y":136,"w":252,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":1,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+},
+"run0008":
+{
+	"frame": {"x":0,"y":275,"w":247,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":270,"h":137},
+	"sourceSize": {"w":270,"h":137}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "21.0.7.42652",
+	"image": "car_4_run.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":512},
+	"scale": "1"
+}
+}

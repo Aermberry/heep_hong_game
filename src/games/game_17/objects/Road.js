@@ -13,8 +13,8 @@ export default class Road {
             roadImg = scene.add.sprite(0, 0, 'road');
         }
         
-        let roadText = scene.add.text(-110, -20, item, {
-            fontSize: '30px',
+        let roadText = scene.add.text(-110, -30, item, {
+            fontSize: '55px',
             color: '#ffffff',
             fontFamily: "Custom-Han-Serif"
         });

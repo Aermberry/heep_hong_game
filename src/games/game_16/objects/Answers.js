@@ -4,20 +4,21 @@ export default class Answers {
 
     constructor(scene, x, y, winnerHandler, item) {
         //创建一个答案区域 一个答案244*99大小
-
         this.selectItems = [];
         this.item = item;
         let afterItem = this.shuffleArray(this.item);
         this.answersStartPoint = [];
         this.errorFrequency = 0;
         this.doneBtnFlag = true;
-
+        this.scene = scene;
         this.answersArea = scene.add.zone(x, y, 260 *
             8, 110 * 3);
         this.answersArea.setRectangleDropZone(260 * 8, 110 * 3);
 
         // this.hoverArea = scene.add.rectangle(670, y + 50, 1200, this.answersArea.height - 50, 0xffffff, 1);
         // this.hoverArea.setAlpha(0)
+
+
 
         this.answers = []
         for (let i = 0; i < afterItem.length; i++) {
@@ -77,9 +78,18 @@ export default class Answers {
         // } else {
         //     this.hoverArea.setAlpha(0.0);
         // }
+
     }
 
     onEndDragHandler() {
+        if( this.selectItems.length == this.answers.length) {
+            this.remind = this.scene.add.sprite(this.scene.getColWidth(11),this.scene.getRowHeight(8),'remind');
+            this.remind.play('remind');
+        } else {
+            if(this.remind) {
+                this.remind.destroy();
+            }
+        }
         // this.hoverArea.setAlpha(0.0);
     }
 
@@ -89,7 +99,9 @@ export default class Answers {
 
 
     onDoneBtnClicked() {
-
+        if(this.remind) {
+            this.remind.destroy();
+        }
         let array = this.selectItems;
         if (array.length == this.answers.length && this.doneBtnFlag) {
             this.doneBtnFlag = false;
@@ -102,7 +114,7 @@ export default class Answers {
                     this.scene.input.setDraggable(item.container, false)
                 })
                 this.scene.doneBtn.destroy();
-                this.winnerHandler();
+                this.winnerHandler(true);
             } else {
                 this.errorFrequency++;
                 this.answers.forEach((item) => {
@@ -118,8 +130,6 @@ export default class Answers {
                     let stop = this.scene.sound.add('stop');
                     stop.addMarker({
                         name: 'stop',
-                        start: 0.1,
-                        duration: 0.5,
                     });
                     stop.play('stop');
                     this.scene.car.play(`car_${this.scene.currentCar}_stop`);
@@ -131,7 +141,6 @@ export default class Answers {
                             ease: 'Power2'
                         }).on('complete', () => {
                             this.scene.car.play(`car_${this.scene.currentCar}_idle`)
-
                         })
                     }, 2000);
 
@@ -142,7 +151,13 @@ export default class Answers {
                     })
 
                     setTimeout(() => {
-                        if (this.errorFrequency > 1) {
+                    if(this.errorFrequency == 1 ) {    
+                        let sprite =  this.scene.add.sprite(this.scene.getColWidth(11),this.scene.getRowHeight(7),'addoil');
+                        sprite.play('addoil');
+                        sprite.on('animationcomplete', () => {
+                            sprite.destroy();
+                        });
+                    } else if (this.errorFrequency > 1) {
                             this.scene.doneBtn.destroy();
                             this.answers.forEach((item) => {
                                 this.scene.input.setDraggable(item.container, false)
@@ -177,8 +192,10 @@ export default class Answers {
             item.y = y
         })
 
+        let failed2 = this.scene.add.sprite(this.scene.getColWidth(6),this.scene.getRowHeight(6),'L2_answer_failed2')
+        failed2.play('L2_answer_failed2')
 
-        setTimeout(this.winnerHandler, 3000);
+        setTimeout(this.winnerHandler(false), 3000);
 
 
     }

@@ -3,7 +3,7 @@ import Answers from "../objects/Answers";
 import BlankRoad from "../objects/BlankRoad";
 import ExitBtn from '../objects/ExitBtn'
 import DoneBtn from '../objects/DoneBtn'
-
+import SpeakerBtn from '../objects/SpeakerBtn'
 export default class GameScene extends BasicScene {
     constructor() {
         super({
@@ -38,6 +38,43 @@ export default class GameScene extends BasicScene {
             frames: this.anims.generateFrameNames('sun', { prefix: 'sun', start: 0, end: 34, zeroPad: 4 }),
             repeat: -1
         });
+
+        this.anims.create({
+            key: 'addoil',
+            delay: 200,
+            frames: this.anims.generateFrameNames('addoil', { prefix: 'addoil', start: 0, end: 9, zeroPad: 4 }),
+            repeat: 1
+        });
+
+        this.anims.create({
+            key: 'remind',
+            delay: 200,
+            frames: this.anims.generateFrameNames('remind', { prefix: 'remind', start: 0, end: 9, zeroPad: 4 }),
+            repeat: 0
+        });
+        
+        this.anims.create({
+            key: 'L1_answer_failed2',
+            delay: 200,
+            frames: this.anims.generateFrameNames('L1_answer_failed2', { prefix: 'Symbol 1', start: 0, end: 29, zeroPad: 4 }),
+            repeat: 0
+        });
+
+        this.anims.create({
+            key: 'less_happy',
+            delay: 200,
+            frames: this.anims.generateFrameNames('less_happy', { prefix: 'Symbol 1', start: 0, end: 29, zeroPad: 4 }),
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'correct_answer',
+            delay: 200,
+            frames: this.anims.generateFrameNames('correct_answer', { prefix: 'correct_answer', start: 0, end: 29, zeroPad: 4 }),
+            repeat: 0
+        });
+
+
         this.anims.create({
             key: 'car_1_idle',
             frames: this.anims.generateFrameNames('car_1_idle', { prefix: 'car1', start: 0, end: 6, zeroPad: 4 }),
@@ -197,12 +234,16 @@ export default class GameScene extends BasicScene {
         this.hoverArea = [];
 
         this.buildBg('bg_L2');
-        this.music = this.sound.add('bgm', {
-            volume: 0.1
-        })
-        this.music.setLoop(true)
-        this.music.play();
-
+        
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            })
+            this.music.setLoop(true)
+            this.music.play();
+        }
 
         this.disableInput = false;
         let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
@@ -230,20 +271,25 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.blankRoad1)
         sky.play('sun');
 
-
         this.car.play(`car_${this.currentCar}_idle`) 
         // this.car.flipX = -1
         
         let exitBtn = new ExitBtn(this, 120, 135);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135, this.musicPause.bind(this));
         this.add.existing(exitBtn);
         this.add.existing(this.doneBtn);
+        this.add.existing(this.speakerBtn);
 
     }
 
-    winnerCallBack() {
+    winnerCallBack(flag) {
         this.music.pause();
         let music = this.sound.add('run')
+        let run = this.sound.add(flag ? 'run' : 'erro_run');
+        run.play();
+        let correct = this.add.sprite(this.getColWidth(6),this.getRowHeight(4),'correct_answer').setDepth(1000);
+        correct.play('correct_answer');
         music.addMarker({
             name: 'run1',
             start: 2,
@@ -303,6 +349,18 @@ export default class GameScene extends BasicScene {
         }
     }
 
+    musicPause() {
+        this.stopAll = !this.stopAll;
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            });
+            this.music.setLoop(true);
+            this.music.play();
+        }
+    }
 
 
 }

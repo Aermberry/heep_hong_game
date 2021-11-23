@@ -8,7 +8,7 @@ export default class Answers {
         this.selectItems = [];
         this.selectItems2 = [];
         this.item = item;
-
+        this.scene = scene;
         let afterItem = this.shuffleArray(this.item);
         this.answersStartPoint = [];
         this.errorFrequency = 0;
@@ -193,7 +193,13 @@ export default class Answers {
                         }
                     })
                     setTimeout(() => {
-                        if (this.errorFrequency > 1) {
+                        if(this.errorFrequency == 1 ) {    
+                            let sprite =  this.scene.add.sprite(this.scene.getColWidth(3),this.scene.getRowHeight(6.5),'addoil');
+                            sprite.play('addoil');
+                            sprite.on('animationcomplete', () => {
+                                sprite.destroy();
+                            });
+                        } else if (this.errorFrequency > 1) {
                             this.scene.doneBtn.destroy();
                             this.answers.forEach((item) => {
                                 this.scene.input.setDraggable(item.container, false)
@@ -268,7 +274,7 @@ export default class Answers {
                 new Road(this.scene, x2 + (243 * (this.selectItems2.length + i)), y2, '')
             }
         }
-        this.winnerHandler();
+        this.winnerHandler(true);
     }
 
     badEnd() {
@@ -301,7 +307,13 @@ export default class Answers {
             this.answers[7].container.x = x2 + (243 * 3)
             this.answers[7].container.y = y2
         }
-        setTimeout(this.winnerHandler, 5000);
+        let failed2 = this.scene.add.sprite(this.scene.getColWidth(4.34),this.scene.getRowHeight(4.8),'L1_answer_failed2')
+        failed2.play('L1_answer_failed2')
+        let failed3 = this.scene.add.sprite(this.scene.getColWidth(7.1),this.scene.getRowHeight(7.5),'L1_answer_failed2')
+        failed3.play('L1_answer_failed2')
+
+
+        setTimeout(this.winnerHandler(false), 5000);
 
 
     }

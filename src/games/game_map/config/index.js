@@ -3,8 +3,8 @@ import Phaser from 'phaser'
 
 export default {
   type: Phaser.AUTO,
-  width: 720,
-  height: 400,
+  width: 1920,
+  height: 1080,
   parent: 'game-container',
   scale: {
     mode: Phaser.Scale.FIT,

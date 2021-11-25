@@ -10,6 +10,7 @@ export default class Game1Btn extends BasicBtn {
       }
     
       onClick(){
+          this.scene.scene.start('Section_1')
         // window.history.back();
       }
 }

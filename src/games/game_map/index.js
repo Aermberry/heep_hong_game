@@ -5,10 +5,15 @@ import Model from './Model'
 import BootScene from './scenes/BootScene'
 import PreloaderScene from './scenes/PreloaderScene'
 import MapScene from './scenes/MapScene'
-import SectionScene from './scenes/SectionScene'
+import Section1Scene from './scenes/Section1Scene'
+import Section2Scene from './scenes/Section2Scene'
+import Section3Scene from './scenes/Section3Scene'
+import Section4Scene from './scenes/Section4Scene'
+import Section5Scene from './scenes/Section5Scene'
+import Section6Scene from './scenes/Section6Scene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene, MapScene, SectionScene]
+    scene: [BootScene, PreloaderScene, MapScene, Section1Scene, Section2Scene, Section3Scene, Section4Scene, Section5Scene, Section6Scene]
 });
 
 /**

@@ -31,13 +31,12 @@ export default class PreloaderScene extends BasicScene {
             // 'game1Btn': require('../assets/images/buttons/1a.png'),
         }
 
-        console.log('loading')
-
-
         this.preloadFromArr({
             atlas: atlasFiles, img: imageFiles
         })
-        this.load.spritesheet('game1Btn', require('../assets/images/buttons/1a.png'),{ frameWidth: 617, frameHeight: 387 })
+        this.load.spritesheet('game1Btn', require('../assets/images/buttons/1a.png'), { frameWidth: 617, frameHeight: 387 })
+        this.load.spritesheet('hintBtn', require('../assets/images/buttons/btn_target.png'), { frameWidth: 173, frameHeight: 187})
+        this.load.spritesheet('backBtn', require('../assets/images/buttons/btn_out.png'), { frameWidth: 175, frameHeight: 187})
         // const blackWhiteBg = this.bg.setPipeline('Grayscale')
         // blackWhiteBg.resetPipeline();
         // this.bg.setBlendMode(Phaser.BlendModes.LUMINOSITY);
@@ -46,6 +45,6 @@ export default class PreloaderScene extends BasicScene {
 
     create() {
         super.create();
-        this.scene.start('Map');
+        this.scene.start('Section_6');
     }
 }

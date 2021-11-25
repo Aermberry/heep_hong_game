@@ -19,8 +19,11 @@ export default class EndScene extends BasicScene {
 
         this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
         localStorage.clear()
-        
-        this.add.existing(this.endBroad)        
+
+        this.add.existing(this.endBroad)
+
+        this.sound.play('gameEndHappyEnding');
+
 
     }
 

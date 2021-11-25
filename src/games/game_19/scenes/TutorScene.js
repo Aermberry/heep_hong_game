@@ -1,7 +1,9 @@
 import BasicScene from "./BasicScene"
 import StartButton from "../components/StartButton"
 import ExitButton from '../components/ExitButton'
-import LocalRepository from "../repository/LocalRepository"
+import GameManager from "../components/GameManager";
+import { createTutorAnimations } from "../assets/animations/TutorAnimation";
+import GameSprite from "../components/GameSprite";
 
 export default class TutorScene extends BasicScene {
 
@@ -12,8 +14,8 @@ export default class TutorScene extends BasicScene {
 
         this.buttonLayer = undefined;
         this.backgroundLayer = undefined;
-        this.localRepository = new LocalRepository()
-        this.questionNumberList = [];
+
+        this.gameManager = new GameManager()
     }
 
     async create() {
@@ -22,21 +24,14 @@ export default class TutorScene extends BasicScene {
 
         this.input.setDefaultCursor(`url(), auto`);
 
+        createTutorAnimations(this.anims);
+
         //Stop all sound, because game will return to this scene on retry.
         this.sound.stopAll();
 
         this.#paintGameScene();
-        localStorage.clear();
-        localStorage.setItem('gamePlayTotal', JSON.stringify(5));
 
-        this.questions = await this.localRepository.loadData();
-
-        for (const key in this.questions) {
-            localStorage.setItem(key, JSON.stringify(this.questions[key]));
-            this.questionNumberList.push(key)
-        }
-
-        localStorage.setItem('questionNumberList', JSON.stringify(Array.from(new Set(this.questionNumberList))));
+        await this.gameManager.initGameData();
     }
 
 
@@ -47,7 +42,9 @@ export default class TutorScene extends BasicScene {
 
         this.buttonLayer.add([new ExitButton(this, 120, 135), new StartButton(this, this.getColWidth(6), this.getRowHeight(10.5))]);
 
-        this.backgroundLayer.add([this.buildBg('bgTutor'), this.add.image(this.getColWidth(6), this.getRowHeight(5), 'iconTutor').setScale(0.6)]);
+        let tutor = new GameSprite(this, this.getColWidth(6), this.getRowHeight(5), 'tutor_Animation').setScale(0.8);
+
+        this.backgroundLayer.add([this.buildBg('bgTutor'), tutor]);
     }
 
 

@@ -3,7 +3,6 @@ import CursorHand from '../assets/images/cursor_hand.png'
 
 export default class Tooth extends Phaser.GameObjects.Container {
 
-    #toothTexture
     constructor(scene, x, y, label, image) {
 
         super(scene, x, y);
@@ -11,12 +10,18 @@ export default class Tooth extends Phaser.GameObjects.Container {
         this.scene = scene;
         this.labelText = label;
         this.image = image;
+
+        this.setName('tooth');
         this.originPoint = { originPointX: x, originPointY: y }
         scene.add.existing(this);
     }
 
     create() {
         this.toothTexture = this.scene.add.image(0, 0, this.image).setName('toothTexture').setScale(0.5);
+        this.setSize(this.toothTexture.displayWidth, this.toothTexture.displayHeight);
+
+
+
         this.labelText = this.scene.make.text({
             x: 0,
             y: -20,
@@ -25,9 +30,9 @@ export default class Tooth extends Phaser.GameObjects.Container {
                 align: 'center',
                 color: 'black',
                 fontSize: '50px',
-                padding:{x:100,y:100}
+                padding: { x: 100, y: 100 }
             }
-        }).setOrigin(0.5,0.5);
+        }).setOrigin(0.5, 0.5);
 
 
 
@@ -46,19 +51,19 @@ export default class Tooth extends Phaser.GameObjects.Container {
 
         this.on('pointerover', function () {
 
-            this.toothTexture.setTint(0x44ff44);
+            this.toothTexture.setTint(0xa7a7a7);
+            this.scene.sound.play('selectTeethEffectSound');
 
         });
 
         this.on('pointerout', function () {
 
             this.toothTexture.clearTint();
-
         });
 
 
 
-        this.scene.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+        this.scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
 
             gameObject.x = dragX;
             gameObject.y = dragY;

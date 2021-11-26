@@ -11,7 +11,7 @@ export default class Section4Scene extends SectionBasicScene {
 
     preload() {
 
-        this.buildPreloadBg('bg_title')
+        this.buildPreloadBg('bg_title', {x: 0.3, y: 0.6})
 
         const atlasFiles = {
 
@@ -49,17 +49,17 @@ export default class Section4Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const game1Btn = new GameNavBtn(this, this.getColWidth(2.4), this.getRowHeight(8.7), 's4btn1')
-        const game2Btn = new GameNavBtn(this, this.getColWidth(6.8), this.getRowHeight(4.7), 's4btn2')
-        const game3Btn = new GameNavBtn(this, this.getColWidth(7.7), this.getRowHeight(6.1), 's4btn3')
-        const game4Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(6), 's4btn4')
-        const game5Btn = new GameNavBtn(this, this.getColWidth(4.5), this.getRowHeight(10.3), 's4btn5')
-        const game6Btn = new GameNavBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's4btn6')
+        const game1Btn = new GameNavBtn(this, this.getColWidth(2.4), this.getRowHeight(8.7), 's4btn1', '/game/19')
+        const game2Btn = new GameNavBtn(this, this.getColWidth(6.8), this.getRowHeight(4.7), 's4btn2', '/game/18')
+        const game3Btn = new GameNavBtn(this, this.getColWidth(7.7), this.getRowHeight(6.1), 's4btn3', '/game/29')
+        const game4Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(6), 's4btn4', '/game/30')
+        const game5Btn = new GameNavBtn(this, this.getColWidth(4.5), this.getRowHeight(10.3), 's4btn5', '/game/16')
+        const game6Btn = new GameNavBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's4btn6', '/game/17')
         const HintBtn1 = new HintBtn(this, this.getColWidth(2.5), this.getRowHeight(6), 's4Hint1')
         const HintBtn2 = new HintBtn(this, this.getColWidth(7.5), this.getRowHeight(10), 's4Hint2')
         const HintBtn3 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(6), 's4Hint3')
 
-        this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's4Logo')
+        this.add.image(this.getColWidth(3.7), this.getRowHeight(1.5), 's4Logo')
         this.add.existing(backBtn)
         this.add.existing(game1Btn)
         this.add.existing(game2Btn)

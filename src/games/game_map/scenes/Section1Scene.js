@@ -92,10 +92,10 @@ export default class Section1Scene extends BasicScene {
     }
 
     populateSection() {
-        const game1Btn = new GameNavBtn(this, this.getColWidth(1.68), this.getRowHeight(8.8), 's1btn1', 'www.google.com')
-        const game2Btn = new GameNavBtn(this, this.getColWidth(6.57), this.getRowHeight(5.3), 's1btn2', 'www.yahoo.com')
-        const game3Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(8.2), 's1btn3', 'www.yahoo.com')
-        const game4Btn = new GameNavBtn(this, this.getColWidth(10.6), this.getRowHeight(7.5), 's1btn4', 'www.yahoo.com')
+        const game1Btn = new GameNavBtn(this, this.getColWidth(1.68), this.getRowHeight(8.8), 's1btn1', '/game/1')
+        const game2Btn = new GameNavBtn(this, this.getColWidth(6.57), this.getRowHeight(5.3), 's1btn2', 'https://www.google.com')
+        const game3Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(8.2), 's1btn3', 'https://www.google.com')
+        const game4Btn = new GameNavBtn(this, this.getColWidth(10.6), this.getRowHeight(7.5), 's1btn4', 'https://www.google.com')
         const hintBtnA = new HintBtn(this, this.getColWidth(3), this.getRowHeight(7), 's1Hint2')
         const hintBtnB = new HintBtn(this, this.getColWidth(8), this.getRowHeight(8), 's1Hint1')
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))

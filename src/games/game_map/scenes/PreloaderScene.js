@@ -34,7 +34,12 @@ export default class PreloaderScene extends BasicScene {
         this.preloadFromArr({
             atlas: atlasFiles, img: imageFiles
         })
-        this.load.spritesheet('game1Btn', require('../assets/images/buttons/1a.png'), { frameWidth: 617, frameHeight: 387 })
+        this.load.spritesheet('section1Btn', require('../assets/images/buttons/1a.png'), { frameWidth: 617, frameHeight: 387 })
+        this.load.spritesheet('section2Btn', require('../assets/images/buttons/2a.png'), { frameWidth: 780, frameHeight: 465 })
+        this.load.spritesheet('section5Btn', require('../assets/images/buttons/5a.png'), { frameWidth: 630, frameHeight: 420 })
+        this.load.spritesheet('section4Btn', require('../assets/images/buttons/4a.png'), { frameWidth: 840, frameHeight: 505 })
+        this.load.spritesheet('section3Btn', require('../assets/images/buttons/3a.png'), { frameWidth: 860, frameHeight: 350 })
+        this.load.spritesheet('section6Btn', require('../assets/images/buttons/6a.png'), { frameWidth: 670, frameHeight: 460 })
         this.load.spritesheet('hintBtn', require('../assets/images/buttons/btn_target.png'), { frameWidth: 173, frameHeight: 187})
         this.load.spritesheet('backBtn', require('../assets/images/buttons/btn_out.png'), { frameWidth: 175, frameHeight: 187})
         // const blackWhiteBg = this.bg.setPipeline('Grayscale')
@@ -45,6 +50,6 @@ export default class PreloaderScene extends BasicScene {
 
     create() {
         super.create();
-        this.scene.start('Section_6');
+        this.scene.start('Map');
     }
 }

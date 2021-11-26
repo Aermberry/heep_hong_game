@@ -43,7 +43,7 @@ export default class Section6Scene extends SectionBasicScene {
     
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
         const hintBtn = new HintBtn(this, this.getColWidth(8), this.getRowHeight(5), 's6Hint')
-        const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1')
+        const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1', '/game/10')
 
         this.add.image(this.getColWidth(3), this.getRowHeight(1.5), 's6Logo')
         this.add.existing(backBtn)

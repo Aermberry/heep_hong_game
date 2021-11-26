@@ -7,12 +7,12 @@ export default class GameNavBtn extends BasicBtn {
         this.gamePath = gamePath
         let sprite =  scene.add.sprite(0, 0, imageName)
         this.create(sprite,this.onClick.bind(this))
-    
-      }
-    
-      onClick(){
+
+    }
+
+    onClick(){
         if(typeof this.gamePath == 'string') {
             window.location.href = this.gamePath;
         }
-      }
+    }
 }

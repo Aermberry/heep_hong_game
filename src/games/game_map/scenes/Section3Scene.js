@@ -11,7 +11,7 @@ export default class Section3Scene extends SectionBasicScene {
 
     preload() {
 
-        this.buildPreloadBg('bg_title')
+        this.buildPreloadBg('bg_title', {x: 0.5,y: 0.8})
 
         const atlasFiles = {
 

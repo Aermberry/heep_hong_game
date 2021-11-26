@@ -22,7 +22,7 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
         let existBtn = new ExistBigBtn(scene, endBox.width * 0.22, endBox.height * 0.35)
 
         animate.play('end_pic')
-        let music = scene.sound.add('fanfare')
+        let music = scene.sound.add('end_pic')
         music.setLoop(false)
         music.play()
 

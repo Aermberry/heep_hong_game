@@ -1,0 +1,242 @@
+[
+    {
+        "gameStage": 1,
+        "items": [
+            [
+                {
+                    "value": "今天是你的生日嗎",
+                    "type": "query",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "你在做什麽呢",
+                    "type": "query",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "誰贏了跑步比賽",
+                    "type": "query",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "我們為甚麼要多吃蔬菜",
+                    "type": "query",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "只是遇到一點兒困難，我們怎能輕易放棄",
+                    "type": "query",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "難道小英不是你的好朋友嗎",
+                    "type": "query",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "聽到這個好消息，我是多麽高興啊",
+                    "type": "exclamationMark",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "我們一起努力吧",
+                    "type": "exclamationMark",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "你家的小狗真是太可愛了",
+                    "type": "exclamationMark",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "沒想到今天這麽熱呢",
+                    "type": "exclamationMark",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "香港的夜景是多麽美麗啊",
+                    "type": "exclamationMark",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "你看",
+                    "type": "exclamationMark",
+                    "result": null
+                },
+                {
+                    "value": "這朵玫瑰真美啊",
+                    "type": "exclamationMark",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "小明",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "小花",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "小美和小英都是我的朋友。",
+                    "type": null,
+                    "result": true
+                }
+            ],
+            [
+                {
+                    "value": "大象",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "斑馬",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "猴子和獅子都是我喜歡的動物。",
+                    "type": null,
+                    "result": true
+                }
+            ],
+            [
+                {
+                    "value": "花園裏有花朵",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "小草",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "蜜蜂",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "蝴蝶和鳥兒。",
+                    "type": null,
+                    "result": true
+                }
+            ],
+            [
+                {
+                    "value": "爸爸是一個樂於助人",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "友善",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "勤勞和勇敢的人。",
+                    "type": null,
+                    "result": true
+                }
+            ],
+            [
+                {
+                    "value": "小英有大大的眼睛",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "小小的嘴巴",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "長長的頭髮和圓圓的臉。",
+                    "type": null,
+                    "result": true
+                }
+            ],
+            [
+                {
+                    "value": "今天老師在視藝課教我們畫花朵",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "森林",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "小草",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "白兔和小鳥。",
+                    "type": null,
+                    "result": true
+                }
+            ],
+            [
+                {
+                    "value": "海洋公園裏的海豚",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "海獅",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "海豹和殺人鯨的表演",
+                    "type": "comms",
+                    "result": null
+                },
+                {
+                    "value": "真是精彩極了",
+                    "type": "exclamationMark",
+                    "result": null
+                }
+            ],
+            [
+                {
+                    "value": "春天啊",
+                    "type": "and",
+                    "result": null
+                },
+                {
+                    "value": "你甚麼時候才能來到呢",
+                    "type": "query",
+                    "result": null
+                }
+            ]
+        ]
+    }
+]

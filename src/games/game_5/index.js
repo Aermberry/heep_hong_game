@@ -26,6 +26,7 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
         this.game.sound.unlock()
     }
     this.create(scene)
+    
 }
 
 class Game5 extends Phaser.Game {

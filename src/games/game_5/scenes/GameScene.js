@@ -235,14 +235,12 @@ export default class GameScene extends BasicScene {
         if (this.disableInput == true) return;
 
         if(this.bam.isInside({ x: gameObject.x, y: gameObject.y}) && this.handInBroad == false) {
-
             this.handInBroad = true;
             this.bam.onHover();
 
         }
 
         if(!this.bam.isInside({ x: gameObject.x, y: gameObject.y}) && this.handInBroad == true) {
-         
             this.handInBroad = false;
             this.bam.onLeave();
             
@@ -251,7 +249,7 @@ export default class GameScene extends BasicScene {
     }
 
     answerSelected(catHand) {
-
+        console.log(catHand);
         //Need to make sure the catHand is collide with text broad
 
         if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) {

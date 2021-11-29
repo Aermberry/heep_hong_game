@@ -19,6 +19,8 @@ export default class Road {
             color: '#ffffff',
             fontFamily: "Custom-Han-Serif"
         });
+        roadText.x = roadText.width / 2 - roadText.width
+
         this.container = scene.add.container(x, y, [roadImg, roadText]);
         this.container.setDepth(4);
         this.container.setSize(roadImg.width, roadImg.height);

@@ -288,8 +288,12 @@ export default class GameScene extends BasicScene {
         let music = this.sound.add('run')
         let run = this.sound.add(flag ? 'run' : 'erro_run');
         run.play();
-        let correct = this.add.sprite(this.getColWidth(6),this.getRowHeight(4),'correct_answer').setDepth(1000);
-        correct.play('correct_answer');
+        if (flag) {
+            let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
+            correct.play('correct_answer');
+            let child = this.sound.add('child_clap')
+            child.play();
+        }
         music.addMarker({
             name: 'run1',
             start: 2,

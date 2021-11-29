@@ -58,7 +58,8 @@ export default class PreloaderScene extends BasicScene {
             'pressBtn': require('../assets/audio/press key.mp3'),
             'erro_run': require('../assets/audio/bbc_comedy-sou_07005101.mp3'),
             'stop': require('../assets/audio/bbc_dial-999--_07045249.mp3'),
-            'end_pic': require('../assets/audio/Riverside Ride_short.mp3')
+            'end_pic': require('../assets/audio/Riverside Ride_short.mp3'),
+            'child_clap': require('../assets/audio/child clap.mp3'),
         }
 
 

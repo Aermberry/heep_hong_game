@@ -82,11 +82,11 @@ export default class Answers {
     }
 
     onEndDragHandler() {
-        if( this.selectItems.length == this.answers.length) {
-            this.remind = this.scene.add.sprite(this.scene.getColWidth(11),this.scene.getRowHeight(8),'remind');
+        if (this.selectItems.length == this.answers.length) {
+            this.remind = this.scene.add.sprite(this.scene.getColWidth(11), this.scene.getRowHeight(8), 'remind');
             this.remind.play('remind');
         } else {
-            if(this.remind) {
+            if (this.remind) {
                 this.remind.destroy();
             }
         }
@@ -99,7 +99,7 @@ export default class Answers {
 
 
     onDoneBtnClicked() {
-        if(this.remind) {
+        if (this.remind) {
             this.remind.destroy();
         }
         let array = this.selectItems;
@@ -110,16 +110,12 @@ export default class Answers {
                 answers.push(item.last.text);
             })
             if (answers.join('|') == this.item.join('|')) {
-                this.answers.forEach((item) => {
-                    this.scene.input.setDraggable(item.container, false)
-                })
+                this.disRoad();
                 this.scene.doneBtn.destroy();
                 this.winnerHandler(true);
             } else {
                 this.errorFrequency++;
-                this.answers.forEach((item) => {
-                    this.scene.input.setDraggable(item.container, false)
-                })
+                this.disRoad();
                 this.scene.car.play(`car_${this.scene.currentCar}_run`);
                 this.scene.tweens.add({
                     targets: this.scene.car,
@@ -132,8 +128,7 @@ export default class Answers {
                         name: 'stop',
                     });
                     stop.play('stop');
-                    this.scene.car.play(`car_${this.scene.currentCar}_stop`);
-                    setTimeout(() => {
+                    this.scene.car.play(`car_${this.scene.currentCar}_stop`).on('animationcomplete', () => {
                         this.scene.tweens.add({
                             targets: this.scene.car,
                             x: this.scene.car.x - 100,
@@ -142,30 +137,31 @@ export default class Answers {
                         }).on('complete', () => {
                             this.scene.car.play(`car_${this.scene.currentCar}_idle`)
                         })
-                    }, 2000);
-
-                    this.answers.forEach((item, index) => {
-                        if (this.selectItems.includes(item.container)) {
-                            this.roadReset(item, index)
-                        }
                     })
 
+
+
                     setTimeout(() => {
-                    if(this.errorFrequency == 1 ) {    
-                        let sprite =  this.scene.add.sprite(this.scene.getColWidth(11),this.scene.getRowHeight(7),'addoil');
-                        sprite.play('addoil');
-                        sprite.on('animationcomplete', () => {
-                            sprite.destroy();
-                        });
-                    } else if (this.errorFrequency > 1) {
+                        if (this.errorFrequency == 1) {
+                            let sprite = this.scene.add.sprite(this.scene.getColWidth(11), this.scene.getRowHeight(7), 'addoil');
+                            sprite.play('addoil');
+                            sprite.on('animationcomplete', () => {
+                                sprite.destroy();
+                            });
+                        } else if (this.errorFrequency > 1) {
                             this.scene.doneBtn.destroy();
-                            this.answers.forEach((item) => {
-                                this.scene.input.setDraggable(item.container, false)
-                            })
+                            this.disRoad();
                             this.badEnd();
                         }
-                        this.selectItems = [];
-                        this.doneBtnFlag = true;
+
+                        if (this.errorFrequency < 2) {
+                            this.answers.forEach((item, index) => {
+                                if (this.selectItems.includes(item.container)) {
+                                    this.roadReset(item, index)
+                                }
+                            })
+                        }
+
                     }, 3000)
                 })
             }
@@ -192,7 +188,7 @@ export default class Answers {
             item.y = y
         })
 
-        let failed2 = this.scene.add.sprite(this.scene.getColWidth(6),this.scene.getRowHeight(6),'L2_answer_failed2')
+        let failed2 = this.scene.add.sprite(this.scene.getColWidth(6), this.scene.getRowHeight(6), 'L2_answer_failed2')
         failed2.play('L2_answer_failed2')
 
         setTimeout(this.winnerHandler(false), 3000);
@@ -200,6 +196,11 @@ export default class Answers {
 
     }
 
+    disRoad() {
+        this.answers.forEach((item) => {
+            this.scene.input.setDraggable(item.container, false)
+        })
+    }
 
     shuffleArray(beforeArray) {
         let array = beforeArray.concat();
@@ -252,6 +253,8 @@ export default class Answers {
                                 this.answers.forEach((item) => {
                                     this.scene.input.setDraggable(item.container, true)
                                 })
+                                this.selectItems = [];
+                                this.doneBtnFlag = true;
                             })
                         })
                     })

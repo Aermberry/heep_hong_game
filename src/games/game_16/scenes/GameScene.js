@@ -54,7 +54,7 @@ export default class GameScene extends BasicScene {
             frames: this.anims.generateFrameNames('remind', { prefix: 'remind', start: 0, end: 9, zeroPad: 4 }),
             repeat: 0
         });
-        
+
         this.anims.create({
             key: 'L2_answer_failed2',
             delay: 200,
@@ -256,7 +256,7 @@ export default class GameScene extends BasicScene {
         this.currentCar = parseInt(Math.random() * (6 - 1 + 1) + 1, 10);
 
         this.car = this.add.follower(curve, this.getColWidth(1), this.getRowHeight(5.5), `car_${this.currentCar}`).setDepth(10)
-        this.car.play(`car_${this.currentCar}_idle`) 
+        this.car.play(`car_${this.currentCar}_idle`)
 
 
         let data = this.dataModal.gameItems;
@@ -291,8 +291,12 @@ export default class GameScene extends BasicScene {
         }, 3000)
         let run = this.sound.add(flag ? 'run' : 'erro_run');
         run.play();
-        let correct = this.add.sprite(this.getColWidth(6),this.getRowHeight(4),'correct_answer').setDepth(1000);
-        correct.play('correct_answer');
+        if (flag) {
+            let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
+            correct.play('correct_answer');
+            let child = this.sound.add('child_clap')
+            child.play();
+        }
         this.car.play(`car_${this.currentCar}_run`).startFollow({
             duration: 3000,
             yoyo: false,

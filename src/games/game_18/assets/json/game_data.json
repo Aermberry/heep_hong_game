@@ -1,0 +1,252 @@
+[
+    {   
+        "gameStage": 1,
+        "items":[
+            [
+                {
+                    "value":"我",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"喜歡跳舞。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"媽媽",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"做家務。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"小狗",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"搖尾巴。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"我的老師",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"常常送貼紙給我。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"動物們",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"在森林野餐。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"弟弟",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"弄壞了玩具車。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"他們",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"感到很興奮!",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"消防員",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"在救火。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"小熊熹熹",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"不喜歡守規則。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"你",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"想到公園玩耍嗎?",
+                    "type": 2,
+                    "status":null
+                }
+            ]
+        ]
+    },
+    {   
+        "gameStage": 2,
+        "items":[
+            [
+                {
+                    "value":"水杯",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"被打翻了。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"今天",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"是星期天。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"屋子",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"被小偷搜掠一番。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"高高的天空上",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"掛著一道彩虹。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"這年冬天的天氣",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"十分溫暖。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"這支筆",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"是小華的。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"這款甜甜的果汁",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"很好喝。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"小美和小英",
+                    "type": 1,
+                    "status":null
+                },
+                {
+                    "value":"是好朋友。",
+                    "type": 2,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"很可愛啊，",
+                    "type": 2,
+                    "status":null
+                },
+                {
+                    "value":"斑點小狗！",
+                    "type": 1,
+                    "status":null
+                }
+            ],
+            [
+                {
+                    "value":"真是討厭，",
+                    "type": 2,
+                    "status":null
+                },
+                {
+                    "value":"垃圾蟲！",
+                    "type": 1,
+                    "status":null
+                }
+            ]
+        ]
+    }
+]

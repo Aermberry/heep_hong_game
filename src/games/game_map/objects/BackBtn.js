@@ -12,7 +12,7 @@ export default class BackBtn extends BasicBtn {
 
     onClick(){
         
-        this.scene.scene.start('Map')
+        this.scene.scene.start('Preloader')
         
     }
 

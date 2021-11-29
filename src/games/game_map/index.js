@@ -43,7 +43,7 @@ class GameMap extends Phaser.Game {
             model
         }
 
-        this.globals.model.gameStage = urlParams.id;
+        this.globals.model.sectionId = urlParams.sid;
     }
 }
 

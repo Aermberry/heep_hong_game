@@ -40,8 +40,6 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('section4Btn', require('../assets/images/buttons/4a.png'), { frameWidth: 840, frameHeight: 505 })
         this.load.spritesheet('section3Btn', require('../assets/images/buttons/3a.png'), { frameWidth: 860, frameHeight: 350 })
         this.load.spritesheet('section6Btn', require('../assets/images/buttons/6a.png'), { frameWidth: 670, frameHeight: 460 })
-        this.load.spritesheet('hintBtn', require('../assets/images/buttons/btn_target.png'), { frameWidth: 173, frameHeight: 187})
-        this.load.spritesheet('backBtn', require('../assets/images/buttons/btn_out.png'), { frameWidth: 175, frameHeight: 187})
         // const blackWhiteBg = this.bg.setPipeline('Grayscale')
         // blackWhiteBg.resetPipeline();
         // this.bg.setBlendMode(Phaser.BlendModes.LUMINOSITY);

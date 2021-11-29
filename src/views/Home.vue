@@ -6,7 +6,7 @@
       <div class="container">
         <div class="content-wrapper landing">
           <img src="@/assets/images/img_title.svg" alt="">
-          <a href="" class="link-entry"><span class="inner">進入遊戲</span></a>
+          <a href="/game/intro" class="link-entry"><span class="inner">進入遊戲</span></a>
         </div>
         <div class="content-space"></div>
       </div>

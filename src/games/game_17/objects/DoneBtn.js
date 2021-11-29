@@ -9,6 +9,8 @@ export default class ExitBtn extends BasicBtn {
   }
 
   onClick() {
+    let run = this.scene.sound.add('pressBtn');
+    run.play();
     this.scene.answers.onDoneBtnClicked();
   }
 

@@ -43,25 +43,35 @@ export default class PreloaderScene extends BasicScene {
             'car_6_idle': { img: require('../assets/img/car_6.png'), data: require('../assets/img/car_6.json') },
             'car_6_stop': { img: require('../assets/img/car_6_stop.png'), data: require('../assets/img/car_6_stop.json') },
             'car_6_run': { img: require('../assets/img/car_6_run.png'), data: require('../assets/img/car_6_run.json') },
+            'less_happy': { img: require('../assets/img/less happy.png'), data: require('../assets/img/less happy.json') },
+            'L1_answer_failed2': { img: require('../assets/img/L1_answer_failed2.png'), data: require('../assets/img/L1_answer_failed2.json') },
+            'correct_answer': { img: require('../assets/img/correct answer.png'), data: require('../assets/img/correct answer.json') },
+            'addoil': { img: require('../assets/img/addoil.png'), data: require('../assets/img/addoil.json') },
+            'remind': { img: require('../assets/img/remind.png'), data: require('../assets/img/remind.json') },
         }
 
         const soundFiles = {
             'bgm': require('../assets/audio/Enchanted Festival_short.mp3'),
-            'seal': require('../assets/audio/蓋章.mp3'),
-            'run': require('../assets/audio/bbc_comedy-sou_07005101.mp3'),
+            'drop': require('../assets/audio/comedy_pop_finger_in_mouth_002.mp3'),
+            'seal': require('../assets/audio/Mud Drop Single.mp3'),
+            'run': require('../assets/audio/zoom.mp3'),
+            'pressBtn': require('../assets/audio/press key.mp3'),
+            'erro_run': require('../assets/audio/bbc_comedy-sou_07005101.mp3'),
             'stop': require('../assets/audio/bbc_dial-999--_07045249.mp3'),
-            'end_pic': require('../assets/audio/Riverside Ride_short.mp3')
+            'end_pic': require('../assets/audio/Riverside Ride_short.mp3'),
+            'child_clap': require('../assets/audio/child clap.mp3'),
+
         }
 
 
         this.load.spritesheet('extSmBtn', require('../assets/img/btn_ext_1.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('strBtn', require('../assets/img/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/img/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('speakerBtn', require('../assets/img/btn_speaker.png'),{ frameWidth: 187, frameHeight: 225 });
+        this.load.spritesheet('speakerBtn', require('../assets/img/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
         this.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('doneBtn', require('../assets/img/Done.png'), { frameWidth: 570, frameHeight: 163.5 });
-
-        this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
+        this.load.spritesheet('doneBtn', require('../assets/img/Done.png'), { frameWidth: 570, frameHeight: 200 });
+        this.load.spritesheet('offSpeakerBtn', require('../assets/img/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
+      this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
         this.createProgressBar();
 

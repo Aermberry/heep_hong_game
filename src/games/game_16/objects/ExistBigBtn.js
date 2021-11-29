@@ -6,6 +6,8 @@ export default class ExistBigBtn extends BasicBtn {
         super(scene, x, y, children)
 
         let sprite =  scene.add.sprite(0, 0, 'extBtn')
+        sprite.setScale(0.8)
+
         this.create(sprite,this.onClick.bind(this))
     
     }

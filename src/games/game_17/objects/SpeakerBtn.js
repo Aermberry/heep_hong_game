@@ -1,16 +1,16 @@
 import BasicBtn  from './BasicBtn';
 
 export default class SpeakerBtn extends BasicBtn {
-  constructor(scene,x,y,children){
-    super(scene, x, y,children)
-
-    let sprite =  scene.add.sprite(0, 0, 'speakerBtn')
-    this.create(sprite,this.onClick.bind(this))
+  constructor(scene,x,y,musicPause){
+    super(scene, x, y)
+    this.scene = scene;
+    this.musicPause = musicPause;
+    this.sprite =  scene.add.sprite(0, 0, 'speakerBtn')
+    this.create(this.sprite,this.onClick.bind(this))
   }
 
   onClick(){
-
-    // this.scene.scene.start('Game')
-
+    this.sprite.setTexture(this.stopAll ? 'offSpeakerBtn' : 'SpeakerBtn');
+    this.musicPause()
   }
 }

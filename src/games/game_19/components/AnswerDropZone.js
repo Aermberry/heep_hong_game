@@ -5,22 +5,23 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
     constructor(scene, x, y, question) {
 
         super(scene, x, y);
+        this.scene = scene;
         scene.add.existing(this);
 
-        this.dropZone = undefined;
         this.stageSlaverSprite = undefined;
-        this.offset = 0
+        this.offset = 0;
 
         this.init(this, scene, question);
     }
 
     init(self, scene, question) {
 
-        self.stageSlaverSprite = scene.add.image(0, 0, 'stageSalver').setScale(0.6)
+        this.stageSlaverSprite = scene.add.image(0, 0, 'stageSalver').setScale(0.6);
 
-        self.dropZone = scene.add.zone(100, 100, this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight).setRectangleDropZone(this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight);
+        let dropZone = scene.add.zone(0, 0, this.stageSlaverSprite.displayWidth + 60, this.stageSlaverSprite.displayHeight + 60)
+            .setRectangleDropZone(this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight);
 
-        self.add([this.stageSlaverSprite, this.dropZone]);
+        self.add([this.stageSlaverSprite, dropZone]);
 
         this.addDropEventListener(scene, this.checkAnswer, question, self);
 
@@ -34,7 +35,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
         set drop event listener
       */
     addDropEventListener(scene, callback, question, self) {
-        scene.input.on('drop', (pointer, gameObject, dropZone) => callback(pointer, gameObject, dropZone, scene, question, self))
+        scene.input.on('drop', (pointer, gameObject, dropZone) => callback(pointer, gameObject, dropZone, question, self,scene));
     }
 
     /*
@@ -43,35 +44,8 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      */
     addSuccessEventListener(scene) {
         this.on('gameSuccess', () => {
-
-           
-            let gamePlayTotal = JSON.parse(localStorage.getItem('gamePlayTotal'));
-            
-            scene.paintGameSuccess()
-
-            if (gamePlayTotal == 1) {
-
-                scene.time.addEvent({
-                    delay: 5000,
-                    callback: () => scene.scene.start('End')
-                })
-                
-            } else {
-                console.log("gamePlayTotal")
-                console.log(localStorage.getItem('gamePlayTotal'))
-                console.log("gamePlayTotal")
-
-                localStorage.setItem('gamePlayTotal', JSON.stringify(gamePlayTotal - 1));
-                scene.time.addEvent({
-                    delay: 5000,
-                    callback: () => scene.scene.start('Game')
-                })
-
-                console.log("gamePlayTotal")
-                console.log(localStorage.getItem('gamePlayTotal'))
-                console.log("gamePlayTotal")
-            }
-
+            console.log('gameSuccess')
+            scene.paintGameSuccess();
         })
     }
 
@@ -90,28 +64,62 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      * check answer
      * 检测drop的内容 
      */
-    checkAnswer(pointer, gameObject, dropZone, scene, question, self) {
-        console.log(scene.question.modifier)
-        console.log(gameObject.labelText.text)
-        console.log(self.count('visible', true))
+    checkAnswer(pointer, gameObject, dropZone, question, self,scene) {
+
+        scene.sound.play('dropEffectSound')
+
         if (question.modifier.indexOf(gameObject.labelText.text) > -1) {
 
-            gameObject.changeStyle(0.3, '35px')
-            // let dropPoint = { x: gameObject.x, y: gameObject.y }
-            // gameObject.x = dropPoint.x
-            // gameObject.y = dropPoint.y
-            // console.log(gameObject)     
-            // console.log(self.stageSlaverSprite.displayWidth)
-            // gameObject.x=-self.stageSlaverSprite.displayWidth/2+(self.x-dropPoint.x)
-            // gameObject.x=dropZone.x-self.stageSlaverSprite.displayWidth/2+30 ///小的
-            console.log("第一次" + self.offset)
-            gameObject.x = dropZone.x - self.stageSlaverSprite.displayWidth / 2 + 60 + self.offset ///大的
-            console.log("第二次" + self.offset)
-            self.offset += gameObject.displayWidth / 2
-            console.log("第三次" + self.offset)
-            gameObject.y = 0
-            self.add([gameObject])
+            gameObject.changeStyle(0.3, '35px');
+
+            self.add([gameObject]);
+
+            let toothList = self.list.filter(item => item.name == 'tooth');
+            console.log({ toothList });
+
+            for (let index = 0; index < toothList.length; index++) {
+
+                if (index == 0) {
+                    switch (gameObject.type) {
+                        case 'bigTooth':
+                            gameObject.x = -dropZone.width / 2 + 210;
+                            break;
+                        case 'smallTooth':
+                            gameObject.x = -dropZone.width / 2 + 170;
+                            break;
+                    }
+                }
+                else {
+                    let currentTooth = toothList[index];
+                    let previousTooth = toothList[index - 1];
+
+                    if (currentTooth.displayWidth != previousTooth.displayWidth) {
+
+                        let currentToothWidth = currentTooth.getByName('toothTexture').displayWidth / 2;
+                        let previousToothWidth = previousTooth.getByName('toothTexture').displayWidth / 2;
+
+                        let distance = currentToothWidth + previousToothWidth + 10;
+
+                        currentTooth.x = previousTooth.x + distance;
+
+                    } else {
+
+                        let distance = previousTooth.getByName('toothTexture').displayWidth + 10;
+
+                        currentTooth.x = previousTooth.x + distance;
+                    }
+
+
+                }
+
+
+            }
+
+            gameObject.y = 0;
+
+
             gameObject.input.enabled = false;
+
 
             if (self.count('visible', true) - 2 == question.modifier.length) {
                 self.emit('gameSuccess')

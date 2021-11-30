@@ -11,7 +11,7 @@ export default {
   components: {
     Game
   },
-  mounted: ()=> {
+  mounted: function() {
     this.$gtag.event('view_item', { 'event_category': 'Games', 'event_label': 'Gamestart', 'value': Date.now() })
   }
 }

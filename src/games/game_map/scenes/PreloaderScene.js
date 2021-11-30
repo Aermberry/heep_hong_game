@@ -27,13 +27,17 @@ export default class PreloaderScene extends BasicScene {
             'game3Mask': require('../assets/images/masks/3a.png'),
             'game4Mask': require('../assets/images/masks/4a.png'),
             'game5Mask': require('../assets/images/masks/5a.png'),
-            'game6Mask': require('../assets/images/masks/6a.png'),
+            'balloon': require('../assets/images/objects/balloon.png'),
+            'cloud_big': require('../assets/images/objects/cloud_big.png')
+            // 'game6Mask': require('../assets/images/masks/6a.png'),
+            // 'game6Mask': require('../assets/images/masks/6a.svg')
             // 'game1Btn': require('../assets/images/buttons/1a.png'),
         }
 
         this.preloadFromArr({
             atlas: atlasFiles, img: imageFiles
         })
+        this.load.svg('game6Mask', require('../assets/images/masks/6a.svg'), {width: 976, height: 1489})
         this.load.spritesheet('section1Btn', require('../assets/images/buttons/1a.png'), { frameWidth: 617, frameHeight: 387 })
         this.load.spritesheet('section2Btn', require('../assets/images/buttons/2a.png'), { frameWidth: 780, frameHeight: 465 })
         this.load.spritesheet('section5Btn', require('../assets/images/buttons/5a.png'), { frameWidth: 630, frameHeight: 420 })

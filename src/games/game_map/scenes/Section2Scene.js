@@ -13,7 +13,7 @@ export default class Section2Scene extends SectionBasicScene {
         this.buildPreloadBg('bg_title', {x: 0.6, y: 0.3})
 
         const atlasFiles = {
-
+            'tree_fall': { img: require('../assets/images/section_2/forest.png'), data: require('../assets/images/section_2/forest.json') },
         }
 
         const imageFiles = {
@@ -51,6 +51,18 @@ export default class Section2Scene extends SectionBasicScene {
         const game4Btn = new GameNavBtn(this, this.getColWidth(9.1), this.getRowHeight(10.8), 's2btn4', '/game/21')
         const game5Btn = new GameNavBtn(this, this.getColWidth(1.3), this.getRowHeight(7.3), 's2btn5', '/game/5')
         const game6Btn = new GameNavBtn(this, this.getColWidth(6.32), this.getRowHeight(9.95), 's2btn6', '/game/9')
+
+        
+        this.anims.create({
+            key: 'tree_fall_anime', 
+            frames: this.anims.generateFrameNames('tree_fall', { prefix: 'Symbol 1', start: 0, end: 35, zeroPad: 4 }),
+            repeat: -1,
+            delay: 6000
+        });
+
+
+        let animate = this.add.sprite(this.getColWidth(5), this.getRowHeight(6), 'tree_fall')
+        animate.play('tree_fall_anime')
 
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's2Logo')
 

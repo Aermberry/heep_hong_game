@@ -2,6 +2,7 @@ import SectionBasicScene from './SectionBasicScene'
 import GameNavBtn from '../objects/GameNavBtn'
 import BackBtn from '../objects/BackBtn'
 import HintBtn from '../objects/HintBtn'
+import Vehicle from '../objects/animations/Vehicle'
 
 export default class Section4Scene extends SectionBasicScene {
 
@@ -23,6 +24,7 @@ export default class Section4Scene extends SectionBasicScene {
             s4Hint2: require('../assets/images/section_4/target_2.png'),
             s4Hint3: require('../assets/images/section_4/target_3.png'),
             s4Logo: require('../assets/images/section_4/game_job.png'),
+            vehicle: require('../assets/images/section_4/vehicle.png')
         }
 
         this.preloadFromArr({
@@ -59,6 +61,9 @@ export default class Section4Scene extends SectionBasicScene {
         const HintBtn2 = new HintBtn(this, this.getColWidth(7.5), this.getRowHeight(10), 's4Hint2')
         const HintBtn3 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(6), 's4Hint3')
 
+        const vehicle = new Vehicle(this, this.getColWidth(9), this.getRowHeight(8.3), {x: this.getColWidth(6.7), y: this.getRowHeight(6.5)})
+
+        this.add.existing(vehicle)
         this.add.image(this.getColWidth(3.7), this.getRowHeight(1.5), 's4Logo')
         this.add.existing(backBtn)
         this.add.existing(game1Btn)

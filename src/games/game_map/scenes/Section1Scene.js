@@ -26,8 +26,8 @@ export default class Section1Scene extends BasicScene {
 
         const imageFiles = {
             game1Bg: require('../assets/images/section_1/game_bg.png'),
-            s1Hint1: require('../assets/images/section_1/target.png'),
-            s1Hint2: require('../assets/images/section_1/target2.png')
+            s1Hint1: require('../assets/images/section_1/target_1.png'),
+            s1Hint2: require('../assets/images/section_1/target_2.png')
             // 'game1Btn': require('../assets/images/buttons/1a.png'),
         }
 
@@ -39,6 +39,8 @@ export default class Section1Scene extends BasicScene {
         this.load.spritesheet('s1btn2', require('../assets/images/section_1/btn_2.png'),{ frameWidth: 131, frameHeight: 133 })
         this.load.spritesheet('s1btn3', require('../assets/images/section_1/btn_3.png'),{ frameWidth: 131, frameHeight: 131 })
         this.load.spritesheet('s1btn4', require('../assets/images/section_1/btn_4.png'),{ frameWidth: 131, frameHeight: 134 })
+        this.load.spritesheet('spaceRestaurantLogo', require('../assets/images/section_1/logo-121.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('spaceFactoryLogo', require('../assets/images/section_1/logo-122.png'),{ frameWidth: 305, frameHeight: 314.5 })
 
     }
 
@@ -96,8 +98,8 @@ export default class Section1Scene extends BasicScene {
         const game2Btn = new GameNavBtn(this, this.getColWidth(6.57), this.getRowHeight(5.3), 's1btn2', 'https://www.google.com')
         const game3Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(8.2), 's1btn3', 'https://www.google.com')
         const game4Btn = new GameNavBtn(this, this.getColWidth(10.6), this.getRowHeight(7.5), 's1btn4', 'https://www.google.com')
-        const hintBtnA = new HintBtn(this, this.getColWidth(3), this.getRowHeight(7), 's1Hint2')
-        const hintBtnB = new HintBtn(this, this.getColWidth(8), this.getRowHeight(8), 's1Hint1')
+        const hintBtnA = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(7), 's1Hint1', 'spaceRestaurantLogo')
+        const hintBtnB = new HintBtn(this, this.getColWidth(8.3), this.getRowHeight(8.1), 's1Hint2', 'spaceFactoryLogo')
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
 
         this.add.existing(game1Btn)

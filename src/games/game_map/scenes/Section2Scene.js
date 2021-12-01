@@ -32,6 +32,7 @@ export default class Section2Scene extends SectionBasicScene {
         this.load.spritesheet('s2btn4', require('../assets/images/section_2/btn_4.png'),{ frameWidth: 132, frameHeight: 134.5 })
         this.load.spritesheet('s2btn5', require('../assets/images/section_2/btn_5.png'),{ frameWidth: 132, frameHeight: 134.5 })
         this.load.spritesheet('s2btn6', require('../assets/images/section_2/btn_6.png'),{ frameWidth: 132, frameHeight: 134.5 })
+        this.load.spritesheet('catLogo', require('../assets/images/section_2/logo-123.png'),{ frameWidth: 305, frameHeight: 314.5 })
     }
 
     create() {
@@ -44,20 +45,20 @@ export default class Section2Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const hintBtn = new HintBtn(this, this.getColWidth(6.32), this.getRowHeight(6), 's2Hint')
+        const hintBtn = new HintBtn(this, this.getColWidth(6.32), this.getRowHeight(5.5), 's2Hint', 'catLogo')
         const game1Btn = new GameNavBtn(this, this.getColWidth(2.55), this.getRowHeight(10.2), 's2btn1', '/game/8')
         const game2Btn = new GameNavBtn(this, this.getColWidth(3.85), this.getRowHeight(7.1), 's2btn2', '/game/6')
         const game3Btn = new GameNavBtn(this, this.getColWidth(9.6), this.getRowHeight(7.1), 's2btn3', '/game/7')
         const game4Btn = new GameNavBtn(this, this.getColWidth(9.1), this.getRowHeight(10.8), 's2btn4', '/game/21')
         const game5Btn = new GameNavBtn(this, this.getColWidth(1.3), this.getRowHeight(7.3), 's2btn5', '/game/5')
         const game6Btn = new GameNavBtn(this, this.getColWidth(6.32), this.getRowHeight(9.95), 's2btn6', '/game/9')
-
         
         this.anims.create({
             key: 'tree_fall_anime', 
             frames: this.anims.generateFrameNames('tree_fall', { prefix: 'Symbol 1', start: 0, end: 35, zeroPad: 4 }),
             repeat: -1,
-            delay: 6000
+            delay: 6000,
+            repeatDelay: 5000
         });
 
 
@@ -65,7 +66,7 @@ export default class Section2Scene extends SectionBasicScene {
         animate.play('tree_fall_anime')
 
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's2Logo')
-
+        
         this.add.existing(backBtn)
         this.add.existing(hintBtn)
         this.add.existing(game1Btn)

@@ -2,6 +2,7 @@ import SectionBasicScene from "./SectionBasicScene"
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+import Balloon from '../objects/animations/Balloon'
 
 export default class Section3Scene extends SectionBasicScene {
 
@@ -25,6 +26,7 @@ export default class Section3Scene extends SectionBasicScene {
             s3Hint4: require('../assets/images/section_3/target_4.png'),
             s3Hint5: require('../assets/images/section_3/target_5.png'),
             s3Logo: require('../assets/images/section_3/game_mov.png'),
+            balloon: require('../assets/images/objects/balloon.png'),
         }
 
         this.preloadFromArr({
@@ -43,6 +45,11 @@ export default class Section3Scene extends SectionBasicScene {
         this.load.spritesheet('s3btn10', require('../assets/images/section_3/btn_10.png'),{ frameWidth: 132, frameHeight: 135 })
         this.load.spritesheet('s3btn11', require('../assets/images/section_3/btn_11.png'),{ frameWidth: 132, frameHeight: 135 })
         this.load.spritesheet('s3btn12', require('../assets/images/section_3/btn_12.png'),{ frameWidth: 132, frameHeight: 135 })
+        this.load.spritesheet('s3Hint5Logo', require('../assets/images/section_3/logo-124.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint3Logo', require('../assets/images/section_3/logo-125.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint4Logo', require('../assets/images/section_3/logo-126.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint1Logo', require('../assets/images/section_3/logo-127.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint2Logo', require('../assets/images/section_3/logo-128.png'),{ frameWidth: 305, frameHeight: 314.5 })
 
     }
 
@@ -57,24 +64,27 @@ export default class Section3Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const hintBtn1 = new HintBtn(this, this.getColWidth(1), this.getRowHeight(9), 's3Hint1')
-        const hintBtn2 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(7.5), 's3Hint2')
-        const hintBtn3 = new HintBtn(this, this.getColWidth(8.5), this.getRowHeight(5.5), 's3Hint3')
-        const hintBtn4 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(3), 's3Hint4')
-        const hintBtn5 = new HintBtn(this, this.getColWidth(3), this.getRowHeight(5), 's3Hint5')
-        const game1Btn = new GameNavBtn(this, this.getColWidth(1.6), this.getRowHeight(4.3), 's3btn1', '/game/27')
-        const game2Btn = new GameNavBtn(this, this.getColWidth(4.7), this.getRowHeight(4.3), 's3btn2', '/game/28')
-        const game3Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(3.2), 's3btn3', '/game/25')
-        const game4Btn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(4.2), 's3btn4', '/game/24')
-        const game5Btn = new GameNavBtn(this, this.getColWidth(10.4), this.getRowHeight(3.3), 's3btn5', '/game/26')
-        const game6Btn = new GameNavBtn(this, this.getColWidth(3.5), this.getRowHeight(10.2), 's3btn6', '/game/12')
-        const game7Btn = new GameNavBtn(this, this.getColWidth(2.5), this.getRowHeight(10.6), 's3btn7', '/game/11')
-        const game8Btn = new GameNavBtn(this, this.getColWidth(4.8), this.getRowHeight(10.2), 's3btn8', '/game/13')
-        const game9Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(10.2), 's3btn9', '/game/14')
-        const game10Btn = new GameNavBtn(this, this.getColWidth(7.1), this.getRowHeight(10.6), 's3btn10', '/game/15')
-        const game11Btn = new GameNavBtn(this, this.getColWidth(9.5), this.getRowHeight(8.8), 's3btn11', '/game/22')
+        const hintBtn1 = new HintBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's3Hint1', 's3Hint1Logo')
+        const hintBtn2 = new HintBtn(this, this.getColWidth(8.9), this.getRowHeight(7.2), 's3Hint2', 's3Hint2Logo')
+        const hintBtn3 = new HintBtn(this, this.getColWidth(7.1), this.getRowHeight(5), 's3Hint3', 's3Hint3Logo')
+        const hintBtn4 = new HintBtn(this, this.getColWidth(8.5), this.getRowHeight(2), 's3Hint4', 's3Hint4Logo')
+        const hintBtn5 = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(5.7), 's3Hint5', 's3Hint5Logo')
+        const game1Btn = new GameNavBtn(this, this.getColWidth(1.6), this.getRowHeight(5.5), 's3btn1', '/game/27')
+        const game2Btn = new GameNavBtn(this, this.getColWidth(4.7), this.getRowHeight(5.5), 's3btn2', '/game/28')
+        const game3Btn = new GameNavBtn(this, this.getColWidth(5.1), this.getRowHeight(2.9), 's3btn3', '/game/25')
+        const game4Btn = new GameNavBtn(this, this.getColWidth(6.4), this.getRowHeight(2.9), 's3btn4', '/game/24')
+        const game5Btn = new GameNavBtn(this, this.getColWidth(9.8), this.getRowHeight(3.3), 's3btn5', '/game/26')
+        const game6Btn = new GameNavBtn(this, this.getColWidth(3.2), this.getRowHeight(9.2), 's3btn6', '/game/12')
+        const game7Btn = new GameNavBtn(this, this.getColWidth(2.8), this.getRowHeight(10.7), 's3btn7', '/game/11')
+        const game8Btn = new GameNavBtn(this, this.getColWidth(4.2), this.getRowHeight(9.2), 's3btn8', '/game/13')
+        const game9Btn = new GameNavBtn(this, this.getColWidth(7.5), this.getRowHeight(10), 's3btn9', '/game/14')
+        const game10Btn = new GameNavBtn(this, this.getColWidth(8.5), this.getRowHeight(10.6), 's3btn10', '/game/15')
+        const game11Btn = new GameNavBtn(this, this.getColWidth(9.5), this.getRowHeight(9.2), 's3btn11', '/game/22')
         const game12Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(8), 's3btn12', '/game/23')
+        const balloon = new Balloon(this, this.getColWidth(2), this.getRowHeight(7))
+        balloon.setScale(1.5)
 
+        this.add.existing(balloon)
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's3Logo')
         this.add.existing(backBtn)
         this.add.existing(hintBtn1)

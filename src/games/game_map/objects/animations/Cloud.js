@@ -2,8 +2,8 @@ import Phaser from 'phaser'
 
 export default class Cloud extends Phaser.GameObjects.Sprite{
 
-    constructor(scene, x, y) {
-        super(scene, x, y, 'cloud_big')
+    constructor(scene, x, y, cloudImageName = null) {
+        super(scene, x, y, typeof cloudImageName === 'string' ? cloudImageName: 'cloud_big')
         this.initObject()
     }
 

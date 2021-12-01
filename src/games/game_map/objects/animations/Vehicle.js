@@ -18,8 +18,9 @@ export default class Vehicle extends Phaser.GameObjects.Sprite {
             x: this.moveConfig.x,
             y: this.moveConfig.y,
             loop: -1,
-            duration: 6000 + (1000 * salt),
-            ease: Phaser.Math.Easing.Linear,
+            loopDelay: 10000,
+            duration: 80000 + (10000 * salt),
+            ease: Phaser.Math.Easing.Circular.Out,
             delay: 200 * salt
         }).on('loop', ()=> {
             this.setX(origX)

@@ -28,7 +28,8 @@ export default class PreloaderScene extends BasicScene {
             'game4Mask': require('../assets/images/masks/4a.png'),
             'game5Mask': require('../assets/images/masks/5a.png'),
             'balloon': require('../assets/images/objects/balloon.png'),
-            'cloud_big': require('../assets/images/objects/cloud_big.png')
+            'cloud_big': require('../assets/images/objects/cloud_big.png'),
+            'cloud_small': require('../assets/images/objects/cloud_small.png')
             // 'game6Mask': require('../assets/images/masks/6a.png'),
             // 'game6Mask': require('../assets/images/masks/6a.svg')
             // 'game1Btn': require('../assets/images/buttons/1a.png'),

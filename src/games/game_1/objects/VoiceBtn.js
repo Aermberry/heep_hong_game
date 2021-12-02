@@ -3,12 +3,14 @@ import _ from 'lodash';
 
 export default class VocieBtn extends Phaser.GameObjects.Container {
 
-  constructor(scene, x, y, callback) {
+  constructor(scene, x, y, callback, voiceStartCallback) {
     super(scene);
     this.scene = scene;
     this.x = x;
     this.y = y;
     this.callback = callback;
+    this.voiceStartCallback = voiceStartCallback;
+    this.disableVoice = false
 
 
   }
@@ -62,11 +64,13 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
   }
 
   out(){
+    if(this.disableVoice) return;
     let self = this;
     self.sprite.setFrame(0);
   }
 
   down(){
+    if(this.disableVoice) return;
     let self = this;
     self.sprite.setFrame(1);
     setTimeout(function(){
@@ -80,6 +84,7 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
 
   playVo(){
     let self = this;
+    if(typeof this.voiceStartCallback === 'function') this.voiceStartCallback()
     self.play = true;
     self.sprite.setTexture('pusBtn');
     self.wave.play('wave');
@@ -112,9 +117,12 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
     self.wave.visible = false;
     self.voIndex= 0;
     self.playTime++;
-    if(self.playTime == 1){
-      self.callback()
-    }
+    self.callback()
+
+  }
+
+  setVoiceDisable(disable) {
+    return this.disableVoice = disable
   }
 
 

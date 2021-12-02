@@ -69,7 +69,7 @@ export default class CatHand extends DraggableContainer {
         
         return new Promise((resolve)=> {
             
-            this.toOriginPosTween(2000).on('complete', ()=> {
+            this.toOriginPosTween(750).on('complete', ()=> {
 
                 this.startDraggable();
 

@@ -1,13 +1,14 @@
 import Phaser from 'phaser'
 
 export default class ChoiceBtn extends Phaser.GameObjects.Container {
-  constructor(scene,x,y,item, onClickCallback, onEnableCallback){
+  constructor(scene,x,y,item, onClickCallback, onEnableCallback, onStallCallback){
     super(scene, x, y);
     this.scene = scene;
     this.item = item;
     this.selected = false;
     this.onClickCallback = onClickCallback;
     this.onEnableCallback = onEnableCallback;
+    this.onStallCallback = onStallCallback;
 
     let self = this;
 
@@ -29,7 +30,11 @@ export default class ChoiceBtn extends Phaser.GameObjects.Container {
   down(){
     let self = this;
 
-    let enable = self.onEnableCallback();
+
+    let stall = self.onStallCallback();
+    if(stall) return;
+
+    let enable = self.onEnableCallback(); 
 
     if(!self.selected){
       if(enable){

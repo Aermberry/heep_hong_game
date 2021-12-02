@@ -18,6 +18,10 @@ export default class GameScene extends Scene {
     this.model = this.sys.game.globals.model;
     this.choicePool = Choice;
     this.questionPool = Question;
+    this.question = [];
+    this.stageRepeat = false;
+    this.freezePlaySound = false;
+    this.freezeSelectItem = false;
   }
 
   preload () {
@@ -108,48 +112,52 @@ export default class GameScene extends Scene {
     let self = this
 
     self.choice = []
-    self.question = []
-    let choiceSelect = []
-    let choiceDummy = []
-    let questionAddon = {}
 
 
     if(self.model.level == 1){
-      self.question = self.questionPool["level1"][_.random(self.questionPool["level1"].length)];
+      self.question = this.stageRepeat ? self.question : self.questionPool["level1"][_.random(self.questionPool["level1"].length -1)];
       self.choice = self.choicePool;
     }else if(self.model.level == 2){
-      self.question = self.questionPool["level2"][_.random(self.questionPool["level2"].length)];
-      do{
-        _.forEach(self.choicePool, function(item){
-          if(_.includes(self.question,item.name)){
-            choiceSelect.push(item);
-          }else{
-            choiceDummy.push(item);
+      self.question = this.stageRepeat ? self.question : self.questionPool["level2"][_.random(self.questionPool["level2"].length -1)];
+
+      let cloneChoiceList = [...self.choicePool]
+
+      cloneChoiceList = _.shuffle(cloneChoiceList)
+
+      var tempChoice = [];
+
+      while(tempChoice.length < (12 - self.model.selectLimit)) {
+        const curItem = cloneChoiceList.pop()
+        if(self.question.indexOf(curItem.name) === -1) {
+          if(self.question.length < self.model.selectLimit) {
+            self.question.push(curItem.name)
+          }else {
+            tempChoice.push(curItem)
           }
-        })
-        choiceDummy = _.sampleSize(choiceDummy,9);
-
-        questionAddon = choiceDummy[_.random(choiceDummy.length)];
-
-      }while(choiceDummy.length < 9)
-
-      _.forEach(choiceDummy, function(item){
-        choiceSelect.push(item);
-      });
-
-      self.choice = _.shuffle(choiceSelect);
-
-      if(typeof questionAddon != 'undefined'){
-        self.question.push(questionAddon.name);
+        }
       }
+
+      let cloneChoiceList2 = [...self.choicePool]
+
+      while(tempChoice.length < 12) {
+        const curItem = cloneChoiceList2.pop()
+        if(self.question.indexOf(curItem.name) != -1) tempChoice.push(curItem)
+      }
+      
+      tempChoice = _.shuffle(tempChoice)
+
+      self.choice = tempChoice
+
     }
+
+    console.log(self.question)
+
 
       return typeof self.question != 'undefined' ? true : false
   }
 
   new(){
     let self = this
-
     if(typeof self.questionBase != 'undefined' && typeof self.questionBase.destroy == 'function'){
       self.questionBase.destroy();
     }
@@ -162,13 +170,11 @@ export default class GameScene extends Scene {
 
     if(self.newQuestion()){
 
-      console.log(self.question);
-
       self.questionBase = new QuestionBase(self, -650,  config.height/2, self.submitHandler.bind(this))
       self.add.existing(self.questionBase)
       self.questionBase.init(self.choice, self.model.level, self.model.selectLimit);
 
-      self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195 ,self.voiceHandler.bind(this))
+      self.voiceBtn = new VoiceBtn(self, config.width -385, config.height -195 ,self.voiceHandler.bind(this), self.voiceStartHandler.bind(this))
       self.add.existing(self.voiceBtn)
       self.voiceBtn.init(self.question);
 
@@ -181,38 +187,70 @@ export default class GameScene extends Scene {
       self.new();
     }
 
+    this.freezePlaySound = false;
+    self.voiceBtn.setVoiceDisable(false)
+
+  }
+
+  voiceStartHandler() {
+    let self = this
+    self.questionBase.setBroadDisable(true)
   }
 
   voiceHandler(){
     let self = this
+  console.log('stop game freeze')
+    self.questionBase.setBroadDisable(false)
 
-    self.tweens.add({
-      targets: [self.questionBase,self.questionBase],
-      x: 585,
-      ease: 'Power0',
-      duration: 500
-    })
+    self.questionBase.broadMoveIn()
+
+    // self.tweens.add({
+    //   targets: [self.questionBase,self.questionBase],
+    //   x: 585,
+    //   ease: 'Power0',
+    //   duration: 500
+    // })
 
   }
 
   submitHandler(items){
     let self = this
 
+    this.freezePlaySound = true;
+    self.voiceBtn.setVoiceDisable(true)
+
     let itemsName = _.map(items, 'name');
 
-    let correct = _.isMatch(self.question, itemsName)
+    // let correct = _.isMatch(self.question, itemsName)
+
+    let correct = !self.question.some((quest)=> {
+      return itemsName.indexOf(quest) === -1
+    })
 
     if(correct){
       self.correct();
+        
+      self.tray = new Tray(self,config.width/2 + 564, 300);
+      self.add.existing(self.tray);
+      self.tray.init(itemsName,correct);
+
+      self.model.stage++;
+
     }else{
+
+      if(!this.stageRepeat) {
+        this.stageRepeat = true
+      }else {
+        this.stageRepeat = false
+        self.tray = new Tray(self,config.width/2 + 564, 300);
+        self.add.existing(self.tray);
+        self.tray.init(itemsName,correct);
+  
+        self.model.stage++;
+      }
+
       self.wrong();
     }
-
-    self.tray = new Tray(self,config.width/2 + 564, 300);
-    self.add.existing(self.tray);
-    self.tray.init(itemsName,correct);
-
-    self.model.level++;
 
     self.tweens.add({
       targets: [self.questionBase,self.questionBase],

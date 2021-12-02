@@ -10,8 +10,7 @@ export default class SpeakerBtn extends BasicBtn {
   }
 
   onClick() {
-    this.sprite.setTexture(this.stopAll ? 'offSpeakerBtn' : 'SpeakerBtn');
-
+    this.sprite.setTexture(this.scene.stopAll ? 'speakerBtn' : 'offSpeakerBtn');
     this.musicPause()
   }
 }

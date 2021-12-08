@@ -6,8 +6,9 @@
       <div class="container">
         <div class="content-space"></div>
         <div class="content-wrapper game-intro">
-          <div class="game-intro-header">
-            <img src="@/assets/images/world notext.svg" alt="">
+          <div class="game-intro-main">
+            <!-- <img src="@/assets/images/img_world notext.png" alt=""> -->
+            <img class="logo" src="@/assets/images/img_title.svg" alt="">
             <a href="./world" class="link-entry"><span class="inner">進入遊戲</span></a>
           </div>
 
@@ -89,7 +90,6 @@
               </div>
             </div>
           </div>
-
         </div>
         <div class="content-space"></div>
       </div>
@@ -113,3 +113,32 @@ export default {
   }
 }
 </script>
+<style scoped>
+.logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width:50%;
+}
+.game-intro-main {
+    position: relative;
+    min-height: 730px;
+    overflow: hidden;
+    max-width: 100%;
+    background-image: url(/img/img_landing.a1e70e02.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@media screen and (max-width: 850px) {
+  .logo {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    max-width: inherit;
+    width: 90%
+  }
+  .game-intro-main {
+    min-height: 460px;
+  }
+}
+</style>

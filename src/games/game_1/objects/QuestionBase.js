@@ -19,6 +19,8 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
     self.items = [];
     self.selectItems = [];
     self.selectItemsLimit = limit;
+    self.movedIn = false;
+    self.gameDisabled = false;
     self.create();
   }
 
@@ -57,7 +59,7 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
         }
       }
 
-      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item, self.handleChoiceClick.bind(this), self.handleChoiceEnable.bind(this));
+      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item, self.handleChoiceClick.bind(this), self.handleChoiceEnable.bind(this), self.isGameNoFreeze.bind(this));
       self.items.push(choiceBtn);
 
       self.itemColumn++;
@@ -72,9 +74,9 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
 
 
   handleChoiceClick(choice){
-    let self = this;
+    let self = this; 
 
-
+    if(self.gameDisabled) return;
 
     if(choice.selected){
       if(self.handleChoiceEnable()){
@@ -107,9 +109,33 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
     return self.selectItems.length < self.selectItemsLimit;
   }
 
+  isGameNoFreeze() {
+    let self = this;
+    return self.gameDisabled;
+  }
+
   handleOrderClick(){
     let self = this;
+    if(self.gameDisabled) return;
     self.callback(self.selectItems);
+  }
+
+  setBroadDisable(disable) {
+    let self = this;
+    return self.gameDisabled = disable;
+  }
+
+  broadMoveIn() {
+
+    if(this.movedIn) return;
+    this.movedIn = true;
+
+    this.scene.tweens.add({
+      targets: this,
+      x: 585,
+      ease: 'Power0',
+      duration: 500
+    })
   }
 
 }

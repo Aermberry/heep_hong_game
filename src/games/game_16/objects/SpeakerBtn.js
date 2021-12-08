@@ -6,6 +6,7 @@ export default class SpeakerBtn extends BasicBtn {
     this.scene = scene;
     this.musicPause = musicPause;
     this.sprite = scene.add.sprite(0, 0, this.scene.stopAll ? 'offSpeakerBtn' : 'speakerBtn')
+    this.sprite.setScale(0.7)
     this.create(this.sprite, this.onClick.bind(this))
   }
 

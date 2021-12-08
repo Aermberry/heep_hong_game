@@ -246,7 +246,7 @@ export default class GameScene extends BasicScene {
         }
 
         this.disableInput = false;
-        let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
+        // let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
    
         this.currentCar = parseInt(Math.random() * (6 - 1 + 1) + 1, 10);
         this.car = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(4.5), `car_${this.currentCar}`).setDepth(10)
@@ -269,14 +269,14 @@ export default class GameScene extends BasicScene {
         this.blankRoad2 = new BlankRoad(this, this.getColWidth(7.1), this.getRowHeight(7.5));
         this.add.existing(this.answers)
         this.add.existing(this.blankRoad1)
-        sky.play('sun');
+        // sky.play('sun');
 
         this.car.play(`car_${this.currentCar}_idle`) 
         // this.car.flipX = -1
         
-        let exitBtn = new ExitBtn(this, 120, 135);
+        let exitBtn = new ExitBtn(this, 100, 120);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
         this.add.existing(exitBtn);
         this.add.existing(this.doneBtn);
         this.add.existing(this.speakerBtn);

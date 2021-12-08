@@ -39,7 +39,6 @@ export default class PreloaderScene extends BasicScene {
           'pack_bg_2': require('../assets/img/pack_bg_2.svg'),
           'pack_bg_3': require('../assets/img/pack_bg_3.svg'),
           'cover_bg': require('../assets/img/cover_bg.png'),
-
         };
 
         const atlasFiles = {
@@ -117,7 +116,6 @@ export default class PreloaderScene extends BasicScene {
           self.progressBar.clear();
           self.progressBar.fillStyle(0xFC8EFA, 1);
           self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
-
         });
     
         self.load.on('complete', function () {

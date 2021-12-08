@@ -246,7 +246,7 @@ export default class GameScene extends BasicScene {
 
 
         this.disableInput = false;
-        let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
+        // let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
         let y = this.getRowHeight(5.5);
         let startX = this.getColWidth(1.7);
         let points = [
@@ -276,10 +276,10 @@ export default class GameScene extends BasicScene {
         this.blankRoad = new BlankRoad(this, this.getColWidth(6), this.getRowHeight(6));
         this.add.existing(this.answers)
         this.add.existing(this.blankRoad)
-        sky.play('sun');
-        let exitBtn = new ExitBtn(this, 120, 135);
+        // sky.play('sun');
+        let exitBtn = new ExitBtn(this, 100, 120);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
         this.add.existing(exitBtn);
         this.add.existing(this.doneBtn);
         this.add.existing(this.speakerBtn);

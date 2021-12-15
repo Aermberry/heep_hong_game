@@ -3,6 +3,7 @@ import CatBack from "../objects/CatBack"
 import ItemBam from '../objects/ItemBam'
 import CatHand from "../objects/CatHand"
 import WinCat from '../objects/Cat'
+import BackBtn from '../objects/ExitBtn'
 // import Leaf from '../objects/Leaf'
 import LeafGroup from '../objects/LeafGroup'
 // import Cat from "../objects/Cat"
@@ -219,12 +220,15 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('bg_base');
 
+        this.backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5));
+
         this.initGameRender(this.items.pop(), this.answers.pop())
 
         this.leafGroup = new LeafGroup(this, 3, true);
 
         this.leafGroup.setDepth(8)
 
+        this.add.existing(this.backBtn)
         this.add.existing(this.leafGroup)
 
 

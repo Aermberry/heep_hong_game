@@ -76,7 +76,7 @@ export default class BasicPlayer extends Phaser.GameObjects.Container {
             targets: self,
             duration: time,
         }
-
+console.log('no delay')
         if (typeof x != 'undefined' && x != null) tweenObj['x'] = x
         if (typeof y != 'undefined' && y != null) tweenObj['y'] = y
 

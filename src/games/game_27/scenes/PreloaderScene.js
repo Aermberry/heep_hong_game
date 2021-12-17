@@ -26,6 +26,7 @@ export default class PreloaderScene extends BasicScene {
             '6w_car3': require('../assets/img/6w_car3.png'),
             '13w_car1': require('../assets/img/13w_car1.png'),
             '13w_car2': require('../assets/img/13w_car2.png'),
+            'car_box': require('../assets/img/car_box.png')
         };
 
         const atlasFiles = {

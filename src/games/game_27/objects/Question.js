@@ -1,6 +1,7 @@
 import Car from "./Car";
-
-export default class Question {
+import SelectCar from "./SelectCar";
+import DropZone from "./DropZone";
+export default class Question{
     constructor(scene) {
         let question = scene.dataModal[Math.floor(Math.random() * scene.dataModal.length)];
         let regex = /\((.+?)\)/g;
@@ -18,9 +19,26 @@ export default class Question {
                 }
             });
         });
-        let subjectItem = [];
-        // 渲染
-        subject.forEach((v, i) => subjectItem.push(new Car(scene, 200 + 300 * i, 700, v, subjectItem[i - 1])))
 
+        // let dropZone = 
+        new DropZone(scene, 400, 40);
+        let subjectItem = [];
+        // 渲染题目
+        subject.forEach((v, i) => {
+            console.log(subjectItem.length < 1 ? '200' : subjectItem[i-1].x)
+            subjectItem.push(new Car(scene, subjectItem.length < 1 ? 0 : subjectItem[i-1].x + subjectItem[i-1].width , 450, v));
+        });
+
+        let selectItem = [];
+        //渲染选择项
+        items.forEach((v, i) => {
+            selectItem.push(new SelectCar(scene, selectItem.length < 1 ? 440 : selectItem[i-1].x + selectItem[i-1].width + 40 ,0, v, this));
+            scene.physics.add.collider(selectItem[i],selectItem[0],this.onColliderHander)
+        });
     }
+
+    onColliderHander(a,b) {
+        console.log(a,b)
+    }
+
 }

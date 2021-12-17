@@ -7,8 +7,6 @@ export default class BootScene extends Scene {
   }
 
   preload () {
-    console.log(this)
-
     this.load.image('bg_title', require('../assets/img/title_1.png'))
 
   }

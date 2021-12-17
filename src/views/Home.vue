@@ -31,14 +31,12 @@ export default {
   },
   methods: {
     onClickHandler() {
-
       setTimeout(
         ()=> {
           document.querySelector('#game-container>canvas').requestFullscreen()
         },
         1000
       )
-      console.log('hello!')
     }
   },
 }

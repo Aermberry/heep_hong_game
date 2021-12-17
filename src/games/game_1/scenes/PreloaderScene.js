@@ -25,6 +25,7 @@ export default class PreloaderScene extends Scene {
     self.load.image('pnlBg', require('../assets/bg_pnl.png'));
     self.load.image('stageBg', require('../assets/bg_stage.png'));
     self.load.image('sndBg', require('../assets/bg_snd.png'));
+    self.load.image('bluescreenLogo', require('../assets/bluescreen_logo.png'));
 
     self.load.image('ph1Bg', require('../assets/bg_ph1.png'));
     self.load.image('ph2Bg', require('../assets/bg_ph2.png'));

@@ -14,6 +14,32 @@ export default class GameStarScene extends BasicScene {
 
     preload() {
         this.buildBg('bg')
+        this.sound.removeAll();
+
+        const imageFiles = {
+
+        };
+
+        const atlasFiles = {
+            'entrance_dog': { img: require('../assets/img/entrance_dog.png'), data: require('../assets/img/entrance_dog.json') },
+            'entrance_owl': { img: require('../assets/img/entrance_owl.png'), data: require('../assets/img/entrance_owl.json') },
+        }
+
+        const soundFiles = {
+            'dog_walk_in': require('../assets/audio/Shop Door Bell PE802601.mp3'),
+        }
+
+        this.preloadFromArr({
+            img: imageFiles,
+            atlas: atlasFiles,
+            sound: soundFiles,
+        });
+
+        this.createProgressBar();
+    }
+
+    create() {
+        super.create();
         this.anims.create({
             key: 'entrance_dog',
             frames: this.anims.generateFrameNames('entrance_dog', { prefix: 'doggy', start: 0, end: 29, zeroPad: 4 }),
@@ -27,25 +53,6 @@ export default class GameStarScene extends BasicScene {
             repeat: -1,
             delay: 200
         });
-        const imageFiles = {
-
-        };
-
-        const atlasFiles = {
-
-        }
-
-        this.preloadFromArr({
-            img: imageFiles,
-            atlas: atlasFiles
-        });
-
-        this.createProgressBar();
-    }
-
-    create() {
-        super.create();
-        this.sound.stopAll();
         let music = this.sound.add('dog_walk_in');
         music.play();
         this.gameStart();
@@ -65,7 +72,7 @@ export default class GameStarScene extends BasicScene {
 
     moveDog(o, x) {
         this.moveUp(o, x, () => {
-            this.scene.start('Game', {level: 1});
+            this.scene.start('Game', { level: 1 });
         });
     }
     moveUp(o, x, callback) {

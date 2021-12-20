@@ -26,13 +26,13 @@ export default class Question{
         // 渲染题目
         subject.forEach((v, i) => {
             console.log(subjectItem.length < 1 ? '200' : subjectItem[i-1].x)
-            subjectItem.push(new Car(scene, subjectItem.length < 1 ? 0 : subjectItem[i-1].x + subjectItem[i-1].width , 450, v));
+            subjectItem.push(new Car(scene, subjectItem.length < 1 ? 0 : subjectItem[i-1].x + subjectItem[i-1].width - 20 , 450, v));
         });
 
         let selectItem = [];
         //渲染选择项
         items.forEach((v, i) => {
-            selectItem.push(new SelectCar(scene, selectItem.length < 1 ? 440 : selectItem[i-1].x + selectItem[i-1].width + 40 ,0, v, this));
+            selectItem.push(new SelectCar(scene, selectItem.length < 1 ? 440 : selectItem[i-1].x + selectItem[i-1].width,0, v, this));
             scene.physics.add.collider(selectItem[i],selectItem[0],this.onColliderHander)
         });
     }

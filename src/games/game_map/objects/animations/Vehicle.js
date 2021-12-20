@@ -9,7 +9,7 @@ export default class Vehicle extends Phaser.GameObjects.Sprite {
     }
 
     initObject() {
-        console.log('moveConfig',this.moveConfig)
+
         const salt = Math.random()
         const origX = this.x
         const origY = this.y

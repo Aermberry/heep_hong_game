@@ -11,7 +11,11 @@ export default class SectionBtn extends BasicBtn {
       }
     
       onClick(){
+
+
+          // document.getElementById("content").innerHTML = response.html;
+          // document.title = response.pageTitle;
+          window.history.pushState({},"", '/game/world/' + this.sectionKey[this.sectionKey.length-1]);
           this.scene.scene.start(this.sectionKey)
-        // window.history.back();
       }
 }

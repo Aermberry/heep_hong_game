@@ -10,20 +10,20 @@ export default class Ship extends BasicPlayer {
             key: 'boat_sail_left',
             duration: this.getMovementDuration(),
             repeat: -1,
-            frames: scene.anims.generateFrameNames('boat', { prefix: 'boat', start: 0, end: 15, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('boat', { prefix: 'boat', start: 0, end: 3, zeroPad: 4 }),
         })
 
         scene.anims.create({
             key: 'boat_sail_right',
             duration: this.getMovementDuration(),
             repeat: -1,
-            frames: scene.anims.generateFrameNames('boat', { prefix: 'boat', start: 25, end: 38, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('boat', { prefix: 'boat', start: 8, end: 11, zeroPad: 4 }),
         })
 
         scene.anims.create({
             key: 'boat_turn',
             duration: this.getMovementDuration(),
-            frames: scene.anims.generateFrameNames('boat', { prefix: 'boat', start: 16, end: 24, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('boat', { prefix: 'boat', start: 4, end: 7, zeroPad: 4 }),
         })
 
         this.boat = scene.add.sprite(0, 0, 'boat')

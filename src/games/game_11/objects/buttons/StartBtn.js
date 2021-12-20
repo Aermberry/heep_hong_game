@@ -18,7 +18,6 @@ export default class StartBtn extends BasicBtn {
     }
 
 
-
     this.scene.scene.start('Game')
 
   }

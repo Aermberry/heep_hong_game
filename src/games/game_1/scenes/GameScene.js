@@ -5,6 +5,7 @@ import ExitBtn from '../objects/ExitBtn';
 import QuestionBase from '../objects/QuestionBase';
 import VoiceBtn from '../objects/VoiceBtn';
 import Tray from '../objects/Tray';
+import VipAlertBoard from '../objects/VipAlertBoard';
 
 import Choice from '../assets/json/choice.json';
 import Question from '../assets/json/question.json';
@@ -22,6 +23,7 @@ export default class GameScene extends Scene {
     this.stageRepeat = false;
     this.freezePlaySound = false;
     this.freezeSelectItem = false;
+    this.lv2Start = false;
   }
 
   preload () {
@@ -30,6 +32,8 @@ export default class GameScene extends Scene {
     let stageBg = self.add.image(config.width/2, config.height/2, 'stageBg').setOrigin(.5, .5)
     stageBg.setDisplaySize(config.width, config.height)
 
+    this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
+
     //if (self.model.musicOn === true && self.model.bgMusicPlaying === false) {
       self.bgMusic = self.sound.add('bgMusic', { volume: 0.2, loop: true });
       self.bgMusic.play();
@@ -37,6 +41,13 @@ export default class GameScene extends Scene {
       self.sys.game.globals.bgMusic = self.bgMusic;
     //}
 
+
+    self.load.image('l2Tut0', require('../assets/lv2_tut_0.png'));
+    self.load.image('l2Tut1', require('../assets/lv2_tut_1.png'));
+    self.load.image('l2Tut2', require('../assets/lv2_tut_2.png'));
+    self.load.image('l2Tut3', require('../assets/lv2_tut_3.png'));
+    self.load.image('l2Tut4', require('../assets/lv2_tut_4.png'));
+    self.load.image('finger', require('../assets/finger.png'));
 
 
     self.anims.create({
@@ -104,7 +115,11 @@ export default class GameScene extends Scene {
     self.exitBtn.setDepth(3)
     self.add.existing(self.exitBtn);
 
+
     self.new();
+
+    self.l2AlertBoard = new VipAlertBoard(this, config.width * 0.325, config.height * 0.4);
+    self.l2AlertBoard.setScale(1.2)
 
   }
 
@@ -112,7 +127,6 @@ export default class GameScene extends Scene {
     let self = this
 
     self.choice = []
-
 
     if(self.model.level == 1){
       self.question = this.stageRepeat ? self.question : self.questionPool["level1"][_.random(self.questionPool["level1"].length -1)];
@@ -149,9 +163,6 @@ export default class GameScene extends Scene {
       self.choice = tempChoice
 
     }
-
-    console.log(self.question)
-
 
       return typeof self.question != 'undefined' ? true : false
   }
@@ -199,7 +210,7 @@ export default class GameScene extends Scene {
 
   voiceHandler(){
     let self = this
-  console.log('stop game freeze')
+
     self.questionBase.setBroadDisable(false)
 
     self.questionBase.broadMoveIn()
@@ -223,12 +234,26 @@ export default class GameScene extends Scene {
 
     // let correct = _.isMatch(self.question, itemsName)
 
-    let correct = !self.question.some((quest)=> {
-      return itemsName.indexOf(quest) === -1
-    })
+    let correct = false
+    
+    if(self.question.length == 4) {
+
+      correct = self.question.some((quest, ind)=> {
+        return itemsName[ind] === quest
+      })
+
+    }else {
+          
+      correct = !self.question.some((quest)=> {
+        return itemsName.indexOf(quest) === -1
+      })
+
+    }
 
     if(correct){
       self.correct();
+
+      this.stageRepeat = false
         
       self.tray = new Tray(self,config.width/2 + 564, 300);
       self.add.existing(self.tray);
@@ -277,10 +302,25 @@ export default class GameScene extends Scene {
 
   next(){
     let self = this
-    setTimeout(() => {
+    setTimeout(async () => {
       if(self.model.level == 3){
         self.end();
       }else{
+        
+        if(self.model.level == 2 && !self.lv2Start) {
+          
+          self.blueScreenLogo.setAlpha(0)
+          
+          self.add.existing(self.l2AlertBoard)
+          await self.l2AlertBoard.playBroad()
+          self.lv2Start = true
+          setTimeout(()=> {
+            self.l2AlertBoard.destroy()
+            self.blueScreenLogo.setAlpha(1)
+            },1000
+          )
+        }
+
         self.new();
       }
     }, 2000);

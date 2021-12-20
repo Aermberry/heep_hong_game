@@ -5,6 +5,7 @@ export default class GameNavBtn extends BasicBtn {
     constructor(scene,x,y,imageName, gamePath){
         super(scene, x, y,[]);
 
+        this.dataModal = this.scene.sys.game.globals.model;
         this.gamePath = gamePath
         let sprite =  scene.add.sprite(0, 0, imageName)
         this.create(sprite,this.onClick.bind(this))
@@ -16,9 +17,18 @@ export default class GameNavBtn extends BasicBtn {
         this.onBtnMount()
     }
 
-    onClick(){
+    async onClick(){
         if(typeof this.gamePath == 'string') {
-            window.location.href = this.gamePath;
+            const navigationResult = await this.dataModal.vueRouter.push(this.gamePath)
+            if(navigationResult) {
+                setTimeout(
+                    ()=> {
+                        document.querySelector('#game-container canvas').requestFullscreen()
+                    },
+                    500
+                )
+
+            }
         }
     }
 

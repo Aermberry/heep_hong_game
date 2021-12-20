@@ -7,6 +7,8 @@ export default class HintBtn extends BasicBtn {
         this.hintImageName = hintImageName
         let sprite =  scene.add.sprite(0, 0, typeof logoImageName === 'string'? logoImageName : 'hintBtn')
         this.create(sprite,this.onClick.bind(this))
+
+        this.clickSound = this.scene.sound.add('info')
     
     }
 
@@ -14,6 +16,7 @@ export default class HintBtn extends BasicBtn {
         
         this.createHintSceeen()
         this.origSprite.setFrame(0)
+        this.clickSound.play()
         
     }
 

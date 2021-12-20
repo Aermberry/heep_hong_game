@@ -9,12 +9,20 @@ export default class MapScene extends BasicScene {
         super('Map');
     }
 
+    init() {
+        this.gameMusic = this.sound.add('bgm')
+        this.gameMusic.setLoop(true)
+    }
+
     preload() {
         this.buildBg('bg_title')
     }
 
     create() {
         super.create();
+
+        this.sound.stopAll()
+        this.gameMusic.play()
 
         const game1Btn = new SectionBtn(this, this.getColWidth(2.29), this.getRowHeight(3.2), 'section1Btn', 'Section_1')
         const game2Btn = new SectionBtn(this, this.getColWidth(7.74), this.getRowHeight(3.18), 'section2Btn', 'Section_2')

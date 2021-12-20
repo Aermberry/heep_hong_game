@@ -16,7 +16,7 @@ export default class ShipFg extends BasicFg {
         this.scene.anims.create({
             key: 'water',
             repeat: -1,
-            frames: this.scene.anims.generateFrameNames('water', { prefix: 'scene2_water', start: 0, end: 59, zeroPad: 4 }),
+            frames: this.scene.anims.generateFrameNames('water', { prefix: 'scene2_water', start: 0, end: 48, zeroPad: 4 }),
         });
 
 

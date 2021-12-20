@@ -10,12 +10,12 @@ export default class Iceman extends Phaser.GameObjects.Container {
         scene.anims.create({
             key: 'correct',
             duration: 1500,
-            frames: scene.anims.generateFrameNames('iceman_correct', { prefix: 'flybox_right', start: 0, end: 14, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('iceman_correct', { prefix: 'flybox_right', start: 0, end: 6, zeroPad: 4 }),
         })
         scene.anims.create({
             key: 'wrong',
             duration: 1500,
-            frames: scene.anims.generateFrameNames('iceman_wrong', { prefix: 'flybox_wrong', start: 0, end: 14, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('iceman_wrong', { prefix: 'flybox_wrong', start: 0, end: 6, zeroPad: 4 }),
         })
 
         this.box = scene.add.image(0, 0, 'iceman')

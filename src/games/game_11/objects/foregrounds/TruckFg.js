@@ -23,14 +23,16 @@ export default class TruckFg extends BasicFg {
 
         road.play('road')
 
-        this.add([road])
+        let roadBg = this.scene.add.image(this.scene.getColWidth(6), this.scene.getRowHeight(8.4), 'road_bg')
+
+        this.add([roadBg, road])
     }
     
     static getAssetArray() {
 
         return {
             img: {
-
+                'road_bg': require('../../assets/images/stage1/road_mask.png')
             },
             atlas: {
                 'road': { img: require('../../assets/anims/stage1/road.png'), data: require('../../assets/anims/stage1/road.json')},

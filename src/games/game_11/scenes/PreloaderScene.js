@@ -12,6 +12,8 @@ export default class PreloaderScene extends BasicScene {
 
         this.buildBg('bg_title')
 
+        this.sound.stopAll();
+
         const atlasFiles = {
             'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
@@ -23,8 +25,15 @@ export default class PreloaderScene extends BasicScene {
             'end_bg': require('../assets/images/Complete.png')
         }
 
+        const soundFiles = {
+            'correct_sound': require('../assets/audios/Cartoon_correct_answer.mp3'),
+            'wrong_sound': require('../assets/audios/Cardboard_Box_05.mp3'),
+            'bgm': require('../assets/audios/06_strait_no_chaser_01_shorten.mp3'),
+            'turn': require('../assets/audios/turn-signal_short.mp3')
+        }
+
         this.preloadFromArr({
-            atlas: atlasFiles, img: imageFiles
+            atlas: atlasFiles, img: imageFiles, sound: soundFiles
         })
 
         this.load.spritesheet('extSmBtn', require('../assets/images/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 })
@@ -35,7 +44,6 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('extBtn', require('../assets/images/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
 
         this.createProgressBar();
-
 
     }
 

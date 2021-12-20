@@ -65,12 +65,9 @@ export default {
 
       gameId = gameFileMapping[self.gameID];
 
-      console.log(gameId)
-
     }
 
     try{
-      console.log('game load')
 
       let gameFile = require('@/games/game_'+gameId+'/index')
       if(gameFile){

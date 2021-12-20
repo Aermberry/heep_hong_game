@@ -15,6 +15,12 @@ export default class StartBtn extends BasicBtn {
 
     if(typeof this.scene.game.canvas.requestFullscreen === 'function') {
       this.scene.game.canvas.requestFullscreen()
+    }else if(typeof this.scene.game.canvas.webkitRequestFullscreen === 'function') {
+      this.scene.game.canvas.webkitRequestFullscreen()
+    }else if(typeof this.scene.game.canvas.msRequestFullscreen === 'function') {
+      this.scene.game.canvas.msRequestFullscreen()
+    }else if(typeof this.scene.game.canvas.mozRequestFullscreen === 'function') {
+      this.scene.game.canvas.mozRequestFullscreen()
     }
 
 

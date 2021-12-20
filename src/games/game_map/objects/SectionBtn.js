@@ -7,6 +7,7 @@ export default class SectionBtn extends BasicBtn {
         this.sectionKey = sectionKey
         let sprite =  scene.add.sprite(0, 0, imageName)
         this.create(sprite,this.onClick.bind(this))
+        this.clickSound = this.scene.sound.add('zoom', {volume: 4})
     
       }
     
@@ -16,6 +17,7 @@ export default class SectionBtn extends BasicBtn {
           // document.getElementById("content").innerHTML = response.html;
           // document.title = response.pageTitle;
           window.history.pushState({},"", '/game/world/' + this.sectionKey[this.sectionKey.length-1]);
+          this.clickSound.play()
           this.scene.scene.start(this.sectionKey)
       }
 }

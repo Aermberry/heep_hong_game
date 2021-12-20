@@ -8,6 +8,7 @@ import Answers from '../objects/Answers';
 import Holder from "../objects/Holder";
 import Shelf from "../objects/Shelf";
 import Bsk from "../objects/Bsk";
+import Choice from '../assets/json/choice.json'
 
 export default class GameScene extends BasicScene {
     constructor() {
@@ -102,13 +103,43 @@ export default class GameScene extends BasicScene {
         const imageFiles = {
 
         };
+        if (this.currentLevel == 1) {
+            Choice.level1.forEach((item) => {
+                imageFiles[item.name] = require('../assets/img/LV1/' + item.logo);
+                imageFiles[`${item.name} shadow`] = require('../assets/img/LV1/' + item.shadow);
+            })
+        } else if (this.currentLevel == 2) {
+            Choice.level2.forEach((item) => {
+                imageFiles[item.name] = require('../assets/img/LV2/' + item.logo);
+                imageFiles[`${item.name} shadow`] = require('../assets/img/LV2/' + item.shadow);
+            })
+
+        } else if (this.currentLevel == 3) {
+            Choice.level3.forEach((item) => {
+                imageFiles[item.name] = require('../assets/img/LV3/' + item.logo);
+                imageFiles[`${item.name} shadow`] = require('../assets/img/LV3/' + item.shadow);
+            })
+        }
 
         const atlasFiles = {
 
         }
 
+        const soundFiles = {
+            'stage_items': require('../assets/audio/Magic Bells 03.mp3'),
+            'bgm': require('../assets/audio/Bone Yard Waltz - Loopable.mp3'),
+            'bubble_hints': require('../assets/audio/owl_1.mp3'),
+            'confirm_counting': require('../assets/audio/double_pop.mp3'),
+            'wrong': require('../assets/audio/Magic experiment explosion.mp3'),
+            'correct': require('../assets/audio/Magic Game Potion Pop Off 4 Cork.mp3'),
+            'level_up': require('../assets/audio/Magic.mp3'),
+            'level_up_bgm': require('../assets/audio/levelup.mp3'),
+            'end_pic': require('../assets/audio/which_brand_of_mustard_shall_i_buy.mp3')
+        }
+
         this.preloadFromArr({
             img: imageFiles,
+            sound: soundFiles,
             atlas: atlasFiles
         });
 

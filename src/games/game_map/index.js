@@ -36,21 +36,19 @@ class GameMap extends Phaser.Game {
 
     // private globals: { model: Model }
 
-    constructor(config, urlParams) {
+    constructor(config, urlParams, vueRouter) {
         super(config);
-        let model = new Model()
+        let model = new Model(urlParams, vueRouter)
         this.globals = {
             model
         }
-
-        this.globals.model.sectionId = urlParams.sid;
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams, vueRouter) {
 
-    let game = new GameMap(gameConfig, urlParams)
+    let game = new GameMap(gameConfig, urlParams, vueRouter)
 
     return game
 }

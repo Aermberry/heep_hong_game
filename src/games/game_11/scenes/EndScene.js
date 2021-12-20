@@ -16,11 +16,14 @@ export default class EndScene extends BasicScene {
 
         this.buildBg('end_bg')
 
-        // this.sound.stopByKey('lightBattle')
+        this.sound.stopAll()
 
-        // let music = this.sound.add('jump')
-        // music.setLoop(true)
-        // music.play()
+        let music = this.sound.add('end_bgm')
+        music.setLoop(true)
+        music.play()
+
+        let clap = this.sound.add('win')
+        clap.play()
 
         this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
 

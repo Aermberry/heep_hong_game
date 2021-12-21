@@ -1,4 +1,5 @@
-import { Scene } from 'phaser';
+// import { Scene } from 'phaser';
+import BasicScene from './BasicScene';
 import _ from 'lodash';
 import config from '../config/Config';
 import ExitBtn from '../objects/ExitBtn';
@@ -10,7 +11,7 @@ import VipAlertBoard from '../objects/VipAlertBoard';
 import Choice from '../assets/json/choice.json';
 import Question from '../assets/json/question.json';
 
-export default class GameScene extends Scene {
+export default class GameScene extends BasicScene {
   constructor () {
     super('Game');
   }
@@ -29,10 +30,12 @@ export default class GameScene extends Scene {
   preload () {
     let self = this
 
-    let stageBg = self.add.image(config.width/2, config.height/2, 'stageBg').setOrigin(.5, .5)
-    stageBg.setDisplaySize(config.width, config.height)
+    this.buildBg('bootBg')
 
-    this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
+    // let stageBg = self.add.image(config.width/2, config.height/2, 'stageBg').setOrigin(.5, .5)
+    // stageBg.setDisplaySize(config.width, config.height)
+
+    // this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
 
     //if (self.model.musicOn === true && self.model.bgMusicPlaying === false) {
       self.bgMusic = self.sound.add('bgMusic', { volume: 0.2, loop: true });
@@ -41,14 +44,44 @@ export default class GameScene extends Scene {
       self.sys.game.globals.bgMusic = self.bgMusic;
     //}
 
+    let imageFiles = {
+      'l2Tut0': require('../assets/lv2_tut_0.png'),
+      'l2Tut1': require('../assets/lv2_tut_1.png'),
+      'l2Tut2': require('../assets/lv2_tut_2.png'),
+      'l2Tut3': require('../assets/lv2_tut_3.png'),
+      'l2Tut4': require('../assets/lv2_tut_4.png'),
+      'finger': require('../assets/finger.png')
+    } 
+    
 
-    self.load.image('l2Tut0', require('../assets/lv2_tut_0.png'));
-    self.load.image('l2Tut1', require('../assets/lv2_tut_1.png'));
-    self.load.image('l2Tut2', require('../assets/lv2_tut_2.png'));
-    self.load.image('l2Tut3', require('../assets/lv2_tut_3.png'));
-    self.load.image('l2Tut4', require('../assets/lv2_tut_4.png'));
-    self.load.image('finger', require('../assets/finger.png'));
+    // self.load.image('l2Tut0', require('../assets/lv2_tut_0.png'));
+    // self.load.image('l2Tut1', require('../assets/lv2_tut_1.png'));
+    // self.load.image('l2Tut2', require('../assets/lv2_tut_2.png'));
+    // self.load.image('l2Tut3', require('../assets/lv2_tut_3.png'));
+    // self.load.image('l2Tut4', require('../assets/lv2_tut_4.png'));
+    // self.load.image('finger', require('../assets/finger.png'));
 
+    let soundFiles = {
+      'i_want': require('../assets/voice/g001_00.mp3'),
+    }
+
+    
+    // self.load.audio('i_want', require('../assets/voice/g001_00.mp3'));
+
+    
+
+    _.forEach(Choice, function(item) {
+      
+      soundFiles[item.name] = require('../assets/voice/' + item.voice);
+      imageFiles[item.name] = require('../assets/' + item.image);
+      // self.load.image(item.name, require('../assets/'+item.image));
+      // self.load.audio(item.name, require('../assets/voice/'+item.voice));
+    })
+
+
+    this.preloadFromArr({
+      img: imageFiles, sound: soundFiles
+    })
 
     self.anims.create({
       key: 'char_bg',
@@ -97,10 +130,19 @@ export default class GameScene extends Scene {
       }),
     });
 
+    this.createProgressBar();
+
   }
 
   create () {
     let self = this
+
+    this.bg.destroy()
+
+    this.buildBg('stageBg')
+
+    this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
+
 
     self.model.level = 1;
 
@@ -315,7 +357,7 @@ export default class GameScene extends Scene {
           await self.l2AlertBoard.playBroad()
           self.lv2Start = true
           setTimeout(()=> {
-            self.l2AlertBoard.destroy()
+            if(typeof self.l2AlertBoard != 'undefined' && typeof self.l2AlertBoard.destroy == 'function') self.l2AlertBoard.destroy()
             self.blueScreenLogo.setAlpha(1)
             },1000
           )

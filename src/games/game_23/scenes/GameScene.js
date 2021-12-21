@@ -47,6 +47,10 @@ export default class GameScene extends BasicScene {
 
     }
 
+    update(){
+        console.log(this.currentDollIndex);
+    }
+
     create() {
 
         super.create();

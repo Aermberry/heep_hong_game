@@ -8,6 +8,6 @@ export const createVictoryAnimations = (anims) => {
         key: 'victoryAnimation',
         delay: 200,
         frames: anims.generateFrameNames('victoryTexture', { prefix: 'victory', start: 0, end: 29, zeroPad: 4 }),
-        repeat: -1,
+        repeat: 0,
     });
 }

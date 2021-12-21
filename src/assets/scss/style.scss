@@ -583,7 +583,8 @@ footer{
     > .outer{
       max-width: $gameWidth / $gameHeight *  100vh;
       position: relative;
-      width: 100%;
+      width: 100vw;
+      height: 100vh;
       margin: auto;
       &::after{
         content: '';

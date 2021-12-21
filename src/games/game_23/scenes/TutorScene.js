@@ -36,17 +36,38 @@ export default class TutorScene extends BasicScene {
         let backgroundLayer = this.add.layer().setDepth(0);
 
         buttonLayer.add([new ExitButton(this, 120, 135), new StartButton(this, this.getColWidth(6), this.getRowHeight(10.8)).setScale(0.8)]);
-        animationLayer.add([
-            new GameSprite(this, 278, 500, 'tutor01Animation'),
-            new GameSprite(this, 740, 280, 'tutor02Animation'),
-            new GameSprite(this, 1202, 500, 'tutor03Animation'),
-            new GameSprite(this, 1662, 280, 'tutor04Animation'),
-            new GameSprite(this, 1662, 700, 'tutor05Animation'),
-        ]
-        );
-        backgroundLayer.add([this.buildBg('bgTutor')]);
 
-    
+        this.playTutorAnimation(animationLayer);
+        
+        backgroundLayer.add([this.buildBg('bgTutor')]);
+    }
+
+    playTutorAnimation(layer) {
+        let tutor01Sprite = new GameSprite(this, 278, 500, 'tutor01Texture');
+        let tutor02Sprite = new GameSprite(this, 740, 280, 'tutor02Texture');
+        let tutor03Sprite = new GameSprite(this, 1202, 500, 'tutor03Texture');
+        let tutor04Sprite = new GameSprite(this, 1662, 280, 'tutor04Texture');
+        let tutor05Sprite = new GameSprite(this, 1662, 700, 'tutor05Texture');
+
+        layer.add([tutor01Sprite,tutor02Sprite,tutor03Sprite,tutor04Sprite,tutor05Sprite])
+
+        tutor01Sprite.on('animationcomplete', () => {
+            tutor02Sprite.play('tutor02Animation')
+        })
+        tutor02Sprite.on('animationcomplete', () => {
+            tutor03Sprite.play('tutor03Animation')
+        })
+        tutor03Sprite.on('animationcomplete', () => {
+            tutor04Sprite.play('tutor04Animation')
+        })
+        tutor04Sprite.on('animationcomplete', () => {
+            tutor05Sprite.play('tutor05Animation')
+        })
+        tutor05Sprite.on('animationcomplete', () => {
+            tutor01Sprite.play('tutor01Animation')
+        })
+
+        tutor01Sprite.play('tutor01Animation')
     }
 
 

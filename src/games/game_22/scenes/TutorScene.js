@@ -2,7 +2,7 @@ import BasicScene from "./BasicScene"
 import StartButton from "../components/StartButton"
 import ExitButton from '../components/ExitButton'
 import { createTutorAnimations } from '../assets/animations/TutorAnimation';
-import GameSprite from '../components/GameSprite';
+import TutorSprite from '../components/TutorSprite';
 import GameManager from "../components/GameManager";
 
 export default class TutorScene extends BasicScene {
@@ -48,11 +48,11 @@ export default class TutorScene extends BasicScene {
 
 
     playTutorAnimation(layer) {
-        let tutor01Sprite = new GameSprite(this, 278, 500, 'tutor01Texture');
-        let tutor02Sprite = new GameSprite(this, 740, 280, 'tutor02Texture');
-        let tutor03Sprite = new GameSprite(this, 1202, 500, 'tutor03Texture');
-        let tutor04Sprite = new GameSprite(this, 1662, 280, 'tutor04Texture');
-        let tutor05Sprite = new GameSprite(this, 1662, 700, 'tutor05Texture');
+        let tutor01Sprite = new TutorSprite(this, 278, 500, 'tutor01Texture');
+        let tutor02Sprite = new TutorSprite(this, 740, 280, 'tutor02Texture');
+        let tutor03Sprite = new TutorSprite(this, 1202, 500, 'tutor03Texture');
+        let tutor04Sprite = new TutorSprite(this, 1662, 280, 'tutor04Texture');
+        let tutor05Sprite = new TutorSprite(this, 1662, 700, 'tutor05Texture');
 
         layer.add([tutor01Sprite,tutor02Sprite,tutor03Sprite,tutor04Sprite,tutor05Sprite])
 

@@ -6,7 +6,8 @@
       <div class="container">
         <div class="content-wrapper landing">
           <img src="@/assets/images/img_title.svg" alt="">
-          <a href="/game/intro" class="link-entry"><span class="inner">進入遊戲</span></a>
+          <router-link to="/game/world" @click.native="onClickHandler" class="link-entry" ><span class="inner">進入遊戲</span></router-link>
+          <!-- <a href="/game/world" class="link-entry"><span class="inner">進入遊戲</span></a> -->
         </div>
         <div class="content-space"></div>
       </div>
@@ -27,6 +28,16 @@ export default {
     Header,
     Footer,
     ShareBar
-  }
+  },
+  methods: {
+    onClickHandler() {
+      setTimeout(
+        ()=> {
+          document.querySelector('#game-container>canvas').requestFullscreen()
+        },
+        1000
+      )
+    }
+  },
 }
 </script>

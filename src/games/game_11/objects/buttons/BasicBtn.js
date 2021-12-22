@@ -33,4 +33,27 @@ export default class BasicBtn extends Phaser.GameObjects.Container {
     }
   }
 
+  goFullscreen() {
+
+    const fullscreenConfig = { navigationUI: 'hide' }
+
+    const elem = document.querySelector('#game-container canvas');
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen(fullscreenConfig);
+    } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen(fullscreenConfig);
+    } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen(fullscreenConfig);
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(fullscreenConfig);
+    }
+
+  }
+
+  goFullscreenOnClick() {
+
+    this.origSprite.on('pointerup', this.goFullscreen.bind(this))
+
+  }
+
 }

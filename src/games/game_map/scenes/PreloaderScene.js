@@ -1,3 +1,4 @@
+import StartBtn from '../objects/StartBtn'
 import BasicScene from './BasicScene'
 
 export default class PreloaderScene extends BasicScene {
@@ -6,8 +7,14 @@ export default class PreloaderScene extends BasicScene {
         super('Preloader');
     }
 
+    init({isFirstLoad}) {
+        this.isFirstLoad = typeof isFirstLoad === 'boolean' ? isFirstLoad : true;
+    }
+
     preload() {
         this.buildBg('bg_title')
+
+        this.dataModel = this.sys.game.globals.model;
 
         const atlasFiles = {
             // 'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
@@ -35,8 +42,15 @@ export default class PreloaderScene extends BasicScene {
             // 'game1Btn': require('../assets/images/buttons/1a.png'),
         }
 
+        const soundFiles = {
+            'bgm': require('../assets/audios/casual_game_track.mp3'),
+            // 'button': require('../assets/audios/comedy_pop_finger_in_mouth_002.mp3'),
+            'info': require('../assets/audios/medicine_syrup_dosing_syringe_slide_with_no_syrup_inside.mp3'),
+            'zoom': require('../assets/audios/Whoosh_Low_Fast_Raxr_Edos_4.mp3')
+        }
+
         this.preloadFromArr({
-            atlas: atlasFiles, img: imageFiles
+            atlas: atlasFiles, img: imageFiles, sound: soundFiles
         })
         this.load.svg('game6Mask', require('../assets/images/masks/6a.svg'), {width: 976, height: 1489})
         this.load.spritesheet('section1Btn', require('../assets/images/buttons/1a.png'), { frameWidth: 617, frameHeight: 387 })
@@ -45,14 +59,26 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('section4Btn', require('../assets/images/buttons/4a.png'), { frameWidth: 840, frameHeight: 505 })
         this.load.spritesheet('section3Btn', require('../assets/images/buttons/3a.png'), { frameWidth: 860, frameHeight: 350 })
         this.load.spritesheet('section6Btn', require('../assets/images/buttons/6a.png'), { frameWidth: 670, frameHeight: 460 })
+        this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
         // const blackWhiteBg = this.bg.setPipeline('Grayscale')
         // blackWhiteBg.resetPipeline();
         // this.bg.setBlendMode(Phaser.BlendModes.LUMINOSITY);
+        // this.createProgressBar()
 
     }
 
     create() {
         super.create();
-        this.scene.start('Map');
+        this.sound.stopAll()
+
+        if(this.dataModel.isFirstLoad) {
+            const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
+            this.add.existing(startBtn)
+            this.dataModel.isFirstLoad = false
+        }else {
+            this.scene.start('Map')
+        }
+
+        // this.scene.start('Map');
     }
 }

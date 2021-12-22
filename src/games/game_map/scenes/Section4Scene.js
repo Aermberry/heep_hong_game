@@ -3,11 +3,16 @@ import GameNavBtn from '../objects/GameNavBtn'
 import BackBtn from '../objects/BackBtn'
 import HintBtn from '../objects/HintBtn'
 import Vehicle from '../objects/animations/Vehicle'
+// import StartBtn from '../objects/StartBtn'
 
 export default class Section4Scene extends SectionBasicScene {
 
     constructor() {
         super('Section_4')
+    }
+
+    init() {
+        this.dataModel = this.sys.game.globals.model;
     }
 
     preload() {
@@ -28,8 +33,15 @@ export default class Section4Scene extends SectionBasicScene {
             vehicle: require('../assets/images/section_4/vehicle.png'),
         }
 
+        const soundFiles = {
+            'bgm': require('../assets/audios/casual_game_track.mp3'),
+            // 'button': require('../assets/audios/comedy_pop_finger_in_mouth_002.mp3'),
+            'info': require('../assets/audios/medicine_syrup_dosing_syringe_slide_with_no_syrup_inside.mp3'),
+            'zoom': require('../assets/audios/Whoosh_Low_Fast_Raxr_Edos_4.mp3')
+        }
+
         this.preloadFromArr({
-            atlas: atlasFiles, img: imageFiles
+            atlas: atlasFiles, img: imageFiles, sound: soundFiles
         })
 
         this.load.spritesheet('s4btn1', require('../assets/images/section_4/btn_1.png'),{ frameWidth: 132, frameHeight: 134.5 })
@@ -42,6 +54,7 @@ export default class Section4Scene extends SectionBasicScene {
         this.load.spritesheet('dentisitLogo', require('../assets/images/section_4/logo-130.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('architectLogo', require('../assets/images/section_4/logo-131.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('carerLogo', require('../assets/images/section_4/logo-132.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
     }
 
@@ -56,6 +69,14 @@ export default class Section4Scene extends SectionBasicScene {
         });
 
         this.initSection('game4Bg')
+        
+        // if(this.dataModel.isFirstLoad) {
+        //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
+        //     this.add.existing(startBtn)
+        //     this.dataModel.isFirstLoad = false
+        // }else {
+        //     this.scene.start('Map')
+        // }
 
     }
 

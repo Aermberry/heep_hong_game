@@ -49,7 +49,7 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'dog',
             delay: 200,
-            frames: this.anims.generateFrameNames('dog', { prefix: 'dog', start: 0, end: 29, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('dog', { prefix: 'dog', start: 0, end: 6, zeroPad: 4 }),
             repeat: -1
         });
         this.anims.create({
@@ -165,9 +165,6 @@ export default class GameScene extends BasicScene {
             },
             onComplete: function () {
                 that.characterSuccess();
-                setTimeout(() => {
-                    that.endGame();
-                }, 3000)
             },
         });
 
@@ -209,6 +206,9 @@ export default class GameScene extends BasicScene {
     characterSuccess() {
         let done = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'done')
         done.play('done');
+        done.on('animationcomplete',() => {
+            this.endGame();
+        })
     }
 
     showHighlightStroke() {

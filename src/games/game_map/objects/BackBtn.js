@@ -11,7 +11,8 @@ export default class BackBtn extends BasicBtn {
     }
 
     onClick(){
-        
+
+        window.history.pushState({},"", '/game/world');
         this.scene.scene.start('Preloader')
         
     }

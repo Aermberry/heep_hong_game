@@ -1,12 +1,17 @@
-import SectionBasicScene from "./SectionBasicScene";
+import SectionBasicScene from "./SectionBasicScene"
 import BackBtn from "../objects/BackBtn"
 import HintBtn from "../objects/HintBtn"
-import GameNavBtn from "../objects/GameNavBtn";
+import GameNavBtn from "../objects/GameNavBtn"
+// import StartBtn from '../objects/StartBtn'
 
 export default class Section6Scene extends SectionBasicScene {
 
     constructor() {
         super('Section_6')
+    }
+
+    init() {
+        this.dataModel = this.sys.game.globals.model;
     }
 
     preload() {
@@ -23,11 +28,18 @@ export default class Section6Scene extends SectionBasicScene {
             s6Logo: require('../assets/images/section_6/game_magic.png')
         }
 
+        const soundFiles = {
+            'bgm': require('../assets/audios/casual_game_track.mp3'),
+            // 'button': require('../assets/audios/comedy_pop_finger_in_mouth_002.mp3'),
+            'info': require('../assets/audios/medicine_syrup_dosing_syringe_slide_with_no_syrup_inside.mp3'),
+            'zoom': require('../assets/audios/Whoosh_Low_Fast_Raxr_Edos_4.mp3')
+        }
+
         this.preloadFromArr({
-            atlas: atlasFiles, img: imageFiles
+            atlas: atlasFiles, img: imageFiles, sound: soundFiles
         })
 
-        this.load.spritesheet('s6btn1', require('../assets/images/section_6/btn.png'),{ frameWidth: 132, frameHeight: 134.5 })
+        this.load.spritesheet('s6btn1', require('../assets/images/section_6/btn.png'),{ frameWidth: 132, frameHeight: 140 })
         this.load.spritesheet('s6HintLogo', require('../assets/images/section_6/logo-134.png'),{ frameWidth: 305, frameHeight: 314.5 })
 
     }
@@ -37,6 +49,14 @@ export default class Section6Scene extends SectionBasicScene {
         super.create()
 
         this.initSection('game6Bg')
+        
+        // if(this.dataModel.isFirstLoad) {
+        //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
+        //     this.add.existing(startBtn)
+        //     this.dataModel.isFirstLoad = false
+        // }else {
+        //     this.scene.start('Map')
+        // }
 
     }
 

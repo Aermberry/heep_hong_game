@@ -5,9 +5,11 @@ export default class GameNavBtn extends BasicBtn {
     constructor(scene,x,y,imageName, gamePath){
         super(scene, x, y,[]);
 
+        this.dataModal = this.scene.sys.game.globals.model;
         this.gamePath = gamePath
         let sprite =  scene.add.sprite(0, 0, imageName)
         this.create(sprite,this.onClick.bind(this))
+        sprite.on('pointerup', this.onPointerUp.bind(this))
 
     }
 
@@ -15,11 +17,33 @@ export default class GameNavBtn extends BasicBtn {
         super.create(sprite, handler)
         this.onBtnMount()
     }
-
-    onClick(){
+    
+    async onPointerUp() {
         if(typeof this.gamePath == 'string') {
-            window.location.href = this.gamePath;
+            await this.dataModal.vueRouter.push(this.gamePath)
+
+            const fullscreenConfig = { navigationUI: 'hide' }
+            setTimeout(
+                ()=> {
+                    const elem = document.querySelector('#game-container canvas');
+                    if (elem.requestFullscreen) {
+                        elem.requestFullscreen(fullscreenConfig);
+                    } else if (elem.msRequestFullscreen) {
+                        elem.msRequestFullscreen(fullscreenConfig);
+                    } else if (elem.mozRequestFullScreen) {
+                        elem.mozRequestFullScreen(fullscreenConfig);
+                    } else if (elem.webkitRequestFullscreen) {
+                        elem.webkitRequestFullscreen(fullscreenConfig);
+                    }
+                },
+                500
+            )
         }
+
+    }
+
+    async onClick(){
+
     }
 
     onBtnMount() {

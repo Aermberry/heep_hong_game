@@ -21,6 +21,9 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
         this.speedFactor = speedFactor
         this.targetsContainer = null
 
+        this.correctSound = this.scene.sound.add('correct_sound', {volume: 2})
+        this.wrongSound = this.scene.sound.add('wrong_sound', {volume: 2})
+
         // this.setScale(0.4)
 
         if(checkAnswer != null) this.onCheckAnswerCallback = checkAnswer
@@ -40,9 +43,6 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
         this.leftSprite = leftSprite
 
         this.targetsContainer = new Phaser.GameObjects.Container(this.scene, 0, 0, [rightSprite, leftSprite])
-
-        // rightSprite.setPosition(this.scene.getColWidth(1),0)
-        // leftSprite.setPosition(-this.scene.getColWidth(1),0)
 
         this.add(this.targetsContainer)
 
@@ -76,7 +76,13 @@ export default class BasicTargetBlock extends Phaser.GameObjects.Container {
 
         if(typeof this.onCheckAnswerCallback == 'function') {
 
-                result = this.onCheckAnswerCallback()
+            result = this.onCheckAnswerCallback()
+
+            if(result === true) {
+                this.correctSound.play()
+            }else {
+                this.wrongSound.play()
+            }
 
         }
 

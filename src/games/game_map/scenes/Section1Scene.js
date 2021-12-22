@@ -2,6 +2,7 @@ import BasicScene from './BasicScene'
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+// import StartBtn from '../objects/StartBtn'
 
 export default class Section1Scene extends BasicScene {
 
@@ -12,6 +13,8 @@ export default class Section1Scene extends BasicScene {
     init() {
         this.initPromise = null
         this.isPreloadResolved = false
+
+        this.dataModel = this.sys.game.globals.model;
     }
 
     preload() {
@@ -30,9 +33,16 @@ export default class Section1Scene extends BasicScene {
             s1Hint2: require('../assets/images/section_1/target_2.png')
             // 'game1Btn': require('../assets/images/buttons/1a.png'),
         }
+        
+        const soundFiles = {
+            'bgm': require('../assets/audios/casual_game_track.mp3'),
+            // 'button': require('../assets/audios/comedy_pop_finger_in_mouth_002.mp3'),
+            'info': require('../assets/audios/medicine_syrup_dosing_syringe_slide_with_no_syrup_inside.mp3'),
+            'zoom': require('../assets/audios/Whoosh_Low_Fast_Raxr_Edos_4.mp3')
+        }
 
         this.preloadFromArr({
-            atlas: atlasFiles, img: imageFiles
+            atlas: atlasFiles, img: imageFiles, sound: soundFiles
         })
 
         this.load.spritesheet('s1btn1', require('../assets/images/section_1/btn_1.png'),{ frameWidth: 131, frameHeight: 134 })
@@ -41,6 +51,7 @@ export default class Section1Scene extends BasicScene {
         this.load.spritesheet('s1btn4', require('../assets/images/section_1/btn_4.png'),{ frameWidth: 131, frameHeight: 134 })
         this.load.spritesheet('spaceRestaurantLogo', require('../assets/images/section_1/logo-121.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('spaceFactoryLogo', require('../assets/images/section_1/logo-122.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
     }
 
@@ -67,10 +78,20 @@ export default class Section1Scene extends BasicScene {
         if(this.isPreloadResolved) {
             this.initSection()
         }else {
+
             this.initPromise.then(()=> {
                 this.initSection();
             })
         }
+
+        // if(this.dataModel.isFirstLoad) {
+        //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
+        //     this.add.existing(startBtn)
+        //     this.dataModel.isFirstLoad = false
+        // }else {
+        //     this.scene.start('Map')
+        // }
+
 
 
         // this.scene.start('Map');

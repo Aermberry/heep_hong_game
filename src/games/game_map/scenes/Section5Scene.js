@@ -3,11 +3,16 @@ import BackBtn from "../objects/BackBtn"
 import HintBtn from "../objects/HintBtn"
 import GameNavBtn from "../objects/GameNavBtn"
 import Cloud from "../objects/animations/Cloud"
+// import StartBtn from '../objects/StartBtn'
 
 export default class Section5Scene extends SectionBasicScene {
 
     constructor() {
         super('Section_5')
+    }
+
+    init() {
+        this.dataModel = this.sys.game.globals.model;
     }
 
     preload() {
@@ -26,9 +31,15 @@ export default class Section5Scene extends SectionBasicScene {
             cloud_small: require('../assets/images/objects/cloud_small.png')
 
         }
+        const soundFiles = {
+            'bgm': require('../assets/audios/casual_game_track.mp3'),
+            // 'button': require('../assets/audios/comedy_pop_finger_in_mouth_002.mp3'),
+            'info': require('../assets/audios/medicine_syrup_dosing_syringe_slide_with_no_syrup_inside.mp3'),
+            'zoom': require('../assets/audios/Whoosh_Low_Fast_Raxr_Edos_4.mp3')
+        }
 
         this.preloadFromArr({
-            atlas: atlasFiles, img: imageFiles
+            atlas: atlasFiles, img: imageFiles, sound: soundFiles
         })
 
         this.load.spritesheet('s5btn1', require('../assets/images/section_5/btn.png'),{ frameWidth: 131, frameHeight: 135 })
@@ -41,6 +52,14 @@ export default class Section5Scene extends SectionBasicScene {
         super.create()
 
         this.initSection('game5Bg')
+        
+        // if(this.dataModel.isFirstLoad) {
+        //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
+        //     this.add.existing(startBtn)
+        //     this.dataModel.isFirstLoad = false
+        // }else {
+        //     this.scene.start('Map')
+        // }
 
     }
 

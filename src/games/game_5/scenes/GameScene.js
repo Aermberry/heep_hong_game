@@ -260,7 +260,7 @@ export default class GameScene extends BasicScene {
 
         if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) {
 
-            catHand.toOriginPosTween(1000);
+            catHand.toOriginPosTween(500);
 
             return;
         }

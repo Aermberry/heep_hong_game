@@ -18,125 +18,53 @@
 },
 "wrong0002":
 {
-	"frame": {"x":2,"y":0,"w":50,"h":45},
+	"frame": {"x":54,"y":0,"w":74,"h":87},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":35,"y":35,"w":120,"h":114},
+	"spriteSourceSize": {"x":23,"y":14,"w":120,"h":114},
 	"sourceSize": {"w":120,"h":114}
 },
 "wrong0003":
 {
-	"frame": {"x":54,"y":0,"w":74,"h":87},
+	"frame": {"x":130,"y":0,"w":92,"h":101},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":14,"w":120,"h":114},
+	"spriteSourceSize": {"x":14,"y":7,"w":120,"h":114},
 	"sourceSize": {"w":120,"h":114}
 },
 "wrong0004":
 {
-	"frame": {"x":54,"y":0,"w":74,"h":87},
+	"frame": {"x":224,"y":0,"w":102,"h":105},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":14,"w":120,"h":114},
+	"spriteSourceSize": {"x":9,"y":5,"w":120,"h":114},
 	"sourceSize": {"w":120,"h":114}
 },
 "wrong0005":
 {
-	"frame": {"x":130,"y":0,"w":92,"h":101},
+	"frame": {"x":328,"y":0,"w":112,"h":105},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":14,"y":7,"w":120,"h":114},
+	"spriteSourceSize": {"x":4,"y":5,"w":120,"h":114},
 	"sourceSize": {"w":120,"h":114}
 },
 "wrong0006":
 {
-	"frame": {"x":130,"y":0,"w":92,"h":101},
+	"frame": {"x":0,"y":107,"w":114,"h":114},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":14,"y":7,"w":120,"h":114},
+	"spriteSourceSize": {"x":3,"y":0,"w":120,"h":114},
 	"sourceSize": {"w":120,"h":114}
 },
 "wrong0007":
 {
-	"frame": {"x":224,"y":0,"w":102,"h":105},
+	"frame": {"x":116,"y":107,"w":120,"h":110},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":9,"y":5,"w":120,"h":114},
+	"spriteSourceSize": {"x":0,"y":2,"w":120,"h":114},
 	"sourceSize": {"w":120,"h":114}
 },
 "wrong0008":
-{
-	"frame": {"x":224,"y":0,"w":102,"h":105},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":9,"y":5,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0009":
-{
-	"frame": {"x":328,"y":0,"w":112,"h":105},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":5,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0010":
-{
-	"frame": {"x":328,"y":0,"w":112,"h":105},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":5,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0011":
-{
-	"frame": {"x":328,"y":0,"w":112,"h":105},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":5,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0012":
-{
-	"frame": {"x":0,"y":107,"w":114,"h":114},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":0,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0013":
-{
-	"frame": {"x":0,"y":107,"w":114,"h":114},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":0,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0014":
-{
-	"frame": {"x":0,"y":107,"w":114,"h":114},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":0,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0015":
-{
-	"frame": {"x":116,"y":107,"w":120,"h":110},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":2,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0016":
-{
-	"frame": {"x":116,"y":107,"w":120,"h":110},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":2,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0017":
 {
 	"frame": {"x":238,"y":107,"w":118,"h":75},
 	"rotated": false,
@@ -144,15 +72,7 @@
 	"spriteSourceSize": {"x":1,"y":20,"w":120,"h":114},
 	"sourceSize": {"w":120,"h":114}
 },
-"wrong0018":
-{
-	"frame": {"x":358,"y":107,"w":108,"h":67},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":6,"y":24,"w":120,"h":114},
-	"sourceSize": {"w":120,"h":114}
-},
-"wrong0019":
+"wrong0009":
 {
 	"frame": {"x":358,"y":107,"w":108,"h":67},
 	"rotated": false,
@@ -162,10 +82,10 @@
 }},
 "meta": {
 	"app": "Adobe Animate",
-	"version": "21.0.9.42677",
+	"version": "22.0.1.105",
 	"image": "wrong.png",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":256},
+	"size": {"w":470,"h":230},
 	"scale": "1"
 }
 }

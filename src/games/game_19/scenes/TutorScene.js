@@ -3,7 +3,8 @@ import StartButton from "../components/StartButton"
 import ExitButton from '../components/ExitButton'
 import GameManager from "../components/GameManager";
 import { createTutorAnimations } from "../assets/animations/TutorAnimation";
-import GameSprite from "../components/GameSprite";
+import TutorSprite from '../components/TutorSprite';
+
 
 export default class TutorScene extends BasicScene {
 
@@ -11,9 +12,6 @@ export default class TutorScene extends BasicScene {
         super({
             key: "Tutor"
         })
-
-        this.buttonLayer = undefined;
-        this.backgroundLayer = undefined;
 
         this.gameManager = new GameManager()
     }
@@ -37,15 +35,40 @@ export default class TutorScene extends BasicScene {
 
     #paintGameScene() {
 
-        this.buttonLayer = this.add.layer().setDepth(1);
-        this.backgroundLayer = this.add.layer().setDepth(0);
+        let buttonLayer = this.add.layer().setDepth(1);
+        let backgroundLayer = this.add.layer().setDepth(0);
 
-        this.buttonLayer.add([new ExitButton(this, 120, 135), new StartButton(this, this.getColWidth(6), this.getRowHeight(10.5))]);
+        buttonLayer.add([
+            new ExitButton(this, 120, 135), 
+            new StartButton(this, this.getColWidth(6), 
+            this.getRowHeight(10.5))]);
 
-        let tutor = new GameSprite(this, this.getColWidth(6), this.getRowHeight(5), 'tutor_Animation').setScale(0.8);
+        backgroundLayer.add([this.buildBg('bgTutor')]);
 
-        this.backgroundLayer.add([this.buildBg('bgTutor'), tutor]);
+        this.playTutorAnimation(backgroundLayer);
     }
 
 
+    playTutorAnimation(layer) {
+        let tutor01Sprite = new TutorSprite(this, 300, 500, 'tutorTexture01');
+        let tutor02Sprite = new TutorSprite(this, 930, 280, 'tutorTexture02');
+        let tutor03Sprite = new TutorSprite(this, 1600, 500, 'tutorTexture03');
+
+        layer.add([tutor01Sprite])
+
+        tutor01Sprite.on('animationcomplete', (dd) => {
+            console.log("dsdsds");
+            console.log(dd)
+            tutor02Sprite.play('tutor02Animation')
+        })
+        tutor02Sprite.on('animationcomplete', () => {
+            tutor03Sprite.play('tutor03Animation')
+        })
+        tutor03Sprite.on('animationcomplete', () => {
+            tutor01Sprite.play('tutor01Animation')
+        })
+
+        tutor01Sprite.play('tutor01Animation');
+        
+    }
 }

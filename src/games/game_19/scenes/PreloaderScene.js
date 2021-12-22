@@ -30,10 +30,23 @@ export default class PreloaderScene extends BasicScene {
         };
 
         const atlasFiles = {
-            'starTexture': { img: require('../assets/atlas/animation_star.png'), data: require('../assets/atlas/animation_star.json') },
-            'tutorTexture': {
-                img: require('../assets/atlas/animation_tutor.png'), data: require('../assets/atlas/animation_tutor.json'),
-            }
+            'starTexture': {
+                img: require('../assets/atlas/animation_star.png'),
+                data: require('../assets/atlas/animation_star.json')
+            },
+
+            'tutorTexture01': {
+                img: require('../assets/atlas/animation_tutor01.png'),
+                data: require('../assets/atlas/animation_tutor01.json'),
+            },
+            'tutorTexture02': {
+                img: require('../assets/atlas/animation_tutor02.png'),
+                data: require('../assets/atlas/animation_tutor02.json'),
+            },
+            'tutorTexture03': {
+                img: require('../assets/atlas/animation_tutor03.png'),
+                data: require('../assets/atlas/animation_tutor03.json'),
+            },
         }
 
         const soundFiles = {

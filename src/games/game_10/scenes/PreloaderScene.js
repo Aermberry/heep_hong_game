@@ -1,6 +1,5 @@
 import BasicScene from './BasicScene'
 import config from '../config/index'
-import Choice from '../assets/json/choice.json'
 
 export default class PreloaderScene extends BasicScene {
 
@@ -39,7 +38,6 @@ export default class PreloaderScene extends BasicScene {
           'pack_bg_2': require('../assets/img/pack_bg_2.svg'),
           'pack_bg_3': require('../assets/img/pack_bg_3.svg'),
           'cover_bg': require('../assets/img/cover_bg.png'),
-
         };
 
         const atlasFiles = {
@@ -47,8 +45,6 @@ export default class PreloaderScene extends BasicScene {
             'tut3': { img: require('../assets/img/tutor3.png'), data: require('../assets/img/tutor3.json') },
             'correct':  { img: require('../assets/img/correct.png'), data: require('../assets/img/correct.json') },
             'end_pic':  { img: require('../assets/img/end_pic.png'), data: require('../assets/img/end_pic.json') },
-            'entrance_dog': { img: require('../assets/img/entrance_dog.png'), data: require('../assets/img/entrance_dog.json') },
-            'entrance_owl':  { img: require('../assets/img/entrance_owl.png'), data: require('../assets/img/entrance_owl.json') },
             'owl_swing':  { img: require('../assets/img/owl_swing.png'), data: require('../assets/img/owl_swing.json') },
             'pack_class':  { img: require('../assets/img/pack_class.png'), data: require('../assets/img/pack_class.json') },
             'pack_dog':  { img: require('../assets/img/pack_dog.png'), data: require('../assets/img/pack_dog.json') },
@@ -61,17 +57,8 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-          'loading': require('../assets/audio/Lonely Witch_short.mp3'),
-          'dog_walk_in': require('../assets/audio/Shop Door Bell PE802601.mp3'),
-          'stage_items': require('../assets/audio/Magic Bells 03.mp3'),
-          'bgm': require('../assets/audio/Bone Yard Waltz - Loopable.mp3'),
-          'bubble_hints': require('../assets/audio/owl_1.mp3'),
-          'confirm_counting': require('../assets/audio/double_pop.mp3'),
-          'wrong': require('../assets/audio/Magic experiment explosion.mp3'),
-          'correct': require('../assets/audio/Magic Game Potion Pop Off 4 Cork.mp3'),
-          'level_up': require('../assets/audio/Magic.mp3'),
-          'level_up_bgm': require('../assets/audio/levelup.mp3'),
-          'end_pic': require('../assets/audio/which_brand_of_mustard_shall_i_buy.mp3')
+          'loading': require('../assets/audio/Lonely_Witch_short.mp3'),
+          'dog_walk_in': require('../assets/audio/Shop_Door_Bell_PE802601.mp3'),
         }
 
         
@@ -83,21 +70,6 @@ export default class PreloaderScene extends BasicScene {
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
         let self = this;
-
-        Choice.level1.forEach((item) => {
-          self.load.image(item.name, require('../assets/img/LV1/'+item.logo));
-          self.load.image(`${item.name} shadow`, require('../assets/img/LV1/'+item.shadow));
-        })
-    
-        Choice.level2.forEach((item) => {
-          self.load.image(item.name, require('../assets/img/LV2/'+item.logo));
-          self.load.image(`${item.name} shadow`, require('../assets/img/LV2/'+item.shadow));
-        })
-
-        Choice.level3.forEach((item) => {
-          self.load.image(item.name, require('../assets/img/LV3/'+item.logo));
-          self.load.image(`${item.name} shadow`, require('../assets/img/LV3/'+item.shadow));
-        })
 
         self.progressBar = self.add.graphics();
         self.loadingText = self.make.text({
@@ -117,7 +89,6 @@ export default class PreloaderScene extends BasicScene {
           self.progressBar.clear();
           self.progressBar.fillStyle(0xFC8EFA, 1);
           self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
-
         });
     
         self.load.on('complete', function () {

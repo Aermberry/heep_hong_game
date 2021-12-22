@@ -322,10 +322,10 @@
 }},
 "meta": {
 	"app": "Adobe Animate",
-	"version": "22.0.0.93",
+	"version": "22.0.1.105",
 	"image": "bb.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":2048},
+	"size": {"w":1920,"h":1410},
 	"scale": "1"
 }
 }

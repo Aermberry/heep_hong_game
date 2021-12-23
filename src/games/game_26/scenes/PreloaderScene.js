@@ -39,6 +39,7 @@ export default class PreloaderScene extends BasicScene {
             'imageTutor02': require('../assets/images/image_tutor02.png'),
             'imageTutor03': require('../assets/images/image_tutor03.png'),
             'backgroundTutorEnd':require('../assets/images/background_tutor_end.png'),
+            'gameEndDialogBox':require('../assets/images/background_game_end_dialog.png'),
 
             'questionPicture0': require('../assets/images/questionPictures/0.png'),
             'questionPicture1': require('../assets/images/questionPictures/1.png'),

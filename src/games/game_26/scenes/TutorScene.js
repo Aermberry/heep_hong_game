@@ -5,14 +5,14 @@ import BasicScene from "./BasicScene"
 
 
 // import GameSprite from '../components/GameSprite';
-// import GameManager from "../components/GameManager";
+import GameManager from "../components/GameManager";
 
 export default class TutorScene extends BasicScene {
 
     constructor() {
         super("Tutor")
 
-        // this.gameManager = new GameManager()
+        this.gameManager = new GameManager()
     }
 
     async create() {
@@ -26,7 +26,7 @@ export default class TutorScene extends BasicScene {
 
         this.#paintGameScene();
 
-        // await this.gameManager.initGameData();
+        await this.gameManager.initGameData();
 
     }
 

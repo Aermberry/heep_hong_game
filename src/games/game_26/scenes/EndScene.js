@@ -1,5 +1,5 @@
 import BasicScene from './BasicScene'
-import VictoryDialog from '../components/DialogTipBox'
+import GameEndDialog from '../components/DialogTipBox'
 
 
 
@@ -14,9 +14,9 @@ export default class EndScene extends BasicScene {
 
         super.create();
 
-        this.buildBg('bgVictory')
+        this.buildBg('backgroundTutorEnd')
 
-        this.endBroad = new VictoryDialog(this, this.getColWidth(6), this.getRowHeight(6));
+        this.endBroad = new GameEndDialog(this, this.getColWidth(6), this.getRowHeight(6));
         localStorage.clear()
 
     }

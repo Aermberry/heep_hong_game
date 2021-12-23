@@ -1,13 +1,14 @@
 import Phaser from 'phaser'
 
-export default class StartButton extends Phaser.GameObjects.Container {
+export default class RetryButton extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y) {
+    constructor(scene, x, y,targetScene) {
 
         super(scene, x, y);
+        this.targetScene = targetScene;
         scene.add.existing(this);
 
-        this.texture = scene.add.sprite(0, 0, 'startButton');
+        this.texture = scene.add.sprite(0, 0, 'retryButton');
 
         this.setSize(this.texture.width, this.texture.height);
 
@@ -30,8 +31,7 @@ export default class StartButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        // this.scene.scene.start('Game');
-        this.scene.scene.start('End');
+        this.scene.scene.start(this.targetScene)
     }
 
     onUpClicked() {

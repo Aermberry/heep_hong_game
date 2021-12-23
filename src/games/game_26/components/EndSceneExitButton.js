@@ -1,13 +1,13 @@
 import Phaser from 'phaser'
 
-export default class StartButton extends Phaser.GameObjects.Container {
+export default class EndSceneExitButton extends Phaser.GameObjects.Container {
 
     constructor(scene, x, y) {
 
         super(scene, x, y);
         scene.add.existing(this);
 
-        this.texture = scene.add.sprite(0, 0, 'startButton');
+        this.texture = scene.add.sprite(0, 0, 'gameEndExitButton');
 
         this.setSize(this.texture.width, this.texture.height);
 
@@ -30,8 +30,7 @@ export default class StartButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        // this.scene.scene.start('Game');
-        this.scene.scene.start('End');
+        window.history.back();
     }
 
     onUpClicked() {

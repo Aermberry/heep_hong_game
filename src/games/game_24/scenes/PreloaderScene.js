@@ -20,12 +20,14 @@ export default class PreloaderScene extends BasicScene {
             'car2': require('../assets/img/car2.png'),
             'bg_low':require('../assets/img/bg_low2.png'),
             'bg_low_long':require('../assets/img/bg_low_long2.png'),
-            'award_platform':require('../assets/img/123box.png')
+            'award_platform':require('../assets/img/123box.png'),
+            'bg_up':require('../assets/img/bg_up1.png'),
+            'bg_up_clo':require('../assets/img/bg_up_clo.png')
         };
 
         const atlasFiles = {
             'bear': { img: require('../assets/img/bear.png'), data: require('../assets/img/bear.json') },
-            'bg_up': { img: require('../assets/img/bg_up.png'), data: require('../assets/img/bg_up.json') },
+            // 'bg_up': { img: require('../assets/img/bg_up.png'), data: require('../assets/img/bg_up.json') },
             'fat': { img: require('../assets/img/fat.png'), data: require('../assets/img/fat.json') },
             'leo': { img: require('../assets/img/leo.png'), data: require('../assets/img/leo.json') },
             'pen': { img: require('../assets/img/pen.png'), data: require('../assets/img/pen.json') },

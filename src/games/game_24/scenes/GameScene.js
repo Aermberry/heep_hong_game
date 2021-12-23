@@ -53,13 +53,13 @@ export default class GameScene extends BasicScene {
             repeat: 0,
             // duration: 5000
         });
-        this.anims.create({
-            key: 'bg_up',
-            delay: 200,
-            frames: this.anims.generateFrameNames('bg_up', { prefix: 'bg_up', start: 0, end: 60, zeroPad: 4 }),
-            repeat: -1,
-            // duration: 5000
-        });
+        // this.anims.create({
+        //     key: 'bg_up',
+        //     delay: 200,
+        //     frames: this.anims.generateFrameNames('bg_up', { prefix: 'bg_up', start: 0, end: 60, zeroPad: 4 }),
+        //     repeat: -1,
+        //     // duration: 5000
+        // });
         this.anims.create({
             key: 'leo2',
             delay: 200,
@@ -113,8 +113,9 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
-        this.bg_up = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'bg_up')
-        this.bg_up.play('bg_up');
+        this.bg_up_clo = this.add.sprite(this.getColWidth(4), this.getRowHeight(1), 'bg_up_clo');
+        this.bg_up = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'bg_up'),
+        // this.bg_up.play('bg_up');
         this.paintGameScene();
     }
 
@@ -137,7 +138,7 @@ export default class GameScene extends BasicScene {
             this.car1 = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(7), 'pink_car');
             this.answersContainer = this.add.container(0, 0, [
                 this.bg_low, this.paintQuesiton(), this.car1]);
-            this.questionUi.add([this.bg_up, this.answersContainer]);
+            this.questionUi.add([this.bg_up, this.bg_up_clo,this.answersContainer]);
         } else {
             console.log('asdf')
             this.bg_low = this.add.image(this.getColWidth(7.7), this.getRowHeight(8), 'bg_low_long');
@@ -146,7 +147,7 @@ export default class GameScene extends BasicScene {
                 this.bg_low, this.paintQuesiton(), this.car1]);
             this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(5), this.getRowHeight(10.7), this.answersContainer);
             this.rightMoveButton = new RightMoveButton(this, this.getColWidth(6), this.getRowHeight(10.7), this.answersContainer);
-            this.questionUi.add([this.bg_up, this.answersContainer, this.leftMoveButton, this.rightMoveButton]);
+            this.questionUi.add([this.bg_up,this.bg_up_clo, this.answersContainer, this.leftMoveButton, this.rightMoveButton]);
             console.log(this.answersContainer)
         }
         this.backgroundUi = this.add.layer(); //背景；

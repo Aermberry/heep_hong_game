@@ -3,7 +3,7 @@
         * 
         * @param {Phaser.Animations.AnimationManager} anims 
         */
- export const createClipAnimations = (anims) => {
+ export const createEggTwistingMachineAnimation = (anims) => {
     anims.create({
         key: 'eggTwistingMachineAnimation',
         delay: 200,

@@ -3,7 +3,7 @@
         * 
         * @param {Phaser.Animations.AnimationManager} anims 
         */
-export const createClipAnimations = (anims) => {
+export const createLoadingTitleAnimations = (anims) => {
     anims.create({
         key: 'loadingTitleAnimation',
         delay: 200,

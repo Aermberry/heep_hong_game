@@ -1,18 +1,19 @@
 import { Scene } from 'phaser'
 
 export default class BootScene extends Scene {
-  
-  constructor () {
+
+  constructor() {
     super('Boot');
   }
 
-  preload () {
+  preload() {
 
-    this.load.image('bgLoadingGame', require('../assets/images/bg_loading_game.png'))
+    this.load.image('backgroundPreloadingScene', require('../assets/images/background_preloading_scene.png'))
 
+    this.load.atlas('loadingTitleTexture',require('../assets/atlas/atlas_loading_title.png'),require('../assets/atlas/atlas_loading_title.json'))
   }
 
-  create () {    
+  create() {
     this.scene.start('Preloader');
   }
 }

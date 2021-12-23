@@ -343,11 +343,20 @@ export default class GameScene extends BasicScene {
             this.getRowHeight(8),
             'crocodileLongMouth').setScale(0.4);
 
+        this.crocodileMouth01 = this.add.image(700, this.getRowHeight(8), 'crocodileLongMouth01').setScale(0.4);
+
+        this.crocodileMouth02 = this.add.image(700 + this.crocodileMouth01.displayWidth-3, this.getRowHeight(8), 'crocodileLongMouth02').setScale(0.4);
+
+        console.log(this.crocodileMouth01.originX);
+        console.log(this.crocodileMouth01.originY);
+
         let toothsContainer = this.pintTooth(this.question.originalSentence);
 
         this.dragContainer = this.add.container(0, 0, [
             toothsContainer,
-            this.crocodileMouth
+            this.crocodileMouth,
+            this.crocodileMouth01,
+            this.crocodileMouth02
         ]);
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);

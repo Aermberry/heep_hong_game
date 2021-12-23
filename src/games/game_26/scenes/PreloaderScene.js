@@ -29,16 +29,7 @@ export default class PreloaderScene extends BasicScene {
         });
 
         const imageFiles = {
-            'bgTutor': require('../assets/images/bg_tutor.png'),
-            'bgVictory': require('../assets/images/bg_victory.png'),
-            'bgQuestionText': require('../assets/images/bg_question_text.png'),
-            'dialogTipBox': require('../assets/images/dialog_tip_box.png'),
-            'bgProgressGame': require('../assets/images/bg_progress_game.png'),
-            'yellowDoll': require('../assets/images/doll_1.png'),
-            'blueDoll': require('../assets/images/doll_2.png'),
-            'pinkDoll': require('../assets/images/doll_3.png'),
-            'hole': require('../assets/images/hole.png'),
-            'light': require('../assets/images/light.png')
+            'backgroundPreloadingScene': require('../assets/images/background_preloading_scene.png'),
         };
 
         const atlasFiles = {
@@ -54,15 +45,11 @@ export default class PreloaderScene extends BasicScene {
             // 'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
         }
 
-        this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
-        this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('gameProgressExitBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
-        this.load.spritesheet('gameEndExitBtn', require('../assets/images/btn_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('buttonMoveDownControl', require('../assets/images/button_move_down_control.png'), { frameWidth: 160, frameHeight: 184 });
-        this.load.spritesheet('buttonMoveLeftControl', require('../assets/images/button_move_left_control.png'), { frameWidth: 160, frameHeight: 184 });
-        this.load.spritesheet('buttonMoveRightControl', require('../assets/images/button_move_right_control.png'), { frameWidth: 160, frameHeight: 184 });
-
-
+        this.load.spritesheet('startButton', require('../assets/images/button_start_game.png'), { frameWidth: 776, frameHeight: 227 });
+        this.load.spritesheet('retryButton', require('../assets/images/button_retry.png'), { frameWidth: 410, frameHeight: 163.5 });
+        this.load.spritesheet('gameProgressExitBtn', require('../assets/images/button_exit_progress_game.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('gameEndExitBtn', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
+        this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 160, frameHeight: 184 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }

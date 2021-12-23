@@ -24,11 +24,6 @@ export default class PreloaderScene extends BasicScene {
             'stageBigTooth': require('../assets/images/stage_big_tooth.png'),
             'bgProgressGame': require('../assets/images/bg_progress_game.png'),
             'stageSmallTooth': require('../assets/images/stage_small_tooth.png'),
-            'crocodileLongMouth': require('../assets/images/animal_crocodile_mouth_long/animal_crocodile_mouth_long.png'),
-            'crocodileLongMouth01': require('../assets/images/animal_crocodile_mouth_long/animal_crocodile_mouth_long_01.png'),
-            'crocodileLongMouth02': require('../assets/images/animal_crocodile_mouth_long/animal_crocodile_mouth_long_02.png'),
-            'crocodileLongMouth03': require('../assets/images/animal_crocodile_mouth_long/animal_crocodile_mouth_long_03.png'),
-            'crocodileLongMouth04': require('../assets/images/animal_crocodile_mouth_long/animal_crocodile_mouth_long_04.png'),
             'bgGameFailed': require('../assets/images/bg_game_failed.png')
         };
 

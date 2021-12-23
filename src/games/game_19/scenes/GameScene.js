@@ -12,6 +12,8 @@ import {
 } from "../assets/animations/StarAnimation"
 import GameSprite from "../components/GameSprite"
 import Phaser from 'phaser'
+import CrocodileMouthLow from "../components/CrocodileMouthLow"
+
 // import FF from '../assets/images/cursor_hand1.png'
 export default class GameScene extends BasicScene {
 
@@ -51,6 +53,57 @@ export default class GameScene extends BasicScene {
 
 
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
+        
+        const crocoElmSets = {
+            'brn': {
+                'croco_low_1': require('../assets/images/croco/a_brn_low_long1.png'),
+                'croco_low_2': require('../assets/images/croco/a_brn_low_long2.png'),
+                'croco_low_3': require('../assets/images/croco/a_brn_low_long3.png'),
+                'croco_low_4': require('../assets/images/croco/a_brn_low_long4.png'),
+            },
+            'grn': {
+                'croco_low_1': require('../assets/images/croco/a_grn_low_long1.png'),
+                'croco_low_2': require('../assets/images/croco/a_grn_low_long2.png'),
+                'croco_low_3': require('../assets/images/croco/a_grn_low_long3.png'),
+                'croco_low_4': require('../assets/images/croco/a_grn_low_long4.png'),
+            },
+            'gry': {
+                'croco_low_1': require('../assets/images/croco/a_gry_low_long1.png'),
+                'croco_low_2': require('../assets/images/croco/a_gry_low_long2.png'),
+                'croco_low_3': require('../assets/images/croco/a_gry_low_long3.png'),
+                'croco_low_4': require('../assets/images/croco/a_gry_low_long4.png'),
+            },
+            'org': {
+                'croco_low_1': require('../assets/images/croco/a_org_low_long1.png'),
+                'croco_low_2': require('../assets/images/croco/a_org_low_long2.png'),
+                'croco_low_3': require('../assets/images/croco/a_org_low_long3.png'),
+                'croco_low_4': require('../assets/images/croco/a_org_low_long4.png'),
+            },
+            'pur': {
+                'croco_low_1': require('../assets/images/croco/a_pur_low_long1.png'),
+                'croco_low_2': require('../assets/images/croco/a_pur_low_long2.png'),
+                'croco_low_3': require('../assets/images/croco/a_pur_low_long3.png'),
+                'croco_low_4': require('../assets/images/croco/a_pur_low_long4.png'),
+            }
+        }
+
+        const crocoColors = [
+            'brn', 'grn', 'gry', 'org', 'pur'
+        ];
+
+        const crocoColorName = crocoColors[Math.round(Math.random() * 4)]
+        
+        const currCrocoSet = crocoElmSets[crocoColorName]
+
+        const imageFiles = {
+            'crocoBed': require('../assets/images/croco/bed.png')
+        };
+
+        Object.keys(currCrocoSet).forEach((elmKey)=> {
+            imageFiles[elmKey] = currCrocoSet[elmKey]
+        })
+
+        this.preloadFromArr({ 'img': imageFiles });
 
         this.createProgressBar();
     }
@@ -102,7 +155,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            // this.questionIndex = 10;
+            this.questionIndex = 10;
 
         } else {
 
@@ -338,25 +391,22 @@ export default class GameScene extends BasicScene {
         this.uiLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        this.crocodileMouth = this.add.image(
-            this.getColWidth(13.8),
-            this.getRowHeight(8),
-            'crocodileLongMouth').setScale(0.4);
+        // this.crocodileMouth = this.add.image(
+        //     this.getColWidth(13.8),
+        //     this.getRowHeight(8),
+        //     'crocodileLongMouth').setScale(0.4);
 
-        this.crocodileMouth01 = this.add.image(700, this.getRowHeight(8), 'crocodileLongMouth01').setScale(0.4);
-
-        this.crocodileMouth02 = this.add.image(700 + this.crocodileMouth01.displayWidth-3, this.getRowHeight(8), 'crocodileLongMouth02').setScale(0.4);
-
-        console.log(this.crocodileMouth01.originX);
-        console.log(this.crocodileMouth01.originY);
+        this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.6))
+        this.crocodileMouthCont.setX(this.getColWidth(4.6))
+        
+        this.add.existing(this.crocodileMouthCont)
 
         let toothsContainer = this.pintTooth(this.question.originalSentence);
 
         this.dragContainer = this.add.container(0, 0, [
             toothsContainer,
-            this.crocodileMouth,
-            this.crocodileMouth01,
-            this.crocodileMouth02
+            // this.crocodileMouth
+            this.crocodileMouthCont
         ]);
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);

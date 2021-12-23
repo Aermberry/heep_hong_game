@@ -15,17 +15,17 @@
     src: url(../games/game_18/assets/font/game_18.ttf) format("truetype");
   }
   @font-face {
-    font-family: "Custom-Han-Serif";
-    src: url(../games/game_5/assets/font/game_5.ttf) format("truetype");
+    font-family: "Custom-STKaitiTC";
+    src: url(../games/common/fonts/Custom-STKaitiTC.ttf) format("truetype");
   }
   .game-11 {
-    font-family: "Custom-Han-Serif";
+    font-family: "Custom-STKaitiTC";
   }
   .game-5 {
-    font-family: "Custom-Han-Serif";
+    font-family: "Custom-STKaitiTC";
   }
   .game-18 {
-    font-family: "STKaitiTC-Black";
+    font-family: "Custom-STKaitiTC";
   }
 </style>
 

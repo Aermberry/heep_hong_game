@@ -10,12 +10,12 @@ export default class WoodenBox extends Phaser.GameObjects.Container {
         scene.anims.create({
             key: 'correct',
             duration: 1500,
-            frames: scene.anims.generateFrameNames('scene1_correct', { prefix: 'correct', start: 0, end: 6, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('scene1_correct', { prefix: 'correct', start: 0, end: 14, zeroPad: 4 }),
         })
         scene.anims.create({
             key: 'wrong',
             duration: 1500,
-            frames: scene.anims.generateFrameNames('scene1_wrong', { prefix: 'wrong', start: 0, end: 6, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('scene1_wrong', { prefix: 'wrong', start: 0, end: 14, zeroPad: 4 }),
         })
 
         this.box = scene.add.image(0, 0, 'scene1_box')
@@ -31,12 +31,11 @@ export default class WoodenBox extends Phaser.GameObjects.Container {
         let textPadding = this.box.width * 0.05;
 
         this.textBlock = scene.add.text(
-            this.box.width * -0.1, 0, this.answer,
+            this.box.width * -0.1, textPadding * 1, this.answer,
             {
                 fontSize: this.setFontSize(this.box.width * 0.32, this.answer.length) + 'px',
                 color: '#000000',
-                fontFamily: "Custom-STKaitiTC",
-                fontWeight: 'blod'
+                // fontFamily: "Custom-Han-Serif"
             }
         )
 

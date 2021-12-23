@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import constStore from '../store'
+// import constStore from '../store'
 
 export default class ItemPic extends Phaser.GameObjects.Container {
 
@@ -10,8 +10,10 @@ export default class ItemPic extends Phaser.GameObjects.Container {
         this.setAlpha(0)
 
         this.whiteBroad = scene.add.rectangle(0, 0, width, height, 0xffffff)
-        this.hLine = scene.add.line(0, 0, this.whiteBroad.width * 0, 0, this.whiteBroad.width * 0.8, 0, constStore.hexColors.lightGray )
-        this.vLine = scene.add.line(0, 0, 0, this.whiteBroad.height * 0, 0, this.whiteBroad.height * 0.8, constStore.hexColors.lightGray)
+        // this.hLine = scene.add.line(0, 0, this.whiteBroad.width * 0, 0, this.whiteBroad.width * 0.8, 0, constStore.hexColors.lightGray )
+        // this.vLine = scene.add.line(0, 0, 0, this.whiteBroad.height * 0, 0, this.whiteBroad.height * 0.8, constStore.hexColors.lightGray)
+
+        this.line = scene.add.image(0, 0, 'bamLine').setScale(1.2)
 
         this.fxHover = scene.add.image(0, 0, 'fx_hover')
         this.fxHover.setScale(1.4)
@@ -19,8 +21,9 @@ export default class ItemPic extends Phaser.GameObjects.Container {
 
         this.add([
             this.whiteBroad,
-            this.hLine,
-            this.vLine,
+            this.line,
+            // this.hLine,
+            // this.vLine,
             this.fxHover
         ])
 
@@ -30,7 +33,7 @@ export default class ItemPic extends Phaser.GameObjects.Container {
             let textPadding = this.whiteBroad.width * 0.05;
 
             this.textBlock = scene.add.text(
-                0, 0, item.value,
+                0, textPadding * -1, item.value,
                 {
                     fontSize: (this.whiteBroad.width) + 'px',
                     color: '#000000',

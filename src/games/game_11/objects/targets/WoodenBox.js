@@ -31,11 +31,12 @@ export default class WoodenBox extends Phaser.GameObjects.Container {
         let textPadding = this.box.width * 0.05;
 
         this.textBlock = scene.add.text(
-            this.box.width * -0.1, textPadding * 1, this.answer,
+            this.box.width * -0.1, 0, this.answer,
             {
                 fontSize: this.setFontSize(this.box.width * 0.32, this.answer.length) + 'px',
                 color: '#000000',
-                // fontFamily: "Custom-Han-Serif"
+                fontFamily: "Custom-STKaitiTC",
+                fontWeight: 'blod'
             }
         )
 

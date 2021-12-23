@@ -35,7 +35,8 @@ export default class FlyWoodenBox extends Phaser.GameObjects.Container {
             {
                 fontSize: this.setFontSize(this.box.width * 0.35, this.answer.length) + 'px',
                 color: '#000000',
-                // fontFamily: "Custom-Han-Serif"
+                fontFamily: "Custom-STKaitiTC",
+                fontWeight: 'blod'
             }
         )
 

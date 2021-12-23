@@ -1,0 +1,187 @@
+﻿{"frames": {
+
+"tut3_fly0000":
+{
+	"frame": {"x":0,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0001":
+{
+	"frame": {"x":359,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0002":
+{
+	"frame": {"x":718,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0003":
+{
+	"frame": {"x":1077,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0004":
+{
+	"frame": {"x":1436,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0005":
+{
+	"frame": {"x":1795,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0006":
+{
+	"frame": {"x":0,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0007":
+{
+	"frame": {"x":359,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0008":
+{
+	"frame": {"x":718,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0009":
+{
+	"frame": {"x":1077,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0010":
+{
+	"frame": {"x":1436,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0011":
+{
+	"frame": {"x":1795,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0012":
+{
+	"frame": {"x":0,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0013":
+{
+	"frame": {"x":359,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0014":
+{
+	"frame": {"x":718,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0015":
+{
+	"frame": {"x":1077,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0016":
+{
+	"frame": {"x":1436,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0017":
+{
+	"frame": {"x":1795,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0018":
+{
+	"frame": {"x":0,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0019":
+{
+	"frame": {"x":359,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0020":
+{
+	"frame": {"x":718,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_fly0021":
+{
+	"frame": {"x":1077,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.1.105",
+	"image": "tut3.png",
+	"format": "RGBA8888",
+	"size": {"w":2170,"h":1740},
+	"scale": "1"
+}
+}

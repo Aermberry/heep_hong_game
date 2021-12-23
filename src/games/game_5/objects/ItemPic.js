@@ -30,11 +30,11 @@ export default class ItemPic extends Phaser.GameObjects.Container {
             let textPadding = this.whiteBroad.width * 0.05;
 
             this.textBlock = scene.add.text(
-                0, textPadding * 1, item.value,
+                0, 0, item.value,
                 {
                     fontSize: (this.whiteBroad.width) + 'px',
                     color: '#000000',
-                    fontFamily: "Custom-Han-Serif"
+                    fontFamily: "Custom-STKaitiTC"
                 }
             )
     
@@ -42,7 +42,6 @@ export default class ItemPic extends Phaser.GameObjects.Container {
             this.textBlock.setPadding(textPadding, textPadding, textPadding, textPadding)
     
 
-    
             this.add([
                 this.textBlock
             ])

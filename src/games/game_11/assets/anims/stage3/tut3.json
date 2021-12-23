@@ -1,0 +1,187 @@
+﻿{"frames": {
+
+"tut3_ufo0000":
+{
+	"frame": {"x":0,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0001":
+{
+	"frame": {"x":359,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0002":
+{
+	"frame": {"x":718,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0003":
+{
+	"frame": {"x":1077,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0004":
+{
+	"frame": {"x":1436,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0005":
+{
+	"frame": {"x":1795,"y":0,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0006":
+{
+	"frame": {"x":0,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0007":
+{
+	"frame": {"x":359,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0008":
+{
+	"frame": {"x":718,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0009":
+{
+	"frame": {"x":1077,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0010":
+{
+	"frame": {"x":1436,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0011":
+{
+	"frame": {"x":1795,"y":434,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0012":
+{
+	"frame": {"x":0,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0013":
+{
+	"frame": {"x":359,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0014":
+{
+	"frame": {"x":718,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0015":
+{
+	"frame": {"x":1077,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0016":
+{
+	"frame": {"x":1436,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0017":
+{
+	"frame": {"x":1795,"y":868,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0018":
+{
+	"frame": {"x":0,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0019":
+{
+	"frame": {"x":359,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0020":
+{
+	"frame": {"x":718,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+},
+"tut3_ufo0021":
+{
+	"frame": {"x":1077,"y":1302,"w":357,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
+	"sourceSize": {"w":357,"h":432}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.1.105",
+	"image": "tut3.png",
+	"format": "RGBA8888",
+	"size": {"w":2170,"h":1740},
+	"scale": "1"
+}
+}

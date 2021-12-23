@@ -103,6 +103,7 @@ export default class GameScene extends BasicScene {
 
         const imageFiles = {
             'end_box': require('../assets/images/end_box.png'),
+            'end_pic_bg': require('../assets/images/end_pic_bg.png'),
             ...blockAssets.img,
             ...playerAssets.img,
             ...bgAssets.img,

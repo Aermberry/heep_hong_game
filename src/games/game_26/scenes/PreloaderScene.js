@@ -13,7 +13,7 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        // let self = this;
+        let self = this;
 
         this.buildBg('backgroundPreloadingScene');
 
@@ -31,9 +31,9 @@ export default class PreloaderScene extends BasicScene {
         );
 
         this.load.on('complete', (loader, totalComplete, totalFailed) => {
-            console.log(loader, totalComplete, totalFailed);
+            
             // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
-            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Game');
+            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Game');
         });
 
         const imageFiles = {

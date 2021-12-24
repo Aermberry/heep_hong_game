@@ -51,11 +51,14 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
+        this.sound.stopAll();
 
         createClipAnimations(this.anims);
         createGameStatusAnimations(this.anims);
+
         this.paintGameScene(this);
         // Phaser.physics.add.overlap(this.clip, this.yellowDoll);
+        this.sound.play('clipDollTableEffectSound');
 
     }
 

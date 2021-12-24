@@ -11,6 +11,7 @@ export default class RetryBtn extends BasicButton {
     }
 
     onClick() {
+        this.sound.play('buttonEffectSound');
         this.scene.scene.start(this.targetScene)
     }
 

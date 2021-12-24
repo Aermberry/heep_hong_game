@@ -35,6 +35,7 @@ export default class RightControllerButton extends Phaser.GameObjects.Container 
     }
 
     onDownClicked(scene, dolls) {
+        this.sound.play('buttonEffectSound');
 
         if (this.gameController.name != "onSandwiched" && ClipTweenAnimationStatus.IdleAnimationStatus == this.gameController.currentAnimationState) {
 

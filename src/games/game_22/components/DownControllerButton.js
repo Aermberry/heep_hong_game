@@ -41,6 +41,7 @@ export default class DownControllerButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked(scene, clip) {
+        this.sound.play('buttonEffectSound');
         clip.playTweenAnimation(ClipTweenAnimationStatus.FallingTweenAnimationStatus, scene, { target: clip, y: 150, duration: 1000 });
 
         scene.time.addEvent({

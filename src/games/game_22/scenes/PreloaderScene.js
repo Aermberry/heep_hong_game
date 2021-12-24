@@ -14,10 +14,12 @@ export default class PreloaderScene extends BasicScene {
     preload() {
         let self = this;
 
+       
         this.buildBg('bgLoadingGame');
 
         this.progressLoader = new LoadProgress(this);
         this.progressLoader.create();
+        
 
         this.load.on('progress', (params) => {
             this.progressLoader.onLoadProgress(params)
@@ -25,6 +27,7 @@ export default class PreloaderScene extends BasicScene {
         );
 
         this.load.on('complete', (loader, totalComplete, totalFailed) => {
+            console.log(loader, totalComplete, totalFailed);
             this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
         });
 
@@ -68,9 +71,9 @@ export default class PreloaderScene extends BasicScene {
             'preloaderSceneGameEndSceneBackgroundMusic': require('../assets/audio/bgm_preloader_scene_game_end_scene.mp3'),
 
             /* Effect Sound */
+            'buttonEffectSound': require('../assets/audio/sound_effect/effect_button_on_clicked.mp3'),
             'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
             'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
-            'buttonEffectSound': require('../assets/audio/sound_effect/effect_button.mp3'),
             'clipClampEffectSound':require('../assets/audio/sound_effect/effect_clip_clamp.mp3'),
             'clipDollTableEffectSound':require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
             'clipMovementEffectSound':require('../assets/audio/sound_effect/effect_clip_movement.mp3'),

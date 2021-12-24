@@ -11,6 +11,7 @@ export default class ExitButton extends BasicButton {
   }
 
   onClick(){
+    this.sound.play('buttonEffectSound');
     window.history.back();
   }
 

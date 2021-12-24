@@ -154,8 +154,8 @@ export default class GameScene extends BasicScene {
         let errorQuestionIndex = JSON.parse(localStorage.getItem('errorQuestionIndex'));
 
         if (errorQuestionIndex == null) {
-            // this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            this.questionIndex = 10;
+            this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
+            // this.questionIndex = 10;
 
         } else {
 

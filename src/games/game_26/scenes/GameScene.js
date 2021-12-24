@@ -2,9 +2,9 @@
 import BasicScene from "./BasicScene"
 import ExitButton from '../components/ExitProgressGameButton'
 
-// import {
-//     createClipAnimations
-// } from '../assets/animations/ClipAnimation';
+import {
+    createEggTwistingMachineAnimation
+} from '../assets/animations/EggTwistingMachineAnimation';
 // import {
 //     createGameStatusAnimations
 // } from '../assets/animations/GameStatusAnimation';
@@ -46,11 +46,14 @@ export default class GameScene extends BasicScene {
         super.create();
 
 
-        // createClipAnimations(this.anims);
-        // createGameStatusAnimations(this.anims);
-        this.paintGameScene(this);
-        // Phaser.physics.add.overlap(this.clip, this.yellowDoll);
+        
+        createEggTwistingMachineAnimation(this.anims);
 
+        this.paintGameScene(this);
+
+        
+
+      
     }
 
     /**
@@ -87,11 +90,13 @@ export default class GameScene extends BasicScene {
         this.playLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
+        let eggTwistingMachineAnimation = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
+        eggTwistingMachineAnimation.play('eggTwistingMachineAnimation');
         
 
         let exitButton = new ExitButton(this, 120, 135);
         
-        this.backgroundLayer.add([this.buildBg('backgroundGamePlay')]);
+        this.backgroundLayer.add([this.buildBg('backgroundGamePlay'),eggTwistingMachineAnimation]);
         this.playLayer.add([exitButton]);
     }
 

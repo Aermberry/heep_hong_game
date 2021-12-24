@@ -8,6 +8,7 @@
         key: 'eggTwistingMachineAnimation',
         delay: 200,
         frames: anims.generateFrameNames('eggTwistingMachineTexture', { prefix: 'eggTwistingMachine_', start: 0, end: 19, zeroPad: 4 }),
-        frameRate: 2,
+        frameRate: 24,
+        repeat:-1
     });
 }

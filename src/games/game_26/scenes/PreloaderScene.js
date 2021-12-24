@@ -13,7 +13,7 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        let self = this;
+        // let self = this;
 
         this.buildBg('backgroundPreloadingScene');
 
@@ -31,7 +31,9 @@ export default class PreloaderScene extends BasicScene {
         );
 
         this.load.on('complete', (loader, totalComplete, totalFailed) => {
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
+            console.log(loader, totalComplete, totalFailed);
+            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
+            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Game');
         });
 
         const imageFiles = {
@@ -39,6 +41,7 @@ export default class PreloaderScene extends BasicScene {
             'imageTutor02': require('../assets/images/image_tutor02.png'),
             'imageTutor03': require('../assets/images/image_tutor03.png'),
             'backgroundTutorEnd':require('../assets/images/background_tutor_end.png'),
+            'backgroundGamePlay':require('../assets/images/background_game_play_scene.png'),
             'gameEndDialogBox':require('../assets/images/background_game_end_dialog.png'),
 
             'questionPicture0': require('../assets/images/questionPictures/0.png'),

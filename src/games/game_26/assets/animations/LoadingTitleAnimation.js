@@ -8,6 +8,7 @@ export const createLoadingTitleAnimations = (anims) => {
         key: 'loadingTitleAnimation',
         delay: 200,
         frames: anims.generateFrameNames('loadingTitleTexture', { prefix: 'loadingTitle_', start: 0, end: 19, zeroPad: 4 }),
-        frameRate: 2,
+        frameRate: 24,
+        repeat:-1
     });
 }

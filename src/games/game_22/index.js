@@ -8,7 +8,7 @@ import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene,TutorScene, GameScene,EndScene]
+    scene: [BootScene, PreloaderScene, TutorScene, GameScene, EndScene]
 });
 
 /**
@@ -33,7 +33,6 @@ class Game22 extends Phaser.Game {
     constructor(config, urlParams) {
         super(config);
         console.log(urlParams)
-        
     }
 }
 
@@ -42,9 +41,31 @@ function launch(urlParams) {
 
     let game = new Game22(gameConfig, urlParams)
 
+    resize(game);
+    window.addEventListener("resize", resize, false);
+
     return game
 }
 
+//    /**
+//            * 
+//            * @param {Phaser.Game} game
+//            */
+function resize(game) {
+    var canvas = document.querySelector("canvas");
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var windowRatio = windowWidth / windowHeight;
+    var gameRatio = game.config.width / game.config.height;
+
+    if (windowRatio < gameRatio) {
+        canvas.style.width = windowWidth + "px";
+        canvas.style.height = (windowWidth / gameRatio) + "px";
+    } else {
+        canvas.style.width = (windowHeight * gameRatio) + "px";
+        canvas.style.height = windowHeight + "px";
+    }
+}
 
 export default launch
 export { launch }

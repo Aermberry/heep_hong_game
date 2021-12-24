@@ -396,8 +396,9 @@ export default class GameScene extends BasicScene {
         //     this.getRowHeight(8),
         //     'crocodileLongMouth').setScale(0.4);
 
-        this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.6))
+        this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.75))
         this.crocodileMouthCont.setX(this.getColWidth(4.6))
+        
         this.add.existing(this.crocodileMouthCont)
 
         let toothsContainer = this.pintTooth(this.question.originalSentence);

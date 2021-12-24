@@ -1,6 +1,6 @@
 ﻿{"frames": {
 
-"tut3_ufo0000":
+"tut30000":
 {
 	"frame": {"x":0,"y":0,"w":357,"h":432},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0001":
+"tut30001":
 {
 	"frame": {"x":359,"y":0,"w":357,"h":432},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0002":
+"tut30002":
 {
 	"frame": {"x":718,"y":0,"w":357,"h":432},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0003":
+"tut30003":
 {
 	"frame": {"x":1077,"y":0,"w":357,"h":432},
 	"rotated": false,
@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0004":
+"tut30004":
 {
 	"frame": {"x":1436,"y":0,"w":357,"h":432},
 	"rotated": false,
@@ -40,7 +40,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0005":
+"tut30005":
 {
 	"frame": {"x":1795,"y":0,"w":357,"h":432},
 	"rotated": false,
@@ -48,7 +48,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0006":
+"tut30006":
 {
 	"frame": {"x":0,"y":434,"w":357,"h":432},
 	"rotated": false,
@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0007":
+"tut30007":
 {
 	"frame": {"x":359,"y":434,"w":357,"h":432},
 	"rotated": false,
@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0008":
+"tut30008":
 {
 	"frame": {"x":718,"y":434,"w":357,"h":432},
 	"rotated": false,
@@ -72,7 +72,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0009":
+"tut30009":
 {
 	"frame": {"x":1077,"y":434,"w":357,"h":432},
 	"rotated": false,
@@ -80,7 +80,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0010":
+"tut30010":
 {
 	"frame": {"x":1436,"y":434,"w":357,"h":432},
 	"rotated": false,
@@ -88,7 +88,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0011":
+"tut30011":
 {
 	"frame": {"x":1795,"y":434,"w":357,"h":432},
 	"rotated": false,
@@ -96,7 +96,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0012":
+"tut30012":
 {
 	"frame": {"x":0,"y":868,"w":357,"h":432},
 	"rotated": false,
@@ -104,7 +104,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0013":
+"tut30013":
 {
 	"frame": {"x":359,"y":868,"w":357,"h":432},
 	"rotated": false,
@@ -112,7 +112,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0014":
+"tut30014":
 {
 	"frame": {"x":718,"y":868,"w":357,"h":432},
 	"rotated": false,
@@ -120,7 +120,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0015":
+"tut30015":
 {
 	"frame": {"x":1077,"y":868,"w":357,"h":432},
 	"rotated": false,
@@ -128,7 +128,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0016":
+"tut30016":
 {
 	"frame": {"x":1436,"y":868,"w":357,"h":432},
 	"rotated": false,
@@ -136,7 +136,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0017":
+"tut30017":
 {
 	"frame": {"x":1795,"y":868,"w":357,"h":432},
 	"rotated": false,
@@ -144,7 +144,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0018":
+"tut30018":
 {
 	"frame": {"x":0,"y":1302,"w":357,"h":432},
 	"rotated": false,
@@ -152,7 +152,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0019":
+"tut30019":
 {
 	"frame": {"x":359,"y":1302,"w":357,"h":432},
 	"rotated": false,
@@ -160,7 +160,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0020":
+"tut30020":
 {
 	"frame": {"x":718,"y":1302,"w":357,"h":432},
 	"rotated": false,
@@ -168,7 +168,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":357,"h":432},
 	"sourceSize": {"w":357,"h":432}
 },
-"tut3_ufo0021":
+"tut30021":
 {
 	"frame": {"x":1077,"y":1302,"w":357,"h":432},
 	"rotated": false,

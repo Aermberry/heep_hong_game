@@ -1,6 +1,6 @@
 ﻿{"frames": {
 
-"tut1_ski0000":
+"tut10000":
 {
 	"frame": {"x":0,"y":0,"w":355,"h":440},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0001":
+"tut10001":
 {
 	"frame": {"x":357,"y":0,"w":355,"h":440},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0002":
+"tut10002":
 {
 	"frame": {"x":714,"y":0,"w":355,"h":440},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0003":
+"tut10003":
 {
 	"frame": {"x":357,"y":0,"w":355,"h":440},
 	"rotated": false,
@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0004":
+"tut10004":
 {
 	"frame": {"x":0,"y":0,"w":355,"h":440},
 	"rotated": false,
@@ -40,7 +40,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0005":
+"tut10005":
 {
 	"frame": {"x":1071,"y":0,"w":355,"h":440},
 	"rotated": false,
@@ -48,7 +48,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0006":
+"tut10006":
 {
 	"frame": {"x":0,"y":442,"w":355,"h":440},
 	"rotated": false,
@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0007":
+"tut10007":
 {
 	"frame": {"x":357,"y":442,"w":355,"h":440},
 	"rotated": false,
@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0008":
+"tut10008":
 {
 	"frame": {"x":0,"y":442,"w":355,"h":440},
 	"rotated": false,
@@ -72,7 +72,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0009":
+"tut10009":
 {
 	"frame": {"x":1071,"y":0,"w":355,"h":440},
 	"rotated": false,
@@ -80,7 +80,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0010":
+"tut10010":
 {
 	"frame": {"x":714,"y":442,"w":355,"h":440},
 	"rotated": false,
@@ -88,7 +88,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0011":
+"tut10011":
 {
 	"frame": {"x":1071,"y":442,"w":355,"h":440},
 	"rotated": false,
@@ -96,7 +96,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0012":
+"tut10012":
 {
 	"frame": {"x":0,"y":884,"w":355,"h":440},
 	"rotated": false,
@@ -104,7 +104,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0013":
+"tut10013":
 {
 	"frame": {"x":1071,"y":442,"w":355,"h":440},
 	"rotated": false,
@@ -112,7 +112,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0014":
+"tut10014":
 {
 	"frame": {"x":714,"y":442,"w":355,"h":440},
 	"rotated": false,
@@ -120,7 +120,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0015":
+"tut10015":
 {
 	"frame": {"x":357,"y":884,"w":355,"h":440},
 	"rotated": false,
@@ -128,7 +128,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0016":
+"tut10016":
 {
 	"frame": {"x":357,"y":884,"w":355,"h":440},
 	"rotated": false,
@@ -136,7 +136,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0017":
+"tut10017":
 {
 	"frame": {"x":357,"y":884,"w":355,"h":440},
 	"rotated": false,
@@ -144,7 +144,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0018":
+"tut10018":
 {
 	"frame": {"x":357,"y":884,"w":355,"h":440},
 	"rotated": false,
@@ -152,7 +152,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":355,"h":440},
 	"sourceSize": {"w":355,"h":440}
 },
-"tut1_ski0019":
+"tut10019":
 {
 	"frame": {"x":357,"y":884,"w":355,"h":440},
 	"rotated": false,
@@ -163,9 +163,9 @@
 "meta": {
 	"app": "Adobe Animate",
 	"version": "22.0.1.105",
-	"image": "tutor1.png",
+	"image": "tut1.png",
 	"format": "RGBA8888",
-	"size": {"w":1450,"h":1330},
+	"size": {"w":1430,"h":1330},
 	"scale": "1"
 }
 }

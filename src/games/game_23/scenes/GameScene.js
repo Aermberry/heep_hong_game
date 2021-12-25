@@ -54,7 +54,8 @@ export default class GameScene extends BasicScene {
     create() {
 
         super.create();
-
+        
+        this.sound.stopAll();
 
         createClipAnimations(this.anims);
         createGameStatusAnimations(this.anims);

@@ -211,6 +211,7 @@ export default class GameScene extends BasicScene {
         let index = this.dolls.findIndex((element) => element.name == this.currentQuestionAnswer);
 
         lights.forEach((light) => light.setAlpha(0));
+        this.sound.play('spotlightFocusEffectSound');
 
         this.tweens.add(
             {

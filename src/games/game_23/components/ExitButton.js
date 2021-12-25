@@ -15,7 +15,10 @@ export default class ExitButton extends BasicButton {
   }
 
   down(clickEvent) {
+    
+    this.scene.sound.play('buttonEffectSound');
     this.origSprite.setFrame(1)
+
     super.down(clickEvent)
   }
 }

@@ -35,21 +35,19 @@ export default class RightControllerButton extends Phaser.GameObjects.Container 
     }
 
     onDownClicked(scene, dolls) {
-        this.sound.play('buttonEffectSound');
+        scene.sound.play('buttonEffectSound');
 
         if (this.gameController.name != "onSandwiched" && ClipTweenAnimationStatus.IdleAnimationStatus == this.gameController.currentAnimationState) {
 
             this.gameController.currentAnimationState = ClipTweenAnimationStatus.MovingTweenAnimationStatus;
-
+            const clipMovementEffectSound = scene.sound.add('clipMovementEffectSound');
+            
             let nextDollIndex = scene.currentDollIndex + 1;
 
             if (nextDollIndex <= 2) {
 
-                TweenAnimation.playHorizontalDirectionTweenAnimation(scene, this.gameController, dolls[nextDollIndex].x, 1000, () => {
-                    scene.currentDollIndex = nextDollIndex;
-                    this.gameController.currentAnimationState = ClipTweenAnimationStatus.IdleAnimationStatus;
-
-                });
+                TweenAnimation.playHorizontalDirectionTweenAnimation(scene, this.gameController, dolls[nextDollIndex].x, 1000,  () => this.onHorizontalDirectionTweenAnimationStartEventCallback(clipMovementEffectSound),
+                () => this.onHorizontalDirectionTweenAnimationCompleteEventCallback(scene, nextDollIndex, this.gameController, clipMovementEffectSound));
 
 
 
@@ -61,6 +59,17 @@ export default class RightControllerButton extends Phaser.GameObjects.Container 
 
 
         }
+    }
+
+
+    onHorizontalDirectionTweenAnimationStartEventCallback(sound) {
+        sound.play();
+    }
+
+    onHorizontalDirectionTweenAnimationCompleteEventCallback(scene, nextDollIndex, gameController, sound) {
+        scene.currentDollIndex = nextDollIndex;
+        gameController.currentAnimationState = ClipTweenAnimationStatus.IdleAnimationStatus;
+        sound.stop();
     }
 
     onUpClicked() {

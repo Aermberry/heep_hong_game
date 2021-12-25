@@ -11,12 +11,13 @@ export default class StartButton extends BasicButton {
   }
 
   onClick() {
-    this.scene.sound.play('buttonEffectSound');
+    
     this.scene.scene.start('Game')
 
   }
 
   down(clickEvent) {
+    this.scene.sound.play('buttonEffectSound');
     this.origSprite.setFrame(1)
     super.down(clickEvent)
   }

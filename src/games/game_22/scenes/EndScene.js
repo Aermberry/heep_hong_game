@@ -14,6 +14,16 @@ export default class EndScene extends BasicScene {
 
         super.create();
 
+        this.sound.stopAll();
+
+        const backgroundMusic = this.sound.add('preloaderSceneGameEndSceneBackgroundMusic', {
+            volume: 0.2,
+            loop: true
+        });
+
+        backgroundMusic.play();
+
+
         this.buildBg('bgVictory')
 
         this.endBroad = new VictoryDialog(this, this.getColWidth(6), this.getRowHeight(6));

@@ -61,6 +61,23 @@ export default class GameScene extends BasicScene {
         this.paintGameScene(this);
         // Phaser.physics.add.overlap(this.clip, this.yellowDoll);
 
+        this.playBackgroundMusic('clipDollTableEffectSound', 'gamePlaySceneBackgroundMusic');
+
+    }
+
+    playBackgroundMusic(startSound, backgroundSound) {
+
+        const clipDollTableEffectSound = this.sound.add(startSound);
+        const backgroundMusic = this.sound.add(backgroundSound, {
+            volume: 0.2,
+            loop: true
+        });
+
+        clipDollTableEffectSound.on('complete', () => {
+            backgroundMusic.play();
+        })
+
+        clipDollTableEffectSound.play();
     }
 
     /**

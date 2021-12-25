@@ -4,6 +4,7 @@ export default class EndSceneExitBtn extends BasicButton {
 
     constructor(scene, x, y, children) {
         super(scene, x, y, children)
+        
         this.scene = scene;
 
         let sprite = scene.add.sprite(0, 0, 'gameEndExitBtn')

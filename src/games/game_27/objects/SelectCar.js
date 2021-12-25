@@ -23,19 +23,18 @@ export default class SelectCar extends Phaser.GameObjects.Container {
             x: x,
             y: y
         }
-        this.setDepth(999)
+        this.index = [];
         scene.add.existing(this);
         this.setInteractive({
             useHandCursor: true
         })
         scene.input.setDraggable(this);
-
+        let self = this;
         this.on('drag', (pointer, dragX, dragY) => {
             this.x = dragX;
             this.y = dragY;
-            console.log(this.list)
-            this.list[0].setDepth(999)
             this.isDrag = true;
+            scene.onDragObject = self;
             if (Phaser.Geom.Rectangle.Overlaps(scene.trackZone.getBounds(), itemImg.getBounds())) {
                 this.reRender();
             } else {
@@ -47,10 +46,11 @@ export default class SelectCar extends Phaser.GameObjects.Container {
             if (this.isDrag) {
                 if (Phaser.Geom.Rectangle.Overlaps(scene.trackZone.getBounds(), itemImg.getBounds())) {
                     // this.x += this.scene.subjectItem.x;
+                    this.origin.x = this.x;
                     let self = this;
                     setTimeout(() => {
                         self.scene.subjectItem.add(self);
-                   },250)
+                    }, 230)
                 } else {
                     this.x = this.selectAreaOring.x;
                     this.y = this.selectAreaOring.y;
@@ -66,22 +66,26 @@ export default class SelectCar extends Phaser.GameObjects.Container {
 
     leaveRender() {
         // if (dropZone instanceof TrackZone) { 判断是否是该类的实例化
-        this.scene.subjectItem.list.forEach(item => {
-            if (item == this) return;
-            item.x = item.origin.x;
-        });
+        // this.scene.subjectItem.list.forEach(item => {
+        //     if (item == this) return;
+        //     if (item.x + this.scene.subjectItem.x <= this.x) { 
+
+        //     }
+        //     item.x = item.origin.x;
+        // });
     }
 
     reRender() {
         let self = this;
-        self.scene.subjectItem.list.forEach(item => {
+        self.index = [];
+        self.scene.subjectItem.remove(this);
+        self.scene.subjectItem.list.forEach((item, index) => {
             if (item == this) return;
             if (item.x + this.scene.subjectItem.x <= this.x) {
                 item.x = item.origin.x;
                 this.move(item, item.origin.x - this.width / 2)
-            }
-            else {
-                if (item == this) return;
+            } else {
+                self.index.push(index)
                 item.x = item.origin.x;
                 this.move(item, item.origin.x + this.width / 2)
             }

@@ -15,11 +15,15 @@ export default class RtBtn extends BasicBtn {
         this.scene.subjectItem.list.forEach(item => {
             length += item.width;
         });
-        length = length/3;
-        if (Math.abs(this.scene.subjectItem.x) <= length) {
-            this.scene.subjectItem.x -= 100;
-        } else{
-            this.scene.subjectItem.x  = -length;
+        length = length/2;
+        if (this.scene.subjectItem.x - 100 >= -length) {
+            let self = this;
+            self.scene.tweens.add({
+                targets: self.scene.subjectItem,
+                x: self.scene.subjectItem.x -= 100,
+                duration: 200,
+                ease: 'Power2'
+            })
         }
     }
 }

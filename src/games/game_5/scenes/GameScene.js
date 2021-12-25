@@ -3,6 +3,7 @@ import CatBack from "../objects/CatBack"
 import ItemBam from '../objects/ItemBam'
 import CatHand from "../objects/CatHand"
 import WinCat from '../objects/Cat'
+import BackBtn from '../objects/ExitBtn'
 // import Leaf from '../objects/Leaf'
 import LeafGroup from '../objects/LeafGroup'
 // import Cat from "../objects/Cat"
@@ -85,7 +86,8 @@ export default class GameScene extends BasicScene {
             'fail_smoke': require('../assets/images/fail_smoke.png'),
             'fail_smoke_line': require('../assets/images/fail_smoke_line.png'),
             'fail_smoke_line_small': require('../assets/images/fail_smoke_line_small.png'),
-            'fx_hover': require('../assets/images/fx_hover.png')
+            'fx_hover': require('../assets/images/fx_hover.png'),
+            'bamLine': require('../assets/images/line.png')
         }
 
         const atlasFiles = {
@@ -219,12 +221,15 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('bg_base');
 
+        this.backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5));
+
         this.initGameRender(this.items.pop(), this.answers.pop())
 
         this.leafGroup = new LeafGroup(this, 3, true);
 
         this.leafGroup.setDepth(8)
 
+        this.add.existing(this.backBtn)
         this.add.existing(this.leafGroup)
 
 
@@ -249,12 +254,14 @@ export default class GameScene extends BasicScene {
     }
 
     answerSelected(catHand) {
-        console.log(catHand);
+
+        const speedFactory = 0.5
+
         //Need to make sure the catHand is collide with text broad
 
         if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) {
 
-            catHand.toOriginPosTween(1000);
+            catHand.toOriginPosTween(500);
 
             return;
         }
@@ -290,7 +297,7 @@ export default class GameScene extends BasicScene {
                     targets: this.leafLeft,
                     x: this.getColWidth(21),
                     y: this.getRowHeight(6),
-                    duration: 1000,
+                    duration: 1000 * speedFactory,
                     ease: 'Power2'
                 });
 
@@ -298,15 +305,15 @@ export default class GameScene extends BasicScene {
                     targets: this.leafRight,
                     x: this.getColWidth(-9),
                     y: this.getRowHeight(6),
-                    duration: 1000,
+                    duration: 1000 * speedFactory,
                     ease: 'Power2'
                 });
 
                 setTimeout(()=> {
 
-                    this.bam.customMoveTo(this.getColWidth(17), this.getRowHeight(6), 1500)
-                    this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200).then(() => {
-                        this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600).then(() => {
+                    this.bam.customMoveTo(this.getColWidth(17), this.getRowHeight(6), 1500 * speedFactory)
+                    this.catBack.moveTo(this.getColWidth(3), this.getRowHeight(7.5), 1200 * speedFactory).then(() => {
+                        this.catBack.moveTo(this.getColWidth(-5), this.getRowHeight(7.5), 600 * speedFactory).then(() => {
                             this.cat = new WinCat(this, this.getColWidth(8.5), this.getRowHeight(7));
                             this.cat.setDepth(4)
                             this.add.existing(this.cat);
@@ -342,18 +349,18 @@ export default class GameScene extends BasicScene {
                                         // endPromise()
                                         // this.scene.start('End')
     
-                                    }, 3000)
+                                    }, 3000 * speedFactory)
     
-                                }, 1000)
+                                }, 1000 * speedFactory)
     
                             })
     
                         })
                     })
-                }, 400)
+                }, 400 * speedFactory)
 
 
-            }, 2000)
+            }, 2000 * speedFactory)
 
 
         });

@@ -7,13 +7,13 @@
           <div class="partner">
             <div class="title">主辦機構</div>
             <a href="https://www.heephong.org/" target="_blank" title="協康會 HEEP HONG SOCIETY">
-              <img src="@/assets/images/hhs.svg" class="img-fluid" alt="協康會 HEEP HONG SOCIETY">
+              <img src="@/assets/images/hhs.svg" class="img-fluid logo" alt="協康會 HEEP HONG SOCIETY">
             </a>
           </div>
           <div class="partner">
             <div class="title">捐助機構</div>
             <a href="https://charities.hkjc.com/charities/chinese/charities-trust/index.aspx" target="_blank" title="香港賽馬會慈善信託基金 The Hong Kong Jockey Club Charities Trust">
-              <img src="@/assets/images/hkjc.svg" class="img-fluid logo-hkjc" alt="香港賽馬會慈善信託基金 The Hong Kong Jockey Club Charities Trust">
+              <img src="@/assets/images/hkjc.svg" class="img-fluid logo" alt="香港賽馬會慈善信託基金 The Hong Kong Jockey Club Charities Trust">
             </a>
           </div>
         </div>
@@ -29,3 +29,8 @@
     </nav>
   </footer>
 </template>
+<style scoped>
+.logo {
+  max-height: 2.5rem;
+}
+</style>

@@ -7,6 +7,8 @@ export default class BasicPlayer extends Phaser.GameObjects.Container {
 
         this.leftAnimationKey = null
         this.rightAnimationKey = null
+        this.turningSound = this.scene.sound.add('turn')
+        this.turningSound.setLoop(true)
 
         this.freezeInput = false
 
@@ -20,11 +22,14 @@ export default class BasicPlayer extends Phaser.GameObjects.Container {
 
         this.toLeftAnimate()
 
+        this.turningSound.play()
+
         return new Promise((resolve) => {
             this.moveWithAnim({
                 x, y, time: this.getMovementDuration()
             }).then(() => {
                 this.freezeInput = false
+                this.turningSound.stop()
                 resolve()
             })
 
@@ -40,12 +45,15 @@ export default class BasicPlayer extends Phaser.GameObjects.Container {
 
         this.toRightAnimate()
 
+        this.turningSound.play()
+
         return new Promise((resolve) => {
 
             this.moveWithAnim({
                 x, y, time: this.getMovementDuration()
             }).then(()=> {
                 this.freezeInput = false
+                this.turningSound.stop()
                 resolve()
             })
         })

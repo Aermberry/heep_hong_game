@@ -1,5 +1,5 @@
 <template>
-  <div :class="'game-wrapper ' + gameOrientation">
+  <div :class="`game-wrapper ${gameOrientation} game-${gameID}`">
     <div class="outer">
       <div class="inner">
         <div id="game-container" v-if="downloaded" />
@@ -12,12 +12,20 @@
 <style>
   @font-face {
     font-family: "STKaitiTC-Black";
-    src: local("STKaitiTC-Black"),
-    url(../games/game_18/assets/font/game_18.ttf) format("truetype");
+    src: url(../games/game_18/assets/font/game_18.ttf) format("truetype");
   }
   @font-face {
-    font-family: "Custom-Han-Serif";
-    src: url(../games/game_5/assets/font/game_5.ttf) format("truetype");
+    font-family: "Custom-STKaitiTC";
+    src: url(../games/common/fonts/Custom-STKaitiTC.ttf) format("truetype");
+  }
+  .game-11 {
+    font-family: "Custom-STKaitiTC";
+  }
+  .game-5 {
+    font-family: "Custom-STKaitiTC";
+  }
+  .game-18 {
+    font-family: "Custom-STKaitiTC";
   }
 </style>
 
@@ -30,12 +38,33 @@ export default {
       gameInstance: null,
       ww: 0,
       wh: 0,
+      gameFileMapping: {
+        5: 5,
+        6: 5,
+        7: 5,
+        8: 5,
+        9: 5,
+        21: 5,
+        11: 11,
+        12: 11,
+        13: 11,
+        14: 11,
+        15: 11
+      }
     };
   },
   computed: {
     gameID: function () {
       let self = this;
-      return self.$route.params.id;
+
+      let currentGameId = self.$route.params.id
+        
+      if(typeof self.gameFileMapping[currentGameId] != 'undefined') {
+
+        currentGameId = self.gameFileMapping[currentGameId];
+
+      }
+      return currentGameId;
     },
     gameOrientation: function () {
       let self = this;
@@ -45,32 +74,15 @@ export default {
   async mounted() {
     let self = this
 
-    const gameFileMapping = {
-      5: 5,
-      6: 5,
-      7: 5,
-      8: 5,
-      9: 5,
-      21: 5,
-      11: 11,
-      12: 11,
-      13: 11,
-      14: 11,
-      15: 11
-    };
-
     let gameId = self.gameID;
 
-    if(typeof gameFileMapping[self.gameID] != 'undefined') {
+    if(typeof self.gameFileMapping[self.gameID] != 'undefined') {
 
-      gameId = gameFileMapping[self.gameID];
-
-      console.log(gameId)
+      gameId = self.gameFileMapping[self.gameID];
 
     }
 
     try{
-      console.log('game load')
 
       let gameFile = require('@/games/game_'+gameId+'/index')
       if(gameFile){

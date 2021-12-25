@@ -19,6 +19,8 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
     self.items = [];
     self.selectItems = [];
     self.selectItemsLimit = limit;
+    self.movedIn = false;
+    self.gameDisabled = false;
     self.create();
   }
 
@@ -57,7 +59,7 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
         }
       }
 
-      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item, self.handleChoiceClick.bind(this), self.handleChoiceEnable.bind(this));
+      let choiceBtn = new ChoiceBtn(self.scene, -195 + (self.itemColumn * 200), -370 + (self.itemRow * 230), item, self.handleChoiceClick.bind(this), self.handleChoiceEnable.bind(this), self.isGameNoFreeze.bind(this), self.getGameIndex.bind(this));
       self.items.push(choiceBtn);
 
       self.itemColumn++;
@@ -72,15 +74,14 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
 
 
   handleChoiceClick(choice){
-    let self = this;
+    let self = this; 
 
-
+    if(self.gameDisabled) return;
 
     if(choice.selected){
       if(self.handleChoiceEnable()){
 
         self.selectItems.push(choice.item);
-
         if(self.level == 1){
           let choiceFind = _.find(self.selectItems, {'type':choice.item.type})
           let choiceBtnFind = _.find(self.items, {'item':choiceFind})
@@ -94,6 +95,8 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
       _.pull(self.selectItems, choice.item);
     }
 
+    if(self.level == 2) self.items.forEach((btn)=> btn.updateIndex())
+
     if(self.handleChoiceEnable()){
       self.orderBtn.setDisable();
     }else{
@@ -102,14 +105,53 @@ export default class QuestionBase extends Phaser.GameObjects.Container {
 
   }
 
+  getGameIndex(itemValue = null) {
+
+    if(this.selectItemsLimit < 4) return -1;
+    if(itemValue === null) return this.selectItems.length + 1 > 0 ? this.selectItems.length + 1 : -1;
+
+    let result = -1;
+    this.selectItems.some((item, ind)=> {
+      if(item.name === itemValue) {
+        result = ind;
+        return true;
+      }
+    })
+    return result + 1;
+  }
+
   handleChoiceEnable(){
     let self = this;
     return self.selectItems.length < self.selectItemsLimit;
   }
 
+  isGameNoFreeze() {
+    let self = this;
+    return self.gameDisabled;
+  }
+
   handleOrderClick(){
     let self = this;
+    if(self.gameDisabled) return;
     self.callback(self.selectItems);
+  }
+
+  setBroadDisable(disable) {
+    let self = this;
+    return self.gameDisabled = disable;
+  }
+
+  broadMoveIn() {
+
+    if(this.movedIn) return;
+    this.movedIn = true;
+
+    this.scene.tweens.add({
+      targets: this,
+      x: 585,
+      ease: 'Power0',
+      duration: 500
+    })
   }
 
 }

@@ -48,7 +48,6 @@ export default class GameScene extends BasicScene {
     }
 
     create() {
-
         super.create();
 
         this.sound.stopAll();

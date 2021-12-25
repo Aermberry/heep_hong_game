@@ -2,7 +2,9 @@ export default class Model {
   constructor() {
     this._character = {};
     this._level = 1;
+    this._stage = 1;
     this._selectLimit = 3;
+    this._stageLimit = 3;
     this._bgMusicPlaying = false;
   }
 
@@ -12,6 +14,19 @@ export default class Model {
 
   get character(){
     return this._character;
+  }
+
+  set stage(value) {
+    this._stage = parseInt(value)
+    if(this._stage > this._stageLimit) {
+      this._stage = 1
+      this.level++
+    }
+    return this._stage
+  }
+
+  get stage() {
+    return this._stage
   }
 
   set level(value){

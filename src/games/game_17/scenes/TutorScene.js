@@ -19,7 +19,7 @@ export default class TutorSecene extends BasicScene {
         this.anims.create({
             key: 'tut2',
             delay: 200,
-            frames: this.anims.generateFrameNames('tut2', { prefix: 'tut2', start: 0, end: 55, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('tut2', { prefix: 'tut2', start: 0, end: 38, zeroPad: 4 }),
         });
         this.anims.create({
             key: 'tut3',
@@ -33,7 +33,8 @@ export default class TutorSecene extends BasicScene {
         super.create();
 
         this.buildBg('bg_tutor')
-
+        this.buildBg('bg_tutor')
+        this.sound.stopAll();
         //Stop all sound, because game will return to this scene on retry.
         // this.sound.stopAll();
 

@@ -25,9 +25,9 @@ const routes = [
     component: () => import('../views/GameWorldIndex.vue')
   },
   {
-    path: '/game/world/:wid',
+    path: '/game/world/:sid',
     name: 'Game World Stage',
-    component: () => import('../views/GameWorld.vue')
+    component: () => import('../views/GameWorldIndex.vue')
   },
   {
     path: '/gameDemo',

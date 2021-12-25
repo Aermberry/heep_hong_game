@@ -2,56 +2,56 @@
     {
         "gameLogic": 3,
         "gameStage": 7,
-        "hint": "1:左右相等, 2:左小右大, 3:左大右小",
+        "hint": "1:左中右, 2:上中下",
         "answers": [
             {
                 "index": 0,
-                "image": "an_LR"
+                "image": "an_LMR"
             },
             {
                 "index": 1,
-                "image": "an_LsR"
-            },
-            {
-                "index": 2,
-                "image": "an_sLR"
+                "image": "an_UMB"
             }
         ],
         "items": [
             {
-                "value": "明",
+                "value": "術",
                 "answer": 0
             },
             {
-                "value": "放",
+                "value": "樹",
                 "answer": 0
             },
             {
-                "value": "叫",
+                "value": "辨",
                 "answer": 0
             },
             {
-                "value": "洗",
-                "answer": 2
+                "value": "嬲",
+                "answer": 0
             },
             {
-                "value": "喝",
-                "answer": 2
+                "value": "鐵",
+                "answer": 0
             },
             {
-                "value": "拍",
-                "answer": 2
-            },
-            {
-                "value": "到",
+                "value": "意",
                 "answer": 1
             },
             {
-                "value": "剛",
+                "value": "鼻",
                 "answer": 1
             },
             {
-                "value": "鄰",
+                "value": "慧",
+                "answer": 1
+            },
+            {
+                "value": "翼",
+                "answer": 1
+            },
+            {
+                "value": "嘗",
                 "answer": 1
             }
         ]
@@ -59,7 +59,7 @@
     {
         "gameLogic": 3,
         "gameStage": 6,
-        "hint": "1:上下相等, 2:上小下大, 3:上大下小",
+        "hint": "1:左右相等, 2:左小右大, 3:左大右小, 4:上下相等, 5:上小下大, 6:上大下小",
         "answers": [
             {
                 "index": 0,
@@ -72,6 +72,18 @@
             {
                 "index": 2,
                 "image": "an_UsB"
+            },
+            {
+                "index": 3,
+                "image": "an_LR"
+            },
+            {
+                "index": 4,
+                "image": "an_LsR"
+            },
+            {
+                "index": 5,
+                "image": "an_sLR"
             }
         ],
         "items": [
@@ -110,6 +122,42 @@
             {
                 "value": "書",
                 "answer": 2
+            },
+            {
+                "value": "明",
+                "answer": 3
+            },
+            {
+                "value": "放",
+                "answer": 3
+            },
+            {
+                "value": "叫",
+                "answer": 3
+            },
+            {
+                "value": "洗",
+                "answer": 5
+            },
+            {
+                "value": "喝",
+                "answer": 5
+            },
+            {
+                "value": "拍",
+                "answer": 5
+            },
+            {
+                "value": "到",
+                "answer": 4
+            },
+            {
+                "value": "剛",
+                "answer": 4
+            },
+            {
+                "value": "鄰",
+                "answer": 4
             }
         ]
     },
@@ -217,7 +265,7 @@
     {
         "gameLogic": 3,
         "gameStage": 9,
-        "hint": "1:左右相等, 2:左小右大, 3:左大右小, 4:上下相等, 5:上小下大, 6:上大下小, 7:半包, 8:全包, 9:品",
+        "hint": "1:左右相等, 2:左小右大, 3:左大右小, 4:上下相等, 5:上小下大, 6:上大下小, 7:半包, 8:全包, 9:品, 12:左中右, 13:上中下",
         "answers": [
             {
                 "index": 0,
@@ -266,6 +314,14 @@
             {
                 "index": 11,
                 "image": "an_UL"
+            },
+            {
+                "index": 12,
+                "image": "an_LMR"
+            },
+            {
+                "index": 13,
+                "image": "an_UMB"
             }
         ],
         "items": [
@@ -282,18 +338,6 @@
                 "answer": 0
             },
             {
-                "value": "洗",
-                "answer": 2
-            },
-            {
-                "value": "喝",
-                "answer": 2
-            },
-            {
-                "value": "拍",
-                "answer": 2
-            },
-            {
                 "value": "到",
                 "answer": 1
             },
@@ -304,6 +348,18 @@
             {
                 "value": "鄰",
                 "answer": 1
+            },
+            {
+                "value": "洗",
+                "answer": 2
+            },
+            {
+                "value": "喝",
+                "answer": 2
+            },
+            {
+                "value": "拍",
+                "answer": 2
             },
             {
                 "value": "思",
@@ -408,6 +464,46 @@
             {
                 "value": "晶",
                 "answer": 8
+            },
+            {
+                "value": "術",
+                "answer": 12
+            },
+            {
+                "value": "樹",
+                "answer": 12
+            },
+            {
+                "value": "辨",
+                "answer": 12
+            },
+            {
+                "value": "嬲",
+                "answer": 12
+            },
+            {
+                "value": "鐵",
+                "answer": 12
+            },
+            {
+                "value": "意",
+                "answer": 13
+            },
+            {
+                "value": "鼻",
+                "answer": 13
+            },
+            {
+                "value": "慧",
+                "answer": 13
+            },
+            {
+                "value": "翼",
+                "answer": 13
+            },
+            {
+                "value": "嘗",
+                "answer": 13
             }
         ]
     },
@@ -435,10 +531,6 @@
                 "answer": 1
             },
             {
-                "value": "雨",
-                "answer": 1
-            },
-            {
                 "value": "鳥",
                 "answer": 1
             },
@@ -447,27 +539,7 @@
                 "answer": 1
             },
             {
-                "value": "拍",
-                "answer": 0
-            },
-            {
                 "value": "思",
-                "answer": 0
-            },
-            {
-                "value": "烈",
-                "answer": 0
-            },
-            {
-                "value": "遊",
-                "answer": 0
-            },
-            {
-                "value": "閃",
-                "answer": 0
-            },
-            {
-                "value": "團",
                 "answer": 0
             }
         ]
@@ -495,7 +567,7 @@
             {
                 "index": 3,
                 "image": "an_whole",
-                "text": "草"
+                "text": "艸"
             },
             {
                 "index": 4,
@@ -748,6 +820,10 @@
             {
                 "value": "烹",
                 "answer": 8
+            },
+            {
+                "value": "栗",
+                "answer": 5
             }
         ]
     }

@@ -92,5 +92,4 @@ export default class PreloaderScene extends BasicScene {
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }
-
 }

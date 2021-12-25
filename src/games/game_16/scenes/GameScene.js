@@ -42,6 +42,41 @@ export default class GameScene extends BasicScene {
         });
 
         this.anims.create({
+            key: 'addoil',
+            delay: 200,
+            frames: this.anims.generateFrameNames('addoil', { prefix: 'addoil', start: 0, end: 9, zeroPad: 4 }),
+            repeat: 1
+        });
+
+        this.anims.create({
+            key: 'remind',
+            delay: 200,
+            frames: this.anims.generateFrameNames('remind', { prefix: 'remind', start: 0, end: 9, zeroPad: 4 }),
+            repeat: 0
+        });
+
+        this.anims.create({
+            key: 'L2_answer_failed2',
+            delay: 200,
+            frames: this.anims.generateFrameNames('L2_answer_failed2', { prefix: 'Symbol 1', start: 0, end: 29, zeroPad: 4 }),
+            repeat: 0
+        });
+
+        this.anims.create({
+            key: 'less_happy',
+            delay: 200,
+            frames: this.anims.generateFrameNames('less_happy', { prefix: 'Symbol 1', start: 0, end: 29, zeroPad: 4 }),
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'correct_answer',
+            delay: 200,
+            frames: this.anims.generateFrameNames('correct_answer', { prefix: 'correct_answer', start: 0, end: 29, zeroPad: 4 }),
+            repeat: 0
+        });
+
+        this.anims.create({
             key: 'car_1_idle',
             frames: this.anims.generateFrameNames('car_1_idle', { prefix: 'car1', start: 0, end: 6, zeroPad: 4 }),
             repeat: -1,
@@ -61,6 +96,110 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'car_1_stop',
             frames: this.anims.generateFrameNames('car_1_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+        this.anims.create({
+            key: 'car_2_idle',
+            frames: this.anims.generateFrameNames('car_2_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_2_run',
+            frames: this.anims.generateFrameNames('car_2_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_2_stop',
+            frames: this.anims.generateFrameNames('car_2_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_3_idle',
+            frames: this.anims.generateFrameNames('car_3_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_3_run',
+            frames: this.anims.generateFrameNames('car_3_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_3_stop',
+            frames: this.anims.generateFrameNames('car_3_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_4_idle',
+            frames: this.anims.generateFrameNames('car_4_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_4_run',
+            frames: this.anims.generateFrameNames('car_4_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_4_stop',
+            frames: this.anims.generateFrameNames('car_4_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_5_idle',
+            frames: this.anims.generateFrameNames('car_5_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_5_run',
+            frames: this.anims.generateFrameNames('car_5_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_5_stop',
+            frames: this.anims.generateFrameNames('car_5_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
+            repeat: 0,
+            delay: 500
+        });
+
+        this.anims.create({
+            key: 'car_6_idle',
+            frames: this.anims.generateFrameNames('car_6_idle', { prefix: 'idle', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_6_run',
+            frames: this.anims.generateFrameNames('car_6_run', { prefix: 'run', start: 0, end: 8, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+
+        });
+        this.anims.create({
+            key: 'car_6_stop',
+            frames: this.anims.generateFrameNames('car_6_stop', { prefix: 'stop', start: 0, end: 23, zeroPad: 4 }),
             repeat: 0,
             delay: 500
         });
@@ -94,7 +233,7 @@ export default class GameScene extends BasicScene {
         super.create();
         this.buildBg('bg_L1');
         this.hoverArea = [];
-
+        this.sound.stopAll();
         if (this.stopAll) {
             this.sound.stopAll();
         } else {
@@ -107,17 +246,21 @@ export default class GameScene extends BasicScene {
 
 
         this.disableInput = false;
-        let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
+        // let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
         let y = this.getRowHeight(5.5);
         let startX = this.getColWidth(1.7);
         let points = [
             startX, y, 2200, y
         ];
         let curve = new Phaser.Curves.Spline(points);
-        this.car = this.add.follower(curve, this.getColWidth(1), this.getRowHeight(5.5), `car_${parseInt(Math.random() * (6 - 1 + 1) + 1, 10)}`).setDepth(10)
-        this.car.play('car_1_idle')
+        this.currentCar = parseInt(Math.random() * (6 - 1 + 1) + 1, 10);
+
+        this.car = this.add.follower(curve, this.getColWidth(1), this.getRowHeight(5.5), `car_${this.currentCar}`).setDepth(10)
+        this.car.play(`car_${this.currentCar}_idle`)
+
 
         let data = this.dataModal.gameItems;
+
         this.pastProblems.forEach((item) => {
             data = data.filter((problems) => {
                 if (item.join('|') !== problems.join('|')) {
@@ -126,27 +269,35 @@ export default class GameScene extends BasicScene {
             })
         })
 
-        data.splice(data.indexOf(this.pastProblems), 0);
+        // data.splice(data.indexOf(this.pastProblems), 0);
         let item = data[Math.floor(Math.random() * data.length)];
         this.pastProblems.push(item)
         this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.winnerCallBack.bind(this), item);
         this.blankRoad = new BlankRoad(this, this.getColWidth(6), this.getRowHeight(6));
         this.add.existing(this.answers)
         this.add.existing(this.blankRoad)
-        sky.play('sun');
-        let exitBtn = new ExitBtn(this, 120, 135);
+        // sky.play('sun');
+        let exitBtn = new ExitBtn(this, 100, 120);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
         this.add.existing(exitBtn);
         this.add.existing(this.doneBtn);
         this.add.existing(this.speakerBtn);
     }
 
-    winnerCallBack() {
+    winnerCallBack(flag) {
         setTimeout(() => {
             this.endGame();
         }, 3000)
-        this.car.play('car_1_run').startFollow({
+        let run = this.sound.add(flag ? 'run' : 'erro_run');
+        run.play();
+        if (flag) {
+            let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
+            correct.play('correct_answer');
+            let child = this.sound.add('child_clap')
+            child.play();
+        }
+        this.car.play(`car_${this.currentCar}_run`).startFollow({
             duration: 3000,
             yoyo: false,
             repeat: 0,

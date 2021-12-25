@@ -523,9 +523,9 @@
 "meta": {
 	"app": "Adobe Animate",
 	"version": "16.1.0.86",
-	"image": "tut_1.png",
+	"image": "tut1_1.png",
 	"format": "RGBA8888",
-	"size": {"w":2000,"h":2500},
+	"size": {"w":2048,"h":2700},
 	"scale": "1"
 }
 }

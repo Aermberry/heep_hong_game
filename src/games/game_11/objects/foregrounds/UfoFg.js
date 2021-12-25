@@ -17,7 +17,7 @@ export default class UfoFg extends BasicFg {
             key: 'mudroad',
             repeat: -1,
             duration: 3000,
-            frames: this.scene.anims.generateFrameNames('mudroad', { prefix: 'mudroad', start: 0, end: 59, zeroPad: 4 }),
+            frames: this.scene.anims.generateFrameNames('mudroad', { prefix: 'mudroad', start: 0, end: 23, zeroPad: 4 }),
         });
 
 

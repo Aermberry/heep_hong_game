@@ -10,6 +10,7 @@ import {
 // } from '../assets/animations/GameStatusAnimation';
 import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
+import AnswerArea from "../components/AnswerArea";
 // import Colors from "../styles/Colors";
 
 
@@ -18,15 +19,13 @@ export default class GameScene extends BasicScene {
     constructor() {
         super('Game');
 
-        this.dolls = []
-        this.lights = []
         this.playLayer = undefined
         this.questionNumberList = []
-        this.retryButton = undefined
+
         this.questionIndex = undefined
         this.backgroundLayer = undefined
         this.gameFailedLayer = undefined
-        this.currentDollIndex = undefined;
+
         this.currentQuestionAnswer = undefined
     }
 
@@ -37,7 +36,6 @@ export default class GameScene extends BasicScene {
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
 
-        this.currentDollIndex = 1;
 
     }
 
@@ -46,14 +44,14 @@ export default class GameScene extends BasicScene {
         super.create();
 
 
-        
+
         createEggTwistingMachineAnimation(this.anims);
 
         this.paintGameScene(this);
 
-        
 
-      
+
+
     }
 
     /**
@@ -67,7 +65,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-
+            
         } else {
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
@@ -77,6 +75,7 @@ export default class GameScene extends BasicScene {
         }
 
         question = JSON.parse(localStorage.getItem(this.questionIndex));
+        console.log("当前抽取的题目:%o",question);
         // question = JSON.parse(localStorage.getItem(8));
         this.currentQuestionAnswer = question.answer;
 
@@ -92,11 +91,13 @@ export default class GameScene extends BasicScene {
 
         let eggTwistingMachineAnimation = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
         eggTwistingMachineAnimation.play('eggTwistingMachineAnimation');
-        
+
+        let answerArea = new AnswerArea(this,this.generateQuestion());
+
 
         let exitButton = new ExitButton(this, 120, 135);
-        
-        this.backgroundLayer.add([this.buildBg('backgroundGamePlay'),eggTwistingMachineAnimation]);
+
+        this.backgroundLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineAnimation, answerArea]);
         this.playLayer.add([exitButton]);
     }
 
@@ -144,9 +145,7 @@ export default class GameScene extends BasicScene {
                 this.time.addEvent({
                     delay: 500,
                     callback: () => {
-                        this.resetClipBox(clipBox);
 
-                        this.showLightToCorrectDoll();
                     }
                 })
             }
@@ -157,40 +156,5 @@ export default class GameScene extends BasicScene {
         this.playLayer.add(errorSprite);
     }
 
-    resetClipBox(clipBox) {
-        let doll = clipBox.list[1];
-        let clip = clipBox.list[0];
 
-        clipBox.removeAll();
-        clipBox.destroy(true);
-
-        clip.x = 1600;
-        clip.y = -250;
-
-        clip.setFrame(0);
-
-        doll.x = doll.originX;
-        doll.y = doll.originY;
-    }
-
-    showLightToCorrectDoll() {
-
-        let lights = [
-            this.add.image(this.getColWidth(3.5), this.getRowHeight(2.5), 'light'),
-            this.add.image(this.getColWidth(6), this.getRowHeight(2.5), 'light'),
-            this.add.image(this.getColWidth(8.5), this.getRowHeight(2.5), 'light'),
-        ];
-
-        let index = this.dolls.findIndex((element) => element.name == this.currentQuestionAnswer);
-
-        lights.forEach((light) => light.setAlpha(0));
-
-        this.tweens.add(
-            {
-                targets: lights[index],
-                alpha: 1,
-                ease: 'Bounce',
-                duration: 1000
-            });
-    }
 }

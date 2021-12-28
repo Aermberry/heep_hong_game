@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import PhraseLabelBox from '../components/PhraseLabelBox'
-// import Colors from "../styles/Colors";
+import ConfirmButton from './ConfirmButton';
+import PrepositionLabelBox from './PrepositionLabelBox';
 
 export default class AnswerArea extends Phaser.GameObjects.Container {
 
@@ -27,30 +28,42 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         scene.add.existing(this);
 
-        this.paintPhraseLabels(scene, this.question.phrases);
+        this.paintPhraseLabels(scene, this.question.preposition, this.question.phrases);
+
+        new ConfirmButton(scene, 500, 500);
     }
 
-    paintPhraseLabels(scene, phrases) {
+    paintPhraseLabels(scene, preposition, phrases) {
 
-        // phrases.forEach((value, index) => {
+        const points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 527 }];
 
+        const prepositionIndexPosition = phrases.indexOf(preposition);
+        const prepositionLabelBoxPoint = points[prepositionIndexPosition];
 
-        // });
+        let phraseLabelBoxPoints = Array.from(points);
+        phrases.splice(prepositionIndexPosition, 1);
+        phraseLabelBoxPoints.splice(prepositionIndexPosition, 1);
 
-        const labelText00 = new PhraseLabelBox(scene, 1278, 178, phrases[0], this.textStyle);
+        // console.log({phrases})
+        // console.log({ points: points })
+        // console.log({ prepositionLabelBoxPoint: prepositionLabelBoxPoint })
+        // console.log({ phraseLabelBoxPoints: phraseLabelBoxPoints });
 
-        const labelText01 = new PhraseLabelBox(scene, 1696, 175, phrases[1], this.textStyle);
+        if (prepositionLabelBoxPoint != null) {
+            this.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle));
+        }
 
-        const labelText02 = new PhraseLabelBox(scene, 1278, 355, phrases[2], this.textStyle);
-
-        const labelText03 = new PhraseLabelBox(scene, 1699, 390, phrases[3], this.textStyle);
-
-        const labelText04 = new PhraseLabelBox(scene, 1500, 527, phrases[4], this.textStyle);
-
-        this.add(labelText00, labelText01, labelText02, labelText03, labelText04);
-
-        console.log(this);
+        if (phraseLabelBoxPoints != null) {
+            for (let index = 0; index < phrases.length; index++) {
+                const phrase = phrases[index];
+                this.add(new PhraseLabelBox(scene, phraseLabelBoxPoints[index], phrase, this.textStyle));
+            }
+        }
 
     }
+
+    // paintAnswerPanel(scene){
+
+    // }
 
 }

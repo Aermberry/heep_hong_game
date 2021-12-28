@@ -1,228 +1,242 @@
 [
     {
         "answer": "小花貓把主人嚇了一跳。",
-        "pictureIndex":0,
+        "pictureIndex": 0,
         "phrases": [
             "小花貓",
             "把",
             "主人",
             "嚇了一跳",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "弟弟把哥哥的玩具車弄壞了。",
-        "pictureIndex":1,
+        "pictureIndex": 1,
         "phrases": [
             "弟弟",
             "把",
             "哥哥的玩具車",
             "弄壞了",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "小花貓把碟子上的魚吃光了。",
-        "pictureIndex":2,
+        "pictureIndex": 2,
         "phrases": [
             "小花貓",
             "把",
             "碟子上的魚",
             "吃光了",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "姊姊把玩具收拾到箱子裏。",
-        "pictureIndex":3,
+        "pictureIndex": 3,
         "phrases": [
             "姊姊",
             "把",
             "玩具",
             "收拾到箱子裏",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "哥哥把果汁喝光了。",
-        "pictureIndex":4,
+        "pictureIndex": 4,
         "phrases": [
             "哥哥",
             "把",
             "果汁",
             "喝光了",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "白公鵝把我的魚杆搶走了。",
-        "pictureIndex":5,
+        "pictureIndex": 5,
         "phrases": [
             "白公鵝",
             "把",
             "我的魚杆",
             "搶走了",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "大安把我的書本撕破了。",
-        "pictureIndex":6,
+        "pictureIndex": 6,
         "phrases": [
             "大安",
             "把",
             "我的書本",
             "撕破了",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "媽媽把客廳打掃乾淨。",
-        "pictureIndex":7,
+        "pictureIndex": 7,
         "phrases": [
             "媽媽",
             "把",
             "客廳",
             "打掃乾淨",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "小狗把我的襪子咬爛了。",
-        "pictureIndex":8,
+        "pictureIndex": 8,
         "phrases": [
             "小狗",
             "把",
             "我的襪子",
             "咬爛了",
             "。"
-        ]
+        ],
+        "preposition": "把"
     },
     {
         "answer": "不要把手伸出窗外。",
-        "pictureIndex":9,
+        "pictureIndex": 9,
         "phrases": [
             "不要",
             "把",
             "手",
             "伸出窗外",
             "。"
-        ]
-    }
-    ,
+        ],
+        "preposition": "把"
+    },
     {
         "answer": "小花貓被主人嚇了一跳。",
-        "pictureIndex":10,
+        "pictureIndex": 10,
         "phrases": [
             "小花貓",
             "被",
             "主人",
             "嚇了一跳",
             "。"
-        ]
-    }
-    ,
+        ],
+        "preposition": "被"
+    },
     {
         "answer": "弟弟的玩具車被哥哥弄壞了。",
-        "pictureIndex":11,
+        "pictureIndex": 11,
         "phrases": [
             "弟弟的玩具車",
             "被",
             "哥哥",
             "弄壞了",
             "。"
-        ]
-    }
-    ,
+        ],
+        "preposition": "被"
+    },
     {
         "answer": "最後一件蛋糕被妹妹吃了。",
-        "pictureIndex":12,
+        "pictureIndex": 12,
         "phrases": [
             "最後一件蛋糕",
             "被",
             "妹妹",
             "吃了",
             "。"
-        ]
-    }
-    ,
+        ],
+        "preposition": "被"
+    },
     {
         "answer": "太陽被黑雲遮蓋了。",
-        "pictureIndex":13,
+        "pictureIndex": 13,
         "phrases": [
             "太陽",
             "被",
             "黑雲",
             "遮蓋了",
             "。"
-        ]
-    }
-    ,
+        ],
+        "preposition": "被"
+    },
     {
         "answer": "樹葉被大風吹落了。",
-        "pictureIndex":14,
+        "pictureIndex": 14,
         "phrases": [
             "樹葉",
             "被",
             "大風",
             "吹落了",
             "。"
-        ]
-    }
-    ,
+        ],
+        "preposition": "被"
+    },
     {
         "answer": "我釣的魚全都被白公鵝搶走了。",
-        "pictureIndex":15,
+        "pictureIndex": 15,
         "phrases": [
             "我釣的魚",
             "被",
             "白公鵝",
             "搶走了",
             "。"
-        ]
+        ],
+        "preposition": "被"
     },
     {
         "answer": "我的銀包被小偷搶走了。",
-        "pictureIndex":16,
+        "pictureIndex": 16,
         "phrases": [
             "我的銀包",
             "被",
             "小偷",
             "搶走了",
             "。"
-        ]
+        ],
+        "preposition": "被"
     },
     {
         "answer": "我的衣服被雨水淋濕了",
-        "pictureIndex":17,
+        "pictureIndex": 17,
         "phrases": [
             "我的衣服",
             "被",
             "雨水",
             "淋濕了",
             "。"
-        ]
+        ],
+        "preposition": "被"
     },
     {
         "answer": "我的襪子被小貓收藏起來。",
-        "pictureIndex":18,
+        "pictureIndex": 18,
         "phrases": [
             "我的襪子",
             "被",
             "小貓",
             "收藏起來",
             "。"
-        ]
+        ],
+        "preposition": "被"
     },
     {
         "answer": "芝士被老鼠咬了一大口。",
-        "pictureIndex":19,
+        "pictureIndex": 19,
         "phrases": [
             "芝士",
             "被",
             "老鼠",
             "咬了一大口",
             "。"
-        ]
+        ],
+        "preposition": "被"
     }
 ]

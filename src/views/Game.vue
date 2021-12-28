@@ -7,7 +7,7 @@
 import Game from '@/components/GameStage.vue'
 
 export default {
-  name: 'Game',
+  name: 'About',
   components: {
     Game
   },

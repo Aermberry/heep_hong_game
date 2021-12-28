@@ -1,9 +1,10 @@
 <template>
-  <div :class="`game-wrapper ${gameOrientation} game-${gameID}`">
+  <div :class="`game-wrapper ${gameOrientation}`">
     <div class="outer">
       <div class="inner">
-        <div id="game-container" v-if="downloaded" />
+        <div id="game-container" :class="`game-${gameID}`" v-if="downloaded" />
         <div class="placeholder" v-else>Downloading ...</div>
+
       </div>
     </div>
   </div>
@@ -43,8 +44,7 @@ export default {
         13: 11,
         14: 11,
         15: 11
-      },
-      setCookieTimer: null
+      }
     };
   },
   computed: {
@@ -84,6 +84,8 @@ export default {
         self.downloaded = true
         self.$nextTick(() => {
           self.gameInstance = game.launch(self.$route.params);
+          self.$gamePause.initService(self.gameInstance, 15, 5)
+          self.$gamePause.initGameTrackTimer()
         });
       }
     } catch (e) {
@@ -96,43 +98,17 @@ export default {
       self.windowSizeHandler();
     });
 
-    self.initGameTrackTimer()
-
-
   },
   destroyed() {
     this.gameInstance.destroy(false);
-    clearInterval(this.setCookieTimer);
+    this.$gamePause.clearTimer()
+//    clearInterval(this.setCookieTimer);
   },
   methods: {
     windowSizeHandler: function () {
       let self = this;
       self.ww = window.innerWidth;
       self.wh = window.innerHeight;
-    },
-    initGameTrackTimer() {
-      if(this.setCookieTimer != null) clearInterval(this.setCookieTimer)
-
-      let now = new Date()
-
-      let existingStartTimestamp = localStorage.getItem('game_begin_timestamp')
-      let existingLastUpdateTimestamp = localStorage.getItem('game_last_update_timestamp')
-
-      if(!existingStartTimestamp || 
-        (existingLastUpdateTimestamp && existingLastUpdateTimestamp > (existingStartTimestamp + 15 * 60 * 1000))) 
-      {
-        localStorage.setItem('game_begin_timestamp', now.getTime())
-        localStorage.setItem('game_last_update_timestamp', now.getTime())
-      }
-
-      this.setCookieTimer = setInterval(()=> {
-        
-        let date = new Date()
-        let nowTimestamp = date.getTime()
-
-        localStorage.setItem('game_last_update_timestamp', nowTimestamp)
-
-      }, 30000)
     }
   },
 };

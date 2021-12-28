@@ -31,6 +31,7 @@ export default class GameScene extends BasicScene {
 
     preload() {
         this.buildBg('bg')
+        this.sound.stopAll();
 
         this.anims.create({
             key: 'owl_swing',
@@ -204,13 +205,12 @@ export default class GameScene extends BasicScene {
                 this.gameStartAnimations(o)
             } else {
                 o.destroy();
-                this.sound.stopAll();
                 let music = this.sound.add('stage_items');
-                music.play();
                 music.once('complete', () => {
                     let bgm = this.sound.add('bgm', { loop: true, volume: 1 })
                     bgm.play();
                 });
+                music.play();
 
                 this.Answers = new Answers(this, this.getColWidth(4), this.getRowHeight(2.3))
             }

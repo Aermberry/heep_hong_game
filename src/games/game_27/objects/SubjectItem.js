@@ -30,26 +30,81 @@ export default class SubjectItem extends Phaser.GameObjects.Container {
         if (this.list.includes(gameObject)) {
             super.remove(gameObject);
         }
+
         this.reRender();
     }
 
-    reRender() {
-        this.list.forEach((item, i) => {
-            if (item instanceof SelectCar) {
-                if (this.list[i - 1] instanceof SelectCar) {
-                    item.x = i == 0 ? 0 : this.list[i - 1].x + this.list[i - 1].width - 20
-                } else {
-                    item.x = i == 0 ? 160 : this.list[i - 1].x + this.list[i - 1].width - 20 + 160
-                }
-                item.y = 230;
+    ignoreRebder(gameObject) {
+        if (this.list.includes(gameObject)) {
+            this.ignoreReRender(gameObject)
+        }
+    }
+
+    ignoreReRender(gameObject) {
+        let i = 0;
+        while (i < this.list.length) {
+            if (this.list[i] != gameObject) {
+            if (this.list[i - 1] == gameObject) {
+                this.ignoreItemRender(this.list[i], i)
             } else {
-                if (this.list[i - 1] instanceof SelectCar) {
-                    item.x = i == 0 ? 0 : this.list[i - 1].x + this.list[i - 1].width - 20 - 160
-                } else {
-                    item.x = i == 0 ? 0 : this.list[i - 1].x + this.list[i - 1].width - 20
-                }
-                item.y = 0;
+                this.itemRender(this.list[i], i)
             }
+            this.list[i].origin = {
+                x: this.list[i].x,
+                y: this.list[i].y
+            }}
+            i++;
+        }
+    }
+
+    ignoreItemRender(item, i) {
+        if (item instanceof SelectCar) {
+            if (this.list[i - 2]) {
+                if (this.list[i - 2] instanceof SelectCar) {
+                    item.x = this.list[i - 2].x + this.list[i - 2].width - 20
+                } else {
+                    item.x = this.list[i - 2].x + this.list[i - 2].width - 20 + 160
+                }
+            } else {
+                item.x = 0;
+            }
+            item.y = 230;
+        } else {
+            if (this.list[i - 2]) {
+                if (this.list[i - 2] instanceof SelectCar) {
+                    item.x = this.list[i - 2].x + this.list[i - 2].width - 20 - 160
+                } else {
+                    item.x = this.list[i - 2].x + this.list[i - 2].width - 20
+                }
+            } else {
+                item.x = 0;
+            }
+            item.y = 0;
+        }
+    }
+
+    itemRender(item, i) {
+        if (item instanceof SelectCar) {
+            if (this.list[i - 1] instanceof SelectCar) {
+                item.x = i == 0 ? 0 : this.list[i - 1].x + this.list[i - 1].width - 20
+            } else {
+                item.x = i == 0 ? 160 : this.list[i - 1].x + this.list[i - 1].width - 20 + 160
+            }
+            item.y = 230;
+        } else {
+            if (this.list[i - 1] instanceof SelectCar) {
+                item.x = i == 0 ? 0 : this.list[i - 1].x + this.list[i - 1].width - 20 - 160
+            } else {
+                item.x = i == 0 ? 0 : this.list[i - 1].x + this.list[i - 1].width - 20
+            }
+            item.y = 0;
+        }
+    }
+
+    reRender() {
+        let self = this;
+        self.list.forEach((item, i) => {
+            self.itemRender(item, i)
             item.origin = {
                 x: item.x,
                 y: item.y

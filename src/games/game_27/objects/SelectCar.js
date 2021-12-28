@@ -48,9 +48,9 @@ export default class SelectCar extends Phaser.GameObjects.Container {
                     // this.x += this.scene.subjectItem.x;
                     this.origin.x = this.x;
                     let self = this;
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         self.scene.subjectItem.add(self);
-                    }, 230)
+                    // }, 230)
                 } else {
                     this.x = this.selectAreaOring.x;
                     this.y = this.selectAreaOring.y;
@@ -78,9 +78,18 @@ export default class SelectCar extends Phaser.GameObjects.Container {
     reRender() {
         let self = this;
         self.index = [];
-        self.scene.subjectItem.remove(this);
+        self.thisIndex = 0;
+        if (self.scene.subjectItem.list.includes(this)) {
+            self.scene.subjectItem.list.splice(self.scene.subjectItem.list.indexOf(this), 1);
+            self.scene.subjectItem.list.push(this)
+        }
+
+        console.log(this.scene.subjectItem.x);
         self.scene.subjectItem.list.forEach((item, index) => {
-            if (item == this) return;
+            if (item == this) {
+                self.thisIndex = index;
+                return;
+            }
             if (item.x + this.scene.subjectItem.x <= this.x) {
                 item.x = item.origin.x;
                 this.move(item, item.origin.x - this.width / 2)
@@ -98,7 +107,9 @@ export default class SelectCar extends Phaser.GameObjects.Container {
             x: x,
             duration: 200,
             ease: 'Power2'
-        })
+        }).on('complete', () => {
+            o.x = o.origin.x;
+        });
     }
 
 }

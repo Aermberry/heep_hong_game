@@ -13,7 +13,14 @@ export default class Car extends Phaser.GameObjects.Container {
             let max = 2;
             itemImg = scene.add.sprite(0, 0, `13w_car${Math.floor(Math.random() * (max - 1 + 1) + 1)}`).setOrigin(0, 0);
         }
-
+        this.lastOrigin = {
+            x: x,
+            y: y
+        }
+        this.origin = {
+            x: x,
+            y: y
+        }
         let text = scene.add.text(0, 370, item, {
             fontSize: '45px', //30px
             color: '#000000',

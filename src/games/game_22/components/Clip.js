@@ -46,6 +46,14 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
                         scene.physics.world.removeCollider(collider);
 
                         clip.currentTweenAnimation.pause();
+
+                        // clip.on('animationstart',(animation)=>{
+                        //     if(animation.key=='clip_clipStateAnimation'){
+                        //         scene.sound.play('clipClampEffectSound');
+                        //     }
+                        // });
+                        scene.sound.play('clipClampEffectSound');
+
                         clip.playAnimation("clip_clipStateAnimation");
 
                         let container = scene.add.container(0, 0, [clip,doll]).setName('onSandwiched');

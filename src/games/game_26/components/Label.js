@@ -32,17 +32,22 @@ export default class Label extends Phaser.GameObjects.Container {
         )
 
         this.setSize(this.texture.displayWidth, this.texture.displayHeight);
-        this.setInteractive(
-            {
-                // cursor: `url(${CursorHand}), pointer`,
-                useHandCursor: true
+
+        this.setInteractive({ useHandCursor: true }).on(
+            Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                console.log("down")
+                this.texture.setFrame(0);
+                this.onDownClicked();
             }
         )
-        this.scene.input.setDraggable(this);
+            .on(
+                Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
+                    console.log("up")
+                    this.texture.setFrame(0);
+                    this.onUpClicked();
+                }
+            )
     }
 
-    changeStyle(scale, fontSize) {
-        this.texture.setScale(scale);
-        this.labelText.setFontSize(fontSize);
-    }
+   
 }

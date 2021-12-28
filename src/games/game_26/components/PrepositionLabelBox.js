@@ -10,4 +10,13 @@ export default class PrepositionLabelBox extends Label {
 
         this.create();
     }
+
+    onDownClicked() {
+        console.log("on down");
+    }
+
+    onUpClicked() {
+
+        console.log("on up");
+    }
 }

@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import PhraseLabelBox from '../components/PhraseLabelBox'
-import ConfirmButton from './ConfirmButton';
+import AnswerPanel from './AnswerPanel';
 import PrepositionLabelBox from './PrepositionLabelBox';
 
 export default class AnswerArea extends Phaser.GameObjects.Container {
@@ -30,7 +30,8 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         this.paintPhraseLabels(scene, this.question.preposition, this.question.phrases);
 
-        new ConfirmButton(scene, 500, 500);
+        
+        new AnswerPanel(scene,1000,900);
     }
 
     paintPhraseLabels(scene, preposition, phrases) {

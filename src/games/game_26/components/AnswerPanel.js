@@ -13,7 +13,7 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
 
         // console.log("texture: %o", this.texture.displayWidth);
         this.confirmButton = new ConfirmButton(scene, 800, 15);
-        this.resetButton = new ResetButton(scene, 650, 0);
+        this.resetButton = new ResetButton(scene, 650, 0,'Game');
         this.labelText = this.scene.make.text({
             x: -this.texture.displayWidth/2,
             y: -10,

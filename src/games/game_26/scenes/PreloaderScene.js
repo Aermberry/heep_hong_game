@@ -86,7 +86,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('retryButton', require('../assets/images/button_retry.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('gameProgressExitButton', require('../assets/images/button_exit_progress_game.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 247 });
+        this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
         this.load.spritesheet('confirmButton',require('../assets/images/button_confirm.png'),{frameWidth: 386, frameHeight: 384});
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });

@@ -25,16 +25,17 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         }
 
-
         scene.add.existing(this);
 
-        this.paintPhraseLabels(scene, this.question.preposition, this.question.phrases);
+        this.answerPanel = new AnswerPanel(scene, 1000, 900);
+        this.paintPhraseLabels(scene, this.question.preposition, this.question.phrases, this.answerPanel);
 
-        
-        new AnswerPanel(scene,1000,900);
+        this.addOnClickedEventListener(this.answerPanel);
+
+        this.add[this.answerPanel];
     }
 
-    paintPhraseLabels(scene, preposition, phrases) {
+    paintPhraseLabels(scene, preposition, phrases, answerPanel) {
 
         const points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 527 }];
 
@@ -51,20 +52,22 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         // console.log({ phraseLabelBoxPoints: phraseLabelBoxPoints });
 
         if (prepositionLabelBoxPoint != null) {
-            this.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle));
+            this.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle, answerPanel));
         }
 
         if (phraseLabelBoxPoints != null) {
             for (let index = 0; index < phrases.length; index++) {
                 const phrase = phrases[index];
-                this.add(new PhraseLabelBox(scene, phraseLabelBoxPoints[index], phrase, this.textStyle));
+                this.add(new PhraseLabelBox(scene, phraseLabelBoxPoints[index], phrase, this.textStyle, answerPanel));
             }
         }
 
     }
 
-    // paintAnswerPanel(scene){
-
-    // }
+    addOnClickedEventListener(gameObject) {
+        gameObject.on('clickedEvent', (value) => {
+            console.log(value);
+        })
+    }
 
 }

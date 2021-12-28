@@ -5,6 +5,7 @@ export default class ResetButton extends Phaser.GameObjects.Container {
     constructor(scene, x, y,targetScene) {
 
         super(scene, x, y);
+        
         this.targetScene = targetScene;
         scene.add.existing(this);
 
@@ -35,6 +36,6 @@ export default class ResetButton extends Phaser.GameObjects.Container {
     }
 
     onUpClicked() {
-
+        this.scene.scene.restart();
     }
 }

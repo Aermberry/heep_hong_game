@@ -19,7 +19,7 @@ export default class GameScene extends BasicScene {
     constructor() {
         super('Game');
 
-        this.playLayer = undefined
+        this.gameLayer = undefined
         this.questionNumberList = []
 
         this.questionIndex = undefined
@@ -86,7 +86,7 @@ export default class GameScene extends BasicScene {
      * 绘制GameScene的所有Ui元素
      */
     paintGameScene() {
-        this.playLayer = this.add.layer().setDepth(1);
+        this.gameLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
         let eggTwistingMachineAnimation = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
@@ -94,11 +94,10 @@ export default class GameScene extends BasicScene {
 
         let answerArea = new AnswerArea(this,this.generateQuestion());
 
-
         let exitButton = new ExitButton(this, 120, 135);
 
         this.backgroundLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineAnimation, answerArea]);
-        this.playLayer.add([exitButton]);
+        this.gameLayer.add([exitButton]);
     }
 
     paintGameSuccess(doll) {
@@ -112,7 +111,7 @@ export default class GameScene extends BasicScene {
         });
 
         let targetPosition = JSON.parse(localStorage.getItem('targetPosition'));
-        this.playLayer.add(new GameSprite(this, targetPosition.x + doll.x, targetPosition.y + doll.y - 500, "gameSuccessAnimation"));
+        this.gameLayer.add(new GameSprite(this, targetPosition.x + doll.x, targetPosition.y + doll.y - 500, "gameSuccessAnimation"));
         this.sound.add('starEffectSound').play();
     }
 
@@ -153,7 +152,7 @@ export default class GameScene extends BasicScene {
 
         this.sound.add('electricShockEffectSound').play();
 
-        this.playLayer.add(errorSprite);
+        this.gameLayer.add(errorSprite);
     }
 
 

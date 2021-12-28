@@ -9,7 +9,7 @@ import VueGtag from "vue-gtag"
 Vue.config.productionTip = false
 defineIonPhaser(window);
 Vue.use(VueGtag, {
-  config: {id: "G-BP8DHG569D"}
+  config: {id: "G-7Y7Y2DTXPV"}
 })
 new Vue({
   router,

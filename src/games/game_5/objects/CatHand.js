@@ -30,11 +30,11 @@ export default class CatHand extends DraggableContainer {
 
         if(typeof answer.text == 'string') {
             let answerText = scene.add.text(
-                handImg.width * 0.135 , handImg.height * 0.05, answer.text,
+                handImg.width * 0.135 , handImg.height * -0.05, answer.text,
                 {
                     fontSize: (answerPic.width * .9) + 'px',
                     color: '#000000',
-                    fontFamily: "Custom-Han-Serif"
+                    fontFamily: "Custom-STKaitiTC"
                 }
             )
             answerText.setOrigin(0.5)

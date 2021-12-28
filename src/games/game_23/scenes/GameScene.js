@@ -47,16 +47,38 @@ export default class GameScene extends BasicScene {
 
     }
 
+    update(){
+        console.log(this.currentDollIndex);
+    }
+
     create() {
 
         super.create();
-
+        
+        this.sound.stopAll();
 
         createClipAnimations(this.anims);
         createGameStatusAnimations(this.anims);
         this.paintGameScene(this);
         // Phaser.physics.add.overlap(this.clip, this.yellowDoll);
 
+        this.playBackgroundMusic('clipDollTableEffectSound', 'gamePlaySceneBackgroundMusic');
+
+    }
+
+    playBackgroundMusic(startSound, backgroundSound) {
+
+        const clipDollTableEffectSound = this.sound.add(startSound);
+        const backgroundMusic = this.sound.add(backgroundSound, {
+            volume: 0.2,
+            loop: true
+        });
+
+        clipDollTableEffectSound.on('complete', () => {
+            backgroundMusic.play();
+        })
+
+        clipDollTableEffectSound.play();
     }
 
     /**
@@ -207,6 +229,7 @@ export default class GameScene extends BasicScene {
         let index = this.dolls.findIndex((element) => element.name == this.currentQuestionAnswer);
 
         lights.forEach((light) => light.setAlpha(0));
+        this.sound.play('spotlightFocusEffectSound');
 
         this.tweens.add(
             {

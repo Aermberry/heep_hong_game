@@ -46,4 +46,8 @@ export default class Model {
         return this._gameData[this._gameIndex].foregroundItem
     }
 
+    get tutorAnimates() {
+        return this._gameData[this._gameIndex].tutor
+    }
+
 }

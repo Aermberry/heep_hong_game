@@ -14,10 +14,12 @@ export default class PreloaderScene extends BasicScene {
     preload() {
         let self = this;
 
+       
         this.buildBg('bgLoadingGame');
 
         this.progressLoader = new LoadProgress(this);
         this.progressLoader.create();
+        
 
         this.load.on('progress', (params) => {
             this.progressLoader.onLoadProgress(params)
@@ -25,6 +27,7 @@ export default class PreloaderScene extends BasicScene {
         );
 
         this.load.on('complete', (loader, totalComplete, totalFailed) => {
+            console.log(loader, totalComplete, totalFailed);
             this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
         });
 
@@ -38,7 +41,7 @@ export default class PreloaderScene extends BasicScene {
             'blueDoll': require('../assets/images/doll_2.png'),
             'pinkDoll': require('../assets/images/doll_3.png'),
             'hole': require('../assets/images/hole.png'),
-            'light':require('../assets/images/light.png')
+            'light': require('../assets/images/light.png')
         };
 
         const atlasFiles = {
@@ -63,9 +66,18 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
+            /* BGM */
+            'gamePlaySceneBackgroundMusic': require('../assets/audio/bgm_game_play_scene.mp3'),
+            'preloaderSceneGameEndSceneBackgroundMusic': require('../assets/audio/bgm_preloader_scene_game_end_scene.mp3'),
 
+            /* Effect Sound */
+            'buttonEffectSound': require('../assets/audio/sound_effect/effect_button_on_clicked.mp3'),
             'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
             'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
+            'clipClampEffectSound':require('../assets/audio/sound_effect/effect_clip_clamp.mp3'),
+            'clipDollTableEffectSound':require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
+            'clipMovementEffectSound':require('../assets/audio/sound_effect/effect_clip_movement.mp3'),
+            'spotlightFocusEffectSound':require('../assets/audio/sound_effect/effect_spotlight_focus.mp3'),
         }
 
         this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });

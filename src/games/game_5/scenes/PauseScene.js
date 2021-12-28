@@ -8,6 +8,7 @@ export default class BootScene extends Scene {
 
   preload () {
 
+    //Bg image need to replace with a universalize image
     this.load.image('bg_title', require('../assets/Title.png'))
 
   }
@@ -29,6 +30,7 @@ export default class BootScene extends Scene {
 
 
     //if last update time is 15 minutes larger than begin time, scene.pause
+    //Popup ask user to rest for 5minutes, or press resume to continue play
 
 
 

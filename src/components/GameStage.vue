@@ -11,10 +11,6 @@
 
 <style>
   @font-face {
-    font-family: "STKaitiTC-Black";
-    src: url(../games/game_18/assets/font/game_18.ttf) format("truetype");
-  }
-  @font-face {
     font-family: "Custom-STKaitiTC";
     src: url(../games/common/fonts/Custom-STKaitiTC.ttf) format("truetype");
   }

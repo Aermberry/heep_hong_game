@@ -18,9 +18,6 @@
     font-family: "Custom-STKaitiTC";
     src: url(../games/common/fonts/Custom-STKaitiTC.ttf) format("truetype");
   }
-  .game-11 {
-    font-family: "Custom-STKaitiTC";
-  }
   .game-5 {
     font-family: "Custom-STKaitiTC";
   }
@@ -50,7 +47,8 @@ export default {
         13: 11,
         14: 11,
         15: 11
-      }
+      },
+      setCookieTimer: null
     };
   },
   computed: {
@@ -101,9 +99,14 @@ export default {
     window.addEventListener("resize", function () {
       self.windowSizeHandler();
     });
+
+    self.initGameTrackTimer()
+
+
   },
   destroyed() {
     this.gameInstance.destroy(false);
+    clearInterval(this.setCookieTimer);
   },
   methods: {
     windowSizeHandler: function () {
@@ -111,6 +114,30 @@ export default {
       self.ww = window.innerWidth;
       self.wh = window.innerHeight;
     },
+    initGameTrackTimer() {
+      if(this.setCookieTimer != null) clearInterval(this.setCookieTimer)
+
+      let now = new Date()
+
+      let existingStartTimestamp = localStorage.getItem('game_begin_timestamp')
+      let existingLastUpdateTimestamp = localStorage.getItem('game_last_update_timestamp')
+
+      if(!existingStartTimestamp || 
+        (existingLastUpdateTimestamp && existingLastUpdateTimestamp > (existingStartTimestamp + 15 * 60 * 1000))) 
+      {
+        localStorage.setItem('game_begin_timestamp', now.getTime())
+        localStorage.setItem('game_last_update_timestamp', now.getTime())
+      }
+
+      this.setCookieTimer = setInterval(()=> {
+        
+        let date = new Date()
+        let nowTimestamp = date.getTime()
+
+        localStorage.setItem('game_last_update_timestamp', nowTimestamp)
+
+      }, 30000)
+    }
   },
 };
 </script>

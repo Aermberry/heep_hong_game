@@ -58,6 +58,7 @@ export default class PreloaderScene extends BasicScene {
 
         const soundFiles = {
           'loading': require('../assets/audio/Lonely_Witch_short.mp3'),
+          'dog_walk_in': require('../assets/audio/Shop_Door_Bell_PE802601.mp3'),
         }
 
         

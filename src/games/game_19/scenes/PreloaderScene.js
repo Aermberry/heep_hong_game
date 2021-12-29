@@ -24,16 +24,27 @@ export default class PreloaderScene extends BasicScene {
             'stageBigTooth': require('../assets/images/stage_big_tooth.png'),
             'bgProgressGame': require('../assets/images/bg_progress_game.png'),
             'stageSmallTooth': require('../assets/images/stage_small_tooth.png'),
-            'crocodileMouth': require('../assets/images/animal_crocodile_mouth.png'),
-            'crocodileLongMouth': require('../assets/images/animal_crocodile_mouth_long.png'),
             'bgGameFailed': require('../assets/images/bg_game_failed.png')
         };
 
         const atlasFiles = {
-            'starTexture': { img: require('../assets/atlas/animation_star.png'), data: require('../assets/atlas/animation_star.json') },
-            'tutorTexture': {
-                img: require('../assets/atlas/animation_tutor.png'), data: require('../assets/atlas/animation_tutor.json'),
-            }
+            'starTexture': {
+                img: require('../assets/atlas/animation_star.png'),
+                data: require('../assets/atlas/animation_star.json')
+            },
+
+            'tutorTexture01': {
+                img: require('../assets/atlas/animation_tutor01.png'),
+                data: require('../assets/atlas/animation_tutor01.json'),
+            },
+            'tutorTexture02': {
+                img: require('../assets/atlas/animation_tutor02.png'),
+                data: require('../assets/atlas/animation_tutor02.json'),
+            },
+            'tutorTexture03': {
+                img: require('../assets/atlas/animation_tutor03.png'),
+                data: require('../assets/atlas/animation_tutor03.json'),
+            },
         }
 
         const soundFiles = {

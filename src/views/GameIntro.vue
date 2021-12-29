@@ -6,7 +6,7 @@
       <div class="container">
         <div class="content-space"></div>
         <div class="content-wrapper game-intro">
-          <div class="game-intro-main">
+          <div class="game-intro-main" :style="{backgroundImage:'url(' + require('@/assets/images/img_world_notext.png') + ')'}">
             <!-- <img src="@/assets/images/img_world_notext.png" alt=""> -->
             <img class="logo" src="@/assets/images/img_title.svg" alt="">
             <router-link to="/game/world" @click.native="onClickHandler" class="link-entry" ><span class="inner">進入遊戲</span></router-link>
@@ -141,7 +141,7 @@ export default {
     min-height: 730px;
     overflow: hidden;
     max-width: 100%;
-    background-image: url(/img/img_world_notext.529d9f14.png);
+    /* background-image: url(~/assets/images/img_world_notext.png); */
     background-repeat: no-repeat;
     background-position: center;
 }

@@ -17,6 +17,7 @@ export default class PreloaderScene extends BasicScene {
         this.dataModel = this.sys.game.globals.model;
 
         const atlasFiles = {
+            'tree': { img: require('../assets/images/main/worldmap_tree.png'), data: require('../assets/images/main/worldmap_tree.json')}
             // 'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             // 'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
             // 'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
@@ -36,10 +37,10 @@ export default class PreloaderScene extends BasicScene {
             'game5Mask': require('../assets/images/masks/5a.png'),
             'balloon': require('../assets/images/objects/balloon.png'),
             'cloud_big': require('../assets/images/objects/cloud_big.png'),
-            'cloud_small': require('../assets/images/objects/cloud_small.png')
-            // 'game6Mask': require('../assets/images/masks/6a.png'),
-            // 'game6Mask': require('../assets/images/masks/6a.svg')
-            // 'game1Btn': require('../assets/images/buttons/1a.png'),
+            'cloud_small': require('../assets/images/objects/cloud_small.png'),
+            'ufo': require('../assets/images/main/worldmap_ufo_pic.png'),
+            'lamp_light': require('../assets/images/main/worldmap_lamp_pic.png'),
+
         }
 
         const soundFiles = {
@@ -60,10 +61,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('section3Btn', require('../assets/images/buttons/3a.png'), { frameWidth: 860, frameHeight: 350 })
         this.load.spritesheet('section6Btn', require('../assets/images/buttons/6a.png'), { frameWidth: 670, frameHeight: 460 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
-        // const blackWhiteBg = this.bg.setPipeline('Grayscale')
-        // blackWhiteBg.resetPipeline();
-        // this.bg.setBlendMode(Phaser.BlendModes.LUMINOSITY);
-        // this.createProgressBar()
+
+        this.createProgressBar()
 
     }
 

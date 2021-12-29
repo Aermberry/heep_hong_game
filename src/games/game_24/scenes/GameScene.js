@@ -138,7 +138,7 @@ export default class GameScene extends BasicScene {
             this.car1 = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(7), 'pink_car');
             this.answersContainer = this.add.container(0, 0, [
                 this.bg_low, this.paintQuesiton(), this.car1]);
-            this.questionUi.add([this.bg_up, this.bg_up_clo,this.answersContainer]);
+            this.questionUi.add([this.bg_up, this.bg_up_clo,this.answersContainer,this.fats, this.leoo, this.awardPlatform, this.pens, this.bears,]);
         } else {
             console.log('asdf')
             this.bg_low = this.add.image(this.getColWidth(7.7), this.getRowHeight(8), 'bg_low_long');
@@ -147,13 +147,13 @@ export default class GameScene extends BasicScene {
                 this.bg_low, this.paintQuesiton(), this.car1]);
             this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(5), this.getRowHeight(10.7), this.answersContainer);
             this.rightMoveButton = new RightMoveButton(this, this.getColWidth(6), this.getRowHeight(10.7), this.answersContainer);
-            this.questionUi.add([this.bg_up,this.bg_up_clo, this.answersContainer, this.leftMoveButton, this.rightMoveButton]);
+            this.questionUi.add([this.bg_up,this.bg_up_clo, this.answersContainer, this.leftMoveButton, this.rightMoveButton,this.fats, this.leoo, this.awardPlatform, this.pens, this.bears,]);
             console.log(this.answersContainer)
         }
         this.backgroundUi = this.add.layer(); //背景；
         this.exitBtn = new ExitBtn(this, 120, 135);
         this.btnCar = new BtnCar(this, this.getColWidth(9.5), this.getRowHeight(10.8), this.completeAnswerAnimation.bind(this));
-        this.backgroundUi.add([this.fats, this.leoo, this.awardPlatform, this.pens, this.bears, this.exitBtn, this.btnCar]);
+        this.backgroundUi.add([this.exitBtn, this.btnCar]);
     }
 
     //绘制题目；

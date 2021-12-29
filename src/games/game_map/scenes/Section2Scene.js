@@ -18,7 +18,7 @@ export default class Section2Scene extends SectionBasicScene {
         this.buildPreloadBg('bg_title', {x: 0.6, y: 0.3})
 
         const atlasFiles = {
-            'tree_fall': { img: require('../assets/images/section_2/forest.png'), data: require('../assets/images/section_2/forest.json') },
+            'tree_fall': { img: require('../assets/images/section_2/forest_s.png'), data: require('../assets/images/section_2/forest_s.json') },
         }
 
         const imageFiles = {
@@ -83,7 +83,7 @@ export default class Section2Scene extends SectionBasicScene {
         });
 
 
-        let animate = this.add.sprite(this.getColWidth(5), this.getRowHeight(6), 'tree_fall')
+        let animate = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(9), 'tree_fall')
         animate.play('tree_fall_anime')
 
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's2Logo')

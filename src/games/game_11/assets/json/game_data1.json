@@ -34,6 +34,11 @@
                 "哪裏",
                 "唱歌"
             ]
+        },
+        "tutor": {
+            "tut1": { "img": "../assets/anims/stage1/tut1.png", "data": "../assets/anims/stage1/tut1.json"},
+            "tut2": { "img": "../assets/anims/stage1/tut2.png", "data": "../assets/anims/stage1/tut2.json"},
+            "tut3": { "img": "../assets/anims/stage1/tut3.png", "data": "../assets/anims/stage1/tut3.json"}
         }
     },
     {
@@ -71,6 +76,11 @@
                 "輛",
                 "瓶"
             ]
+        },
+        "tutor": {
+            "tut1": { "img": "../assets/anims/stage2/tut1.png", "data": "../assets/anims/stage2/tut1.json"},
+            "tut2": { "img": "../assets/anims/stage2/tut2.png", "data": "../assets/anims/stage2/tut2.json"},
+            "tut3": { "img": "../assets/anims/stage2/tut3.png", "data": "../assets/anims/stage2/tut3.json"}
         }
     },
     {
@@ -108,6 +118,11 @@
                 "如何",
                 "為什麽"
             ]
+        },
+        "tutor": {
+            "tut1": { "img": "../assets/anims/stage3/tut1.png", "data": "../assets/anims/stage3/tut1.json"},
+            "tut2": { "img": "../assets/anims/stage3/tut2.png", "data": "../assets/anims/stage3/tut2.json"},
+            "tut3": { "img": "../assets/anims/stage3/tut3.png", "data": "../assets/anims/stage3/tut3.json"}
         }
     },
     {
@@ -145,6 +160,11 @@
                 "做什麽",
                 "樹木"
             ]
+        },
+        "tutor": {
+            "tut1": { "img": "../assets/anims/stage4/tut1.png", "data": "../assets/anims/stage4/tut1.json"},
+            "tut2": { "img": "../assets/anims/stage4/tut2.png", "data": "../assets/anims/stage4/tut2.json"},
+            "tut3": { "img": "../assets/anims/stage4/tut3.png", "data": "../assets/anims/stage4/tut3.json"}
         }
     },
     {
@@ -182,6 +202,11 @@
                 "件",
                 "條"
             ]
+        },
+        "tutor": {
+            "tut1": { "img": "../assets/anims/stage5/tut1.png", "data": "../assets/anims/stage5/tut1.json"},
+            "tut2": { "img": "../assets/anims/stage5/tut2.png", "data": "../assets/anims/stage5/tut2.json"},
+            "tut3": { "img": "../assets/anims/stage5/tut3.png", "data": "../assets/anims/stage5/tut3.json"}
         }
     }
 ]

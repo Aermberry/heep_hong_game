@@ -52,14 +52,6 @@ export default class GameScene extends BasicScene {
       'l2Tut4': require('../assets/lv2_tut_4.png'),
       'finger': require('../assets/finger.png')
     } 
-    
-
-    // self.load.image('l2Tut0', require('../assets/lv2_tut_0.png'));
-    // self.load.image('l2Tut1', require('../assets/lv2_tut_1.png'));
-    // self.load.image('l2Tut2', require('../assets/lv2_tut_2.png'));
-    // self.load.image('l2Tut3', require('../assets/lv2_tut_3.png'));
-    // self.load.image('l2Tut4', require('../assets/lv2_tut_4.png'));
-    // self.load.image('finger', require('../assets/finger.png'));
 
     let soundFiles = {
       'i_want': require('../assets/voice/g001_00.mp3'),
@@ -277,9 +269,8 @@ export default class GameScene extends BasicScene {
     // let correct = _.isMatch(self.question, itemsName)
 
     let correct = false
-    
-    if(self.question.length == 4) {
 
+    if(self.question.length == 4) {
       correct = self.question.some((quest, ind)=> {
         return itemsName[ind] === quest
       })

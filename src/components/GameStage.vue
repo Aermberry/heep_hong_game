@@ -1,9 +1,10 @@
 <template>
-  <div :class="`game-wrapper ${gameOrientation} game-${gameID}`">
+  <div :class="`game-wrapper ${gameOrientation}`">
     <div class="outer">
       <div class="inner">
-        <div id="game-container" v-if="downloaded" />
+        <div id="game-container" :class="`game-${gameID}`" v-if="downloaded" />
         <div class="placeholder" v-else>Downloading ...</div>
+
       </div>
     </div>
   </div>
@@ -11,21 +12,14 @@
 
 <style>
   @font-face {
-    font-family: "STKaitiTC-Black";
-    src: url(../games/game_18/assets/font/game_18.ttf) format("truetype");
-  }
-  @font-face {
-    font-family: "Custom-Han-Serif";
-    src: url(../games/game_5/assets/font/game_5.ttf) format("truetype");
-  }
-  .game-11 {
-    font-family: "Custom-Han-Serif";
+    font-family: "Custom-STKaitiTC";
+    src: url(../games/common/fonts/Custom-STKaitiTC.ttf) format("truetype");
   }
   .game-5 {
-    font-family: "Custom-Han-Serif";
+    font-family: "Custom-STKaitiTC";
   }
   .game-18 {
-    font-family: "STKaitiTC-Black";
+    font-family: "Custom-STKaitiTC";
   }
 </style>
 
@@ -90,6 +84,8 @@ export default {
         self.downloaded = true
         self.$nextTick(() => {
           self.gameInstance = game.launch(self.$route.params);
+          self.$gamePause.initService(self.gameInstance, 15, 5)
+          self.$gamePause.initGameTrackTimer()
         });
       }
     } catch (e) {
@@ -101,16 +97,19 @@ export default {
     window.addEventListener("resize", function () {
       self.windowSizeHandler();
     });
+
   },
   destroyed() {
     this.gameInstance.destroy(false);
+    this.$gamePause.clearTimer()
+//    clearInterval(this.setCookieTimer);
   },
   methods: {
     windowSizeHandler: function () {
       let self = this;
       self.ww = window.innerWidth;
       self.wh = window.innerHeight;
-    },
+    }
   },
 };
 </script>

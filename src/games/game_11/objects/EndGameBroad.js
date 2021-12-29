@@ -14,8 +14,8 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
         });
 
 
-        let animate = scene.add.sprite(0, 0, 'end_cat')
-        // let bg = scene.add.image(0,0, 'end_pic_bg')
+        let animate = scene.add.sprite(this.scene.getColWidth(-0.4), this.scene.getRowHeight(-0.31), 'end_cat')
+        let bg = scene.add.image(0,0, 'end_pic_bg')
         // let fg = scene.add.image(0, bg.height *0.25 , 'end_pic_fg')
 
         // let retryBtn = new RetryBtn(scene, - endBox.width * 0.22, endBox.height * 0.35)
@@ -29,7 +29,7 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
 
         this.add([
             endBox,
-            // bg,
+            bg,
             animate,
             // fg,
             retryBtn,

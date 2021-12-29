@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 
 export default class ConfirmButton extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y) {
+    constructor(scene, x, y, correctAnswer, labelText) {
 
         super(scene, x, y);
         scene.add.existing(this);
@@ -24,7 +24,7 @@ export default class ConfirmButton extends Phaser.GameObjects.Container {
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     console.log("up")
                     this.texture.setFrame(0);
-                    this.onUpClicked();
+                    this.onUpClicked(correctAnswer, labelText);
                 }
             )
     }
@@ -33,8 +33,20 @@ export default class ConfirmButton extends Phaser.GameObjects.Container {
 
     }
 
-    onUpClicked() {
-
+    onUpClicked(correctAnswer, labelText) {
+        console.log(this.checkAnswer(correctAnswer, labelText))
+        this.emit('OnConfirmedEvent',this.checkAnswer(correctAnswer, labelText));
     }
+
+    showLight() {
+        this.texture.setFrame(2);
+    }
+
+
+    checkAnswer(correctAnswer, labelText) {
+        return correctAnswer == labelText.text;
+    }
+
+
 
 }

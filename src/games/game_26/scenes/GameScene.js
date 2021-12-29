@@ -5,9 +5,9 @@ import ExitButton from '../components/ExitProgressGameButton'
 import {
     createEggTwistingMachineAnimation
 } from '../assets/animations/EggTwistingMachineAnimation';
-// import {
-//     createGameStatusAnimations
-// } from '../assets/animations/GameStatusAnimation';
+import {
+    createStarAnimation
+} from '../assets/animations/StarAnimation';
 import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
 import AnswerArea from "../components/AnswerArea";
@@ -46,7 +46,7 @@ export default class GameScene extends BasicScene {
 
 
         createEggTwistingMachineAnimation(this.anims);
-
+        createStarAnimation(this.anims);
         this.paintGameScene(this);
 
 
@@ -65,7 +65,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            
+
         } else {
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
@@ -75,7 +75,7 @@ export default class GameScene extends BasicScene {
         }
 
         question = JSON.parse(localStorage.getItem(this.questionIndex));
-        console.log("当前抽取的题目:%o",question);
+        console.log("当前抽取的题目:%o", question);
         // question = JSON.parse(localStorage.getItem(8));
         this.currentQuestionAnswer = question.answer;
 
@@ -92,7 +92,7 @@ export default class GameScene extends BasicScene {
         let eggTwistingMachineAnimation = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
         eggTwistingMachineAnimation.play('eggTwistingMachineAnimation');
 
-        let answerArea = new AnswerArea(this,this.generateQuestion());
+        let answerArea = new AnswerArea(this, this.generateQuestion());
 
         let exitButton = new ExitButton(this, 120, 135);
 
@@ -100,59 +100,41 @@ export default class GameScene extends BasicScene {
         this.gameLayer.add([exitButton]);
     }
 
-    paintGameSuccess(doll) {
+    paintGameSuccess() {
 
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
         GameManager.getInstance().updateGamePlayTotal((value) => {
             this.time.addEvent({
-                delay: 2000,
+                delay: 1000,
                 callback: () => this.scene.start(value ? 'Game' : 'End')
             })
         });
 
-        let targetPosition = JSON.parse(localStorage.getItem('targetPosition'));
-        this.gameLayer.add(new GameSprite(this, targetPosition.x + doll.x, targetPosition.y + doll.y - 500, "gameSuccessAnimation"));
-        this.sound.add('starEffectSound').play();
+
+        // this.sound.add('starEffectSound').play();
     }
 
 
-    paintGameFailed(clipBox) {
+    paintGameFailed() {
 
-        let doll = clipBox.list[1];
-
-
-        let errorSprite = null;
         let _isFirstError = null;
-        let targetPosition = JSON.parse(localStorage.getItem('targetPosition'));
-
 
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
 
             _isFirstError = isFirstError;
             console.log({ isLastQuestion: value })
             this.time.addEvent({
-                delay: isFirstError ? 2000 : 5000,
+                delay: isFirstError ? 1000 : 2000,
                 callback: () => value ? this.scene.start('End') : this.scene.restart('Game')
             });
         }
         );
 
-        errorSprite = new GameSprite(this, targetPosition.x + doll.x, targetPosition.y + doll.y - 500, "gameFailAnimation")
+        console.log({ _isFirstError });
 
-        errorSprite.on('animationcomplete', () => {
-            if (!_isFirstError) {
-                this.time.addEvent({
-                    delay: 500,
-                    callback: () => {
+        // this.sound.add('electricShockEffectSound').play();
 
-                    }
-                })
-            }
-        })
 
-        this.sound.add('electricShockEffectSound').play();
-
-        this.gameLayer.add(errorSprite);
     }
 
 

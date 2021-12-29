@@ -26,10 +26,10 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         scene.add.existing(this);
 
-        let answerPanel = new AnswerPanel(scene, 1000, 900);
+        let answerPanel = new AnswerPanel(scene, 1000, 900, question.answer);
         this.paintPhraseLabels(scene, question.preposition, question.phrases, this);
 
-        this.addOnClickedEventListener(this,answerPanel);
+        this.addOnPhraseClickedEventListener(this, answerPanel, question.answer);
 
         this.add[answerPanel];
     }
@@ -63,10 +63,15 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
     }
 
-    addOnClickedEventListener(gameObject,answerPanel) {
+    addOnPhraseClickedEventListener(gameObject, answerPanel, answer) {
         gameObject.on('clickedEvent', (value) => {
-            console.log(value);
-            console.log({answerPanel});
+
+            answerPanel.setLabelText(value);
+            console.log("answerPanel:%s", answerPanel.getLabelText());
+
+            if (answerPanel.getLabelText().length == answer.length) {
+                answerPanel.setConfirmButtonLight();
+            }
         })
     }
 

@@ -16,6 +16,7 @@ export default class PhraseLabelBox extends Label {
 
     onDownClicked() {
         this.gameObject.emit('clickedEvent', this.phrase);
+        this.setVisible(false);
     }
 
     onUpClicked() {

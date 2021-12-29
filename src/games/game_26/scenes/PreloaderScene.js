@@ -48,6 +48,8 @@ export default class PreloaderScene extends BasicScene {
             'backgroundGamePlay': require('../assets/images/background_game_play_scene.png'),
             'gameEndDialogBox': require('../assets/images/background_game_end_dialog.png'),
 
+            'uiError':require('../assets/images/ui_error.png'),
+
             'questionPicture0': require('../assets/images/questionPictures/0.png'),
             'questionPicture1': require('../assets/images/questionPictures/1.png'),
             'questionPicture2': require('../assets/images/questionPictures/2.png'),
@@ -73,6 +75,9 @@ export default class PreloaderScene extends BasicScene {
         const atlasFiles = {
             'eggTwistingMachineTexture': {
                 img: require('../assets/atlas/atlas_egg_twisting_machine.png'), data: require('../assets/atlas/atlas_egg_twisting_machine.json')
+            },
+            'starTexture': {
+                img: require('../assets/atlas/atlas_star.png'), data: require('../assets/atlas/atlas_star.json')
             }
         }
 
@@ -87,7 +92,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('gameProgressExitButton', require('../assets/images/button_exit_progress_game.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
-        this.load.spritesheet('confirmButton',require('../assets/images/button_confirm.png'),{frameWidth: 386, frameHeight: 384});
+        this.load.spritesheet('confirmButton',require('../assets/images/button_confirm.png'),{frameWidth: 456, frameHeight: 393});
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }

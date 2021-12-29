@@ -15,6 +15,7 @@ export default class PrepositionLabelBox extends Label {
 
     onDownClicked() {
         this.gameObject.emit('clickedEvent', this.phrase);
+        this.setVisible(false);
     }
 
     onUpClicked() {

@@ -9,7 +9,6 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         super(scene, 0, 0);
 
-        this.question = question;
         this.textStyle = {
             fontSize: '55px',
             fontFamily: 'Arial',
@@ -27,15 +26,15 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         scene.add.existing(this);
 
-        this.answerPanel = new AnswerPanel(scene, 1000, 900);
-        this.paintPhraseLabels(scene, this.question.preposition, this.question.phrases, this.answerPanel);
+        let answerPanel = new AnswerPanel(scene, 1000, 900);
+        this.paintPhraseLabels(scene, question.preposition, question.phrases, this);
 
-        this.addOnClickedEventListener(this.answerPanel);
+        this.addOnClickedEventListener(this,answerPanel);
 
-        this.add[this.answerPanel];
+        this.add[answerPanel];
     }
 
-    paintPhraseLabels(scene, preposition, phrases, answerPanel) {
+    paintPhraseLabels(scene, preposition, phrases, gameObject) {
 
         const points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 527 }];
 
@@ -52,21 +51,22 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         // console.log({ phraseLabelBoxPoints: phraseLabelBoxPoints });
 
         if (prepositionLabelBoxPoint != null) {
-            this.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle, answerPanel));
+            this.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle, gameObject));
         }
 
         if (phraseLabelBoxPoints != null) {
             for (let index = 0; index < phrases.length; index++) {
                 const phrase = phrases[index];
-                this.add(new PhraseLabelBox(scene, phraseLabelBoxPoints[index], phrase, this.textStyle, answerPanel));
+                this.add(new PhraseLabelBox(scene, phraseLabelBoxPoints[index], phrase, this.textStyle, gameObject));
             }
         }
 
     }
 
-    addOnClickedEventListener(gameObject) {
+    addOnClickedEventListener(gameObject,answerPanel) {
         gameObject.on('clickedEvent', (value) => {
             console.log(value);
+            console.log({answerPanel});
         })
     }
 

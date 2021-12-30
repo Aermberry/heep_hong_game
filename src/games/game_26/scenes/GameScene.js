@@ -70,8 +70,10 @@ export default class GameScene extends BasicScene {
         }
 
         question = JSON.parse(localStorage.getItem(this.questionIndex));
+    
+        // question = JSON.parse(localStorage.getItem(17));
         console.log("当前抽取的题目:%o", question);
-        question = JSON.parse(localStorage.getItem(17));
+        
         this.currentQuestionAnswer = question.answer;
 
         return question;

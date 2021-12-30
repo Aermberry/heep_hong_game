@@ -6,16 +6,14 @@ import ResetButton from './ResetButton';
 
 export default class AnswerPanel extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y, answer) {
+    constructor(scene, x, y, answer,answerArea) {
 
         super(scene, x, y);
         scene.add.existing(this);
         this._text = '';
         this.texture = scene.add.sprite(0, 0, 'backgroundLabelAnswer').setScale(0.5);
 
-
-
-        this.resetButton = new ResetButton(scene, 650, 0, 'Game');
+        this.resetButton = new ResetButton(scene, 650, 0, answerArea);
         this.labelText = this.scene.make.text({
             x: -this.texture.displayWidth / 2 + 20,
             y: -10,
@@ -57,6 +55,11 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
 
     getLabelText() {
         return this.labelText.text;
+    }
+
+    clearLabelText(){
+        this._text = '';
+        this.labelText.setText(this._text);
     }
 
     setConfirmButtonLight() {

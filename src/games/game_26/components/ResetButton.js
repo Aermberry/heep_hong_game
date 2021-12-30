@@ -1,15 +1,16 @@
 import Phaser from 'phaser'
 
+
 export default class ResetButton extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y,targetScene) {
+    constructor(scene, x, y,answerArea) {
 
         super(scene, x, y);
         
-        this.targetScene = targetScene;
         scene.add.existing(this);
 
         this.texture = scene.add.sprite(0, 0, 'resetButton').setScale(0.5);
+        this.answerArea=answerArea;
 
         this.setSize(this.texture.width, this.texture.height);
 
@@ -36,6 +37,7 @@ export default class ResetButton extends Phaser.GameObjects.Container {
     }
 
     onUpClicked() {
-        this.scene.scene.restart();
+        // this.scene.scene.restart();
+        this.answerArea.emit('onResetClickedEvent', "dsadsadsadsa");
     }
 }

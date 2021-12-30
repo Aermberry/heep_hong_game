@@ -1,7 +1,5 @@
-
 import BasicScene from "./BasicScene"
 import ExitButton from '../components/ExitProgressGameButton'
-
 import {
     createEggTwistingMachineAnimation
 } from '../assets/animations/EggTwistingMachineAnimation';
@@ -11,8 +9,7 @@ import {
 import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
 import AnswerArea from "../components/AnswerArea";
-// import Colors from "../styles/Colors";
-
+// import TweenAnimation from "../components/TweenAnimation";
 
 export default class GameScene extends BasicScene {
 
@@ -89,10 +86,38 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
+        // TweenAnimation.playFallingTweenAnimation(this,this.cameras.main,500,1000);
+
+        new GameSprite(this,0,0,'');
+
+
         let eggTwistingMachineAnimation = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
+        eggTwistingMachineAnimation.on("animationcomplete", () => {
+            this.add.tween({
+                targets: this.cameras.main.setOrigin(0, 1),
+                x: -400,
+                zoom: 2.6,
+                duration: 1000,
+                ease: 'Power2',
+                onComplete: () => {
+                    this.add.tween({
+                        targets: this.cameras.main.setOrigin(0, 1),
+                        x: 0,
+                        zoom: 1,
+                        duration: 5000,
+                        ease: 'Power2',
+                        onComplete: () => {
+
+                        }
+                    });
+                    answerArea.showAnswerPanelAnimation(this);
+                }
+            });
+        });
         eggTwistingMachineAnimation.play('eggTwistingMachineAnimation');
 
         let answerArea = new AnswerArea(this, this.generateQuestion());
+
 
         let exitButton = new ExitButton(this, 120, 135);
 
@@ -101,7 +126,6 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameSuccess() {
-
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
         GameManager.getInstance().updateGamePlayTotal((value) => {
             this.time.addEvent({
@@ -131,10 +155,6 @@ export default class GameScene extends BasicScene {
         );
 
         console.log({ _isFirstError });
-
-        // this.sound.add('electricShockEffectSound').play();
-
-
     }
 
 

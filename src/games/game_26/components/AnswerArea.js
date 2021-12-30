@@ -26,12 +26,12 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         scene.add.existing(this);
 
-        let answerPanel = new AnswerPanel(scene, 1000, 900, question.answer);
+        this.answerPanel = new AnswerPanel(scene, 3000, 900, question.answer);
         this.paintPhraseLabels(scene, question.preposition, question.phrases, this);
 
-        this.addOnPhraseClickedEventListener(this, answerPanel, question.answer);
+        this.addOnPhraseClickedEventListener(this, this.answerPanel, question.answer);
 
-        this.add[answerPanel];
+        this.add[this.answerPanel];
     }
 
     paintPhraseLabels(scene, preposition, phrases, gameObject) {
@@ -73,6 +73,15 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
                 answerPanel.setConfirmButtonLight();
             }
         })
+    }
+
+    showAnswerPanelAnimation(scene) {
+        scene.add.tween({
+            targets: this.answerPanel,
+            x: 1000,
+            duration: 5000,
+            ease: 'Power2',
+        });
     }
 
 }

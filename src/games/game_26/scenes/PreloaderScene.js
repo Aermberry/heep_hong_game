@@ -41,6 +41,12 @@ export default class PreloaderScene extends BasicScene {
             'imageTutor02': require('../assets/images/image_tutor02.png'),
             'imageTutor03': require('../assets/images/image_tutor03.png'),
 
+            'eggGreen':require('../assets/images/object_egg_green.png'),
+            'eggOrange':require('../assets/images/object_egg_orange.png'),
+            'eggPink':require('../assets/images/object_egg_pink.png'),
+            'eggPurple':require('../assets/images/object_egg_purple.png'),
+            'eggYellow':require('../assets/images/object_egg_yellow.png'),
+
             'backgroundLabelPhrase': require('../assets/images/background_label_phrase.png'),
             'backgroundLabelPreposition': require('../assets/images/background_label_preposition.png'),
             'backgroundLabelAnswer': require('../assets/images/background_label_answer.png'),

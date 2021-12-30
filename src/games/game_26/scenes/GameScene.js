@@ -20,7 +20,7 @@ export default class GameScene extends BasicScene {
         this.questionNumberList = []
 
         this.questionIndex = undefined
-        this.backgroundLayer = undefined
+        this.uiLayer = undefined
         this.gameFailedLayer = undefined
 
         this.currentQuestionAnswer = undefined
@@ -73,7 +73,7 @@ export default class GameScene extends BasicScene {
     
         // question = JSON.parse(localStorage.getItem(17));
         console.log("当前抽取的题目:%o", question);
-        
+
         this.currentQuestionAnswer = question.answer;
 
         return question;
@@ -83,9 +83,25 @@ export default class GameScene extends BasicScene {
      * 绘制GameScene的所有Ui元素
      */
     paintGameScene() {
-        this.gameLayer = this.add.layer().setDepth(1);
-        this.backgroundLayer = this.add.layer().setDepth(0);
 
+        this.gameLayer = this.add.layer().setDepth(1);
+        this.uiLayer = this.add.layer().setDepth(0);
+
+        let answerArea = new AnswerArea(this, this.generateQuestion());
+
+        let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
+
+        this.playEggAnimation(eggTwistingMachineSprite,answerArea,this.questionIndex);
+
+
+        let exitButton = new ExitButton(this, 120, 135);
+
+        this.uiLayer.add([this.buildBg('backgroundGamePlay'),eggTwistingMachineSprite]);
+        this.gameLayer.add([exitButton,answerArea]);
+    }
+
+
+    playEggAnimation(eggTwistingMachineSprite,answerArea,questionIndex){
         let egg = new GameSprite(this, 400, 720, 'eggOrange');
         egg.setScale(0.5);
 
@@ -97,8 +113,7 @@ export default class GameScene extends BasicScene {
         const mask = shape.createGeometryMask();
         egg.setMask(mask);
 
-        let eggTwistingMachineAnimation = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
-        eggTwistingMachineAnimation.on("animationcomplete", () => {
+        eggTwistingMachineSprite.on("animationcomplete", () => {
             this.add.tween({
                 targets: this.cameras.main.setOrigin(0, 1),
                 x: -400,
@@ -124,22 +139,15 @@ export default class GameScene extends BasicScene {
                                 }
                             });
                             answerArea.showAnswerPanelAnimation(this);
+                            this.add.image(583,372,'questionPicture'+questionIndex).setScale(0.5);
                         }
                     });
-
-
                 }
             });
         });
-        eggTwistingMachineAnimation.play('eggTwistingMachineAnimation');
 
-        let answerArea = new AnswerArea(this, this.generateQuestion());
+        eggTwistingMachineSprite.play('eggTwistingMachineAnimation');
 
-
-        let exitButton = new ExitButton(this, 120, 135);
-
-        this.backgroundLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineAnimation, answerArea]);
-        this.gameLayer.add([exitButton]);
     }
 
     paintGameSuccess() {

@@ -84,6 +84,9 @@ export default class PreloaderScene extends BasicScene {
             },
             'starTexture': {
                 img: require('../assets/atlas/atlas_star.png'), data: require('../assets/atlas/atlas_star.json')
+            },
+            'endTexture': {
+                img: require('../assets/atlas/atlas_end.png'), data: require('../assets/atlas/atlas_end.json')
             }
         }
 

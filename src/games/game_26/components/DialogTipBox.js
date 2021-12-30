@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import EndSceneExitButton from './EndSceneExitButton'
 import RetryButton from './RetryButton'
-// import { createVictoryAnimations } from '../assets/animations/VictoryAnimation';
+
 import GameSprite from '../components/GameSprite';
 
 export default class DialogTipBox extends Phaser.GameObjects.Container {
@@ -15,13 +15,13 @@ export default class DialogTipBox extends Phaser.GameObjects.Container {
 
         this.setSize(dialogTipBox.width, dialogTipBox.height);
 
-        // createVictoryAnimations(scene.anims);
 
-        let victoryAnimation= new GameSprite(scene, 25, -20, 'questionPicture2').setScale(0.3);
-        // victoryAnimation.play('victoryAnimation');
+
+        let endAnimation = new GameSprite(scene, 0, -40, 'endTexture').setScale(1.4);
+        endAnimation.play('endAnimation');
         this.add([
             dialogTipBox,
-            victoryAnimation,
+            endAnimation,
             new RetryButton(scene, - dialogTipBox.width * 0.22, dialogTipBox.height * 0.35, 'Tutor'),
             new EndSceneExitButton(scene, dialogTipBox.width * 0.22, dialogTipBox.height * 0.35)
         ])

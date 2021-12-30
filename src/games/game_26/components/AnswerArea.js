@@ -26,11 +26,11 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         scene.add.existing(this);
 
-        this.answerPanel = new AnswerPanel(scene, 3000, 900, question.answer,this);
+        this.answerPanel = new AnswerPanel(scene, 3000, 900, question.answer, this);
         this.phraseLabelsContainer = this.paintPhraseLabels(scene, question.preposition, question.phrases, this);
 
         this.addOnPhraseClickedEventListener(this, this.answerPanel, question.answer);
-        this.addOnResetClickedEventListener(this,this.answerPanel);
+        this.addOnResetClickedEventListener(this, this.answerPanel, this.phraseLabelsContainer);
 
         this.add[this.answerPanel];
     }
@@ -82,10 +82,13 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         })
     }
 
-    addOnResetClickedEventListener(gameObject,answerPanel) {
-        gameObject.on('onResetClickedEvent', (value) => {
-            console.log(value);
+    addOnResetClickedEventListener(gameObject, answerPanel, phraseLabels) {
+        gameObject.on('onResetClickedEvent', () => {
             answerPanel.clearLabelText();
+            const unVisiblePhraseLabels = phraseLabels.getAll('visible', false);
+            unVisiblePhraseLabels.forEach(phraseLabel => {
+                phraseLabel.setVisible(true);
+            });
         })
     }
 

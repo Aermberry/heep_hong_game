@@ -22,6 +22,7 @@ export default class GameScene extends BasicScene {
         this.questionIndex = undefined
         this.uiLayer = undefined
         this.gameFailedLayer = undefined
+        this.hasGameChance = undefined;
 
         this.currentQuestionAnswer = undefined
     }
@@ -65,12 +66,13 @@ export default class GameScene extends BasicScene {
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
                 this.questionIndex = errorQuestionIndex;
+                this.hasGameChance = true;
             }
 
         }
 
         question = JSON.parse(localStorage.getItem(this.questionIndex));
-    
+
         // question = JSON.parse(localStorage.getItem(17));
         console.log("当前抽取的题目:%o", question);
 
@@ -91,17 +93,20 @@ export default class GameScene extends BasicScene {
 
         let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
 
-        this.playEggAnimation(eggTwistingMachineSprite,answerArea,this.questionIndex);
+        if (this.hasGameChance == undefined) {
+            this.playEggAnimation(eggTwistingMachineSprite, answerArea, this.questionIndex);
+        }
+
 
 
         let exitButton = new ExitButton(this, 120, 135);
 
-        this.uiLayer.add([this.buildBg('backgroundGamePlay'),eggTwistingMachineSprite]);
-        this.gameLayer.add([exitButton,answerArea]);
+        this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite]);
+        this.gameLayer.add([exitButton, answerArea]);
     }
 
 
-    playEggAnimation(eggTwistingMachineSprite,answerArea,questionIndex){
+    playEggAnimation(eggTwistingMachineSprite, answerArea, questionIndex) {
         let egg = new GameSprite(this, 400, 720, 'eggOrange');
         egg.setScale(0.5);
 
@@ -109,7 +114,7 @@ export default class GameScene extends BasicScene {
         shape.fillStyle(0xffffff);
         shape.beginPath();
         shape.fillRect(100, 870, 500, 600);
-        
+
         const mask = shape.createGeometryMask();
         egg.setMask(mask);
 
@@ -139,7 +144,7 @@ export default class GameScene extends BasicScene {
                                 }
                             });
                             answerArea.showAnswerPanelAnimation(this);
-                            this.add.image(583,372,'questionPicture'+questionIndex).setScale(0.5);
+                            this.add.image(583, 372, 'questionPicture' + questionIndex).setScale(0.5);
                         }
                     });
                 }

@@ -94,7 +94,7 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
             y: 0,
             scale: { from: 0.5, to: 1 },
             alpha: { from: 0.5, to: 1 },
-            duration: 9000,
+            duration: 6000,
             ease: 'Power2',
         });
     }

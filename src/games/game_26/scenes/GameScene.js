@@ -86,16 +86,14 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        // TweenAnimation.playFallingTweenAnimation(this,this.cameras.main,500,1000);
-
-        let egg = new GameSprite(this, 400, 700, 'eggOrange');
+        let egg = new GameSprite(this, 400, 720, 'eggOrange');
         egg.setScale(0.5);
 
         const shape = this.make.graphics();
         shape.fillStyle(0xffffff);
         shape.beginPath();
         shape.fillRect(100, 870, 500, 600);
-     
+        
         const mask = shape.createGeometryMask();
         egg.setMask(mask);
 

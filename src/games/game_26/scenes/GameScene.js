@@ -88,8 +88,16 @@ export default class GameScene extends BasicScene {
 
         // TweenAnimation.playFallingTweenAnimation(this,this.cameras.main,500,1000);
 
-        new GameSprite(this,0,0,'');
+        let egg = new GameSprite(this, 400, 700, 'eggOrange');
+        egg.setScale(0.5);
 
+        const shape = this.make.graphics();
+        shape.fillStyle(0xffffff);
+        shape.beginPath();
+        shape.fillRect(100, 870, 500, 600);
+     
+        const mask = shape.createGeometryMask();
+        egg.setMask(mask);
 
         let eggTwistingMachineAnimation = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
         eggTwistingMachineAnimation.on("animationcomplete", () => {
@@ -101,16 +109,27 @@ export default class GameScene extends BasicScene {
                 ease: 'Power2',
                 onComplete: () => {
                     this.add.tween({
-                        targets: this.cameras.main.setOrigin(0, 1),
-                        x: 0,
-                        zoom: 1,
-                        duration: 5000,
+                        targets: egg,
+                        y: 1200,
+                        angle: 60,
+                        duration: 2000,
                         ease: 'Power2',
                         onComplete: () => {
+                            this.add.tween({
+                                targets: this.cameras.main.setOrigin(0, 1),
+                                x: 0,
+                                zoom: 1,
+                                duration: 5000,
+                                ease: 'Power2',
+                                onComplete: () => {
 
+                                }
+                            });
+                            answerArea.showAnswerPanelAnimation(this);
                         }
                     });
-                    answerArea.showAnswerPanelAnimation(this);
+
+
                 }
             });
         });

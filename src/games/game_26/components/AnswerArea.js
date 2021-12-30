@@ -38,6 +38,8 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         const points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 527 }];
 
+        // let container=scene.add.container(0,0);
+
         const prepositionIndexPosition = phrases.indexOf(preposition);
         const prepositionLabelBoxPoint = points[prepositionIndexPosition];
 
@@ -76,6 +78,12 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
     }
 
     showAnswerPanelAnimation(scene) {
+        scene.add.tween({
+            targets: this.answerPanel,
+            x: 1000,
+            duration: 5000,
+            ease: 'Power2',
+        });
         scene.add.tween({
             targets: this.answerPanel,
             x: 1000,

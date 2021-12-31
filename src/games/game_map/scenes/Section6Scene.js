@@ -2,6 +2,7 @@ import SectionBasicScene from "./SectionBasicScene"
 import BackBtn from "../objects/BackBtn"
 import HintBtn from "../objects/HintBtn"
 import GameNavBtn from "../objects/GameNavBtn"
+import LampLight from "../objects/animations/LampLight"
 // import StartBtn from '../objects/StartBtn'
 
 export default class Section6Scene extends SectionBasicScene {
@@ -24,8 +25,10 @@ export default class Section6Scene extends SectionBasicScene {
 
         const imageFiles = {
             game6Bg: require('../assets/images/section_6/game_bg.png'),
-            s6Hint: require('../assets/images/section_6/target.png'),
-            s6Logo: require('../assets/images/section_6/game_magic.png')
+            // s6Hint: require('../assets/images/section_6/target.png'),
+            btnHint1: require('../assets/images/section_6/Game_target_Z-24.png'),
+            s6Logo: require('../assets/images/section_6/game_magic.png'),
+            lamp_light: require('../assets/images/main/worldmap_lamp_pic.png'),
         }
 
         const soundFiles = {
@@ -63,13 +66,22 @@ export default class Section6Scene extends SectionBasicScene {
     populateSection() {
     
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const hintBtn = new HintBtn(this, this.getColWidth(6.8), this.getRowHeight(5.5), 's6Hint', 's6HintLogo')
         const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1', '/game/10')
+        const hintBtn = new HintBtn(this, this.getColWidth(6.8), this.getRowHeight(5.5), [gameBtn], 's6HintLogo')
+
+        gameBtn.initHint('btnHint1', this.getColWidth(0), this.getRowHeight(2.5))
+
+        const lampLight1 = new LampLight(this, this.getColWidth(1), this.getRowHeight(5))
+        const lampLight2 = new LampLight(this, this.getColWidth(10.1), this.getRowHeight(0.9))
+        const lampLight3 = new LampLight(this, this.getColWidth(11.6), this.getRowHeight(6.4))
 
         this.add.image(this.getColWidth(3), this.getRowHeight(1.5), 's6Logo')
         this.add.existing(backBtn)
         this.add.existing(hintBtn)
         this.add.existing(gameBtn)
+        this.add.existing(lampLight1)
+        this.add.existing(lampLight2)
+        this.add.existing(lampLight3)
 
     }
 

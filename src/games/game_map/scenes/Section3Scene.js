@@ -32,6 +32,18 @@ export default class Section3Scene extends SectionBasicScene {
             s3Hint5: require('../assets/images/section_3/target_5.png'),
             s3Logo: require('../assets/images/section_3/game_mov.png'),
             balloon: require('../assets/images/objects/balloon.png'),
+            b1Hint: require('../assets/images/section_3/Game_target_Z-13.png'),
+            b2Hint: require('../assets/images/section_3/Game_target_Z-14.png'),
+            b3Hint: require('../assets/images/section_3/Game_target_Z-15.png'),
+            b4Hint: require('../assets/images/section_3/Game_target_Z-17.png'),
+            b5Hint: require('../assets/images/section_3/Game_target_Z-18.png'),
+            b6Hint: require('../assets/images/section_3/Game_target_Z-19.png'),
+            b7Hint: require('../assets/images/section_3/Game_target_Z-20.png'),
+            b8Hint: require('../assets/images/section_3/Game_target_Z-21.png'),
+            b9Hint: require('../assets/images/section_3/Game_target_Z-22.png'),
+            b10Hint: require('../assets/images/section_3/Game_target_Z-23.png'),
+            b11Hint: require('../assets/images/section_3/Game_target_Z-25.png'),
+            b12Hint: require('../assets/images/section_3/Game_target_Z-26.png'),
         }
 
         const soundFiles = {
@@ -84,26 +96,60 @@ export default class Section3Scene extends SectionBasicScene {
 
     populateSection() {
 
+        
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const hintBtn1 = new HintBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's3Hint1', 's3Hint1Logo')
-        const hintBtn2 = new HintBtn(this, this.getColWidth(8.9), this.getRowHeight(7.2), 's3Hint2', 's3Hint2Logo')
-        const hintBtn3 = new HintBtn(this, this.getColWidth(7.1), this.getRowHeight(5), 's3Hint3', 's3Hint3Logo')
-        const hintBtn4 = new HintBtn(this, this.getColWidth(8.5), this.getRowHeight(2), 's3Hint4', 's3Hint4Logo')
-        const hintBtn5 = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(5.7), 's3Hint5', 's3Hint5Logo')
-        const game1Btn = new GameNavBtn(this, this.getColWidth(1.6), this.getRowHeight(5.5), 's3btn1', '/game/27')
-        const game2Btn = new GameNavBtn(this, this.getColWidth(4.7), this.getRowHeight(5.5), 's3btn2', '/game/28')
-        const game3Btn = new GameNavBtn(this, this.getColWidth(5.1), this.getRowHeight(2.9), 's3btn3', '/game/25')
-        const game4Btn = new GameNavBtn(this, this.getColWidth(6.4), this.getRowHeight(2.9), 's3btn4', '/game/24')
-        const game5Btn = new GameNavBtn(this, this.getColWidth(9.8), this.getRowHeight(3.3), 's3btn5', '/game/26')
-        const game6Btn = new GameNavBtn(this, this.getColWidth(3.2), this.getRowHeight(9.2), 's3btn6', '/game/11')
-        const game7Btn = new GameNavBtn(this, this.getColWidth(2.8), this.getRowHeight(10.7), 's3btn7', '/game/12')
-        const game8Btn = new GameNavBtn(this, this.getColWidth(4.2), this.getRowHeight(9.2), 's3btn8', '/game/13')
-        const game9Btn = new GameNavBtn(this, this.getColWidth(7.5), this.getRowHeight(10), 's3btn9', '/game/14')
-        const game10Btn = new GameNavBtn(this, this.getColWidth(8.5), this.getRowHeight(10.6), 's3btn10', '/game/15')
-        const game11Btn = new GameNavBtn(this, this.getColWidth(9.5), this.getRowHeight(9.2), 's3btn11', '/game/22')
-        const game12Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(8), 's3btn12', '/game/23')
+        // const game6Btn = new GameNavBtn(this, this.getColWidth(3.2), this.getRowHeight(9.2), 's3btn6', '/game/11')
+        // const game7Btn = new GameNavBtn(this, this.getColWidth(2.8), this.getRowHeight(10.7), 's3btn7', '/game/12')
+
+        // const game8Btn = new GameNavBtn(this, this.getColWidth(4.2), this.getRowHeight(9.2), 's3btn8', '/game/13')
+        // const game9Btn = new GameNavBtn(this, this.getColWidth(7.5), this.getRowHeight(10), 's3btn9', '/game/14')
+        // const game10Btn = new GameNavBtn(this, this.getColWidth(8.5), this.getRowHeight(10.6), 's3btn10', '/game/15')
+
+        // const game11Btn = new GameNavBtn(this, this.getColWidth(9.5), this.getRowHeight(9.2), 's3btn11', '/game/22')
+        // const game12Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(8), 's3btn12', '/game/23')
+
+        // const game4Btn = new GameNavBtn(this, this.getColWidth(6.4), this.getRowHeight(2.9), 's3btn4', '/game/24')
+        // const game3Btn = new GameNavBtn(this, this.getColWidth(5.1), this.getRowHeight(2.9), 's3btn3', '/game/25')
+        // const game5Btn = new GameNavBtn(this, this.getColWidth(9.8), this.getRowHeight(3.3), 's3btn5', '/game/26')
+        // const game1Btn = new GameNavBtn(this, this.getColWidth(1.6), this.getRowHeight(5.5), 's3btn1', '/game/27')
+        // const game2Btn = new GameNavBtn(this, this.getColWidth(4.7), this.getRowHeight(5.5), 's3btn2', '/game/28')
+
+        const game1Btn = new GameNavBtn(this, this.getColWidth(3.2), this.getRowHeight(9.2), 's3btn6', '/game/11')
+        const game2Btn = new GameNavBtn(this, this.getColWidth(2.8), this.getRowHeight(10.7), 's3btn7', '/game/12')
+        
+        const game3Btn = new GameNavBtn(this, this.getColWidth(4.2), this.getRowHeight(9.2), 's3btn8', '/game/13')
+        const game4Btn = new GameNavBtn(this, this.getColWidth(7.5), this.getRowHeight(10), 's3btn9', '/game/14')
+        const game5Btn = new GameNavBtn(this, this.getColWidth(8.5), this.getRowHeight(10.6), 's3btn10', '/game/15')
+
+        const game6Btn = new GameNavBtn(this, this.getColWidth(9.5), this.getRowHeight(9.2), 's3btn11', '/game/22')
+        const game7Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(8), 's3btn12', '/game/23')
+
+        const game8Btn = new GameNavBtn(this, this.getColWidth(6.4), this.getRowHeight(2.9), 's3btn4', '/game/24')
+        const game9Btn = new GameNavBtn(this, this.getColWidth(5.1), this.getRowHeight(2.9), 's3btn3', '/game/25')
+        const game10Btn = new GameNavBtn(this, this.getColWidth(9.8), this.getRowHeight(3.3), 's3btn5', '/game/26')
+
+        const game11Btn = new GameNavBtn(this, this.getColWidth(1.6), this.getRowHeight(5.5), 's3btn1', '/game/27')
+        const game12Btn = new GameNavBtn(this, this.getColWidth(4.7), this.getRowHeight(5.5), 's3btn2', '/game/28')
+
+        const hintBtn1 = new HintBtn(this, this.getColWidth(5.8), this.getRowHeight(10), [], 's3Hint1Logo')
+        const hintBtn2 = new HintBtn(this, this.getColWidth(8.9), this.getRowHeight(7.2), [], 's3Hint2Logo')
+        const hintBtn3 = new HintBtn(this, this.getColWidth(7.1), this.getRowHeight(5), [], 's3Hint3Logo')
+        const hintBtn4 = new HintBtn(this, this.getColWidth(8.5), this.getRowHeight(2), [], 's3Hint4Logo')
+        const hintBtn5 = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(5.7), [game11Btn, game12Btn], 's3Hint5Logo')
         const balloon = new Balloon(this, this.getColWidth(2), this.getRowHeight(7))
         balloon.setScale(1.5)
+        game1Btn.initHint('b1Hint', this.getColWidth(0), this.getRowHeight(1.5))
+        game2Btn.initHint('b2Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game3Btn.initHint('b3Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game4Btn.initHint('b4Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game5Btn.initHint('b5Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game6Btn.initHint('b6Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game7Btn.initHint('b7Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game8Btn.initHint('b8Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game9Btn.initHint('b9Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game10Btn.initHint('b10Hint', this.getColWidth(0), this.getRowHeight(2.5))
+        game11Btn.initHint('b11Hint', this.getColWidth(0.45), this.getRowHeight(3))
+        game12Btn.initHint('b12Hint', this.getColWidth(2.4), this.getRowHeight(0))
 
         this.add.existing(balloon)
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's3Logo')

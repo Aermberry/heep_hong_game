@@ -29,8 +29,12 @@ export default class Section1Scene extends BasicScene {
 
         const imageFiles = {
             game1Bg: require('../assets/images/section_1/game_bg.png'),
-            s1Hint1: require('../assets/images/section_1/target_1.png'),
-            s1Hint2: require('../assets/images/section_1/target_2.png')
+            // s1Hint1: require('../assets/images/section_1/target_1.png'),
+            // s1Hint2: require('../assets/images/section_1/target_2.png'),
+            g1Hint: require('../assets/images/section_1/Game_target_Z-01.png'),
+            g2Hint: require('../assets/images/section_1/Game_target_Z-02.png'),
+            g3Hint: require('../assets/images/section_1/Game_target_Z-03.png'),
+            g4Hint: require('../assets/images/section_1/Game_target_Z-04.png'),
             // 'game1Btn': require('../assets/images/buttons/1a.png'),
         }
         
@@ -119,16 +123,22 @@ export default class Section1Scene extends BasicScene {
         const game2Btn = new GameNavBtn(this, this.getColWidth(6.57), this.getRowHeight(5.3), 's1btn2', 'https://www.google.com')
         const game3Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(8.2), 's1btn3', 'https://www.google.com')
         const game4Btn = new GameNavBtn(this, this.getColWidth(10.6), this.getRowHeight(7.5), 's1btn4', 'https://www.google.com')
-        const hintBtnA = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(7), 's1Hint1', 'spaceRestaurantLogo')
-        const hintBtnB = new HintBtn(this, this.getColWidth(8.3), this.getRowHeight(8.1), 's1Hint2', 'spaceFactoryLogo')
+        const hintBtnA = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(7), [game1Btn], 'spaceRestaurantLogo')
+        const hintBtnB = new HintBtn(this, this.getColWidth(8.3), this.getRowHeight(8.1), [game2Btn, game3Btn, game4Btn], 'spaceFactoryLogo')
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
 
+        game1Btn.initHint('g1Hint', this.getColWidth(2.1), this.getColWidth(0))
+        game2Btn.initHint('g2Hint', this.getColWidth(0), this.getColWidth(-1.5))
+        game3Btn.initHint('g3Hint', this.getColWidth(-2.5), this.getColWidth(0))
+        game4Btn.initHint('g4Hint', this.getColWidth(-0.4), this.getColWidth(-1.5))
+
+
+        this.add.existing(hintBtnA)
+        this.add.existing(hintBtnB)
         this.add.existing(game1Btn)
         this.add.existing(game2Btn)
         this.add.existing(game3Btn)
         this.add.existing(game4Btn)
-        this.add.existing(hintBtnA)
-        this.add.existing(hintBtnB)
         this.add.existing(backBtn)
     }
 }

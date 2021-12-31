@@ -61,6 +61,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
+            this.hasGameChance = false;
 
         } else {
 
@@ -93,8 +94,21 @@ export default class GameScene extends BasicScene {
 
         let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
 
+
+        console.log(this.hasGameChance);
         if (this.hasGameChance == undefined) {
             this.playEggAnimation(eggTwistingMachineSprite, answerArea, this.questionIndex);
+        } else {
+
+            if (this.hasGameChance) {
+                this.add.image(583, 372, 'questionPicture' + this.questionIndex).setScale(0.5);
+                answerArea.showDisplay();
+            }
+            else {
+                this.playEggAnimation(eggTwistingMachineSprite, answerArea, this.questionIndex);
+            }
+
+
         }
 
 

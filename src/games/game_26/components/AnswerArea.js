@@ -95,19 +95,23 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
     showAnswerPanelAnimation(scene) {
         scene.add.tween({
             targets: this.answerPanel,
-            x: 1000,
+            x: { from: 3000, to: 1000 },
             duration: 5000,
             ease: 'Power2',
         });
         scene.add.tween({
             targets: this.phraseLabelsContainer,
-            x: 0,
-            y: 0,
+            y: { from: 1200, to: 0 },
             scale: { from: 0.5, to: 1 },
             alpha: { from: 0.5, to: 1 },
             duration: 6000,
             ease: 'Power2',
         });
+    }
+
+    showDisplay() {
+        this.answerPanel.setPosition(1000, 900);
+        this.phraseLabelsContainer.setPosition(0, 0);
     }
 
 }

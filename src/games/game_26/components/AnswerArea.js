@@ -114,9 +114,9 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         this.phraseLabelsContainer.setPosition(0, 0);
     }
 
-    showCurrentAnswer(){
+    showCurrentAnswer(scene){
         console.log("showCurrentAnswer");
-        this.answerPanel.setCurrentAnswer()
+        this.answerPanel.setCurrentAnswer(scene)
     }
 
 }

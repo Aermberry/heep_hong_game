@@ -9,7 +9,7 @@ import {
 import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
 import AnswerArea from "../components/AnswerArea";
-// import TweenAnimation from "../components/TweenAnimation";
+import { GameSceneStatus } from "../components/GameSceneStatus";
 
 export default class GameScene extends BasicScene {
 
@@ -22,8 +22,7 @@ export default class GameScene extends BasicScene {
         this.questionIndex = undefined
         this.uiLayer = undefined
         this.gameFailedLayer = undefined
-        this.hasGameChance = undefined;
-        this.answerArea =undefined;
+        this.answerArea = undefined;
 
         this.currentQuestionAnswer = undefined
     }
@@ -34,9 +33,6 @@ export default class GameScene extends BasicScene {
         // this.preloadFromArr({
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
-
-        
-
 
     }
 
@@ -61,13 +57,11 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            this.hasGameChance = false;
 
         } else {
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
                 this.questionIndex = errorQuestionIndex;
-                this.hasGameChance = true;
             }
 
         }
@@ -94,29 +88,30 @@ export default class GameScene extends BasicScene {
 
         let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
 
-        if (this.hasGameChance == undefined) {
-            this.playEggAnimation(eggTwistingMachineSprite,  this.answerArea , this.questionIndex);
-        } else {
-            if (this.hasGameChance) {
-                this.add.image(583, 372, 'questionPicture' + this.questionIndex).setScale(0.5);
-                this.answerArea .showDisplay();
-            }
-            else {
-                this.playEggAnimation(eggTwistingMachineSprite,  this.answerArea , this.questionIndex);
-            }
-        }
+        switch (GameManager.getInstance().getGameSceneStatus()) {
+            case GameSceneStatus.NormalStatus:
+                this.playEggAnimation(eggTwistingMachineSprite, this.answerArea, this.questionIndex);
+                break;
 
+            case GameSceneStatus.RetryStatus:
+                this.add.image(583, 372, 'questionPicture' + this.questionIndex).setScale(0.5);
+                this.answerArea.showDisplay();
+                break;
+
+            default:
+                break;
+        }
 
 
         let exitButton = new ExitButton(this, 120, 135);
 
         this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite]);
-        this.gameLayer.add([exitButton,  this.answerArea ]);
+        this.gameLayer.add([exitButton, this.answerArea]);
     }
 
 
     playEggAnimation(eggTwistingMachineSprite, answerArea, questionIndex) {
-        let egg = new GameSprite(this, 400, 720,   GameManager.getInstance().getRandomColorEgg());
+        let egg = new GameSprite(this, 400, 720, GameManager.getInstance().getRandomColorEgg());
         egg.setScale(0.5);
 
         const shape = this.make.graphics();
@@ -166,7 +161,7 @@ export default class GameScene extends BasicScene {
 
     paintGameSuccess() {
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
-        GameManager.getInstance().updateGamePlayTotal((value) => {
+        GameManager.getInstance().getGameSuccess((value) => {
             this.time.addEvent({
                 delay: 1000,
                 callback: () => this.scene.start(value ? 'Game' : 'End')
@@ -182,7 +177,7 @@ export default class GameScene extends BasicScene {
 
         let _isFirstError = null;
 
-        GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
+        GameManager.getInstance().getGameFail(this.questionIndex, (isFirstError, value) => {
 
             _isFirstError = isFirstError;
             console.log({ isLastQuestion: value })
@@ -194,8 +189,8 @@ export default class GameScene extends BasicScene {
         );
 
 
-        if(!_isFirstError){
-            this.answerArea.showCurrentAnswer();
+        if (!_isFirstError) {
+            this.answerArea.showCurrentAnswer(this);
         }
 
         console.log({ _isFirstError });

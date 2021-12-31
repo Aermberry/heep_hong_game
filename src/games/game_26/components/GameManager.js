@@ -1,5 +1,7 @@
 import LocalRepository from "../repository/LocalRepository";
 import Phaser from 'phaser'
+import { GameSceneStatus } from "./GameSceneStatus";
+import GameModel from "../game_model/Model";
 
 export default class GameManager {
 
@@ -8,6 +10,7 @@ export default class GameManager {
         this.localRepository = new LocalRepository();
         this.questionNumberList = [];
         this.eggColors = [];
+        this.gameSceneStatus = GameSceneStatus.NormalStatus;
 
         if (!GameManager.instance) {
             GameManager.instance = this;
@@ -26,7 +29,7 @@ export default class GameManager {
 
     async initGameData() {
         localStorage.clear();
-        localStorage.setItem('gamePlayTotal', JSON.stringify(5));
+        // localStorage.setItem('gamePlayTotal', JSON.stringify(5));
 
         if (this.questionNumberList.length > 0) {
             console.log("data 不为空");
@@ -47,9 +50,7 @@ export default class GameManager {
     }
 
     updateGameQuestionNumberList(questionIndex) {
-        console.log({
-            questionIndex
-        })
+
         this.questionNumberList.splice(this.questionNumberList.indexOf(questionIndex), 1);
         console.log(this.questionNumberList)
 
@@ -67,37 +68,33 @@ export default class GameManager {
 
     }
 
-    updateGamePlayTotal(callback) {
+    getGameSuccess(callback) {
+        GameModel.questionCount--;
 
-        let gamePlayTotal = JSON.parse(localStorage.getItem('gamePlayTotal'));
-        let isLastQuestion = gamePlayTotal != 1;
-
-        if (isLastQuestion) {
-            localStorage.setItem('gamePlayTotal', JSON.stringify(gamePlayTotal - 1));
-        }
-
-        callback(isLastQuestion);
+        callback(this._isLastQuestion());
 
     }
 
-    setGameQuestionError(index, gameErrorCallback) {
+    _isLastQuestion() {
+        return GameModel.questionCount == 0;
+    }
+
+    getGameFail(index, gameErrorCallback) {
 
         localStorage.setItem('errorQuestionIndex', JSON.stringify(index));
-        let gameChance = JSON.parse(localStorage.getItem('gameChance'));
-        let gamePlayTotal = JSON.parse(localStorage.getItem('gamePlayTotal'));
+        GameModel.currentQuestionErrorCount++;
+
         let isFirstError = true;
-        let isLastQuestion = gamePlayTotal == 1;
 
+        this.gameSceneStatus = GameSceneStatus.RetryStatus;
 
-        if (gameChance == null) {
-            localStorage.setItem('gameChance', JSON.stringify(true))
-        } else {
+        if (GameModel.currentQuestionErrorCount == 2) {
+
             isFirstError = false;
-            localStorage.removeItem('gameChance');
 
-            if (!isLastQuestion) {
-                localStorage.setItem('gamePlayTotal', JSON.stringify(gamePlayTotal - 1));
-            }
+            GameModel.questionCount--;
+
+            this.gameSceneStatus = GameSceneStatus.NormalStatus;
 
             this.questionNumberList.splice(this.questionNumberList.indexOf(index), 1);
 
@@ -105,9 +102,12 @@ export default class GameManager {
             localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
 
             localStorage.removeItem('errorQuestionIndex');
+
+            this.restCurrentQuestionErrorCount();
         }
 
-        gameErrorCallback(isFirstError, isLastQuestion && !isFirstError);
+
+        gameErrorCallback(isFirstError, this._isLastQuestion() && !isFirstError);
 
     }
 
@@ -117,14 +117,19 @@ export default class GameManager {
 
 
     getRandomColorEgg() {
-        
+
         const egg = Phaser.Math.RND.pick(this.eggColors)
         this.eggColors.splice(this.eggColors.indexOf(egg), 1);
 
         return egg;
     }
 
+    restCurrentQuestionErrorCount() {
+        GameModel.currentQuestionErrorCount = 0;
+    }
 
 
-
+    getGameSceneStatus() {
+        return this.gameSceneStatus;
+    }
 }

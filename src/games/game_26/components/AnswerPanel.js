@@ -11,6 +11,7 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
         super(scene, x, y);
         scene.add.existing(this);
         this._text = '';
+
         this._answer = answer;
         this.texture = scene.add.sprite(0, 0, 'backgroundLabelAnswer').setScale(0.5);
 
@@ -35,10 +36,6 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
             }
         }).setOrigin(0, 0.5).setName('labelText');
         this.confirmButton = new ConfirmButton(scene, 800, 0, answer, this.labelText);
-
-        let errorSprite =
-            new GameSprite(scene, this.labelText.x + this.labelText.displayWidth / 2, this.labelText.y, 'uiError').setName('errorSprite');
-        errorSprite.setScale(0.8);
 
         this.setSize(this.texture.width, this.texture.height);
 
@@ -88,8 +85,17 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
 
     showErrorAnimation(scene) {
         let errorSprite =
-            new GameSprite(scene, this.labelText.x + this.labelText.displayWidth / 2, this.labelText.y, 'uiError').setName('errorSprite');
+            new GameSprite(scene, this.labelText.x + this.labelText.displayWidth / 2, this.labelText.y, 'uiError');
         errorSprite.setScale(0.8);
+
+        console.log("errorSprite:%o", this.errorSprite);
+
+        scene.time.addEvent({
+            delay: 2000,
+            callback: () => {
+                errorSprite.setVisible(false);
+            },
+        });
 
         this.add(errorSprite);
     }
@@ -112,8 +118,6 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
     }
 
     setCurrentAnswer() {
-        
-        this.remove(this.getByName('errorSprite'),true);
         this._text = this._answer;
         this.labelText.setText(this._text);
     }

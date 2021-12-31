@@ -7,6 +7,7 @@ export default class GameManager {
 
         this.localRepository = new LocalRepository();
         this.questionNumberList = [];
+        this.eggColors = [];
 
         if (!GameManager.instance) {
             GameManager.instance = this;
@@ -35,6 +36,7 @@ export default class GameManager {
         console.log(this.questionNumberList)
 
         let questions = await this.localRepository.loadData();
+        this.eggColors = await this.localRepository.loadEggColors();
 
         for (const key in questions) {
             localStorage.setItem(key, JSON.stringify(questions[key]));
@@ -111,6 +113,15 @@ export default class GameManager {
 
     generateGameQuestionIndex() {
         return Phaser.Math.RND.pick(this.questionNumberList);
+    }
+
+
+    getRandomColorEgg() {
+        
+        const egg = Phaser.Math.RND.pick(this.eggColors)
+        this.eggColors.splice(this.eggColors.indexOf(egg), 1);
+
+        return egg;
     }
 
 

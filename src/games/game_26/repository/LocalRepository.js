@@ -9,4 +9,9 @@ export default class LocalRepository {
     async loadData() {
         return require('../assets/json/QuestionData.json')
     }
+
+
+    async loadEggColors(){
+        return require('../assets/json/EggColors.json')
+    }
 }

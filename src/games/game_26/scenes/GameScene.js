@@ -34,6 +34,8 @@ export default class GameScene extends BasicScene {
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
 
+        
+
 
     }
 
@@ -44,9 +46,6 @@ export default class GameScene extends BasicScene {
         createEggTwistingMachineAnimation(this.anims);
         createStarAnimation(this.anims);
         this.paintGameScene(this);
-
-
-
 
     }
 
@@ -94,8 +93,6 @@ export default class GameScene extends BasicScene {
 
         let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
 
-
-        console.log(this.hasGameChance);
         if (this.hasGameChance == undefined) {
             this.playEggAnimation(eggTwistingMachineSprite, answerArea, this.questionIndex);
         } else {
@@ -121,7 +118,7 @@ export default class GameScene extends BasicScene {
 
 
     playEggAnimation(eggTwistingMachineSprite, answerArea, questionIndex) {
-        let egg = new GameSprite(this, 400, 720, 'eggOrange');
+        let egg = new GameSprite(this, 400, 720,   GameManager.getInstance().getRandomColorEgg());
         egg.setScale(0.5);
 
         const shape = this.make.graphics();

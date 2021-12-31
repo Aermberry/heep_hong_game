@@ -117,9 +117,16 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
         })
     }
 
-    setCurrentAnswer() {
-        this._text = this._answer;
-        this.labelText.setText(this._text);
+    setCurrentAnswer(scene) {
+
+        scene.time.addEvent({
+            delay: 2000,
+            callback: () => {
+                this._text = this._answer;
+                this.labelText.setText(this._text);
+            },
+        });
+
     }
 
 

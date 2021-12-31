@@ -195,7 +195,7 @@ export default class GameScene extends BasicScene {
 
 
         if(!_isFirstError){
-            this.answerArea.showCurrentAnswer();
+            this.answerArea.showCurrentAnswer(this);
         }
 
         console.log({ _isFirstError });

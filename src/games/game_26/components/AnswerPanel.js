@@ -6,11 +6,12 @@ import ResetButton from './ResetButton';
 
 export default class AnswerPanel extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y, answer,answerArea) {
+    constructor(scene, x, y, answer, answerArea) {
 
         super(scene, x, y);
         scene.add.existing(this);
         this._text = '';
+        this._answer = answer;
         this.texture = scene.add.sprite(0, 0, 'backgroundLabelAnswer').setScale(0.5);
 
         this.resetButton = new ResetButton(scene, 650, 0, answerArea);
@@ -35,6 +36,10 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
         }).setOrigin(0, 0.5).setName('labelText');
         this.confirmButton = new ConfirmButton(scene, 800, 0, answer, this.labelText);
 
+        let errorSprite =
+            new GameSprite(scene, this.labelText.x + this.labelText.displayWidth / 2, this.labelText.y, 'uiError').setName('errorSprite');
+        errorSprite.setScale(0.8);
+
         this.setSize(this.texture.width, this.texture.height);
 
         this.addOnConfirmButtonClickedEventListener(scene, this.confirmButton);
@@ -57,7 +62,7 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
         return this.labelText.text;
     }
 
-    clearLabelText(){
+    clearLabelText() {
         this._text = '';
         this.labelText.setText(this._text);
     }
@@ -83,7 +88,7 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
 
     showErrorAnimation(scene) {
         let errorSprite =
-            new GameSprite(scene, this.labelText.x + this.labelText.displayWidth / 2, this.labelText.y, 'uiError');
+            new GameSprite(scene, this.labelText.x + this.labelText.displayWidth / 2, this.labelText.y, 'uiError').setName('errorSprite');
         errorSprite.setScale(0.8);
 
         this.add(errorSprite);
@@ -104,6 +109,13 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
 
 
         })
+    }
+
+    setCurrentAnswer() {
+        
+        this.remove(this.getByName('errorSprite'),true);
+        this._text = this._answer;
+        this.labelText.setText(this._text);
     }
 
 

@@ -23,6 +23,7 @@ export default class GameScene extends BasicScene {
         this.uiLayer = undefined
         this.gameFailedLayer = undefined
         this.hasGameChance = undefined;
+        this.answerArea =undefined;
 
         this.currentQuestionAnswer = undefined
     }
@@ -89,23 +90,20 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
-        let answerArea = new AnswerArea(this, this.generateQuestion());
+        this.answerArea = new AnswerArea(this, this.generateQuestion());
 
         let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
 
         if (this.hasGameChance == undefined) {
-            this.playEggAnimation(eggTwistingMachineSprite, answerArea, this.questionIndex);
+            this.playEggAnimation(eggTwistingMachineSprite,  this.answerArea , this.questionIndex);
         } else {
-
             if (this.hasGameChance) {
                 this.add.image(583, 372, 'questionPicture' + this.questionIndex).setScale(0.5);
-                answerArea.showDisplay();
+                this.answerArea .showDisplay();
             }
             else {
-                this.playEggAnimation(eggTwistingMachineSprite, answerArea, this.questionIndex);
+                this.playEggAnimation(eggTwistingMachineSprite,  this.answerArea , this.questionIndex);
             }
-
-
         }
 
 
@@ -113,7 +111,7 @@ export default class GameScene extends BasicScene {
         let exitButton = new ExitButton(this, 120, 135);
 
         this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite]);
-        this.gameLayer.add([exitButton, answerArea]);
+        this.gameLayer.add([exitButton,  this.answerArea ]);
     }
 
 
@@ -189,11 +187,16 @@ export default class GameScene extends BasicScene {
             _isFirstError = isFirstError;
             console.log({ isLastQuestion: value })
             this.time.addEvent({
-                delay: isFirstError ? 1000 : 2000,
+                delay: isFirstError ? 1000 : 5000,
                 callback: () => value ? this.scene.start('End') : this.scene.restart('Game')
             });
         }
         );
+
+
+        if(!_isFirstError){
+            this.answerArea.showCurrentAnswer();
+        }
 
         console.log({ _isFirstError });
     }

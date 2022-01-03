@@ -26,7 +26,8 @@ export default class Section5Scene extends SectionBasicScene {
 
         const imageFiles = {
             game5Bg: require('../assets/images/section_5/game_bg.png'),
-            s5Hint: require('../assets/images/section_5/target.png'),
+            // s5Hint: require('../assets/images/section_5/target.png'),
+            g20Hint: require('../assets/images/section_5/Game_target_Z-16.png'),
             s5Logo: require('../assets/images/section_5/game_art.png'),
             cloud_big: require('../assets/images/objects/cloud_big.png'),
             cloud_small: require('../assets/images/objects/cloud_small.png')
@@ -67,12 +68,14 @@ export default class Section5Scene extends SectionBasicScene {
     populateSection() {
     
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const hintBtn = new HintBtn(this, this.getColWidth(7.3), this.getRowHeight(4.6), 's5Hint', 's5HintLogo')
         const gameBtn1 = new GameNavBtn(this, this.getColWidth(5.7), this.getRowHeight(5.3), 's5btn1', '/game/20')
+        const hintBtn = new HintBtn(this, this.getColWidth(7.3), this.getRowHeight(4.6), [gameBtn1], 's5HintLogo')
         const cloud = new Cloud(this, this.getColWidth(3), this.getRowHeight(8))
         const cloud2 = new Cloud(this, this.getColWidth(10), this.getRowHeight(6), 'cloud_small')
         cloud.setScale(2)
         cloud2.setScale(1.5)
+
+        gameBtn1.initHint('g20Hint', this.getColWidth(-2), this.getRowHeight(0))
 
         this.anims.create({
             key: 'ship', 

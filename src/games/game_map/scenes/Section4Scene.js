@@ -3,6 +3,7 @@ import GameNavBtn from '../objects/GameNavBtn'
 import BackBtn from '../objects/BackBtn'
 import HintBtn from '../objects/HintBtn'
 import Vehicle from '../objects/animations/Vehicle'
+import Cloud from '../objects/animations/Cloud'
 // import StartBtn from '../objects/StartBtn'
 
 export default class Section4Scene extends SectionBasicScene {
@@ -25,12 +26,20 @@ export default class Section4Scene extends SectionBasicScene {
 
         const imageFiles = {
             game4Bg: require('../assets/images/section_4/game_bg.png'),
-            s4Hint1: require('../assets/images/section_4/target_1.png'),
-            s4Hint2: require('../assets/images/section_4/target_2.png'),
-            s4Hint3: require('../assets/images/section_4/target_3.png'),
-            s4Hint4: require('../assets/images/section_4/target_4.png'),
+            // s4Hint1: require('../assets/images/section_4/target_1.png'),
+            // s4Hint2: require('../assets/images/section_4/target_2.png'),
+            // s4Hint3: require('../assets/images/section_4/target_3.png'),
+            // s4Hint4: require('../assets/images/section_4/target_4.png'),
             s4Logo: require('../assets/images/section_4/game_job.png'),
             vehicle: require('../assets/images/section_4/vehicle.png'),
+            cloud_big: require('../assets/images/objects/cloud_big.png'),
+            cloud_small: require('../assets/images/objects/cloud_small.png'),
+            g19Hint: require('../assets/images/section_4/Game_target_Z-27.png'),
+            g18Hint: require('../assets/images/section_4/Game_target_Z-28.png'),
+            g29Hint: require('../assets/images/section_4/Game_target_Z-11.png'),
+            g30Hint: require('../assets/images/section_4/Game_target_Z-12.png'),
+            g16Hint: require('../assets/images/section_4/Game_target_Z-29.png'),
+            g17Hint: require('../assets/images/section_4/Game_target_Z-30.png'),
         }
 
         const soundFiles = {
@@ -83,31 +92,42 @@ export default class Section4Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const game1Btn = new GameNavBtn(this, this.getColWidth(2.4), this.getRowHeight(8.7), 's4btn1', '/game/19')
-        const game2Btn = new GameNavBtn(this, this.getColWidth(6.8), this.getRowHeight(4.7), 's4btn2', '/game/18')
-        const game3Btn = new GameNavBtn(this, this.getColWidth(7.7), this.getRowHeight(6.1), 's4btn3', '/game/29')
-        const game4Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(6), 's4btn4', '/game/30')
-        const game5Btn = new GameNavBtn(this, this.getColWidth(4.5), this.getRowHeight(10.3), 's4btn5', '/game/16')
-        const game6Btn = new GameNavBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's4btn6', '/game/17')
-        const HintBtn1 = new HintBtn(this, this.getColWidth(2.5), this.getRowHeight(6), 's4Hint2', 'dentisitLogo')
-        const HintBtn2 = new HintBtn(this, this.getColWidth(7.8), this.getRowHeight(9.3), 's4Hint4', 'roadDesignLogo')
-        const HintBtn3 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(6), 's4Hint3', 'carerLogo')
-        const HintBtn4 = new HintBtn(this, this.getColWidth(7.5), this.getRowHeight(2.5), 's4Hint1', 'architectLogo')
+        const game19Btn = new GameNavBtn(this, this.getColWidth(2.4), this.getRowHeight(8.7), 's4btn1', '/game/19')
+        const game18Btn = new GameNavBtn(this, this.getColWidth(6.8), this.getRowHeight(4.7), 's4btn2', '/game/18')
+        const game29Btn = new GameNavBtn(this, this.getColWidth(7.7), this.getRowHeight(6.1), 's4btn3', '/game/29')
+        const game30Btn = new GameNavBtn(this, this.getColWidth(10.5), this.getRowHeight(6), 's4btn4', '/game/30')
+        const game16Btn = new GameNavBtn(this, this.getColWidth(4.5), this.getRowHeight(10.3), 's4btn5', '/game/16')
+        const game17Btn = new GameNavBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's4btn6', '/game/17')
+        const HintBtn1 = new HintBtn(this, this.getColWidth(2.5), this.getRowHeight(6), [game19Btn], 'dentisitLogo')
+        const HintBtn2 = new HintBtn(this, this.getColWidth(7.8), this.getRowHeight(9.3), [game16Btn, game17Btn], 'roadDesignLogo')
+        const HintBtn3 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(6), [game29Btn, game30Btn], 'carerLogo')
+        const HintBtn4 = new HintBtn(this, this.getColWidth(7.5), this.getRowHeight(2.5), [game18Btn], 'architectLogo')
+
+        game19Btn.initHint('g19Hint', this.getColWidth(2.2), this.getRowHeight(0))
+        game18Btn.initHint('g18Hint', this.getColWidth(0), this.getRowHeight(2.7))
+        game29Btn.initHint('g29Hint', this.getColWidth(0), this.getRowHeight(-2.5))
+        game30Btn.initHint('g30Hint', this.getColWidth(0), this.getRowHeight(-2.5))
+        game16Btn.initHint('g16Hint', this.getColWidth(-1.5), this.getRowHeight(0))
+        game17Btn.initHint('g17Hint', this.getColWidth(0), this.getRowHeight(-2.6))
 
         const vehicle = new Vehicle(this, this.getColWidth(9), this.getRowHeight(8.3), {x: this.getColWidth(6.9), y: this.getRowHeight(6.7)})
         let roadAnimate = this.add.sprite(this.getColWidth(5.63), this.getRowHeight(11.01), 's4Road')
         roadAnimate.play('s4_road')
 
+        const cloud1 = new Cloud(this, this.getColWidth(3), this.getRowHeight(1))
+        this.add.existing(cloud1)
+        const cloud2 = new Cloud(this, this.getColWidth(11), this.getRowHeight(2.5), 'cloud_small')
+        this.add.existing(cloud2)
 
         this.add.existing(vehicle)
         this.add.image(this.getColWidth(3.7), this.getRowHeight(1.5), 's4Logo')
         this.add.existing(backBtn)
-        this.add.existing(game1Btn)
-        this.add.existing(game2Btn)
-        this.add.existing(game3Btn)
-        this.add.existing(game4Btn)
-        this.add.existing(game5Btn)
-        this.add.existing(game6Btn)
+        this.add.existing(game19Btn)
+        this.add.existing(game18Btn)
+        this.add.existing(game29Btn)
+        this.add.existing(game30Btn)
+        this.add.existing(game16Btn)
+        this.add.existing(game17Btn)
         this.add.existing(HintBtn1)
         this.add.existing(HintBtn2)
         this.add.existing(HintBtn3)

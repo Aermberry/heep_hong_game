@@ -22,6 +22,8 @@ export default class Section1Scene extends BasicScene {
         this.buildPreloadBg('bg_title')
 
         const atlasFiles = {
+            'stars': { img: require('../assets/images/section_1/stars.png'), data: require('../assets/images/section_1/stars.json')},
+            'star': { img: require('../assets/images/section_1/star.png'), data: require('../assets/images/section_1/star.json')}
             // 'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             // 'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
             // 'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
@@ -132,6 +134,31 @@ export default class Section1Scene extends BasicScene {
         game3Btn.initHint('g3Hint', this.getColWidth(-2.5), this.getColWidth(0))
         game4Btn.initHint('g4Hint', this.getColWidth(-0.4), this.getColWidth(-1.5))
 
+        
+        this.anims.create({
+            key: 'stars', 
+            frames: this.anims.generateFrameNames('stars', { prefix: 'Symbol 1', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            repeatDelay: 1000
+        });
+
+
+        let animate = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(9), 'stars')
+        animate.play('stars')
+
+        this.anims.create({
+            key: 'star', 
+            frames: this.anims.generateFrameNames('star', { prefix: 'Symbol 1', start: 0, end: 6, zeroPad: 4 }),
+            repeat: -1,
+            repeatDelay: 1000
+        });
+
+
+        let animate2 = this.add.sprite(this.getColWidth(2), this.getRowHeight(1), 'star')
+        animate2.play('star')
+
+        let animate3 = this.add.sprite(this.getColWidth(4), this.getRowHeight(9), 'star')
+        animate3.play('star')
 
         this.add.existing(hintBtnA)
         this.add.existing(hintBtnB)

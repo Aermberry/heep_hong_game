@@ -26,9 +26,10 @@ export default class Section6Scene extends SectionBasicScene {
         const imageFiles = {
             game6Bg: require('../assets/images/section_6/game_bg.png'),
             // s6Hint: require('../assets/images/section_6/target.png'),
-            btnHint1: require('../assets/images/section_6/Game_target_Z-24.png'),
+            btnHint10: require('../assets/images/section_6/Game_target_Z-24.png'),
             s6Logo: require('../assets/images/section_6/game_magic.png'),
             lamp_light: require('../assets/images/main/worldmap_lamp_pic.png'),
+            s6car: require('../assets/images/section_6/single_car.png')
         }
 
         const soundFiles = {
@@ -69,11 +70,21 @@ export default class Section6Scene extends SectionBasicScene {
         const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1', '/game/10')
         const hintBtn = new HintBtn(this, this.getColWidth(6.8), this.getRowHeight(5.5), [gameBtn], 's6HintLogo')
 
-        gameBtn.initHint('btnHint1', this.getColWidth(0), this.getRowHeight(2.5))
+        gameBtn.initHint('btnHint10', this.getColWidth(0), this.getRowHeight(2.5))
 
         const lampLight1 = new LampLight(this, this.getColWidth(1), this.getRowHeight(5))
         const lampLight2 = new LampLight(this, this.getColWidth(10.1), this.getRowHeight(0.9))
         const lampLight3 = new LampLight(this, this.getColWidth(11.6), this.getRowHeight(6.4))
+
+        const car = this.add.image(this.getColWidth(11.2), this.getRowHeight(6), 's6car')
+        
+        this.tweens.add({
+            targets: car,
+            x: this.getColWidth(4.5),
+            y: this.getRowHeight(13),
+            repeat: -1,
+            duration:10000
+        })
 
         this.add.image(this.getColWidth(3), this.getRowHeight(1.5), 's6Logo')
         this.add.existing(backBtn)

@@ -27,7 +27,7 @@ export default class Section5Scene extends SectionBasicScene {
         const imageFiles = {
             game5Bg: require('../assets/images/section_5/game_bg.png'),
             // s5Hint: require('../assets/images/section_5/target.png'),
-            b1Hint: require('../assets/images/section_5/Game_target_Z-16.png'),
+            g20Hint: require('../assets/images/section_5/Game_target_Z-16.png'),
             s5Logo: require('../assets/images/section_5/game_art.png'),
             cloud_big: require('../assets/images/objects/cloud_big.png'),
             cloud_small: require('../assets/images/objects/cloud_small.png')
@@ -75,7 +75,7 @@ export default class Section5Scene extends SectionBasicScene {
         cloud.setScale(2)
         cloud2.setScale(1.5)
 
-        gameBtn1.initHint('b1Hint', this.getColWidth(-2), this.getRowHeight(0))
+        gameBtn1.initHint('g20Hint', this.getColWidth(-2), this.getRowHeight(0))
 
         this.anims.create({
             key: 'ship', 

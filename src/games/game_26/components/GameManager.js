@@ -1,11 +1,13 @@
-import LocalRepository from "../repository/LocalRepository";
+import QuestionDataLocalRepository from "../repository/QuestionDataLocalRepository";
 import Phaser from 'phaser'
+import EggColorLocalRepository from "../repository/EggColorLocalRepository";
 
 export default class GameManager {
 
     constructor() {
 
-        this.localRepository = new LocalRepository();
+        this.questionDataLocalRepository = new QuestionDataLocalRepository();
+        this.eggColorDataLocalRepository = new EggColorLocalRepository();
         this.questionNumberList = [];
         this.eggColors = [];
 
@@ -35,8 +37,8 @@ export default class GameManager {
 
         console.log(this.questionNumberList)
 
-        let questions = await this.localRepository.loadData();
-        this.eggColors = Array.from(await this.localRepository.loadEggColors());
+        let questions = await this.questionDataLocalRepository.loadData();
+        this.eggColors = Array.from(await this.eggColorDataLocalRepository.loadData());
 
         console.log("eggColors:%o", this.eggColors);
 

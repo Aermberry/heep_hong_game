@@ -47,7 +47,6 @@ export default class GameScene extends BasicScene {
         createEggTwistingMachineAnimation(this.anims);
         createStarAnimation(this.anims);
         this.paintGameScene(this);
-
     }
 
     /**

@@ -36,7 +36,11 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
     paintPhraseLabels(scene, preposition, phrases, gameObject) {
 
-        const points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 527 }];
+        let points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 527 }];
+
+        points = this.ShufflePosition(points);
+
+        // console.log({ points })
 
         let container = scene.add.container(0, 1200);
 
@@ -130,6 +134,17 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         this.answerPanel.resetButton.input.enabled = true;
 
         this.phraseLabelsContainer.list.forEach((gameObject) => gameObject.input.enabled = true);
+    }
+
+    ShufflePosition(arr) {
+        var result = [],
+            random;
+        while (arr.length > 0) {
+            random = Math.floor(Math.random() * arr.length);
+            result.push(arr[random])
+            arr.splice(random, 1)
+        }
+        return result;
     }
 
 }

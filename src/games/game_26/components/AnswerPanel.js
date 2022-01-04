@@ -102,6 +102,9 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
 
     addOnConfirmButtonClickedEventListener(scene, gameObject) {
         gameObject.on('OnConfirmedEvent', (result) => {
+            
+            this.resetButton.input.enabled = false;
+            this.confirmButton.input.enabled = false;
 
             if (result) {
                 scene.paintGameSuccess();

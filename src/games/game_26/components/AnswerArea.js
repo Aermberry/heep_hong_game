@@ -125,7 +125,7 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         this.answerPanel.setCurrentAnswer(scene)
     }
 
-    SetEnableInput(){
+    SetEnableInput() {
         this.answerPanel.confirmButton.input.enabled = true;
         this.answerPanel.resetButton.input.enabled = true;
 

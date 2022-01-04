@@ -5,17 +5,22 @@ export default class HintBtn extends BasicBtn {
     constructor(scene,x,y, gameBtns = [], logoImageName = null){
         super(scene, x, y,[]);
 
-        // this.hintImageName = hintImageName
         let sprite =  scene.add.sprite(0, 0, typeof logoImageName === 'string'? logoImageName : 'hintBtn')
         this.create(sprite,this.onClick.bind(this))
         this.gameBtns = gameBtns
 
         this.clickSound = this.scene.sound.add('info')
+
+        this.isOpen = false
     
     }
 
     onClick(){
         
+        if(this.isOpen === true) return;
+
+        this.isOpen = true
+
         this.createHintSceeen()
         this.origSprite.setFrame(0)
         this.clickSound.play()
@@ -23,9 +28,6 @@ export default class HintBtn extends BasicBtn {
     }
 
     createHintSceeen() {
-
-        // this.hintScreen = this.scene.add.image(this.scene.getColWidth(6), this.scene.getRowHeight(6), this.hintImageName)
-        // this.scene.bringToTop(this.hintSprite)
 
         this.screenCover = this.scene.add.renderTexture(0, 0, this.scene.getColWidth(12), this.scene.getRowHeight(12))
         this.screenCover.fill('0x000000', 0.01)
@@ -52,6 +54,7 @@ export default class HintBtn extends BasicBtn {
             this.setDepth(6)
             this.backDrop.destroy()
             this.screenCover.destroy()
+            this.isOpen = false
         }));
 
     }

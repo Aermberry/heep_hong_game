@@ -35,7 +35,7 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
 
             }
         }).setOrigin(0, 0.5).setName('labelText');
-        this.confirmButton = new ConfirmButton(scene, 800, 0, answer, this.labelText);
+        this.confirmButton = new ConfirmButton(scene, 820, 0, answer, this.labelText);
 
         this.setSize(this.texture.width, this.texture.height);
 

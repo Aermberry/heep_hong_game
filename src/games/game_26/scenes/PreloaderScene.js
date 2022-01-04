@@ -41,11 +41,11 @@ export default class PreloaderScene extends BasicScene {
             'imageTutor02': require('../assets/images/image_tutor02.png'),
             'imageTutor03': require('../assets/images/image_tutor03.png'),
 
-            'eggGreen':require('../assets/images/object_egg_green.png'),
-            'eggOrange':require('../assets/images/object_egg_orange.png'),
-            'eggPink':require('../assets/images/object_egg_pink.png'),
-            'eggPurple':require('../assets/images/object_egg_purple.png'),
-            'eggYellow':require('../assets/images/object_egg_yellow.png'),
+            'eggGreen': require('../assets/images/object_egg_green.png'),
+            'eggOrange': require('../assets/images/object_egg_orange.png'),
+            'eggPink': require('../assets/images/object_egg_pink.png'),
+            'eggPurple': require('../assets/images/object_egg_purple.png'),
+            'eggYellow': require('../assets/images/object_egg_yellow.png'),
 
             'backgroundLabelPhrase': require('../assets/images/background_label_phrase.png'),
             'backgroundLabelPreposition': require('../assets/images/background_label_preposition.png'),
@@ -54,7 +54,7 @@ export default class PreloaderScene extends BasicScene {
             'backgroundGamePlay': require('../assets/images/background_game_play_scene.png'),
             'gameEndDialogBox': require('../assets/images/background_game_end_dialog.png'),
 
-            'uiError':require('../assets/images/ui_error.png'),
+            'uiError': require('../assets/images/ui_error.png'),
 
             'questionPicture0': require('../assets/images/questionPictures/0.png'),
             'questionPicture1': require('../assets/images/questionPictures/1.png'),
@@ -101,7 +101,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('gameProgressExitButton', require('../assets/images/button_exit_progress_game.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
-        this.load.spritesheet('confirmButton',require('../assets/images/button_confirm.png'),{frameWidth: 456, frameHeight: 393});
+        this.load.spritesheet('confirmButton', require('../assets/images/button_confirm.png'), { frameWidth: 456, frameHeight: 431 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }

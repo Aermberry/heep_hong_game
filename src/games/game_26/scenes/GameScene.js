@@ -157,10 +157,9 @@ export default class GameScene extends BasicScene {
                             });
                             answerArea.showAnswerPanelAnimation(this);
                             const questionPicture = this.add.image(583, 372, 'questionPicture' + questionIndex).setScale(0.5);
-                             const eggStatus=this.add.image(1500, 700, colorEgg.status).setScale(0.5);
-                            eggSprite.texture = colorEgg.status;
-                            eggSprite.setPosition(1500, 650);
-                            this.uiLayer.add([questionPicture, eggSprite,eggStatus]);
+                            const eggStatus = this.add.image(1500, 700, colorEgg.status).setScale(0.5);
+
+                            this.uiLayer.add([questionPicture, eggSprite, eggStatus]);
                         }
                     });
                 }

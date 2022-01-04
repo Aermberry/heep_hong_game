@@ -36,7 +36,7 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
     paintPhraseLabels(scene, preposition, phrases, gameObject) {
 
-        let points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 527 }];
+        let points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 557 }];
 
         points = this.ShufflePosition(points);
 

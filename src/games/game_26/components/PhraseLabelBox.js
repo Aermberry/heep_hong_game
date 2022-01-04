@@ -12,6 +12,9 @@ export default class PhraseLabelBox extends Label {
         this.gameObject = gameObject;
 
         this.create();
+
+        this.input.enabled=false;        
+        this.setName("PhraseLabelBox");
     }
 
     onDownClicked() {

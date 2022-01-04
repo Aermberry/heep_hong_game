@@ -31,7 +31,6 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         this.addOnPhraseClickedEventListener(this, this.answerPanel, question.answer);
         this.addOnResetClickedEventListener(this, this.answerPanel, this.phraseLabelsContainer);
-
         this.add[this.answerPanel];
     }
 
@@ -98,6 +97,13 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
             x: { from: 3000, to: 1000 },
             duration: 5000,
             ease: 'Power2',
+            onComplete: () => {
+
+                this.answerPanel.confirmButton.input.enabled = true;
+                this.answerPanel.resetButton.input.enabled = true;
+
+                this.phraseLabelsContainer.list.forEach((gameObject) => gameObject.input.enabled = true);
+            }
         });
         scene.add.tween({
             targets: this.phraseLabelsContainer,

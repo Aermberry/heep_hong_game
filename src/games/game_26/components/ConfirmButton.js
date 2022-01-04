@@ -10,6 +10,7 @@ export default class ConfirmButton extends Phaser.GameObjects.Container {
         this.texture = scene.add.sprite(0, 0, 'confirmButton').setScale(0.5);
 
         this.setSize(this.texture.width, this.texture.height);
+        this.setName("ConfirmButton");
 
         this.add(this.texture);
 
@@ -27,6 +28,8 @@ export default class ConfirmButton extends Phaser.GameObjects.Container {
                     this.onUpClicked(correctAnswer, labelText);
                 }
             )
+
+        this.input.enabled=false;
     }
 
     onDownClicked() {

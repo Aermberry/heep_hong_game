@@ -63,7 +63,7 @@ export default class GameScene extends BasicScene {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
             this.hasGameChance = false;
 
-        } else {
+        } else { 
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
                 this.questionIndex = errorQuestionIndex;

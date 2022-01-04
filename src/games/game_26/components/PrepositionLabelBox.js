@@ -11,6 +11,9 @@ export default class PrepositionLabelBox extends Label {
         this.gameObject = gameObject;
 
         this.create();
+
+        this.input.enabled=false;
+        this.setName("PrepositionLabelBox");
     }
 
     onDownClicked() {

@@ -100,10 +100,7 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
             ease: 'Power2',
             onComplete: () => {
 
-                this.answerPanel.confirmButton.input.enabled = true;
-                this.answerPanel.resetButton.input.enabled = true;
-
-                this.phraseLabelsContainer.list.forEach((gameObject) => gameObject.input.enabled = true);
+                this.SetEnableInput();
             }
         });
         scene.add.tween({
@@ -119,11 +116,20 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
     showDisplay() {
         this.answerPanel.setPosition(1000, 900);
         this.phraseLabelsContainer.setPosition(0, 0);
+
+        this.SetEnableInput();
     }
 
     showCurrentAnswer(scene) {
         console.log("showCurrentAnswer");
         this.answerPanel.setCurrentAnswer(scene)
+    }
+
+    SetEnableInput(){
+        this.answerPanel.confirmButton.input.enabled = true;
+        this.answerPanel.resetButton.input.enabled = true;
+
+        this.phraseLabelsContainer.list.forEach((gameObject) => gameObject.input.enabled = true);
     }
 
 }

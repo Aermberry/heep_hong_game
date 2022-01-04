@@ -84,6 +84,7 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
     addOnResetClickedEventListener(gameObject, answerPanel, phraseLabels) {
         gameObject.on('onResetClickedEvent', () => {
             answerPanel.clearLabelText();
+            this.answerPanel.confirmButton.texture.setFrame(0);
             const unVisiblePhraseLabels = phraseLabels.getAll('visible', false);
             unVisiblePhraseLabels.forEach(phraseLabel => {
                 phraseLabel.setVisible(true);

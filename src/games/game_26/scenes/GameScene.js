@@ -23,7 +23,7 @@ export default class GameScene extends BasicScene {
         this.uiLayer = undefined
         this.gameFailedLayer = undefined
         this.hasGameChance = undefined;
-        this.answerArea =undefined;
+        this.answerArea = undefined;
 
         this.currentQuestionAnswer = undefined
     }
@@ -35,7 +35,7 @@ export default class GameScene extends BasicScene {
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
 
-        
+
 
 
     }
@@ -63,7 +63,7 @@ export default class GameScene extends BasicScene {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
             this.hasGameChance = false;
 
-        } else { 
+        } else {
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
                 this.questionIndex = errorQuestionIndex;
@@ -95,14 +95,14 @@ export default class GameScene extends BasicScene {
         let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
 
         if (this.hasGameChance == undefined) {
-            this.playEggAnimation(eggTwistingMachineSprite,  this.answerArea , this.questionIndex);
+            this.playEggAnimation(eggTwistingMachineSprite, this.answerArea, this.questionIndex);
         } else {
             if (this.hasGameChance) {
                 this.add.image(583, 372, 'questionPicture' + this.questionIndex).setScale(0.5);
-                this.answerArea .showDisplay();
+                this.answerArea.showDisplay();
             }
             else {
-                this.playEggAnimation(eggTwistingMachineSprite,  this.answerArea , this.questionIndex);
+                this.playEggAnimation(eggTwistingMachineSprite, this.answerArea, this.questionIndex);
             }
         }
 
@@ -111,13 +111,16 @@ export default class GameScene extends BasicScene {
         let exitButton = new ExitButton(this, 120, 135);
 
         this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite]);
-        this.gameLayer.add([exitButton,  this.answerArea ]);
+        this.gameLayer.add([exitButton, this.answerArea]);
     }
 
 
     playEggAnimation(eggTwistingMachineSprite, answerArea, questionIndex) {
-        let egg = new GameSprite(this, 400, 720,   GameManager.getInstance().getRandomColorEgg());
-        egg.setScale(0.5);
+
+        const colorEgg = GameManager.getInstance().getRandomColorEgg();
+
+        let eggSprite = new GameSprite(this, 400, 720, colorEgg.name);
+        eggSprite.setScale(0.5);
 
         const shape = this.make.graphics();
         shape.fillStyle(0xffffff);
@@ -125,7 +128,7 @@ export default class GameScene extends BasicScene {
         shape.fillRect(100, 870, 500, 600);
 
         const mask = shape.createGeometryMask();
-        egg.setMask(mask);
+        eggSprite.setMask(mask);
 
         eggTwistingMachineSprite.on("animationcomplete", () => {
             this.add.tween({
@@ -136,7 +139,7 @@ export default class GameScene extends BasicScene {
                 ease: 'Power2',
                 onComplete: () => {
                     this.add.tween({
-                        targets: egg,
+                        targets: eggSprite,
                         y: 1200,
                         angle: 60,
                         duration: 2000,
@@ -153,7 +156,11 @@ export default class GameScene extends BasicScene {
                                 }
                             });
                             answerArea.showAnswerPanelAnimation(this);
-                            this.add.image(583, 372, 'questionPicture' + questionIndex).setScale(0.5);
+                            const questionPicture = this.add.image(583, 372, 'questionPicture' + questionIndex).setScale(0.5);
+                             const eggStatus=this.add.image(1500, 700, colorEgg.status).setScale(0.5);
+                            eggSprite.texture = colorEgg.status;
+                            eggSprite.setPosition(1500, 650);
+                            this.uiLayer.add([questionPicture, eggSprite,eggStatus]);
                         }
                     });
                 }
@@ -194,7 +201,7 @@ export default class GameScene extends BasicScene {
         );
 
 
-        if(!_isFirstError){
+        if (!_isFirstError) {
             this.answerArea.showCurrentAnswer(this);
         }
 

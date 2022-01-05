@@ -43,7 +43,7 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'bearJob',
             delay: 200,
-            frames: this.anims.generateFrameNames('bear_job', { prefix: 'bear1', start: 0, end: 29, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('bear_job', { prefix: 'bear1', start: 0, end: 12, zeroPad: 4 }),
             repeat: -1,
             duration: 5000
         });
@@ -93,10 +93,11 @@ export default class GameScene extends BasicScene {
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
         this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.3), 125, this.offSpeaker.bind(this));
-        this.bear_job = this.add.sprite(this.getColWidth(9), this.getRowHeight(5.8), 'bear_job');
+        this.bearW = this.add.sprite(this.getColWidth(9), this.getRowHeight(5.8), 'bearW');
+        this.bear_job = this.add.sprite(this.getColWidth(9), this.getRowHeight(2.2), 'bear_job');
         this.bear_job.play('bearJob');
         this.add.image(this.getColWidth(3.8), this.getRowHeight(8.5), 'home');
-        this.answers = new Answers(this, this.getColWidth(7.75), this.getRowHeight(6.1), this.currentQuestionGroup[this.currentIndex], this.CompleteAnswerAnimation.bind(this));
+        this.answers = new Answers(this, this.getColWidth(7.75), this.getRowHeight(5.8), this.currentQuestionGroup[this.currentIndex], this.CompleteAnswerAnimation.bind(this));
         this.AnswerBox1 = new AnswerBox(this, this.getColWidth(2.6), this.getRowHeight(7.8),);
         this.AnswerBox2 = new AnswerBox(this, this.getColWidth(5.09), this.getRowHeight(7.8),);
         this.done = new Done(this, this.getColWidth(9.5), this.getRowHeight(11), this.completeGame.bind(this))
@@ -146,17 +147,18 @@ export default class GameScene extends BasicScene {
 
     CompleteAnswerAnimation(state, errorNumber) {
         if (state) {
-            let houseName = ['house_a','house_b']
+            let houseNameList = ['house_a','house_b'];
+            let houseName = houseNameList[Math.floor((Math.random() * houseNameList.length))];
             this.currentIndex++;
-            let house_a = this.add.sprite(this.getColWidth(3.8), this.getRowHeight(3.7), houseName[Math.floor((Math.random() * houseName.length))]);
+            let house = this.add.sprite(houseName == 'house_a'?this.getColWidth(3.8):this.getColWidth(4), this.getRowHeight(3.7), houseName);
             let yes = this.add.sprite(this.getColWidth(3.8), this.getRowHeight(3.7), 'yes');
             yes.setDisplaySize(900, 400);
             let music = this.sound.add('yesAudio')
             music.setLoop(false)
             music.play();
-            house_a.setDisplaySize(900, 800)
+            house.setDisplaySize(900, 800)
             yes.play('yes');
-            house_a.play(houseName[Math.floor((Math.random() * houseName.length))]).on('animationcomplete', () => {
+            house.play(houseName).on('animationcomplete', () => {
                 setTimeout(
                     () => {
                         if (this.currentIndex == this.currentQuestionGroup.length) {

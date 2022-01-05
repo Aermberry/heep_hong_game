@@ -7,6 +7,7 @@ export default class GameNavBtn extends BasicBtn {
 
         this.dataModal = this.scene.sys.game.globals.model;
         this.gamePath = gamePath
+        this.hintBlock = null
         let sprite =  scene.add.sprite(0, 0, imageName)
         this.create(sprite,this.onClick.bind(this))
         sprite.on('pointerup', this.onPointerUp.bind(this))
@@ -54,6 +55,24 @@ export default class GameNavBtn extends BasicBtn {
             duration: 700,
             ease: Phaser.Math.Easing.Bounce.Out
         })
+    }
+
+    initHint(hintBlockName, x, y) {
+        this.hintBlock = this.scene.add.image(x, y, hintBlockName)
+        this.hintBlock.setVisible(false)
+        this.add(this.hintBlock)
+    }
+
+    showHint() {
+        if(this.hintBlock !== null) {
+            this.hintBlock.setVisible(true)
+        }
+    }
+
+    hideHint() {
+        if(this.hintBlock !== null) {
+            this.hintBlock.setVisible(false)
+        }
     }
 
 }

@@ -25,7 +25,7 @@ export default class VipAlertBoard extends Phaser.GameObjects.Container {
                 y: 90
             },
             {
-                x: 140,
+                x: 0,
                 y: 90
             },
             {

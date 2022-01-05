@@ -3,6 +3,9 @@ import BasicScene from './BasicScene'
 import SectionBtn from '../objects/SectionBtn'
 import Balloon from '../objects/animations/Balloon'
 import Cloud from '../objects/animations/Cloud';
+import SwipeUfo from '../objects/animations/SwipeUfo'
+import LampLight from '../objects/animations/LampLight';
+
 export default class MapScene extends BasicScene {
 
     constructor() {
@@ -16,6 +19,15 @@ export default class MapScene extends BasicScene {
 
     preload() {
         this.buildBg('bg_title')
+
+        this.anims.create({
+            key: 'tree',
+            delay: 3000,
+            repeatDelay:8000,
+            repeat: -1,
+            frames: this.anims.generateFrameNames('tree', { prefix: 'Symbol 1', start: 0, end: 10, zeroPad: 4 }),
+        });
+        
     }
 
     create() {
@@ -33,9 +45,18 @@ export default class MapScene extends BasicScene {
         // const game6Btn = new Game6Btn(this, this.getColWidth(6.15), this.getRowHeight(5.27))
         const balloon = new Balloon(this, this.getColWidth(4), this.getRowHeight(8.9))
         const balloon2 = new Balloon(this, this.getColWidth(7), this.getRowHeight(7.5))
-        const cloud1 = new Cloud(this, this.getColWidth(9), this.getRowHeight(9))
+        const cloud1 = new Cloud(this, this.getColWidth(6), this.getRowHeight(7.5))
         const cloud2 = new Cloud(this, this.getColWidth(3), this.getRowHeight(4.8))
+        const cloud3 = new Cloud(this, this.getColWidth(9), this.getRowHeight(5))
+        const cloud4 = new Cloud(this, this.getColWidth(9), this.getRowHeight(9), 'cloud_small')
+        this.ufo = new SwipeUfo(this, this.getColWidth(3), this.getRowHeight(1))
+        const lamp1 = new LampLight(this, this.getColWidth(4.7), this.getRowHeight(4.6))
+        const lamp2 = new LampLight(this, this.getColWidth(7.9), this.getRowHeight(5.3))
 
+        const tree = this.add.sprite(this.getColWidth(7.6), this.getRowHeight(4.7), 'tree')
+
+        tree.play('tree')
+        
         this.add.existing(game1Btn)
         this.add.existing(game2Btn)
         this.add.existing(game3Btn)
@@ -44,11 +65,37 @@ export default class MapScene extends BasicScene {
 
         this.add.existing(game6Btn)
 
+        
+        this.add.existing(lamp1)
+        this.add.existing(lamp2)
+        this.add.existing(this.ufo)
         this.add.existing(balloon)
         this.add.existing(balloon2)
         this.add.existing(cloud1)
         this.add.existing(cloud2)
+        this.add.existing(cloud3)
+        this.add.existing(cloud4)
+
+
+
+        // const ufo = this.add.image(this.getColWidth(4), this.getRowHeight(-1), 'ufo');
+
+        // this.tweens.add({
+        //     targets: ufo,
+        //     x: this.x - this.width * (0.9 + (0.2 * salt)),
+        //     yoyo: true,
+        //     loop: -1,
+        //     duration: 12000 + (4000 * salt),
+        //     ease: Phaser.Math.Easing.Linear,
+        //     delay: 1000 * salt            
+        // })
+
+
 
         // this.scene.start('Map');
+    }
+
+    update() {
+        this.ufo.updatePositionWithPath()
     }
 }

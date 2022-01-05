@@ -30,8 +30,6 @@ export default class TutorScene extends BasicScene {
         this.#paintGameScene();
 
         await this.gameManager.initGameData();
-
-        this.scene.start('Game')
     }
 
 

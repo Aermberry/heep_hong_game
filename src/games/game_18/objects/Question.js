@@ -19,7 +19,7 @@ export default class Question {
             {
                 fontSize: '42px',
                 color: '#000000',
-                fontFamily: "STKaitiTC-Black",
+                fontFamily: "Custom-STKaitiTC",
                 textAlign: "center"
             }
         )

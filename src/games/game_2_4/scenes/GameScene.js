@@ -34,10 +34,6 @@ export default class GameScene extends BasicScene {
         // this.preloadFromArr({
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
-
-
-
-
     }
 
     create() {

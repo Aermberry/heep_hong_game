@@ -33,7 +33,6 @@ class Game2_4 extends Phaser.Game {
     constructor(config, urlParams) {
         super(config);
         console.log(urlParams)
-        
     }
 }
 

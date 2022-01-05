@@ -78,6 +78,9 @@ export default class PreloaderScene extends BasicScene {
         };
 
         const atlasFiles = {
+            'tutorTexture': {
+                img: require('../assets/atlas/atlas_tutor.png'), data: require('../assets/atlas/atlas_tutor.json')
+            },
             'eggTwistingMachineTexture': {
                 img: require('../assets/atlas/atlas_egg_twisting_machine.png'), data: require('../assets/atlas/atlas_egg_twisting_machine.json')
             },

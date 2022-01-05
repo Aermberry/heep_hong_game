@@ -42,7 +42,6 @@ export default class ConfirmButton extends Phaser.GameObjects.Container {
         if (correctAnswer.length == labelText.text.length) {
             this.emit('OnConfirmedEvent', this.checkAnswer(correctAnswer, labelText));
         }
-
     }
 
     showLight() {

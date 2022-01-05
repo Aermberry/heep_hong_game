@@ -50,9 +50,9 @@ export default class LoadProgress extends Phaser.GameObjects.Container {
         this.loadingBar
             .clear()
             .fillStyle(GameColors.darkGray)
-            .fillRoundedRect(this.progressBgRect.x, this.progressBgRect.y - 5, this.progressBgRect.width, this.progressBgRect.height)
+            .fillRect(this.progressBgRect.x, this.progressBgRect.y - 5, this.progressBgRect.width, this.progressBgRect.height)
             .fillStyle(GameColors.green, 1)
-            .fillRoundedRect(this.progressBgRect.x, this.progressBgRect.y - 5, this.progressRect.width, this.progressBgRect.height);
+            .fillRect(this.progressBgRect.x, this.progressBgRect.y - 5, this.progressRect.width, this.progressBgRect.height);
 
         if (progress == 1) {
             this.loadingText.setText('連接完成');

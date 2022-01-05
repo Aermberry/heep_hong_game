@@ -48,14 +48,13 @@ export default class SelectCar extends Phaser.GameObjects.Container {
                     // this.x += this.scene.subjectItem.x;
                     this.origin.x = this.x;
                     let self = this;
-                    // setTimeout(() => {
-                        self.scene.subjectItem.add(self);
-                    // }, 230)
+                    self.scene.subjectItem.add(self);
                 } else {
                     this.x = this.selectAreaOring.x;
                     this.y = this.selectAreaOring.y;
                     this.scene.subjectItem.remove(this);
                 }
+                self.scene.question.onChange()
             }
             this.isDrag = false;
         })
@@ -65,14 +64,7 @@ export default class SelectCar extends Phaser.GameObjects.Container {
 
 
     leaveRender() {
-        // if (dropZone instanceof TrackZone) { 判断是否是该类的实例化
-        // this.scene.subjectItem.list.forEach(item => {
-        //     if (item == this) return;
-        //     if (item.x + this.scene.subjectItem.x <= this.x) { 
-
-        //     }
-        //     item.x = item.origin.x;
-        // });
+        // this.scene.subjectItem.remove(this);
     }
 
     reRender() {
@@ -83,8 +75,7 @@ export default class SelectCar extends Phaser.GameObjects.Container {
             self.scene.subjectItem.list.splice(self.scene.subjectItem.list.indexOf(this), 1);
             self.scene.subjectItem.list.push(this)
         }
-
-        console.log(this.scene.subjectItem.x);
+        // console.log(this.scene.subjectItem.x);
         self.scene.subjectItem.list.forEach((item, index) => {
             if (item == this) {
                 self.thisIndex = index;
@@ -108,7 +99,9 @@ export default class SelectCar extends Phaser.GameObjects.Container {
             duration: 200,
             ease: 'Power2'
         }).on('complete', () => {
-            o.x = o.origin.x;
+            if (!this.isDrag) {
+                o.x = o.origin.x;
+            }
         });
     }
 

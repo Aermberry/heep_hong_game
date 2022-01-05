@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import config from './config'
-
+import Model from './model'
 import BootScene from './scenes/BootScene'
 import PreloaderScene from './scenes/PreloaderScene'
 import TutorSecene from './scenes/TutorScene'
@@ -31,8 +31,15 @@ class Game27 extends Phaser.Game {
 
     // private globals: { model: Model }
 
-    constructor(config) {
+    constructor(config, urlParams) {
         super(config);
+        let model = new Model()
+        this.globals = {
+            model
+        }
+
+        this.globals.model.gameId = urlParams.id;
+
     }
 }
 

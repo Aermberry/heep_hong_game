@@ -12,14 +12,12 @@ export default class BasicScene extends Phaser.Scene {
 
     }
 
-    buildBg(bg) {
-        let background = undefined;
-        if (typeof bg === 'string') {
-            background = this.add.image(0, 0, bg);
-            background.setDisplaySize(this.game.scale.width, this.game.scale.height);
-            background.setOrigin(0, 0);
+    buildBackground(image) {
 
-        }
+        let background = undefined;
+
+        background = this.add.image(0, 0, image).setOrigin(0);
+        background.setDisplaySize(this.game.scale.width, this.game.scale.height);
 
         return background;
     }

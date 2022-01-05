@@ -1,7 +1,6 @@
 import BasicScene from './BasicScene'
-import GameSprite from '../components/GameSprite'
 import LoadProgress from '../components/LoadProgress';
-import { createLoadingTitleAnimations } from '../assets/animations/LoadingTitleAnimation';
+
 
 export default class PreloaderScene extends BasicScene {
 
@@ -13,14 +12,7 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        let self = this;
-
-        this.buildBg('backgroundPreloadingScene');
-
-        createLoadingTitleAnimations(this.anims);
-
-        const loadingTitle = new GameSprite(this, 960, 400, 'loadingTitleTexture');
-        loadingTitle.play('loadingTitleAnimation');
+        this.buildBackground('backgroundPreloadingScene');
 
         this.progressLoader = new LoadProgress(this);
         this.progressLoader.create();
@@ -32,8 +24,9 @@ export default class PreloaderScene extends BasicScene {
 
         this.load.on('complete', (loader, totalComplete, totalFailed) => {
 
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
-            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Game');
+            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Tutor');
+
+            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Game');
         });
 
         const imageFiles = {

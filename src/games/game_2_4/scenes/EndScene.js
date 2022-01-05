@@ -15,7 +15,7 @@ export default class EndScene extends BasicScene {
 
         super.create();
         createEndAnimation(this.anims);
-        this.buildBg('backgroundTutorEnd')
+        this.buildBackground('backgroundTutorEnd')
 
         this.endBroad = new GameEndDialog(this, this.getColWidth(6), this.getRowHeight(6));
         localStorage.clear()

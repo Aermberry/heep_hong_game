@@ -50,7 +50,7 @@ export default class TutorScene extends BasicScene {
             // new GameSprite(this, 1662, 700, 'tutor05Animation'),
         ]
         );
-        backgroundLayer.add([this.buildBg('backgroundTutorEnd')]);
+        backgroundLayer.add([this.buildBackground('backgroundTutorEnd')]);
 
 
     }

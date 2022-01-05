@@ -109,7 +109,7 @@ export default class GameScene extends BasicScene {
 
         let exitButton = new ExitButton(this, 120, 135);
 
-        this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite]);
+        this.uiLayer.add([this.buildBackground('backgroundGamePlay'), eggTwistingMachineSprite]);
         this.gameLayer.add([exitButton, this.answerArea]);
     }
 

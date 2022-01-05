@@ -106,8 +106,8 @@ export default class Bsk {
             win.play('game_correct');
             win.on('animationcomplete', () => {
                 win.destroy();
-                let pack = self.scene.add.sprite(x, y, `pack_market`).setDepth(1000).setScale(0.5);
-                pack.play('pack_market');
+                let pack = self.scene.add.sprite(x, y, self.scene.currentLevel == 1 ? `pack_market` : self.scene.currentLevel == 2 ? 'pack_travel' : 'pack_class').setDepth(1000).setScale(0.5);
+                pack.play(self.scene.currentLevel == 1 ? `pack_market` : self.scene.currentLevel == 2 ? 'pack_travel' : 'pack_class');
                 let music = self.scene.sound.add('level_up');
                 music.play();
                 pack.on('animationcomplete', () => {
@@ -184,7 +184,7 @@ export default class Bsk {
             });
             let win = self.scene.add.sprite(self.sprite.x, self.sprite.y, 'game_wrong').setDepth(10000).setScale(3);
             let music = self.scene.sound.add('wrong');
-                music.play();
+            music.play();
             win.play('game_wrong');
             win.on('animationcomplete', () => {
                 self.scene.Answers.playerSelectAnswers = [];

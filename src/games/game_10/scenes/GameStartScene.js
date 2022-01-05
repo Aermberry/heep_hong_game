@@ -14,30 +14,25 @@ export default class GameStarScene extends BasicScene {
 
     preload() {
         this.buildBg('bg')
-        this.anims.create({
-            key: 'entrance_dog',
-            frames: this.anims.generateFrameNames('entrance_dog', { prefix: 'doggy', start: 0, end: 29, zeroPad: 4 }),
-            repeat: -1,
-            delay: 200
-        });
+        this.sound.removeAll();
 
-        this.anims.create({
-            key: 'entrance_owl',
-            frames: this.anims.generateFrameNames('entrance_owl', { prefix: 'entrance_owl', start: 0, end: 48, zeroPad: 4 }),
-            repeat: -1,
-            delay: 200
-        });
         const imageFiles = {
 
         };
 
         const atlasFiles = {
+            'entrance_dog': { img: require('../assets/img/entrance_dog.png'), data: require('../assets/img/entrance_dog.json') },
+            'entrance_owl': { img: require('../assets/img/entrance_owl.png'), data: require('../assets/img/entrance_owl.json') },
+            'reg_market_text': { img: require('../assets/img/reg_market_text.png'), data: require('../assets/img/reg_market_text.json') }
+        }
 
+        const soundFiles = {
         }
 
         this.preloadFromArr({
             img: imageFiles,
-            atlas: atlasFiles
+            atlas: atlasFiles,
+            sound: soundFiles,
         });
 
         this.createProgressBar();
@@ -45,7 +40,19 @@ export default class GameStarScene extends BasicScene {
 
     create() {
         super.create();
-        this.sound.stopAll();
+        this.anims.create({
+            key: 'entrance_dog',
+            frames: this.anims.generateFrameNames('entrance_dog', { prefix: 'entrance_doggy', start: 0, end: 11, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+        });
+
+        this.anims.create({
+            key: 'entrance_owl',
+            frames: this.anims.generateFrameNames('entrance_owl', { prefix: 'entrance_owl', start: 0, end: 26, zeroPad: 4 }),
+            repeat: -1,
+            delay: 200
+        });
         let music = this.sound.add('dog_walk_in');
         music.play();
         this.gameStart();
@@ -55,8 +62,9 @@ export default class GameStarScene extends BasicScene {
     gameStart() {
         let shelf = this.add.sprite(this.getColWidth(3.2), this.getRowHeight(7.2), 's1_shelf');
         this.add.sprite(this.getColWidth(10.3), this.getRowHeight(1), 's1_sign');
+        this.add.sprite(this.getColWidth(8.7), this.getRowHeight(8.6), 'reg_market').setScale(1.3);
         shelf.setScale(1.3);
-        let entrance_owl = this.add.sprite(this.getColWidth(9.5), this.getRowHeight(6.9), 'entrance_owl');
+        let entrance_owl = this.add.sprite(this.getColWidth(9.5), this.getRowHeight(3.9), 'entrance_owl');
         let entrance_dog = this.add.sprite(this.getColWidth(2), this.getRowHeight(7.2), 'entrance_dog');
         entrance_dog.play('entrance_dog');
         entrance_owl.play('entrance_owl');
@@ -65,7 +73,7 @@ export default class GameStarScene extends BasicScene {
 
     moveDog(o, x) {
         this.moveUp(o, x, () => {
-            this.scene.start('Game', {level: 1});
+            this.scene.start('Game', { level: 1 });
         });
     }
     moveUp(o, x, callback) {

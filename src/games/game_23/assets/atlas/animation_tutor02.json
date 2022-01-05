@@ -10,7 +10,7 @@
 },
 "tutor_step_20001":
 {
-	"frame": {"x":2,"y":2,"w":469,"h":476},
+	"frame": {"x":471,"y":2,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -18,7 +18,7 @@
 },
 "tutor_step_20002":
 {
-	"frame": {"x":2,"y":2,"w":469,"h":476},
+	"frame": {"x":940,"y":2,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -26,7 +26,7 @@
 },
 "tutor_step_20003":
 {
-	"frame": {"x":2,"y":2,"w":469,"h":476},
+	"frame": {"x":2,"y":478,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -34,7 +34,7 @@
 },
 "tutor_step_20004":
 {
-	"frame": {"x":2,"y":2,"w":469,"h":476},
+	"frame": {"x":471,"y":478,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -42,7 +42,7 @@
 },
 "tutor_step_20005":
 {
-	"frame": {"x":2,"y":2,"w":469,"h":476},
+	"frame": {"x":940,"y":478,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -50,7 +50,7 @@
 },
 "tutor_step_20006":
 {
-	"frame": {"x":2,"y":2,"w":469,"h":476},
+	"frame": {"x":2,"y":954,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -58,7 +58,7 @@
 },
 "tutor_step_20007":
 {
-	"frame": {"x":2,"y":478,"w":469,"h":476},
+	"frame": {"x":471,"y":954,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -66,7 +66,7 @@
 },
 "tutor_step_20008":
 {
-	"frame": {"x":2,"y":478,"w":469,"h":476},
+	"frame": {"x":940,"y":954,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -74,167 +74,7 @@
 },
 "tutor_step_20009":
 {
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20010":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20011":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20012":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20013":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20014":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20015":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20016":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20017":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20018":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20019":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20020":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20021":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20022":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20023":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20024":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20025":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20026":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20027":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20028":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
-	"sourceSize": {"w":469,"h":476}
-},
-"tutor_step_20029":
-{
-	"frame": {"x":2,"y":478,"w":469,"h":476},
+	"frame": {"x":2,"y":1430,"w":469,"h":476},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
@@ -245,7 +85,7 @@
 	"version": "16.1.0.86",
 	"image": "tut_2.png",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":1024},
+	"size": {"w":1500,"h":2000},
 	"scale": "1"
 }
 }

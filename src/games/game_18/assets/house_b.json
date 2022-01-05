@@ -2,210 +2,210 @@
 
 "house_b0000":
 {
-	"frame": {"x":2,"y":2,"w":470,"h":334},
+	"frame": {"x":2,"y":2,"w":928,"h":673},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":37,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0001":
 {
-	"frame": {"x":472,"y":2,"w":470,"h":340},
+	"frame": {"x":930,"y":2,"w":928,"h":679},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":37,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0002":
 {
-	"frame": {"x":942,"y":2,"w":470,"h":346},
+	"frame": {"x":1858,"y":2,"w":928,"h":685},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":37,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0003":
 {
-	"frame": {"x":1412,"y":2,"w":470,"h":352},
+	"frame": {"x":2786,"y":2,"w":928,"h":691},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":37,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0004":
 {
-	"frame": {"x":1882,"y":2,"w":470,"h":358},
+	"frame": {"x":2,"y":693,"w":928,"h":697},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":37,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0005":
 {
-	"frame": {"x":2352,"y":2,"w":470,"h":363},
+	"frame": {"x":930,"y":693,"w":928,"h":702},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":37,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0006":
 {
-	"frame": {"x":2822,"y":2,"w":470,"h":365},
+	"frame": {"x":1858,"y":693,"w":928,"h":703},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":35,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":36,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0007":
 {
-	"frame": {"x":3292,"y":2,"w":470,"h":367},
+	"frame": {"x":2786,"y":693,"w":928,"h":705},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":33,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":34,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0008":
 {
-	"frame": {"x":2,"y":369,"w":470,"h":369},
+	"frame": {"x":2,"y":1398,"w":928,"h":707},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":31,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":32,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0009":
 {
-	"frame": {"x":472,"y":369,"w":470,"h":371},
+	"frame": {"x":930,"y":1398,"w":928,"h":709},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":29,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":30,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0010":
 {
-	"frame": {"x":942,"y":369,"w":470,"h":373},
+	"frame": {"x":1858,"y":1398,"w":928,"h":711},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":27,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":28,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0011":
 {
-	"frame": {"x":1412,"y":369,"w":470,"h":375},
+	"frame": {"x":2786,"y":1398,"w":928,"h":713},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":25,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":26,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0012":
 {
-	"frame": {"x":1882,"y":369,"w":470,"h":377},
+	"frame": {"x":2,"y":2111,"w":928,"h":715},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":23,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":24,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0013":
 {
-	"frame": {"x":2352,"y":369,"w":470,"h":379},
+	"frame": {"x":930,"y":2111,"w":928,"h":717},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":21,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":22,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0014":
 {
-	"frame": {"x":2822,"y":369,"w":470,"h":381},
+	"frame": {"x":1858,"y":2111,"w":928,"h":719},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":19,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":20,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0015":
 {
-	"frame": {"x":3292,"y":369,"w":470,"h":383},
+	"frame": {"x":2786,"y":2111,"w":928,"h":721},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":17,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":18,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0016":
 {
-	"frame": {"x":2,"y":752,"w":470,"h":385},
+	"frame": {"x":2,"y":2832,"w":928,"h":723},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":15,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":16,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0017":
 {
-	"frame": {"x":472,"y":752,"w":470,"h":387},
+	"frame": {"x":930,"y":2832,"w":928,"h":725},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":13,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":14,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0018":
 {
-	"frame": {"x":942,"y":752,"w":470,"h":389},
+	"frame": {"x":1858,"y":2832,"w":928,"h":727},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":11,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":12,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0019":
 {
-	"frame": {"x":1412,"y":752,"w":470,"h":391},
+	"frame": {"x":2786,"y":2832,"w":928,"h":729},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":9,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":10,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0020":
 {
-	"frame": {"x":1882,"y":752,"w":470,"h":393},
+	"frame": {"x":2,"y":3561,"w":928,"h":731},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":7,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":8,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0021":
 {
-	"frame": {"x":2352,"y":752,"w":470,"h":395},
+	"frame": {"x":930,"y":3561,"w":928,"h":733},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":5,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":6,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0022":
 {
-	"frame": {"x":2822,"y":752,"w":470,"h":397},
+	"frame": {"x":1858,"y":3561,"w":928,"h":735},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":4,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0023":
 {
-	"frame": {"x":3292,"y":752,"w":470,"h":399},
+	"frame": {"x":2786,"y":3561,"w":928,"h":737},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":2,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 },
 "house_b0024":
 {
-	"frame": {"x":2,"y":1151,"w":470,"h":400},
+	"frame": {"x":2,"y":4298,"w":928,"h":739},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":470,"h":400},
-	"sourceSize": {"w":470,"h":400}
+	"spriteSourceSize": {"x":0,"y":0,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
 }},
 "meta": {
 	"app": "Adobe Animate",
 	"version": "16.1.0.86",
 	"image": "house_b.png",
 	"format": "RGBA8888",
-	"size": {"w":4096,"h":1900},
+	"size": {"w":4096,"h":5500},
 	"scale": "1"
 }
 }

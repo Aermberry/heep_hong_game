@@ -17,8 +17,11 @@ export default class DialogTipBox extends Phaser.GameObjects.Container {
 
 
 
-        let endAnimation = new GameSprite(scene, 0, -40, 'endTexture').setScale(1.4);
-        endAnimation.play('endAnimation');
+        // let endAnimation = new GameSprite(scene, 0, -40, 'endTexture').setScale(1.4);
+        // endAnimation.play('endAnimation');
+
+        let endAnimation = new GameSprite(scene, 0, -40, 'gameEndDialogBoxTexture')
+        
         this.add([
             dialogTipBox,
             endAnimation,

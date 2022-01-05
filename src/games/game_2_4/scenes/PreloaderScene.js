@@ -24,9 +24,9 @@ export default class PreloaderScene extends BasicScene {
 
         this.load.on('complete', (loader, totalComplete, totalFailed) => {
 
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Tutor');
+            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Tutor');
 
-            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Game');
+            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'End');
         });
 
         const imageFiles = {
@@ -52,6 +52,7 @@ export default class PreloaderScene extends BasicScene {
             'backgroundTutorEnd': require('../assets/images/background_tutor_end.png'),
             'backgroundGamePlay': require('../assets/images/background_game_play_scene.png'),
             'gameEndDialogBox': require('../assets/images/background_game_end_dialog.png'),
+            'gameEndDialogBoxTexture': require('../assets/images/texture_game_end_scene_dialog_box.png'),
 
             'uiError': require('../assets/images/ui_error.png'),
 

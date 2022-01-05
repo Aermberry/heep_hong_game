@@ -19,6 +19,13 @@ export default class StartButton extends BasicButton {
   down(clickEvent) {
     this.scene.sound.play('buttonEffectSound');
     this.origSprite.setFrame(1)
+    this._setFullScreen(this.scene);
     super.down(clickEvent)
+  }
+
+  _setFullScreen(scene) {
+    if (!scene.scale.isFullscreen) {
+      scene.scale.startFullscreen();
+    }
   }
 }

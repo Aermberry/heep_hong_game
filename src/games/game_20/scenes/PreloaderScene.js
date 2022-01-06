@@ -25,7 +25,6 @@ export default class PreloaderScene extends BasicScene {
         const atlasFiles = {
             'dog': { img: require('../assets/img/dog.png'), data: require('../assets/img/dog.json') },
             'crab': { img: require('../assets/img/crab.png'), data: require('../assets/img/crab.json') },
-
             'wrong': { img: require('../assets/img/wrong.png'), data: require('../assets/img/wrong.json') },
             'done': { img: require('../assets/img/Done.png'), data: require('../assets/img/Done.json') },
             'tut1': { img: require('../assets/img/tut_1.png'), data: require('../assets/img/tut_1.json') },
@@ -34,7 +33,13 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-      
+            'bgm': require('../assets/audio/Children_s March Theme(short).mp3'),
+            'buttonOnClick': require('../assets/audio/comedy_pop_finger_in_mouth_002.mp3'),
+            'writing': require('../assets/audio/Boots Sand.mp3'),
+            // 'correct': 
+            'wrong': require('../assets/audio/Cartoon slide.mp3'),
+            'complete': require('../assets/audio/child only clap.mp3'),
+            'end': require('../assets/audio/Home at last.mp3'),
         }
 
 
@@ -43,7 +48,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('rplBtn', require('../assets/img/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('tipsBtn', require('../assets/img/tips.png'), { frameWidth: 560, frameHeight: 190 });
-
+        this.load.spritesheet('offSpeakerBtn', require('../assets/img/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
+        this.load.spritesheet('speakerBtn', require('../assets/img/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
         let self = this;

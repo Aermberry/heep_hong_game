@@ -1,6 +1,6 @@
 import BasicScene from './BasicScene'
 import GameEndDialog from '../components/DialogTipBox'
-import { createEndAnimation } from '../assets/animations/EddAnimation';
+import { createEndAnimation } from '../assets/animations/EndAnimation';
 
 
 

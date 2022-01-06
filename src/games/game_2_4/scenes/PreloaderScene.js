@@ -24,72 +24,37 @@ export default class PreloaderScene extends BasicScene {
 
         this.load.on('complete', (loader, totalComplete, totalFailed) => {
 
-            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Tutor');
+            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Tutor');
 
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'End');
+            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Game');
         });
 
         const imageFiles = {
-            'imageTutor01': require('../assets/images/image_tutor01.png'),
-            'imageTutor02': require('../assets/images/image_tutor02.png'),
-            'imageTutor03': require('../assets/images/image_tutor03.png'),
-
-            'eggGreen': require('../assets/images/object_egg_green.png'),
-            'eggOrange': require('../assets/images/object_egg_orange.png'),
-            'eggPink': require('../assets/images/object_egg_pink.png'),
-            'eggPurple': require('../assets/images/object_egg_purple.png'),
-            'eggYellow': require('../assets/images/object_egg_yellow.png'),
-
-            'openedEggGreen': require('../assets/images/object_opened_egg_green.png'),
-            'openedEggOrange': require('../assets/images/object_opened_egg_orange.png'),
-            'openedEggPink': require('../assets/images/object_opened_egg_pink.png'),
-            'openedEggPurple': require('../assets/images/object_opened_egg_purple.png'),
-            'openedEggYellow': require('../assets/images/object_opened_egg_yellow.png'),
-
-            'backgroundLabelPhrase': require('../assets/images/background_label_phrase.png'),
-            'backgroundLabelPreposition': require('../assets/images/background_label_preposition.png'),
-            'backgroundLabelAnswer': require('../assets/images/background_label_answer.png'),
             'backgroundTutorEnd': require('../assets/images/background_tutor_end.png'),
             'backgroundGamePlay': require('../assets/images/background_game_play_scene.png'),
             'gameEndDialogBox': require('../assets/images/background_game_end_dialog.png'),
             'gameEndDialogBoxTexture': require('../assets/images/texture_game_end_scene_dialog_box.png'),
-
-            'uiError': require('../assets/images/ui_error.png'),
-
-            'questionPicture0': require('../assets/images/questionPictures/0.png'),
-            'questionPicture1': require('../assets/images/questionPictures/1.png'),
-            'questionPicture2': require('../assets/images/questionPictures/2.png'),
-            'questionPicture3': require('../assets/images/questionPictures/3.png'),
-            'questionPicture4': require('../assets/images/questionPictures/4.png'),
-            'questionPicture5': require('../assets/images/questionPictures/5.png'),
-            'questionPicture6': require('../assets/images/questionPictures/6.png'),
-            'questionPicture7': require('../assets/images/questionPictures/7.png'),
-            'questionPicture8': require('../assets/images/questionPictures/8.png'),
-            'questionPicture9': require('../assets/images/questionPictures/9.png'),
-            'questionPicture10': require('../assets/images/questionPictures/10.png'),
-            'questionPicture11': require('../assets/images/questionPictures/11.png'),
-            'questionPicture12': require('../assets/images/questionPictures/12.png'),
-            'questionPicture13': require('../assets/images/questionPictures/13.png'),
-            'questionPicture14': require('../assets/images/questionPictures/14.png'),
-            'questionPicture15': require('../assets/images/questionPictures/15.png'),
-            'questionPicture16': require('../assets/images/questionPictures/16.png'),
-            'questionPicture17': require('../assets/images/questionPictures/17.png'),
-            'questionPicture18': require('../assets/images/questionPictures/18.png'),
-            'questionPicture19': require('../assets/images/questionPictures/19.png'),
+            'uiEgg': require('../assets/images/ui_egg.png'),
+            'uiRecorder': require('../assets/images/ui_recorder.png'),
+            'eggAnswerItemTexture':require('../assets/images/texture_egg_answer_item.png'),
+            'eggQuestionTexture':require('../assets/images/texture_egg_question.png'),
         };
 
         const atlasFiles = {
             'tutorTexture': {
                 img: require('../assets/atlas/atlas_tutor.png'), data: require('../assets/atlas/atlas_tutor.json')
             },
-            'eggTwistingMachineTexture': {
-                img: require('../assets/atlas/atlas_egg_twisting_machine.png'), data: require('../assets/atlas/atlas_egg_twisting_machine.json')
-            },
-            'starTexture': {
-                img: require('../assets/atlas/atlas_star.png'), data: require('../assets/atlas/atlas_star.json')
+            'penguinTexture': {
+                img: require('../assets/atlas/atlas_penguin.png'), data: require('../assets/atlas/atlas_penguin.json')
             },
             'endTexture': {
                 img: require('../assets/atlas/atlas_end.png'), data: require('../assets/atlas/atlas_end.json')
+            },
+            'clawTexture': {
+                img: require('../assets/atlas/atlas_claw.png'), data: require('../assets/atlas/atlas_claw.json')
+            },
+            'lionLeftRecorderTexture': {
+                img: require('../assets/atlas/atlas_lion_left_recorder.png'), data: require('../assets/atlas/atlas_lion_left_recorder.json')
             }
         }
 
@@ -104,7 +69,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('gameProgressExitButton', require('../assets/images/button_exit_progress_game.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
-        this.load.spritesheet('confirmButton', require('../assets/images/button_confirm.png'), { frameWidth: 456, frameHeight: 431 });
+        this.load.spritesheet('normalVoiceButton', require('../assets/images/button_voice_normal.png'), { frameWidth: 69, frameHeight: 85 });
+        this.load.spritesheet('onPlayVoiceButton', require('../assets/images/button_voice_on_play.png'), { frameWidth: 186, frameHeight: 109 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }

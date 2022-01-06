@@ -1,15 +1,11 @@
 import BasicScene from "./BasicScene"
 import ExitButton from '../components/ExitProgressGameButton'
-import {
-    createEggTwistingMachineAnimation
-} from '../assets/animations/EggTwistingMachineAnimation';
-import {
-    createStarAnimation
-} from '../assets/animations/StarAnimation';
-import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
-import AnswerArea from "../components/AnswerArea";
-// import TweenAnimation from "../components/TweenAnimation";
+import { createLionLeftRecorderAnimation } from "../assets/animations/LionLeftRecorderAnimation";
+import { createClawAnimation } from "../assets/animations/ClawAnimation";
+import GameSprite from "../components/GameSprite";
+import { createPenguinAnimation } from "../assets/animations/PenguinAnimation";
+
 
 export default class GameScene extends BasicScene {
 
@@ -40,9 +36,16 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        createEggTwistingMachineAnimation(this.anims);
-        createStarAnimation(this.anims);
-        this.paintGameScene(this);
+        this.createAnimation(this.anims);
+
+        this.paintGameScene();
+    }
+
+
+    createAnimation(animationManager) {
+        createLionLeftRecorderAnimation(animationManager);
+        createClawAnimation(animationManager);
+        createPenguinAnimation(animationManager);
     }
 
     /**
@@ -85,84 +88,25 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
-        this.answerArea = new AnswerArea(this, this.generateQuestion());
-
-        let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
-
-        if (this.hasGameChance == undefined) {
-            this.playEggAnimation(eggTwistingMachineSprite, this.answerArea, this.questionIndex);
-        } else {
-            if (this.hasGameChance) {
-                this.add.image(583, 372, 'questionPicture' + this.questionIndex).setScale(0.5);
-                this.answerArea.showDisplay();
-            }
-            else {
-                this.playEggAnimation(eggTwistingMachineSprite, this.answerArea, this.questionIndex);
-            }
-        }
-
-
-
         let exitButton = new ExitButton(this, 120, 135);
+        let lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
 
-        this.uiLayer.add([this.buildBackground('backgroundGamePlay'), eggTwistingMachineSprite]);
-        this.gameLayer.add([exitButton, this.answerArea]);
-    }
+        const uiEgg = this.add.image(710, 890, 'uiEgg').setOrigin(0);
+        uiEgg.setScale(0.5);
+
+        const penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
+
+        const uiRecorder = this.add.image(1920, 840, 'uiRecorder').setOrigin(1, 0);
+
+        const eggTexture=this.add.image(800,800,'eggTexture');
+        // eggTexture.setFlipX(true);
 
 
-    playEggAnimation(eggTwistingMachineSprite, answerArea, questionIndex) {
+        lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
+        penguinSprite.play('penguinAnimation');
 
-        const colorEgg = GameManager.getInstance().getRandomColorEgg();
-
-        let eggSprite = new GameSprite(this, 400, 720, colorEgg.name);
-        eggSprite.setScale(0.5);
-
-        const shape = this.make.graphics();
-        shape.fillStyle(0xffffff);
-        shape.beginPath();
-        shape.fillRect(100, 870, 500, 600);
-
-        const mask = shape.createGeometryMask();
-        eggSprite.setMask(mask);
-
-        eggTwistingMachineSprite.on("animationcomplete", () => {
-            this.add.tween({
-                targets: this.cameras.main.setOrigin(0, 1),
-                x: -400,
-                zoom: 2.6,
-                duration: 1000,
-                ease: 'Power2',
-                onComplete: () => {
-                    this.add.tween({
-                        targets: eggSprite,
-                        y: 1200,
-                        angle: 60,
-                        duration: 2000,
-                        ease: 'Power2',
-                        onComplete: () => {
-                            this.add.tween({
-                                targets: this.cameras.main.setOrigin(0, 1),
-                                x: 0,
-                                zoom: 1,
-                                duration: 5000,
-                                ease: 'Power2',
-                                onComplete: () => {
-
-                                }
-                            });
-                            answerArea.showAnswerPanelAnimation(this);
-                            const questionPicture = this.add.image(583, 372, 'questionPicture' + questionIndex).setScale(0.5);
-                            const eggStatus = this.add.image(1500, 700, colorEgg.status).setScale(0.5);
-
-                            this.uiLayer.add([questionPicture, eggSprite, eggStatus]);
-                        }
-                    });
-                }
-            });
-        });
-
-        eggTwistingMachineSprite.play('eggTwistingMachineAnimation');
-
+        this.uiLayer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
+        this.gameLayer.add([exitButton,eggTexture]);
     }
 
     paintGameSuccess() {

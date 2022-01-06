@@ -27,7 +27,6 @@ export default class TutorScene extends BasicScene {
 
         this.#paintGameScene();
 
-
     }
 
 

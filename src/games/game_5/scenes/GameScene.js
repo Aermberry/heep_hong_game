@@ -86,7 +86,8 @@ export default class GameScene extends BasicScene {
             'fail_smoke': require('../assets/images/fail_smoke.png'),
             'fail_smoke_line': require('../assets/images/fail_smoke_line.png'),
             'fail_smoke_line_small': require('../assets/images/fail_smoke_line_small.png'),
-            'fx_hover': require('../assets/images/fx_hover.png')
+            'fx_hover': require('../assets/images/fx_hover.png'),
+            'bamLine': require('../assets/images/line.png')
         }
 
         const atlasFiles = {
@@ -260,7 +261,7 @@ export default class GameScene extends BasicScene {
 
         if (!this.bam.isInside({ x: catHand.x, y: catHand.y }) || this.disableInput == true) {
 
-            catHand.toOriginPosTween(1000);
+            catHand.toOriginPosTween(500);
 
             return;
         }

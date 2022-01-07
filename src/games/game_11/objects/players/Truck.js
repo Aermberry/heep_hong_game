@@ -9,7 +9,7 @@ export default class Truck extends BasicPlayer {
         scene.anims.create({
             key: 'truck_turn',
             duration: this.getMovementDuration() - 200,
-            frames: scene.anims.generateFrameNames('truck', { prefix: 'truck', start: 0, end: 9, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('truck', { prefix: 'truck', start: 0, end: 4, zeroPad: 4 }),
         })
 
         this.truck = scene.add.sprite(0, 0, 'truck')

@@ -24,16 +24,23 @@ export default class StartButton extends Phaser.GameObjects.Container {
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     console.log("up")
                     this.texture.setFrame(0);
+                    this._setFullScreen(scene);
                     this.onUpClicked();
                 }
             )
     }
 
     onDownClicked() {
-        this.scene.scene.start('Game');
     }
 
     onUpClicked() {
+        this.scene.scene.start('Game');
 
+    }
+
+    _setFullScreen(scene) {
+        if (!scene.scale.isFullscreen) {
+            scene.scale.startFullscreen();
+        }
     }
 }

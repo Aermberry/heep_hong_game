@@ -10,7 +10,6 @@ export default class StartBtn extends BasicBtn {
   }
 
   onClick() {
-
     this.scene.scene.start('GameStart', {
       level: 1,
       pastProblems: []

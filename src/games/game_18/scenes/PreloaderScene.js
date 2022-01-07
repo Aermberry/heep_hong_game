@@ -23,6 +23,7 @@ export default class PreloaderScene extends BasicScene {
             'home_y': require('../assets/home_y.png'),
             'home': require('../assets/home.png'),
             'tutor_bg': require('../assets/tutor_bg.png'),
+            'bearW': require('../assets/bearW.png'),
 
         };
 

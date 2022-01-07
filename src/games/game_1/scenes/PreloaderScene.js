@@ -1,10 +1,11 @@
-import { Scene } from 'phaser';
+// import { Scene } from 'phaser';
 import _ from 'lodash';
 import config from '../config/Config';
 import charSet from '../assets/json/character.json';
-import Choice from '../assets/json/choice.json'
+import BasicScene from './BasicScene';
+// import Choice from '../assets/json/choice.json'
 
-export default class PreloaderScene extends Scene {
+export default class PreloaderScene extends BasicScene {
   constructor () {
     super('Preloader');
   }
@@ -25,6 +26,7 @@ export default class PreloaderScene extends Scene {
     self.load.image('pnlBg', require('../assets/bg_pnl.png'));
     self.load.image('stageBg', require('../assets/bg_stage.png'));
     self.load.image('sndBg', require('../assets/bg_snd.png'));
+    self.load.image('bluescreenLogo', require('../assets/bluescreen_logo.png'));
 
     self.load.image('ph1Bg', require('../assets/bg_ph1.png'));
     self.load.image('ph2Bg', require('../assets/bg_ph2.png'));
@@ -53,12 +55,12 @@ export default class PreloaderScene extends Scene {
     self.load.atlas('char',require('../assets/'+self.model.character.path.char[0]), require('../assets/'+self.model.character.path.char[1]));
     self.load.atlas('char_end',require('../assets/'+self.model.character.path.end[0]), require('../assets/'+self.model.character.path.end[1]));
 
-    self.load.audio('i_want', require('../assets/voice/g001_00.mp3'));
+    // self.load.audio('i_want', require('../assets/voice/g001_00.mp3'));
 
-    _.forEach(Choice, function(item) {
-      self.load.image(item.name, require('../assets/'+item.image));
-      self.load.audio(item.name, require('../assets/voice/'+item.voice));
-    })
+    // _.forEach(Choice, function(item) {
+    //   self.load.image(item.name, require('../assets/'+item.image));
+    //   self.load.audio(item.name, require('../assets/voice/'+item.voice));
+    // })
 
     self.load.audio('bgMusic', require('../assets/voice/bg.mp3'));
 

@@ -16,6 +16,7 @@ import ShipFg from "../objects/foregrounds/ShipFg"
 import Untils from "../../common/Untils"
 import ToLeftBtn from "../objects/buttons/ToLeftBtn"
 import ToRightBtn from "../objects/buttons/ToRightBtn"
+import ExitBtn from "../objects/buttons/ExitBtn";
 import Ufo from "../objects/players/Ufo"
 import UfoBg from "../objects/backgrounds/UfoBg"
 import UfoFg from "../objects/foregrounds/UfoFg"
@@ -84,12 +85,9 @@ export default class GameScene extends BasicScene {
         this.bgClass = this.bgClassMap[this.dataModel.backgroundItem]
         this.fgClass = this.fgClassMap[this.dataModel.foregroundItem]
 
-
-        // this.anims.create({
-        //     key: 'road',
-        //     repeat: -1,
-        //     frames: this.anims.generateFrameNames('road', { prefix: 'road_move', start: 0, end: 5, zeroPad: 4 }),
-        // });
+        //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
+        this.gameMusic = this.sound.add('bgm')
+        this.gameMusic.setLoop(true)
 
     }
 
@@ -105,6 +103,7 @@ export default class GameScene extends BasicScene {
 
         const imageFiles = {
             'end_box': require('../assets/images/end_box.png'),
+            'end_pic_bg': require('../assets/images/end_pic_bg.png'),
             ...blockAssets.img,
             ...playerAssets.img,
             ...bgAssets.img,
@@ -113,16 +112,21 @@ export default class GameScene extends BasicScene {
 
         const atlasFiles = {
             'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json') },
-
             ...blockAssets.atlas,
             ...playerAssets.atlas,
             ...bgAssets.atlas,
             ...fgAssets.atlas
         }
 
+        const soundFiles = {
+            'end_bgm': require('../assets/audios/A_Cloudy_Morning_(2012)_01_shorten.mp3'),
+            'win': require('../assets/audios/child_clap.mp3')
+        }
+
         this.preloadFromArr({
             img: imageFiles,
-            atlas: atlasFiles
+            atlas: atlasFiles,
+            sound: soundFiles
         })
 
         this.createProgressBar();
@@ -157,6 +161,10 @@ export default class GameScene extends BasicScene {
 
         super.create()
 
+        this.playerOnLeft = true
+
+        this.gameMusic.play()
+
         let bg = new this.bgClass(this, 0, 0);
 
         this.add.existing(bg)
@@ -189,12 +197,14 @@ export default class GameScene extends BasicScene {
         
         this.toLeftBtn = new ToLeftBtn(this, this.getColWidth(9.5), this.getRowHeight(10), this._playerToLeft.bind(this, 500))
         this.toRightBtn = new ToRightBtn(this, this.getColWidth(11), this.getRowHeight(10), this._playerToRight.bind(this, 500))
+        this.existBtn = new ExitBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
 
         this.toLeftBtn.setDepth(8)
         this.toRightBtn.setDepth(8)
 
         this.add.existing(this.toLeftBtn)
         this.add.existing(this.toRightBtn)
+        this.add.existing(this.existBtn)
 
     }
 
@@ -247,6 +257,8 @@ export default class GameScene extends BasicScene {
                             } else {
                                 attempedItem.playWrong()
                             }
+
+                            return currentResult;
                         },
                         speedFactor: 1 - (0.07 * ind)
                     }
@@ -259,7 +271,10 @@ export default class GameScene extends BasicScene {
             })
 
         }, Promise.resolve())
-        .then(() => this.scene.start('End'))
+        .then(() => {
+            this.gameMusic.stop()
+            this.scene.start('End')
+        })
 
 
     }

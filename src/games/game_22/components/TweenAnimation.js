@@ -15,7 +15,7 @@ export default class TweenAnimation {
             targets: target,
             y: y,
             duration: duration,
-            ease: 'Power2'
+            ease: 'Power2',
         });
     }
 
@@ -49,13 +49,14 @@ export default class TweenAnimation {
             * @param {Phaser.scene} scene 
             * @param {Phaser.GameObjects.GameObject} target
             */
-    static playHorizontalDirectionTweenAnimation(scene, target, positionX, duration, completeCallback) {
+    static playHorizontalDirectionTweenAnimation(scene, target, positionX, duration, onStartEventCallback, onCompleteEventCallback) {
         this.currentTweenAnimation = scene.tweens.add({
             targets: target,
             x: positionX,
             duration: duration,
             ease: 'Power2',
-            onComplete: completeCallback
+            onStart: onStartEventCallback,
+            onComplete: onCompleteEventCallback
         })
     }
 }

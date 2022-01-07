@@ -10,7 +10,7 @@ export default class Road {
         text[index] = scene.add.text(-140 , -330 + (index * 85), item, {
             color: '#000000',
             fontSize: '60px',
-            fontFamily: "Custom-Han-Serif"
+            fontFamily: "STKaitiTC-Black",
           }).setAngle(2);
 
       });

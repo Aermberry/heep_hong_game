@@ -59,4 +59,22 @@ export default class TweenAnimation {
             onComplete: onCompleteEventCallback
         })
     }
+
+    static PlayClawBoxAppearanceAnimation(gameObject) {
+        this.currentTweenAnimation = gameObject.scene.tweens.timeline({
+            targets: gameObject,
+            ease: 'Bounce',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 1000,
+            loop: 0,
+            tweens: [
+                {
+                    x: 400,
+                    onComplete: () => {
+
+                    }
+                }],
+            onComplete: () => {
+            }
+        })
+    }
 }

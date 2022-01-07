@@ -1,9 +1,7 @@
 import Phaser from 'phaser'
-// import CursorHand from '../assets/images/cursor_hand.png'
 
 export default class Label extends Phaser.GameObjects.Container {
 
-    #toothTexture
     constructor(scene, x, y, label, image, style) {
 
         super(scene, x, y);
@@ -24,6 +22,8 @@ export default class Label extends Phaser.GameObjects.Container {
             text: this.labelText,
             style: this.style
         }).setOrigin(0.5);
+
+       
 
         // Phaser.Display.Align.In.Center(this.labelText, this.texture);
 

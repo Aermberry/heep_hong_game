@@ -5,10 +5,18 @@
         */
 export const createClawAnimation = (anims) => {
     anims.create({
-        key: 'clawAnimation',
+        key: 'clawAnimationStretch',
         delay: 200,
-        frames: anims.generateFrameNames('clawTexture', { prefix: 'claw_', start: 0, end: 18, zeroPad: 4 }),
-        frameRate: 24,
-        repeat: -1
+        frames: anims.generateFrameNames('clawTexture', { prefix: 'claw_', start: 0, end: 10, zeroPad: 4 }),
+        frameRate: 12,
+        repeat: 0
+    });
+
+    anims.create({
+        key: 'clawAnimationTakeBack',
+        delay: 200,
+        frames: anims.generateFrameNames('clawTexture', { prefix: 'claw_', start: 10, end: 18, zeroPad: 4 }),
+        frameRate: 12,
+        repeat: 0
     });
 }

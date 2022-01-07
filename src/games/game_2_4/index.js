@@ -7,6 +7,8 @@ import TutorScene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
 
+
+
 const gameConfig = Object.assign(config, {
     scene: [BootScene, PreloaderScene,TutorScene,GameScene,EndScene]
 });

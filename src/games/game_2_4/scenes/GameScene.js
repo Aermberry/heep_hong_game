@@ -5,6 +5,9 @@ import { createLionLeftRecorderAnimation } from "../assets/animations/LionLeftRe
 import { createClawAnimation } from "../assets/animations/ClawAnimation";
 import GameSprite from "../components/GameSprite";
 import { createPenguinAnimation } from "../assets/animations/PenguinAnimation";
+import EggAnswerItem from "../components/EggAnswerItem";
+import EggQuestion from "../components/EggQuestion";
+import ClawBox from "../components/ClawBox";
 
 
 export default class GameScene extends BasicScene {
@@ -20,6 +23,7 @@ export default class GameScene extends BasicScene {
         this.gameFailedLayer = undefined
         this.hasGameChance = undefined;
         this.answerArea = undefined;
+        this.questionDisplayDirection = undefined;
 
         this.currentQuestionAnswer = undefined
     }
@@ -39,6 +43,7 @@ export default class GameScene extends BasicScene {
         this.createAnimation(this.anims);
 
         this.paintGameScene();
+
     }
 
 
@@ -46,6 +51,7 @@ export default class GameScene extends BasicScene {
         createLionLeftRecorderAnimation(animationManager);
         createClawAnimation(animationManager);
         createPenguinAnimation(animationManager);
+        createClawAnimation(animationManager);
     }
 
     /**
@@ -89,24 +95,36 @@ export default class GameScene extends BasicScene {
         this.uiLayer = this.add.layer().setDepth(0);
 
         let exitButton = new ExitButton(this, 120, 135);
-        let lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
-
-        const uiEgg = this.add.image(710, 890, 'uiEgg').setOrigin(0);
-        uiEgg.setScale(0.5);
 
         const penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
+        const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
 
+        const uiEgg = this.add.image(710, 890, 'uiEgg').setOrigin(0);
         const uiRecorder = this.add.image(1920, 840, 'uiRecorder').setOrigin(1, 0);
+        uiEgg.setScale(0.5);
 
-        const eggTexture=this.add.image(800,800,'eggTexture');
         // eggTexture.setFlipX(true);
+        const eggAnswerItem = new EggAnswerItem(this, 800, 400, "eggAnswerItemTexture", true);
+        console.log(eggAnswerItem);
 
+        const eggQuestion = new EggQuestion(this, 1720, 410, "eggQuestionTexture", false);
+        console.log(eggQuestion);
+
+        const clawBox = new ClawBox(this, { x: 500, y: 800 })
+        clawBox.showAppearanceAnimation();
+        console.log(clawBox);
+
+
+
+        this.physics.add.collider(eggAnswerItem, eggQuestion, () => {
+            console.log("sdsdsd");
+        });
 
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         penguinSprite.play('penguinAnimation');
 
         this.uiLayer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
-        this.gameLayer.add([exitButton,eggTexture]);
+        this.gameLayer.add([exitButton, eggQuestion, eggAnswerItem, clawBox]);
     }
 
     paintGameSuccess() {

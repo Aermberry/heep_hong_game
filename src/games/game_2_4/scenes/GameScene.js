@@ -42,7 +42,9 @@ export default class GameScene extends BasicScene {
 
         this.createAnimation(this.anims);
 
-        this.paintGameScene();
+        this.paintScene();
+
+        this.generateQuestion();
 
     }
 
@@ -89,7 +91,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintGameScene() {
+    paintScene() {
 
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);

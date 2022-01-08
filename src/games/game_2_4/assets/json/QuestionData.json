@@ -2,7 +2,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "鞋",
+            "main": {
+                "object": "鞋",
+                "imageIndex": 0
+            },
             "items": [
                 "閃光",
                 "車",
@@ -16,7 +19,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "鞋",
+            "main": {
+                "object": "鞋",
+                "imageIndex": 0
+            },
             "items": [
                 "盒",
                 "車",
@@ -30,7 +36,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "水",
+            "main": {
+                "object": "水",
+                "imageIndex": 1
+            },
             "items": [
                 "跳",
                 "紙",
@@ -44,7 +53,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "水",
+            "main": {
+                "object": "水",
+                "imageIndex": 1
+            },
             "items": [
                 "鞋",
                 "紙",
@@ -58,7 +70,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "肉",
+            "main": {
+                "object": "肉",
+                "imageIndex": 2
+            },
             "items": [
                 "魚",
                 "褲",
@@ -72,7 +87,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "肉",
+            "main": {
+                "object": "肉",
+                "imageIndex": 2
+            },
             "items": [
                 "丸",
                 "褲",
@@ -86,7 +104,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "奶",
+            "main": {
+                "object": "奶",
+                "imageIndex": 3
+            },
             "items": [
                 "朱古力",
                 "鞋",
@@ -100,7 +121,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "奶",
+            "main": {
+                "object": "奶",
+                "imageIndex": 3
+            },
             "items": [
                 "粉",
                 "鞋",
@@ -114,7 +138,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "手",
+            "main": {
+                "object": "手",
+                "imageIndex": 4
+            },
             "items": [
                 "左",
                 "鞋",
@@ -128,7 +155,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "手",
+            "main": {
+                "object": "手",
+                "imageIndex": 4
+            },
             "items": [
                 "袋",
                 "鞋",
@@ -142,7 +172,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "包",
+            "main": {
+                "object": "包",
+                "imageIndex": 5
+            },
             "items": [
                 "朱古力",
                 "左",
@@ -156,7 +189,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "包",
+            "main": {
+                "object": "包",
+                "imageIndex": 5
+            },
             "items": [
                 "山",
                 "左",
@@ -170,7 +206,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "門",
+            "main": {
+                "object": "門",
+                "imageIndex": 6
+            },
             "items": [
                 "窗",
                 "線",
@@ -184,7 +223,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "門",
+            "main": {
+                "object": "門",
+                "imageIndex": 6
+            },
             "items": [
                 "鎖",
                 "線",
@@ -198,7 +240,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "火",
+            "main": {
+                "object": "火",
+                "imageIndex": 7
+            },
             "items": [
                 "柴",
                 "垃圾",
@@ -212,7 +257,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "火",
+            "main": {
+                "object": "火",
+                "imageIndex": 7
+            },
             "items": [
                 "山",
                 "垃圾",
@@ -226,7 +274,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "電",
+            "main": {
+                "object": "電",
+                "imageIndex": 8
+            },
             "items": [
                 "停",
                 "盒",
@@ -240,7 +291,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "電",
+            "main": {
+                "object": "電",
+                "imageIndex": 8
+            },
             "items": [
                 "線",
                 "盒",
@@ -254,7 +308,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "紙",
+            "main": {
+                "object": "紙",
+                "imageIndex": 9
+            },
             "items": [
                 "剪",
                 "魚",
@@ -268,7 +325,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "紙",
+            "main": {
+                "object": "紙",
+                "imageIndex": 9
+            },
             "items": [
                 "飛機",
                 "魚",
@@ -282,7 +342,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "車",
+            "main": {
+                "object": "車",
+                "imageIndex": 10
+            },
             "items": [
                 "垃圾",
                 "粉",
@@ -296,7 +359,10 @@
     {
         "direction": "left",
         "phrases": {
-            "main": "車",
+            "main": {
+                "object": "車",
+                "imageIndex": 10
+            },
             "items": [
                 "門",
                 "粉",
@@ -310,7 +376,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "袋",
+            "main": {
+                "object": "袋",
+                "imageIndex": 11
+            },
             "items": [
                 "紙",
                 "山",
@@ -324,7 +393,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "袋",
+            "main": {
+                "object": "袋",
+                "imageIndex": 11
+            },
             "items": [
                 "褲",
                 "山",
@@ -338,7 +410,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "箱",
+            "main": {
+                "object": "箱",
+                "imageIndex": 12
+            },
             "items": [
                 "紙",
                 "褲",
@@ -352,7 +427,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "箱",
+            "main": {
+                "object": "箱",
+                "imageIndex": 12
+            },
             "items": [
                 "工具",
                 "褲",
@@ -366,7 +444,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "蛋",
+            "main": {
+                "object": "蛋",
+                "imageIndex": 13
+            },
             "items": [
                 "朱古力",
                 "鎖",
@@ -380,7 +461,10 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "蛋",
+            "main": {
+                "object": "蛋",
+                "imageIndex": 13
+            },
             "items": [
                 "雞",
                 "鎖",
@@ -394,9 +478,16 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "筒",
+            "main": {
+                "object": "筒",
+                "imageIndex": 13
+            },
             "items": [
-                "垃圾","鞋","丸","門","山"
+                "垃圾",
+                "鞋",
+                "丸",
+                "門",
+                "山"
             ]
         },
         "answer": "垃圾筒"
@@ -404,9 +495,16 @@
     {
         "direction": "right",
         "phrases": {
-            "main": "筒",
+            "main": {
+                "object": "筒",
+                "imageIndex": 13
+            },
             "items": [
-                "廁紙","鞋","丸","門","山"
+                "廁紙",
+                "鞋",
+                "丸",
+                "門",
+                "山"
             ]
         },
         "answer": "廁紙筒"

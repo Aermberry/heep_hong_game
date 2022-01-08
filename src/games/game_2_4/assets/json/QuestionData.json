@@ -1,242 +1,414 @@
 [
     {
-        "answer": "小貓把小狗嚇了一跳。",
-        "pictureIndex": 0,
-        "phrases": [
-            "小貓",
-            "把",
-            "小狗",
-            "嚇了一跳",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "right",
+        "phrases": {
+            "main": "鞋",
+            "items": [
+                "閃光",
+                "車",
+                "朱古力",
+                "丸",
+                "剪"
+            ]
+        },
+        "answer": "閃光鞋"
     },
     {
-        "answer": "企鵝把大熊的玩具車弄壞了。",
-        "pictureIndex": 1,
-        "phrases": [
-            "企鵝",
-            "把",
-            "大熊的玩具車",
-            "弄壞了",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "left",
+        "phrases": {
+            "main": "鞋",
+            "items": [
+                "盒",
+                "車",
+                "朱古力",
+                "丸",
+                "剪"
+            ]
+        },
+        "answer": "波鞋"
     },
     {
-        "answer": "小貓把碟子上的魚吃光了。",
-        "pictureIndex": 2,
-        "phrases": [
-            "小貓",
-            "把",
-            "碟子上的魚",
-            "吃光了",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "right",
+        "phrases": {
+            "main": "水",
+            "items": [
+                "跳",
+                "紙",
+                "左",
+                "雞",
+                "飛機"
+            ]
+        },
+        "answer": "跳水"
     },
     {
-        "answer": "大熊把玩具收拾到箱子裏。",
-        "pictureIndex": 3,
-        "phrases": [
-            "大熊",
-            "把",
-            "玩具",
-            "收拾到箱子裏",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "left",
+        "phrases": {
+            "main": "水",
+            "items": [
+                "鞋",
+                "紙",
+                "左",
+                "雞",
+                "飛機"
+            ]
+        },
+        "answer": "水鞋"
     },
     {
-        "answer": "企鵝把果汁喝光了。",
-        "pictureIndex": 4,
-        "phrases": [
-            "企鵝",
-            "把",
-            "果汁",
-            "喝光了",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "right",
+        "phrases": {
+            "main": "肉",
+            "items": [
+                "魚",
+                "褲",
+                "工具",
+                "山",
+                "車"
+            ]
+        },
+        "answer": "魚肉"
     },
     {
-        "answer": "企鵝把獅子的魚杆搶走了。",
-        "pictureIndex": 5,
-        "phrases": [
-            "企鵝",
-            "把",
-            "獅子的魚杆",
-            "搶走了",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "left",
+        "phrases": {
+            "main": "肉",
+            "items": [
+                "丸",
+                "褲",
+                "工具",
+                "山",
+                "車"
+            ]
+        },
+        "answer": "肉丸"
     },
     {
-        "answer": "大熊把小狗的書本撕破了。",
-        "pictureIndex": 6,
-        "phrases": [
-            "大熊",
-            "把",
-            "小狗的書本",
-            "撕破了",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "right",
+        "phrases": {
+            "main": "奶",
+            "items": [
+                "朱古力",
+                "鞋",
+                "紙",
+                "魚",
+                "山"
+            ]
+        },
+        "answer": "朱古力奶"
     },
     {
-        "answer": "大象把客廳打掃乾淨。",
-        "pictureIndex": 7,
-        "phrases": [
-            "大象",
-            "把",
-            "客廳",
-            "打掃乾淨",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "left",
+        "phrases": {
+            "main": "奶",
+            "items": [
+                "粉",
+                "鞋",
+                "紙",
+                "魚",
+                "山"
+            ]
+        },
+        "answer": "奶粉"
     },
     {
-        "answer": "小狗把襪子咬爛了。",
-        "pictureIndex": 8,
-        "phrases": [
-            "小狗",
-            "把",
-            "襪子",
-            "咬爛了",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "right",
+        "phrases": {
+            "main": "手",
+            "items": [
+                "左",
+                "鞋",
+                "紙",
+                "魚",
+                "山"
+            ]
+        },
+        "answer": "左手"
     },
     {
-        "answer": "不要把手伸出窗外。",
-        "pictureIndex": 9,
-        "phrases": [
-            "不要",
-            "把",
-            "手",
-            "伸出窗外",
-            "。"
-        ],
-        "preposition": "把"
+        "direction": "left",
+        "phrases": {
+            "main": "手",
+            "items": [
+                "袋",
+                "鞋",
+                "紙",
+                "魚",
+                "山"
+            ]
+        },
+        "answer": "手袋"
     },
     {
-        "answer": "小貓被小狗嚇了一跳。",
-        "pictureIndex": 10,
-        "phrases": [
-            "小貓",
-            "被",
-            "小狗",
-            "嚇了一跳",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "right",
+        "phrases": {
+            "main": "包",
+            "items": [
+                "朱古力",
+                "左",
+                "袋",
+                "車",
+                "停"
+            ]
+        },
+        "answer": "朱古力包"
     },
     {
-        "answer": "企鵝的玩具車被大熊弄壞了。",
-        "pictureIndex": 11,
-        "phrases": [
-            "企鵝的玩具車",
-            "被",
-            "大熊",
-            "弄壞了",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "left",
+        "phrases": {
+            "main": "包",
+            "items": [
+                "山",
+                "左",
+                "袋",
+                "車",
+                "停"
+            ]
+        },
+        "answer": "包山"
     },
     {
-        "answer": "最後一件蛋糕被小貓吃了。",
-        "pictureIndex": 12,
-        "phrases": [
-            "最後一件蛋糕",
-            "被",
-            "小貓",
-            "吃了",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "right",
+        "phrases": {
+            "main": "門",
+            "items": [
+                "窗",
+                "線",
+                "鞋",
+                "魚",
+                "剪"
+            ]
+        },
+        "answer": "窗門"
     },
     {
-        "answer": "太陽被黑雲遮蓋了。",
-        "pictureIndex": 13,
-        "phrases": [
-            "太陽",
-            "被",
-            "黑雲",
-            "遮蓋了",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "left",
+        "phrases": {
+            "main": "門",
+            "items": [
+                "鎖",
+                "線",
+                "鞋",
+                "魚",
+                "剪"
+            ]
+        },
+        "answer": "門鎖"
     },
     {
-        "answer": "樹葉被大風吹落了。",
-        "pictureIndex": 14,
-        "phrases": [
-            "樹葉",
-            "被",
-            "大風",
-            "吹落了",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "left",
+        "phrases": {
+            "main": "火",
+            "items": [
+                "柴",
+                "垃圾",
+                "褲",
+                "粉",
+                "朱古力"
+            ]
+        },
+        "answer": "火柴"
     },
     {
-        "answer": "獅子釣的魚被小貓搶走了。",
-        "pictureIndex": 15,
-        "phrases": [
-            "獅子釣的魚",
-            "被",
-            "小貓",
-            "搶走了",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "right",
+        "phrases": {
+            "main": "火",
+            "items": [
+                "山",
+                "垃圾",
+                "褲",
+                "粉",
+                "朱古力"
+            ]
+        },
+        "answer": "山火"
     },
     {
-        "answer": "獅子的銀包被小貓搶走了。",
-        "pictureIndex": 16,
-        "phrases": [
-            "獅子的銀包",
-            "被",
-            "小貓",
-            "搶走了",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "right",
+        "phrases": {
+            "main": "電",
+            "items": [
+                "停",
+                "盒",
+                "丸",
+                "紙",
+                "雞"
+            ]
+        },
+        "answer": "停電"
     },
     {
-        "answer": "大象的衣服被雨水淋濕了。",
-        "pictureIndex": 17,
-        "phrases": [
-            "大象的衣服",
-            "被",
-            "雨水",
-            "淋濕了",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "left",
+        "phrases": {
+            "main": "電",
+            "items": [
+                "線",
+                "盒",
+                "丸",
+                "紙",
+                "雞"
+            ]
+        },
+        "answer": "電線"
     },
     {
-        "answer": "獅子的襪子被小貓收藏起來。",
-        "pictureIndex": 18,
-        "phrases": [
-            "獅子的襪子",
-            "被",
-            "小貓",
-            "收藏起來",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "right",
+        "phrases": {
+            "main": "紙",
+            "items": [
+                "剪",
+                "魚",
+                "雞",
+                "鎖",
+                "山"
+            ]
+        },
+        "answer": "剪紙"
     },
     {
-        "answer": "芝士被老鼠咬了一大口。",
-        "pictureIndex": 19,
-        "phrases": [
-            "芝士",
-            "被",
-            "老鼠",
-            "咬了一大口",
-            "。"
-        ],
-        "preposition": "被"
+        "direction": "left",
+        "phrases": {
+            "main": "紙",
+            "items": [
+                "飛機",
+                "魚",
+                "雞",
+                "鎖",
+                "山"
+            ]
+        },
+        "answer": "紙飛機"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "車",
+            "items": [
+                "垃圾",
+                "粉",
+                "褲",
+                "魚",
+                "袋"
+            ]
+        },
+        "answer": "垃圾車"
+    },
+    {
+        "direction": "left",
+        "phrases": {
+            "main": "車",
+            "items": [
+                "門",
+                "粉",
+                "褲",
+                "魚",
+                "袋"
+            ]
+        },
+        "answer": "車門"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "袋",
+            "items": [
+                "紙",
+                "山",
+                "車",
+                "朱古力",
+                "粉"
+            ]
+        },
+        "answer": "紙袋"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "袋",
+            "items": [
+                "褲",
+                "山",
+                "車",
+                "朱古力",
+                "粉"
+            ]
+        },
+        "answer": "褲袋"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "箱",
+            "items": [
+                "紙",
+                "褲",
+                "門",
+                "飛機",
+                "左"
+            ]
+        },
+        "answer": "紙箱"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "箱",
+            "items": [
+                "工具",
+                "褲",
+                "門",
+                "飛機",
+                "左"
+            ]
+        },
+        "answer": "工具箱"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "蛋",
+            "items": [
+                "朱古力",
+                "鎖",
+                "鞋",
+                "車",
+                "工具"
+            ]
+        },
+        "answer": "朱古力蛋"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "蛋",
+            "items": [
+                "雞",
+                "鎖",
+                "鞋",
+                "車",
+                "工具"
+            ]
+        },
+        "answer": "雞蛋"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "筒",
+            "items": [
+                "垃圾","鞋","丸","門","山"
+            ]
+        },
+        "answer": "垃圾筒"
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": "筒",
+            "items": [
+                "廁紙","鞋","丸","門","山"
+            ]
+        },
+        "answer": "廁紙筒"
     }
 ]

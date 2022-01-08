@@ -1,5 +1,6 @@
 import Article from "../objects/Article";
 import BasicScene from "./BasicScene"
+import Butterfly from "../objects/Butterfly";
 // import SpeakerBtn from '../objects/SpeakerBtn'
 export default class GameScene extends BasicScene {
     constructor() {
@@ -56,6 +57,8 @@ export default class GameScene extends BasicScene {
 
     initScene() {
         this.answer = this.dataModal.level1[0]
+        // let butterfly = 
+        new Butterfly(this, 200, 100)
         let article = new Article(this, 100, 480)
         article.createArticle(this.answer)
     }

@@ -102,14 +102,14 @@ export default class Article {
                 }
             })
 
-             group.map((item) => {
-                return new DragText(this.scene, originX + item.index % 30 * 55, originY + item.row * 75, item.text, {
+            group.forEach((item) => {
+                new DragText(this.scene, originX + item.index % 30 * 55, originY + item.row * 75, item.text, {
                     fontSize: '55px',
                     color: "#000000",
                     backgroundColor: '#E07590',
                     fontWeight: 'bold',
                     fontFamily: "system-ui"
-                }, type,2,group.map((item) => item.text).join(''))
+                }, type, 2, group.map((item) => item.text).join(''))
             })
 
         })
@@ -162,7 +162,7 @@ export default class Article {
                     backgroundColor: '#2887DE',
                     fontWeight: 'bold',
                     fontFamily: "system-ui"
-                }, type, 3,group.map((item) => item.text).join(''))
+                }, type, 3, group.map((item) => item.text).join(''))
             })
 
         })

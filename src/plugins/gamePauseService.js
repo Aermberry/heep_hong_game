@@ -38,6 +38,10 @@ class PauseScene extends Phaser.Scene {
         super('Pause');
     }
 
+    init() {
+        this.resumeTime = null
+    }
+
     preload() {
 
         //Bg and btn image need to replace with a universalize image
@@ -52,11 +56,20 @@ class PauseScene extends Phaser.Scene {
         const resumetBtnSprite = this.add.image(0, 0, 'rplBtn')
         this.resumeBtn = new ResumeBtn(this, this.sys.game.canvas.width/2, this.sys.game.canvas.height/2)
         this.resumeBtn.create(resumetBtnSprite, ()=> {
+            clearInterval(this.resumeCounter)
             this.scene.stop()
             gamePauseService.resumePausedScene();
             // lastScene.scene.start()
         })
 
+        this.countDownText = this.add.text(this.sys.game.canvas.width/2, this.sys.game.canvas.height/3, 'Text', {
+            color: '#FFFFFF',
+            fontSize: '50px',
+        })
+        this.countDownText.setOrigin(0.5)
+        this.countDownText.setPadding(10, 10)
+        this.startResumeCount(gamePauseService.getRestTime()* 60 * 1000, gamePauseService)
+        
         this.add.existing(this.resumeBtn)
 //this.scene.add('myScene', ()=> {}, false, data)
         //已經連續遊玩超過15分鐘了
@@ -88,6 +101,38 @@ class PauseScene extends Phaser.Scene {
         const currentPausedScene = this.gamePauseService.getCurrentPausedScene()
         this.scene.scene.resume(currentPausedScene)
     }
+
+    startResumeCount(pauseSec, gamePauseService) {
+
+        this.resumeTime = pauseSec
+
+        this.countDownText.setText('休息至:' + this.resumeTimeFormat(this.resumeTime))
+
+        this.resumeCounter = setInterval(()=> {
+            if(this.resumeTime === 0) {
+                clearInterval(this.resumeCounter)
+                this.scene.stop()
+                gamePauseService.resumePausedScene();
+                
+            }
+            this.resumeTime -= 1000
+            const curTime = this.resumeTimeFormat(this.resumeTime)
+
+            this.countDownText.setText('休息至:' + curTime)
+        }, 1000)
+
+    }
+
+    resumeTimeFormat(microseconds) {
+        let minText = Math.floor(microseconds/1000/60)
+        let secText = microseconds/1000 % 60
+
+        minText = ('' + minText).length > 1 ? minText : '0' + minText
+        secText = ('' + secText).length > 1 ? secText : '0' + secText
+
+        return `${minText}:${secText}`;
+
+    }
 }
 
 const install = function (Vue) {
@@ -110,6 +155,7 @@ const install = function (Vue) {
         this.restTime = restTime
         this.onGamePauseCallback = onGamePauseCallback
         this.resumePausedScene = Vue.prototype.$gamePause.resumePausedScene
+        this.getRestTime = Vue.prototype.$gamePause.getRestTime
 
         this.gameInstance.scene.add('Pause', PauseScene, false, this)
 
@@ -197,6 +243,10 @@ const install = function (Vue) {
         window.localStorage.setItem('game_last_active_timestamp', now.getTime())
         this.isPause = false
 
+    }
+
+    Vue.prototype.$gamePause.getRestTime = ()=> {
+        return this.restTime;
     }
 
 }

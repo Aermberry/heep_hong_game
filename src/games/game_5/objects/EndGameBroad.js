@@ -11,8 +11,15 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
 
         scene.anims.create({
             key: 'end_cat', 
-            frames: scene.anims.generateFrameNames('end_cat', { prefix: 'end_cat', start: 0, end: 39, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('end_cat', { prefix: 'end_cat', start: 0, end: 15, zeroPad: 4 }),
         });
+
+        scene.anims.create({
+            key: 'end_cat_continue',
+            frames: scene.anims.generateFrameNames('end_cat', { prefix: 'end_cat', start: 10, end: 15, zeroPad: 4 }),
+            repeat: -1,
+            duration: 500
+        })
 
 
         let animate = scene.add.sprite(0, 0, 'end_cat')
@@ -22,7 +29,11 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
         let retryBtn = new RetryBtn(scene, - endBox.width * 0.22, endBox.height * 0.35)
         let existBtn = new ExistBigBtn(scene, endBox.width * 0.22, endBox.height * 0.35)
 
-        animate.play('end_cat')
+        animate.play('end_cat').on('animationcomplete', ()=> {
+
+            animate.play('end_cat_continue')
+            
+        })
 
         this.add([
             endBox,

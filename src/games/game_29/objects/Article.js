@@ -7,7 +7,8 @@ export default class Article {
             x: x,
             y: y
         }
-        this.sprite = this.scene.add.sprite(x, y, 'text_bg').setOrigin(0).setScale(0.5)
+        //text_bg scale 0.5 一行容纳30字 竖直 一行容纳15字
+        this.sprite = this.scene.add.sprite(x, y, 'new_text_bg').setOrigin(0).setScale(0.52)
         this.sprite.width = this.sprite.displayWidth
         this.sprite.height = this.sprite.displayHeight
 
@@ -30,11 +31,12 @@ export default class Article {
         let row = 0;
         let secondeArr = [];
         let lastArr = [];
+        let rowMaxChat = 15;  //横着30字 竖直文本框15字
         data.forEach((word, i) => {
-            if (i % 30 == 0) {
+            if (i % rowMaxChat == 0) {
                 row++
             }
-            this.scene.add.text(originX + i % 30 * 55, originY + row * 75, word.text, {
+            this.scene.add.text(originX + i % rowMaxChat * 55, originY + row * 75, word.text.trim(), {
                 fontSize: '55px', //30px
                 color: word['z-index'][0] == 0 ? '#000000' : "#949494",
                 fontWeight: 'bold',
@@ -65,6 +67,7 @@ export default class Article {
     secondeRender(data) {
         let originX = this.oring.x + 40
         let originY = this.oring.y + 40
+        let rowMaxChat = 15;  //横着30字 竖直文本框15字
 
         let arr = [];
         data.forEach((item, i) => {
@@ -80,7 +83,7 @@ export default class Article {
         })
         // 可拖拽的段落 由于一个段落可能有多行，所以将多行分割生成多个可拖拽text，成为一组拖拽时一起移动！
         arr.forEach((item) => {
-            let type = item.map((item) => item.data.type).getMost();
+            let type = item.map((item) => item.data.type).filter((item) => item != "").getMost();
             let arr = [];
             item.forEach((v, i) => {
                 if (i != 0) {
@@ -103,7 +106,7 @@ export default class Article {
             })
 
             group.forEach((item) => {
-                new DragText(this.scene, originX + item.index % 30 * 55, originY + item.row * 75, item.text, {
+                new DragText(this.scene, originX + item.index % rowMaxChat * 55, originY + item.row * 75, item.text, {
                     fontSize: '55px',
                     color: "#000000",
                     backgroundColor: '#E07590',
@@ -118,7 +121,7 @@ export default class Article {
     lastRender(data) {
         let originX = this.oring.x + 40
         let originY = this.oring.y + 40
-
+        let rowMaxChat = 15;
         let arr = [];
         data.forEach((item, i) => {
             if (i != 0) {
@@ -133,7 +136,7 @@ export default class Article {
         })
         // 可拖拽的段落 由于一个段落可能有多行，所以将多行分割生成多个可拖拽text，成为一组拖拽时一起移动！
         arr.forEach((item) => {
-            let type = item.map((item) => item.data.type).getMost();
+            let type = item.map((item) => item.data.type).filter((item) => item != "").getMost();
             let arr = [];
             item.forEach((v, i) => {
                 if (i != 0) {
@@ -156,7 +159,7 @@ export default class Article {
             })
 
             group.forEach((item) => {
-                new DragText(this.scene, originX + item.index % 30 * 55, originY + item.row * 75, item.text, {
+                new DragText(this.scene, originX + item.index % rowMaxChat * 55, originY + item.row * 75, item.text, {
                     fontSize: '55px',
                     color: "#000000",
                     backgroundColor: '#2887DE',

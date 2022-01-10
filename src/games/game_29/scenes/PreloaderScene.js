@@ -16,6 +16,7 @@ export default class PreloaderScene extends BasicScene {
             'bg_tutor': require('../assets/img/tut_bg.png'),
             'end_box': require('../assets/img/end_box.png'),
             'text_bg': require('../assets/img/text_bg.png'),
+            'new_text_bg': require('../assets/img/new_text_bg.png'),
             'but_bx1': require('../assets/img/but_bx1.png'),
             'but_bx2': require('../assets/img/but_bx2.png'),
             'but_bx3': require('../assets/img/but_bx3.png'),
@@ -28,6 +29,12 @@ export default class PreloaderScene extends BasicScene {
             'but_shw_sor': require('../assets/img/but_shw_sor.png'),
             'but_shw_wl': require('../assets/img/but_shw_wl.png'),
             'but_shw_wr': require('../assets/img/but_shw_wr.png'),
+            'hinsbx1': require('../assets/img/hinsbx1.png'),
+            'hinsbx2': require('../assets/img/hinsbx2.png'),
+            'hinsbx3': require('../assets/img/hinsbx3.png'),
+            'hinsbx4': require('../assets/img/hinsbx4.png'),
+            'hinsbx5': require('../assets/img/hinsbx5.png'),
+            'hinsbx6': require('../assets/img/hinsbx6.png'),
         };
 
         const atlasFiles = {

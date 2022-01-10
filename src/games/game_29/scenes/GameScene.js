@@ -53,13 +53,29 @@ export default class GameScene extends BasicScene {
         this.buildBg('bg');
         //初始化游戏场景
         this.initScene();
+        let self = this;
+        let text = 'text';
+        let sprite = self.add.text(0, 0, text, {
+            fontSize: '40px', //30px
+            color: '#000000',
+            fontWeight: 'bold',
+            fontFamily: "system-ui"
+        })
+
+        self.input.on('dragenter', function (pointer, gameObject, dropZone) {
+            text = dropZone.type;
+            sprite.setText(text)
+        })
     }
 
     initScene() {
         this.answer = this.dataModal.level1[0]
         // let butterfly = 
-        new Butterfly(this, 200, 100)
-        let article = new Article(this, 100, 480)
+        // new Butterfly(this, 200, 100)
+        // let article = new Article(this, 100, 480)
+        let article = new Article(this, 0, 0)
+        new Butterfly(this, 960, 50)
+
         article.createArticle(this.answer)
     }
 

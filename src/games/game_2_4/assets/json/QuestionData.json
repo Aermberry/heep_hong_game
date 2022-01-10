@@ -4,509 +4,1016 @@
         "phrases": {
             "main": {
                 "object": "鞋",
-                "imageIndex": 0
+                "questionTextureIndex": 0
             },
             "items": [
-                "閃光",
-                "車",
-                "朱古力",
-                "丸",
-                "剪"
+                {
+                    "object": "閃光",
+                    "questionTextureIndex": 16
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 16
+                },
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 16
+                },
+                {
+                    "object": "丸",
+                    "questionTextureIndex": 16
+                },
+                {
+                    "object": "剪",
+                    "questionTextureIndex": 16
+                }
             ]
         },
-        "answer": "閃光鞋"
+        "answer": {
+            "object": "閃光鞋",
+            "answerTextureIndex": 0
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "鞋",
-                "imageIndex": 0
+                "questionTextureIndex": 0
             },
             "items": [
-                "盒",
-                "車",
-                "朱古力",
-                "丸",
-                "剪"
+                {
+                    "object": "盒",
+                    "questionTextureIndex": 17
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                },
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                },
+                {
+                    "object": "丸",
+                    "questionTextureIndex": 20
+                },
+                {
+                    "object": "剪",
+                    "questionTextureIndex": 24
+                }
             ]
         },
-        "answer": "波鞋"
-    },
-    {
-        "direction": "right",
-        "phrases": {
-            "main": {
-                "object": "水",
-                "imageIndex": 1
-            },
-            "items": [
-                "跳",
-                "紙",
-                "左",
-                "雞",
-                "飛機"
-            ]
-        },
-        "answer": "跳水"
+        "answer": {
+            "object": "鞋盒",
+            "answerTextureIndex": 1
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "水",
-                "imageIndex": 1
+                "questionTextureIndex": 1
             },
             "items": [
-                "鞋",
-                "紙",
-                "左",
-                "雞",
-                "飛機"
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "左",
+                    "questionTextureIndex": 23
+                },
+                {
+                    "object": "雞",
+                    "questionTextureIndex": 35
+                },
+                {
+                    "object": "飛機",
+                    "questionTextureIndex": 31
+                }
             ]
         },
-        "answer": "水鞋"
+        "answer": {
+            "object": "水鞋",
+            "answerTextureIndex": 3
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "肉",
-                "imageIndex": 2
+                "questionTextureIndex": 2
             },
             "items": [
-                "魚",
-                "褲",
-                "工具",
-                "山",
-                "車"
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "工具",
+                    "questionTextureIndex": 34
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                }
             ]
         },
-        "answer": "魚肉"
+        "answer": {
+            "object": "魚肉",
+            "answerTextureIndex": 4
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "肉",
-                "imageIndex": 2
+                "questionTextureIndex": 2
             },
             "items": [
-                "丸",
-                "褲",
-                "工具",
-                "山",
-                "車"
+                {
+                    "object": "丸",
+                    "questionTextureIndex": 20
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "工具",
+                    "questionTextureIndex": 34
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                }
             ]
         },
-        "answer": "肉丸"
+        "answer": {
+            "object": "肉丸",
+            "answerTextureIndex": 5
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "奶",
-                "imageIndex": 3
+                "questionTextureIndex": 3
             },
             "items": [
-                "朱古力",
-                "鞋",
-                "紙",
-                "魚",
-                "山"
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "朱古力奶"
+        "answer": {
+            "object": "朱古力奶",
+            "answerTextureIndex": 6
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "奶",
-                "imageIndex": 3
+                "questionTextureIndex": 3
             },
             "items": [
-                "粉",
-                "鞋",
-                "紙",
-                "魚",
-                "山"
+                {
+                    "object": "粉",
+                    "questionTextureIndex": 22
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "奶粉"
+        "answer": {
+            "object": "奶粉",
+            "answerTextureIndex": 7
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "手",
-                "imageIndex": 4
+                "questionTextureIndex": 4
             },
             "items": [
-                "左",
-                "鞋",
-                "紙",
-                "魚",
-                "山"
+                {
+                    "object": "左",
+                    "questionTextureIndex": 23
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "左手"
+        "answer": {
+            "object": "左手",
+            "answerTextureIndex": 8
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "手",
-                "imageIndex": 4
+                "questionTextureIndex": 4
             },
             "items": [
-                "袋",
-                "鞋",
-                "紙",
-                "魚",
-                "山"
+                {
+                    "object": "袋",
+                    "questionTextureIndex": 11
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "手袋"
+        "answer": {
+            "object": "手袋",
+            "answerTextureIndex": 9
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "包",
-                "imageIndex": 5
+                "questionTextureIndex": 5
             },
             "items": [
-                "朱古力",
-                "左",
-                "袋",
-                "車",
-                "停"
-            ]
-        },
-        "answer": "朱古力包"
-    },
-    {
-        "direction": "left",
-        "phrases": {
-            "main": {
-                "object": "包",
-                "imageIndex": 5
-            },
-            "items": [
-                "山",
-                "左",
-                "袋",
-                "車",
-                "停"
-            ]
-        },
-        "answer": "包山"
-    },
-    {
-        "direction": "right",
-        "phrases": {
-            "main": {
-                "object": "門",
-                "imageIndex": 6
-            },
-            "items": [
-                "窗",
-                "線",
-                "鞋",
-                "魚",
-                "剪"
-            ]
-        },
-        "answer": "窗門"
-    },
-    {
-        "direction": "left",
-        "phrases": {
-            "main": {
-                "object": "門",
-                "imageIndex": 6
-            },
-            "items": [
-                "鎖",
-                "線",
-                "鞋",
-                "魚",
-                "剪"
-            ]
-        },
-        "answer": "門鎖"
-    },
-    {
-        "direction": "left",
-        "phrases": {
-            "main": {
-                "object": "火",
-                "imageIndex": 7
-            },
-            "items": [
-                "柴",
-                "垃圾",
-                "褲",
-                "粉",
-                "朱古力"
-            ]
-        },
-        "answer": "火柴"
-    },
-    {
-        "direction": "right",
-        "phrases": {
-            "main": {
-                "object": "火",
-                "imageIndex": 7
-            },
-            "items": [
-                "山",
-                "垃圾",
-                "褲",
-                "粉",
-                "朱古力"
-            ]
-        },
-        "answer": "山火"
-    },
-    {
-        "direction": "right",
-        "phrases": {
-            "main": {
-                "object": "電",
-                "imageIndex": 8
-            },
-            "items": [
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                },
+                {
+                    "object": "左",
+                    "questionTextureIndex": 23
+                },
+                {
+                    "object": "袋",
+                    "questionTextureIndex": 11
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                },
                 "停",
-                "盒",
-                "丸",
-                "紙",
-                "雞"
+                29,
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                }
             ]
         },
-        "answer": "停電"
+        "answer": {
+            "object": "朱古力包",
+            "answerTextureIndex": 10
+        }
+    },
+    {
+        "direction": "left",
+        "phrases": {
+            "main": {
+                "object": "包",
+                "questionTextureIndex": 5
+            },
+            "items": [
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                },
+                {
+                    "object": "左",
+                    "questionTextureIndex": 23
+                },
+                {
+                    "object": "袋",
+                    "questionTextureIndex": 11
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                },
+                {
+                    "object": "停",
+                    "questionTextureIndex": 29
+                }
+            ]
+        },
+        "answer": {
+            "object": "包山",
+            "answerTextureIndex": 11
+        }
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": {
+                "object": "門",
+                "questionTextureIndex": 6
+            },
+            "items": [
+                {
+                    "object": "窗",
+                    "questionTextureIndex": 26
+                },
+                {
+                    "object": "線",
+                    "questionTextureIndex": 30
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "剪",
+                    "questionTextureIndex": 24
+                }
+            ]
+        },
+        "answer": {
+            "object": "窗門",
+            "answerTextureIndex": 12
+        }
+    },
+    {
+        "direction": "left",
+        "phrases": {
+            "main": {
+                "object": "門",
+                "questionTextureIndex": 6
+            },
+            "items": [
+                {
+                    "object": "鎖",
+                    "questionTextureIndex": 27
+                },
+                {
+                    "object": "線",
+                    "questionTextureIndex": 30
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "剪",
+                    "questionTextureIndex": 24
+                }
+            ]
+        },
+        "answer": {
+            "object": "門鎖",
+            "answerTextureIndex": 13
+        }
+    },
+    {
+        "direction": "left",
+        "phrases": {
+            "main": {
+                "object": "火",
+                "questionTextureIndex": 7
+            },
+            "items": [
+                {
+                    "object": "柴",
+                    "questionTextureIndex": 28
+                },
+                {
+                    "object": "垃圾",
+                    "questionTextureIndex": 32
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "粉",
+                    "questionTextureIndex": 22
+                },
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                }
+            ]
+        },
+        "answer": {
+            "object": "火柴",
+            "answerTextureIndex": 14
+        }
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": {
+                "object": "火",
+                "questionTextureIndex": 7
+            },
+            "items": [
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                },
+                {
+                    "object": "垃圾",
+                    "questionTextureIndex": 32
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "粉",
+                    "questionTextureIndex": 22
+                },
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                }
+            ]
+        },
+        "answer": {
+            "object": "山火",
+            "answerTextureIndex": 15
+        }
+    },
+    {
+        "direction": "right",
+        "phrases": {
+            "main": {
+                "object": "電",
+                "questionTextureIndex": 8
+            },
+            "items": [
+                {
+                    "object": "停",
+                    "questionTextureIndex": 29
+                },
+                {
+                    "object": "盒",
+                    "questionTextureIndex": 17
+                },
+                {
+                    "object": "丸",
+                    "questionTextureIndex": 20
+                },
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "雞",
+                    "questionTextureIndex": 35
+                }
+            ]
+        },
+        "answer": {
+            "object": "停電",
+            "answerTextureIndex": 16
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "電",
-                "imageIndex": 8
+                "questionTextureIndex": 8
             },
             "items": [
-                "線",
-                "盒",
-                "丸",
-                "紙",
-                "雞"
+                {
+                    "object": "線",
+                    "questionTextureIndex": 30
+                },
+                {
+                    "object": "盒",
+                    "questionTextureIndex": 17
+                },
+                {
+                    "object": "丸",
+                    "questionTextureIndex": 20
+                },
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "雞",
+                    "questionTextureIndex": 35
+                }
             ]
         },
-        "answer": "電線"
+        "answer": {
+            "object": "電線",
+            "answerTextureIndex": 17
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "紙",
-                "imageIndex": 9
+                "questionTextureIndex": 9
             },
             "items": [
-                "剪",
-                "魚",
-                "雞",
-                "鎖",
-                "山"
+                {
+                    "object": "剪",
+                    "questionTextureIndex": 24
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "雞",
+                    "questionTextureIndex": 35
+                },
+                {
+                    "object": "鎖",
+                    "questionTextureIndex": 27
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "剪紙"
+        "answer": {
+            "object": "剪紙",
+            "answerTextureIndex": 18
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "紙",
-                "imageIndex": 9
+                "questionTextureIndex": 9
             },
             "items": [
-                "飛機",
-                "魚",
-                "雞",
-                "鎖",
-                "山"
+                {
+                    "object": "飛機",
+                    "questionTextureIndex": 31
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "雞",
+                    "questionTextureIndex": 35
+                },
+                {
+                    "object": "鎖",
+                    "questionTextureIndex": 27
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "紙飛機"
+        "answer": {
+            "object": "紙飛機",
+            "answerTextureIndex": 19
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "車",
-                "imageIndex": 10
+                "questionTextureIndex": 10
             },
             "items": [
-                "垃圾",
-                "粉",
-                "褲",
-                "魚",
-                "袋"
+                {
+                    "object": "垃圾",
+                    "questionTextureIndex": 32
+                },
+                {
+                    "object": "粉",
+                    "questionTextureIndex": 22
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "袋",
+                    "questionTextureIndex": 11
+                }
             ]
         },
-        "answer": "垃圾車"
+        "answer": {
+            "object": "垃圾車",
+            "answerTextureIndex": 20
+        }
     },
     {
         "direction": "left",
         "phrases": {
             "main": {
                 "object": "車",
-                "imageIndex": 10
+                "questionTextureIndex": 10
             },
             "items": [
-                "門",
-                "粉",
-                "褲",
-                "魚",
-                "袋"
+                {
+                    "object": "門",
+                    "questionTextureIndex": 6
+                },
+                {
+                    "object": "粉",
+                    "questionTextureIndex": 22
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "魚",
+                    "questionTextureIndex": 19
+                },
+                {
+                    "object": "袋",
+                    "questionTextureIndex": 11
+                }
             ]
         },
-        "answer": "車門"
+        "answer": {
+            "object": "車門",
+            "answerTextureIndex": 21
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "袋",
-                "imageIndex": 11
+                "questionTextureIndex": 11
             },
             "items": [
-                "紙",
-                "山",
-                "車",
-                "朱古力",
-                "粉"
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                },
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                },
+                {
+                    "object": "粉",
+                    "questionTextureIndex": 22
+                }
             ]
         },
-        "answer": "紙袋"
+        "answer": {
+            "object": "紙袋",
+            "answerTextureIndex": 22
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "袋",
-                "imageIndex": 11
+                "questionTextureIndex": 11
             },
             "items": [
-                "褲",
-                "山",
-                "車",
-                "朱古力",
-                "粉"
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                },
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                },
+                {
+                    "object": "粉",
+                    "questionTextureIndex": 22
+                }
             ]
         },
-        "answer": "褲袋"
+        "answer": {
+            "object": "褲袋",
+            "answerTextureIndex": 23
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "箱",
-                "imageIndex": 12
+                "questionTextureIndex": 12
             },
             "items": [
-                "紙",
-                "褲",
-                "門",
-                "飛機",
-                "左"
+                {
+                    "object": "紙",
+                    "questionTextureIndex": 9
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "門",
+                    "questionTextureIndex": 6
+                },
+                {
+                    "object": "飛機",
+                    "questionTextureIndex": 31
+                },
+                {
+                    "object": "左",
+                    "questionTextureIndex": 23
+                }
             ]
         },
-        "answer": "紙箱"
+        "answer": {
+            "object": "紙箱",
+            "answerTextureIndex": 24
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "箱",
-                "imageIndex": 12
+                "questionTextureIndex": 12
             },
             "items": [
-                "工具",
-                "褲",
-                "門",
-                "飛機",
-                "左"
+                {
+                    "object": "工具",
+                    "questionTextureIndex": 34
+                },
+                {
+                    "object": "褲",
+                    "questionTextureIndex": 33
+                },
+                {
+                    "object": "門",
+                    "questionTextureIndex": 6
+                },
+                {
+                    "object": "飛機",
+                    "questionTextureIndex": 31
+                },
+                {
+                    "object": "左",
+                    "questionTextureIndex": 23
+                }
             ]
         },
-        "answer": "工具箱"
+        "answer": {
+            "object": "工具箱",
+            "answerTextureIndex": 25
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "蛋",
-                "imageIndex": 13
+                "questionTextureIndex": 13
             },
             "items": [
-                "朱古力",
-                "鎖",
-                "鞋",
-                "車",
-                "工具"
+                {
+                    "object": "朱古力",
+                    "questionTextureIndex": 21
+                },
+                {
+                    "object": "鎖",
+                    "questionTextureIndex": 27
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                },
+                {
+                    "object": "工具",
+                    "questionTextureIndex": 34
+                }
             ]
         },
-        "answer": "朱古力蛋"
+        "answer": {
+            "object": "朱古力蛋",
+            "answerTextureIndex": 26
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "蛋",
-                "imageIndex": 13
+                "questionTextureIndex": 13
             },
             "items": [
-                "雞",
-                "鎖",
-                "鞋",
-                "車",
-                "工具"
+                {
+                    "object": "雞",
+                    "questionTextureIndex": 35
+                },
+                {
+                    "object": "鎖",
+                    "questionTextureIndex": 34
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "車",
+                    "questionTextureIndex": 10
+                },
+                {
+                    "object": "工具",
+                    "questionTextureIndex": 34
+                }
             ]
         },
-        "answer": "雞蛋"
+        "answer": {
+            "object": "雞蛋",
+            "answerTextureIndex": 27
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "筒",
-                "imageIndex": 13
+                "questionTextureIndex": 13
             },
             "items": [
-                "垃圾",
-                "鞋",
-                "丸",
-                "門",
-                "山"
+                {
+                    "object": "垃圾",
+                    "questionTextureIndex": 32
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "丸",
+                    "questionTextureIndex": 20
+                },
+                {
+                    "object": "門",
+                    "questionTextureIndex": 6
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "垃圾筒"
+        "answer": {
+            "object": "垃圾筒",
+            "answerTextureIndex": 28
+        }
     },
     {
         "direction": "right",
         "phrases": {
             "main": {
                 "object": "筒",
-                "imageIndex": 13
+                "questionTextureIndex": 13
             },
             "items": [
-                "廁紙",
-                "鞋",
-                "丸",
-                "門",
-                "山"
+                {
+                    "object": "廁紙",
+                    "questionTextureIndex": 36
+                },
+                {
+                    "object": "鞋",
+                    "questionTextureIndex": 0
+                },
+                {
+                    "object": "丸",
+                    "questionTextureIndex": 20
+                },
+                {
+                    "object": "門",
+                    "questionTextureIndex": 6
+                },
+                {
+                    "object": "山",
+                    "questionTextureIndex": 25
+                }
             ]
         },
-        "answer": "廁紙筒"
+        "answer": {
+            "object": "廁紙筒",
+            "answerTextureIndex": 29
+        }
     }
 ]

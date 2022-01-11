@@ -35,6 +35,8 @@ export default class PreloaderScene extends BasicScene {
             'hinsbx4': require('../assets/img/hinsbx4.png'),
             'hinsbx5': require('../assets/img/hinsbx5.png'),
             'hinsbx6': require('../assets/img/hinsbx6.png'),
+            'mini_but_shw': require('../assets/img/mini_but_shw.png'),
+            'mini_but': require('../assets/img/mini_but.png'), 
         };
 
         const atlasFiles = {
@@ -55,6 +57,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('rplBtn', require('../assets/img/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         // this.load.spritesheet('speakerBtn', require('../assets/img/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
         this.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
+        this.load.spritesheet('nextBtn', require('../assets/img/btn_nxtq.png'), { frameWidth: 572, frameHeight: 290 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 

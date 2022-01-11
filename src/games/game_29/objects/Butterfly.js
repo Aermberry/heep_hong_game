@@ -17,7 +17,6 @@ export default class Butterfly extends Phaser.GameObjects.Container {
         let body = new ButterflyBody(this.scene, { x: 670, y: 600, textureName: 'but_bx5' }, { x: 630, y: 300, textureName: 'but_shw_body' }, 'a')
         let wl = new ButterflyBody(this.scene, { x: 200, y: 500, textureName: 'but_bx4' }, { x: 0, y: 150, textureName: 'but_shw_wl' }, 'b')
         let wr = new ButterflyBody(this.scene, { x: 1200, y: 250, textureName: 'but_bx6' }, { x: 800, y: 150, textureName: 'but_shw_wr' }, 'r')
-
         butterfly.push(wl, wr, sol, sor, body, head);
         let arr = [].concat.apply([], butterfly);
         this.add(arr)

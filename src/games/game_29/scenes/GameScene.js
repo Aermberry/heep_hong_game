@@ -1,6 +1,7 @@
 import Article from "../objects/Article";
 import BasicScene from "./BasicScene"
 import Butterfly from "../objects/Butterfly";
+import Scoreboard from "../objects/Scoreboard";
 // import SpeakerBtn from '../objects/SpeakerBtn'
 export default class GameScene extends BasicScene {
     constructor() {
@@ -20,7 +21,7 @@ export default class GameScene extends BasicScene {
             this.currentLevel = 1;
         }
         this.dataModal = this.sys.game.globals.model.gameData;
-
+        this.answer = this.dataModal.level1[this.currentLevel - 1]
     }
 
     preload() {
@@ -53,6 +54,7 @@ export default class GameScene extends BasicScene {
         this.buildBg('bg');
         //初始化游戏场景
         this.initScene();
+        let currentZone;
         let self = this;
         let text = 'text';
         let sprite = self.add.text(0, 0, text, {
@@ -63,19 +65,36 @@ export default class GameScene extends BasicScene {
         })
 
         self.input.on('dragenter', function (pointer, gameObject, dropZone) {
+            currentZone = dropZone.type;
             text = dropZone.type;
             sprite.setText(text)
+            //调用dropZone 换颜色方法
         })
+
+        self.input.on('dragleave', () => {
+            currentZone = null;
+            sprite.setText('')
+        })
+
+        self.input.on('dragend', (pointer, gameObject, dropped) => {
+            if (dropped) {
+                this.scoreboard.quiz(gameObject, currentZone)
+                currentZone = null;
+            }
+        })
+
+
     }
 
     initScene() {
-        this.answer = this.dataModal.level1[0]
+
         // let butterfly = 
         // new Butterfly(this, 200, 100)
         // let article = new Article(this, 100, 480)
         let article = new Article(this, 0, 0)
         new Butterfly(this, 960, 50)
-
+        this.scoreboard = new Scoreboard(this, 950, 700)
+        this.scoreboard.init(this.answer);
         article.createArticle(this.answer)
     }
 

@@ -13,6 +13,7 @@ export default class PreloaderScene extends BasicScene {
   init () {
     this.model = this.sys.game.globals.model;
     this.model.character = charSet[_.random(charSet.length-1)]
+    // this.model.character = charSet[0]
   }
 
   preload () {
@@ -47,20 +48,15 @@ export default class PreloaderScene extends BasicScene {
     self.load.atlas('tut4',require('../assets/tut4.png'), require('../assets/tut4.json'));
 
     self.load.atlas('bg_space',require('../assets/bg_space.png'), require('../assets/bg_space.json'));
+    self.load.atlas('bg_space_rocket', require('../assets/bg_space_rocket.png'), require('../assets/bg_space_rocket.json'));
+    self.load.atlas('bg_space_ufo', require('../assets/bg_space_ufo.png'), require('../assets/bg_space_ufo.json'));
 
     self.load.atlas('chipin',require('../assets/chipin.png'), require('../assets/chipin.json'));
-    self.load.atlas('wave',require('../assets/wave.png'), require('../assets/wave.json'));
+
 
     self.load.atlas('char_bg',require('../assets/char_bg.png'), require('../assets/char_bg.json'));
     self.load.atlas('char',require('../assets/'+self.model.character.path.char[0]), require('../assets/'+self.model.character.path.char[1]));
     self.load.atlas('char_end',require('../assets/'+self.model.character.path.end[0]), require('../assets/'+self.model.character.path.end[1]));
-
-    // self.load.audio('i_want', require('../assets/voice/g001_00.mp3'));
-
-    // _.forEach(Choice, function(item) {
-    //   self.load.image(item.name, require('../assets/'+item.image));
-    //   self.load.audio(item.name, require('../assets/voice/'+item.voice));
-    // })
 
     self.load.audio('bgMusic', require('../assets/voice/bg.mp3'));
 

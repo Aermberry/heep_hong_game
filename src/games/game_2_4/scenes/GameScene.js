@@ -5,7 +5,7 @@ import { createLionLeftRecorderAnimation } from "../assets/animations/LionLeftRe
 import { createClawAnimation } from "../assets/animations/ClawAnimation";
 import GameSprite from "../components/GameSprite";
 import { createPenguinAnimation } from "../assets/animations/PenguinAnimation";
-import EggAnswerItem from "../components/EggAnswerItem";
+import EggItem from "../components/EggItem";
 import EggQuestion from "../components/EggQuestion";
 import ClawBox from "../components/ClawBox";
 
@@ -24,8 +24,7 @@ export default class GameScene extends BasicScene {
         this.hasGameChance = undefined;
         this.answerArea = undefined;
         this.questionDisplayDirection = undefined;
-
-        this.currentQuestionAnswer = undefined
+        this.currentQuestionAnswer = undefined;
     }
 
     preload() {
@@ -42,9 +41,11 @@ export default class GameScene extends BasicScene {
 
         this.createAnimation(this.anims);
 
-        this.paintScene();
 
-        this.generateQuestion();
+
+        this.paintScene(this.generateQuestion());
+
+
 
     }
 
@@ -91,7 +92,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintScene() {
+    paintScene(currentGameQuestion) {
 
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
@@ -106,27 +107,49 @@ export default class GameScene extends BasicScene {
         uiEgg.setScale(0.5);
 
         // eggTexture.setFlipX(true);
-        const eggAnswerItem = new EggAnswerItem(this, 800, 400, "eggAnswerItemTexture", true);
-        console.log(eggAnswerItem);
+        console.log("phrases:%o:", currentGameQuestion.phrases);
 
-        const eggQuestion = new EggQuestion(this, 1720, 410, "eggQuestionTexture", false);
-        console.log(eggQuestion);
+        let points = [{ x: 315, y: 437 }, { x: 498, y: 252 }, { x: 748, y: 250 }, { x: 825, y: 592 }, { x: 990, y: 251 }, { x: 1061, y: 586 }, { x: 1210, y: 243 }, { x: 1281, y: 646 }, { x: 1443, y: 342 }];
 
-        const clawBox = new ClawBox(this, { x: 500, y: 800 },eggQuestion)
-        clawBox.showAppearanceAnimation();
-        console.log(clawBox);
+        const phrases = this.ShufflePosition(currentGameQuestion.phrases.items);
+        points = this.ShufflePosition(points);
 
+        for (let index = 0; index < phrases.length; index++) {
+            const phrase = phrases[index];
 
+            console.log({ phrase });
+            const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
-        this.physics.add.collider(eggAnswerItem, eggQuestion, () => {
-            console.log("sdsdsd");
-        });
+            this.physics.add.collider(eggItem, eggQuestion, () => {
+                console.log("sdsdsd");
+            });
+
+            this.gameLayer.add(eggItem);
+
+        }
+
+        const eggQuestion = new EggQuestion(this, { x: -50, y: 0 }, "eggQuestionTexture", currentGameQuestion.phrases.main, false);
+
+        const clawBox = new ClawBox(this, { x: 2200, y: 410 }, eggQuestion)
+
+        clawBox.showAppearanceAnimation(1780);
 
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         penguinSprite.play('penguinAnimation');
 
         this.uiLayer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
-        this.gameLayer.add([exitButton, eggQuestion, eggAnswerItem, clawBox]);
+        this.gameLayer.add([exitButton, clawBox]);
+
+    }
+    ShufflePosition(arr) {
+        var result = [],
+            random;
+        while (arr.length > 0) {
+            random = Math.floor(Math.random() * arr.length);
+            result.push(arr[random])
+            arr.splice(random, 1)
+        }
+        return result;
     }
 
     paintGameSuccess() {

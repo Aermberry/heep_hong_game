@@ -2,28 +2,31 @@ import Phaser from 'phaser'
 
 export default class Egg extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y, texture) {
+    constructor(scene, point, texture, objectTexture) {
 
-        super(scene, x, y);
+        super(scene, point.x, point.y);
 
         this.image = texture;
-        this.originPoint = { originPointX: x, originPointY: y }
+        this.objectTexture = objectTexture;
+
+        this.originPoint = { originPointX: point.x, originPointY: point.y }
 
         scene.add.existing(this);
     }
 
     create(isEnableDraggable) {
+        const background = this.scene.add.image(0, 0, this.image).setScale(0.5);
+        const objectTexture = this.scene.add.sprite(0, 0, this.objectTexture).setScale(0.5);
 
-        this.texture = this.scene.add.image(0, 0, this.image).setScale(0.5);
-        this.sprite = this.scene.add.sprite(0, 0, this.image).setScale(0.5);
+        Phaser.Display.Align.In.Center(objectTexture, background, -10);
 
         this.scene.physics.add.existing(this);
-        // Phaser.Display.Align.In.Center(this.labelText, this.texture);
+
         this.add(
-            [this.texture, this.sprite]
+            [background, objectTexture]
         )
 
-        this.setSize(this.texture.displayWidth, this.texture.displayHeight);
+        this.setSize(background.displayWidth, background.displayHeight);
 
         this.setInteractive();
 

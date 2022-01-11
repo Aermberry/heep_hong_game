@@ -3,19 +3,20 @@ import TweenAnimation from './TweenAnimation';
 
 export default class ClawBox extends Phaser.GameObjects.Container {
 
-    constructor(scene, point) {
+    constructor(scene, point, eggQuestion) {
 
         super(scene, point.x, point.y);
         scene.add.existing(this);
-        
-        this.init(scene);
+
+        this.init(scene, eggQuestion);
     }
 
-    init(scene) {
+    init(scene, eggQuestion) {
         this.texture = scene.add.image(0, 0, 'clawTexture');
         this.setSize(this.texture.displayWidth, this.texture.displayHeight);
+        eggQuestion.setPosition(0, 0)
 
-        this.add([this.texture]);
+        this.add([eggQuestion, this.texture]);
     }
 
     showAppearanceAnimation() {

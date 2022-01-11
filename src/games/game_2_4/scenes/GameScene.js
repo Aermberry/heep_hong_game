@@ -112,7 +112,7 @@ export default class GameScene extends BasicScene {
         const eggQuestion = new EggQuestion(this, 1720, 410, "eggQuestionTexture", false);
         console.log(eggQuestion);
 
-        const clawBox = new ClawBox(this, { x: 500, y: 800 })
+        const clawBox = new ClawBox(this, { x: 500, y: 800 },eggQuestion)
         clawBox.showAppearanceAnimation();
         console.log(clawBox);
 

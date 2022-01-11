@@ -172,7 +172,7 @@ export default class GameScene extends BasicScene {
 
             console.log({ isLastQuestion: value })
             this.time.addEvent({
-                delay: isFirstError ? 2000 : 5000,
+                delay: isFirstError ? 7000 : 10000,
                 callback: () => value ? this.scene.start('End') : this.scene.restart('Game')
             });
         }

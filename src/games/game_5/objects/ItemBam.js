@@ -210,7 +210,11 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         return new Promise((resolve)=> {
             
 
-            let failSound = this.scene.sound.add('hit')
+            // let failSound = this.scene.sound.add('hit')
+
+            
+            let failSound = this.scene.sound.add('thwack')
+            // strikeSound.play()
 
             let strikeSoundA = this.scene.sound.add('swing')
 

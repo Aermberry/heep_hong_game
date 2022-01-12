@@ -13,7 +13,7 @@ export default class MapScene extends BasicScene {
     }
 
     init() {
-        this.gameMusic = this.sound.add('bgm')
+        this.gameMusic = this.sound.add('bgm', {volume: 0.4})
         this.gameMusic.setLoop(true)
     }
 

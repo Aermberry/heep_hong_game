@@ -11,7 +11,7 @@ export default class Article {
         this.sprite = this.scene.add.sprite(x, y, 'new_text_bg').setOrigin(0).setScale(0.52)
         this.sprite.width = this.sprite.displayWidth
         this.sprite.height = this.sprite.displayHeight
-
+        this.highlight;
     }
 
     createArticle(data) {
@@ -26,22 +26,28 @@ export default class Article {
     }
 
     firstRender(data) {
-        let originX = this.oring.x + 40
+        let originX = this.oring.x + 35
         let originY = this.oring.y + 40
         let row = 0;
         let secondeArr = [];
         let lastArr = [];
         let rowMaxChat = 15;  //横着30字 竖直文本框15字
+        this.group = this.scene.add.group();
         data.forEach((word, i) => {
             if (i % rowMaxChat == 0) {
                 row++
             }
-            this.scene.add.text(originX + i % rowMaxChat * 55, originY + row * 75, word.text.trim(), {
+            let characters = this.scene.add.text(originX + i % rowMaxChat * 55, originY + row * 75, word.text.trim(), {
                 fontSize: '55px', //30px
                 color: word['z-index'][0] == 0 ? '#000000' : "#949494",
+                padding: {
+                    x: 5, y: 5
+                },
                 fontWeight: 'bold',
                 fontFamily: "system-ui"
             }).setOrigin(0).setDepth(1)
+            characters.type = '';
+            this.group.add(characters);
             if (word['z-index'][0] != 0) {
                 word['z-index'].forEach((v) => {
                     if (v == 1) {
@@ -65,7 +71,7 @@ export default class Article {
     }
 
     secondeRender(data) {
-        let originX = this.oring.x + 40
+        let originX = this.oring.x + 35
         let originY = this.oring.y + 40
         let rowMaxChat = 15;  //横着30字 竖直文本框15字
 
@@ -95,6 +101,7 @@ export default class Article {
                 } else {
                     arr.push([v])
                 }
+                this.group.getChildren()[v.index].type += type;
             })
             //将每一行的文字生成
             let group = arr.map((item) => {
@@ -109,7 +116,10 @@ export default class Article {
                 new DragText(this.scene, originX + item.index % rowMaxChat * 55, originY + item.row * 75, item.text, {
                     fontSize: '55px',
                     color: "#000000",
-                    backgroundColor: '#E07590',
+                    backgroundColor: '#E882A4',
+                    padding: {
+                        x: 5, y: 5
+                    },
                     fontWeight: 'bold',
                     fontFamily: "system-ui"
                 }, type, 2, group.map((item) => item.text).join(''))
@@ -120,12 +130,12 @@ export default class Article {
 
     lastRender(data) {
         let originX = this.oring.x + 40
-        let originY = this.oring.y + 40
+        let originY = this.oring.y + 45
         let rowMaxChat = 15;
         let arr = [];
         data.forEach((item, i) => {
             if (i != 0) {
-                if (i - 1 && item.index - data[i - 1].index > 1) {
+                if (item.index - data[i - 1].index > 1) {
                     arr.push([item])
                 } else {
                     arr[arr.length - 1].push(item);
@@ -134,6 +144,7 @@ export default class Article {
                 arr.push([item])
             }
         })
+
         // 可拖拽的段落 由于一个段落可能有多行，所以将多行分割生成多个可拖拽text，成为一组拖拽时一起移动！
         arr.forEach((item) => {
             let type = item.map((item) => item.data.type).filter((item) => item != "").getMost();
@@ -148,6 +159,7 @@ export default class Article {
                 } else {
                     arr.push([v])
                 }
+                this.group.getChildren()[v.index].type += type;
             })
             //将每一行的文字生成
             let group = arr.map((item) => {
@@ -162,12 +174,29 @@ export default class Article {
                 new DragText(this.scene, originX + item.index % rowMaxChat * 55, originY + item.row * 75, item.text, {
                     fontSize: '55px',
                     color: "#000000",
-                    backgroundColor: '#2887DE',
+                    backgroundColor: '#83A9E5',
                     fontWeight: 'bold',
+                    padding: {
+
+                    },
                     fontFamily: "system-ui"
                 }, type, 3, group.map((item) => item.text).join(''))
             })
 
+        })
+    }
+
+    highlightCharacters(type) {
+        this.group.getChildren().forEach((item) => {
+            if (item.type == '') {
+                item.setColor('#000000')
+            } else {
+                if (item.type.split('').includes(type)) {
+                    item.setColor('#E882A4')
+                } else {
+                    item.setColor('#949494')
+                }
+            }
         })
     }
 }

@@ -21,7 +21,7 @@ export default class GameScene extends BasicScene {
             this.currentLevel = 1;
         }
         this.dataModal = this.sys.game.globals.model.gameData;
-        this.answer = this.dataModal.level1[this.currentLevel - 1]
+        this.answer = this.dataModal.level1[3] // this.currentLevel - 1
     }
 
     preload() {
@@ -87,15 +87,20 @@ export default class GameScene extends BasicScene {
     }
 
     initScene() {
-
-        // let butterfly = 
-        // new Butterfly(this, 200, 100)
-        // let article = new Article(this, 100, 480)
-        let article = new Article(this, 0, 0)
-        new Butterfly(this, 960, 50)
-        this.scoreboard = new Scoreboard(this, 950, 700)
+        this.article = new Article(this, 0, 50)
+        this.butterfly = new Butterfly(this, 960, 280)
+        this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this))
         this.scoreboard.init(this.answer);
-        article.createArticle(this.answer)
+        this.article.createArticle(this.answer)
+
+    }
+
+    onCompleteOnce(type) {
+        this.butterfly.highlightBody(type)
+    }
+
+    onHighlight(type) {
+        this.article.highlightCharacters(type)
     }
 
 }

@@ -6,12 +6,14 @@ export default class ButterflyBody {
         this.zone = this.scene.add.zone(this.zoneSprite.x, this.zoneSprite.y, this.zoneSprite.width, this.zoneSprite.height)
             .setRectangleDropZone(this.zoneSprite.width, this.zoneSprite.height);
         this.zone.type = type;
-        this.listen()
+    }
+
+    get children() {
         return [this.bodySprite, this.zoneSprite, this.zone]
     }
 
-    listen() {
-
+    highlight() {
+        this.bodySprite.setFrame(1)
     }
 
 

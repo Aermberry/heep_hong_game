@@ -229,28 +229,28 @@
                     {
                         "text": "到",
                         "z-index": [
-                            0
+                            1
                         ],
                         "type": ""
                     },
                     {
                         "text": "處",
                         "z-index": [
-                            0
+                            1
+                        ],
+                        "type": "a"
+                    },
+                    {
+                        "text": "看",
+                        "z-index": [
+                            1
                         ],
                         "type": ""
                     },
                     {
                         "text": "看",
                         "z-index": [
-                            0
-                        ],
-                        "type": ""
-                    },
-                    {
-                        "text": "看",
-                        "z-index": [
-                            0
+                            1
                         ],
                         "type": ""
                     },
@@ -1726,7 +1726,7 @@
                     },
                     {
                         "text": "，",
-                        "z-index": [],
+                        "z-index": [0],
                         "type": ""
                     },
                     {
@@ -4758,9 +4758,9 @@
                     {
                         "text": "我",
                         "z-index": [
-                            1
+                            1,2
                         ],
-                        "type": "b"
+                        "type": "p"
                     },
                     {
                         "text": "乘",
@@ -6526,7 +6526,7 @@
                         "z-index": [
                             1
                         ],
-                        "type": ""
+                        "type": "r"
                     },
                     {
                         "text": "十",
@@ -6613,14 +6613,14 @@
                         "z-index": [
                             1
                         ],
-                        "type": ""
+                        "type": "r"
                     },
                     {
                         "text": "心",
                         "z-index": [
                             1
                         ],
-                        "type": ""
+                        "type": "r"
                     },
                     {
                         "text": "地",

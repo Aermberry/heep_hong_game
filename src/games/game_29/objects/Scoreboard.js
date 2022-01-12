@@ -2,21 +2,22 @@ import Phaser from "phaser";
 import DragText from "./DragText"
 import DoneBtn from "./DoneBtn"
 export default class Scoreboard {
-    constructor(scene, x, y) {
+    constructor(scene, x, y,onCompleteOnce, onHighlightCallback) {
         this.scene = scene;
+        this.onHighlightCallback = onHighlightCallback;
+        this.onCompleteOnce = onCompleteOnce;
         this.x = x;
         this.y = y;
         this.num = 0;
     }
 
     init(data) {
-        this.time = new SocreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, this.onComplete.bind(this));
-        this.local = new SocreType(this.scene, this.x + 0, this.y + 50, 'hinsbx2', data.type.l, this.onComplete.bind(this));
-        this.people = new SocreType(this.scene, this.x + 0, this.y + 100, 'hinsbx3', data.type.p, this.onComplete.bind(this));
-        this.before = new SocreType(this.scene, this.x + 500, this.y + 0, 'hinsbx4', data.type.b, this.onComplete.bind(this));
-        this.after = new SocreType(this.scene, this.x + 500, this.y + 50, 'hinsbx5', data.type.a, this.onComplete.bind(this));
-        this.result = new SocreType(this.scene, this.x + 500, this.y + 100, 'hinsbx6', data.type.r, this.onComplete.bind(this));
-
+        this.time = new SocreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, 't', this.onComplete.bind(this), this.onHighlightCallback);
+        this.local = new SocreType(this.scene, this.x + 0, this.y + 50, 'hinsbx2', data.type.l, 'l', this.onComplete.bind(this), this.onHighlightCallback);
+        this.people = new SocreType(this.scene, this.x + 0, this.y + 100, 'hinsbx3', data.type.p, 'p', this.onComplete.bind(this), this.onHighlightCallback);
+        this.before = new SocreType(this.scene, this.x + 500, this.y + 0, 'hinsbx4', data.type.b, 'b', this.onComplete.bind(this), this.onHighlightCallback);
+        this.after = new SocreType(this.scene, this.x + 500, this.y + 50, 'hinsbx5', data.type.a, 'a', this.onComplete.bind(this), this.onHighlightCallback);
+        this.result = new SocreType(this.scene, this.x + 500, this.y + 100, 'hinsbx6', data.type.r, 'r', this.onComplete.bind(this), this.onHighlightCallback);
     }
 
     quiz(gameObject, zone) {
@@ -50,11 +51,17 @@ export default class Scoreboard {
         }
     }
 
-    onComplete() {
+    onComplete(type) {
         this.num++;
+        this.onCompleteOnce(type)
         if (this.num >= 6) {
-            new DoneBtn(this.scene, this.x + 700, this.y + 250)
-
+            this.result.openInteractive();
+            this.time.openInteractive();
+            this.local.openInteractive();
+            this.people.openInteractive();
+            this.before.openInteractive();
+            this.after.openInteractive();
+            new DoneBtn(this.scene, this.x + 700,1000)
         }
     }
 
@@ -64,20 +71,30 @@ export default class Scoreboard {
 
 
 class SocreType extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, sprite, num, onComplete) {
+    constructor(scene, x, y, sprite, num, type, onComplete, onHighlightCallback) {
         super(scene, x, y);
-        let title = scene.add.sprite(0, 0, sprite).setOrigin(0).setScale(0.4);
+        this.title = scene.add.sprite(0, 0, sprite).setOrigin(0).setScale(0.4);
+        this.onHighlightCallback = onHighlightCallback;
         this.arr = [];
         this.num = num;
+        this.type = type;
         this.onComplete = onComplete;
         this.correctNum = 0;
         let index = 0;
         while (index < num) {
-            let sprite = scene.add.sprite(title.displayWidth + 20 + 100 * index, 0, 'mini_but_shw').setOrigin(0).setScale(0.4);
+            let sprite;
+            if (index >= 8) {
+                sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * (index % 8), 100, 'chkmrk').setOrigin(0).setScale(0.4);
+            } else if (index >= 4 && index < 8) {
+                sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * (index % 4), 50, 'chkmrk').setOrigin(0).setScale(0.4);
+            }
+            else {
+                sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * index, 0, 'chkmrk').setOrigin(0).setScale(0.4);
+            }
             this.arr.push(sprite)
             index++
         }
-        this.add([title].concat(this.arr));
+        this.add([this.title].concat(this.arr));
         scene.add.existing(this)
     }
 
@@ -85,12 +102,29 @@ class SocreType extends Phaser.GameObjects.Container {
         this.correctNum++;
         let index = 0;
         while (index < this.correctNum) {
-            this.arr[index].setTexture('mini_but');
+            this.arr[index].setFrame(1);
             index++
         }
         if (this.correctNum >= this.num) {
-            this.onComplete();
+            this.onComplete(this.type);
         }
-
     }
+
+    openInteractive() {
+        let self = this;
+        self.title.setInteractive({
+            useHandCursor: true
+        })
+        self.title.on('pointerdown', function () {
+            self.onHighlight();
+        })
+    }
+
+    onHighlight() {
+        this.onHighlightCallback(this.type)
+    }
+
+
+
+
 }

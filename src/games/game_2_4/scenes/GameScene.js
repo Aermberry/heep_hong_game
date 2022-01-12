@@ -158,8 +158,9 @@ export default class GameScene extends BasicScene {
             y: 342
         }];
 
-
         const phrases = this.ShufflePosition(currentGameQuestion.phrases.items);
+        // const direction= currentGameQuestion.direction;
+
         points = this.ShufflePosition(points);
 
         const eggQuestion = new EggQuestion(this, {
@@ -177,7 +178,13 @@ export default class GameScene extends BasicScene {
         clawBox.showAppearanceAnimation(1780);
 
         layer.add([clawBox]);
+
+        console.log({layer});
     }
+
+    // setDirection(direction,gameObjects){
+
+    // }
 
     generateEggitems(phrases, points, eggQuestion, layer) {
         for (let index = 0; index < phrases.length; index++) {

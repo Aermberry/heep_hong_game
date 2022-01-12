@@ -4,9 +4,6 @@ import GameManager from '../components/GameManager';
 import {
     createLionLeftRecorderAnimation
 } from "../assets/animations/LionLeftRecorderAnimation";
-import {
-    createClawAnimation
-} from "../assets/animations/ClawAnimation";
 import GameSprite from "../components/GameSprite";
 import {
     createPenguinAnimation
@@ -21,16 +18,18 @@ export default class GameScene extends BasicScene {
     constructor() {
         super('Game');
 
-        this.gameLayer = undefined
-        this.questionNumberList = []
+        this.uiLayer = undefined;
+        this.gameLayer = undefined;
 
-        this.questionIndex = undefined
-        this.uiLayer = undefined
-        this.gameFailedLayer = undefined
-        this.hasGameChance = undefined;
+        this.questionIndex = undefined;
+        this.questionNumberList = [];
+
         this.answerArea = undefined;
-        this.questionDisplayDirection = undefined;
+        this.hasGameChance = undefined;
         this.currentQuestionAnswer = undefined;
+        this.questionDisplayDirection = undefined;
+        this.positions = undefined;
+        this._gameDirection = undefined;
     }
 
     preload() {
@@ -46,22 +45,28 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.createAnimation(this.anims);
-
-
-
-        this.paintScene(this.generateQuestion());
-
-
-
+        const question = this.generateQuestion();
+        this.setGameDirection(question.direction);
+        this.paintScene(question);
     }
 
 
     createAnimation(animationManager) {
         createLionLeftRecorderAnimation(animationManager);
-        createClawAnimation(animationManager);
         createPenguinAnimation(animationManager);
-        createClawAnimation(animationManager);
     }
+
+    setGameDirection(direction) {
+        this._gameDirection = direction;
+    }
+
+    isRightDirection() {
+
+        return this._gameDirection == "right"
+
+    }
+
+
 
     /**
      * generate a question from the local question data
@@ -73,21 +78,22 @@ export default class GameScene extends BasicScene {
         let errorQuestionIndex = JSON.parse(localStorage.getItem('errorQuestionIndex'));
 
         if (errorQuestionIndex == null) {
-            this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
             this.hasGameChance = false;
+            this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
 
         } else {
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
-                this.questionIndex = errorQuestionIndex;
                 this.hasGameChance = true;
+                this.questionIndex = errorQuestionIndex;
             }
 
         }
 
-        question = JSON.parse(localStorage.getItem(this.questionIndex));
+        // question = JSON.parse(localStorage.getItem(this.questionIndex));
 
         // question = JSON.parse(localStorage.getItem(17));
+        question = JSON.parse(localStorage.getItem(16));
         console.log("当前抽取的题目:%o", question);
 
         this.currentQuestionAnswer = question.answer;
@@ -103,16 +109,19 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
+        this.gameLayer.getByName()
+
         /* UI Object */
-       this.buildUiObject(this.uiLayer);
+        this.buildUiObject(this.uiLayer);
 
         // eggTexture.setFlipX(true);
 
         /* Game Object */
-        this.buildGameObject(currentGameQuestion,this.gameLayer);
+        this.buildGameObject(currentGameQuestion, this.gameLayer);
+
     }
 
-    buildUiObject(layer){
+    buildUiObject(layer) {
         const exitButton = new ExitButton(this, 120, 135);
 
         const penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
@@ -124,86 +133,152 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         penguinSprite.play('penguinAnimation');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton,lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
+        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
     }
 
-    buildGameObject(currentGameQuestion,layer){
-        let points = [{
-            x: 315,
-            y: 437
-        }, {
-            x: 498,
-            y: 252
-        }, {
-            x: 748,
-            y: 250
-        }, {
-            x: 825,
-            y: 592
-        }, {
-            x: 990,
-            y: 251
-        }, {
-            x: 1061,
-            y: 586
-        }, {
-            x: 1210,
-            y: 243
-        }, {
-            x: 1281,
-            y: 646
-        }, {
-            x: 1443,
-            y: 342
-        }];
-
-        const phrases = this.ShufflePosition(currentGameQuestion.phrases.items);
-        // const direction= currentGameQuestion.direction;
-
-        points = this.ShufflePosition(points);
-
+    buildGameObject(currentGameQuestion, layer) {
+        const phrases = this.shufflePosition(currentGameQuestion.phrases.items);
         const eggQuestion = new EggQuestion(this, {
-            x: -50,
+            x: 0,
             y: 0
         }, "eggQuestionTexture", currentGameQuestion.phrases.main, false);
 
-        this.generateEggitems(phrases, points, eggQuestion, this.gameLayer);
 
-        const clawBox = new ClawBox(this, {
-            x: 2200,
-            y: 410
-        }, eggQuestion)
 
-        clawBox.showAppearanceAnimation(1780);
+        let clawBoxPosition;
+        let clawAnimationTargetPosition;
+
+        let clawBox = new ClawBox(this, { x: 0, y: 0 }, eggQuestion);
+
+        /* 以右方向为正方向*/
+        if (this.isRightDirection()) {
+            console.log({ direction: currentGameQuestion.direction });
+            clawBoxPosition = {
+                x: 2200,
+                y: 410
+            }
+            clawAnimationTargetPosition = 1800;
+            clawBox.eggQuestion.setPosition(-200, 0);
+        }
+        else {
+            console.log({ direction: currentGameQuestion.direction });
+            clawBoxPosition = { x: 0, y: 410 };
+            clawAnimationTargetPosition = 120;
+
+            clawBox.eggQuestion.setPosition(200, 0);
+
+            clawBox.setFlipX();
+
+        }
+
+        clawBox.setPosition(clawBoxPosition.x, clawBoxPosition.y);
+
+
+        this.generateEggItems(phrases, this.generatePoints(currentGameQuestion.direction), eggQuestion, this.gameLayer);
+
+        clawBox.showAppearanceAnimation(clawAnimationTargetPosition);
 
         layer.add([clawBox]);
 
-        console.log({layer});
     }
 
-    // setDirection(direction,gameObjects){
+    generatePoints(direction) {
+        let points = [];
+        if (direction == "right") {
+            points = [{
+                x: 315,
+                y: 437
+            }, {
+                x: 498,
+                y: 252
+            }, {
+                x: 748,
+                y: 250
+            }, {
+                x: 825,
+                y: 592
+            }, {
+                x: 990,
+                y: 251
+            }, {
+                x: 1061,
+                y: 586
+            }, {
+                x: 1210,
+                y: 243
+            }, {
+                x: 1281,
+                y: 646
+            }, {
+                x: 1443,
+                y: 342
+            }];
+        } else {
+            points = [{
+                x: 315,
+                y: 437
+            }, {
+                x: 498,
+                y: 252
+            }, {
+                x: 748,
+                y: 250
+            }, {
+                x: 825,
+                y: 592
+            }, {
+                x: 990,
+                y: 251
+            }, {
+                x: 1061,
+                y: 586
+            }, {
+                x: 1210,
+                y: 243
+            }, {
+                x: 1281,
+                y: 646
+            }, {
+                x: 1443,
+                y: 342
+            }];
+        }
+        return this.shufflePosition(points);
 
-    // }
+    }
 
-    generateEggitems(phrases, points, eggQuestion, layer) {
+    generateEggItems(phrases, points, eggQuestion, layer) {
+        let eggItemList = [];
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
-
-            console.log({
-                phrase
-            });
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
             this.physics.add.collider(eggItem, eggQuestion, () => {
                 console.log("sdsdsd");
             });
 
+            eggItemList.push(eggItem);
+
             layer.add(eggItem);
 
         }
+
+        if (!this.isRightDirection()) {
+            eggItemList.forEach((item) => {
+                item.getAll().forEach(gameObject => {
+                    // gameObject.setFlipX(true);
+
+
+                    if (gameObject.name == "background") {
+                        gameObject.setFlipX(true);
+                        gameObject.setX(-20);
+                    }
+                })
+            });
+        }
     }
 
-    ShufflePosition(arr) {
+    shufflePosition(arr) {
         var result = [],
             random;
         while (arr.length > 0) {

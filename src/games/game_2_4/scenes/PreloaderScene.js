@@ -38,6 +38,7 @@ export default class PreloaderScene extends BasicScene {
             'uiRecorder': require('../assets/images/ui_recorder.png'),
             'eggAnswerItemTexture': require('../assets/images/texture_egg_answer_item.png'),
             'eggQuestionTexture': require('../assets/images/texture_egg_question.png'),
+            'clawTexture': require('../assets/images/texture_claw.png'),
 
             'textureObject0': require('../assets/images/objects/texture_item_objects/texture_object_0.png'),
             'textureObject1': require('../assets/images/objects/texture_item_objects/texture_object_1.png'),
@@ -87,9 +88,6 @@ export default class PreloaderScene extends BasicScene {
             },
             'endTexture': {
                 img: require('../assets/atlas/atlas_end.png'), data: require('../assets/atlas/atlas_end.json')
-            },
-            'clawTexture': {
-                img: require('../assets/atlas/atlas_claw.png'), data: require('../assets/atlas/atlas_claw.json')
             },
             'lionLeftRecorderTexture': {
                 img: require('../assets/atlas/atlas_lion_left_recorder.png'), data: require('../assets/atlas/atlas_lion_left_recorder.json')

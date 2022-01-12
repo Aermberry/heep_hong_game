@@ -7,6 +7,8 @@ export default class EggQuestion extends Egg {
 
         this.objectName = objectItem.objectName;
 
+        this.setName("EggQuestion");
+
         this.create(isEnableDraggable);
     }
 }

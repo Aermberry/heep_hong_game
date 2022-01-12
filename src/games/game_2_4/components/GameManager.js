@@ -1,5 +1,6 @@
-import QuestionDataLocalRepository from "../repository/QuestionDataLocalRepository";
+
 import Phaser from 'phaser'
+import QuestionDataLocalRepository from '../repository/QuestionDataLocalRepository';
 
 export default class GameManager {
 

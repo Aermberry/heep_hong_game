@@ -100,9 +100,6 @@ class PauseScene extends Phaser.Scene {
 
     preload() {
 
-        //Bg and btn image need to replace with a universalize image
-        // this.load.image('pause_bg', require('../games/game_5/assets/Title.png'))
-        // this.load.spritesheet('cfmBtn', require('../games/game_5/assets/btn_cfm.png'), { frameWidth: 917, frameHeight: 233 });
         this.load.image('pause_box', require('../assets/images/pause_block/pause_box.png'))
         this.load.image('pause_cat', require('../assets/images/pause_block/pause_cat.png'))
         this.load.spritesheet('btn_con', require('../assets/images/pause_block/btn_con.png'), {frameWidth: 410, frameHeight: 163.5})
@@ -112,12 +109,6 @@ class PauseScene extends Phaser.Scene {
     }
 
     create({gamePauseService}) {
-
-        // const bgBox = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'pause_box');
-        // bgBox.setOrigin(0.5, 0.4)
-
-        // const bgCat = this.add.image(this.sys.game.canvas.width/2, this.sys.game.canvas.height/2, 'pause_cat');
-        // bgCat.setOrigin(0.5)
 
         
         this.backDrop = this.add.renderTexture(0, 0, this.sys.game.canvas.width, this.sys.game.canvas.height)

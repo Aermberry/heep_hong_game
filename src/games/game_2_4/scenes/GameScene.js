@@ -97,22 +97,39 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
+        /* UI Object */
         let exitButton = new ExitButton(this, 120, 135);
-
         const penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
-
         const uiEgg = this.add.image(710, 890, 'uiEgg').setOrigin(0);
         const uiRecorder = this.add.image(1920, 840, 'uiRecorder').setOrigin(1, 0);
         uiEgg.setScale(0.5);
 
         // eggTexture.setFlipX(true);
-        console.log("phrases:%o:", currentGameQuestion.phrases);
-
+        
+        /* Game Object */
         let points = [{ x: 315, y: 437 }, { x: 498, y: 252 }, { x: 748, y: 250 }, { x: 825, y: 592 }, { x: 990, y: 251 }, { x: 1061, y: 586 }, { x: 1210, y: 243 }, { x: 1281, y: 646 }, { x: 1443, y: 342 }];
 
-        const phrases = this.ShufflePosition(currentGameQuestion.phrases.items);
-        points = this.ShufflePosition(points);
+        const eggQuestion = new EggQuestion(this, { x: -50, y: 0 }, "eggQuestionTexture", currentGameQuestion.phrases.main, false);
+        const clawBox = new ClawBox(this, { x: 2200, y: 410 }, eggQuestion);
+
+        this.generateEggItems(
+            this.shufflePosition(currentGameQuestion.phrases.items),
+            this.shufflePosition(points),
+            eggQuestion
+        );
+
+        clawBox.showAppearanceAnimation(1780);
+
+        lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
+        penguinSprite.play('penguinAnimation');
+
+        this.uiLayer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
+        this.gameLayer.add([exitButton, clawBox]);
+
+    }
+
+    generateEggItems(phrases, points, eggQuestion) {
 
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
@@ -127,21 +144,9 @@ export default class GameScene extends BasicScene {
             this.gameLayer.add(eggItem);
 
         }
-
-        const eggQuestion = new EggQuestion(this, { x: -50, y: 0 }, "eggQuestionTexture", currentGameQuestion.phrases.main, false);
-
-        const clawBox = new ClawBox(this, { x: 2200, y: 410 }, eggQuestion)
-
-        clawBox.showAppearanceAnimation(1780);
-
-        lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
-        penguinSprite.play('penguinAnimation');
-
-        this.uiLayer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
-        this.gameLayer.add([exitButton, clawBox]);
-
     }
-    ShufflePosition(arr) {
+
+    shufflePosition(arr) {
         var result = [],
             random;
         while (arr.length > 0) {

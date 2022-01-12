@@ -283,9 +283,9 @@ export default class GameScene extends BasicScene {
 
     let correct = false
 
-    if(self.question.length == 4) {
-      correct = self.question.some((quest, ind)=> {
-        return itemsName[ind] === quest
+    if(self.question.length >= 4) {
+      correct = !self.question.some((quest, ind)=> {
+        return itemsName[ind] !== quest
       })
 
     }else {

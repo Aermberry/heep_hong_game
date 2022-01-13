@@ -60,8 +60,8 @@ export default class DragText extends Phaser.GameObjects.Text {
                 item.x = this.isHard ? item.origin.x - 5 : item.origin.x;
                 item.y = this.isHard ? item.origin.y - 5 : item.origin.y;
             });
-            self.x = self.origin.x - 5
-            self.y = self.origin.y - 5
+            self.x = this.isHard ? self.origin.x - 5 : self.origin.x
+            self.y = this.isHard ? self.origin.y - 5 : self.origin.y
         })
     }
 

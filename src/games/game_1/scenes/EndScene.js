@@ -9,6 +9,8 @@ export default class EndScene extends Scene {
 
   init() {
     this.model = this.sys.game.globals.model;
+
+    this.sys.game.globals.gtag.event(('game_1_end', { 'event_category': 'Game End'}))
   }
 
   preload () {

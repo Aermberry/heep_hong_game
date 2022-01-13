@@ -225,6 +225,9 @@ const install = function (Vue) {
             window.localStorage.setItem('game_last_update_timestamp', now.getTime())
         }
 
+
+        window.localStorage.setItem('kh_game_paused', false)
+
         this.setCookieTimer = setInterval(() => {
 
             const curStartTime = window.localStorage.getItem('game_last_active_timestamp')
@@ -272,10 +275,13 @@ const install = function (Vue) {
         const now = new Date()
         //game paused, update last active time
         window.localStorage.setItem('game_last_active_timestamp', now.getTime())
+        window.localStorage.setItem('kh_game_paused', this.isPause)
+
 
     }
 
     Vue.prototype.$gamePause.resumePausedScene = () => {
+
         if (!this.isPause) return
 
         //Get all scene 
@@ -291,6 +297,8 @@ const install = function (Vue) {
         //game resumed, game_last_active_timestamp need to update
         window.localStorage.setItem('game_last_active_timestamp', now.getTime())
         this.isPause = false
+        window.localStorage.setItem('kh_game_paused', this.isPause)
+
 
     }
 

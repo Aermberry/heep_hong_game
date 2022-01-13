@@ -17,20 +17,22 @@ export default class Cat extends Phaser.GameObjects.Container {
         });
         scene.anims.create({
             key: 'cat_win', 
-            frames: scene.anims.generateFrameNames('cat_win', { prefix: 'cat_win', start: 1, end: 30, zeroPad: 4 }),
+            duration:1000,
+            frames: scene.anims.generateFrameNames('cat_win', { prefix: 'cat_win', start: 0, end: 13, zeroPad: 4 }),
         });
         scene.anims.create({
             key: 'cat_win_continue', 
             repeat: -1,
-            frames: scene.anims.generateFrameNames('cat_win', { prefix: 'cat_win', start: 31, end: 31, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('cat_win', { prefix: 'cat_win', start: 13, end: 13, zeroPad: 4 }),
         });
         scene.anims.create({
             key: 'cat_lose',
-            frames: scene.anims.generateFrameNames('cat_sad', { prefix: 'cat_sad_clean', start: 1, end: 30, zeroPad: 4 }),
+            duration:1000,
+            frames: scene.anims.generateFrameNames('cat_sad', { prefix: 'cat_sad_clean', start: 0, end: 20, zeroPad: 4 }),
         });
         scene.anims.create({
             key: 'cat_lose_continue',
-            frames: scene.anims.generateFrameNames('cat_sad', { prefix: 'cat_sad_clean', start: 50, end: 50, zeroPad: 4 })
+            frames: scene.anims.generateFrameNames('cat_sad', { prefix: 'cat_sad_clean', start: 20, end: 20, zeroPad: 4 })
         });
         scene.anims.create({
             key: 'red_band',
@@ -54,11 +56,17 @@ export default class Cat extends Phaser.GameObjects.Container {
 
     gameWin() {
 
-        this.headBand.setAlpha(0)
+        // this.headBand.setAlpha(0)
+        // this.headBand.setPosition(this.headBand.x + 20, this.headBand.y)
+        this.scene.tweens.add({
+            targets: this.headBand,
+            x: this.headBand.x + 80,
+            duration: 400
+        })
 
         this.cat.play('cat_win').on('animationcomplete', ()=> {
-            this.headBand.setPosition(this.headBand.x + 10, this.headBand.y)
-            this.headBand.setAlpha(1)
+            // this.headBand.setPosition(this.headBand.x + 30, this.headBand.y)
+            // this.headBand.setAlpha(1)
             this.cat.play('cat_win_continue')
             
         })

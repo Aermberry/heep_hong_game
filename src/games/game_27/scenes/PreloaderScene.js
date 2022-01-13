@@ -12,7 +12,7 @@ export default class PreloaderScene extends BasicScene {
 
         this.buildBg('bg_title');
         const imageFiles = {
-            'bg_L1': require('../assets/img/game_bg.png'),
+            'bg_L1': require('../assets/img/Bg.png'),
             'bg_tutor': require('../assets/img/tut_bg.png'),
             'end_box': require('../assets/img/end_box.png'),
             '4w_car1': require('../assets/img/4w_car1.png'),
@@ -26,13 +26,17 @@ export default class PreloaderScene extends BasicScene {
             '6w_car3': require('../assets/img/6w_car3.png'),
             '13w_car1': require('../assets/img/13w_car1.png'),
             '13w_car2': require('../assets/img/13w_car2.png'),
-            'car_box': require('../assets/img/car_box.png')
+            'car_box': require('../assets/img/car_box.png'),
         };
 
         const atlasFiles = {
             'tut1': { img: require('../assets/img/tut_1.png'), data: require('../assets/img/tut_1.json') },
             'tut2': { img: require('../assets/img/tut_2.png'), data: require('../assets/img/tut_2.json') },
             'tut3': { img: require('../assets/img/tut_3.png'), data: require('../assets/img/tut_3.json') },
+            'wow_car': {img: require('../assets/img/Wow_car.png'), data: require('../assets/img/Wow_car.json')}, 
+            'answer': { img: require('../assets/img/answer.png'), data: require('../assets/img/answer.json')},
+            'end_pic':{ img: require('../assets/img/end_pic.png'), data: require('../assets/img/end_pic.json')},
+
         }
 
         const soundFiles = {
@@ -48,6 +52,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('rtBtn', require('../assets/img/btn_rt.png'), { frameWidth: 168, frameHeight: 185 });
         this.load.spritesheet('ltBtn', require('../assets/img/btn_lt.png'), { frameWidth: 168, frameHeight: 185 });
         // this.load.spritesheet('offSpeakerBtn', require('../assets/img/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
+        this.load.spritesheet('goBtn', require('../assets/img/go.png'), { frameWidth: 375, frameHeight: 250 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 

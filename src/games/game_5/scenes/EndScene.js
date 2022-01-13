@@ -14,6 +14,8 @@ export default class EndScene extends BasicScene {
 
         super.create();
 
+        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_end`, { 'event_category': 'Game End'}))
+
         this.buildBg('bg_base')
 
         this.sound.stopByKey('lightBattle')

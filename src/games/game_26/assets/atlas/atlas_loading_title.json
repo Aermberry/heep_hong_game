@@ -1,0 +1,171 @@
+﻿{"frames": {
+
+"loadingTitle_0000":
+{
+	"frame": {"x":0,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0001":
+{
+	"frame": {"x":0,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0002":
+{
+	"frame": {"x":0,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0003":
+{
+	"frame": {"x":0,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0004":
+{
+	"frame": {"x":0,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0005":
+{
+	"frame": {"x":0,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0006":
+{
+	"frame": {"x":1012,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0007":
+{
+	"frame": {"x":1012,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0008":
+{
+	"frame": {"x":1012,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0009":
+{
+	"frame": {"x":1012,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0010":
+{
+	"frame": {"x":1012,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0011":
+{
+	"frame": {"x":1012,"y":0,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0012":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0013":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0014":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0015":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0016":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0017":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0018":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+},
+"loadingTitle_0019":
+{
+	"frame": {"x":0,"y":591,"w":1010,"h":589},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":589},
+	"sourceSize": {"w":1010,"h":589}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.0.93",
+	"image": "game26_logo.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1"
+}
+}

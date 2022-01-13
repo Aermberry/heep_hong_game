@@ -25,6 +25,9 @@ export default class GameScene extends BasicScene {
     this.freezePlaySound = false;
     this.freezeSelectItem = false;
     this.lv2Start = false;
+
+    this.sys.game.globals.gtag.event(('game_1_start', { 'event_category': 'Game Start'}))
+
   }
 
   preload () {
@@ -70,6 +73,8 @@ export default class GameScene extends BasicScene {
       // self.load.audio(item.name, require('../assets/voice/'+item.voice));
     })
 
+    self.load.atlas('wave',require('../assets/wave.png'), require('../assets/wave.json'));
+
 
     this.preloadFromArr({
       img: imageFiles, sound: soundFiles
@@ -78,47 +83,58 @@ export default class GameScene extends BasicScene {
     self.anims.create({
       key: 'char_bg',
       frames: self.anims.generateFrameNames('char_bg', {
-        prefix: 'frame',
+        prefix: 'char_bg',
         start: 0,
-        end: 49
+        end: 19,
+        zeroPad: 4
       }),
-      repeat: -1
+      repeat: -1,
+      duration: 2000
     });
 
     self.anims.create({
       key: 'chip_in',
       frames: self.anims.generateFrameNames('chipin', {
-        prefix: 'frame',
+        prefix: 'chipin',
         start: 0,
-        end: 20
+        end: 8,
+        zeroPad: 4,
       }),
+      duration: 500
     });
 
     self.anims.create({
       key: 'char_idle',
       frames: self.anims.generateFrameNames('char', {
-        prefix: 'frame',
+        // prefix: 'frame',
+        prefix: self.model.character.key,
         start: self.model.character.action.idle[0],
-        end: self.model.character.action.idle[1]
+        end: self.model.character.action.idle[1],
+        zeroPad: 4
       }),
-      repeat: -1
+      repeat: -1,
+      repeatDelay: 6000
     });
 
     self.anims.create({
       key: 'char_happy',
       frames: self.anims.generateFrameNames('char', {
-        prefix: 'frame',
+        // prefix: 'frame',
+        prefix: self.model.character.key,
         start: self.model.character.action.happy[0],
-        end: self.model.character.action.happy[1]
+        end: self.model.character.action.happy[1],
+        zeroPad: 4,
       }),
     });
 
     self.anims.create({
       key: 'char_sad',
       frames: self.anims.generateFrameNames('char', {
-        prefix: 'frame',
+        //prefix: 'frame',
+        prefix: self.model.character.key,
         start: self.model.character.action.sad[0],
-        end: self.model.character.action.sad[1]
+        end: self.model.character.action.sad[1],
+        zeroPad: 4
       }),
     });
 
@@ -270,9 +286,9 @@ export default class GameScene extends BasicScene {
 
     let correct = false
 
-    if(self.question.length == 4) {
-      correct = self.question.some((quest, ind)=> {
-        return itemsName[ind] === quest
+    if(self.question.length >= 4) {
+      correct = !self.question.some((quest, ind)=> {
+        return itemsName[ind] !== quest
       })
 
     }else {

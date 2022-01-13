@@ -25,12 +25,13 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 }
 
 class Game extends Phaser.Game {
-    constructor() {
+    constructor(urlParams, gtag) {
         super(Config);
         let model = new Model()
         this.globals = {
             model,
-            bgMusic: null
+            bgMusic: null,
+            gtag: gtag
         }
         this.scene.add('Boot', BootScene)
         this.scene.add('Preloader', PreloaderScene)
@@ -42,8 +43,8 @@ class Game extends Phaser.Game {
 }
 
 
-function launch() {
-    let game = new Game()
+function launch(urlParams, gtag) {
+    let game = new Game(urlParams, gtag)
     return game
 }
 

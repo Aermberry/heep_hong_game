@@ -57,15 +57,22 @@ export default class SectionBasicScene extends BasicScene {
 
         if(this.isPreloadResolved) {
  
-            
-            this.tweens.add({
-                targets: this.bg,
-                duration: 1000,
-                scale: 1,
-                alpha: 1
-            }).on('complete', ()=> {
-                this.populateSection()
-            })
+            setTimeout(
+                ()=> {
+
+                    this.tweens.add({
+                        targets: this.bg,
+                        duration: 1000,
+                        scale: 1,
+                        alpha: 1
+                    }).on('complete', ()=> {
+                        this.populateSection()
+                    })        
+
+                },
+                1800
+            )
+
 
         }else {
             this.initPromise.then(()=> {

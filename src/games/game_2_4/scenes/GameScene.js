@@ -251,11 +251,11 @@ export default class GameScene extends BasicScene {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
-            const collider = this.physics.add.collider(eggItem, eggQuestion, () => {
+            const collider = this.physics.add.collider(eggItem, eggQuestion, (leftItem, rightItem) => {
                 colliderList.forEach(collider => this.physics.world.removeCollider(collider));
                 eggItemList.forEach(eggItem => eggItem.input.draggable = false);
 
-                this.playVoice();
+                this.playVoice(leftItem, rightItem);
             });
 
             colliderList.push(collider);
@@ -332,11 +332,23 @@ export default class GameScene extends BasicScene {
         });
     }
 
-    checkAnswer(){
+    checkAnswer() {
 
     }
 
-    playVoice(){
+    playVoice(leftVoice, rightVoice) {
+
+        this.sound.stopAll();
+
+        const leftVoicePlayer = this.sound.add(leftVoice);
+
+        leftVoicePlayer.on('complete', () => {
+            this.sound.play(rightVoice);
+            leftVoicePlayer.destroy();
+
+        })
+
+        leftVoicePlayer.play();
 
     }
 

@@ -13,12 +13,6 @@ export default class StartBtn extends BasicBtn {
 
   onClick(){
 
-    if(typeof this.scene.game.canvas.requestFullscreen === 'function') {
-      this.scene.game.canvas.requestFullscreen()
-    }
-
-
-
     this.scene.scene.start('Game')
 
   }

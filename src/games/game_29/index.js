@@ -27,7 +27,7 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
     this.create(scene)
 }
 
-class Game27 extends Phaser.Game {
+class Game29 extends Phaser.Game {
 
     // private globals: { model: Model }
 
@@ -46,7 +46,7 @@ class Game27 extends Phaser.Game {
 
 function launch(urlParams) {
 
-    let game = new Game27(gameConfig, urlParams)
+    let game = new Game29(gameConfig, urlParams)
     return game
 }
 

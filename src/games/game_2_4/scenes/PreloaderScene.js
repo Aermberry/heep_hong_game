@@ -103,9 +103,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('gameProgressExitButton', require('../assets/images/button_exit_progress_game.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
-        this.load.spritesheet('normalVoiceButton', require('../assets/images/button_voice_normal.png'), { frameWidth: 69, frameHeight: 85 });
-        this.load.spritesheet('onPlayVoiceButton', require('../assets/images/button_voice_on_play.png'), { frameWidth: 186, frameHeight: 109 });
-
+        this.load.spritesheet('voiceButton', require('../assets/images/button_voice.png'), { frameWidth: 186, frameHeight: 210 });
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), { frameWidth: 612, frameHeight: 770 });
 
         this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), { frameWidth: 633, frameHeight: 630 });

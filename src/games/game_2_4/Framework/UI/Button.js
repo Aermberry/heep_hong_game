@@ -13,7 +13,7 @@ export default class Button extends Phaser.GameObjects.Container {
 
         this.add(this.texture);
 
-        this.setInteractive({ useHandCursor: true }).on(
+        this.texture.setInteractive({ useHandCursor: true }).on(
             Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                 console.log("down")
                 this.texture.setFrame(1);
@@ -30,10 +30,15 @@ export default class Button extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        
+
     }
 
     onUpClicked() {
 
+    }
+
+    setScale(scale) {
+        this.texture.setScale(scale);
+        this.setSize(this.texture.width, this.texture.height);
     }
 }

@@ -254,6 +254,8 @@ export default class GameScene extends BasicScene {
             const collider = this.physics.add.collider(eggItem, eggQuestion, () => {
                 colliderList.forEach(collider => this.physics.world.removeCollider(collider));
                 eggItemList.forEach(eggItem => eggItem.input.draggable = false);
+
+                this.playVoice();
             });
 
             colliderList.push(collider);
@@ -328,6 +330,14 @@ export default class GameScene extends BasicScene {
         console.log({
             _isFirstError
         });
+    }
+
+    checkAnswer(){
+
+    }
+
+    playVoice(){
+
     }
 
 

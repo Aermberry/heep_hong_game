@@ -10,6 +10,10 @@ export default class EndScene extends BasicScene {
 
     }
 
+    init() {
+        this.dataModal = this.sys.game.globals.model;
+    }
+
     create() {
 
         super.create();

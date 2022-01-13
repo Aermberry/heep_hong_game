@@ -89,8 +89,6 @@ export default class GameScene extends BasicScene {
         this.gameMusic = this.sound.add('bgm')
         this.gameMusic.setLoop(true)
 
-        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_start`, { 'event_category': 'Game Start'}))
-
     }
 
     preload() {
@@ -162,6 +160,8 @@ export default class GameScene extends BasicScene {
     create() {
 
         super.create()
+
+        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_start`, { 'event_category': 'Game Start'}))
 
         this.playerOnLeft = true
 

@@ -21,7 +21,9 @@ export default class GameScene extends BasicScene {
             this.currentLevel = 1;
         }
         this.dataModal = this.sys.game.globals.model.gameData;
-        this.answer = this.dataModal['level'+ this.currentLevel][Math.floor(Math.random() * this.dataModal['level'+ this.currentLevel].length)] // this.currentLevel - 1
+        // this.answer = this.dataModal['level'+ this.currentLevel][Math.floor(Math.random() * this.dataModal['level'+ this.currentLevel].length)] // this.currentLevel - 1
+        this.answer = this.dataModal['level2'][4] // this.currentLevel - 1
+    
     }
 
     preload() {

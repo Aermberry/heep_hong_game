@@ -39,7 +39,7 @@
             ],
             [
                 {
-                    "value": "難道小英不是你的好朋友嗎",
+                    "value": "難道「小英」不是你的好朋友嗎",
                     "type": "query",
                     "result": null
                 }
@@ -74,7 +74,7 @@
             ],
             [
                 {
-                    "value": "香港的夜景是多麽美麗啊",
+                    "value": "「香港」的夜景是多麽美麗啊",
                     "type": "exclamationMark",
                     "result": null
                 }
@@ -93,17 +93,17 @@
             ],
             [
                 {
-                    "value": "小明",
+                    "value": "「小明」",
                     "type": "and",
                     "result": null
                 },
                 {
-                    "value": "小花",
+                    "value": "「小花」",
                     "type": "and",
                     "result": null
                 },
                 {
-                    "value": "小美和小英都是我的朋友。",
+                    "value": "「小美」和「小英」都是我的朋友。",
                     "type": null,
                     "result": true
                 }
@@ -166,7 +166,7 @@
             ],
             [
                 {
-                    "value": "小英有大大的眼睛",
+                    "value": "「小英」有大大的眼睛",
                     "type": "and",
                     "result": null
                 },
@@ -205,7 +205,7 @@
             ],
             [
                 {
-                    "value": "海洋公園裏的海豚",
+                    "value": "「海洋公園」裏的海豚",
                     "type": "and",
                     "result": null
                 },
@@ -228,7 +228,7 @@
             [
                 {
                     "value": "春天啊",
-                    "type": "and",
+                    "type": "exclamationMark",
                     "result": null
                 },
                 {

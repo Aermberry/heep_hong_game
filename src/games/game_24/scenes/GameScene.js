@@ -53,102 +53,166 @@ export default class GameScene extends BasicScene {
             repeat: 0,
             // duration: 5000
         });
-        // this.anims.create({
-        //     key: 'bg_up',
-        //     delay: 200,
-        //     frames: this.anims.generateFrameNames('bg_up', { prefix: 'bg_up', start: 0, end: 60, zeroPad: 4 }),
-        //     repeat: -1,
-        //     // duration: 5000
-        // });
         this.anims.create({
-            key: 'leo2',
+            key: 'cl1',
             delay: 200,
-            frames: this.anims.generateFrameNames('leo', { prefix: 'leoo', start: 120, end: 179, zeroPad: 4 }),
-            repeat: 0,
+            frames: this.anims.generateFrameNames('cl1', { prefix: 'cl1', start: 0, end: 36, zeroPad: 4 }),
+            repeat: -1,
+            // duration: 5000
+        });
+        this.anims.create({
+            key: 'cl2',
+            delay: 200,
+            frames: this.anims.generateFrameNames('cl2', { prefix: 'cl2', start: 0, end: 36, zeroPad: 4 }),
+            repeat: -1,
             // duration: 5000
         });
         this.anims.create({
             key: 'leo',
             delay: 200,
-            frames: this.anims.generateFrameNames('leo', { prefix: 'leoo', start: 0, end: 120, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('leo', { prefix: 'leoo', start: 0, end: 24, zeroPad: 4 }),
             repeat: -1,
+            // duration: 5000
+        });
+        this.anims.create({
+            key: 'leo2',
+            delay: 200,
+            frames: this.anims.generateFrameNames('leo', { prefix: 'leoo', start: 25, end: 48, zeroPad: 4 }),
+            repeat: -1,
+            // duration: 5000
+        });
+        this.anims.create({
+            key: 'leo3',
+            delay: 200,
+            frames: this.anims.generateFrameNames('leo', { prefix: 'leoo', start: 49, end: 75, zeroPad: 4 }),
+            repeat: 0,
             // duration: 5000
         });
         this.anims.create({
             key: 'pen',
             delay: 200,
-            frames: this.anims.generateFrameNames('pen', { prefix: 'pen', start: 0, end: 120, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('pen', { prefix: 'pen', start: 0, end: 24, zeroPad: 4 }),
             repeat: -1,
             // duration: 5000
         });
         this.anims.create({
             key: 'pen2',
             delay: 200,
-            frames: this.anims.generateFrameNames('pen', { prefix: 'pen', start: 120, end: 179, zeroPad: 4 }),
-            repeat: 0,
-            // duration: 5000
-        });
-        this.anims.create({
-            key: 'bear',
-            delay: 200,
-            frames: this.anims.generateFrameNames('bear', { prefix: 'bear', start: 0, end: 120, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('pen', { prefix: 'pen', start: 25, end: 48, zeroPad: 4 }),
             repeat: -1,
             // duration: 5000
         });
         this.anims.create({
+            key: 'pen3',
+            delay: 200,
+            frames: this.anims.generateFrameNames('pen', { prefix: 'pen', start: 49, end: 76, zeroPad: 4 }),
+            repeat: 0,
+            // duration: 5000
+        });
+        this.anims.create({ //开车前
+            key: 'bear',
+            delay: 200,
+            frames: this.anims.generateFrameNames('bear', { prefix: 'bear', start: 0, end: 24, zeroPad: 4 }),
+            repeat: -1,
+            // duration: 5000
+        });
+        this.anims.create({ //开车后
             key: 'bear2',
             delay: 200,
-            frames: this.anims.generateFrameNames('bear', { prefix: 'bear', start: 120, end: 179, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('bear', { prefix: 'bear', start: 25, end: 48, zeroPad: 4 }),
+            repeat: -1,
+            // duration: 5000
+        });
+        this.anims.create({ //撞车车后
+            key: 'bear3',
+            delay: 200,
+            frames: this.anims.generateFrameNames('bear', { prefix: 'bear', start: 49, end: 72, zeroPad: 4 }),
             repeat: 0,
             // duration: 5000
         });
         this.anims.create({
             key: 'fat',
             delay: 200,
-            frames: this.anims.generateFrameNames('fat', { prefix: 'fat', start: 0, end: 60, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('fat', { prefix: 'fat', start: 0, end: 24, zeroPad: 4 }),
             repeat: -1,
+            // duration: 5000
+        });
+        this.anims.create({
+            key: 'fat2',
+            delay: 200,
+            frames: this.anims.generateFrameNames('fat', { prefix: 'fat', start: 25, end: 48, zeroPad: 4 }),
+            repeat: -1,
+            // duration: 5000
+        });
+        this.anims.create({
+            key: 'fat3',
+            delay: 200,
+            frames: this.anims.generateFrameNames('fat', { prefix: 'fat', start: 49, end: 77, zeroPad: 4 }),
+            repeat: 0,
             // duration: 5000
         });
     }
 
     create() {
         super.create();
-        this.bg_up_clo = this.add.sprite(this.getColWidth(4), this.getRowHeight(1), 'bg_up_clo');
+        this.Bgm = this.sound.add('Bgm')
+        this.Bgm.setLoop(true);
+        this.Bgm.play();
+        this.bg_up_cl1 = this.add.sprite(this.getColWidth(5), this.getRowHeight(1), 'cl1');
+        this.bg_up_cl1.play('cl1');
+        this.bg_up_cl1_1 = this.add.sprite(this.getColWidth(9), this.getRowHeight(1.2), 'cl1');
+        this.bg_up_cl1_1.play('cl1');
+        this.bg_up_cl1_2 = this.add.sprite(this.getColWidth(3), this.getRowHeight(3), 'cl1');
+        this.bg_up_cl1_2.play('cl1');
+        this.bg_up_cl1_3 = this.add.sprite(this.getColWidth(10), this.getRowHeight(2.5), 'cl1');
+        this.bg_up_cl1_3.play('cl1');
+        this.bg_up_cl2 = this.add.sprite(this.getColWidth(2), this.getRowHeight(1), 'cl2');
+        this.bg_up_cl2.play('cl2');
+        this.bg_up_cl2_1 = this.add.sprite(this.getColWidth(7.5), this.getRowHeight(2), 'cl2');
+        this.bg_up_cl2_1.play('cl2');
         this.bg_up = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'bg_up'),
-        // this.bg_up.play('bg_up');
-        this.paintGameScene();
+            // this.bg_up.play('bg_up');
+            this.paintGameScene();
     }
 
     //绘制游戏页面
     paintGameScene() {
-        this.fats = this.add.sprite(this.getColWidth(4.5), this.getRowHeight(4.5), 'fat');
-        this.fats.play('fat');
-        this.leoo = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'leo');
-        this.leoo.play('leo');
-        this.awardPlatform = this.add.image(this.getColWidth(7.3), this.getRowHeight(5), 'award_platform');
-        this.awardPlatform.setDisplaySize(250, 130)
-        this.pens = this.add.sprite(this.getColWidth(7.15), this.getRowHeight(3.5), 'pen')
-        this.pens.play('pen');
-        this.bears = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(3.8), 'bear');
-        this.bears.play('bear');
         this.questionUi = this.add.layer();
+        this.car1 = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(7), 'pink_car');
+        this.car1.setDepth(100)
         if (this.currentQuestionGroup[this.currentIndex].length <= 2) {
-
+            this.fats = this.add.sprite(this.getColWidth(4.5), this.getRowHeight(5.5), 'fat');
+            this.fats.play('fat');
+            this.leoo = this.add.sprite(this.getColWidth(6), this.getRowHeight(5), 'leo');
+            this.leoo.play('leo');
+            this.awardPlatform = this.add.image(this.getColWidth(7.3), this.getRowHeight(6), 'award_platform');
+            this.awardPlatform.setDisplaySize(250, 130)
+            this.pens = this.add.sprite(this.getColWidth(7.2), this.getRowHeight(4.5), 'pen')
+            this.pens.play('pen');
+            this.bears = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(4.8), 'bear');
+            this.bears.play('bear');
             this.bg_low = this.add.image(this.getColWidth(6), this.getRowHeight(8), 'bg_low');
-            this.car1 = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(7), 'pink_car');
             this.answersContainer = this.add.container(0, 0, [
-                this.bg_low, this.paintQuesiton(), this.car1]);
-            this.questionUi.add([this.bg_up, this.bg_up_clo,this.answersContainer,this.fats, this.leoo, this.awardPlatform, this.pens, this.bears,]);
+                this.bg_low, this.paintQuesiton(), this.fats, this.leoo, this.awardPlatform, this.pens, this.bears]);
+            this.questionUi.add([this.bg_up, this.answersContainer, this.bg_up_cl1, this.bg_up_cl1_1, this.bg_up_cl1_2, this.bg_up_cl1_3, this.bg_up_cl2, this.bg_up_cl2_1, this.car1]);
         } else {
             console.log('asdf')
+            this.fats = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(5.5), 'fat');
+            this.fats.play('fat');
+            this.leoo = this.add.sprite(this.getColWidth(10), this.getRowHeight(5), 'leo');
+            this.leoo.play('leo');
+            this.awardPlatform = this.add.image(this.getColWidth(11.3), this.getRowHeight(6), 'award_platform');
+            this.awardPlatform.setDisplaySize(250, 130)
+            this.pens = this.add.sprite(this.getColWidth(11.2), this.getRowHeight(4.5), 'pen')
+            this.pens.play('pen');
+            this.bears = this.add.sprite(this.getColWidth(12.6), this.getRowHeight(4.8), 'bear');
+            this.bears.play('bear');
             this.bg_low = this.add.image(this.getColWidth(7.7), this.getRowHeight(8), 'bg_low_long');
-            this.car1 = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(7), 'pink_car');
             this.answersContainer = this.add.container(0, 0, [
-                this.bg_low, this.paintQuesiton(), this.car1]);
+                this.bg_low, this.paintQuesiton(), this.fats, this.leoo, this.awardPlatform, this.pens, this.bears, this.car1,]);
             this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(5), this.getRowHeight(10.7), this.answersContainer);
             this.rightMoveButton = new RightMoveButton(this, this.getColWidth(6), this.getRowHeight(10.7), this.answersContainer);
-            this.questionUi.add([this.bg_up,this.bg_up_clo, this.answersContainer, this.leftMoveButton, this.rightMoveButton,this.fats, this.leoo, this.awardPlatform, this.pens, this.bears,]);
-            console.log(this.answersContainer)
+            this.questionUi.add([this.bg_up, this.answersContainer, this.bg_up_cl1, this.bg_up_cl1_1, this.bg_up_cl1_2, this.bg_up_cl1_3, this.bg_up_cl2, this.bg_up_cl2_1, this.leftMoveButton, this.rightMoveButton,]);
         }
         this.backgroundUi = this.add.layer(); //背景；
         this.exitBtn = new ExitBtn(this, 120, 135);
@@ -177,7 +241,7 @@ export default class GameScene extends BasicScene {
             if (this.currentQuestionGroup[this.currentIndex][index].type == answer.type) {
                 this.currentQuestionGroup[this.currentIndex][index] = answer;
                 if (this.currentQuestionGroup[this.currentIndex].every((item) => item.result != null)) { //答案选完；
-                    this.btnCar.setBtnCarGlow();
+                    this.btnCar.setIsBtn();
                     this.container.list.forEach(element => {
                         element.setFramebtn(2)
                     })
@@ -191,6 +255,10 @@ export default class GameScene extends BasicScene {
             if (!this.currentQuestionGroup[this.currentIndex].every((item) => item.result != null)) {
                 return;
             }
+            this.bears.play('bear2');
+            this.fats.play('fat2');
+            this.pens.play('pen2');
+            this.leoo.play('leo2');
             for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].length; i++) {
                 this.setFramebtn();
                 if (this.currentQuestionGroup[this.currentIndex][i].result == false) {
@@ -212,7 +280,7 @@ export default class GameScene extends BasicScene {
                                 ease: 'Power2',
                             })
                         }
-                        this.cat(this.bg_low.width, this.currentQuestionGroup[this.currentIndex][i]);
+                        this.cat(this.bg_low.width + 200, this.currentQuestionGroup[this.currentIndex][i]);
                         return;
                     }
                 }
@@ -245,41 +313,54 @@ export default class GameScene extends BasicScene {
         }).on('complete', () => { //车子走完执行方法；
             if (item.result == false) {
                 console.log('撞车啦');
-                let music = this.sound.add('wrong')
-                music.setLoop(false)
-                music.play()
+                let wrong = this.sound.add('wrong')
+                wrong.setLoop(false)
+                wrong.play()
                 this.car1.play('pink_car_stop').once("animationcomplete", () => {
-                    this.bears.play('bear2');
-                    this.pens.play('pen2');
-                    this.leoo.play('leo2').once("animationcomplete", () => {
+                    this.bears.play('bear3');
+                    this.pens.play('pen3');
+                    this.fats.play('fat3')
+                    this.leoo.play('leo3').once("animationcomplete", () => {
                         this.car1.play('pink_car_run').once("animationcomplete", () => {
                             this.anewQuestion();
                         })
                     })
                 });
             } else {
-                this.currentQuestionGroup[this.currentIndex].forEach(element => {
-                    element.result = null;
-                })
-                this.isBtn = true;
-                this.currentIndex++;
-                console.log(this.currentIndex)
-                if (this.currentIndex == this.currentQuestionGroup.length) {
-                    console.log('已经答完5道题');
-                    this.scene.start('End');
-                    return;
-                } else {
-                    this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup });
-                }
+                let win = this.sound.add('win')
+                win.setLoop(false)
+                win.play();
+                setTimeout(
+                    () => {
+                        this.currentQuestionGroup[this.currentIndex].forEach(element => {
+                            if (element.type != null) {
+                                element.result = null;
+                            }
+                        })
+                        this.isBtn = true;
+                        this.currentIndex++;
+                        if (this.currentIndex == this.currentQuestionGroup.length) {
+                            console.log('已经答完5道题');
+                            this.Bgm.stop();
+                            this.scene.start('End');
+                            return;
+                        } else {
+                            this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup });
+                        }
+
+                    }, 6000
+                )
+
             }
         });
     }
 
     //答案错误，重新答题；
     anewQuestion() {
-        this.bears.play('bear');
-        this.pens.play('pen');
-        this.leoo.play('leo');
+        this.pens.play('pen2');
+        this.leoo.play('leo2');
+        this.bears.play('bear2');
+        this.fats.play('fat2')
         this.car1.x = this.getColWidth(0.5);
         this.answersContainer.x = 0;
         let _question; //当前错误题型
@@ -298,7 +379,7 @@ export default class GameScene extends BasicScene {
                         ease: 'Power2',
                     })
                 }
-                this.cat(this.bg_low.width, _question);//执行正确行驶轨迹
+                this.cat(this.bg_low.width + 200, _question);//执行正确行驶轨迹
             }, 2000
         )
     }

@@ -27,7 +27,8 @@ export default class PreloaderScene extends BasicScene {
 
         const atlasFiles = {
             'bear': { img: require('../assets/img/bear.png'), data: require('../assets/img/bear.json') },
-            // 'bg_up': { img: require('../assets/img/bg_up.png'), data: require('../assets/img/bg_up.json') },
+            'cl1': { img: require('../assets/img/bg_up_cl1.png'), data: require('../assets/img/bg_up_cl1.json') },
+            'cl2': { img: require('../assets/img/bg_up_cl2.png'), data: require('../assets/img/bg_up_cl2.json') },
             'fat': { img: require('../assets/img/fat.png'), data: require('../assets/img/fat.json') },
             'leo': { img: require('../assets/img/leo.png'), data: require('../assets/img/leo.json') },
             'pen': { img: require('../assets/img/pen.png'), data: require('../assets/img/pen.json') },
@@ -36,15 +37,18 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-            'pass': require('../assets/audio/Pass.mp3'),
+            'Bgm':require('../assets/audio/Bgm.mp3'),
+            'Button':require('../assets/audio/Button.mp3'),
+            'End_pic':require('../assets/audio/End_pic.mp3'),
+            'win':require('../assets/audio/win.mp3'),
             'wrong': require('../assets/audio/wrong.mp3'),
-            'yes': require('../assets/audio/Yes.wav')
+            'yes': require('../assets/audio/yes.mp3')
         }
         self.load.spritesheet('extSmBtn', require('../assets/img/btn_ext_1.png'), { frameWidth: 186, frameHeight: 209 });
         self.load.spritesheet('strBtn', require('../assets/img/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         self.load.spritesheet('rplBtn', require('../assets/img/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         self.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
-        self.load.spritesheet('btn_car',require('../assets/img/btn_car.png'), { frameWidth: 812, frameHeight: 320 });
+        self.load.spritesheet('btn_car',require('../assets/img/btn_car_1.png'), { frameWidth: 640, frameHeight: 320 });
         self.load.spritesheet('btn_full',require('../assets/img/btn_full.png'),{frameWidth: 206, frameHeight: 203 });
         self.load.spritesheet('btn_com',require('../assets/img/btn_com.png'),{frameWidth: 188, frameHeight: 205 });
         self.load.spritesheet('moveBtn', require('../assets/img/btn_move.png'), { frameWidth: 256, frameHeight: 277 });

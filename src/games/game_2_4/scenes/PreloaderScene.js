@@ -36,8 +36,6 @@ export default class PreloaderScene extends BasicScene {
             'gameEndDialogBoxTexture': require('../assets/images/texture_game_end_scene_dialog_box.png'),
             'uiEgg': require('../assets/images/ui_egg.png'),
             'uiRecorder': require('../assets/images/ui_recorder.png'),
-            'eggAnswerItemTexture': require('../assets/images/texture_egg_answer_item.png'),
-            'eggQuestionTexture': require('../assets/images/texture_egg_question.png'),
             'clawTexture': require('../assets/images/texture_claw.png'),
 
             'textureObject0': require('../assets/images/objects/texture_item_objects/texture_object_0.png'),
@@ -107,6 +105,13 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
         this.load.spritesheet('normalVoiceButton', require('../assets/images/button_voice_normal.png'), { frameWidth: 69, frameHeight: 85 });
         this.load.spritesheet('onPlayVoiceButton', require('../assets/images/button_voice_on_play.png'), { frameWidth: 186, frameHeight: 109 });
+
+        this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), { frameWidth: 612, frameHeight: 770 });
+
+        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), { frameWidth: 633, frameHeight: 630 });
+
+
+
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }

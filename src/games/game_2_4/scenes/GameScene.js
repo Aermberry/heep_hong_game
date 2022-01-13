@@ -186,32 +186,29 @@ export default class GameScene extends BasicScene {
         let points = [];
         if (this.isRightDirection()) {
             points = [{
-                x: 315,
-                y: 437
+                x: 276,
+                y: 498
             }, {
-                x: 498,
-                y: 252
+                x: 390,
+                y: 168
             }, {
-                x: 748,
-                y: 250
+                x: 531,
+                y: 441
             }, {
-                x: 825,
-                y: 592
+                x: 766,
+                y: 216
             }, {
-                x: 990,
-                y: 251
+                x: 841,
+                y: 569
             }, {
-                x: 1061,
-                y: 586
+                x: 1053,
+                y: 350
             }, {
-                x: 1210,
-                y: 243
+                x: 1207,
+                y: 569
             }, {
-                x: 1281,
-                y: 646
-            }, {
-                x: 1443,
-                y: 342
+                x: 1334,
+                y: 265
             }];
         } else {
             points = [{
@@ -249,13 +246,17 @@ export default class GameScene extends BasicScene {
 
     generateEggItems(phrases, points, eggQuestion, layer) {
         let eggItemList = [];
+        let colliderList = [];
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
-            this.physics.add.collider(eggItem, eggQuestion, () => {
-                console.log("collider");
+            const collider = this.physics.add.collider(eggItem, eggQuestion, () => {
+                colliderList.forEach(collider => this.physics.world.removeCollider(collider));
+                eggItemList.forEach(eggItem => eggItem.input.draggable = false);
             });
+
+            colliderList.push(collider);
 
             eggItemList.push(eggItem);
 

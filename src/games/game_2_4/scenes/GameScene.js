@@ -92,8 +92,8 @@ export default class GameScene extends BasicScene {
 
         // question = JSON.parse(localStorage.getItem(this.questionIndex));
 
-        // question = JSON.parse(localStorage.getItem(17));
-        question = JSON.parse(localStorage.getItem(16));
+        question = JSON.parse(localStorage.getItem(17));
+        // question = JSON.parse(localStorage.getItem(16));
         console.log("当前抽取的题目:%o", question);
 
         this.currentQuestionAnswer = question.answer;
@@ -174,7 +174,7 @@ export default class GameScene extends BasicScene {
         clawBox.setPosition(clawBoxPosition.x, clawBoxPosition.y);
 
 
-        this.generateEggItems(phrases, this.generatePoints(currentGameQuestion.direction), eggQuestion, this.gameLayer);
+        this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition);
 
@@ -182,9 +182,9 @@ export default class GameScene extends BasicScene {
 
     }
 
-    generatePoints(direction) {
+    generatePoints() {
         let points = [];
-        if (direction == "right") {
+        if (this.isRightDirection()) {
             points = [{
                 x: 315,
                 y: 437
@@ -215,32 +215,32 @@ export default class GameScene extends BasicScene {
             }];
         } else {
             points = [{
-                x: 315,
-                y: 437
+                x: 622,
+                y: 503
             }, {
-                x: 498,
-                y: 252
+                x: 794,
+                y: 285
             }, {
-                x: 748,
-                y: 250
+                x: 894,
+                y: 629
             }, {
-                x: 825,
-                y: 592
+                x: 1114,
+                y: 404
             }, {
-                x: 990,
-                y: 251
+                x: 1352,
+                y: 292
             }, {
-                x: 1061,
-                y: 586
+                x: 1341,
+                y: 606
             }, {
-                x: 1210,
-                y: 243
+                x: 1588,
+                y: 411
             }, {
-                x: 1281,
-                y: 646
+                x: 1754,
+                y: 212
             }, {
-                x: 1443,
-                y: 342
+                x: 1720,
+                y: 662
             }];
         }
         return this.shufflePosition(points);
@@ -254,7 +254,7 @@ export default class GameScene extends BasicScene {
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
             this.physics.add.collider(eggItem, eggQuestion, () => {
-                console.log("sdsdsd");
+                console.log("collider");
             });
 
             eggItemList.push(eggItem);

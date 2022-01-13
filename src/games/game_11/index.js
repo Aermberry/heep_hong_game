@@ -47,7 +47,7 @@ class Game11 extends Phaser.Game {
 }
 
 
-function launch(urlParams) {
+function launch(urlParams, gtag) {
 
     let game = new Game11(gameConfig, urlParams, gtag)
 

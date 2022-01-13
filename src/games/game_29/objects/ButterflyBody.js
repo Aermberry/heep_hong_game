@@ -1,20 +1,33 @@
+import Phaser from "phaser";
 export default class ButterflyBody {
     constructor(scene, zoneSprite = { x: 0, y: 0, textureName: "" }, bodySprite = { x: 0, y: 0, textureName: '' }, type) {
         this.scene = scene;
         this.bodySprite = this.scene.add.sprite(bodySprite.x, bodySprite.y, bodySprite.textureName).setOrigin(0);
-        this.zoneSprite = this.scene.add.sprite(zoneSprite.x, zoneSprite.y , zoneSprite.textureName);
-        this.zone = this.scene.add.zone(this.zoneSprite.x, this.zoneSprite.y, this.zoneSprite.width, this.zoneSprite.height)
-            .setRectangleDropZone(this.zoneSprite.width, this.zoneSprite.height);
-        this.zone.type = type;
+        this.zoneSprite = new ButterflyZone(scene, zoneSprite, type)
     }
 
     get children() {
-        return [this.bodySprite, this.zoneSprite, this.zone]
+        return [this.bodySprite, this.zoneSprite]
     }
 
     highlight() {
+        this.zoneSprite.destroy()
         this.bodySprite.setFrame(1)
     }
 
+}
 
-} 
+class ButterflyZone extends Phaser.GameObjects.Sprite {
+    constructor(scene, { x, y, textureName }, type) {
+        super(scene, x, y, textureName)
+        this.type = type;
+        this.setInteractive();
+        this.setScale(0.8);
+        this.input.dropZone = true;
+    }
+
+    toggleZoneFrame(num) {
+        this.setFrame(num)
+    }
+
+}

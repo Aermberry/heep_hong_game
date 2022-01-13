@@ -11,7 +11,7 @@ export default class ExitBtn extends BasicBtn {
   }
 
   onClick() {
-    if (this.scene.currentLevel == 5) {
+    if (this.scene.currentLevel == 2) {
       this.scene.scene.start('End')
     } else {
       this.scene.scene.start('Game', {

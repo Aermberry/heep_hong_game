@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import DragText from "./DragText"
 import DoneBtn from "./DoneBtn"
 export default class Scoreboard {
-    constructor(scene, x, y,onCompleteOnce, onHighlightCallback) {
+    constructor(scene, x, y, onCompleteOnce, onHighlightCallback) {
         this.scene = scene;
         this.onHighlightCallback = onHighlightCallback;
         this.onCompleteOnce = onCompleteOnce;
@@ -12,16 +12,17 @@ export default class Scoreboard {
     }
 
     init(data) {
-        this.time = new SocreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, 't', this.onComplete.bind(this), this.onHighlightCallback);
-        this.local = new SocreType(this.scene, this.x + 0, this.y + 50, 'hinsbx2', data.type.l, 'l', this.onComplete.bind(this), this.onHighlightCallback);
-        this.people = new SocreType(this.scene, this.x + 0, this.y + 100, 'hinsbx3', data.type.p, 'p', this.onComplete.bind(this), this.onHighlightCallback);
-        this.before = new SocreType(this.scene, this.x + 500, this.y + 0, 'hinsbx4', data.type.b, 'b', this.onComplete.bind(this), this.onHighlightCallback);
-        this.after = new SocreType(this.scene, this.x + 500, this.y + 50, 'hinsbx5', data.type.a, 'a', this.onComplete.bind(this), this.onHighlightCallback);
-        this.result = new SocreType(this.scene, this.x + 500, this.y + 100, 'hinsbx6', data.type.r, 'r', this.onComplete.bind(this), this.onHighlightCallback);
+        this.time = new ScoreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, 't', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+        this.local = new ScoreType(this.scene, this.x + 0, this.y + 50, 'hinsbx2', data.type.l, 'l', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+        this.people = new ScoreType(this.scene, this.x + 0, this.y + 100, 'hinsbx3', data.type.p, 'p', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+        this.before = new ScoreType(this.scene, this.x + 500, this.y + 0, 'hinsbx4', data.type.b, 'b', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+        this.after = new ScoreType(this.scene, this.x + 500, this.y + 50, 'hinsbx5', data.type.a, 'a', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+        this.result = new ScoreType(this.scene, this.x + 500, this.y + 100, 'hinsbx6', data.type.r, 'r', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+
     }
 
     quiz(gameObject, zone) {
-        if (gameObject.type == zone) {
+        if (gameObject.type == zone.type) {
             switch (gameObject.type) {
                 case 't':
                     this.time.onCorrect();
@@ -61,8 +62,26 @@ export default class Scoreboard {
             this.people.openInteractive();
             this.before.openInteractive();
             this.after.openInteractive();
-            new DoneBtn(this.scene, this.x + 700,1000)
+            let crt_ans_star = this.scene.add.sprite(this.x + 200, 870, 'crt_ans_star').setScale(0.4);
+            let crt_ans_star1 = this.scene.add.sprite(this.x + 700, 870, 'crt_ans_star').setScale(0.4);
+            let crt_ans_star2 = this.scene.add.sprite(this.x + 60, 500, 'crt_ans_star').setScale(0.4);
+            let crt_ans_star3 = this.scene.add.sprite(this.x + 800, 500, 'crt_ans_star').setScale(0.4);
+            crt_ans_star1.play('crt_ans_star')
+            crt_ans_star.play('crt_ans_star')
+            crt_ans_star2.play('crt_ans_star')
+            crt_ans_star3.play('crt_ans_star')
+            new DoneBtn(this.scene, this.x + 700, 1000)
         }
+    }
+
+    onScoreTypeBtnClick(type) {
+        this.time.toggleStyle(type);
+        this.local.toggleStyle(type);
+        this.people.toggleStyle(type);
+        this.before.toggleStyle(type);
+        this.after.toggleStyle(type);
+        this.result.toggleStyle(type);
+        this.onHighlightCallback(type);
     }
 
 
@@ -70,10 +89,10 @@ export default class Scoreboard {
 
 
 
-class SocreType extends Phaser.GameObjects.Container {
+class ScoreType extends Phaser.GameObjects.Container {
     constructor(scene, x, y, sprite, num, type, onComplete, onHighlightCallback) {
         super(scene, x, y);
-        this.title = scene.add.sprite(0, 0, sprite).setOrigin(0).setScale(0.4);
+        this.title = scene.add.sprite(0, 0, sprite).setOrigin(0).setScale(.5);
         this.onHighlightCallback = onHighlightCallback;
         this.arr = [];
         this.num = num;
@@ -124,6 +143,9 @@ class SocreType extends Phaser.GameObjects.Container {
         this.onHighlightCallback(this.type)
     }
 
+    toggleStyle(type) {
+        this.title.setFrame(type != this.type ? 0 : 1)
+    }
 
 
 

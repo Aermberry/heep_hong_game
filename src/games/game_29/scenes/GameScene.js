@@ -21,18 +21,18 @@ export default class GameScene extends BasicScene {
             this.currentLevel = 1;
         }
         this.dataModal = this.sys.game.globals.model.gameData;
-        this.answer = this.dataModal.level1[3] // this.currentLevel - 1
+        this.answer = this.dataModal['level'+ this.currentLevel][Math.floor(Math.random() * this.dataModal['level'+ this.currentLevel].length)] // this.currentLevel - 1
     }
 
     preload() {
         this.buildBg('bg_tutor')
-        // this.anims.create({
-        //     key: 'wow_car',
-        //     delay: 200,
-        //     frameRate: 8,
-        //     frames: this.anims.generateFrameNames('wow_car', { prefix: 'Symbol 1', start: 0, end: 12, zeroPad: 4 }),
-        //     repeat: 0
-        // });
+        this.anims.create({
+            key: 'crt_ans_star',
+            delay: 200,
+            // frameRate: 8,
+            frames: this.anims.generateFrameNames('crt_ans_star', { prefix: 'crt ans_star', start: 0, end: 14, zeroPad: 4 }),
+            repeat: -1
+        });
 
         const imageFiles = {
 
@@ -56,29 +56,21 @@ export default class GameScene extends BasicScene {
         this.initScene();
         let currentZone;
         let self = this;
-        let text = 'text';
-        let sprite = self.add.text(0, 0, text, {
-            fontSize: '40px', //30px
-            color: '#000000',
-            fontWeight: 'bold',
-            fontFamily: "system-ui"
-        })
 
         self.input.on('dragenter', function (pointer, gameObject, dropZone) {
-            currentZone = dropZone.type;
-            text = dropZone.type;
-            sprite.setText(text)
-            //调用dropZone 换颜色方法
+            currentZone = dropZone;
+            dropZone.toggleZoneFrame(1)
         })
 
-        self.input.on('dragleave', () => {
+        self.input.on('dragleave', (pointer, gameObject, dropZone) => {
             currentZone = null;
-            sprite.setText('')
+            dropZone.toggleZoneFrame(0)
         })
 
         self.input.on('dragend', (pointer, gameObject, dropped) => {
             if (dropped) {
                 this.scoreboard.quiz(gameObject, currentZone)
+                currentZone.toggleZoneFrame(0)
                 currentZone = null;
             }
         })
@@ -87,7 +79,7 @@ export default class GameScene extends BasicScene {
     }
 
     initScene() {
-        this.article = new Article(this, 0, 50)
+        this.article = new Article(this, 0, 50, this.currentLevel)
         this.butterfly = new Butterfly(this, 960, 280)
         this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this))
         this.scoreboard.init(this.answer);

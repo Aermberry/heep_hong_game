@@ -6,7 +6,7 @@ export default class Butterfly extends Phaser.GameObjects.Container {
         this.sol;
         this.head;
         this.sor;
-        this.body;
+        this.butteryflyBody;
         this.wl;
         this.wr;
         this.init();
@@ -16,13 +16,13 @@ export default class Butterfly extends Phaser.GameObjects.Container {
 
     init() {
         let butterfly = [];
-        this.sol = new ButterflyBody(this.scene, { x: 380, y: 100, textureName: 'but_bx1' }, { x: 450, y: 0, textureName: 'but_shw_sol' }, 't')
-        this.head = new ButterflyBody(this.scene, { x: 600, y: 240, textureName: 'but_bx2' }, { x: 405, y: 200, textureName: 'but_shw_head' }, 'p')
-        this.sor = new ButterflyBody(this.scene, { x: 1200, y: 100, textureName: 'but_bx3' }, { x: 870, y: 0, textureName: 'but_shw_sor' }, 'l')
-        this.body = new ButterflyBody(this.scene, { x: 750, y: 1000, textureName: 'but_bx5' }, { x: 500, y: 700, textureName: 'but_shw_body' }, 'a')
+        this.sol = new ButterflyBody(this.scene, { x: 360, y: 180, textureName: 'but_bx1' }, { x: 450, y: 0, textureName: 'but_shw_sol' }, 't')
+        this.head = new ButterflyBody(this.scene, { x: 780, y: 150, textureName: 'but_bx2' }, { x: 405, y: 200, textureName: 'but_shw_head' }, 'p')
+        this.sor = new ButterflyBody(this.scene, { x: 1220, y: 180, textureName: 'but_bx3' }, { x: 870, y: 0, textureName: 'but_shw_sor' }, 'l')
+        this.butteryflyBody = new ButterflyBody(this.scene, { x: 750, y: 1000, textureName: 'but_bx5' }, { x: 500, y: 700, textureName: 'but_shw_body' }, 'a')
         this.wl = new ButterflyBody(this.scene, { x: 150, y: 600, textureName: 'but_bx4' }, { x: 0, y: 400, textureName: 'but_shw_wl' }, 'b')
-        this.wr = new ButterflyBody(this.scene, { x: 1400, y: 450, textureName: 'but_bx6' }, { x: 800, y: 400, textureName: 'but_shw_wr' }, 'r')
-        butterfly.push(this.wl.children, this.wr.children, this.sol.children, this.sor.children, this.body.children, this.head.children);
+        this.wr = new ButterflyBody(this.scene, { x: 1400, y: 500, textureName: 'but_bx6' }, { x: 800, y: 400, textureName: 'but_shw_wr' }, 'r')
+        butterfly.push(this.wl.children, this.wr.children, this.sol.children, this.sor.children, this.butteryflyBody.children, this.head.children);
         let arr = [].concat.apply([], butterfly);
         this.add(arr)
     }
@@ -42,7 +42,7 @@ export default class Butterfly extends Phaser.GameObjects.Container {
                 this.wl.highlight();
                 break;
             case 'a':
-                this.body.highlight();
+                this.butteryflyBody.highlight();
                 break;
             case 'r':
                 this.wr.highlight();

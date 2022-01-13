@@ -1,12 +1,13 @@
 import DragText from "./DragText";
 
 export default class Article {
-    constructor(scene, x, y) {
+    constructor(scene, x, y, level) {
         this.scene = scene;
         this.oring = {
             x: x,
             y: y
         }
+        this.level = level;
         //text_bg scale 0.5 一行容纳30字 竖直 一行容纳15字
         this.sprite = this.scene.add.sprite(x, y, 'new_text_bg').setOrigin(0).setScale(0.52)
         this.sprite.width = this.sprite.displayWidth
@@ -43,6 +44,7 @@ export default class Article {
                 padding: {
                     x: 5, y: 5
                 },
+                // strokeThickness: this.level == 1 ? 0 : 5,
                 fontWeight: 'bold',
                 fontFamily: "system-ui"
             }).setOrigin(0).setDepth(1)
@@ -122,7 +124,7 @@ export default class Article {
                     },
                     fontWeight: 'bold',
                     fontFamily: "system-ui"
-                }, type, 2, group.map((item) => item.text).join(''))
+                }, type, 2, group.map((item) => item.text).join(''), this.level != 1)
             })
 
         })
@@ -180,7 +182,8 @@ export default class Article {
 
                     },
                     fontFamily: "system-ui"
-                }, type, 3, group.map((item) => item.text).join(''))
+                }, type, 3, group.map((item) => item.text).join(''), this.level != 1)
+
             })
 
         })

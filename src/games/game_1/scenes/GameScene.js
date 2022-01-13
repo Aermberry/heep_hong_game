@@ -25,6 +25,9 @@ export default class GameScene extends BasicScene {
     this.freezePlaySound = false;
     this.freezeSelectItem = false;
     this.lv2Start = false;
+
+    this.sys.game.globals.gtag.event(('game_1_start', { 'event_category': 'Game Start'}))
+
   }
 
   preload () {

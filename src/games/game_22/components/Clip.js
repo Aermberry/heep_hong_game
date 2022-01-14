@@ -5,7 +5,7 @@ import { ClipTweenAnimationStatus } from './ClipTweenAnimationStatus';
 
 export default class Clip extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, x, y, gameData, dolls) {
+    constructor(scene, x, y, dolls) {
 
         super(scene, x, y, 'clipTexture');
         // super(scene, x, y);
@@ -21,7 +21,7 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
 
         this.playAnimation("clip_idleStateAnimation");
 
-        this.init(scene, gameData, dolls)
+        this.init(scene, dolls)
     }
 
     init(scene, dolls) {
@@ -81,18 +81,14 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
 
                 this.currentAnimationState=ClipTweenAnimationStatus.FallingTweenAnimationStatus;
 
-                this.currentTweenAnimation = TweenAnimation.playFallingTweenAnimation(scene, config.target, config.y, config.duration,()=>{
-                    this.currentAnimationState=ClipTweenAnimationStatus.IdleAnimationStatus;
-                });
+                this.currentTweenAnimation = TweenAnimation.playFallingTweenAnimation(scene, config.target, config.y, config.duration);
                 
                 break;
             case ClipTweenAnimationStatus.MovingTweenAnimationStatus:
 
                 this.currentAnimationState=ClipTweenAnimationStatus.MovingTweenAnimationStatus;
 
-                TweenAnimation.playMovingToTargetTweenAnimation(scene, config.target, config.x, config.y, config.duration,()=>{
-                    this.currentAnimationState=ClipTweenAnimationStatus.IdleAnimationStatus;
-                });
+                TweenAnimation.playMovingToTargetTweenAnimation(scene, config.target, config.x, config.y, config.duration);
                 break;
             default:
                 break;

@@ -11,6 +11,8 @@ import {
 import EggItem from "../components/EggItem";
 import EggQuestion from "../components/EggQuestion";
 import ClawBox from "../components/ClawBox";
+import ComposeSprite from "../components/ComposeSprite";
+import Phaser from "phaser";
 
 
 export default class GameScene extends BasicScene {
@@ -114,11 +116,8 @@ export default class GameScene extends BasicScene {
         /* UI Object */
         this.buildUiObject(this.uiLayer);
 
-        // eggTexture.setFlipX(true);
-
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
-
     }
 
     buildUiObject(layer) {
@@ -251,11 +250,11 @@ export default class GameScene extends BasicScene {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
-            const collider = this.physics.add.collider(eggItem, eggQuestion, (leftItem, rightItem) => {
+            const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 colliderList.forEach(collider => this.physics.world.removeCollider(collider));
                 eggItemList.forEach(eggItem => eggItem.input.draggable = false);
 
-                this.playVoice(leftItem, rightItem);
+                this.playVoice(dragItem, targetItem, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
             });
 
             colliderList.push(collider);
@@ -292,7 +291,7 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess() {
+    paintGameSuccess(currentQuestionAnswer) {
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
         GameManager.getInstance().updateGamePlayTotal((value) => {
             this.time.addEvent({
@@ -301,12 +300,18 @@ export default class GameScene extends BasicScene {
             })
         });
 
-
+        // const 
         // this.sound.add('starEffectSound').play();
+        let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
+
+        Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+
+        composeSprite.showSuccessfulAnimation();
+        this.uiLayer.add(composeSprite);
     }
 
 
-    paintGameFailed() {
+    paintGameFailed(currentQuestionAnswer) {
 
         let _isFirstError = null;
 
@@ -325,27 +330,39 @@ export default class GameScene extends BasicScene {
 
         if (!_isFirstError) {
             this.answerArea.showCurrentAnswer(this);
+
+            let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
+
+            Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+
+            composeSprite.showSuccessfulAnimation();
+            this.uiLayer.add(composeSprite);
         }
-
-        console.log({
-            _isFirstError
-        });
     }
 
-    checkAnswer() {
+    checkAnswer(dragItem, targetItem, currentQuestionAnswer) {
+
+        const composeWords = dragItem.objectName + targetItem.objectName;
+
+        // textureAnswerObject0
+
+        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(currentQuestionAnswer) : this.paintGameFailed(currentQuestionAnswer);
 
     }
 
-    playVoice(leftVoice, rightVoice) {
-
+    playVoice(leftVoice, rightVoice, callback) {
         this.sound.stopAll();
 
         const leftVoicePlayer = this.sound.add(leftVoice);
+        const rightVoicePlayer = this.sound.add(rightVoice);
 
         leftVoicePlayer.on('complete', () => {
             this.sound.play(rightVoice);
             leftVoicePlayer.destroy();
+        })
 
+        rightVoicePlayer.on('complete', () => {
+            callback;
         })
 
         leftVoicePlayer.play();

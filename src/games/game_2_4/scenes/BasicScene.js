@@ -17,6 +17,7 @@ export default class BasicScene extends Phaser.Scene {
         let background = undefined;
 
         background = this.add.image(0, 0, image).setOrigin(0);
+        background.setName("background");
         background.setDisplaySize(this.game.scale.width, this.game.scale.height);
 
         return background;

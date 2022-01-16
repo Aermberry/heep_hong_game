@@ -254,7 +254,7 @@ export default class GameScene extends BasicScene {
                 colliderList.forEach(collider => this.physics.world.removeCollider(collider));
                 eggItemList.forEach(eggItem => eggItem.input.draggable = false);
 
-                this.playVoice("voice_item_object_"+dragItem,"voice_answer_object_"+ targetItem, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
+                this.playVoice("voice_item_object_"+dragItem.index,"voice_answer_object_"+ targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
             });
 
             colliderList.push(collider);

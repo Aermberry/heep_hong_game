@@ -8,6 +8,7 @@ export default class EggItem extends Egg {
         super(scene, point, texture, "textureObject" + objectItem.index);
 
         this.objectName = objectItem.objectName;
+        this.index=objectItem.index;
 
         this.setName("EggItem");
         this.create(isEnableDraggable);

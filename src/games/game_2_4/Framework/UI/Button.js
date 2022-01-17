@@ -6,10 +6,10 @@ export default class Button extends Phaser.GameObjects.Container {
 
         super(scene, x, y);
         scene.add.existing(this);
-
+        this.setDepth(100);
         this.texture = scene.add.sprite(0, 0, texture);
 
-        this.setSize(this.texture.width, this.texture.height);
+        this.setSize(this.texture.displayWidth, this.texture.displayHeight);
 
         this.add(this.texture);
 

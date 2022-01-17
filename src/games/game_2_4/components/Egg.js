@@ -14,25 +14,26 @@ export default class Egg extends Phaser.GameObjects.Container {
         this.setName("Egg");
 
         scene.add.existing(this);
+
     }
 
-    create(isEnableDraggable) {
-        const background = this.scene.add.image(0, 0, this.image, 0).setScale(0.5).setName("background");
+    create() {
+        this.background = this.scene.add.image(0, 0, this.image, 0).setScale(0.5).setName("background");
         const objectTexture = this.scene.add.sprite(0, 0, this.objectTexture).setScale(0.48).setName("texture");
 
-        Phaser.Display.Align.In.Center(objectTexture, background, -10);
+        Phaser.Display.Align.In.Center(objectTexture, this.background, -10);
 
         this.scene.physics.add.existing(this);
 
         this.add(
-            [background, objectTexture]
+            [this.background, objectTexture]
         )
 
-        this.setSize(background.displayWidth, background.displayHeight);
+        this.setSize(this.background.displayWidth, this.background.displayHeight);
 
         this.setInteractive();
 
-        this.scene.input.setDraggable(this, isEnableDraggable);
+        // this.scene.input.setDraggable(this, isEnableDraggable);
 
         this.scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
 
@@ -42,6 +43,20 @@ export default class Egg extends Phaser.GameObjects.Container {
             console.log("dragX:%o;dragY:%o", dragX, dragY);
         });
     }
+
+    setDraggable(isEnableDraggable){
+        this.scene.input.setDraggable(this, isEnableDraggable);
+    }
+
+    showErrorStatue() {
+        this.background.setFrame(2);
+    }
+
+    showSuccessStatus() {
+        this.background.setFrame(1);
+    }
+
+
 
 
 }

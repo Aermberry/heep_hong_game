@@ -25,7 +25,7 @@ export default class ClawBox extends Phaser.GameObjects.Container {
         this.add([this.eggQuestion, this.texture]);
     }
 
-    showAppearanceAnimation(x) {
+    showAppearanceAnimation(x, completeCallback) {
 
         TweenAnimation.setTweenAnimation({
             targets: this,
@@ -35,11 +35,10 @@ export default class ClawBox extends Phaser.GameObjects.Container {
             tweens: [
                 {
                     x: x,
-                    onComplete: () => {
-
-                    }
+                    onComplete: completeCallback
                 }],
             onComplete: () => {
+
             }
         }
         );
@@ -48,7 +47,7 @@ export default class ClawBox extends Phaser.GameObjects.Container {
     }
 
     setFlipX() {
-        
+
         this.texture.setFlipX(true);
         this.eggQuestion.getByName("background").setFlipX(true);
     }

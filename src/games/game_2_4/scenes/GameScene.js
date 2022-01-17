@@ -215,8 +215,6 @@ export default class GameScene extends BasicScene {
             y: 0
         }, "eggQuestionTexture", currentGameQuestion.phrases.main, false);
 
-
-
         let clawBoxPosition;
         let clawAnimationTargetPosition;
 
@@ -245,12 +243,13 @@ export default class GameScene extends BasicScene {
 
         clawBox.setPosition(clawBoxPosition.x, clawBoxPosition.y);
 
-
-        this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
-
-        clawBox.showAppearanceAnimation(clawAnimationTargetPosition);
-
         layer.add([clawBox]);
+
+        const eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
+
+        clawBox.showAppearanceAnimation(clawAnimationTargetPosition,()=>{
+            eggItemList.forEach(eggItem=>eggItem.setDraggable(true))
+        });
 
     }
 
@@ -324,8 +323,21 @@ export default class GameScene extends BasicScene {
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
-                colliderList.forEach(collider => this.physics.world.removeCollider(collider));
-                eggItemList.forEach(eggItem => eggItem.input.draggable = false);
+                this.input.enabled = false;
+
+                eggItemList.forEach(eggItem => {
+                    // eggItem.input.draggable = false;
+                    console.log({ eggItem });
+
+                });
+
+                colliderList.forEach(collider => {
+                    this.physics.world.removeCollider(collider)
+                    collider.destroy();
+                });
+
+
+
 
                 this.playVoice(dragItem.index, targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
             });
@@ -350,6 +362,8 @@ export default class GameScene extends BasicScene {
                 })
             });
         }
+
+        return eggItemList;
     }
 
     shufflePosition(arr) {
@@ -363,7 +377,7 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess(currentQuestionAnswer) {
+    paintGameSuccess(dragItem, targetItem, currentQuestionAnswer) {
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
         GameManager.getInstance().updateGamePlayTotal((value) => {
             this.time.addEvent({
@@ -372,8 +386,9 @@ export default class GameScene extends BasicScene {
             })
         });
 
-        // const 
-        // this.sound.add('starEffectSound').play();
+        dragItem.showSuccessStatus();
+        targetItem.showSuccessStatus()
+
         let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
 
         Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
@@ -383,9 +398,12 @@ export default class GameScene extends BasicScene {
     }
 
 
-    paintGameFailed(currentQuestionAnswer) {
+    paintGameFailed(dragItem, targetItem, currentQuestionAnswer) {
 
         let _isFirstError = null;
+
+        dragItem.showErrorStatue();
+        targetItem.showErrorStatue();
 
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
 
@@ -401,14 +419,17 @@ export default class GameScene extends BasicScene {
 
 
         if (!_isFirstError) {
-            this.answerArea.showCurrentAnswer(this);
+            // this.answerArea.showCurrentAnswer(this);
 
             let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
 
             Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
 
-            composeSprite.showSuccessfulAnimation();
             this.uiLayer.add(composeSprite);
+
+
+            composeSprite.showFailedAnimation();
+
         }
     }
 
@@ -416,9 +437,7 @@ export default class GameScene extends BasicScene {
 
         const composeWords = dragItem.objectName + targetItem.objectName;
 
-        // textureAnswerObject0
-
-        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(currentQuestionAnswer) : this.paintGameFailed(currentQuestionAnswer);
+        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(dragItem, targetItem, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, currentQuestionAnswer);
 
     }
 

@@ -13,7 +13,7 @@ export default class EggItem extends Egg {
         this.setName("EggItem");
         this.create(isEnableDraggable);
 
-        const voiceButton = new VoiceButton(this.scene, -20, 120);
+        const voiceButton = new VoiceButton(this.scene, -20, 120,"voiceItemObject"+objectItem.index);
         voiceButton.setScale(0.2);
 
         this.add(voiceButton);

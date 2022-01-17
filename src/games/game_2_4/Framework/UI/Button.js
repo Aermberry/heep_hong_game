@@ -2,12 +2,12 @@ import Phaser from 'phaser'
 
 export default class Button extends Phaser.GameObjects.Container {
 
-    constructor(scene, x, y, texture) {
+    constructor(scene, x, y, texture,frameIndex) {
 
         super(scene, x, y);
         scene.add.existing(this);
         this.setDepth(100);
-        this.texture = scene.add.sprite(0, 0, texture);
+        this.texture = scene.add.sprite(0, 0, texture,frameIndex);
 
         this.setSize(this.texture.displayWidth, this.texture.displayHeight);
 

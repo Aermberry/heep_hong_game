@@ -40,6 +40,79 @@ export default class GameScene extends BasicScene {
         // this.preloadFromArr({
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
+
+        const soundFiles = {
+            'voiceAnswerObject0': require('../assets/audio/voice/answer_objects/voice_answer_object_0.mp3'),
+            'voiceAnswerObject1': require('../assets/audio/voice/answer_objects/voice_answer_object_1.mp3'),
+            'voiceAnswerObject2': require('../assets/audio/voice/answer_objects/voice_answer_object_2.mp3'),
+            'voiceAnswerObject3': require('../assets/audio/voice/answer_objects/voice_answer_object_3.mp3'),
+            'voiceAnswerObject4': require('../assets/audio/voice/answer_objects/voice_answer_object_4.mp3'),
+            'voiceAnswerObject5': require('../assets/audio/voice/answer_objects/voice_answer_object_5.mp3'),
+            'voiceAnswerObject6': require('../assets/audio/voice/answer_objects/voice_answer_object_6.mp3'),
+            'voiceAnswerObject7': require('../assets/audio/voice/answer_objects/voice_answer_object_7.mp3'),
+            'voiceAnswerObject8': require('../assets/audio/voice/answer_objects/voice_answer_object_8.mp3'),
+            'voiceAnswerObject9': require('../assets/audio/voice/answer_objects/voice_answer_object_9.mp3'),
+            'voiceAnswerObject10': require('../assets/audio/voice/answer_objects/voice_answer_object_10.mp3'),
+            'voiceAnswerObject11': require('../assets/audio/voice/answer_objects/voice_answer_object_11.mp3'),
+            'voiceAnswerObject12': require('../assets/audio/voice/answer_objects/voice_answer_object_12.mp3'),
+            'voiceAnswerObject13': require('../assets/audio/voice/answer_objects/voice_answer_object_13.mp3'),
+            'voiceAnswerObject14': require('../assets/audio/voice/answer_objects/voice_answer_object_14.mp3'),
+            'voiceAnswerObject15': require('../assets/audio/voice/answer_objects/voice_answer_object_15.mp3'),
+            'voiceAnswerObject16': require('../assets/audio/voice/answer_objects/voice_answer_object_16.mp3'),
+            'voiceAnswerObject17': require('../assets/audio/voice/answer_objects/voice_answer_object_17.mp3'),
+            'voiceAnswerObject18': require('../assets/audio/voice/answer_objects/voice_answer_object_18.mp3'),
+            'voiceAnswerObject19': require('../assets/audio/voice/answer_objects/voice_answer_object_19.mp3'),
+            'voiceAnswerObject20': require('../assets/audio/voice/answer_objects/voice_answer_object_20.mp3'),
+            'voiceAnswerObject21': require('../assets/audio/voice/answer_objects/voice_answer_object_21.mp3'),
+            'voiceAnswerObject22': require('../assets/audio/voice/answer_objects/voice_answer_object_22.mp3'),
+            'voiceAnswerObject23': require('../assets/audio/voice/answer_objects/voice_answer_object_23.mp3'),
+            'voiceAnswerObject24': require('../assets/audio/voice/answer_objects/voice_answer_object_24.mp3'),
+            'voiceAnswerObject25': require('../assets/audio/voice/answer_objects/voice_answer_object_25.mp3'),
+            'voiceAnswerObject26': require('../assets/audio/voice/answer_objects/voice_answer_object_26.mp3'),
+            'voiceAnswerObject27': require('../assets/audio/voice/answer_objects/voice_answer_object_27.mp3'),
+            'voiceAnswerObject28': require('../assets/audio/voice/answer_objects/voice_answer_object_28.mp3'),
+            'voiceAnswerObject29': require('../assets/audio/voice/answer_objects/voice_answer_object_29.mp3'),
+
+            'voiceItemObject0': require('../assets/audio/voice/item_objects/voice_item_object_0.mp3'),
+            'voiceItemObject1': require('../assets/audio/voice/item_objects/voice_item_object_1.mp3'),
+            'voiceItemObject2': require('../assets/audio/voice/item_objects/voice_item_object_2.mp3'),
+            'voiceItemObject3': require('../assets/audio/voice/item_objects/voice_item_object_3.mp3'),
+            'voiceItemObject4': require('../assets/audio/voice/item_objects/voice_item_object_4.mp3'),
+            'voiceItemObject5': require('../assets/audio/voice/item_objects/voice_item_object_5.mp3'),
+            'voiceItemObject6': require('../assets/audio/voice/item_objects/voice_item_object_6.mp3'),
+            'voiceItemObject7': require('../assets/audio/voice/item_objects/voice_item_object_7.mp3'),
+            'voiceItemObject8': require('../assets/audio/voice/item_objects/voice_item_object_8.mp3'),
+            'voiceItemObject9': require('../assets/audio/voice/item_objects/voice_item_object_9.mp3'),
+            'voiceItemObject10': require('../assets/audio/voice/item_objects/voice_item_object_10.mp3'),
+            'voiceItemObject11': require('../assets/audio/voice/item_objects/voice_item_object_11.mp3'),
+            'voiceItemObject12': require('../assets/audio/voice/item_objects/voice_item_object_12.mp3'),
+            'voiceItemObject13': require('../assets/audio/voice/item_objects/voice_item_object_13.mp3'),
+            'voiceItemObject14': require('../assets/audio/voice/item_objects/voice_item_object_14.mp3'),
+            'voiceItemObject15': require('../assets/audio/voice/item_objects/voice_item_object_15.mp3'),
+            'voiceItemObject16': require('../assets/audio/voice/item_objects/voice_item_object_16.mp3'),
+            'voiceItemObject17': require('../assets/audio/voice/item_objects/voice_item_object_17.mp3'),
+            'voiceItemObject18': require('../assets/audio/voice/item_objects/voice_item_object_18.mp3'),
+            'voiceItemObject19': require('../assets/audio/voice/item_objects/voice_item_object_19.mp3'),
+            'voiceItemObject20': require('../assets/audio/voice/item_objects/voice_item_object_20.mp3'),
+            'voiceItemObject21': require('../assets/audio/voice/item_objects/voice_item_object_21.mp3'),
+            'voiceItemObject22': require('../assets/audio/voice/item_objects/voice_item_object_22.mp3'),
+            'voiceItemObject23': require('../assets/audio/voice/item_objects/voice_item_object_23.mp3'),
+            'voiceItemObject24': require('../assets/audio/voice/item_objects/voice_item_object_24.mp3'),
+            'voiceItemObject25': require('../assets/audio/voice/item_objects/voice_item_object_25.mp3'),
+            'voiceItemObject26': require('../assets/audio/voice/item_objects/voice_item_object_26.mp3'),
+            'voiceItemObject27': require('../assets/audio/voice/item_objects/voice_item_object_27.mp3'),
+            'voiceItemObject28': require('../assets/audio/voice/item_objects/voice_item_object_28.mp3'),
+            'voiceItemObject29': require('../assets/audio/voice/item_objects/voice_item_object_29.mp3'),
+            'voiceItemObject30': require('../assets/audio/voice/item_objects/voice_item_object_30.mp3'),
+            'voiceItemObject31': require('../assets/audio/voice/item_objects/voice_item_object_31.mp3'),
+            'voiceItemObject32': require('../assets/audio/voice/item_objects/voice_item_object_32.mp3'),
+            'voiceItemObject33': require('../assets/audio/voice/item_objects/voice_item_object_33.mp3'),
+            'voiceItemObject34': require('../assets/audio/voice/item_objects/voice_item_object_34.mp3'),
+            'voiceItemObject35': require('../assets/audio/voice/item_objects/voice_item_object_35.mp3'),
+            'voiceItemObject36': require('../assets/audio/voice/item_objects/voice_item_object_36.mp3'),
+        }
+
+        this.preloadFromArr({ sound: soundFiles });
     }
 
     create() {
@@ -254,7 +327,7 @@ export default class GameScene extends BasicScene {
                 colliderList.forEach(collider => this.physics.world.removeCollider(collider));
                 eggItemList.forEach(eggItem => eggItem.input.draggable = false);
 
-                this.playVoice("voice_item_object_"+dragItem.index,"voice_answer_object_"+ targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
+                this.playVoice(dragItem.index, targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
             });
 
             colliderList.push(collider);
@@ -262,7 +335,6 @@ export default class GameScene extends BasicScene {
             eggItemList.push(eggItem);
 
             layer.add(eggItem);
-
         }
 
         if (!this.isRightDirection()) {
@@ -352,12 +424,12 @@ export default class GameScene extends BasicScene {
 
     playVoice(leftVoice, rightVoice, callback) {
         this.sound.stopAll();
-
-        const leftVoicePlayer = this.sound.add(leftVoice);
-        const rightVoicePlayer = this.sound.add(rightVoice);
+        console.log(leftVoice, rightVoice, callback);
+        const leftVoicePlayer = this.sound.add("voiceItemObject" + leftVoice);
+        const rightVoicePlayer = this.sound.add("voiceItemObject" + rightVoice);
 
         leftVoicePlayer.on('complete', () => {
-            this.sound.play(rightVoice);
+            rightVoicePlayer.play();
             leftVoicePlayer.destroy();
         })
 

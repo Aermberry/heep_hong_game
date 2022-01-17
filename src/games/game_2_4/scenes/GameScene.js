@@ -336,9 +336,6 @@ export default class GameScene extends BasicScene {
                     collider.destroy();
                 });
 
-
-
-
                 this.playVoice(dragItem.index, targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
             });
 
@@ -352,9 +349,6 @@ export default class GameScene extends BasicScene {
         if (!this.isRightDirection()) {
             eggItemList.forEach((item) => {
                 item.getAll().forEach(gameObject => {
-                    // gameObject.setFlipX(true);
-
-
                     if (gameObject.name == "background") {
                         gameObject.setFlipX(true);
                         gameObject.setX(-20);
@@ -394,7 +388,7 @@ export default class GameScene extends BasicScene {
         Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
 
         composeSprite.showSuccessfulAnimation();
-        this.uiLayer.add(composeSprite);
+        this.gameLayer.add(composeSprite);
     }
 
 
@@ -404,6 +398,10 @@ export default class GameScene extends BasicScene {
 
         dragItem.showErrorStatue();
         targetItem.showErrorStatue();
+
+        this.add.image(targetItem.x,targetItem.y,'errorTexture');
+        console.log(dragItem.x);
+        console.log(dragItem.y)
 
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
 
@@ -417,7 +415,6 @@ export default class GameScene extends BasicScene {
             });
         });
 
-
         if (!_isFirstError) {
             // this.answerArea.showCurrentAnswer(this);
 
@@ -425,11 +422,13 @@ export default class GameScene extends BasicScene {
 
             Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
 
-            this.uiLayer.add(composeSprite);
+            this.gameLayer.add(composeSprite);
 
 
             composeSprite.showFailedAnimation();
 
+        }else{
+            console.log('dsd');
         }
     }
 
@@ -443,7 +442,6 @@ export default class GameScene extends BasicScene {
 
     playVoice(leftVoice, rightVoice, callback) {
         this.sound.stopAll();
-        console.log(leftVoice, rightVoice, callback);
         const leftVoicePlayer = this.sound.add("voiceItemObject" + leftVoice);
         const rightVoicePlayer = this.sound.add("voiceItemObject" + rightVoice);
 

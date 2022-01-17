@@ -18,18 +18,24 @@ export default class Egg extends Phaser.GameObjects.Container {
     }
 
     create() {
-        this.background = this.scene.add.image(0, 0, this.image, 0).setScale(0.5).setName("background");
-        const objectTexture = this.scene.add.sprite(0, 0, this.objectTexture).setScale(0.48).setName("texture");
+        this.background = this.scene.add.sprite(0, 0, this.image, 0).setScale(0.5).setName("background");
+
+        const objectTexture = this.scene.add.image(0, 0, this.objectTexture).setScale(0.48).setName("texture");
 
         Phaser.Display.Align.In.Center(objectTexture, this.background, -10);
 
+        this.setSize(this.background.displayWidth / 2, this.background.displayHeight / 2);
+
+
         this.scene.physics.add.existing(this);
+
+        console.log(this);
 
         this.add(
             [this.background, objectTexture]
         )
 
-        this.setSize(this.background.displayWidth, this.background.displayHeight);
+
 
         this.setInteractive();
 
@@ -44,7 +50,7 @@ export default class Egg extends Phaser.GameObjects.Container {
         });
     }
 
-    setDraggable(isEnableDraggable){
+    setDraggable(isEnableDraggable) {
         this.scene.input.setDraggable(this, isEnableDraggable);
     }
 

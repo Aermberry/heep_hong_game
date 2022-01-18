@@ -25,7 +25,7 @@ export default class EggItem extends Egg {
         super.showErrorStatue();
         this.eggStatus = EggStatus.Failed;
 
-        callback;
+        callback();
     }
 
 }

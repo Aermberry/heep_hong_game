@@ -7,7 +7,14 @@ export const createPenguinAnimation = (anims) => {
     anims.create({
         key: 'penguinIdle',
         delay: 200,
-        frames: anims.generateFrameNames('penguinTexture', { prefix: 'penguin_', start: 0, end: 14, zeroPad: 4 }),
+        frames: anims.generateFrameNames('penguinTexture', { prefix: 'penguin_', start: 0, end: 5, zeroPad: 4 }),
+        frameRate: 6,
+        repeat: -1
+    });
+    anims.create({
+        key: 'penguinHappy',
+        delay: 200,
+        frames: anims.generateFrameNames('penguinTexture', { prefix: 'penguin_', start: 5, end: 14, zeroPad: 4 }),
         frameRate: 24,
         repeat: -1
     });

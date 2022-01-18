@@ -19,11 +19,9 @@ export default class EggQuestion extends Egg {
         this.add(voiceButton);
     }
 
-    // showErrorStatue() {
+    resetStatue() {
+        this.background.setFrame(0);
+    }
 
-    //     const errorImage = this.scene.add.image(-50, 0, "errorTexture").setDepth(110);
-    //     this.add(errorImage);
 
-    //     super.showErrorStatue()
-    // }
 }

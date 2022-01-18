@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { EggStatus } from './EggStatus';
 
 export default class Egg extends Phaser.GameObjects.Container {
 
@@ -8,8 +9,9 @@ export default class Egg extends Phaser.GameObjects.Container {
 
         this.image = texture;
         this.objectTexture = objectTexture;
+        this.eggStatus = EggStatus.Normal;
 
-        this.originPoint = { originPointX: point.x, originPointY: point.y }
+        this.originPoint = { x: point.x, y: point.y }
 
         this.setName("Egg");
 
@@ -38,8 +40,10 @@ export default class Egg extends Phaser.GameObjects.Container {
 
 
         this.setInteractive();
+    }
 
-        // this.scene.input.setDraggable(this, isEnableDraggable);
+    setEnableDraggable() {
+        this.scene.input.setDraggable(this, true);
 
         this.scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
 
@@ -49,9 +53,10 @@ export default class Egg extends Phaser.GameObjects.Container {
             console.log("dragX:%o;dragY:%o", dragX, dragY);
         });
     }
+    setDisEnableDraggable(){
+        this.scene.input.setDraggable(this, false);
+        this.scene.input.removeListener('drag');
 
-    setDraggable(isEnableDraggable) {
-        this.scene.input.setDraggable(this, isEnableDraggable);
     }
 
     showErrorStatue() {

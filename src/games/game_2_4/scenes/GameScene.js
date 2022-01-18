@@ -13,6 +13,7 @@ import EggQuestion from "../components/EggQuestion";
 import ClawBox from "../components/ClawBox";
 import ComposeSprite from "../components/ComposeSprite";
 import Phaser from "phaser";
+import TweenAnimation from "../components/TweenAnimation";
 
 
 export default class GameScene extends BasicScene {
@@ -32,6 +33,8 @@ export default class GameScene extends BasicScene {
         this.questionDisplayDirection = undefined;
         this.positions = undefined;
         this._gameDirection = undefined;
+        this.eggItemList = [];
+        this.penguinSprite = undefined;
     }
 
     preload() {
@@ -196,16 +199,16 @@ export default class GameScene extends BasicScene {
     buildUiObject(layer) {
         const exitButton = new ExitButton(this, 120, 135);
 
-        const penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
+        this.penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
         const uiEgg = this.add.image(710, 890, 'uiEgg').setOrigin(0);
         const uiRecorder = this.add.image(1920, 840, 'uiRecorder').setOrigin(1, 0);
         uiEgg.setScale(0.5);
 
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
-        penguinSprite.play('penguinAnimation');
+        this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, penguinSprite]);
+        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
     }
 
     buildGameObject(currentGameQuestion, layer) {
@@ -245,10 +248,10 @@ export default class GameScene extends BasicScene {
 
         layer.add([clawBox]);
 
-        const eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
+        this.eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
-            eggItemList.forEach(eggItem => eggItem.setDraggable(true))
+            this.eggItemList.forEach(eggItem => eggItem.setEnableDraggable(true))
         });
 
     }
@@ -323,18 +326,12 @@ export default class GameScene extends BasicScene {
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
-                this.input.enabled = false;
-
                 eggItemList.forEach(eggItem => {
-                    // eggItem.input.draggable = false;
-                    console.log({ eggItem });
-
+                    eggItem.setDisEnableDraggable();
                 });
 
-                colliderList.forEach(collider => {
-                    this.physics.world.removeCollider(collider)
-                    collider.destroy();
-                });
+                this.physics.world.removeCollider(collider);
+                collider.destroy();
 
                 this.playVoice(dragItem.index, targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
             });
@@ -410,13 +407,11 @@ export default class GameScene extends BasicScene {
 
         let _isFirstError = null;
 
-        dragItem.showErrorStatue();
+        dragItem.showErrorStatue(this.setErrorSprite(dragItem, targetItem, this.eggItemList));
+    
         targetItem.showErrorStatue();
 
-        const errorImage = this.add.image(dragItem.x+50, dragItem.y-150, "errorTexture");
-        
-        this.gameLayer.add(errorImage);
-        
+
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
 
             _isFirstError = isFirstError;
@@ -429,47 +424,92 @@ export default class GameScene extends BasicScene {
                 delay: isFirstError ? 4000 : 5000,
                 callback: () => {
 
-                    Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-                    composeSprite.setVisible(true);
-                    composeSprite.showFailedAnimation();
+                    if (!_isFirstError) {
+                        // this.answerArea.showCurrentAnswer(this);
 
-                    this.gameLayer.add(composeSprite);
+                        Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
 
-                    this.sound.stopAll();
-                    const leftVoicePlayer = this.sound.add("voiceItemObject" + dragItem.index);
-                    const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
+                        this.gameLayer.add(composeSprite);
 
-                    leftVoicePlayer.on('complete', () => {
-                        rightVoicePlayer.play();
 
-                    })
+                        // composeSprite.showFailedAnimation();
 
-                    rightVoicePlayer.on('complete', () => {
-                        value ? this.scene.start('End') : this.scene.restart('Game');
-                    })
-                    leftVoicePlayer.play();
+                    } else {
+
+                        console.log("dd")
+
+                    }
+
+                    // Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+                    // composeSprite.setVisible(true);
+                    // composeSprite.showFailedAnimation();
+
+                    // this.gameLayer.add(composeSprite);
+
+                    // this.sound.stopAll();
+                    // const leftVoicePlayer = this.sound.add("voiceItemObject" + dragItem.index);
+                    // const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
+
+                    // leftVoicePlayer.on('complete', () => {
+                    //     rightVoicePlayer.play();
+
+                    // })
+
+                    // rightVoicePlayer.on('complete', () => {
+                    //     value ? this.scene.start('End') : this.scene.restart('Game');
+                    // })
+                    // leftVoicePlayer.play();
 
                 }
             });
         });
+    }
 
-        if (!_isFirstError) {
-            // this.answerArea.showCurrentAnswer(this);
+    setErrorSprite(dragItem, targetItem, eggItems) {
+        let errorImage = this.add.image(dragItem.x + 50, dragItem.y - 150, "errorTexture");
+        this.gameLayer.add(errorImage)
 
-            Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+        this.penguinSprite.play("penguinFallDown");
+        
+        eggItems.splice(eggItems.indexOf(dragItem), 1);
 
-            this.gameLayer.add(composeSprite);
-
-
-            composeSprite.showFailedAnimation();
-
-        } else {
-            
-            Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-            this.gameLayer.add(composeSprite);
-            composeSprite.showFailedAnimation();
-
-        }
+        this.time.addEvent({
+            delay: 4000,
+            callback: () => {
+                errorImage.setVisible(false);
+                this.time.addEvent({
+                    delay: 1000,
+                    callback: () => {
+                        TweenAnimation.setTweenAnimation({
+                            targets: dragItem,
+                            ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+                            duration: 800,
+                            loop: 0,
+                            tweens: [
+                                {
+                                    x: dragItem.x + 10,
+                                    ease: 'Bounce',
+                                    duration: 50,
+                                    repeat: 5,
+                                    yoyo: true
+                                },
+                                {
+                                    x: dragItem.originPoint.x,
+                                    y: dragItem.originPoint.y,
+                                    onComplete: () => {
+                                        errorImage.setPosition(dragItem.x, dragItem.y);
+                                        errorImage.setVisible(true);
+                                        targetItem.resetStatue();
+                                        eggItems.forEach(eggItem => eggItem.setEnableDraggable());
+                                    }
+                                }]
+                        }
+                        );
+                        TweenAnimation.play(this);
+                    }
+                })
+            }
+        })
     }
 
     checkAnswer(dragItem, targetItem, currentQuestionAnswer) {

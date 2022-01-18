@@ -247,8 +247,8 @@ export default class GameScene extends BasicScene {
 
         const eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
-        clawBox.showAppearanceAnimation(clawAnimationTargetPosition,()=>{
-            eggItemList.forEach(eggItem=>eggItem.setDraggable(true))
+        clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
+            eggItemList.forEach(eggItem => eggItem.setDraggable(true))
         });
 
     }
@@ -371,54 +371,90 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess(dragItem, targetItem, currentQuestionAnswer) {
+    paintGameSuccess(dragItem, targetItem, composeSprite) {
+        dragItem.showSuccessStatus();
+        targetItem.showSuccessStatus();
+
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
         GameManager.getInstance().updateGamePlayTotal((value) => {
             this.time.addEvent({
-                delay: 1000,
-                callback: () => this.scene.start(value ? 'Game' : 'End')
+                delay: 4000,
+                callback: () => {
+                    Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+
+                    composeSprite.setVisible(true);
+                    composeSprite.showSuccessfulAnimation();
+
+                    this.gameLayer.add(composeSprite);
+
+                    this.sound.stopAll();
+                    const leftVoicePlayer = this.sound.add("voiceItemObject" + dragItem.index);
+                    const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
+
+                    leftVoicePlayer.on('complete', () => {
+                        rightVoicePlayer.play();
+
+                    })
+
+                    rightVoicePlayer.on('complete', () => {
+                        this.scene.start(value ? 'Game' : 'End')
+                    })
+                    leftVoicePlayer.play();
+                }
             })
         });
-
-        dragItem.showSuccessStatus();
-        targetItem.showSuccessStatus()
-
-        let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
-
-        Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-
-        composeSprite.showSuccessfulAnimation();
-        this.gameLayer.add(composeSprite);
     }
 
 
-    paintGameFailed(dragItem, targetItem, currentQuestionAnswer) {
+    paintGameFailed(dragItem, targetItem, composeSprite) {
 
         let _isFirstError = null;
 
         dragItem.showErrorStatue();
         targetItem.showErrorStatue();
 
-        this.add.image(targetItem.x,targetItem.y,'errorTexture');
-        console.log(dragItem.x);
-        console.log(dragItem.y)
-
+        const errorImage = this.add.image(dragItem.x+50, dragItem.y-150, "errorTexture");
+        
+        this.gameLayer.add(errorImage);
+        
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
 
             _isFirstError = isFirstError;
+
             console.log({
                 isLastQuestion: value
             })
+
             this.time.addEvent({
-                delay: isFirstError ? 2000 : 5000,
-                callback: () => value ? this.scene.start('End') : this.scene.restart('Game')
+                delay: isFirstError ? 4000 : 5000,
+                callback: () => {
+
+                    Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+                    composeSprite.setVisible(true);
+                    composeSprite.showFailedAnimation();
+
+                    this.gameLayer.add(composeSprite);
+
+                    this.sound.stopAll();
+                    const leftVoicePlayer = this.sound.add("voiceItemObject" + dragItem.index);
+                    const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
+
+                    leftVoicePlayer.on('complete', () => {
+                        rightVoicePlayer.play();
+
+                    })
+
+                    rightVoicePlayer.on('complete', () => {
+                        value ? this.scene.start('End') : this.scene.restart('Game');
+                    })
+                    leftVoicePlayer.play();
+
+                }
             });
         });
 
         if (!_isFirstError) {
             // this.answerArea.showCurrentAnswer(this);
-
-            let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
 
             Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
 
@@ -427,8 +463,12 @@ export default class GameScene extends BasicScene {
 
             composeSprite.showFailedAnimation();
 
-        }else{
-            console.log('dsd');
+        } else {
+            
+            Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+            this.gameLayer.add(composeSprite);
+            composeSprite.showFailedAnimation();
+
         }
     }
 
@@ -436,7 +476,11 @@ export default class GameScene extends BasicScene {
 
         const composeWords = dragItem.objectName + targetItem.objectName;
 
-        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(dragItem, targetItem, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, currentQuestionAnswer);
+        let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
+
+        composeSprite.setVisible(false);
+
+        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(dragItem, targetItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite);
 
     }
 
@@ -447,7 +491,7 @@ export default class GameScene extends BasicScene {
 
         leftVoicePlayer.on('complete', () => {
             rightVoicePlayer.play();
-            leftVoicePlayer.destroy();
+
         })
 
         rightVoicePlayer.on('complete', () => {

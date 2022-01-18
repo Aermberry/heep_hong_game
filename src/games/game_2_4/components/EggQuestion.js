@@ -7,15 +7,23 @@ export default class EggQuestion extends Egg {
         super(scene, point, texture, "textureObject" + objectItem.index);
 
         this.objectName = objectItem.objectName;
-        this.index=objectItem.index;
+        this.index = objectItem.index;
 
         this.setName("EggQuestion");
 
         this.create(isEnableDraggable);
 
-        const voiceButton = new VoiceButton(this.scene, 30, 90,"voiceItemObject"+objectItem.index);
+        const voiceButton = new VoiceButton(this.scene, 30, 90, "voiceItemObject" + objectItem.index);
         voiceButton.setScale(0.2);
 
         this.add(voiceButton);
     }
+
+    // showErrorStatue() {
+
+    //     const errorImage = this.scene.add.image(-50, 0, "errorTexture").setDepth(110);
+    //     this.add(errorImage);
+
+    //     super.showErrorStatue()
+    // }
 }

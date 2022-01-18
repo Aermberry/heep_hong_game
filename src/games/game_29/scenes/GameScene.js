@@ -21,9 +21,13 @@ export default class GameScene extends BasicScene {
             this.currentLevel = 1;
         }
         this.dataModal = this.sys.game.globals.model.gameData;
-        // this.answer = this.dataModal['level'+ this.currentLevel][Math.floor(Math.random() * this.dataModal['level'+ this.currentLevel].length)] // this.currentLevel - 1
-        this.answer = this.dataModal['level2'][4] // this.currentLevel - 1
-    
+        this.gameNum = this.sys.game.globals.model.game;
+        if (this.gameNum == 29) {
+            this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
+        } else {
+            this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+        }
+
     }
 
     preload() {
@@ -71,7 +75,10 @@ export default class GameScene extends BasicScene {
 
         self.input.on('dragend', (pointer, gameObject, dropped) => {
             if (dropped) {
-                this.scoreboard.quiz(gameObject, currentZone)
+                let flag = this.scoreboard.quiz(gameObject, currentZone)
+                if (!flag) {
+                    currentZone.showError(pointer);
+                }
                 currentZone.toggleZoneFrame(0)
                 currentZone = null;
             }
@@ -81,10 +88,29 @@ export default class GameScene extends BasicScene {
     }
 
     initScene() {
-        this.article = new Article(this, 0, 50, this.currentLevel)
-        this.butterfly = new Butterfly(this, 960, 280)
-        this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this))
-        this.scoreboard.init(this.answer);
+        this.article = new Article(this, 0, 50, this.gameNum == 30 ? 2 : this.currentLevel)
+        if (this.gameNum == 30) {
+            let keys = [];
+            Object.keys(this.answer.type).forEach(key => {
+                if (this.answer.type[key] != 0) {
+                    keys.push(key)
+                }
+            });
+            let arrNew = [];
+            for (var i = 0; i < 3; i++) {
+                var _num = Math.floor(Math.random() * keys.length)
+                var mm = keys[_num];
+                keys.splice(_num, 1)
+                arrNew.push(mm)
+            }
+            this.butterfly = new Butterfly(this, 960, 280, arrNew)
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), true)
+            this.scoreboard.init(arrNew);
+        } else {
+            this.butterfly = new Butterfly(this, 960, 280)
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this))
+            this.scoreboard.init(this.answer);
+        }
         this.article.createArticle(this.answer)
 
     }

@@ -2,46 +2,62 @@ import Phaser from "phaser";
 import DragText from "./DragText"
 import DoneBtn from "./DoneBtn"
 export default class Scoreboard {
-    constructor(scene, x, y, onCompleteOnce, onHighlightCallback) {
+    constructor(scene, x, y, onCompleteOnce, onHighlightCallback, isGame30 = false) {
         this.scene = scene;
+        this.isGame30 = isGame30;
         this.onHighlightCallback = onHighlightCallback;
         this.onCompleteOnce = onCompleteOnce;
         this.x = x;
         this.y = y;
         this.num = 0;
+        this.scoreTypeArr = [];
     }
 
     init(data) {
-        this.time = new ScoreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, 't', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
-        this.local = new ScoreType(this.scene, this.x + 0, this.y + 50, 'hinsbx2', data.type.l, 'l', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
-        this.people = new ScoreType(this.scene, this.x + 0, this.y + 100, 'hinsbx3', data.type.p, 'p', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
-        this.before = new ScoreType(this.scene, this.x + 500, this.y + 0, 'hinsbx4', data.type.b, 'b', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
-        this.after = new ScoreType(this.scene, this.x + 500, this.y + 50, 'hinsbx5', data.type.a, 'a', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
-        this.result = new ScoreType(this.scene, this.x + 500, this.y + 100, 'hinsbx6', data.type.r, 'r', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+        if (this.isGame30) {
+            data.forEach((key, i) => {
+                let textureName = key == 'l' ? 'lv3hinsbx1' : key == 't' ? 'lv3hinsbx2' : key == 'r' ? 'lv3hinsbx3' : key == 'a' ? 'lv3hinsbx4' : key == 'p' ? 'lv3hinsbx5' : 'lv3hinsbx6';
+                this.scoreTypeArr.push(new ScoreType(this.scene, this.x + (i == 1 ? 500 : 0), this.y + (i == 2 ? 50 : 0), textureName, this.scene.answer.type[key], key, this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this)))
+            })
+        } else {
+            this.time = new ScoreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, 't', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+            this.local = new ScoreType(this.scene, this.x + 0, this.y + 50, 'hinsbx2', data.type.l, 'l', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+            this.people = new ScoreType(this.scene, this.x + 0, this.y + 100, 'hinsbx3', data.type.p, 'p', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+            this.before = new ScoreType(this.scene, this.x + 500, this.y + 0, 'hinsbx4', data.type.b, 'b', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+            this.after = new ScoreType(this.scene, this.x + 500, this.y + 50, 'hinsbx5', data.type.a, 'a', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+            this.result = new ScoreType(this.scene, this.x + 500, this.y + 100, 'hinsbx6', data.type.r, 'r', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+        }
+
 
     }
 
     quiz(gameObject, zone) {
         if (gameObject.type == zone.type) {
-            switch (gameObject.type) {
-                case 't':
-                    this.time.onCorrect();
-                    break;
-                case 'l':
-                    this.local.onCorrect();
-                    break;
-                case 'p':
-                    this.people.onCorrect();
-                    break;
-                case 'b':
-                    this.before.onCorrect();
-                    break;
-                case 'a':
-                    this.after.onCorrect();
-                    break;
-                case 'r':
-                    this.result.onCorrect();
-                    break;
+            if (!this.isGame30) {
+                switch (gameObject.type) {
+                    case 't':
+                        this.time.onCorrect();
+                        break;
+                    case 'l':
+                        this.local.onCorrect();
+                        break;
+                    case 'p':
+                        this.people.onCorrect();
+                        break;
+                    case 'b':
+                        this.before.onCorrect();
+                        break;
+                    case 'a':
+                        this.after.onCorrect();
+                        break;
+                    case 'r':
+                        this.result.onCorrect();
+                        break;
+                }
+            } else {
+                this.scoreTypeArr.forEach(item => {
+                    item.onCorrect();
+                });
             }
 
             let dragText = this.scene.input.displayList.list.filter((item) => item instanceof DragText && item.name == gameObject.name)
@@ -49,6 +65,9 @@ export default class Scoreboard {
                 item.destroy();
             })
             gameObject.destroy();
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -56,12 +75,19 @@ export default class Scoreboard {
         this.num++;
         this.onCompleteOnce(type)
         if (this.num >= 6) {
-            this.result.openInteractive();
-            this.time.openInteractive();
-            this.local.openInteractive();
-            this.people.openInteractive();
-            this.before.openInteractive();
-            this.after.openInteractive();
+            if (this.isGame30) {
+                this.scoreTypeArr.forEach(item => {
+                    item.openInteractive();
+                });
+            } else {
+                this.result.openInteractive();
+                this.time.openInteractive();
+                this.local.openInteractive();
+                this.people.openInteractive();
+                this.before.openInteractive();
+                this.after.openInteractive();
+            }
+
             let crt_ans_star = this.scene.add.sprite(this.x + 200, 870, 'crt_ans_star').setScale(0.4);
             let crt_ans_star1 = this.scene.add.sprite(this.x + 700, 870, 'crt_ans_star').setScale(0.4);
             let crt_ans_star2 = this.scene.add.sprite(this.x + 60, 500, 'crt_ans_star').setScale(0.4);
@@ -75,13 +101,19 @@ export default class Scoreboard {
     }
 
     onScoreTypeBtnClick(type) {
-        this.time.toggleStyle(type);
-        this.local.toggleStyle(type);
-        this.people.toggleStyle(type);
-        this.before.toggleStyle(type);
-        this.after.toggleStyle(type);
-        this.result.toggleStyle(type);
-        this.onHighlightCallback(type);
+        if (this.isGame30) {
+            this.scoreTypeArr.forEach(item => {
+                item.toggleStyle(type);
+            });
+        } else {
+            this.time.toggleStyle(type);
+            this.local.toggleStyle(type);
+            this.people.toggleStyle(type);
+            this.before.toggleStyle(type);
+            this.after.toggleStyle(type);
+            this.result.toggleStyle(type);
+            this.onHighlightCallback(type);
+        }
     }
 
 

@@ -30,4 +30,11 @@ class ButterflyZone extends Phaser.GameObjects.Sprite {
         this.setFrame(num)
     }
 
+    showError(pointer) {
+       let showError = this.scene.add.sprite(pointer.x + 100, pointer.y - 100, 'an_n');
+       setTimeout(() => {
+          showError.destroy(); 
+       }, 500);
+    }
+
 }

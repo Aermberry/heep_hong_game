@@ -1,5 +1,4 @@
 {
-    "gameData29": {
         "level1": [
             {
                 "id": "1",
@@ -12030,751 +12029,2127 @@
                 "item": [
                     {
                         "text": "雲",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "p"
                     },
                     {
                         "text": "朵",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "p"
                     },
                     {
                         "text": "莉",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "p"
                     },
                     {
                         "text": "莉",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "b"
                     },
                     {
                         "text": "喜",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "b"
                     },
                     {
                         "text": "愛",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "b"
                     },
                     {
                         "text": "探",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "b"
                     },
                     {
                         "text": "險",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "b"
                     },
                     {
                         "text": "。",
-                        "z-index": [0],
+                        "z-index": [
+                            0
+                        ],
                         "type": ""
                     },
                     {
                         "text": "有",
-                        "z-index": [0],
+                        "z-index": [
+                            0
+                        ],
                         "type": ""
                     },
                     {
                         "text": "一",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "t"
                     },
                     {
                         "text": "天",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "t"
                     },
                     {
                         "text": "，",
-                        "z-index": [0],
+                        "z-index": [
+                            0
+                        ],
                         "type": ""
                     },
                     {
                         "text": "她",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "離",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "開",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "家",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "園",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "飛",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "到",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "城",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "市",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "看",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "見",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "高",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "樓",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "大",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "廈",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "和",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "街",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "道",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "十",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "分",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "興",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "奮",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "。",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "她",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "又",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "飛",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "到",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "海",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "洋",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "上",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "看",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "到",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "船",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "兒",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "像",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "蝌",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "蚪",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "一",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "樣",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "飄",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "浮",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "在",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "海",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "面",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "上",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "。",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "突",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "然",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "她",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "感",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "到",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "身",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "體",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "愈",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "來",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "愈",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "重",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "雙",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "腿",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "變",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "成",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "小",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "雨",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "點",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "散",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "落",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "到",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "海",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "面",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "上",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "。",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "不",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "一",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "會",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "在",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "陽",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "光",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "下",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "莉",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "莉",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "又",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "輕",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "輕",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "地",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "升",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "起",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "再",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "次",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "回",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "到",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "了",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "天",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "l"
                     },
                     {
                         "text": "空",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "l"
                     },
                     {
                         "text": "上",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "a"
                     },
                     {
                         "text": "。",
-                        "z-index": [0],
+                        "z-index": [
+                            0
+                        ],
                         "type": ""
                     },
                     {
                         "text": "莉",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "莉",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "看",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "見",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "久",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "別",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "重",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "逢",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "的",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "雲",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "p"
                     },
                     {
                         "text": "朵",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "p"
                     },
                     {
                         "text": "朋",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "p"
                     },
                     {
                         "text": "友",
-                        "z-index": [1,2],
+                        "z-index": [
+                            1,
+                            2
+                        ],
                         "type": "p"
                     },
                     {
                         "text": "，",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "迫",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "不",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "及",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "待",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "告",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "訴",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "他",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "們",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "這",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "趟",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "探",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "險",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": "r"
                     },
                     {
                         "text": "的",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "所",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "見",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "所",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "聞",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "呢",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     },
                     {
                         "text": "！",
-                        "z-index": [1],
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    }
+                ]
+            },
+            {
+                "id": "7",
+                "title": "勤力的小松鼠玲玲",
+                "type": {
+                    "t": 1,
+                    "l": 1,
+                    "p": 3,
+                    "b": 1,
+                    "a": 1,
+                    "r": 1
+                },
+                "item": [
+                    {
+                        "text": "樹",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "l"
+                    },
+                    {
+                        "text": "林",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "l"
+                    },
+                    {
+                        "text": "裏",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "住",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "著",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "一",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "群",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "鼠",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "牠",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "們",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "最",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "愛",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "吃",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "果",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "。",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "玲",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "p"
+                    },
+                    {
+                        "text": "玲",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "p"
+                    },
+                    {
+                        "text": "是",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "最",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "勤",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "力",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "的",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "鼠",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "牠",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "每",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "天",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "尋",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "找",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "果",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "然",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "後",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "埋",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "在",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "樹",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "洞",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "裏",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "。",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "有",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "一",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "t"
+                    },
+                    {
+                        "text": "天",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "t"
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "獅",
+                        "z-index": [
+                            1,
+                            2
+                        ],
+                        "type": "p"
+                    },
+                    {
+                        "text": "子",
+                        "z-index": [
+                            1,
+                            2
+                        ],
+                        "type": "p"
+                    },
+                    {
+                        "text": "來",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "到",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "森",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "林",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            1,
+                            2
+                        ],
+                        "type": "p"
+                    },
+                    {
+                        "text": "鼠",
+                        "z-index": [
+                            1,
+                            2
+                        ],
+                        "type": "p"
+                    },
+                    {
+                        "text": "們",
+                        "z-index": [
+                            1,
+                            2
+                        ],
+                        "type": "p"
+                    },
+                    {
+                        "text": "嚇",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "得",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "躲",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "進",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "樹",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "洞",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "b"
+                    },
+                    {
+                        "text": "。",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "獅",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "a"
+                    },
+                    {
+                        "text": "子",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "a"
+                    },
+                    {
+                        "text": "在",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "樹",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "林",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "裏",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "守",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "住",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "第",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "二",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "天",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "還",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "不",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "肯",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "離",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "開",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "。",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "鼠",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "們",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "很",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "肚",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "餓",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "玲",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "玲",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "把",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "收",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "在",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "樹",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "洞",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "裏",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "的",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "果",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "拿",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "出",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "來",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "請",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "大",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "家",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "吃",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "。",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "過",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "了",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "三",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "天",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "獅",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "子",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "終",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "於",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "走",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "了",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "松",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "鼠",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "們",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "可",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "以",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "返",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "回",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "森",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "林",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "了",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "。",
+                        "z-index": [
+                            0
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "全",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "r"
+                    },
+                    {
+                        "text": "靠",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "r"
+                    },
+                    {
+                        "text": "玲",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "r"
+                    },
+                    {
+                        "text": "玲",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "r"
+                    },
+                    {
+                        "text": "，",
+                        "z-index": [
+                            1
+                        ],
+                        "type": "r"
+                    },
+                    {
+                        "text": "大",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "家",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "才",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "可",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "以",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "平",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "安",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "渡",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "過",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "危",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "機",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "呢",
+                        "z-index": [
+                            1
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "text": "！",
+                        "z-index": [
+                            1
+                        ],
                         "type": ""
                     }
                 ]
             }
         ]
-    }
 }

@@ -25,6 +25,7 @@ export default class GameScene extends BasicScene {
     this.freezePlaySound = false;
     this.freezeSelectItem = false;
     this.lv2Start = false;
+
   }
 
   preload () {
@@ -141,6 +142,8 @@ export default class GameScene extends BasicScene {
 
   create () {
     let self = this
+
+    this.sys.game.globals.gtag.event(('game_1_start', { 'event_category': 'js_games', 'event_label': 'Game Start' }))
 
     this.bg.destroy()
 

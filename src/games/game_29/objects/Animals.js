@@ -13,14 +13,16 @@ export default class Animals extends Phaser.GameObjects.Sprite {
     }
 
     showError(pointer) {
-       let showError = this.scene.add.sprite(pointer.x + 100, pointer.y - 100, 'an_n');
-       setTimeout(() => {
-          showError.destroy(); 
-       }, 500);
+        let showError = this.scene.add.sprite(pointer.x + 100, pointer.y - 100, 'an_n');
+        setTimeout(() => {
+            showError.destroy();
+        }, 500);
     }
 
     highlight() {
+        this.input.dropZone = false;
+        this.toggleZoneFrame = function() {}
         this.setFrame(2)
-    }
 
+    }
 }

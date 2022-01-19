@@ -17,18 +17,18 @@ export default class Butterfly extends Phaser.GameObjects.Container {
     }
 
     init() {
-        if (this.typeArr) {
+        if (this.typeArr.length > 0) {
             let arr = [];
             this.typeArr.forEach((key, i) => {
                 let textureName = key == 'l' ? 'cha1' : key == 't' ? 'cha2' : key == 'r' ? 'cha3' : key == 'a' ? 'cha4' : key == 'p' ? 'cha5' : 'cha6';
                 let x, y = 0;
                 if(i == 0) {
-                    x = 0;
+                    x = -150;
                 } else if(i==1) {
-                    x = -300;
+                    x = -550;
                     y = 600;
                 } else {
-                    x = 300;
+                    x = 200;
                     y = 600;
                 }
                 arr.push(new Animals(this.scene, { x: this.x + x, y: this.y + y, textureName: textureName }, key))
@@ -50,8 +50,8 @@ export default class Butterfly extends Phaser.GameObjects.Container {
     }
 
     highlightBody(type) {
-        if(this.typeArr) {
-            this.children.forEach(son => {
+        if(this.typeArr.length > 0) {
+            this.list.forEach(son => {
                 if(son.type == type) {
                     son.highlight();
                 }

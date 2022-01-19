@@ -26,6 +26,7 @@ export default class Scoreboard {
             this.before = new ScoreType(this.scene, this.x + 500, this.y + 0, 'hinsbx4', data.type.b, 'b', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
             this.after = new ScoreType(this.scene, this.x + 500, this.y + 50, 'hinsbx5', data.type.a, 'a', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
             this.result = new ScoreType(this.scene, this.x + 500, this.y + 100, 'hinsbx6', data.type.r, 'r', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
+            this.scoreTypeArr.push(this.time, this.local, this.people, this.before, this.after, this.result)
         }
 
 
@@ -33,32 +34,10 @@ export default class Scoreboard {
 
     quiz(gameObject, zone) {
         if (gameObject.type == zone.type) {
-            if (!this.isGame30) {
-                switch (gameObject.type) {
-                    case 't':
-                        this.time.onCorrect();
-                        break;
-                    case 'l':
-                        this.local.onCorrect();
-                        break;
-                    case 'p':
-                        this.people.onCorrect();
-                        break;
-                    case 'b':
-                        this.before.onCorrect();
-                        break;
-                    case 'a':
-                        this.after.onCorrect();
-                        break;
-                    case 'r':
-                        this.result.onCorrect();
-                        break;
-                }
-            } else {
-                this.scoreTypeArr.forEach(item => {
-                    item.onCorrect();
-                });
-            }
+
+            this.scoreTypeArr.forEach(item => {
+                item.onCorrect(gameObject.type);
+            });
 
             let dragText = this.scene.input.displayList.list.filter((item) => item instanceof DragText && item.name == gameObject.name)
             dragText.forEach(item => {
@@ -74,20 +53,10 @@ export default class Scoreboard {
     onComplete(type) {
         this.num++;
         this.onCompleteOnce(type)
-        if (this.num >= 6) {
-            if (this.isGame30) {
-                this.scoreTypeArr.forEach(item => {
-                    item.openInteractive();
-                });
-            } else {
-                this.result.openInteractive();
-                this.time.openInteractive();
-                this.local.openInteractive();
-                this.people.openInteractive();
-                this.before.openInteractive();
-                this.after.openInteractive();
-            }
-
+        if (this.num >= this.scoreTypeArr.length) {
+            this.scoreTypeArr.forEach(item => {
+                item.openInteractive();
+            });
             let crt_ans_star = this.scene.add.sprite(this.x + 200, 870, 'crt_ans_star').setScale(0.4);
             let crt_ans_star1 = this.scene.add.sprite(this.x + 700, 870, 'crt_ans_star').setScale(0.4);
             let crt_ans_star2 = this.scene.add.sprite(this.x + 60, 500, 'crt_ans_star').setScale(0.4);
@@ -100,22 +69,13 @@ export default class Scoreboard {
         }
     }
 
-    onScoreTypeBtnClick(type) {
-        if (this.isGame30) {
-            this.scoreTypeArr.forEach(item => {
-                item.toggleStyle(type);
-            });
-        } else {
-            this.time.toggleStyle(type);
-            this.local.toggleStyle(type);
-            this.people.toggleStyle(type);
-            this.before.toggleStyle(type);
-            this.after.toggleStyle(type);
-            this.result.toggleStyle(type);
-            this.onHighlightCallback(type);
-        }
-    }
 
+    onScoreTypeBtnClick(type) {
+        this.scoreTypeArr.forEach(item => {
+            item.toggleStyle(type);
+        });
+        this.onHighlightCallback(type);
+    }
 
 }
 
@@ -149,15 +109,17 @@ class ScoreType extends Phaser.GameObjects.Container {
         scene.add.existing(this)
     }
 
-    onCorrect() {
-        this.correctNum++;
-        let index = 0;
-        while (index < this.correctNum) {
-            this.arr[index].setFrame(1);
-            index++
-        }
-        if (this.correctNum >= this.num) {
-            this.onComplete(this.type);
+    onCorrect(type) {
+        if (type == this.type) {
+            this.correctNum++;
+            let index = 0;
+            while (index < this.correctNum) {
+                this.arr[index].setFrame(1);
+                index++
+            }
+            if (this.correctNum >= this.num) {
+                this.onComplete(this.type);
+            }
         }
     }
 

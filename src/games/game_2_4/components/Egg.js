@@ -59,9 +59,13 @@ export default class Egg extends Phaser.GameObjects.Container {
 
     }
 
-    showErrorStatue() {
+    showErrorStatue(callback) {
         this.eggStatus = EggStatus.Failed;
         this.background.setFrame(2);
+
+        if(callback!=null){
+            callback();
+        }
     }
 
     showSuccessStatus() {

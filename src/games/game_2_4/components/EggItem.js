@@ -1,5 +1,4 @@
 import Egg from "./Egg";
-import { EggStatus } from "./EggStatus";
 import VoiceButton from "./VoiceButton";
 
 export default class EggItem extends Egg {
@@ -19,13 +18,6 @@ export default class EggItem extends Egg {
         voiceButton.setScale(0.2);
 
         this.add(voiceButton);
-    }
-
-    showErrorStatue(callback) {
-        super.showErrorStatue();
-        this.eggStatus = EggStatus.Failed;
-
-        callback();
     }
 
     // resetStatue(){

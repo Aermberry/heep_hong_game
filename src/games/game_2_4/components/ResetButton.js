@@ -38,7 +38,7 @@ export default class ResetButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-
+        this.scene.sound.play('buttonEffectSound');
     }
 
     onUpClicked() {

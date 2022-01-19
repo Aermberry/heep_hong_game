@@ -94,9 +94,7 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-
-            // 'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
-            // 'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
+            'buttonEffectSound': require('../assets/audio/sound_effect/sound_effect_button_on_clicked.mp3'),
         }
 
         this.load.spritesheet('startButton', require('../assets/images/button_start_game.png'), { frameWidth: 776, frameHeight: 227 });

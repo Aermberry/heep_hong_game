@@ -171,11 +171,11 @@ export default class GameScene extends BasicScene {
 
         }
 
-        // question = JSON.parse(localStorage.getItem(this.questionIndex));
+        question = JSON.parse(localStorage.getItem(this.questionIndex));
 
         question = JSON.parse(localStorage.getItem(17));
         // question = JSON.parse(localStorage.getItem(16));
-        console.log("当前抽取的题目:%o", question);
+        // console.log("当前抽取的题目:%o", question);
 
         this.currentQuestionAnswer = question.answer;
 
@@ -385,7 +385,7 @@ export default class GameScene extends BasicScene {
                     Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
 
                     composeSprite.setVisible(true);
-                    composeSprite.showSuccessfulAnimation();
+                    composeSprite.showColorStatus();
 
                     this.gameLayer.add(composeSprite);
 
@@ -456,7 +456,7 @@ export default class GameScene extends BasicScene {
                                         currentAnswer.showSuccessStatus();
 
                                         this.sound.stopAll();
-                                        const leftVoicePlayer = this.sound.add("voiceItemObject" + dragItem.index);
+                                        const leftVoicePlayer = this.sound.add("voiceItemObject" + currentAnswer.index);
                                         const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
 
                                         leftVoicePlayer.on('complete', () => {

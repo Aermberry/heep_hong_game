@@ -31,10 +31,11 @@ export default class RetryButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        this.scene.scene.start(this.targetScene)
+        this.scene.sound.play('buttonEffectSound');
+        
     }
 
     onUpClicked() {
-
+        this.scene.scene.start(this.targetScene)
     }
 }

@@ -30,10 +30,11 @@ export default class EndSceneExitButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        window.history.back();
+        this.scene.sound.play('buttonEffectSound');
+        
     }
 
     onUpClicked() {
-
+        window.history.back();
     }
 }

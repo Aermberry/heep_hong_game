@@ -28,14 +28,13 @@ export default class ComposeSprite extends Phaser.GameObjects.Container {
 
     }
 
-    showSuccessfulAnimation() {
-
+    showColorStatus() {
         this.backgroundTexture.setFrame(0);
         this.objectTexture.setFrame(0);
 
     }
 
-    showFailedAnimation() {
+    showMaskStatus() {
         this.backgroundTexture.setFrame(1);
         this.objectTexture.setFrame(1);
     }

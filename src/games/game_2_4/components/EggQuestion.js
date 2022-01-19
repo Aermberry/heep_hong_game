@@ -19,9 +19,7 @@ export default class EggQuestion extends Egg {
         this.add(voiceButton);
     }
 
-    resetStatue() {
-        this.background.setFrame(0);
-    }
+   
 
 
 }

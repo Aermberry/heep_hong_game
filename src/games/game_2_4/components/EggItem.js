@@ -28,4 +28,8 @@ export default class EggItem extends Egg {
         callback();
     }
 
+    // resetStatue(){
+    //     super.resetStatue();
+    // }
+
 }

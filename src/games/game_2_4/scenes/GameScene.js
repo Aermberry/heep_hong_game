@@ -34,7 +34,10 @@ export default class GameScene extends BasicScene {
         this.positions = undefined;
         this._gameDirection = undefined;
         this.eggItemList = [];
+        this.errorItemList = [];
+        this.errorImageList = [];
         this.penguinSprite = undefined;
+
     }
 
     preload() {
@@ -333,7 +336,7 @@ export default class GameScene extends BasicScene {
                 this.physics.world.removeCollider(collider);
                 collider.destroy();
 
-                this.playVoice(dragItem.index, targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer));
+                this.playVoice(dragItem.index, targetItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
             });
 
             colliderList.push(collider);
@@ -405,7 +408,7 @@ export default class GameScene extends BasicScene {
     }
 
 
-    paintGameFailed(dragItem, targetItem, composeSprite) {
+    paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer) {
 
         // let _isFirstError = null;
         targetItem.showErrorStatue();
@@ -422,34 +425,52 @@ export default class GameScene extends BasicScene {
                     this.time.addEvent({
                         delay: 2000,
                         callback: () => {
-                            if (!isFirstError) {
-                                // this.answerArea.showCurrentAnswer(this);
-        
-                                Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-        
-                                this.gameLayer.add(composeSprite);
-        
-                                Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-                                composeSprite.setVisible(true);
-                                composeSprite.showFailedAnimation();
-        
-                                this.gameLayer.add(composeSprite);
-        
-                                this.sound.stopAll();
-                                const leftVoicePlayer = this.sound.add("voiceItemObject" + dragItem.index);
-                                const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
-        
-                                leftVoicePlayer.on('complete', () => {
-                                    rightVoicePlayer.play();
-        
+
+                            Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+                            composeSprite.setVisible(true);
+                            this.gameLayer.add(composeSprite);
+
+                            if (isFirstError) {
+
+                                composeSprite.showMaskStatus();
+                                this.time.addEvent({
+                                    delay: 2000,
+                                    callback: () => {
+                                        composeSprite.setVisible(false);
+                                        this.eggItemList.forEach(eggItem => {
+                                            eggItem.setEnableDraggable();
+                                        });
+                                    }
                                 })
-        
-                                rightVoicePlayer.on('complete', () => {
-                                    value ? this.scene.start('End') : this.scene.restart('Game');
-                                })
-                                leftVoicePlayer.play();
-        
-                            }                      
+
+                            } else {
+
+                                composeSprite.showColorStatus();
+                                this.time.addEvent({
+                                    delay: 2000,
+                                    callback: () => {
+                                        composeSprite.setVisible(false);
+                                       
+                                        this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
+                                        this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
+                                        currentAnswer.showSuccessStatus();
+
+                                        this.sound.stopAll();
+                                        const leftVoicePlayer = this.sound.add("voiceItemObject" + dragItem.index);
+                                        const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
+
+                                        leftVoicePlayer.on('complete', () => {
+                                            rightVoicePlayer.play();
+
+                                        })
+
+                                        rightVoicePlayer.on('complete', () => {
+                                            value ? this.scene.start('End') : this.scene.restart('Game');
+                                        })
+                                        leftVoicePlayer.play();
+                                    }
+                                });
+                            }
                         }
                     });
                 });
@@ -459,10 +480,13 @@ export default class GameScene extends BasicScene {
 
     setErrorSprite(dragItem, targetItem, eggItems, callback) {
         let errorImage = this.add.image(dragItem.x + 50, dragItem.y - 150, "errorTexture");
-        this.gameLayer.add(errorImage)
+        this.gameLayer.add(errorImage);
+
+        this.errorImageList.push(errorImage);
 
         this.penguinSprite.play("penguinFallDown");
 
+        this.errorItemList.push(dragItem);
         eggItems.splice(eggItems.indexOf(dragItem), 1);
 
         this.time.addEvent({
@@ -492,7 +516,9 @@ export default class GameScene extends BasicScene {
                                         errorImage.setPosition(dragItem.x, dragItem.y);
                                         errorImage.setVisible(true);
                                         targetItem.resetStatue();
-                                        eggItems.forEach(eggItem => eggItem.setEnableDraggable());
+                                        // eggItems.forEach(eggItem => {
+                                        //     eggItem.setEnableDraggable();
+                                        // });
                                         this.penguinSprite.play("penguinIdle");
                                         callback();
 
@@ -507,15 +533,19 @@ export default class GameScene extends BasicScene {
         })
     }
 
-    checkAnswer(dragItem, targetItem, currentQuestionAnswer) {
+    checkAnswer(dragItem, targetItem, currentQuestionAnswer, eggItemList) {
 
         const composeWords = dragItem.objectName + targetItem.objectName;
+
+        let currentAnswer = eggItemList.find((egg) => {
+            return egg.objectName == currentQuestionAnswer.currentItemName
+        });
 
         let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
 
         composeSprite.setVisible(false);
 
-        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(dragItem, targetItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite);
+        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(dragItem, targetItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer, eggItemList);
 
     }
 

@@ -53,21 +53,24 @@ export default class Egg extends Phaser.GameObjects.Container {
             console.log("dragX:%o;dragY:%o", dragX, dragY);
         });
     }
-    setDisEnableDraggable(){
+    setDisEnableDraggable() {
         this.scene.input.setDraggable(this, false);
         this.scene.input.removeListener('drag');
 
     }
 
     showErrorStatue() {
+        this.eggStatus = EggStatus.Failed;
         this.background.setFrame(2);
     }
 
     showSuccessStatus() {
+        this.eggStatus = EggStatus.Success;
         this.background.setFrame(1);
     }
 
-
-
-
+    resetStatue() {
+        this.eggStatus = EggStatus.Normal;
+        this.background.setFrame(0);
+    }
 }

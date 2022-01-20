@@ -38,7 +38,7 @@ export default class GameScene extends BasicScene {
         this.cursorKeys = null
         this.playerOnLeft = true
         this.totalSocre = 0
-        
+
         this.blockClassMap = {
             'Scene1Block': Scene1Block,
             'ShipTargets': ShipTargets,
@@ -161,7 +161,7 @@ export default class GameScene extends BasicScene {
 
         super.create()
 
-        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' }))
+        this.sys.game.globals.gtag.event((`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' }))
 
         this.playerOnLeft = true
 
@@ -196,7 +196,7 @@ export default class GameScene extends BasicScene {
 
         this.recurringAnswerBlock(gameData)
 
-        
+
         this.toLeftBtn = new ToLeftBtn(this, this.getColWidth(9.5), this.getRowHeight(10), this._playerToLeft.bind(this, 500))
         this.toRightBtn = new ToRightBtn(this, this.getColWidth(11), this.getRowHeight(10), this._playerToRight.bind(this, 500))
         this.existBtn = new ExitBtn(this, this.getColWidth(1), this.getRowHeight(1.5))

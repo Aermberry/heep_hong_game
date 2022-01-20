@@ -195,15 +195,15 @@ export default class GameScene extends BasicScene {
         this.car1 = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(7), 'green_carc');
         this.car1.setDepth(100)
         if (this.currentQuestionGroup[this.currentIndex].data.length <= 2) {
-            this.fats = this.add.sprite(this.getColWidth(4.5), this.getRowHeight(5), 'fat');
+            this.fats = this.add.sprite(this.getColWidth(4.5), this.getRowHeight(5.5), 'fat');
             this.fats.play('fat');
-            this.leoo = this.add.sprite(this.getColWidth(6), this.getRowHeight(4.5), 'leo');
+            this.leoo = this.add.sprite(this.getColWidth(6), this.getRowHeight(5), 'leo');
             this.leoo.play('leo');
-            this.awardPlatform = this.add.image(this.getColWidth(7.3), this.getRowHeight(5.5), 'award_platform');
+            this.awardPlatform = this.add.image(this.getColWidth(7.3), this.getRowHeight(6), 'award_platform');
             this.awardPlatform.setDisplaySize(250, 130)
-            this.pens = this.add.sprite(this.getColWidth(7.2), this.getRowHeight(4), 'pen')
+            this.pens = this.add.sprite(this.getColWidth(7.2), this.getRowHeight(4.5), 'pen')
             this.pens.play('pen');
-            this.bears = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(4.3), 'bear');
+            this.bears = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(4.8), 'bear');
             this.bears.play('bear');
             this.bg_low = this.add.image(this.getColWidth(6), this.getRowHeight(8), 'bg_low');
             this.answersContainer = this.add.container(0, 0, [

@@ -24,6 +24,6 @@ export const createPenguinAnimation = (anims) => {
         delay: 200,
         frames: anims.generateFrameNames('penguinTexture', { prefix: 'penguin_', start: 15, end: 18, zeroPad: 4 }),
         frameRate: 4,
-        repeat: -1
+        repeat: 0
     });
 }

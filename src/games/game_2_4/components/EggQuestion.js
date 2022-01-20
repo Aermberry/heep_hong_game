@@ -13,10 +13,16 @@ export default class EggQuestion extends Egg {
 
         this.create(isEnableDraggable);
 
-        const voiceButton = new VoiceButton(this.scene, 30, 90, "voiceItemObject" + objectItem.index);
-        voiceButton.setScale(0.2);
+        this.voiceButton = new VoiceButton(this.scene, 30, 90, "voiceItemObject" + objectItem.index);
+        this.voiceButton.setScale(0.2);
 
-        this.add(voiceButton);
+        this.add(this.voiceButton);
+    }
+
+
+    setDisEnableDraggable(){
+        super.setDisEnableDraggable();
+        this.voiceButton.cancelListener( );
     }
 
    

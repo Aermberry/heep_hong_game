@@ -39,11 +39,12 @@ export default class Egg extends Phaser.GameObjects.Container {
 
 
 
-        this.setInteractive({ useHandCursor: true });
-        
+
+
     }
 
     setEnableDraggable() {
+        this.setInteractive({ useHandCursor: true });
         this.scene.input.setDraggable(this, true);
 
         this.scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
@@ -64,7 +65,7 @@ export default class Egg extends Phaser.GameObjects.Container {
         this.eggStatus = EggStatus.Failed;
         this.background.setFrame(2);
 
-        if(callback!=null){
+        if (callback != null) {
             callback();
         }
     }

@@ -127,7 +127,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet("textureAnswerObject7", require('../assets/images/objects/texture_answer_objects/texture_answer_object_7.png'), { frameWidth: 636, frameHeight: 630 });
         this.load.spritesheet("textureAnswerObject8", require('../assets/images/objects/texture_answer_objects/texture_answer_object_8.png'), { frameWidth: 636, frameHeight: 630 });
         this.load.spritesheet("textureAnswerObject9", require('../assets/images/objects/texture_answer_objects/texture_answer_object_9.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject1", require('../assets/images/objects/texture_answer_objects/texture_answer_object_10.png'), { frameWidth: 636, frameHeight: 630 });
+        this.load.spritesheet("textureAnswerObject10", require('../assets/images/objects/texture_answer_objects/texture_answer_object_10.png'), { frameWidth: 636, frameHeight: 630 });
         this.load.spritesheet("textureAnswerObject11", require('../assets/images/objects/texture_answer_objects/texture_answer_object_11.png'), { frameWidth: 636, frameHeight: 630 });
         this.load.spritesheet("textureAnswerObject12", require('../assets/images/objects/texture_answer_objects/texture_answer_object_12.png'), { frameWidth: 636, frameHeight: 630 });
         this.load.spritesheet("textureAnswerObject13", require('../assets/images/objects/texture_answer_objects/texture_answer_object_13.png'), { frameWidth: 636, frameHeight: 630 });

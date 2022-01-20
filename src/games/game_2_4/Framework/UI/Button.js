@@ -47,5 +47,6 @@ export default class Button extends Phaser.GameObjects.Container {
     cancelListener(){
         // this.texture.input.removeListener(Phaser.Input.Events.GAMEOBJECT_POINTER_UP);
         // this.texture.input.removeListener(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN);
+        console.log(this.texture);
     }
 }

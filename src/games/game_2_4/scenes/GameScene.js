@@ -192,8 +192,8 @@ export default class GameScene extends BasicScene {
         question = JSON.parse(localStorage.getItem(this.questionIndex));
 
         // question = JSON.parse(localStorage.getItem(17));
-        question = JSON.parse(localStorage.getItem(16));
-        // console.log("当前抽取的题目:%o", question);
+        // question = JSON.parse(localStorage.getItem(16));
+        console.log("当前抽取的题目:%o", question);
 
         this.currentQuestionAnswer = question.answer;
 
@@ -450,7 +450,7 @@ export default class GameScene extends BasicScene {
 
 
     paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer) {
-        
+
         targetItem.showErrorStatue();
 
         dragItem.showErrorStatue(() => {
@@ -466,14 +466,16 @@ export default class GameScene extends BasicScene {
                         callback: () => {
 
                             Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-                            composeSprite.setVisible(true);
+                           
                             this.gameLayer.add(composeSprite);
 
-                            this.sound.add("loseSoundEffect").play();
+                           
 
                             if (isFirstError) {
-
+                                composeSprite.setVisible(true);
                                 composeSprite.showMaskStatus();
+                                this.sound.add("loseSoundEffect").play();
+
                                 this.time.addEvent({
                                     delay: 2000,
                                     callback: () => {
@@ -485,20 +487,32 @@ export default class GameScene extends BasicScene {
                                 })
 
                             } else {
+                                this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
+                                this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
+                                currentAnswer.showSuccessStatus();
 
-                                composeSprite.showColorStatus();
                                 this.time.addEvent({
-                                    delay: 2000,
+                                    delay: 4000,
                                     callback: () => {
-                                        composeSprite.setVisible(false);
+                                        let leftItem;
+                                        let rightItem;
 
-                                        this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
-                                        this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
-                                        currentAnswer.showSuccessStatus();
+                                        composeSprite.setVisible(true);
+                                        composeSprite.showColorStatus();
+                                        this.sound.add("loseSoundEffect").play();
+
+
+                                        if (this.isRightDirection()) {
+                                            leftItem = currentAnswer;
+                                            rightItem = targetItem;
+                                        } else {
+                                            leftItem = targetItem;
+                                            rightItem = currentAnswer;
+                                        }
 
                                         // this.sound.stopAll();
-                                        const leftVoicePlayer = this.sound.add("voiceItemObject" + currentAnswer.index);
-                                        const rightVoicePlayer = this.sound.add("voiceItemObject" + targetItem.index);
+                                        const leftVoicePlayer = this.sound.add("voiceItemObject" + leftItem.index);
+                                        const rightVoicePlayer = this.sound.add("voiceItemObject" + rightItem.index);
 
                                         leftVoicePlayer.on('complete', () => {
                                             rightVoicePlayer.play();
@@ -506,6 +520,7 @@ export default class GameScene extends BasicScene {
                                         })
 
                                         rightVoicePlayer.on('complete', () => {
+                                            composeSprite.setVisible(false);
                                             value ? this.scene.start('End') : this.scene.restart('Game');
                                         })
                                         leftVoicePlayer.play();
@@ -611,7 +626,7 @@ export default class GameScene extends BasicScene {
             leftItem = targetItem;
             rightItem = dragItem;
         }
-        
+
         const composeWords = leftItem.objectName + rightItem.objectName;
 
         let currentAnswer = eggItemList.find((egg) => {

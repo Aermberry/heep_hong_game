@@ -137,7 +137,7 @@ export default class GameScene extends BasicScene {
 
         const clipDollTableEffectSound = this.sound.add(startSound);
         const backgroundMusic = this.sound.add(backgroundSound, {
-            volume: 0.2,
+            volume: 0.1,
             loop: true
         });
 

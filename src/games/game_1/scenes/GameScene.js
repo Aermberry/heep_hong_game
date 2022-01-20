@@ -52,19 +52,22 @@ export default class GameScene extends BasicScene {
       'l2Tut3': require('../assets/lv2_tut_3.png'),
       'l2Tut4': require('../assets/lv2_tut_4.png'),
       'finger': require('../assets/finger.png')
-    } 
+    }
 
     let soundFiles = {
       'i_want': require('../assets/voice/g001_00.mp3'),
+      'correct1': require('../assets/voice/Scifi_pipe_transition.mp3'),
+      'correct2': require('../assets/voice/child_only_clap.mp3'),
+      'wrong': require('../assets/voice/Tray_drop.mp3'),
     }
 
-    
+
     // self.load.audio('i_want', require('../assets/voice/g001_00.mp3'));
 
-    
+
 
     _.forEach(Choice, function(item) {
-      
+
       soundFiles[item.name] = require('../assets/voice/' + item.voice);
       imageFiles[item.name] = require('../assets/' + item.image);
       // self.load.image(item.name, require('../assets/'+item.image));
@@ -207,7 +210,7 @@ export default class GameScene extends BasicScene {
         const curItem = cloneChoiceList2.pop()
         if(self.question.indexOf(curItem.name) != -1) tempChoice.push(curItem)
       }
-      
+
       tempChoice = _.shuffle(tempChoice)
 
       self.choice = tempChoice
@@ -292,7 +295,7 @@ export default class GameScene extends BasicScene {
       })
 
     }else {
-          
+
       correct = !self.question.some((quest)=> {
         return itemsName.indexOf(quest) === -1
       })
@@ -303,7 +306,7 @@ export default class GameScene extends BasicScene {
       self.correct();
 
       this.stageRepeat = false
-        
+
       self.tray = new Tray(self,config.width/2 + 564, 300);
       self.add.existing(self.tray);
       self.tray.init(itemsName,correct);
@@ -319,7 +322,7 @@ export default class GameScene extends BasicScene {
         self.tray = new Tray(self,config.width/2 + 564, 300);
         self.add.existing(self.tray);
         self.tray.init(itemsName,correct);
-  
+
         self.model.stage++;
       }
 
@@ -336,17 +339,47 @@ export default class GameScene extends BasicScene {
   }
 
   correct(){
-    let self = this
+    const self = this
+    let soundEffectCompleted = false
+    let animationCompleted = false
+    const soundEffect1 = self.sound.add('correct1')
+    const soundEffect2 = self.sound.add('correct2')
+    soundEffect1.play()
     self.char.play('char_happy').once("animationcomplete", function(){
-      self.next();
-    });
+      animationCompleted = true
+    })
+    soundEffect1.on('complete', function(){
+      soundEffect2.play()
+    })
+    soundEffect2.on('complete', function(){
+      soundEffectCompleted = true
+    })
+    const interval = setInterval(function() {
+      if (soundEffectCompleted && animationCompleted) {
+        self.next()
+        clearInterval(interval)
+      }
+    }, 100)
   }
 
   wrong(){
-    let self = this
+    const self = this
+    let soundEffectCompleted = false
+    let animationCompleted = false
+    const soundEffect = self.sound.add('wrong')
+    soundEffect.play()
     self.char.play('char_sad').once("animationcomplete", function(){
-      self.next();
-    });
+      soundEffectCompleted = true
+    })
+    soundEffect.on('complete', function(){
+      animationCompleted = true
+    })
+    const interval = setInterval(function() {
+      if (soundEffectCompleted && animationCompleted) {
+        self.next()
+        clearInterval(interval)
+      }
+    }, 100)
   }
 
   next(){
@@ -355,11 +388,11 @@ export default class GameScene extends BasicScene {
       if(self.model.level == 3){
         self.end();
       }else{
-        
+
         if(self.model.level == 2 && !self.lv2Start) {
-          
+
           self.blueScreenLogo.setAlpha(0)
-          
+
           self.add.existing(self.l2AlertBoard)
           await self.l2AlertBoard.playBroad()
           self.lv2Start = true

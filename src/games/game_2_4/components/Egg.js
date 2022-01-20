@@ -39,7 +39,8 @@ export default class Egg extends Phaser.GameObjects.Container {
 
 
 
-        this.setInteractive();
+        this.setInteractive({ useHandCursor: true });
+        
     }
 
     setEnableDraggable() {

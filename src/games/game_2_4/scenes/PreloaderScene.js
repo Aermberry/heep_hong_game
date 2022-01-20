@@ -96,6 +96,8 @@ export default class PreloaderScene extends BasicScene {
         const soundFiles = {
             'buttonEffectSound': require('../assets/audio/sound_effect/sound_effect_button_on_clicked.mp3'),
             'gamePlaySceneBackgroundMusic': require('../assets/audio/bgm_game_play_scene.mp3'),
+            'gameEndSceneBackgroundMusic': require('../assets/audio/bgm_game_end_scene.mp3'),
+
             'robotArmAppearSoundEffect': require('../assets/audio/sound_effect/sound_effect_robot_arm_appear_on_the_scene .mp3'),
             'errorSoundEffect': require('../assets/audio/sound_effect/sound_effect_error.mp3'),
             'correctSoundEffect': require('../assets/audio/sound_effect/sound_effect_correct.mp3'),

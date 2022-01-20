@@ -26,7 +26,7 @@ export default class GameManager {
 
     async initGameData() {
         localStorage.clear();
-        localStorage.setItem('gamePlayTotal', JSON.stringify(5));
+        localStorage.setItem('gamePlayTotal', JSON.stringify(3));
 
         if (this.questionNumberList.length > 0) {
             console.log("data 不为空");

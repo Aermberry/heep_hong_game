@@ -37,10 +37,6 @@ export default class Egg extends Phaser.GameObjects.Container {
             [this.background, objectTexture]
         )
 
-
-
-
-
     }
 
     setEnableDraggable() {
@@ -52,8 +48,17 @@ export default class Egg extends Phaser.GameObjects.Container {
             gameObject.x = dragX;
             gameObject.y = dragY;
 
+            // console.log("dragX:%o;dragY:%o", dragX, dragY);
+        });
+        this.scene.input.on('dragstart', (pointer, gameObject, dragX, dragY) => {
+
+            const eggItemsContainer = this.scene.gameLayer.getByName("eggItemsContainer");
+            console.log(eggItemsContainer.getAll());
+            console.log(eggItemsContainer.getIndex(gameObject));
+
             console.log("dragX:%o;dragY:%o", dragX, dragY);
         });
+
     }
     setDisEnableDraggable() {
         this.scene.input.setDraggable(this, false);

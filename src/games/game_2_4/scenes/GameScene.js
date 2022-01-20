@@ -194,6 +194,7 @@ export default class GameScene extends BasicScene {
         // question = JSON.parse(localStorage.getItem(17));
         // question = JSON.parse(localStorage.getItem(16));
         console.log("当前抽取的题目:%o", question);
+        console.log("当前抽取的题目Index:%o", this.questionIndex)
 
         this.currentQuestionAnswer = question.answer;
 
@@ -208,7 +209,7 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
-        this.gameLayer.getByName()
+
 
         /* UI Object */
         this.buildUiObject(this.uiLayer);
@@ -374,10 +375,11 @@ export default class GameScene extends BasicScene {
             colliderList.push(collider);
 
             eggItemList.push(eggItem);
-
-            layer.add(eggItem);
         }
 
+        const eggItemsContainer=this.add.container(0,0,eggItemList).setName("eggItemsContainer");
+        layer.add(eggItemsContainer);
+eggItemsContainer.swap()
         if (!this.isRightDirection()) {
             eggItemList.forEach((item) => {
                 item.getAll().forEach(gameObject => {

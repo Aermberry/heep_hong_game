@@ -359,7 +359,7 @@ export default class GameScene extends BasicScene {
         self.next()
         clearInterval(interval)
       }
-    }, 100)
+    }, 250)
   }
 
   wrong(){
@@ -379,7 +379,7 @@ export default class GameScene extends BasicScene {
         self.next()
         clearInterval(interval)
       }
-    }, 100)
+    }, 250)
   }
 
   next(){

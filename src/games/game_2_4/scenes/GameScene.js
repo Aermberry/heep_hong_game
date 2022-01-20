@@ -14,6 +14,7 @@ import ClawBox from "../components/ClawBox";
 import ComposeSprite from "../components/ComposeSprite";
 import Phaser from "phaser";
 import TweenAnimation from "../components/TweenAnimation";
+import LoadProgress from "../components/LoadProgress";
 
 
 export default class GameScene extends BasicScene {
@@ -46,6 +47,16 @@ export default class GameScene extends BasicScene {
         // this.preloadFromArr({
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
+
+        this.buildBackground('backgroundGamePlay');
+
+        this.progressLoader = new LoadProgress(this);
+        this.progressLoader.create();
+
+        this.load.on('progress', (params) => {
+            this.progressLoader.onLoadProgress(params)
+        }
+        );
 
         const soundFiles = {
             'voiceAnswerObject0': require('../assets/audio/voice/answer_objects/voice_answer_object_0.mp3'),
@@ -379,7 +390,7 @@ export default class GameScene extends BasicScene {
 
         const eggItemsContainer = this.add.container(0, 0, eggItemList).setName("eggItemsContainer");
         layer.add(eggItemsContainer);
-        
+
         if (!this.isRightDirection()) {
             eggItemList.forEach((item) => {
                 item.getAll().forEach(gameObject => {

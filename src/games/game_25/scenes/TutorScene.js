@@ -11,22 +11,22 @@ export default class TutorSecene extends BasicScene {
     }
 
     preload() {
-        // this.anims.create({
-        //     key: 'tut1',
-        //     delay: 200,
-        //     frames: this.anims.generateFrameNames('tut1', { prefix: 'tut1', start: 0, end: 29, zeroPad: 4 }),
-        // });
-        // this.anims.create({
-        //     key: 'tut2',
-        //     delay: 200,
-        //     frames: this.anims.generateFrameNames('tut2', { prefix: 'tut2', start: 0, end: 55, zeroPad: 4 }),
-        // });
-        // this.anims.create({
-        //     key: 'tut3',
-        //     delay: 200,
-        //     frames: this.anims.generateFrameNames('tut3', { prefix: 'tut3', start: 0, end: 29, zeroPad: 4 }),
-        // });
 
+        this.anims.create({
+            key: 'tut1',
+            delay: 200,
+            frames: this.anims.generateFrameNames('tut_1', { prefix: 'tut1', start: 0, end: 44, zeroPad: 4 }),
+        });
+        this.anims.create({
+            key: 'tut2',
+            delay: 200,
+            frames: this.anims.generateFrameNames('tut_2', { prefix: 'tut2', start: 3, end: 44, zeroPad: 4 }),
+        });
+        this.anims.create({
+            key: 'tut3',
+            delay: 200,
+            frames: this.anims.generateFrameNames('tut_3', { prefix: 'tut3', start: 0, end: 44, zeroPad: 4 }),
+        });
     }
 
     create() {
@@ -37,11 +37,11 @@ export default class TutorSecene extends BasicScene {
         //Stop all sound, because game will return to this scene on retry.
         // this.sound.stopAll();
 
-        // let tut1 = this.add.sprite(this.getColWidth(2.2), this.getRowHeight(6), 'tut1')
-        // let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'tut2')
-        // let tut3 = this.add.sprite(this.getColWidth(9.8), this.getRowHeight(5), 'tut3')
+        let tut1 = this.add.sprite(this.getColWidth(3), this.getRowHeight(3.5), 'tut_1')
+        let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(5.5), 'tut_2')
+        let tut3 = this.add.sprite(this.getColWidth(9), this.getRowHeight(3.5), 'tut_3')
 
-        // this._repeatAnimate({tut1, tut2, tut3})
+        this._repeatAnimate({tut1, tut2, tut3})
         
         let exitBtn = new ExitBtn(this, 120, 135);
         let startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10));

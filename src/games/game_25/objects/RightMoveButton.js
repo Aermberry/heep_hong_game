@@ -18,11 +18,11 @@ export default class RightMoveButton extends BasicButton {
      * 往右移动
       */
   moveToRight() {
-    if (this.gameObject.x > -500) {
+    if (this.gameObject.x > -1000) {
       // this.gameObject.setX(this.gameObject.x - 100);
       this.scene.tweens.add({
         targets: this.gameObject,
-        x: -500,
+        x: -1000,
         duration: 1500,
         ease: 'Power2',
       })

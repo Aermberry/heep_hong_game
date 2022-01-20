@@ -45,8 +45,25 @@ export default class Button extends Phaser.GameObjects.Container {
     }
 
     cancelListener(){
-        // this.texture.input.removeListener(Phaser.Input.Events.GAMEOBJECT_POINTER_UP);
-        // this.texture.input.removeListener(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN);
-        console.log(this.texture);
+        this.texture.off(Phaser.Input.Events.GAMEOBJECT_POINTER_UP);
+        this.texture.off(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN);
+    }
+
+    enableListener(){
+        console.log("gdsjahjdkksa")
+        this.texture.on(
+            Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                console.log("down")
+                this.texture.setFrame(1);
+                this.onDownClicked();
+            }
+        )
+            .on(
+                Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
+                    console.log("up")
+                    this.texture.setFrame(0);
+                    this.onUpClicked();
+                }
+            )
     }
 }

@@ -284,7 +284,7 @@ export default class GameScene extends BasicScene {
         this.eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
-            this.eggItemList.forEach(eggItem => eggItem.setEnableDraggable(true))
+            this.eggItemList.forEach(eggItem => eggItem.setEnableListener())
         });
 
     }
@@ -365,8 +365,11 @@ export default class GameScene extends BasicScene {
                 let rightItem;
 
                 eggItemList.forEach(eggItem => {
-                    eggItem.setDisEnableDraggable();
+                    eggItem.setRemoveListener();
+                    
                 });
+
+                targetItem.setRemoveListener()
 
                 this.physics.world.removeCollider(collider);
                 collider.destroy();
@@ -494,8 +497,9 @@ export default class GameScene extends BasicScene {
                                     callback: () => {
                                         composeSprite.setVisible(false);
                                         this.eggItemList.forEach(eggItem => {
-                                            eggItem.setEnableDraggable();
+                                            eggItem.setEnableListener();
                                         });
+                                        targetItem.setEnableListener();
                                     }
                                 })
 
@@ -606,9 +610,6 @@ export default class GameScene extends BasicScene {
                                             errorImage.setPosition(dragItem.x, dragItem.y);
                                             errorImage.setVisible(true);
                                             targetItem.resetStatue();
-                                            // eggItems.forEach(eggItem => {
-                                            //     eggItem.setEnableDraggable();
-                                            // });
                                             this.penguinSprite.play("penguinIdle");
                                             callback();
 

@@ -26,7 +26,7 @@ export default class Egg extends Phaser.GameObjects.Container {
 
         Phaser.Display.Align.In.Center(objectTexture, this.background, -10);
 
-        this.setSize(this.background.displayWidth / 2, this.background.displayHeight / 2);
+        this.setSize(this.background.displayWidth / 2+5, this.background.displayHeight / 2-3);
 
 
         this.scene.physics.add.existing(this);
@@ -57,7 +57,7 @@ export default class Egg extends Phaser.GameObjects.Container {
         });
 
     }
-    setDisEnableDraggable() {
+    setRemoveListener() {
         this.scene.input.setDraggable(this, false);
         this.scene.input.removeListener('drag');
 

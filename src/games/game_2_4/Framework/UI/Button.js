@@ -50,7 +50,6 @@ export default class Button extends Phaser.GameObjects.Container {
     }
 
     enableListener(){
-        console.log("gdsjahjdkksa")
         this.texture.on(
             Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                 console.log("down")

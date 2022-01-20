@@ -31,8 +31,6 @@ export default class Egg extends Phaser.GameObjects.Container {
 
         this.scene.physics.add.existing(this);
 
-        console.log(this);
-
         this.add(
             [this.background, objectTexture]
         )

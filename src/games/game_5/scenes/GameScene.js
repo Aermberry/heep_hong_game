@@ -32,8 +32,6 @@ export default class GameScene extends BasicScene {
         this.cat = null
         this.introPlayed = false
 
-        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_start`, { 'event_category': 'Game Start'}))
-
     }
 
     preload() {
@@ -222,6 +220,7 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
+        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'}))
 
         this.disableInput = false;
         this.items = []

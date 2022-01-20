@@ -1,6 +1,7 @@
 import Article from "../objects/Article";
 import BasicScene from "./BasicScene"
 import Butterfly from "../objects/Butterfly";
+import Scoreboard from "../objects/Scoreboard";
 // import SpeakerBtn from '../objects/SpeakerBtn'
 export default class GameScene extends BasicScene {
     constructor() {
@@ -20,18 +21,24 @@ export default class GameScene extends BasicScene {
             this.currentLevel = 1;
         }
         this.dataModal = this.sys.game.globals.model.gameData;
+        this.gameNum = this.sys.game.globals.model.game;
+        if (this.gameNum == 29) {
+            this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
+        } else {
+            this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+        }
 
     }
 
     preload() {
         this.buildBg('bg_tutor')
-        // this.anims.create({
-        //     key: 'wow_car',
-        //     delay: 200,
-        //     frameRate: 8,
-        //     frames: this.anims.generateFrameNames('wow_car', { prefix: 'Symbol 1', start: 0, end: 12, zeroPad: 4 }),
-        //     repeat: 0
-        // });
+        this.anims.create({
+            key: 'crt_ans_star',
+            delay: 200,
+            // frameRate: 8,
+            frames: this.anims.generateFrameNames('crt_ans_star', { prefix: 'crt ans_star', start: 0, end: 14, zeroPad: 4 }),
+            repeat: -1
+        });
 
         const imageFiles = {
 
@@ -53,30 +60,67 @@ export default class GameScene extends BasicScene {
         this.buildBg('bg');
         //初始化游戏场景
         this.initScene();
+        let currentZone;
         let self = this;
-        let text = 'text';
-        let sprite = self.add.text(0, 0, text, {
-            fontSize: '40px', //30px
-            color: '#000000',
-            fontWeight: 'bold',
-            fontFamily: "system-ui"
-        })
 
         self.input.on('dragenter', function (pointer, gameObject, dropZone) {
-            text = dropZone.type;
-            sprite.setText(text)
+            currentZone = dropZone;
+            dropZone.toggleZoneFrame(1)
         })
+
+        self.input.on('dragleave', (pointer, gameObject, dropZone) => {
+            currentZone = null;
+            dropZone.toggleZoneFrame(0)
+        })
+
+        self.input.on('dragend', (pointer, gameObject, dropped) => {
+            if (dropped) {
+                let flag = this.scoreboard.quiz(gameObject, currentZone)
+                if (!flag) {
+                    currentZone.showError(pointer);
+                }
+                currentZone.toggleZoneFrame(0)
+                currentZone = null;
+            }
+        })
+
+
     }
 
     initScene() {
-        this.answer = this.dataModal.level1[0]
-        // let butterfly = 
-        // new Butterfly(this, 200, 100)
-        // let article = new Article(this, 100, 480)
-        let article = new Article(this, 0, 0)
-        new Butterfly(this, 960, 50)
+        this.article = new Article(this, 0, 50, this.gameNum == 30 ? 2 : this.currentLevel)
+        if (this.gameNum == 30) {
+            let keys = [];
+            Object.keys(this.answer.type).forEach(key => {
+                if (this.answer.type[key] != 0) {
+                    keys.push(key)
+                }
+            });
+            let arrNew = [];
+            for (var i = 0; i < 3; i++) {
+                var _num = Math.floor(Math.random() * keys.length)
+                var mm = keys[_num];
+                keys.splice(_num, 1)
+                arrNew.push(mm)
+            }
+            this.butterfly = new Butterfly(this, 960, 280, arrNew)
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), true)
+            this.scoreboard.init(arrNew);
+        } else {
+            this.butterfly = new Butterfly(this, 960, 280)
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this))
+            this.scoreboard.init(this.answer);
+        }
+        this.article.createArticle(this.answer)
 
-        article.createArticle(this.answer)
+    }
+
+    onCompleteOnce(type) {
+        this.butterfly.highlightBody(type)
+    }
+
+    onHighlight(type) {
+        this.article.highlightCharacters(type)
     }
 
 }

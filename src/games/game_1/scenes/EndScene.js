@@ -9,8 +9,6 @@ export default class EndScene extends Scene {
 
   init() {
     this.model = this.sys.game.globals.model;
-
-    this.sys.game.globals.gtag.event(('game_1_end', { 'event_category': 'Game End'}))
   }
 
   preload () {
@@ -63,6 +61,8 @@ export default class EndScene extends Scene {
 
   create () {
     let self = this
+
+    this.sys.game.globals.gtag.event(('game_1_end', { 'event_category': 'js_games', 'event_label': 'Game End'}))
 
     let bg_space = self.add.sprite(config.width/2 + 10, config.height/2 - 150, 'bg_space')
     bg_space.play('bg_space')

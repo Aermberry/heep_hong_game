@@ -50,13 +50,10 @@ export default class Egg extends Phaser.GameObjects.Container {
 
             // console.log("dragX:%o;dragY:%o", dragX, dragY);
         });
-        this.scene.input.on('dragstart', (pointer, gameObject, dragX, dragY) => {
-
+        this.scene.input.on('dragstart', (pointer, gameObject) => {
             const eggItemsContainer = this.scene.gameLayer.getByName("eggItemsContainer");
-            console.log(eggItemsContainer.getAll());
-            console.log(eggItemsContainer.getIndex(gameObject));
 
-            console.log("dragX:%o;dragY:%o", dragX, dragY);
+            eggItemsContainer.bringToTop(gameObject);
         });
 
     }

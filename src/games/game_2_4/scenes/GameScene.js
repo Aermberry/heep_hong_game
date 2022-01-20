@@ -377,9 +377,9 @@ export default class GameScene extends BasicScene {
             eggItemList.push(eggItem);
         }
 
-        const eggItemsContainer=this.add.container(0,0,eggItemList).setName("eggItemsContainer");
+        const eggItemsContainer = this.add.container(0, 0, eggItemList).setName("eggItemsContainer");
         layer.add(eggItemsContainer);
-eggItemsContainer.swap()
+        
         if (!this.isRightDirection()) {
             eggItemList.forEach((item) => {
                 item.getAll().forEach(gameObject => {
@@ -468,10 +468,10 @@ eggItemsContainer.swap()
                         callback: () => {
 
                             Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-                           
+
                             this.gameLayer.add(composeSprite);
 
-                           
+
 
                             if (isFirstError) {
                                 composeSprite.setVisible(true);

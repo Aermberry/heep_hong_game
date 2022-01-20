@@ -72,6 +72,42 @@
     }
   },
   {
+    "direction": "right",
+    "phrases": {
+      "main": {
+        "objectName": "水",
+        "index": 1
+      },
+      "items": [
+        {
+          "objectName": "跳",
+          "index": 18
+        },
+        {
+          "objectName": "紙",
+          "index": 9
+        },
+        {
+          "objectName": "左",
+          "index": 23
+        },
+        {
+          "objectName": "雞",
+          "index": 35
+        },
+        {
+          "objectName": "飛機",
+          "index": 31
+        }
+      ]
+    },
+    "answer": {
+      "currentItemName": "跳",
+      "objectName": "跳水",
+      "answerTextureIndex": 2
+    }
+  },
+  {
     "direction": "left",
     "phrases": {
       "main": {
@@ -347,11 +383,9 @@
           "objectName": "車",
           "index": 10
         },
-        "停",
-        29,
         {
-          "objectName": "朱古力",
-          "index": 21
+          "objectName": "停",
+          "index": 29
         }
       ]
     },

@@ -56,6 +56,7 @@ export default class Egg extends Phaser.GameObjects.Container {
 
     }
     setRemoveListener() {
+        this.disableInteractive();
         this.scene.input.setDraggable(this, false);
         this.scene.input.removeListener('drag');
 

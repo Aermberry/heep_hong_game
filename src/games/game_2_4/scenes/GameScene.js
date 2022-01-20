@@ -142,6 +142,7 @@ export default class GameScene extends BasicScene {
         this.paintScene(question);
 
         this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
+
     }
 
     playBackgroundMusic(startSound, backgroundSound) {

@@ -4,6 +4,8 @@ import BtnCar from '../objects/BtnCar'
 import LeftMoveButton from '../objects/LeftMoveButton'
 import RightMoveButton from '../objects/RightMoveButton'
 import QuestionItem from "../objects/QuesitonItem"
+import SpeakerBtn from '../objects/SpeakerBtn'
+import SpeakerBtnOff from '../objects/SpeakerBtnOff'
 export default class GameScene extends BasicScene {
 
     constructor() {
@@ -18,6 +20,7 @@ export default class GameScene extends BasicScene {
     init(data) {
         this.dataModal = this.sys.game.globals.model;
         this.currentIndex = data.number;
+        this.stopAll = data.stopAll;
         if (data.currentQuestionGroup.length == 0) {
             let originalArray = this.dataModal.gameAnswers;
             var result = [];
@@ -155,9 +158,6 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
-        this.Bgm = this.sound.add('Bgm')
-        this.Bgm.setLoop(true);
-        this.Bgm.play();
         this.bg_up_cl1 = this.add.sprite(this.getColWidth(5), this.getRowHeight(1), 'cl1');
         this.bg_up_cl1.play('cl1');
         this.bg_up_cl1_1 = this.add.sprite(this.getColWidth(9), this.getRowHeight(1.2), 'cl1');
@@ -170,9 +170,23 @@ export default class GameScene extends BasicScene {
         this.bg_up_cl2.play('cl2');
         this.bg_up_cl2_1 = this.add.sprite(this.getColWidth(7.5), this.getRowHeight(2), 'cl2');
         this.bg_up_cl2_1.play('cl2');
-        this.bg_up = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'bg_up'),
-            // this.bg_up.play('bg_up');
-            this.paintGameScene();
+        this.bg_up = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'bg_up');
+        // this.bg_up.play('bg_up');
+        this.paintGameScene();
+    }
+
+    openSpeaker() {
+        this.speakerBtn.visible = false;
+        this.speakerOffBtn.visible = true;
+        this.sound.play('Bgm');
+        this.stopAll = false;
+    }
+
+    offSpeaker() {
+        this.speakerBtn.visible = true;
+        this.speakerOffBtn.visible = false;
+        this.stopAll = true;
+        this.sound.stopAll();
     }
 
     //绘制游戏页面
@@ -180,7 +194,7 @@ export default class GameScene extends BasicScene {
         this.questionUi = this.add.layer();
         this.car1 = this.add.sprite(this.getColWidth(0.5), this.getRowHeight(7), 'pink_car');
         this.car1.setDepth(100)
-        if (this.currentQuestionGroup[this.currentIndex].length <= 2) {
+        if (this.currentQuestionGroup[this.currentIndex].data.length <= 2) {
             this.fats = this.add.sprite(this.getColWidth(4.5), this.getRowHeight(5.5), 'fat');
             this.fats.play('fat');
             this.leoo = this.add.sprite(this.getColWidth(6), this.getRowHeight(5), 'leo');
@@ -217,19 +231,31 @@ export default class GameScene extends BasicScene {
         this.backgroundUi = this.add.layer(); //背景；
         this.exitBtn = new ExitBtn(this, 120, 135);
         this.btnCar = new BtnCar(this, this.getColWidth(9.5), this.getRowHeight(10.8), this.completeAnswerAnimation.bind(this));
-        this.backgroundUi.add([this.exitBtn, this.btnCar]);
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
+        // this.speakerBtn.visible = false;
+        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.3), 125, this.offSpeaker.bind(this));
+        if (this.stopAll) {
+            this.sound.stopAll();
+            this.speakerBtn.visible = true;
+            this.speakerOffBtn.visible = false;
+        } else {
+            this.sound.play('Bgm');
+            this.speakerBtn.visible = false;
+            this.speakerOffBtn.visible = true;
+        }
+        this.backgroundUi.add([this.exitBtn, this.btnCar, this.speakerBtn, this.speakerOffBtn]);
     }
 
     //绘制题目；
     paintQuesiton() {
         this.container = this.add.container(0, 0);
         let _width = 0;
-        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].length; i++) {
+        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].data.length; i++) {
             if (this.container.length == 0) {
-                this.container.add(new QuestionItem(this, 400, this.getRowHeight(8), this.currentQuestionGroup[this.currentIndex], i, this.selectAnswerRecord.bind(this)))
+                this.container.add(new QuestionItem(this, 400, this.getRowHeight(8), this.currentQuestionGroup[this.currentIndex].data, i, this.selectAnswerRecord.bind(this)))
             } else {
                 _width = _width + this.container.list[i - 1].roadText.width + 100;
-                this.container.add(new QuestionItem(this, 400 + _width, this.getRowHeight(8), this.currentQuestionGroup[this.currentIndex], i, this.selectAnswerRecord.bind(this)))
+                this.container.add(new QuestionItem(this, 400 + _width, this.getRowHeight(8), this.currentQuestionGroup[this.currentIndex].data, i, this.selectAnswerRecord.bind(this)))
             }
         }
         return this.container;
@@ -237,10 +263,10 @@ export default class GameScene extends BasicScene {
 
     //答案选择；
     selectAnswerRecord(answer, index) {
-        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].length; i++) {
-            if (this.currentQuestionGroup[this.currentIndex][index].type == answer.type) {
-                this.currentQuestionGroup[this.currentIndex][index] = answer;
-                if (this.currentQuestionGroup[this.currentIndex].every((item) => item.result != null)) { //答案选完；
+        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].data.length; i++) {
+            if (this.currentQuestionGroup[this.currentIndex].data[index].type == answer.type) {
+                this.currentQuestionGroup[this.currentIndex].data[index] = answer;
+                if (this.currentQuestionGroup[this.currentIndex].data.every((item) => item.result != null)) { //答案选完；
                     this.btnCar.setIsBtn();
                     this.container.list.forEach(element => {
                         element.setFramebtn(2)
@@ -252,27 +278,27 @@ export default class GameScene extends BasicScene {
 
     completeAnswerAnimation() {
         if (this.isBtn) {
-            if (!this.currentQuestionGroup[this.currentIndex].every((item) => item.result != null)) {
+            if (!this.currentQuestionGroup[this.currentIndex].data.every((item) => item.result != null)) {
                 return;
             }
             this.bears.play('bear2');
             this.fats.play('fat2');
             this.pens.play('pen2');
             this.leoo.play('leo2');
-            for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].length; i++) {
+            for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].data.length; i++) {
                 this.setFramebtn();
-                if (this.currentQuestionGroup[this.currentIndex][i].result == false) {
+                if (this.currentQuestionGroup[this.currentIndex].data[i].result == false) {
                     this.isBtn = false;
                     if (i == 0) {
-                        this.cat(this.container.list[i].x + this.container.list[i].width - 150, this.currentQuestionGroup[this.currentIndex][i]);
+                        this.cat(this.container.list[i].x + this.container.list[i].width - 150, this.currentQuestionGroup[this.currentIndex].data[i]);
                     } else {
-                        this.cat(this.container.list[i].x + this.container.list[i].width - 150, this.currentQuestionGroup[this.currentIndex][i]);
+                        this.cat(this.container.list[i].x + this.container.list[i].width - 150, this.currentQuestionGroup[this.currentIndex].data[i]);
                     }
                     return;
                 } else {
-                    if (this.currentQuestionGroup[this.currentIndex].every((item) => item.result == true)) {
-                        console.log(this.currentQuestionGroup[this.currentIndex].length >= 3);
-                        if (this.currentQuestionGroup[this.currentIndex].length >= 3) {
+                    if (this.currentQuestionGroup[this.currentIndex].data.every((item) => item.result == true)) {
+                        console.log(this.currentQuestionGroup[this.currentIndex].data.length >= 3);
+                        if (this.currentQuestionGroup[this.currentIndex].data.length >= 3) {
                             this.tweens.add({
                                 targets: this.answersContainer,
                                 x: -500,
@@ -280,7 +306,7 @@ export default class GameScene extends BasicScene {
                                 ease: 'Power2',
                             })
                         }
-                        this.cat(this.bg_low.width + 200, this.currentQuestionGroup[this.currentIndex][i]);
+                        this.cat(this.bg_low.width + 200, this.currentQuestionGroup[this.currentIndex].data[i]);
                         return;
                     }
                 }
@@ -291,8 +317,8 @@ export default class GameScene extends BasicScene {
 
     //校验标点符号对错颜色显示
     setFramebtn() {
-        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].length; i++) {
-            if (this.currentQuestionGroup[this.currentIndex][i].result == false) {
+        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].data.length; i++) {
+            if (this.currentQuestionGroup[this.currentIndex].data[i].result == false) {
                 this.container.list[i].setFramebtn(4);
             } else {
                 this.container.list[i].setFramebtn(3);
@@ -312,10 +338,7 @@ export default class GameScene extends BasicScene {
             ease: 'Power2',
         }).on('complete', () => { //车子走完执行方法；
             if (item.result == false) {
-                console.log('撞车啦');
-                let wrong = this.sound.add('wrong')
-                wrong.setLoop(false)
-                wrong.play()
+                this.sound.play('wrong');
                 this.car1.play('pink_car_stop').once("animationcomplete", () => {
                     this.bears.play('bear3');
                     this.pens.play('pen3');
@@ -327,12 +350,11 @@ export default class GameScene extends BasicScene {
                     })
                 });
             } else {
-                let win = this.sound.add('win')
-                win.setLoop(false)
-                win.play();
+                this.sound.play('win');
+                this.sound.play(this.currentQuestionGroup[this.currentIndex].audio);
                 setTimeout(
                     () => {
-                        this.currentQuestionGroup[this.currentIndex].forEach(element => {
+                        this.currentQuestionGroup[this.currentIndex].data.forEach(element => {
                             if (element.type != null) {
                                 element.result = null;
                             }
@@ -341,14 +363,14 @@ export default class GameScene extends BasicScene {
                         this.currentIndex++;
                         if (this.currentIndex == this.currentQuestionGroup.length) {
                             console.log('已经答完5道题');
-                            this.Bgm.stop();
+                            this.sound.stopAll();
                             this.scene.start('End');
                             return;
                         } else {
-                            this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup });
+                            this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
 
-                    }, 6000
+                    }, 12000
                 )
 
             }
@@ -364,14 +386,14 @@ export default class GameScene extends BasicScene {
         this.car1.x = this.getColWidth(0.5);
         this.answersContainer.x = 0;
         let _question; //当前错误题型
-        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].length; i++) {
+        for (let i = 0; i < this.currentQuestionGroup[this.currentIndex].data.length; i++) {
             this.container.list[i].resetting(3);
-            _question = this.currentQuestionGroup[this.currentIndex][i].result = true; //更改题目全部为正确；
+            _question = this.currentQuestionGroup[this.currentIndex].data[i].result = true; //更改题目全部为正确；
         }
         setTimeout(
             () => {
-                console.log(this.currentQuestionGroup[this.currentIndex].length >= 3);
-                if (this.currentQuestionGroup[this.currentIndex].length >= 3) {
+                console.log(this.currentQuestionGroup[this.currentIndex].data.length >= 3);
+                if (this.currentQuestionGroup[this.currentIndex].data.length >= 3) {
                     this.tweens.add({
                         targets: this.answersContainer,
                         x: -500,

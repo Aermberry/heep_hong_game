@@ -13,7 +13,7 @@ import EggQuestion from "../components/EggQuestion";
 import ClawBox from "../components/ClawBox";
 import ComposeSprite from "../components/ComposeSprite";
 import Phaser from "phaser";
-import TweenAnimation from "../components/TweenAnimation";
+import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import LoadProgress from "../components/LoadProgress";
 import GameModel from "../game_mode/GameModel";
 

@@ -1,5 +1,7 @@
 
 import Phaser from 'phaser'
+import GameModel from "../game_mode/GameModel";
+import { GameSceneStatus } from "./GameSceneStatus";
 import QuestionDataLocalRepository from '../repository/QuestionDataLocalRepository';
 
 export default class GameManager {
@@ -8,7 +10,7 @@ export default class GameManager {
 
         this.questionDataLocalRepository = new QuestionDataLocalRepository();
         this.questionNumberList = [];
-        this.eggColors = [];
+        this.gameSceneStatus = GameSceneStatus.NormalStatus;
 
         if (!GameManager.instance) {
             GameManager.instance = this;
@@ -26,7 +28,8 @@ export default class GameManager {
 
     async initGameData() {
         localStorage.clear();
-        localStorage.setItem('gamePlayTotal', JSON.stringify(3));
+        // localStorage.setItem('gamePlayTotal', JSON.stringify(3));
+        GameModel.init();
 
         if (this.questionNumberList.length > 0) {
             console.log("data 不为空");
@@ -45,20 +48,12 @@ export default class GameManager {
         localStorage.setItem('questionNumberList', JSON.stringify(Array.from(new Set(this.questionNumberList))));
     }
 
-    updateGameQuestionNumberList(questionIndex) {
-        console.log({
-            questionIndex
-        })
-        this.questionNumberList.splice(this.questionNumberList.indexOf(questionIndex), 1);
-        console.log(this.questionNumberList)
+    _updateGameQuestionNumberList(questionIndex) {
 
-        localStorage.removeItem('questionNumberList');
+        this.questionNumberList.splice(this.questionNumberList.indexOf(questionIndex), 1);
+     
         localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
 
-        if (localStorage.getItem('gameChance') != null) {
-
-            localStorage.removeItem('gameChance');
-        }
 
         if (localStorage.getItem('errorQuestionIndex') != null) {
             localStorage.removeItem('errorQuestionIndex')
@@ -66,52 +61,57 @@ export default class GameManager {
 
     }
 
-    updateGamePlayTotal(callback) {
+    getGameSuccess(questionIndex,callback) {
+        GameModel.questionCount--;
+        this._updateGameQuestionNumberList(questionIndex)
 
-        let gamePlayTotal = JSON.parse(localStorage.getItem('gamePlayTotal'));
-        let isLastQuestion = gamePlayTotal != 1;
-
-        if (isLastQuestion) {
-            localStorage.setItem('gamePlayTotal', JSON.stringify(gamePlayTotal - 1));
-        }
-
-        callback(isLastQuestion);
+        callback(this._isLastQuestion());
 
     }
 
-    setGameQuestionError(index, gameErrorCallback) {
+    _isLastQuestion() {
+        return GameModel.questionCount == 0;
+    }
 
-        localStorage.setItem('errorQuestionIndex', JSON.stringify(index));
-        let gameChance = JSON.parse(localStorage.getItem('gameChance'));
-        let gamePlayTotal = JSON.parse(localStorage.getItem('gamePlayTotal'));
+    getGameFail(questionIndex, callback) {
+
+        localStorage.setItem('errorQuestionIndex', JSON.stringify(questionIndex));
+        GameModel.currentQuestionErrorCount++;
+
         let isFirstError = true;
-        let isLastQuestion = gamePlayTotal == 1;
 
+        this.gameSceneStatus = GameSceneStatus.RetryStatus;
 
-        if (gameChance == null) {
-            localStorage.setItem('gameChance', JSON.stringify(true))
-        } else {
+        if (GameModel.currentQuestionErrorCount == GameModel.eachQuestionChance) {
+
             isFirstError = false;
-            localStorage.removeItem('gameChance');
 
-            if (!isLastQuestion) {
-                localStorage.setItem('gamePlayTotal', JSON.stringify(gamePlayTotal - 1));
-            }
+            GameModel.questionCount--;
 
-            this.questionNumberList.splice(this.questionNumberList.indexOf(index), 1);
+            this.gameSceneStatus = GameSceneStatus.NormalStatus;
 
-            localStorage.removeItem('questionNumberList');
-            localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
+            this._updateGameQuestionNumberList(questionIndex)
 
-            localStorage.removeItem('errorQuestionIndex');
+            this.restCurrentQuestionErrorCount();
         }
 
-        gameErrorCallback(isFirstError, isLastQuestion && !isFirstError);
+
+        callback(isFirstError, this._isLastQuestion() && !isFirstError);
 
     }
 
     generateGameQuestionIndex() {
         return Phaser.Math.RND.pick(this.questionNumberList);
+    }
+
+
+    restCurrentQuestionErrorCount() {
+        GameModel.currentQuestionErrorCount = 0;
+    }
+
+
+    getGameSceneStatus() {
+        return this.gameSceneStatus;
     }
 
 

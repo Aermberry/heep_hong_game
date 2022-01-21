@@ -22,9 +22,10 @@ export default class TutorScene extends BasicScene {
         this.sound.stopAll();
 
         createTutorAnimation(this.anims);
-        await this.gameManager.initGameData();
-
+       
         this.#paintScene();
+
+        await this.gameManager.initGameData();
 
     }
 

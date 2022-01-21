@@ -154,8 +154,10 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.topHalf.setAlpha(1)
         this.bottomHalf.setAlpha(1)
 
-        let strikeSound = this.scene.sound.add('swordUnsheathe')
+        let strikeSound = this.scene.sound.add('thwack')
         strikeSound.play()
+        let childClap = this.scene.sound.add('childClap')
+        childClap.play()
 
 
         // this.scene.tweens.add({
@@ -208,7 +210,11 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         return new Promise((resolve)=> {
             
 
-            let failSound = this.scene.sound.add('hit')
+            // let failSound = this.scene.sound.add('hit')
+
+            
+            let failSound = this.scene.sound.add('thwack')
+            // strikeSound.play()
 
             let strikeSoundA = this.scene.sound.add('swing')
 
@@ -227,7 +233,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             
             // setTimeout(strikeSoundB.play, 400)
 
-
+            this.whiteBroad.getStrike()
             
             this.scene.tweens.add({
                 targets: slash,
@@ -273,8 +279,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         let topLeft = this.bamImg.getTopLeft()
 
         let bottomRight = this.bamImg.getBottomRight()
-        console.log(topLeft.x,topLeft.y);
-        console.log(this.inPosition.x,this.inPosition.y);
+
 
         let worldBody = {
             "topLeft": {

@@ -13,25 +13,18 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
             key: 'end_pic', 
             delay: 1000,
             repeat: 0,
-            frames: scene.anims.generateFrameNames('end_pic', { prefix: 'end_pic', start: 0, end: 26, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('end_pic', { prefix: 'Symbol 1', start: 0, end: 34, zeroPad: 4 }),
         });
 
 
         let animate = scene.add.sprite(0, 0, 'end_pic')
-        // let bg = scene.add.image(0,0, 'end_pic_bg')
-        // let fg = scene.add.image(0, bg.height *0.25 , 'end_pic_fg')
 
         let retryBtn = new RetryBtn(scene, - endBox.width * 0.22, endBox.height * 0.35)
         let existBtn = new ExistBigBtn(scene, endBox.width * 0.22, endBox.height * 0.35)
-
-        animate.displayWidth = 1000
-        animate.displayHeight = 1000
         animate.play('end_pic')
 
         this.add([
             endBox,
-            // bg,
-            // fg,
             animate,
             retryBtn,
             existBtn

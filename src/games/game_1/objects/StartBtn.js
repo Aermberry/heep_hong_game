@@ -12,5 +12,6 @@ export default class StartBtn extends BasicBtn {
 
   onClick(){
     this.scene.scene.start('Game');
+
   }
 }

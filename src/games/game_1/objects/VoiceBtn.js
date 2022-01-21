@@ -43,11 +43,12 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
 
     self.scene.anims.create({
       key: 'wave',
-      frames: self.scene.anims.generateFrameNames('wave', { prefix: 'frame', start: 0, end: 229 }),
+      frames: self.scene.anims.generateFrameNames('wave', { prefix: 'waveform_gif', start: 0, end: 41, zeroPad: 4 }),
       repeat: -1
     });
 
-    self.wave = self.scene.add.sprite(-95, 0, 'Wave')
+    self.wave = self.scene.add.sprite(-85, 0, 'Wave')
+    self.wave.setScale(0.45);
 
     self.add(self.background);
     self.add(self.sprite);

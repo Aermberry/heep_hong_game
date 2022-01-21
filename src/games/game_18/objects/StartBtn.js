@@ -9,7 +9,7 @@ export default class StartBtn extends BasicBtn {
     this.music.setLoop(true);
     this.music.play();
     this.create(sprite, this.onClick.bind(this))
-
+    this.goFullscreenOnClick();
   }
 
   onClick() {

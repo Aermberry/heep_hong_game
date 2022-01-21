@@ -15,16 +15,15 @@ export default class PreloaderScene extends BasicScene {
             'bg': require('../assets/bg.png'),
             'btn_speaker': require('../assets/btn_speaker.png'),
             'end_box': require('../assets/end_box.png'),
-            'home_b': require('../assets/home_b.png'),
-            'home_e': require('../assets/home_e.png'),
-            'home_g': require('../assets/home_g.png'),
-            'home_o': require('../assets/home_o.png'),
-            'home_r': require('../assets/home_r.png'),
-            'home_y': require('../assets/home_y.png'),
-            'home': require('../assets/home.png'),
+            // 'home_b': require('../assets/home_b.png'),
+            // 'home_e': require('../assets/home_e.png'),
+            // 'home_g': require('../assets/home_g.png'),
+            // 'home_o': require('../assets/home_o.png'),
+            // 'home_r': require('../assets/home_r.png'),
+            // 'home_y': require('../assets/home_y.png'),
+            // 'home': require('../assets/home.png'),
+            // 'bearW': require('../assets/bearW.png'),
             'tutor_bg': require('../assets/tutor_bg.png'),
-            'bearW': require('../assets/bearW.png'),
-
         };
 
         const atlasFiles = {
@@ -32,23 +31,23 @@ export default class PreloaderScene extends BasicScene {
             'tut_2': { img: require('../assets/tut_2.png'), data: require('../assets/tut_2.json') },
             'tut_3': { img: require('../assets/tut_3.png'), data: require('../assets/tut_3.json') },
             'tut_4': { img: require('../assets/tut_4.png'), data: require('../assets/tut_4.json') },
-            'house_a': { img: require('../assets/house_a.png'), data: require('../assets/house_a.json') },
-            'house_b': { img: require('../assets/house_b.png'), data: require('../assets/house_b.json') },
-            'wrong': { img: require('../assets/wrong.png'), data: require('../assets/wrong.json') },
-            'yes': { img: require('../assets/yes.png'), data: require('../assets/yes.json') },
-            'bear_job': { img: require('../assets/bear_job.png'), data: require('../assets/bear_job.json') },
-            'end_pic': { img: require('../assets/end_pic.png'), data: require('../assets/end_pic.json') },
-            'remind': { img: require('../assets/remind.png'), data: require('../assets/remind.json') },
+            // 'house_a': { img: require('../assets/house_a.png'), data: require('../assets/house_a.json') },
+            // 'house_b': { img: require('../assets/house_b.png'), data: require('../assets/house_b.json') },
+            // 'wrong': { img: require('../assets/wrong.png'), data: require('../assets/wrong.json') },
+            // 'yes': { img: require('../assets/yes.png'), data: require('../assets/yes.json') },
+            // 'bear_job': { img: require('../assets/bear_job.png'), data: require('../assets/bear_job.json') },
+            // 'end_pic': { img: require('../assets/end_pic.png'), data: require('../assets/end_pic.json') },
+            // 'remind': { img: require('../assets/remind.png'), data: require('../assets/remind.json') },
         }
 
         const soundFiles = {
-            'done': require('../assets/audio/done.mp3'),
             'loading': require('../assets/audio/loading.mp3'),
-            'end_pic': require('../assets/audio/end_pic.mp3'),
-            'Bgm': require('../assets/audio/bgm.mp3'),
-            'wrongAudio': require('../assets/audio/wrong.mp3'),
-            'yesAudio': require('../assets/audio/yes.mp3'),
-            'build':require('../assets/audio/build.mp3')
+            // 'done': require('../assets/audio/done.mp3'),
+            // 'end_pic': require('../assets/audio/end_pic.mp3'),
+            // 'Bgm': require('../assets/audio/bgm.mp3'),
+            // 'wrongAudio': require('../assets/audio/wrong.mp3'),
+            // 'yesAudio': require('../assets/audio/yes.mp3'),
+            // 'build':require('../assets/audio/build.mp3')
         }
         self.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'), { frameWidth: 186, frameHeight: 209 });
         self.load.spritesheet('strBtn', require('../assets/btn_str.png'), { frameWidth: 776, frameHeight: 227 });

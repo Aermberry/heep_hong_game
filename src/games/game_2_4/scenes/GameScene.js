@@ -356,7 +356,6 @@ export default class GameScene extends BasicScene {
         let eggItemList = [];
         let colliderList = [];
 
-
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
@@ -366,8 +365,7 @@ export default class GameScene extends BasicScene {
                 let rightItem;
 
                 eggItemList.forEach(eggItem => {
-                    eggItem.setRemoveListener();
-                    
+                    eggItem.setRemoveListener(); 
                 });
 
                 targetItem.setRemoveListener()

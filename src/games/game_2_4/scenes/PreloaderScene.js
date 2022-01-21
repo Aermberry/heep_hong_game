@@ -76,6 +76,7 @@ export default class PreloaderScene extends BasicScene {
             'textureObject34': require('../assets/images/objects/texture_item_objects/texture_object_34.png'),
             'textureObject35': require('../assets/images/objects/texture_item_objects/texture_object_35.png'),
             'textureObject36': require('../assets/images/objects/texture_item_objects/texture_object_36.png'),
+           
         };
 
         const atlasFiles = {

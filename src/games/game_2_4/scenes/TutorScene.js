@@ -34,7 +34,7 @@ export default class TutorScene extends BasicScene {
 
         const tutorSprite = new GameSprite(this, this.cameras.main.width / 2, this.cameras.main.height / 2 - 100, 'tutorTexture');
         const exitProgressGameButton = new ExitProgressGameButton(this, 120, 135);
-        const startButton = new StartButton(this, this.getColWidth(6), this.getRowHeight(10.8)).setScale(0.8);
+        const startButton = new StartButton(this, this.getColWidth(6), this.getRowHeight(10)).setScale(0.8);
 
         tutorSprite.play('tutorAnimation');
 

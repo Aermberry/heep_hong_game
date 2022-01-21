@@ -26,7 +26,14 @@ export default class Egg extends Phaser.GameObjects.Container {
 
         Phaser.Display.Align.In.Center(objectTexture, this.background, -10);
 
-        this.setSize(this.background.displayWidth / 2+5, this.background.displayHeight / 2-3);
+       
+
+        if(this.scene.isRightDirection()){
+            this.setSize(this.background.displayWidth / 2-0.5, this.background.displayHeight / 2-3);
+        }
+        else{
+            this.setSize(this.background.displayWidth / 2+20, this.background.displayHeight / 2-3);
+        }
 
 
         this.scene.physics.add.existing(this);

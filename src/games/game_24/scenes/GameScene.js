@@ -178,7 +178,7 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.sound.play('Bgm');
+        this.sound.play('Bgm',{ volume: 0.2, loop: true });
         this.stopAll = false;
     }
 
@@ -239,7 +239,7 @@ export default class GameScene extends BasicScene {
             this.speakerBtn.visible = true;
             this.speakerOffBtn.visible = false;
         } else {
-            this.sound.play('Bgm');
+            this.sound.play('Bgm',{ volume: 0.2, loop: true });
             this.speakerBtn.visible = false;
             this.speakerOffBtn.visible = true;
         }

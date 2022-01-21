@@ -22,7 +22,16 @@ export default class TutorSecene extends BasicScene {
             frames: this.anims.generateFrameNames('tut2', { prefix: 'tutbx2', start: 0, end: 39, zeroPad: 4 }),
         });
 
-
+        this.anims.create({
+            key: 'tut1_lv3',
+            delay: 200,
+            frames: this.anims.generateFrameNames('tut1_lv3', { prefix: 'bx1', start: 0, end: 39, zeroPad: 4 }),
+        });
+        this.anims.create({
+            key: 'tut2_lv3',
+            delay: 200,
+            frames: this.anims.generateFrameNames('tut2_lv3', { prefix: 'bx2', start: 0, end: 39, zeroPad: 4 }),
+        });
     }
 
     create() {
@@ -32,9 +41,9 @@ export default class TutorSecene extends BasicScene {
         this.sound.stopAll();
         //Stop all sound, because game will return to this scene on retry.
         // this.sound.stopAll();
-
-        let tut1 = this.add.sprite(this.getColWidth(4), this.getRowHeight(4), 'tut1')
-        let tut2 = this.add.sprite(this.getColWidth(8), this.getRowHeight(5), 'tut2')
+        this.gameNum = this.sys.game.globals.model.game;  
+        let tut1 = this.add.sprite(this.getColWidth(5.1), this.getRowHeight(4), `tut1${this.gameNum == 30 ? '_lv3' : ''}`)
+        let tut2 = this.add.sprite(this.getColWidth(8), this.getRowHeight(5), `tut2${this.gameNum == 30 ? '_lv3' : ''}`)
 
         this._repeatAnimate({ tut1, tut2 })
 
@@ -49,8 +58,8 @@ export default class TutorSecene extends BasicScene {
      * @returns Promise
      */
     _repeatAnimate({ tut1, tut2 }) {
-        tut1.play('tut1').once("animationcomplete", () => {
-            tut2.play('tut2').once("animationcomplete", () => {
+        tut1.play(`tut1${this.gameNum == 30 ? '_lv3' : ''}`).once("animationcomplete", () => {
+            tut2.play(`tut2${this.gameNum == 30 ? '_lv3' : ''}`).once("animationcomplete", () => {
                 this._repeatAnimate({ tut1, tut2 });
             })
         })

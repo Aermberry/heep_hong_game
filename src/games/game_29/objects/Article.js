@@ -202,6 +202,15 @@ export default class Article {
             }
         })
     }
+
+    onComplete() {
+        this.group.getChildren().forEach((item) => {
+            item.setDepth(5)
+            item.setInteractive({
+                useHandCursor: true
+            })
+        })
+    }
 }
 
 Array.prototype.getMost = function () {

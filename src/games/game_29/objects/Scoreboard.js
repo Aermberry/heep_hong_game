@@ -2,11 +2,12 @@ import Phaser from "phaser";
 import DragText from "./DragText"
 import DoneBtn from "./DoneBtn"
 export default class Scoreboard {
-    constructor(scene, x, y, onCompleteOnce, onHighlightCallback, isGame30 = false) {
+    constructor(scene, x, y, onCompleteOnce, onHighlightCallback, onCompleteCallback, isGame30 = false) {
         this.scene = scene;
         this.isGame30 = isGame30;
         this.onHighlightCallback = onHighlightCallback;
         this.onCompleteOnce = onCompleteOnce;
+        this.onCompleteCallback = onCompleteCallback;
         this.x = x;
         this.y = y;
         this.num = 0;
@@ -54,6 +55,7 @@ export default class Scoreboard {
         this.num++;
         this.onCompleteOnce(type)
         if (this.num >= this.scoreTypeArr.length) {
+            this.onCompleteCallback();
             this.scoreTypeArr.forEach(item => {
                 item.openInteractive();
             });

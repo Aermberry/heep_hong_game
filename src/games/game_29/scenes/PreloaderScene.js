@@ -25,6 +25,8 @@ export default class PreloaderScene extends BasicScene {
         const atlasFiles = {
             'tut1': { img: require('../assets/img/feeder_tut_v2_bx1.png'), data: require('../assets/img/feeder_tut_v2_bx1.json') },
             'tut2': { img: require('../assets/img/feeder_tut_v2_bx2.png'), data: require('../assets/img/feeder_tut_v2_bx2.json') },
+            'tut1_lv3': { img: require('../assets/img/lv3_tutani_bx1.png'), data: require('../assets/img/lv3_tutani_bx1.json') },
+            'tut2_lv3': { img: require('../assets/img/lv3_tutani_bx2.png'), data: require('../assets/img/lv3_tutani_bx2.json') },
             'crt_ans_star': { img: require('../assets/img/crt_ans_star.png'), data: require('../assets/img/crt_ans_star.json') }
             // 'end_pic':{ img: require('../assets/img/end_pic.png'), data: require('../assets/img/end_pic.json')},
 

@@ -27,12 +27,12 @@ export default class TutorScene extends BasicScene {
             key: 'tut3',
             delay: 200,
             duration: 1000,
-            frames: this.anims.generateFrameNames('tut3', { prefix: 'tut3', start: 0, end: 21, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('tut3', { prefix: 'tut3', start: 0, end: 34, zeroPad: 4 }),
         });
 
     }
 
-    
+
     create() {
         super.create();
 
@@ -44,10 +44,10 @@ export default class TutorScene extends BasicScene {
         let tut1 = this.add.sprite(this.getColWidth(2.2), this.getRowHeight(6), 'tut1')
         let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'tut2')
         let tut3 = this.add.sprite(this.getColWidth(9.8), this.getRowHeight(5), 'tut3')
-        
+
 
         this._repeatAnimate({tut1, tut2, tut3})
-        
+
         let exitBtn = new ExitBtn(this, this.getColWidth(1), this.getRowHeight(1.5));
         let startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10.5));
         this.add.existing(exitBtn);

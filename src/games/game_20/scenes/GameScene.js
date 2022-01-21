@@ -101,7 +101,7 @@ export default class GameScene extends BasicScene {
         //获取游戏画布大小
         this.g = document.createElement('div');
         this.g.setAttribute('id', 'grid-background-target');
-        this.g.style.zIndex = 999;
+        // this.g.style.zIndex = 999;
         this.g.style.position = 'absolute';
         this.g.style.top = "0"
         this.g.style.marginLeft = "33.3%";

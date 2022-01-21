@@ -43,15 +43,25 @@ export default class DragText extends Phaser.GameObjects.Text {
         // });
 
         self.on('drag', (pointer, dragX, dragY) => {
-            let dragText = scene.input.displayList.list.filter((item) => item instanceof DragText && item.name == self.name)
-            let x = dragX - self.x;
-            let y = dragY - self.y;
-            dragText.forEach(item => {
-                item.x += x;
-                item.y += y;
-            });
-            this.x = dragX;
-            this.y = dragY;
+            if(self.name.length > 15) {
+                let dragText = scene.input.displayList.list.filter((item) => item instanceof DragText && item.name == self.name)
+                let x = dragX - self.x;
+                let y = dragY - self.y;
+                dragText.forEach(item => {
+                    item.x += x;
+                    item.y += y;
+                });
+                this.x = dragX;
+                this.y = dragY;
+            } else {
+
+                let dragText = scene.input.displayList.list.filter((item) => item instanceof DragText && item.name == self.name)
+                dragText.forEach((item, i) => {
+                    item.x =  i == 0 ? dragX  : dragText[i-1].x +dragText[i-1].width
+                    item.y = dragY;
+                });
+            }
+
         });
 
         self.on('dragend', () => {

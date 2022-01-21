@@ -24,6 +24,7 @@ export default class GameScene extends BasicScene {
         this.gameNum = this.sys.game.globals.model.game;
         if (this.gameNum == 29) {
             this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
+            // this.answer = this.dataModal['level2'][2]
         } else {
             this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
         }
@@ -104,11 +105,11 @@ export default class GameScene extends BasicScene {
                 arrNew.push(mm)
             }
             this.butterfly = new Butterfly(this, 960, 280, arrNew)
-            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), true)
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this),this.onComplete.bind(this), true)
             this.scoreboard.init(arrNew);
         } else {
             this.butterfly = new Butterfly(this, 960, 280)
-            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this))
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this),this.onComplete.bind(this))
             this.scoreboard.init(this.answer);
         }
         this.article.createArticle(this.answer)
@@ -121,6 +122,10 @@ export default class GameScene extends BasicScene {
 
     onHighlight(type) {
         this.article.highlightCharacters(type)
+    }
+
+    onComplete() {
+        this.article.onComplete();
     }
 
 }

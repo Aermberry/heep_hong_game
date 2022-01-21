@@ -109,7 +109,10 @@ class PauseScene extends Phaser.Scene {
     }
 
     create({gamePauseService}) {
-
+        this.otherDom = document.getElementById('grid-background-target');
+        if(this.otherDom) {
+            this.otherDom.style.zIndex =  -1;
+        }
         
         this.backDrop = this.add.renderTexture(0, 0, this.sys.game.canvas.width, this.sys.game.canvas.height)
         this.backDrop.fill('0x000000', 0.4)
@@ -123,6 +126,9 @@ class PauseScene extends Phaser.Scene {
             clearInterval(this.resumeCounter)
             this.scene.stop()
             gamePauseService.resumePausedScene();
+            if(this.otherDom) {
+                this.otherDom.style.zIndex = 10;
+            }
             // lastScene.scene.start()
         })
 
@@ -162,7 +168,9 @@ class PauseScene extends Phaser.Scene {
                 clearInterval(this.resumeCounter)
                 this.scene.stop()
                 gamePauseService.resumePausedScene();
-                
+                if(this.otherDom) {
+                    this.otherDom.style.zIndex = 10;
+                }
             }
             this.resumeTime -= 1000
             const curTime = this.resumeTimeFormat(this.resumeTime)

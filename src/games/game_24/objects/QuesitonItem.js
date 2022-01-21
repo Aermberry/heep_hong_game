@@ -10,20 +10,20 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
         this.selectAnswer;
         // let that = this;
         this.roadText = scene.add.text(
-            0, 0, this.answer.value,
+            0, -10, this.answer.value,
             {
-                fontSize: '60px',
+                fontSize: '64px',
                 color: '#FFFFFF',
                 fontFamily: "STKaitiTC-Black"
             }
         )
-        this.btnCom = scene.add.sprite(this.roadText.width + 50, 0, 'btn_com');
-        this.btnFull = scene.add.sprite(this.roadText.width + 50, 70, 'btn_full');
+        this.btnCom = scene.add.sprite(this.roadText.width + 50, -30, 'btn_com');
+        this.btnFull = scene.add.sprite(this.roadText.width + 50, 90, 'btn_full');
         this.add(
             [this.roadText, this.btnFull, this.btnCom]
         )
         this.setSize(this.roadText.width, this.roadText.height);
-        this.btnCom.setDisplaySize(50, 50);
+        this.btnCom.setDisplaySize(80, 80);
         this.btnCom.setInteractive({
             useHandCursor: true
         })
@@ -38,7 +38,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
                 this.selectAnswer = "comm";
                 selectAnswerRecord(this.answer,index);
             });
-        this.btnFull.setDisplaySize(50, 50);
+        this.btnFull.setDisplaySize(80, 80);
         this.btnFull.setInteractive({
             useHandCursor: true
         })

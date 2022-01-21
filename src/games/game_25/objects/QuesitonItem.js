@@ -25,14 +25,14 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
             )
         } else {
             if (item.length == 4) {
-                this.btnQuery = scene.add.sprite(this.roadText.width + 50, -55, 'btn_que');
-                this.btnAnd = scene.add.sprite(this.roadText.width + 50, 0, 'btn_and');
-                this.btnExclamationMark = scene.add.sprite(this.roadText.width + 50, 55, 'btn_ex');
-                this.btnComms = scene.add.sprite(this.roadText.width + 50, 110, 'btn_com');
+                this.btnQuery = scene.add.sprite(this.roadText.width +  100, 100, 'btn_que');
+                this.btnAnd = scene.add.sprite(this.roadText.width + 50, 35, 'btn_and');
+                this.btnExclamationMark = scene.add.sprite(this.roadText.width + 100, -40, 'btn_ex');
+                this.btnComms = scene.add.sprite(this.roadText.width + 150, 35, 'btn_com');
                 this.add(
                     [this.roadText, this.btnQuery, this.btnAnd, this.btnExclamationMark, this.btnComms]
                 )
-                this.btnComms.setDisplaySize(50, 50);
+                this.btnComms.setDisplaySize(90, 90);
                 this.btnComms.setInteractive({
                     useHandCursor: true
                 })
@@ -50,15 +50,15 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
                         selectAnswerRecord(this.answer, index);
                     });
             } else {
-                this.btnQuery = scene.add.sprite(this.roadText.width + 50, -30, 'btn_que');
-                this.btnAnd = scene.add.sprite(this.roadText.width + 50, 35, 'btn_and');
-                this.btnExclamationMark = scene.add.sprite(this.roadText.width + 50, 90, 'btn_ex');
+                this.btnExclamationMark = scene.add.sprite(this.roadText.width + 50, -30, 'btn_ex');
+                this.btnAnd = scene.add.sprite(this.roadText.width + 100, 35, 'btn_and');
+                this.btnQuery = scene.add.sprite(this.roadText.width + 50, 90, 'btn_que');
                 // this.btnComms = scene.add.sprite(this.roadText.width + 50, 110, 'btn_com');
                 this.add(
-                    [this.roadText, this.btnQuery, this.btnAnd, this.btnExclamationMark]
+                    [this.roadText, this.btnExclamationMark, this.btnAnd, this.btnQuery]
                 )
             }
-            this.btnQuery.setDisplaySize(50, 50);
+            this.btnQuery.setDisplaySize(90, 90);
             this.btnQuery.setInteractive({
                 useHandCursor: true
             })
@@ -76,7 +76,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
                     this.selectAnswer = "query";
                     selectAnswerRecord(this.answer, index);
                 });
-            this.btnAnd.setDisplaySize(50, 50);
+            this.btnAnd.setDisplaySize(90, 90);
             this.btnAnd.setInteractive({
                 useHandCursor: true
             })
@@ -95,7 +95,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
                     this.selectAnswer = "and";
                     selectAnswerRecord(this.answer, index);
                 });
-            this.btnExclamationMark.setDisplaySize(50, 50);
+            this.btnExclamationMark.setDisplaySize(90, 90);
             this.btnExclamationMark.setInteractive({
                 useHandCursor: true
             })
@@ -123,24 +123,28 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
         if (this.selectAnswer == "query") {
             this.btnQuery.setFrame(state);
             this.btnQuery.y = 35;
+            this.btnQuery.x = this.roadText.width + 80
             this.btnAnd.visible = false;
             this.btnExclamationMark.visible = false;
             if (this.btnComms != null) { this.btnComms.visible = false; }
         } else if (this.selectAnswer == 'and') {
             this.btnAnd.setFrame(state);
             this.btnAnd.y = 35;
+            this.btnAnd.x = this.roadText.width + 80
             this.btnQuery.visible = false;
             this.btnExclamationMark.visible = false;
             if (this.btnComms != null) { this.btnComms.visible = false; }
         } else if (this.selectAnswer == 'exclamationMark') {
             this.btnExclamationMark.setFrame(state);
             this.btnExclamationMark.y = 35;
+            this.btnExclamationMark.x = this.roadText.width + 80
             this.btnQuery.visible = false;
             this.btnAnd.visible = false;
             if (this.btnComms != null) { this.btnComms.visible = false; }
         } else if (this.selectAnswer == 'comms') {
             this.btnComms.setFrame(state);
             this.btnComms.y = 35;
+            this.btnComms.x = this.roadText.width + 80
             this.btnQuery.visible = false;
             this.btnAnd.visible = false;
             this.btnExclamationMark.visible = false;
@@ -151,6 +155,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
         if (this.answer.type == "query") {
             this.btnQuery.setFrame(state);
             this.btnQuery.y = 35;
+            this.btnQuery.x = this.roadText.width + 80
             this.btnQuery.visible = true;
             this.btnAnd.visible = false;
             this.btnExclamationMark.visible = false;
@@ -158,6 +163,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
         } else if (this.answer.type == 'and') {
             this.btnAnd.setFrame(state);
             this.btnAnd.y = 35;
+            this.btnAnd.x = this.roadText.width + 80
             this.btnAnd.visible = true;
             this.btnQuery.visible = false;
             this.btnExclamationMark.visible = false;
@@ -165,6 +171,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
         } else if (this.answer.type == 'exclamationMark') {
             this.btnExclamationMark.setFrame(state);
             this.btnExclamationMark.y = 35;
+            this.btnExclamationMark.x = this.roadText.width + 80
             this.btnExclamationMark.visible = true;
             this.btnQuery.visible = false;
             this.btnAnd.visible = false;
@@ -172,6 +179,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
         } else if (this.answer.type == 'comms') {
             this.btnComms.setFrame(state);
             this.btnComms.y = 35;
+            this.btnComms.x = this.roadText.width + 80
             this.btnComms.visible = true;
             this.btnQuery.visible = false;
             this.btnAnd.visible = false;

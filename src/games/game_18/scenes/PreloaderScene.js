@@ -59,7 +59,7 @@ export default class PreloaderScene extends BasicScene {
         self.load.spritesheet('Done',require('../assets/Done.png'), { frameWidth: 545, frameHeight: 165 });
         self.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
-        // self.createProgressBar();
+        self.progressBar = self.add.graphics();
         self.loadingText = self.make.text({
             x: config.width / 2,
             y: config.height * 0.89,
@@ -69,16 +69,21 @@ export default class PreloaderScene extends BasicScene {
                 fill: '#fff'
             }
         });
+        self.loadingText.setOrigin(0.5, 0.5);
 
-        self.createProgressBar();
-    
-        self.load.on('complete', function () {
-            self.loadingText.setText('連接完成')
-            self.time.addEvent({
-                delay: 500,
-                callback: () => self.scene.start('Tutor')
-            })
+        self.load.on('progress', function (value) {
+            self.progressBar.clear();
+            self.progressBar.fillStyle(0xFC8EFA, 1);
+            self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
         });
 
+        self.load.on('complete', function () {
+            self.loadingText.setText('連接完成');
+            self.ready();
+        }.bind(self));
+    }
+    ready() {
+        let self = this
+        self.scene.start('Tutor');
     }
 }

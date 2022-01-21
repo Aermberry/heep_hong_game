@@ -17,7 +17,6 @@ export default class LeftMoveButton extends BasicButton {
   onClick() {
     this.moveToLeft()
   }
-
   /**
      * 往左移动
       */

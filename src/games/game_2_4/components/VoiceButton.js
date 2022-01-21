@@ -1,4 +1,4 @@
-import Button from "../Framework/UI/Button";
+import Button from "../framework/UI/Button";
 
 
 export default class VoiceButton extends Button {

@@ -4,6 +4,7 @@ import BasicScene from "./BasicScene"
 import GameManager from "../components/GameManager";
 import GameSprite from "../components/GameSprite";
 import { createTutorAnimation } from "../assets/animations/TutorAnimation";
+// import Phaser from "phaser";
 
 export default class TutorScene extends BasicScene {
 

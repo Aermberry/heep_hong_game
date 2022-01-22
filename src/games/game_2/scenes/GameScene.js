@@ -13,8 +13,9 @@ import EggQuestion from "../components/EggQuestion";
 import ClawBox from "../components/ClawBox";
 import ComposeSprite from "../components/ComposeSprite";
 import Phaser from "phaser";
-import TweenAnimation from "../components/TweenAnimation";
+import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import LoadProgress from "../components/LoadProgress";
+import GameModel from "../game_mode/GameModel";
 
 
 export default class GameScene extends BasicScene {
@@ -29,7 +30,6 @@ export default class GameScene extends BasicScene {
         this.questionNumberList = [];
 
         this.answerArea = undefined;
-        this.hasGameChance = undefined;
         this.currentQuestionAnswer = undefined;
         this.questionDisplayDirection = undefined;
         this.positions = undefined;
@@ -224,13 +224,11 @@ export default class GameScene extends BasicScene {
         let errorQuestionIndex = JSON.parse(localStorage.getItem('errorQuestionIndex'));
 
         if (errorQuestionIndex == null) {
-            this.hasGameChance = false;
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
 
         } else {
 
             if (JSON.parse(localStorage.getItem('gameChance'))) {
-                this.hasGameChance = true;
                 this.questionIndex = errorQuestionIndex;
             }
 
@@ -400,7 +398,7 @@ export default class GameScene extends BasicScene {
                 let rightItem;
 
                 eggItemList.forEach(eggItem => {
-                    eggItem.setRemoveListener(); 
+                    eggItem.setRemoveListener();
                 });
 
                 targetItem.setRemoveListener()
@@ -418,6 +416,7 @@ export default class GameScene extends BasicScene {
 
 
                 this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
+                console.log({ "GameModel": GameModel.questionCount })
             });
 
             colliderList.push(collider);
@@ -461,8 +460,7 @@ export default class GameScene extends BasicScene {
         const correctSoundEffect = this.sound.add('correctSoundEffect');
 
         correctSoundEffect.on('complete', () => {
-            GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
-            GameManager.getInstance().updateGamePlayTotal((value) => {
+            GameManager.getInstance().getGameSuccess(this.questionIndex,(isLastQuestion) => {
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {
@@ -485,7 +483,7 @@ export default class GameScene extends BasicScene {
                             })
 
                             rightVoicePlayer.on('complete', () => {
-                                this.scene.start(value ? 'Game' : 'End')
+                                this.scene.start(isLastQuestion ? 'End' : 'Game')
                             })
                             leftVoicePlayer.play();
                         })
@@ -506,7 +504,7 @@ export default class GameScene extends BasicScene {
         dragItem.showErrorStatue(() => {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {
 
-                GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
+                GameManager.getInstance().getGameFail(this.questionIndex, (isFirstError, value) => {
                     console.log({
                         isLastQuestion: value
                     })
@@ -664,6 +662,8 @@ export default class GameScene extends BasicScene {
     }
 
     checkAnswer(dragItem, targetItem, currentQuestionAnswer, eggItemList) {
+
+
         let leftItem;
         let rightItem;
 

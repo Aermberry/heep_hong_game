@@ -30,7 +30,7 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 
 }
 
-class Game2_4 extends Phaser.Game {
+class Game2 extends Phaser.Game {
 
     constructor(config, urlParams) {
         super(config);
@@ -41,7 +41,7 @@ class Game2_4 extends Phaser.Game {
 
 function launch(urlParams) {
 
-    let game = new Game2_4(gameConfig, urlParams)
+    let game = new Game2(gameConfig, urlParams)
 
     return game
 }

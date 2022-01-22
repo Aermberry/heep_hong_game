@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
-import config from '../../game_26/config/index';
-import GameColors from '../../game_26/styles/Colors';
+import config from '../config/index';
+import GameColors from '../styles/Colors';
 
 export default class LoadProgress extends Phaser.GameObjects.Container {
 

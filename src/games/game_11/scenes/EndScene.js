@@ -10,9 +10,15 @@ export default class EndScene extends BasicScene {
 
     }
 
+    init() {
+        this.dataModel = this.sys.game.globals.model;
+    }
+
     create() {
 
         super.create();
+
+        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' }))
 
         this.buildBg('end_bg')
 

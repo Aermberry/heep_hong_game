@@ -25,6 +25,7 @@ export default class GameScene extends BasicScene {
     this.freezePlaySound = false;
     this.freezeSelectItem = false;
     this.lv2Start = false;
+
   }
 
   preload () {
@@ -51,24 +52,29 @@ export default class GameScene extends BasicScene {
       'l2Tut3': require('../assets/lv2_tut_3.png'),
       'l2Tut4': require('../assets/lv2_tut_4.png'),
       'finger': require('../assets/finger.png')
-    } 
+    }
 
     let soundFiles = {
       'i_want': require('../assets/voice/g001_00.mp3'),
+      'correct1': require('../assets/voice/Scifi_pipe_transition.mp3'),
+      'correct2': require('../assets/voice/child_only_clap.mp3'),
+      'wrong': require('../assets/voice/Tray_drop.mp3'),
     }
 
-    
+
     // self.load.audio('i_want', require('../assets/voice/g001_00.mp3'));
 
-    
+
 
     _.forEach(Choice, function(item) {
-      
+
       soundFiles[item.name] = require('../assets/voice/' + item.voice);
       imageFiles[item.name] = require('../assets/' + item.image);
       // self.load.image(item.name, require('../assets/'+item.image));
       // self.load.audio(item.name, require('../assets/voice/'+item.voice));
     })
+
+    self.load.atlas('wave',require('../assets/wave.png'), require('../assets/wave.json'));
 
 
     this.preloadFromArr({
@@ -78,47 +84,58 @@ export default class GameScene extends BasicScene {
     self.anims.create({
       key: 'char_bg',
       frames: self.anims.generateFrameNames('char_bg', {
-        prefix: 'frame',
+        prefix: 'char_bg',
         start: 0,
-        end: 49
+        end: 19,
+        zeroPad: 4
       }),
-      repeat: -1
+      repeat: -1,
+      duration: 2000
     });
 
     self.anims.create({
       key: 'chip_in',
       frames: self.anims.generateFrameNames('chipin', {
-        prefix: 'frame',
+        prefix: 'chipin',
         start: 0,
-        end: 20
+        end: 8,
+        zeroPad: 4,
       }),
+      duration: 500
     });
 
     self.anims.create({
       key: 'char_idle',
       frames: self.anims.generateFrameNames('char', {
-        prefix: 'frame',
+        // prefix: 'frame',
+        prefix: self.model.character.key,
         start: self.model.character.action.idle[0],
-        end: self.model.character.action.idle[1]
+        end: self.model.character.action.idle[1],
+        zeroPad: 4
       }),
-      repeat: -1
+      repeat: -1,
+      repeatDelay: 6000
     });
 
     self.anims.create({
       key: 'char_happy',
       frames: self.anims.generateFrameNames('char', {
-        prefix: 'frame',
+        // prefix: 'frame',
+        prefix: self.model.character.key,
         start: self.model.character.action.happy[0],
-        end: self.model.character.action.happy[1]
+        end: self.model.character.action.happy[1],
+        zeroPad: 4,
       }),
     });
 
     self.anims.create({
       key: 'char_sad',
       frames: self.anims.generateFrameNames('char', {
-        prefix: 'frame',
+        //prefix: 'frame',
+        prefix: self.model.character.key,
         start: self.model.character.action.sad[0],
-        end: self.model.character.action.sad[1]
+        end: self.model.character.action.sad[1],
+        zeroPad: 4
       }),
     });
 
@@ -128,6 +145,8 @@ export default class GameScene extends BasicScene {
 
   create () {
     let self = this
+
+    this.sys.game.globals.gtag.event(('game_1_start', { 'event_category': 'js_games', 'event_label': 'Game Start' }))
 
     this.bg.destroy()
 
@@ -191,7 +210,7 @@ export default class GameScene extends BasicScene {
         const curItem = cloneChoiceList2.pop()
         if(self.question.indexOf(curItem.name) != -1) tempChoice.push(curItem)
       }
-      
+
       tempChoice = _.shuffle(tempChoice)
 
       self.choice = tempChoice
@@ -270,13 +289,13 @@ export default class GameScene extends BasicScene {
 
     let correct = false
 
-    if(self.question.length == 4) {
-      correct = self.question.some((quest, ind)=> {
-        return itemsName[ind] === quest
+    if(self.question.length >= 4) {
+      correct = !self.question.some((quest, ind)=> {
+        return itemsName[ind] !== quest
       })
 
     }else {
-          
+
       correct = !self.question.some((quest)=> {
         return itemsName.indexOf(quest) === -1
       })
@@ -287,7 +306,7 @@ export default class GameScene extends BasicScene {
       self.correct();
 
       this.stageRepeat = false
-        
+
       self.tray = new Tray(self,config.width/2 + 564, 300);
       self.add.existing(self.tray);
       self.tray.init(itemsName,correct);
@@ -303,7 +322,7 @@ export default class GameScene extends BasicScene {
         self.tray = new Tray(self,config.width/2 + 564, 300);
         self.add.existing(self.tray);
         self.tray.init(itemsName,correct);
-  
+
         self.model.stage++;
       }
 
@@ -320,17 +339,47 @@ export default class GameScene extends BasicScene {
   }
 
   correct(){
-    let self = this
+    const self = this
+    let soundEffectCompleted = false
+    let animationCompleted = false
+    const soundEffect1 = self.sound.add('correct1')
+    const soundEffect2 = self.sound.add('correct2')
+    soundEffect1.play()
     self.char.play('char_happy').once("animationcomplete", function(){
-      self.next();
-    });
+      animationCompleted = true
+    })
+    soundEffect1.on('complete', function(){
+      soundEffect2.play()
+    })
+    soundEffect2.on('complete', function(){
+      soundEffectCompleted = true
+    })
+    const interval = setInterval(function() {
+      if (soundEffectCompleted && animationCompleted) {
+        self.next()
+        clearInterval(interval)
+      }
+    }, 250)
   }
 
   wrong(){
-    let self = this
+    const self = this
+    let soundEffectCompleted = false
+    let animationCompleted = false
+    const soundEffect = self.sound.add('wrong')
+    soundEffect.play()
     self.char.play('char_sad').once("animationcomplete", function(){
-      self.next();
-    });
+      soundEffectCompleted = true
+    })
+    soundEffect.on('complete', function(){
+      animationCompleted = true
+    })
+    const interval = setInterval(function() {
+      if (soundEffectCompleted && animationCompleted) {
+        self.next()
+        clearInterval(interval)
+      }
+    }, 250)
   }
 
   next(){
@@ -339,11 +388,11 @@ export default class GameScene extends BasicScene {
       if(self.model.level == 3){
         self.end();
       }else{
-        
+
         if(self.model.level == 2 && !self.lv2Start) {
-          
+
           self.blueScreenLogo.setAlpha(0)
-          
+
           self.add.existing(self.l2AlertBoard)
           await self.l2AlertBoard.playBroad()
           self.lv2Start = true

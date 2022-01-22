@@ -111,5 +111,18 @@ export default class SubjectItem extends Phaser.GameObjects.Container {
             }
         })
     }
+
+    sortBySeed() {
+        this.list.sort(this.compare('seed'))
+        this.reRender();
+    }
+
+    compare(p){ //这是比较函数
+        return function(m,n){
+            var a = m[p];
+            var b = n[p];
+            return a - b; //升序
+        }
+    }
 }
 

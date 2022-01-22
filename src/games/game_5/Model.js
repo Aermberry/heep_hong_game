@@ -21,6 +21,11 @@ export default class Model {
 
     }
 
+    get gameStageFolder() {
+        if(typeof this._gameStage === 'undefined' || this._gameStage == null) return 'game'+this._gameData[0].gameStage;
+        return 'game'+this._gameStage;
+    }
+
     get gameAnswers() {
 
         if(this._gameStage == null) {

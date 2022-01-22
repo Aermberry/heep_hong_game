@@ -14,11 +14,11 @@ export default class CatBack extends Phaser.GameObjects.Container {
         scene.anims.create({
             key: 'headband',
             repeat: -1,
-            frames: scene.anims.generateFrameNames('headband', { prefix: 'headband', start: 0, end: 18, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('headband', { prefix: 'headband', start: 0, end: 19, zeroPad: 4 }),
         });
         scene.anims.create({
             key: 'cat_shave',
-            frames: scene.anims.generateFrameNames('cat_back', { prefix: 'cat_back', start: 10, end: 38, zeroPad: 4 }),
+            frames: scene.anims.generateFrameNames('cat_back', { prefix: 'cat_back', start: 0, end: 15, zeroPad: 4 }),
         });
 
         this.catBack = scene.add.sprite(0, 0, 'cat_back')

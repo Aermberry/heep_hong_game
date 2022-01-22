@@ -83,7 +83,7 @@ export default {
         const game = await import('@/games/game_'+gameId+'/index')
         self.downloaded = true
         self.$nextTick(() => {
-          self.gameInstance = game.launch(self.$route.params);
+          self.gameInstance = game.launch(self.$route.params, self.$gtag);
           self.$gamePause.initService(self.gameInstance, 15, 5)
           self.$gamePause.initGameTrackTimer()
         });

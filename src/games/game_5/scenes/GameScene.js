@@ -30,6 +30,7 @@ export default class GameScene extends BasicScene {
         this.answers = []
         this.curItem = null
         this.cat = null
+        this.introPlayed = false
 
     }
 
@@ -40,12 +41,11 @@ export default class GameScene extends BasicScene {
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
         let gameMusic = this.sound.add('drums')
         gameMusic.setLoop(true)
-        gameMusic.play()
 
         let afterMatchMusic = this.sound.add('lightBattle')
         afterMatchMusic.setLoop(true)
 
-
+        
         const itemImgList = {
             5: {
                 item: require('../assets/images/item_bam.png'),
@@ -168,6 +168,13 @@ export default class GameScene extends BasicScene {
 
         this.sound.stopAll()
         this.sound.play('drums')
+       
+        if(this.dataModal.gameStage == 21 && !this.introPlayed) {
+
+            this.introPlayed = true
+            let introSound = this.sound.add('intro_voice')
+            introSound.play()
+        }
 
         this.catBack = new CatBack(this, this.getColWidth(10), this.getRowHeight(9))
 
@@ -212,6 +219,8 @@ export default class GameScene extends BasicScene {
     create() {
 
         super.create();
+
+        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'}))
 
         this.disableInput = false;
         this.items = []

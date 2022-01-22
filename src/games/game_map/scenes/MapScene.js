@@ -5,6 +5,7 @@ import Balloon from '../objects/animations/Balloon'
 import Cloud from '../objects/animations/Cloud';
 import SwipeUfo from '../objects/animations/SwipeUfo'
 import LampLight from '../objects/animations/LampLight';
+import Game6Btn from '../objects/Game6Btn';
 
 export default class MapScene extends BasicScene {
 
@@ -13,7 +14,7 @@ export default class MapScene extends BasicScene {
     }
 
     init() {
-        this.gameMusic = this.sound.add('bgm')
+        this.gameMusic = this.sound.add('bgm', {volume: 0.4})
         this.gameMusic.setLoop(true)
     }
 
@@ -41,7 +42,8 @@ export default class MapScene extends BasicScene {
         const game3Btn = new SectionBtn(this, this.getColWidth(5.64), this.getRowHeight(8.9), 'section3Btn', 'Section_3')
         const game4Btn = new SectionBtn(this, this.getColWidth(2.95), this.getRowHeight(6.1), 'section4Btn', 'Section_4')
         const game5Btn = new SectionBtn(this, this.getColWidth(9.5), this.getRowHeight(7.1), 'section5Btn', 'Section_5')
-        const game6Btn = new SectionBtn(this, this.getColWidth(6.15), this.getRowHeight(5.27), 'section6Btn', 'Section_6')
+//        const game6Btn = new SectionBtn(this, this.getColWidth(6.15), this.getRowHeight(5.27), 'section6Btn', 'Section_6')
+        const game6Btn = new Game6Btn(this, this.getColWidth(6.15), this.getRowHeight(5.27), 'section6Btn')
         // const game6Btn = new Game6Btn(this, this.getColWidth(6.15), this.getRowHeight(5.27))
         const balloon = new Balloon(this, this.getColWidth(4), this.getRowHeight(8.9))
         const balloon2 = new Balloon(this, this.getColWidth(7), this.getRowHeight(7.5))

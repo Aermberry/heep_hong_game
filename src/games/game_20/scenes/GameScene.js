@@ -1,7 +1,7 @@
 import BasicScene from "./BasicScene"
 import ExitBtn from '../objects/ExitBtn'
 import TipsBtn from '../objects/TipsBtn'
-// import SpeakerBtn from '../objects/SpeakerBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 import HanziWriter from "../hanzi-writer/index.cjs";
 
 export default class GameScene extends BasicScene {
@@ -62,7 +62,7 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'done',
             delay: 200,
-            frames: this.anims.generateFrameNames('done', { prefix: 'done', start: 0, end: 29, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('done', { prefix: 'done', start: 0, end: 5, zeroPad: 4 }),
             repeat: 0
         });
         const imageFiles = {
@@ -83,15 +83,25 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         this.buildBg('bg');
+        this.sound.stopAll();
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            })
+            this.music.setLoop(true)
+            this.music.play();
+        }
         let gameCanvas = document.getElementById('game-container').lastElementChild;
-        gameCanvas.setAttributeNS(null,'id', 'gameCanvas')
+        gameCanvas.setAttributeNS(null, 'id', 'gameCanvas')
         this.size = null;
         this.getGameCanvas()
         this.observerWatch();
         //获取游戏画布大小
         this.g = document.createElement('div');
         this.g.setAttribute('id', 'grid-background-target');
-        this.g.style.zIndex = 999;
+        // this.g.style.zIndex = 999;
         this.g.style.position = 'absolute';
         this.g.style.top = "0"
         this.g.style.marginLeft = "33.3%";
@@ -100,15 +110,15 @@ export default class GameScene extends BasicScene {
         body.appendChild(this.g);
         //监听可视窗口变化
         // this.addListernerWindowSize()
-
         // this.add.dom(this.getColWidth(6), this.getRowHeight(6), g, 'width:650px;height:650px;')
 
         let exitBtn = new ExitBtn(this, 120, 135);
         this.tipsBtn = new TipsBtn(this, this.getColWidth(10), this.getRowHeight(10))
-        // this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135);
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135, this.musicPause.bind(this));
+
         this.add.existing(exitBtn);
         this.add.existing(this.tipsBtn);
-        // this.add.existing(this.speakerBtn);
+        this.add.existing(this.speakerBtn);
 
         let dog = this.add.sprite(this.getColWidth(1.5), this.getRowHeight(9), 'dog')
         dog.play('dog');
@@ -151,6 +161,8 @@ export default class GameScene extends BasicScene {
         let that = this;
         this.writer.quiz({
             onCorrectStroke: function (strokeData) {
+                let writingAudio = that.sound.add('writing');
+                writingAudio.play();
                 if (strokeData.strokesRemaining > 0) {
                     that.strokeNum = strokeData.strokeNum + 1;
                 }
@@ -158,7 +170,6 @@ export default class GameScene extends BasicScene {
             onMistake: function () {
                 that.strokeError();
                 // document.getElementById('grid-background-target').
-
                 // console.log("您在该笔画上错了 " + strokeData.mistakesOnStroke + " 次");
                 // console.log("本次测验共错了 " + strokeData.totalMistakes + " 次");
                 // console.log("此字还剩 " + strokeData.strokesRemaining + "笔");
@@ -170,18 +181,31 @@ export default class GameScene extends BasicScene {
 
     }
 
+    musicPause() {
+        this.stopAll = !this.stopAll;
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            });
+            this.music.setLoop(true);
+            this.music.play();
+        }
+    }
+
     observerWatch() {
         let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
         let element = document.querySelector('#gameCanvas')
         let that = this;
         this.observer = new MutationObserver(() => {
-          let width = getComputedStyle(element).getPropertyValue('width')
-          that.size = Number(width.split('px')[0]) / 2.953;
-          that.writer.updateDimensions({width: that.size, height: that.size});
+            let width = getComputedStyle(element).getPropertyValue('width')
+            that.size = Number(width.split('px')[0]) / 2.953;
+            that.writer.updateDimensions({ width: that.size, height: that.size });
         })
         this.observer.observe(element, { attributes: true, attributeFilter: ['style'], attributeOldValue: true })
-    
-     
+
+
     }
 
 
@@ -200,13 +224,17 @@ export default class GameScene extends BasicScene {
 
     strokeError() {
         let wrong = this.add.sprite(this.getColWidth(7.7), this.getRowHeight(2), 'wrong')
+        let wrongAudio = this.sound.add('wrong');
+        wrongAudio.play();
         wrong.play('wrong');
     }
 
     characterSuccess() {
         let done = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'done')
         done.play('done');
-        done.on('animationcomplete',() => {
+        let successAudio = this.sound.add('complete');
+        successAudio.play();
+        done.on('animationcomplete', () => {
             this.endGame();
         })
     }

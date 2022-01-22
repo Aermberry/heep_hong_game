@@ -97,4 +97,16 @@ export default class ItemPic extends Phaser.GameObjects.Container {
 
     }
 
+    getStrike() {
+
+        this.scene.tweens.add({
+            targets: this.textBlock,
+            x: this.textBlock.x + (this.textBlock.width * 0.01),
+            yoyo: true,
+            duration: 50,
+            repeat: 1
+        })
+
+    }
+
 }

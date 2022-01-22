@@ -9,12 +9,13 @@ export default class StartBtn extends BasicBtn {
     this.music.setLoop(true);
     this.music.play();
     this.create(sprite, this.onClick.bind(this))
-
+    this.goFullscreenOnClick();
   }
 
   onClick() {
     this.scene.sound.stopAll();
-    this.scene.scene.start('Game', { number: 0, currentQuestionGroup: [], stopAll: false })
+    this.scene.scene.start('PreloaderGame')
+    //this.scene.scene.start('Game', { number: 0, currentQuestionGroup: [], stopAll: false })
 
   }
 }

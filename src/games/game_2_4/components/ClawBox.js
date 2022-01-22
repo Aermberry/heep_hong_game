@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import TweenAnimation from './TweenAnimation';
+import TweenAnimation from '../phaser3_framework/util/TweenAnimation';
 // import EggQuestion from "../components/EggQuestion";
 
 export default class ClawBox extends Phaser.GameObjects.Container {

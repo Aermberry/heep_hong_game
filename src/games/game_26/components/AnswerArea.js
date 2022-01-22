@@ -97,6 +97,7 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
     }
 
     showAnswerPanelAnimation(scene) {
+        this.scene.sound.play('openCapsuleEffectSound');
         scene.add.tween({
             targets: this.answerPanel,
             x: { from: 3000, to: 1000 },
@@ -124,9 +125,9 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         this.SetEnableInput();
     }
 
-    showCurrentAnswer(scene) {
+    showCurrentAnswer(scene,questionIndex) {
         console.log("showCurrentAnswer");
-        this.answerPanel.setCurrentAnswer(scene)
+        this.answerPanel.setCurrentAnswer(scene,questionIndex)
     }
 
     SetEnableInput() {

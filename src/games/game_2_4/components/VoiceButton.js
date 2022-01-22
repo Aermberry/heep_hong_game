@@ -1,4 +1,4 @@
-import Button from "../phaser3_framework/UI/Button";
+import Button from "../phaser3_framework/ui/Button";
 
 
 export default class VoiceButton extends Button {

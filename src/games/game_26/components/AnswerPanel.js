@@ -118,11 +118,12 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
         })
     }
 
-    setCurrentAnswer(scene) {
+    setCurrentAnswer(scene,questionIndex) {
 
         scene.time.addEvent({
             delay: 2000,
             callback: () => {
+                this.scene.sound.play("voice"+questionIndex);
                 this._text = this._answer;
                 this.labelText.setText(this._text);
             },

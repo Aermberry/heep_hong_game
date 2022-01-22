@@ -18,6 +18,7 @@ export default class ConfirmButton extends Phaser.GameObjects.Container {
             Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                 console.log("down")
                 this.texture.setFrame(1);
+                this.scene.sound.play('buttonOnClickedEffectSound');
                 this.onDownClicked();
             }
         )

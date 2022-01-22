@@ -9,7 +9,6 @@ import {
 import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
 import AnswerArea from "../components/AnswerArea";
-// import TweenAnimation from "../components/TweenAnimation";
 
 export default class GameScene extends BasicScene {
 
@@ -31,22 +30,28 @@ export default class GameScene extends BasicScene {
     preload() {
 
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
-        // this.preloadFromArr({
-        // sound: this.sound.add('drums').setLoop(true).play()
-        // });
-
-
-
-
     }
 
     create() {
 
         super.create();
 
+        this.sound.stopAll();
+
         createEggTwistingMachineAnimation(this.anims);
         createStarAnimation(this.anims);
         this.paintGameScene(this);
+
+        this.playBackgroundMusic('gamePlaySceneBGM');
+    }
+
+    playBackgroundMusic(backgroundSound) {
+
+        const backgroundMusic = this.sound.add(backgroundSound, {
+            volume: 0.2,
+            loop: true
+        });
+        backgroundMusic.play();
     }
 
     /**
@@ -73,8 +78,9 @@ export default class GameScene extends BasicScene {
 
         question = JSON.parse(localStorage.getItem(this.questionIndex));
 
-        // question = JSON.parse(localStorage.getItem(17));
-        console.log("当前抽取的题目:%o", question);
+        // question = JSON.parse(localStorage.getItem(12));
+        // this.questionIndex=12;
+        // console.log("当前抽取的题目:%o", question);
 
         this.currentQuestionAnswer = question.answer;
 
@@ -128,7 +134,8 @@ export default class GameScene extends BasicScene {
 
         const mask = shape.createGeometryMask();
         eggSprite.setMask(mask);
-
+        const ballSpinEffectSound = this.sound.add('ballSpinEffectSound');
+        ballSpinEffectSound.play();
         eggTwistingMachineSprite.on("animationcomplete", () => {
             this.add.tween({
                 targets: this.cameras.main.setOrigin(0, 1),
@@ -137,6 +144,7 @@ export default class GameScene extends BasicScene {
                 duration: 1000,
                 ease: 'Power2',
                 onComplete: () => {
+                    ballSpinEffectSound.stop();
                     this.add.tween({
                         targets: eggSprite,
                         y: 1200,
@@ -173,13 +181,15 @@ export default class GameScene extends BasicScene {
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
         GameManager.getInstance().updateGamePlayTotal((value) => {
             this.time.addEvent({
-                delay: 1000,
+                delay: 10000,
                 callback: () => this.scene.start(value ? 'Game' : 'End')
             })
         });
 
 
-        // this.sound.add('starEffectSound').play();
+        this.sound.play('answerCorrectEffectSound');
+        this.sound.play('gameWinEffectSound')
+        this.sound.play('voice'+this.questionIndex);
     }
 
 
@@ -192,18 +202,17 @@ export default class GameScene extends BasicScene {
             _isFirstError = isFirstError;
             console.log({ isLastQuestion: value })
             this.time.addEvent({
-                delay: isFirstError ? 2000 : 5000,
+                delay: isFirstError ? 2000 : 10000,
                 callback: () => value ? this.scene.start('End') : this.scene.restart('Game')
             });
         }
         );
 
-
+        this.sound.play('answerErrorEffectSound');
         if (!_isFirstError) {
-            this.answerArea.showCurrentAnswer(this);
+            this.sound.play('gameLoseEffectSound');
+            this.answerArea.showCurrentAnswer(this,this.questionIndex);
         }
-
-        console.log({ _isFirstError });
     }
 
 

@@ -59,110 +59,46 @@ export default class GameScene extends BasicScene {
         );
 
         const soundFiles = {
-            'voiceAnswerObject0': require('../assets/audio/voice/answer_objects/voice_answer_object_0.mp3'),
-            'voiceAnswerObject1': require('../assets/audio/voice/answer_objects/voice_answer_object_1.mp3'),
-            'voiceAnswerObject2': require('../assets/audio/voice/answer_objects/voice_answer_object_2.mp3'),
-            'voiceAnswerObject3': require('../assets/audio/voice/answer_objects/voice_answer_object_3.mp3'),
-            'voiceAnswerObject4': require('../assets/audio/voice/answer_objects/voice_answer_object_4.mp3'),
-            'voiceAnswerObject5': require('../assets/audio/voice/answer_objects/voice_answer_object_5.mp3'),
-            'voiceAnswerObject6': require('../assets/audio/voice/answer_objects/voice_answer_object_6.mp3'),
-            'voiceAnswerObject7': require('../assets/audio/voice/answer_objects/voice_answer_object_7.mp3'),
-            'voiceAnswerObject8': require('../assets/audio/voice/answer_objects/voice_answer_object_8.mp3'),
-            'voiceAnswerObject9': require('../assets/audio/voice/answer_objects/voice_answer_object_9.mp3'),
-            'voiceAnswerObject10': require('../assets/audio/voice/answer_objects/voice_answer_object_10.mp3'),
-            'voiceAnswerObject11': require('../assets/audio/voice/answer_objects/voice_answer_object_11.mp3'),
-            'voiceAnswerObject12': require('../assets/audio/voice/answer_objects/voice_answer_object_12.mp3'),
-            'voiceAnswerObject13': require('../assets/audio/voice/answer_objects/voice_answer_object_13.mp3'),
-            'voiceAnswerObject14': require('../assets/audio/voice/answer_objects/voice_answer_object_14.mp3'),
-            'voiceAnswerObject15': require('../assets/audio/voice/answer_objects/voice_answer_object_15.mp3'),
-            'voiceAnswerObject16': require('../assets/audio/voice/answer_objects/voice_answer_object_16.mp3'),
-            'voiceAnswerObject17': require('../assets/audio/voice/answer_objects/voice_answer_object_17.mp3'),
-            'voiceAnswerObject18': require('../assets/audio/voice/answer_objects/voice_answer_object_18.mp3'),
-            'voiceAnswerObject19': require('../assets/audio/voice/answer_objects/voice_answer_object_19.mp3'),
-            'voiceAnswerObject20': require('../assets/audio/voice/answer_objects/voice_answer_object_20.mp3'),
-            'voiceAnswerObject21': require('../assets/audio/voice/answer_objects/voice_answer_object_21.mp3'),
-            'voiceAnswerObject22': require('../assets/audio/voice/answer_objects/voice_answer_object_22.mp3'),
-            'voiceAnswerObject23': require('../assets/audio/voice/answer_objects/voice_answer_object_23.mp3'),
-            'voiceAnswerObject24': require('../assets/audio/voice/answer_objects/voice_answer_object_24.mp3'),
-            'voiceAnswerObject25': require('../assets/audio/voice/answer_objects/voice_answer_object_25.mp3'),
-            'voiceAnswerObject26': require('../assets/audio/voice/answer_objects/voice_answer_object_26.mp3'),
-            'voiceAnswerObject27': require('../assets/audio/voice/answer_objects/voice_answer_object_27.mp3'),
-            'voiceAnswerObject28': require('../assets/audio/voice/answer_objects/voice_answer_object_28.mp3'),
-            'voiceAnswerObject29': require('../assets/audio/voice/answer_objects/voice_answer_object_29.mp3'),
-
-            'voiceItemObject0': require('../assets/audio/voice/item_objects/voice_item_object_0.mp3'),
-            'voiceItemObject1': require('../assets/audio/voice/item_objects/voice_item_object_1.mp3'),
-            'voiceItemObject2': require('../assets/audio/voice/item_objects/voice_item_object_2.mp3'),
-            'voiceItemObject3': require('../assets/audio/voice/item_objects/voice_item_object_3.mp3'),
-            'voiceItemObject4': require('../assets/audio/voice/item_objects/voice_item_object_4.mp3'),
-            'voiceItemObject5': require('../assets/audio/voice/item_objects/voice_item_object_5.mp3'),
-            'voiceItemObject6': require('../assets/audio/voice/item_objects/voice_item_object_6.mp3'),
-            'voiceItemObject7': require('../assets/audio/voice/item_objects/voice_item_object_7.mp3'),
-            'voiceItemObject8': require('../assets/audio/voice/item_objects/voice_item_object_8.mp3'),
-            'voiceItemObject9': require('../assets/audio/voice/item_objects/voice_item_object_9.mp3'),
-            'voiceItemObject10': require('../assets/audio/voice/item_objects/voice_item_object_10.mp3'),
-            'voiceItemObject11': require('../assets/audio/voice/item_objects/voice_item_object_11.mp3'),
-            'voiceItemObject12': require('../assets/audio/voice/item_objects/voice_item_object_12.mp3'),
-            'voiceItemObject13': require('../assets/audio/voice/item_objects/voice_item_object_13.mp3'),
-            'voiceItemObject14': require('../assets/audio/voice/item_objects/voice_item_object_14.mp3'),
-            'voiceItemObject15': require('../assets/audio/voice/item_objects/voice_item_object_15.mp3'),
-            'voiceItemObject16': require('../assets/audio/voice/item_objects/voice_item_object_16.mp3'),
-            'voiceItemObject17': require('../assets/audio/voice/item_objects/voice_item_object_17.mp3'),
-            'voiceItemObject18': require('../assets/audio/voice/item_objects/voice_item_object_18.mp3'),
-            'voiceItemObject19': require('../assets/audio/voice/item_objects/voice_item_object_19.mp3'),
-            'voiceItemObject20': require('../assets/audio/voice/item_objects/voice_item_object_20.mp3'),
-            'voiceItemObject21': require('../assets/audio/voice/item_objects/voice_item_object_21.mp3'),
-            'voiceItemObject22': require('../assets/audio/voice/item_objects/voice_item_object_22.mp3'),
-            'voiceItemObject23': require('../assets/audio/voice/item_objects/voice_item_object_23.mp3'),
-            'voiceItemObject24': require('../assets/audio/voice/item_objects/voice_item_object_24.mp3'),
-            'voiceItemObject25': require('../assets/audio/voice/item_objects/voice_item_object_25.mp3'),
-            'voiceItemObject26': require('../assets/audio/voice/item_objects/voice_item_object_26.mp3'),
-            'voiceItemObject27': require('../assets/audio/voice/item_objects/voice_item_object_27.mp3'),
-            'voiceItemObject28': require('../assets/audio/voice/item_objects/voice_item_object_28.mp3'),
-            'voiceItemObject29': require('../assets/audio/voice/item_objects/voice_item_object_29.mp3'),
-            'voiceItemObject30': require('../assets/audio/voice/item_objects/voice_item_object_30.mp3'),
-            'voiceItemObject31': require('../assets/audio/voice/item_objects/voice_item_object_31.mp3'),
-            'voiceItemObject32': require('../assets/audio/voice/item_objects/voice_item_object_32.mp3'),
-            'voiceItemObject33': require('../assets/audio/voice/item_objects/voice_item_object_33.mp3'),
-            'voiceItemObject34': require('../assets/audio/voice/item_objects/voice_item_object_34.mp3'),
-            'voiceItemObject35': require('../assets/audio/voice/item_objects/voice_item_object_35.mp3'),
-            'voiceItemObject36': require('../assets/audio/voice/item_objects/voice_item_object_36.mp3'),
+            'voice0': require('../assets/audio/voice/0.mp3'),
+            'voice1': require('../assets/audio/voice/1.mp3'),
+            'voice2': require('../assets/audio/voice/2.mp3'),
+            'voice3': require('../assets/audio/voice/3.mp3'),
+            'voice4': require('../assets/audio/voice/4.mp3'),
+            'voice5': require('../assets/audio/voice/5.mp3'),
+            'voice6': require('../assets/audio/voice/6.mp3'),
+            'voice7': require('../assets/audio/voice/7.mp3'),
+            'voice8': require('../assets/audio/voice/8.mp3'),
+            'voice9': require('../assets/audio/voice/9.mp3'),
+            'voice10': require('../assets/audio/voice/10.mp3'),
+            'voice11': require('../assets/audio/voice/11.mp3'),
+            'voice12': require('../assets/audio/voice/12.mp3'),
+            'voice13': require('../assets/audio/voice/13.mp3'),
+            'voice14': require('../assets/audio/voice/14.mp3'),
+            'voice15': require('../assets/audio/voice/15.mp3'),
+            'voice16': require('../assets/audio/voice/16.mp3'),
+            'voice17': require('../assets/audio/voice/17.mp3'),
+            'voice18': require('../assets/audio/voice/18.mp3'),
+            'voice19': require('../assets/audio/voice/19.mp3'),
+            'voice20': require('../assets/audio/voice/20.mp3'),
+            'voice21': require('../assets/audio/voice/21.mp3'),
+            'voice22': require('../assets/audio/voice/22.mp3'),
+            'voice23': require('../assets/audio/voice/23.mp3'),
+            'voice24': require('../assets/audio/voice/24.mp3'),
+            'voice25': require('../assets/audio/voice/25.mp3'),
+            'voice26': require('../assets/audio/voice/26.mp3'),
+            'voice27': require('../assets/audio/voice/27.mp3'),
+            'voice28': require('../assets/audio/voice/28.mp3'),
+            'voice29': require('../assets/audio/voice/29.mp3'),
+            'voice30': require('../assets/audio/voice/30.mp3'),
+            'voice31': require('../assets/audio/voice/31.mp3'),
+            'voice32': require('../assets/audio/voice/32.mp3'),
+            'voice33': require('../assets/audio/voice/33.mp3'),
+            'voice34': require('../assets/audio/voice/34.mp3'),
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), { frameWidth: 612, frameHeight: 770 });
         this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), { frameWidth: 633, frameHeight: 630 });
         this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), { frameWidth: 2180, frameHeight: 1980 });
-
-        this.load.spritesheet("textureAnswerObject0", require('../assets/images/objects/texture_answer_objects/texture_answer_object_0.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject1", require('../assets/images/objects/texture_answer_objects/texture_answer_object_1.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject2", require('../assets/images/objects/texture_answer_objects/texture_answer_object_2.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject3", require('../assets/images/objects/texture_answer_objects/texture_answer_object_3.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject4", require('../assets/images/objects/texture_answer_objects/texture_answer_object_4.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject5", require('../assets/images/objects/texture_answer_objects/texture_answer_object_5.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject6", require('../assets/images/objects/texture_answer_objects/texture_answer_object_6.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject7", require('../assets/images/objects/texture_answer_objects/texture_answer_object_7.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject8", require('../assets/images/objects/texture_answer_objects/texture_answer_object_8.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject9", require('../assets/images/objects/texture_answer_objects/texture_answer_object_9.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject10", require('../assets/images/objects/texture_answer_objects/texture_answer_object_10.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject11", require('../assets/images/objects/texture_answer_objects/texture_answer_object_11.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject12", require('../assets/images/objects/texture_answer_objects/texture_answer_object_12.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject13", require('../assets/images/objects/texture_answer_objects/texture_answer_object_13.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject14", require('../assets/images/objects/texture_answer_objects/texture_answer_object_14.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject15", require('../assets/images/objects/texture_answer_objects/texture_answer_object_15.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject16", require('../assets/images/objects/texture_answer_objects/texture_answer_object_16.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject17", require('../assets/images/objects/texture_answer_objects/texture_answer_object_17.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject18", require('../assets/images/objects/texture_answer_objects/texture_answer_object_18.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject19", require('../assets/images/objects/texture_answer_objects/texture_answer_object_19.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject20", require('../assets/images/objects/texture_answer_objects/texture_answer_object_20.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject21", require('../assets/images/objects/texture_answer_objects/texture_answer_object_21.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject22", require('../assets/images/objects/texture_answer_objects/texture_answer_object_22.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject23", require('../assets/images/objects/texture_answer_objects/texture_answer_object_23.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject24", require('../assets/images/objects/texture_answer_objects/texture_answer_object_24.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject25", require('../assets/images/objects/texture_answer_objects/texture_answer_object_25.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject26", require('../assets/images/objects/texture_answer_objects/texture_answer_object_26.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject27", require('../assets/images/objects/texture_answer_objects/texture_answer_object_27.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject28", require('../assets/images/objects/texture_answer_objects/texture_answer_object_28.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject29", require('../assets/images/objects/texture_answer_objects/texture_answer_object_29.png'), { frameWidth: 636, frameHeight: 630 });
 
         this.preloadFromArr({ sound: soundFiles });
     }

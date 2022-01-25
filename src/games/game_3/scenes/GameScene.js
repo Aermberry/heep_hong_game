@@ -4,7 +4,7 @@ import GameManager from '../components/GameManager';
 import {
     createLionLeftRecorderAnimation
 } from "../assets/animations/LionLeftRecorderAnimation";
-import GameSprite from "../components/GameSprite";
+import GameSprite from "../phaser3_framework/object/GameSprite";
 import {
     createPenguinAnimation
 } from "../assets/animations/PenguinAnimation";
@@ -16,6 +16,8 @@ import Phaser from "phaser";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import LoadProgress from "../components/LoadProgress";
 import GameModel from "../game_mode/GameModel";
+import Player from "../components/Player";
+import { createPlayerAnimation } from "../assets/animations/PlayerAnimation";
 
 
 export default class GameScene extends BasicScene {
@@ -59,41 +61,46 @@ export default class GameScene extends BasicScene {
         );
 
         const soundFiles = {
-            'voice0': require('../assets/audio/voice/0.mp3'),
-            'voice1': require('../assets/audio/voice/1.mp3'),
-            'voice2': require('../assets/audio/voice/2.mp3'),
-            'voice3': require('../assets/audio/voice/3.mp3'),
-            'voice4': require('../assets/audio/voice/4.mp3'),
-            'voice5': require('../assets/audio/voice/5.mp3'),
-            'voice6': require('../assets/audio/voice/6.mp3'),
-            'voice7': require('../assets/audio/voice/7.mp3'),
-            'voice8': require('../assets/audio/voice/8.mp3'),
-            'voice9': require('../assets/audio/voice/9.mp3'),
-            'voice10': require('../assets/audio/voice/10.mp3'),
-            'voice11': require('../assets/audio/voice/11.mp3'),
-            'voice12': require('../assets/audio/voice/12.mp3'),
-            'voice13': require('../assets/audio/voice/13.mp3'),
-            'voice14': require('../assets/audio/voice/14.mp3'),
-            'voice15': require('../assets/audio/voice/15.mp3'),
-            'voice16': require('../assets/audio/voice/16.mp3'),
-            'voice17': require('../assets/audio/voice/17.mp3'),
-            'voice18': require('../assets/audio/voice/18.mp3'),
-            'voice19': require('../assets/audio/voice/19.mp3'),
-            'voice20': require('../assets/audio/voice/20.mp3'),
-            'voice21': require('../assets/audio/voice/21.mp3'),
-            'voice22': require('../assets/audio/voice/22.mp3'),
-            'voice23': require('../assets/audio/voice/23.mp3'),
-            'voice24': require('../assets/audio/voice/24.mp3'),
-            'voice25': require('../assets/audio/voice/25.mp3'),
-            'voice26': require('../assets/audio/voice/26.mp3'),
-            'voice27': require('../assets/audio/voice/27.mp3'),
-            'voice28': require('../assets/audio/voice/28.mp3'),
-            'voice29': require('../assets/audio/voice/29.mp3'),
-            'voice30': require('../assets/audio/voice/30.mp3'),
-            'voice31': require('../assets/audio/voice/31.mp3'),
-            'voice32': require('../assets/audio/voice/32.mp3'),
-            'voice33': require('../assets/audio/voice/33.mp3'),
-            'voice34': require('../assets/audio/voice/34.mp3'),
+            'voice0': require('../assets/audio/voice/object/0.mp3'),
+            'voice1': require('../assets/audio/voice/object/1.mp3'),
+            'voice2': require('../assets/audio/voice/object/2.mp3'),
+            'voice3': require('../assets/audio/voice/object/3.mp3'),
+            'voice4': require('../assets/audio/voice/object/4.mp3'),
+            'voice5': require('../assets/audio/voice/object/5.mp3'),
+            'voice6': require('../assets/audio/voice/object/6.mp3'),
+            'voice7': require('../assets/audio/voice/object/7.mp3'),
+            'voice8': require('../assets/audio/voice/object/8.mp3'),
+            'voice9': require('../assets/audio/voice/object/9.mp3'),
+            'voice10': require('../assets/audio/voice/object/10.mp3'),
+            'voice11': require('../assets/audio/voice/object/11.mp3'),
+            'voice12': require('../assets/audio/voice/object/12.mp3'),
+            'voice13': require('../assets/audio/voice/object/13.mp3'),
+            'voice14': require('../assets/audio/voice/object/14.mp3'),
+            'voice15': require('../assets/audio/voice/object/15.mp3'),
+            'voice16': require('../assets/audio/voice/object/16.mp3'),
+            'voice17': require('../assets/audio/voice/object/17.mp3'),
+            'voice18': require('../assets/audio/voice/object/18.mp3'),
+            'voice19': require('../assets/audio/voice/object/19.mp3'),
+            'voice20': require('../assets/audio/voice/object/20.mp3'),
+            'voice21': require('../assets/audio/voice/object/21.mp3'),
+            'voice22': require('../assets/audio/voice/object/22.mp3'),
+            'voice23': require('../assets/audio/voice/object/23.mp3'),
+            'voice24': require('../assets/audio/voice/object/24.mp3'),
+            'voice25': require('../assets/audio/voice/object/25.mp3'),
+            'voice26': require('../assets/audio/voice/object/26.mp3'),
+            'voice27': require('../assets/audio/voice/object/27.mp3'),
+            'voice28': require('../assets/audio/voice/object/28.mp3'),
+            'voice29': require('../assets/audio/voice/object/29.mp3'),
+            'voice30': require('../assets/audio/voice/object/30.mp3'),
+            'voice31': require('../assets/audio/voice/object/31.mp3'),
+            'voice32': require('../assets/audio/voice/object/32.mp3'),
+            'voice33': require('../assets/audio/voice/object/33.mp3'),
+            'voice34': require('../assets/audio/voice/object/34.mp3'),
+
+            'voiceOver0': require('../assets/audio/voice/voice_over/0.mp3'),
+            'voiceOver1': require('../assets/audio/voice/voice_over/1.mp3'),
+            'voiceOver2': require('../assets/audio/voice/voice_over/2.mp3'),
+            'voiceOver3': require('../assets/audio/voice/voice_over/3.mp3'),
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), { frameWidth: 612, frameHeight: 770 });
@@ -109,7 +116,7 @@ export default class GameScene extends BasicScene {
 
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
-        this.setGameDirection(question.direction);
+        this.setGameDirection("right");
         this.paintScene(question);
 
         this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
@@ -117,7 +124,6 @@ export default class GameScene extends BasicScene {
     }
 
     playBackgroundMusic(startSound, backgroundSound) {
-
         const clipDollTableEffectSound = this.sound.add(startSound);
         const backgroundMusic = this.sound.add(backgroundSound, {
             volume: 0.1,
@@ -136,6 +142,7 @@ export default class GameScene extends BasicScene {
     createAnimation(animationManager) {
         createLionLeftRecorderAnimation(animationManager);
         createPenguinAnimation(animationManager);
+        createPlayerAnimation(animationManager);
     }
 
     setGameDirection(direction) {
@@ -144,7 +151,7 @@ export default class GameScene extends BasicScene {
 
     isRightDirection() {
 
-        return this._gameDirection == "right"
+        return this._gameDirection == "right";
 
     }
 
@@ -190,10 +197,9 @@ export default class GameScene extends BasicScene {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
-
-
         /* UI Object */
         this.buildUiObject(this.uiLayer);
+        console.log({ currentGameQuestion });
 
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
@@ -215,20 +221,22 @@ export default class GameScene extends BasicScene {
     }
 
     buildGameObject(currentGameQuestion, layer) {
-        const phrases = this.shufflePosition(currentGameQuestion.phrases.items);
+        const phrases = this.shufflePosition(currentGameQuestion.item.items);
+
         const eggQuestion = new EggQuestion(this, {
             x: 0,
             y: 0
-        }, "eggQuestionTexture", currentGameQuestion.phrases.main, false);
+        }, "eggQuestionTexture", currentGameQuestion.question, false);
 
         let clawBoxPosition;
         let clawAnimationTargetPosition;
 
         let clawBox = new ClawBox(this, { x: 0, y: 0 }, eggQuestion);
 
+        let player = new Player(this, { x: 1000, y: 940 }, 'voice' + currentGameQuestion.question.voiceIndex, 'voice' + currentGameQuestion.item.voiceIndex);
+
         /* 以右方向为正方向*/
         if (this.isRightDirection()) {
-            console.log({ direction: currentGameQuestion.direction });
             clawBoxPosition = {
                 x: 2200,
                 y: 410
@@ -237,7 +245,6 @@ export default class GameScene extends BasicScene {
             clawBox.eggQuestion.setPosition(-200, 0);
         }
         else {
-            console.log({ direction: currentGameQuestion.direction });
             clawBoxPosition = { x: 0, y: 410 };
             clawAnimationTargetPosition = 120;
 
@@ -249,12 +256,13 @@ export default class GameScene extends BasicScene {
 
         clawBox.setPosition(clawBoxPosition.x, clawBoxPosition.y);
 
-        layer.add([clawBox]);
+        layer.add([clawBox, player]);
 
-        this.eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
+        this.eggItemList = this.generateEggItems(phrases, currentGameQuestion.item.voiceIndex, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
-            this.eggItemList.forEach(eggItem => eggItem.setEnableListener())
+            this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
+            player.playAudio();
         });
 
     }
@@ -321,13 +329,13 @@ export default class GameScene extends BasicScene {
 
     }
 
-    generateEggItems(phrases, points, eggQuestion, layer) {
+    generateEggItems(phrases, voiceIndex, points, eggQuestion, layer) {
         let eggItemList = [];
         let colliderList = [];
 
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
-            const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
+            const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, voiceIndex, true);
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
@@ -396,7 +404,7 @@ export default class GameScene extends BasicScene {
         const correctSoundEffect = this.sound.add('correctSoundEffect');
 
         correctSoundEffect.on('complete', () => {
-            GameManager.getInstance().getGameSuccess(this.questionIndex,(isLastQuestion) => {
+            GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {

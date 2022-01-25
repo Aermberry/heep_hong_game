@@ -32,6 +32,7 @@ export default class PreloaderScene extends BasicScene {
         const imageFiles = {
             'backgroundTutorEnd': require('../assets/images/background_tutor_end.png'),
             'backgroundGamePlay': require('../assets/images/background_game_play_scene.png'),
+            'backgroundPlayer': require('../assets/images/background_player.png'),
             'gameEndDialogBox': require('../assets/images/background_game_end_dialog.png'),
             'gameEndDialogBoxTexture': require('../assets/images/texture_game_end_scene_dialog_box.png'),
             'uiEgg': require('../assets/images/ui_egg.png'),
@@ -81,6 +82,7 @@ export default class PreloaderScene extends BasicScene {
             'textureObject39': require('../assets/images/objects/39.png'),
             'textureObject40': require('../assets/images/objects/40.png'),
             'textureObject41': require('../assets/images/objects/41.png'),
+
         };
 
         const atlasFiles = {
@@ -95,6 +97,9 @@ export default class PreloaderScene extends BasicScene {
             },
             'lionLeftRecorderTexture': {
                 img: require('../assets/atlas/atlas_lion_left_recorder.png'), data: require('../assets/atlas/atlas_lion_left_recorder.json')
+            },
+            'playerOnPlayingTexture': {
+                img: require('../assets/atlas/atlas_player_on_playing.png'), data: require('../assets/atlas/atlas_player_on_playing.json')
             }
         }
 
@@ -117,8 +122,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
         this.load.spritesheet('voiceButton', require('../assets/images/button_voice.png'), { frameWidth: 186, frameHeight: 210 });
-
-
+        this.load.spritesheet('playerButton', require('../assets/images/button_player_on_playing.png'), { frameWidth: 186, frameHeight: 219 });
+        
 
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });

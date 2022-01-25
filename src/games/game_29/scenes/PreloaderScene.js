@@ -33,7 +33,14 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-
+            'bgm': require('../assets/audio/forest.mp3'),
+            'button': require('../assets/audio/comedy_pop_finger_in_mouth_002.mp3'),
+            'matching': require('../assets/audio/383577_SOUNDDOGS__ca.mp3'),
+            'yes': require('../assets/audio/Cartoon correct answer.mp3'),
+            'no': require('../assets/audio/game_wrong_3.mp3'),
+            'complete': require('../assets/audio/Win Sound 2.mp3'),
+            'win': require('../assets/audio/wintery loop.mp3'),
+            'end': require('../assets/audio/wintery loop.mp3')
         }
 
 

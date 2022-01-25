@@ -52,7 +52,7 @@ export default {
       let self = this;
 
       let currentGameId = self.$route.params.id
-        
+
       if(typeof self.gameFileMapping[currentGameId] != 'undefined') {
 
         currentGameId = self.gameFileMapping[currentGameId];

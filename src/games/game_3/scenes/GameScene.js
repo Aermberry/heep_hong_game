@@ -11,8 +11,6 @@ import {
 import EggItem from "../components/EggItem";
 import EggQuestion from "../components/EggQuestion";
 import ClawBox from "../components/ClawBox";
-import ComposeSprite from "../components/ComposeSprite";
-import Phaser from "phaser";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import LoadProgress from "../components/LoadProgress";
 import GameModel from "../game_mode/GameModel";
@@ -261,8 +259,9 @@ export default class GameScene extends BasicScene {
         this.eggItemList = this.generateEggItems(phrases, currentGameQuestion.item.voiceIndex, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
-            this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
-            player.playAudio();
+            player.playAudio(()=>{
+                this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
+            });
         });
 
     }
@@ -396,7 +395,7 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess(leftItem, rightItem, composeSprite) {
+    paintGameSuccess(leftItem, rightItem, currentQuestionAnswer) {
         leftItem.showSuccessStatus();
         rightItem.showSuccessStatus();
 
@@ -409,27 +408,19 @@ export default class GameScene extends BasicScene {
                     delay: 2000,
                     callback: () => {
                         const winSoundEffect = this.sound.add("winSoundEffect");
-                        Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
-
-                        composeSprite.setVisible(true);
-                        composeSprite.showColorStatus();
-
-                        this.gameLayer.add(composeSprite);
 
                         winSoundEffect.on('complete', () => {
                             // this.sound.stopAll();
-                            const leftVoicePlayer = this.sound.add("voiceItemObject" + leftItem.index);
-                            const rightVoicePlayer = this.sound.add("voiceItemObject" + rightItem.index);
+                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.voiceIndex);
 
-                            leftVoicePlayer.on('complete', () => {
-                                rightVoicePlayer.play();
-
+                            currentQuestionAnswerPlayer.on('complete', () => {
+                                this.time.addEvent({
+                                    delay: 1000,                // ms
+                                    callback: () =>
+                                        this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                });
                             })
-
-                            rightVoicePlayer.on('complete', () => {
-                                this.scene.start(isLastQuestion ? 'End' : 'Game')
-                            })
-                            leftVoicePlayer.play();
+                            currentQuestionAnswerPlayer.play();
                         })
 
                         winSoundEffect.play();
@@ -441,7 +432,7 @@ export default class GameScene extends BasicScene {
     }
 
 
-    paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer) {
+    paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer) {
 
         targetItem.showErrorStatue();
 
@@ -456,70 +447,23 @@ export default class GameScene extends BasicScene {
                     this.time.addEvent({
                         delay: 2000,
                         callback: () => {
+                            this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
+                            this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
+                            currentAnswerItem.showSuccessStatus();
 
-                            Phaser.Display.Align.In.Center(composeSprite, this.uiLayer.getByName("background"));
+                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.voiceIndex);
 
-                            this.gameLayer.add(composeSprite);
-
-
-
-                            if (isFirstError) {
-                                composeSprite.setVisible(true);
-                                composeSprite.showMaskStatus();
-                                this.sound.add("loseSoundEffect").play();
-
+                            currentQuestionAnswerPlayer.on('complete', () => {
                                 this.time.addEvent({
-                                    delay: 2000,
+                                    delay: 1000,                // ms
                                     callback: () => {
-                                        composeSprite.setVisible(false);
-                                        this.eggItemList.forEach(eggItem => {
-                                            eggItem.setEnableListener();
-                                        });
-                                        targetItem.setEnableListener();
+                                        value ? this.scene.start('End') : this.scene.restart('Game');
                                     }
-                                })
 
-                            } else {
-                                this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
-                                this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
-                                currentAnswer.showSuccessStatus();
-
-                                this.time.addEvent({
-                                    delay: 4000,
-                                    callback: () => {
-                                        let leftItem;
-                                        let rightItem;
-
-                                        composeSprite.setVisible(true);
-                                        composeSprite.showColorStatus();
-                                        this.sound.add("loseSoundEffect").play();
-
-
-                                        if (this.isRightDirection()) {
-                                            leftItem = currentAnswer;
-                                            rightItem = targetItem;
-                                        } else {
-                                            leftItem = targetItem;
-                                            rightItem = currentAnswer;
-                                        }
-
-                                        // this.sound.stopAll();
-                                        const leftVoicePlayer = this.sound.add("voiceItemObject" + leftItem.index);
-                                        const rightVoicePlayer = this.sound.add("voiceItemObject" + rightItem.index);
-
-                                        leftVoicePlayer.on('complete', () => {
-                                            rightVoicePlayer.play();
-
-                                        })
-
-                                        rightVoicePlayer.on('complete', () => {
-                                            composeSprite.setVisible(false);
-                                            value ? this.scene.start('End') : this.scene.restart('Game');
-                                        })
-                                        leftVoicePlayer.play();
-                                    }
                                 });
-                            }
+                            })
+                            currentQuestionAnswerPlayer.play();
+
                         }
                     });
 
@@ -542,8 +486,6 @@ export default class GameScene extends BasicScene {
                 y: dragItem.y - 150
             }
         }
-
-
 
         let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
         this.gameLayer.add(errorImage);
@@ -584,6 +526,7 @@ export default class GameScene extends BasicScene {
                                         y: dragItem.originPoint.y,
                                         onComplete: () => {
                                             errorImage.setPosition(dragItem.x, dragItem.y);
+                                            this.sound.add("loseSoundEffect").play();
                                             errorImage.setVisible(true);
                                             targetItem.resetStatue();
                                             this.penguinSprite.play("penguinIdle");
@@ -606,8 +549,6 @@ export default class GameScene extends BasicScene {
     }
 
     checkAnswer(dragItem, targetItem, currentQuestionAnswer, eggItemList) {
-
-
         let leftItem;
         let rightItem;
 
@@ -619,24 +560,21 @@ export default class GameScene extends BasicScene {
             rightItem = dragItem;
         }
 
-        const composeWords = leftItem.objectName + rightItem.objectName;
+        const composeWords = leftItem.objectName;
 
-        let currentAnswer = eggItemList.find((egg) => {
-            return egg.objectName == currentQuestionAnswer.currentItemName
+        let currentAnswerItem = eggItemList.find((egg) => {
+            return egg.objectName == currentQuestionAnswer.object
         });
 
-        let composeSprite = new ComposeSprite(this, 1000, 200, 'cloudTexture', 'textureAnswerObject' + currentQuestionAnswer.answerTextureIndex);
-
-        composeSprite.setVisible(false);
-
-        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer, eggItemList);
+        composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, currentQuestionAnswer
+        ) : this.paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer);
 
     }
 
     playVoice(leftVoice, rightVoice, callback) {
         // this.sound.stopAll();
-        const leftVoicePlayer = this.sound.add("voiceItemObject" + leftVoice);
-        const rightVoicePlayer = this.sound.add("voiceItemObject" + rightVoice);
+        const leftVoicePlayer = this.sound.add("voice" + leftVoice);
+        const rightVoicePlayer = this.sound.add("voice" + rightVoice);
 
         leftVoicePlayer.on('complete', () => {
             rightVoicePlayer.play();

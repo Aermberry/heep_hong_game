@@ -8,7 +8,7 @@ export default class EggItem extends Egg {
         super(scene, point, texture, "textureObject" + objectItem.imageIndex);
 
         this.objectName = objectItem.object;
-        // this.index = objectItem.index;
+        this.index = voiceIndex;
 
 
         this.setName("EggItem");

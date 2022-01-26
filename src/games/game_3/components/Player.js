@@ -22,7 +22,7 @@ export default class Player extends Phaser.GameObjects.Container {
         this.add([backgroundTexture, this.playerAnimationSprite, playerButton]);
     }
 
-    playAudio() {
+    playAudio(onCompleteCallback) {
         const voiceOver0 = this.scene.sound.add('voiceOver0'); //嘅
         const voiceOver1 = this.scene.sound.add('voiceOver1'); //係邊個
         const voiceOver2 = this.scene.sound.add('voiceOver2'); //呀？
@@ -63,6 +63,7 @@ export default class Player extends Phaser.GameObjects.Container {
             this.stopAnimation();
             playerButton.enableListener();
             playerButton.texture.setFrame(2);
+            onCompleteCallback();
         });
 
 

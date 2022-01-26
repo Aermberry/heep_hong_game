@@ -26,7 +26,7 @@ export default class EggItem extends Egg {
     }
 
     setEnableListener() {
-        super.setEnableDraggable()
+        super.setEnableDraggable();
         this.voiceButton.enableListener();
     }
 

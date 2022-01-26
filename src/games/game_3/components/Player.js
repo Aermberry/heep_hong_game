@@ -4,7 +4,7 @@ import PlayerButton from "./PlayerButton";
 
 export default class Player extends Phaser.GameObjects.Container {
 
-    constructor(scene, point,questionObjectVoice, homophoneVoice) {
+    constructor(scene, point, questionObjectVoice, homophoneVoice) {
         super(scene, point.x, point.y);
 
         this.init(questionObjectVoice, homophoneVoice);
@@ -16,8 +16,8 @@ export default class Player extends Phaser.GameObjects.Container {
         const playerButton = new PlayerButton(this.scene, 130, 10).setName('playerButton');
         this.playerAnimationSprite = new GameSprite(this.scene, -80, 0, 'playerOnPlayingTexture').setScale(0.45);
 
-        this.questionObjectVoice=questionObjectVoice;
-        this.homophoneVoice=homophoneVoice;
+        this.questionObjectVoice = questionObjectVoice;
+        this.homophoneVoice = homophoneVoice;
 
         this.add([backgroundTexture, this.playerAnimationSprite, playerButton]);
     }
@@ -31,7 +31,7 @@ export default class Player extends Phaser.GameObjects.Container {
         const homophoneVoiceSprite1 = this.scene.sound.add(this.homophoneVoice);
         const homophoneVoiceSprite2 = this.scene.sound.add(this.homophoneVoice);
 
-        const playerButton=this.getByName('playerButton');
+        const playerButton = this.getByName('playerButton');
 
         questionObjectVoiceSprite.on('play', () => {
             this.playAnimation();
@@ -55,20 +55,23 @@ export default class Player extends Phaser.GameObjects.Container {
             homophoneVoiceSprite2.play();
         });
 
-        homophoneVoiceSprite2.on('complete',()=>{
+        homophoneVoiceSprite2.on('complete', () => {
             voiceOver2.play();
         });
 
-        voiceOver2.on('complete',()=>{
+        voiceOver2.on('complete', () => {
             this.stopAnimation();
             playerButton.enableListener();
             playerButton.texture.setFrame(2);
-            onCompleteCallback();
+
+            if (onCompleteCallback != null) {
+                onCompleteCallback();
+            }
         });
 
 
         questionObjectVoiceSprite.play();
-       
+
     }
 
     playAnimation() {

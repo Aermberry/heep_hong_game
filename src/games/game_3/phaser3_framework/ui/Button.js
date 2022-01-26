@@ -13,7 +13,7 @@ export default class Button extends Phaser.GameObjects.Container {
 
         this.add(this.texture);
 
-        this.enableListener();
+        // this.enableListener();
     }
 
     onDownClicked() {

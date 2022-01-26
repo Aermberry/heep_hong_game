@@ -53,7 +53,9 @@ export default class Player extends Phaser.GameObjects.Container {
             this.stopAnimation();
             playerButton.enableListener();
             playerButton.texture.setFrame(2);
-            onCompleteCallback();
+            if (onCompleteCallback != null) {
+                onCompleteCallback();
+            }
         });
 
 

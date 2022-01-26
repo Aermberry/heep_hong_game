@@ -4,7 +4,7 @@
     <ShareBar />
     <main>
       <div class="container">
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
         <div class="content-wrapper intro">
 
           <div class="cover">
@@ -20,7 +20,7 @@
           </div>
 
         </div>
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
       </div>
     </main>
     <Footer />

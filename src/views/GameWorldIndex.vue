@@ -3,7 +3,7 @@
     <Header />
     <main>
       <div class="container">
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
         <div class="content-wrapper game-intro">
           <!-- <div class="game-intro-header">
             <img src="@/assets/images/world notext.svg" alt="">
@@ -19,7 +19,7 @@
             <game-map />
 
         </div>
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
       </div>
     </main>
     <Footer />

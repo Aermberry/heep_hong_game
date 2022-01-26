@@ -6,7 +6,7 @@ export default class EggQuestion extends Egg {
 
         super(scene, point, texture, "textureObject" + objectItem.index);
 
-        this.objectName = objectItem.object;
+        this.objectName = objectItem.objectName;
         this.index = objectItem.index;
 
         this.setName("EggQuestion");

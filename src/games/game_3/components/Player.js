@@ -79,4 +79,14 @@ export default class Player extends Phaser.GameObjects.Container {
         this.playerAnimationSprite.stop();
     }
 
+    disableListener() {
+        const playerButton = this.getByName('playerButton');
+        playerButton.cancelListener();
+    }
+
+    enableListener() {
+        const playerButton = this.getByName('playerButton');
+        playerButton.enableListener();
+    }
+
 }

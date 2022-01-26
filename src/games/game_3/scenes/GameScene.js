@@ -256,10 +256,10 @@ export default class GameScene extends BasicScene {
 
         layer.add([clawBox, player]);
 
-        this.eggItemList = this.generateEggItems(phrases, currentGameQuestion.item.voiceIndex, this.generatePoints(), eggQuestion, this.gameLayer);
+        this.eggItemList = this.generateEggItems(phrases, currentGameQuestion.item.voiceIndex, this.generatePoints(), eggQuestion, player, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
-            player.playAudio(()=>{
+            player.playAudio(() => {
                 this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
             });
         });
@@ -328,7 +328,7 @@ export default class GameScene extends BasicScene {
 
     }
 
-    generateEggItems(phrases, voiceIndex, points, eggQuestion, layer) {
+    generateEggItems(phrases, voiceIndex, points, eggQuestion, player, layer) {
         let eggItemList = [];
         let colliderList = [];
 
@@ -344,7 +344,8 @@ export default class GameScene extends BasicScene {
                     eggItem.setRemoveListener();
                 });
 
-                targetItem.setRemoveListener()
+                targetItem.setRemoveListener();
+                player.disableListener();
 
                 this.physics.world.removeCollider(collider);
                 collider.destroy();
@@ -433,9 +434,8 @@ export default class GameScene extends BasicScene {
 
 
     paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer) {
-
+        
         targetItem.showErrorStatue();
-
         dragItem.showErrorStatue(() => {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {
 

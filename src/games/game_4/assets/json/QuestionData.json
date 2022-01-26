@@ -18,7 +18,7 @@
     },
     "answer": {
       "objectName": "麵包",
-      "index": 20
+      "index": 0
     },
     "keywordVoiceIndex": 30
   },
@@ -42,7 +42,7 @@
     "keywordVoiceIndex": 30,
     "answer": {
       "objectName": "麵包",
-      "index": 20
+      "index": 1
     }
   },
   {
@@ -65,7 +65,7 @@
     "keywordVoiceIndex": 30,
     "answer": {
       "objectName": "包裹",
-      "index": 21
+      "index": 2
     }
   },
   {
@@ -88,7 +88,7 @@
     "keywordVoiceIndex": 30,
     "answer": {
       "objectName": "包裹",
-      "index": 21
+      "index": 3
     }
   },
   {
@@ -111,7 +111,7 @@
     "keywordVoiceIndex": 31,
     "answer": {
       "objectName": "心臟",
-      "index": 23
+      "index": 4
     }
   },
   {
@@ -134,7 +134,7 @@
     "keywordVoiceIndex": 31,
     "answer": {
       "objectName": "心臟",
-      "index": 23
+      "index": 5
     }
   },
   {
@@ -157,7 +157,7 @@
     "keywordVoiceIndex": 31,
     "answer": {
       "objectName": "中心",
-      "index": 24
+      "index": 6
     }
   },
   {
@@ -180,7 +180,7 @@
     "keywordVoiceIndex": 31,
     "answer": {
       "objectName": "中心",
-      "index": 24
+      "index": 7
     }
   },
   {
@@ -203,7 +203,7 @@
     "keywordVoiceIndex": 32,
     "answer": {
       "objectName": "家庭",
-      "index": 25
+      "index": 8
     }
   },
   {
@@ -226,7 +226,7 @@
     "keywordVoiceIndex": 32,
     "answer": {
       "objectName": "家庭",
-      "index": 25
+      "index": 9
     }
   },
   {
@@ -249,7 +249,7 @@
     "keywordVoiceIndex": 32,
     "answer": {
       "objectName": "人物",
-      "index": 26
+      "index": 10
     }
   },
   {
@@ -272,7 +272,7 @@
     "keywordVoiceIndex": 32,
     "answer": {
       "objectName": "人物",
-      "index": 26
+      "index": 11
     }
   },
   {
@@ -295,7 +295,7 @@
     "keywordVoiceIndex": 33,
     "answer": {
       "objectName": "一隻手",
-      "index": 27
+      "index": 12
     }
   },
   {
@@ -318,7 +318,7 @@
     "keywordVoiceIndex": 33,
     "answer": {
       "objectName": "一隻手",
-      "index": 27
+      "index": 13
     }
   },
   {
@@ -341,7 +341,7 @@
     "keywordVoiceIndex": 33,
     "answer": {
       "objectName": "人物",
-      "index": 26
+      "index": 14
     }
   },
   {
@@ -364,7 +364,7 @@
     "keywordVoiceIndex": 33,
     "answer": {
       "objectName": "人物",
-      "index": 26
+      "index": 15
     }
   },
   {
@@ -387,7 +387,7 @@
     "keywordVoiceIndex": 34,
     "answer": {
       "objectName": "中式",
-      "index": 28
+      "index": 16
     }
   },
   {
@@ -410,7 +410,7 @@
     "keywordVoiceIndex": 34,
     "answer": {
       "objectName": "中式",
-      "index": 28
+      "index": 17
     }
   },
   {
@@ -433,7 +433,7 @@
     "keywordVoiceIndex": 34,
     "answer": {
       "objectName": "中間",
-      "index": 29
+      "index": 18
     }
   },
   {
@@ -456,7 +456,7 @@
     "keywordVoiceIndex": 34,
     "answer": {
       "objectName": "中間",
-      "index": 29
+      "index": 19
     }
   }
 ]

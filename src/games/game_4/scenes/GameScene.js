@@ -433,7 +433,7 @@ export default class GameScene extends BasicScene {
     }
 
 
-    paintGameFailed(dragItem, targetItem, currentAnswer) {
+    paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer) {
 
         targetItem.showErrorStatue();
 
@@ -450,40 +450,20 @@ export default class GameScene extends BasicScene {
                         callback: () => {
                             this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
                             this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
-                            currentAnswer.showSuccessStatus();
+                            currentAnswerItem.showSuccessStatus();
 
-                            this.time.addEvent({
-                                delay: 4000,
-                                callback: () => {
-                                    let leftItem;
-                                    let rightItem;
+                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.index);
 
-                                    this.sound.add("loseSoundEffect").play();
-
-
-                                    if (this.isRightDirection()) {
-                                        leftItem = currentAnswer;
-                                        rightItem = targetItem;
-                                    } else {
-                                        leftItem = targetItem;
-                                        rightItem = currentAnswer;
+                            currentQuestionAnswerPlayer.on('complete', () => {
+                                this.time.addEvent({
+                                    delay: 1000,                // ms
+                                    callback: () => {
+                                        value ? this.scene.start('End') : this.scene.restart('Game');
                                     }
 
-                                    // this.sound.stopAll();
-                                    const leftVoicePlayer = this.sound.add("voiceItemObject" + leftItem.index);
-                                    const rightVoicePlayer = this.sound.add("voiceItemObject" + rightItem.index);
-
-                                    leftVoicePlayer.on('complete', () => {
-                                        rightVoicePlayer.play();
-
-                                    })
-
-                                    rightVoicePlayer.on('complete', () => {
-                                        value ? this.scene.start('End') : this.scene.restart('Game');
-                                    })
-                                    leftVoicePlayer.play();
-                                }
-                            });
+                                });
+                            })
+                            currentQuestionAnswerPlayer.play();
 
                         }
                     });
@@ -549,6 +529,7 @@ export default class GameScene extends BasicScene {
                                         y: dragItem.originPoint.y,
                                         onComplete: () => {
                                             errorImage.setPosition(dragItem.x, dragItem.y);
+                                            this.sound.add("loseSoundEffect").play();
                                             errorImage.setVisible(true);
                                             targetItem.resetStatue();
                                             this.penguinSprite.play("penguinIdle");
@@ -590,7 +571,7 @@ export default class GameScene extends BasicScene {
             return egg.objectName == currentQuestionAnswer.objectName
         });
 
-        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, currentAnswerItem, eggItemList);
+        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer);
 
     }
 

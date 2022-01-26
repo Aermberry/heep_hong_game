@@ -14,9 +14,10 @@ export default {
   },
   scale: {
     mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  audio: {
-    disableWebAudio: true
-  },
+    autoCenter: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+  }
+  // ,
+  // audio: {
+  //   disableWebAudio: true
+  // },
 };

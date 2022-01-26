@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import EndSceneExitButton from './EndSceneExitButton'
 import RetryButton from './RetryButton'
 
-import GameSprite from '../components/GameSprite';
+import GameSprite from '../phaser3_framework/object/GameSprite';
 
 export default class DialogTipBox extends Phaser.GameObjects.Container {
 

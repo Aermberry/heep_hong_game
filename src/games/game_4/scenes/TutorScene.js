@@ -2,7 +2,7 @@ import ExitProgressGameButton from "../components/ExitProgressGameButton";
 import StartButton from "../components/StartButton";
 import BasicScene from "./BasicScene"
 import GameManager from "../components/GameManager";
-import GameSprite from "../components/GameSprite";
+import GameSprite from "../phaser3_framework/object/GameSprite";
 import { createTutorAnimation } from "../assets/animations/TutorAnimation";
 // import Phaser from "phaser";
 

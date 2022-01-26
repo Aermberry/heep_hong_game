@@ -90,6 +90,11 @@ export default class GameScene extends BasicScene {
             'voice27': require('../assets/audio/voice/object/27.mp3'),
             'voice28': require('../assets/audio/voice/object/28.mp3'),
             'voice29': require('../assets/audio/voice/object/29.mp3'),
+            'voice30': require('../assets/audio/voice/object/30.mp3'),
+            'voice31': require('../assets/audio/voice/object/31.mp3'),
+            'voice32': require('../assets/audio/voice/object/32.mp3'),
+            'voice33': require('../assets/audio/voice/object/33.mp3'),
+            'voice34': require('../assets/audio/voice/object/34.mp3'),
 
             'voiceOver0': require('../assets/audio/voice/voice_over/0.mp3'),
             'voiceOver1': require('../assets/audio/voice/voice_over/1.mp3'),
@@ -191,7 +196,6 @@ export default class GameScene extends BasicScene {
 
         /* UI Object */
         this.buildUiObject(this.uiLayer);
-        console.log({ currentGameQuestion });
 
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
@@ -213,19 +217,19 @@ export default class GameScene extends BasicScene {
     }
 
     buildGameObject(currentGameQuestion, layer) {
-        const phrases = this.shufflePosition(currentGameQuestion.item.items);
+        const phrases = this.shufflePosition(currentGameQuestion.phrases.items);
 
         const eggQuestion = new EggQuestion(this, {
             x: 0,
             y: 0
-        }, "eggQuestionTexture", currentGameQuestion.question, false);
+        }, "eggQuestionTexture", currentGameQuestion.phrases.main, false);
 
         let clawBoxPosition;
         let clawAnimationTargetPosition;
 
         let clawBox = new ClawBox(this, { x: 0, y: 0 }, eggQuestion);
 
-        let player = new Player(this, { x: 1000, y: 940 }, 'voice' + currentGameQuestion.question.voiceIndex, 'voice' + currentGameQuestion.item.voiceIndex);
+        let player = new Player(this, { x: 1000, y: 940 }, 'voice' + currentGameQuestion.phrases.main.index, 'voice' + currentGameQuestion.keywordVoiceIndex);
 
         /* 以右方向为正方向*/
         if (this.isRightDirection()) {
@@ -250,7 +254,7 @@ export default class GameScene extends BasicScene {
 
         layer.add([clawBox, player]);
 
-        this.eggItemList = this.generateEggItems(phrases, currentGameQuestion.item.voiceIndex, this.generatePoints(), eggQuestion, this.gameLayer);
+        this.eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
             this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
@@ -321,13 +325,14 @@ export default class GameScene extends BasicScene {
 
     }
 
-    generateEggItems(phrases, voiceIndex, points, eggQuestion, layer) {
+    generateEggItems(phrases, points, eggQuestion, layer) {
         let eggItemList = [];
         let colliderList = [];
 
         for (let index = 0; index < phrases.length; index++) {
+
             const phrase = phrases[index];
-            const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, voiceIndex, true);
+            const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
@@ -350,6 +355,8 @@ export default class GameScene extends BasicScene {
                     rightItem = dragItem;
                 }
 
+                console.log({leftItem});
+                console.log({rightItem});
 
                 this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
                 console.log({ "GameModel": GameModel.questionCount })
@@ -410,8 +417,8 @@ export default class GameScene extends BasicScene {
 
                         winSoundEffect.on('complete', () => {
                             // this.sound.stopAll();
-                            const leftVoicePlayer = this.sound.add("voiceItemObject" + leftItem.index);
-                            const rightVoicePlayer = this.sound.add("voiceItemObject" + rightItem.index);
+                            const leftVoicePlayer = this.sound.add("voice" + leftItem.index);
+                            const rightVoicePlayer = this.sound.add("voice" + rightItem.index);
 
                             leftVoicePlayer.on('complete', () => {
                                 rightVoicePlayer.play();
@@ -627,8 +634,8 @@ export default class GameScene extends BasicScene {
 
     playVoice(leftVoice, rightVoice, callback) {
         // this.sound.stopAll();
-        const leftVoicePlayer = this.sound.add("voiceItemObject" + leftVoice);
-        const rightVoicePlayer = this.sound.add("voiceItemObject" + rightVoice);
+        const leftVoicePlayer = this.sound.add("voice" + leftVoice);
+        const rightVoicePlayer = this.sound.add("voice" + rightVoice);
 
         leftVoicePlayer.on('complete', () => {
             rightVoicePlayer.play();

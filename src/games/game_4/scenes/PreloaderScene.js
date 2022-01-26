@@ -39,7 +39,7 @@ export default class PreloaderScene extends BasicScene {
             'uiRecorder': require('../assets/images/ui_recorder.png'),
             'clawTexture': require('../assets/images/texture_claw.png'),
             'errorTexture': require('../assets/images/texture_error.png'),
-
+            
             'textureObject0': require('../assets/images/objects/0.png'),
             'textureObject1': require('../assets/images/objects/1.png'),
             'textureObject2': require('../assets/images/objects/2.png'),
@@ -62,7 +62,6 @@ export default class PreloaderScene extends BasicScene {
             'textureObject19': require('../assets/images/objects/19.png'),
             'textureObject20': require('../assets/images/objects/20.png'),
             'textureObject21': require('../assets/images/objects/21.png'),
-            'textureObject22': require('../assets/images/objects/22.png'),
             'textureObject23': require('../assets/images/objects/23.png'),
             'textureObject24': require('../assets/images/objects/24.png'),
             'textureObject25': require('../assets/images/objects/25.png'),
@@ -70,19 +69,6 @@ export default class PreloaderScene extends BasicScene {
             'textureObject27': require('../assets/images/objects/27.png'),
             'textureObject28': require('../assets/images/objects/28.png'),
             'textureObject29': require('../assets/images/objects/29.png'),
-            'textureObject30': require('../assets/images/objects/30.png'),
-            'textureObject31': require('../assets/images/objects/31.png'),
-            'textureObject32': require('../assets/images/objects/32.png'),
-            'textureObject33': require('../assets/images/objects/33.png'),
-            'textureObject34': require('../assets/images/objects/34.png'),
-            'textureObject35': require('../assets/images/objects/35.png'),
-            'textureObject36': require('../assets/images/objects/36.png'),
-            'textureObject37': require('../assets/images/objects/37.png'),
-            'textureObject38': require('../assets/images/objects/38.png'),
-            'textureObject39': require('../assets/images/objects/39.png'),
-            'textureObject40': require('../assets/images/objects/40.png'),
-            'textureObject41': require('../assets/images/objects/41.png'),
-
         };
 
         const atlasFiles = {

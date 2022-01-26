@@ -3,18 +3,18 @@ import VoiceButton from "./VoiceButton";
 
 export default class EggItem extends Egg {
 
-    constructor(scene, point, texture, objectItem, voiceIndex, isEnableDraggable) {
+    constructor(scene, point, texture, objectItem, isEnableDraggable) {
 
-        super(scene, point, texture, "textureObject" + objectItem.imageIndex);
+        super(scene, point, texture, "textureObject" + objectItem.index);
 
         this.objectName = objectItem.object;
-        // this.index = objectItem.index;
+        this.index = objectItem.index;
 
 
         this.setName("EggItem");
         this.create(isEnableDraggable);
 
-        this.voiceButton = new VoiceButton(this.scene, -20, 120, "voice" + voiceIndex);
+        this.voiceButton = new VoiceButton(this.scene, -20, 120, "voice" + objectItem.index);
         this.voiceButton.setScale(0.2);
 
         this.add(this.voiceButton);

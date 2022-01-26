@@ -4,7 +4,7 @@
     <ShareBar />
     <main>
       <div class="container">
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
         <div class="content-wrapper game-intro">
           <div class="game-intro-main" :style="{backgroundImage:'url(' + require('@/assets/images/img_world_notext.png') + ')'}">
             <!-- <img src="@/assets/images/img_world_notext.png" alt=""> -->
@@ -97,7 +97,7 @@
             </div>
           </div>
         </div>
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
       </div>
     </main>
     <Footer />

@@ -41,6 +41,7 @@ export default class PreloaderScene extends BasicScene {
     self.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 });
     self.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
     self.load.spritesheet('cfmBtn', require('../assets/btn_cfm.png'),{ frameWidth: 917, frameHeight: 233 });
+    self.load.spritesheet('voiceButton', require('../assets/button_voice.png'), { frameWidth: 186, frameHeight: 210 });
 
     self.load.atlas('tut1',require('../assets/tut1.png'), require('../assets/tut1.json'));
     self.load.atlas('tut2',require('../assets/tut2.png'), require('../assets/tut2.json'));

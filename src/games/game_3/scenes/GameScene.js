@@ -191,7 +191,6 @@ export default class GameScene extends BasicScene {
      * 绘制GameScene的所有Ui元素
      */
     paintScene(currentGameQuestion) {
-
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 

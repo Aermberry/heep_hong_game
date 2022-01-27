@@ -15,5 +15,8 @@ export default {
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+  },
+  audio: {
+    disableWebAudio: true
   }
 };

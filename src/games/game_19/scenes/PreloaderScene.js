@@ -81,7 +81,7 @@ export default class PreloaderScene extends BasicScene {
             'voiceAnswer19': require('../assets/audio/voice/voice_answer_19.mp3'),
         }
 
-        this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
+        this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('rplLongBtn', require('../assets/images/btn_long_rpl.png'), { frameWidth: 566, frameHeight: 163.5 });
         this.load.spritesheet('gameProgressExitBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });

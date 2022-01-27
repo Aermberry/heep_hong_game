@@ -23,9 +23,18 @@ export default class StartButton extends BasicButton {
     super.down(clickEvent)
   }
 
-  _setFullScreen(scene) {
-    if (!scene.scale.isFullscreen) {
-      scene.scale.startFullscreen();
+  _setFullScreen() {
+    const fullscreenConfig = { navigationUI: 'hide' }
+
+    const elem = document.querySelector('#game-container canvas');
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen(fullscreenConfig);
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen(fullscreenConfig);
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen(fullscreenConfig);
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen(fullscreenConfig);
     }
   }
 }

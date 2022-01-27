@@ -51,7 +51,7 @@ export default class GameScene extends BasicScene {
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
 
-
+        this.buildBg('bgProgressGame');
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
         
         const crocoElmSets = {
@@ -118,16 +118,6 @@ export default class GameScene extends BasicScene {
         this.paintGameScene(this);
 
         this.sound.play('ahhEffectSound');
-
-        // if (this.sys.game.globals.bgMusic == null) {
-        //     let bgMusic = this.sound.add('gameSceneBgm', {
-        //         volume: 0.2,
-        //         loop: true
-        //     });
-
-        //     bgMusic.play();
-        //     this.sys.game.globals.bgMusic = bgMusic;
-        // }
 
         this.backgroundMusic = this.sound.add('gameSceneBgm', {
             volume: 0.2,

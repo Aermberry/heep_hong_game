@@ -260,6 +260,7 @@ export default class GameScene extends BasicScene {
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
             player.playAudio(() => {
                 this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
+                eggQuestion.setEnableListener();
             });
         });
 

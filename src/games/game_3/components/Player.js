@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import GameSprite from "../phaser3_framework/object/GameSprite";
 import PlayerButton from "./PlayerButton";
+import SoundOnPlayEvent from "../phaser3_framework/event/SoundOnPlayEvent"
 
 export default class Player extends Phaser.GameObjects.Container {
 
@@ -20,6 +21,10 @@ export default class Player extends Phaser.GameObjects.Container {
         this.homophoneVoice = homophoneVoice;
 
         this.add([backgroundTexture, this.playerAnimationSprite, playerButton]);
+
+        SoundOnPlayEvent.on("updateEggItemOnPlayStatus", (value) => {
+            this.updateButtonStatus(value, this);
+        });
     }
 
     playAudio(onCompleteCallback) {
@@ -37,6 +42,8 @@ export default class Player extends Phaser.GameObjects.Container {
             this.playAnimation();
             playerButton.cancelListener();
             playerButton.texture.setFrame(0);
+
+            SoundOnPlayEvent.emit("updatePlayerOnPlayStatus", true);
         });
 
         questionObjectVoiceSprite.on('complete', () => {
@@ -64,6 +71,8 @@ export default class Player extends Phaser.GameObjects.Container {
             playerButton.enableListener();
             playerButton.texture.setFrame(2);
 
+            SoundOnPlayEvent.emit("updatePlayerStatus", false);
+
             if (onCompleteCallback != null) {
                 onCompleteCallback();
             }
@@ -90,6 +99,10 @@ export default class Player extends Phaser.GameObjects.Container {
     enableListener() {
         const playerButton = this.getByName('playerButton');
         playerButton.enableListener();
+    }
+
+    updateButtonStatus(eggItemVoiceButtonOnPlayStatus, context) {
+        eggItemVoiceButtonOnPlayStatus ? context.cancelListener() : context.enableListener();
     }
 
 }

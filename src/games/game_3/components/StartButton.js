@@ -24,7 +24,7 @@ export default class StartButton extends Phaser.GameObjects.Container {
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     console.log("up")
                     this.texture.setFrame(0);
-                    this._setFullScreen(scene);
+                    // this._setFullScreen();
                     this.onUpClicked();
                 }
             )

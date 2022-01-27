@@ -23,7 +23,7 @@ export default class Player extends Phaser.GameObjects.Container {
         this.add([backgroundTexture, this.playerAnimationSprite, playerButton]);
 
         SoundOnPlayEvent.on("updateEggItemOnPlayStatus", (value) => {
-            this.updateButtonStatus(value, this);
+            value ? playerButton.cancelListener() : playerButton.enableListener();
         });
     }
 
@@ -71,7 +71,7 @@ export default class Player extends Phaser.GameObjects.Container {
             playerButton.enableListener();
             playerButton.texture.setFrame(2);
 
-            SoundOnPlayEvent.emit("updatePlayerStatus", false);
+            SoundOnPlayEvent.emit("updatePlayerOnPlayStatus", false);
 
             if (onCompleteCallback != null) {
                 onCompleteCallback();
@@ -99,10 +99,6 @@ export default class Player extends Phaser.GameObjects.Container {
     enableListener() {
         const playerButton = this.getByName('playerButton');
         playerButton.enableListener();
-    }
-
-    updateButtonStatus(eggItemVoiceButtonOnPlayStatus, context) {
-        eggItemVoiceButtonOnPlayStatus ? context.cancelListener() : context.enableListener();
     }
 
 }

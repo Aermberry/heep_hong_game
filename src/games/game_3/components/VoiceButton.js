@@ -15,7 +15,7 @@ export default class VoiceButton extends Button {
     init() {
         this.addButtonStatusListener();
 
-        SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => { this.updateButtonStatus(value, this) });
+        SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => { value ? this.cancelListener() : this.enableListener(); });
     }
 
     onDownClicked() {
@@ -39,11 +39,5 @@ export default class VoiceButton extends Button {
             this.texture.setFrame(2);
             console.log('complete')
         });
-    }
-
-    updateButtonStatus(playerOnPlayStatus, context) {
-        console.log({playerOnPlayStatus});
-        console.log({context});
-        playerOnPlayStatus ? context.cancelListener() : context.enableListener();
     }
 }

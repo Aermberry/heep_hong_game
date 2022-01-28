@@ -30,7 +30,7 @@
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import GameMap from '../components/GameMap.vue'
+import GameMap from '@/components/GameMap.vue'
 
 
 export default {

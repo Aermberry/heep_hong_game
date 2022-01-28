@@ -72,13 +72,13 @@ export default class Section4Scene extends SectionBasicScene {
         super.create()
 
         this.anims.create({
-            key: 's4_road', 
+            key: 's4_road',
             frames: this.anims.generateFrameNames('s4Road', { prefix: 'Symbol 7', start: 0, end: 58, zeroPad: 4 }),
             repeat: -1,
         });
 
         this.initSection('game4Bg')
-        
+
         // if(this.dataModel.isFirstLoad) {
         //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
         //     this.add.existing(startBtn)

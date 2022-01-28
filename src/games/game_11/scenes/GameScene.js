@@ -34,7 +34,7 @@ export default class GameScene extends BasicScene {
     constructor() {
         super('Game')
 
-        // this.dataModal = this.sys.game.globals.model;
+        // this.dataModel = this.sys.game.globals.model;
         this.cursorKeys = null
         this.playerOnLeft = true
         this.totalSocre = 0
@@ -161,7 +161,7 @@ export default class GameScene extends BasicScene {
 
         super.create()
 
-        // this.sys.game.globals.gtag.event((`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' }))
+        this.sys.game.globals.gtag.event((`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' }))
 
         this.playerOnLeft = true
 

@@ -15,7 +15,7 @@ const routes = [
     component: () => import('../views/Intro.vue')
   },
   {
-    path: '/game/intro',
+    path: '/game/world-index',
     name: 'Game Intro',
     component: () => import('../views/GameIntro.vue')
   },

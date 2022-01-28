@@ -24,7 +24,7 @@ export default class PreloaderScene extends BasicScene {
 
         // const tutReses = this.dataModel.tutorAnimates;
 
-        
+
 
         const tutAnimSet = {
             11: {
@@ -93,8 +93,10 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
         this.load.spritesheet('btn_lt', require('../assets/images/btn_lt.png'),{ frameWidth:168, frameHeight: 186})
         this.load.spritesheet('btn_rt', require('../assets/images/btn_rt.png'),{ frameWidth:168, frameHeight: 186})
-        this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('extBtn', require('../assets/images/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
+        this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 })
+        this.load.spritesheet('extBtn', require('../assets/images/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 })
+        this.load.spritesheet('speakerBtn', require('../assets/images/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  })
+        this.load.spritesheet('offSpeakerBtn', require('../assets/images/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
 
         this.createProgressBar();
 

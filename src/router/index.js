@@ -35,12 +35,12 @@ const routes = [
     component: () => import('../views/GameDemo.vue')
   },
   {
-    path: '/game/:id',
+    path: '/game/game/:id',
     name: 'World',
     component: () => import('../views/Game.vue')
   },
   {
-    path: '/game/:id/stage/:sid',
+    path: '/game/game/:id/stage/:sid',
     name: 'Game',
     component: () => import('../views/Game.vue')
   },

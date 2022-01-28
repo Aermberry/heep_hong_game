@@ -14,6 +14,7 @@ export default class Button extends Phaser.GameObjects.Container {
         this.add(this.texture);
 
         // this.enableListener();
+        this.texture.setInteractive({ useHandCursor: true });
     }
 
     onDownClicked() {
@@ -30,15 +31,16 @@ export default class Button extends Phaser.GameObjects.Container {
     }
 
     cancelListener() {
-        this.texture.disableInteractive();
+        // this.texture.disableInteractive();
+        console.log("disableInteractive")
         this.texture.off(Phaser.Input.Events.GAMEOBJECT_POINTER_UP);
         this.texture.off(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN);
     }
 
     enableListener() {
-        this.texture.setInteractive({ useHandCursor: true });
+        // this.texture.setInteractive({ useHandCursor: true });
 
-
+        console.log("enableListener")
         this.texture.on(
             Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                 console.log("down")

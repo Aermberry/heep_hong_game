@@ -42,17 +42,22 @@ function launch(urlParams) {
     let game = new Game22(gameConfig, urlParams)
 
     resize(game);
-    window.addEventListener("resize", resize, false);
+    window.addEventListener("resize",()=>{
+        
+        resize(game);
+    } , false);
 
     return game
 }
 
-//    /**
-//            * 
-//            * @param {Phaser.Game} game
-//            */
+   /**
+           * 
+           * @param {Phaser.Game} game
+           */
 function resize(game) {
     var canvas = document.querySelector("canvas");
+    console.log(canvas);
+    console.log(game.config.parent);
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
     var windowRatio = windowWidth / windowHeight;

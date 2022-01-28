@@ -213,7 +213,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             // let failSound = this.scene.sound.add('hit')
 
 
-            let failSound = this.scene.sound.add('thwack')
+            // let failSound = this.scene.sound.add('thwack')
             // strikeSound.play()
 
             let strikeSoundB = this.scene.sound.add('swing')
@@ -230,7 +230,6 @@ export default class ItemBam extends Phaser.GameObjects.Container {
 
             this.scene.sound.stopByKey('drums')
 
-            failSound.play();
 
             setTimeout(strikeSoundB.play(), 400)
 

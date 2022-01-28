@@ -5,12 +5,12 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/game',
     name: 'Home',
     component: () => import('../views/Home.vue')
   },
   {
-    path: '/intro',
+    path: '/game/intro',
     name: 'Intro',
     component: () => import('../views/Intro.vue')
   },
@@ -30,7 +30,7 @@ const routes = [
     component: () => import('../views/GameWorldIndex.vue')
   },
   {
-    path: '/gameDemo',
+    path: '/game/gameDemo',
     name: 'Game Demo',
     component: () => import('../views/GameDemo.vue')
   },
@@ -45,17 +45,17 @@ const routes = [
     component: () => import('../views/Game.vue')
   },
   {
-    path: '/important-notices',
+    path: '/game/important-notices',
     name: 'Important Notices',
     component: () => import('../views/ImportantNotices.vue')
   },
   {
-    path: '/privacy-policy',
+    path: '/game/privacy-policy',
     name: 'Privacy Policy',
     component: () => import('../views/PrivacyPolicy.vue')
   },
   {
-    path: '/sitemap',
+    path: '/game/sitemap',
     name: 'Sitemap',
     component: () => import('../views/Sitemap.vue')
   },

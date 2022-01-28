@@ -390,7 +390,7 @@ export default class GameScene extends BasicScene {
             this.sound.play('drums')
         }
 
-      }
+    }
 
 
 }

@@ -11,9 +11,6 @@ export default class TutorScene extends BasicScene {
         super("Tutor")
 
         this.gameManager = new GameManager()
-
-
-
     }
 
     async create() {

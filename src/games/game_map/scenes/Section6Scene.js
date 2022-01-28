@@ -49,11 +49,11 @@ export default class Section6Scene extends SectionBasicScene {
     }
 
     create() {
-        
+
         super.create()
 
         this.initSection('game6Bg')
-        
+
         // if(this.dataModel.isFirstLoad) {
         //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
         //     this.add.existing(startBtn)
@@ -65,7 +65,7 @@ export default class Section6Scene extends SectionBasicScene {
     }
 
     populateSection() {
-    
+
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
         const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1', '/game/10')
         const hintBtn = new HintBtn(this, this.getColWidth(6.8), this.getRowHeight(5.5), [gameBtn], 's6HintLogo')
@@ -77,7 +77,7 @@ export default class Section6Scene extends SectionBasicScene {
         const lampLight3 = new LampLight(this, this.getColWidth(11.6), this.getRowHeight(6.4))
 
         const car = this.add.image(this.getColWidth(11.2), this.getRowHeight(6), 's6car')
-        
+
         this.tweens.add({
             targets: car,
             x: this.getColWidth(4.5),

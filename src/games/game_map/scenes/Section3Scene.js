@@ -105,7 +105,7 @@ export default class Section3Scene extends SectionBasicScene {
             repeat: -1,
             duration: 8000
         })
-        
+
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
 
         const game11Btn = new GameNavBtn(this, this.getColWidth(3), this.getRowHeight(9.2), 's3btn6', '/game/11')

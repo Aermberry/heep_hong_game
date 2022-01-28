@@ -77,7 +77,7 @@ export default {
     }
 
     try{
-      console.log(gameId)
+
       let gameFile = require('@/games/game_'+gameId+'/index')
       if(gameFile){
         const game = await import('@/games/game_'+gameId+'/index')

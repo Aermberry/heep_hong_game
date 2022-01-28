@@ -20,7 +20,7 @@ export default class EggQuestion extends Egg {
     }
 
 
-    setDisableDraggableListener() {
+    setRemoveListener() {
         this.voiceButton.cancelListener();
     }
 

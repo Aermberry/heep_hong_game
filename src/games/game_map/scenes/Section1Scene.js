@@ -123,8 +123,8 @@ export default class Section1Scene extends BasicScene {
     populateSection() {
         const game1Btn = new GameNavBtn(this, this.getColWidth(1.68), this.getRowHeight(8.8), 's1btn1', '/game/1')
         const game2Btn = new GameNavBtn(this, this.getColWidth(6.57), this.getRowHeight(5.3), 's1btn2', '/game/2')
-        const game3Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(8.2), 's1btn3', '/game/2')
-        const game4Btn = new GameNavBtn(this, this.getColWidth(10.6), this.getRowHeight(7.5), 's1btn4', '/game/2')
+        const game3Btn = new GameNavBtn(this, this.getColWidth(6.1), this.getRowHeight(8.2), 's1btn3', '/game/3')
+        const game4Btn = new GameNavBtn(this, this.getColWidth(10.6), this.getRowHeight(7.5), 's1btn4', '/game/4')
         const hintBtnA = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(7), [game1Btn], 'spaceRestaurantLogo')
         const hintBtnB = new HintBtn(this, this.getColWidth(8.3), this.getRowHeight(8.1), [game2Btn, game3Btn, game4Btn], 'spaceFactoryLogo')
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))

@@ -59,8 +59,14 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         this.buildBg('bg');
+        this.sound.stopAll();
+
         //初始化游戏场景
         this.initScene();
+        this.music = this.sound.add('bgm')
+        this.music.setLoop(true)
+        this.music.play();
+
         let currentZone;
         let self = this;
 
@@ -105,11 +111,11 @@ export default class GameScene extends BasicScene {
                 arrNew.push(mm)
             }
             this.butterfly = new Butterfly(this, 960, 280, arrNew)
-            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this),this.onComplete.bind(this), true)
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), this.onComplete.bind(this), true)
             this.scoreboard.init(arrNew);
         } else {
             this.butterfly = new Butterfly(this, 960, 280)
-            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this),this.onComplete.bind(this))
+            this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), this.onComplete.bind(this))
             this.scoreboard.init(this.answer);
         }
         this.article.createArticle(this.answer)

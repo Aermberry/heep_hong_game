@@ -51,11 +51,11 @@ export default class Section5Scene extends SectionBasicScene {
     }
 
     create() {
-        
+
         super.create()
 
         this.initSection('game5Bg')
-        
+
         // if(this.dataModel.isFirstLoad) {
         //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
         //     this.add.existing(startBtn)
@@ -67,7 +67,7 @@ export default class Section5Scene extends SectionBasicScene {
     }
 
     populateSection() {
-    
+
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
         // const gameBtn1 = new GameNavBtn(this, this.getColWidth(5.7), this.getRowHeight(5.3), 's5btn1', '/game/20')
         const gameBtn1 = new Game20NavBtn(this, this.getColWidth(5.7), this.getRowHeight(5.3), 's5btn1', '/game/20')
@@ -80,7 +80,7 @@ export default class Section5Scene extends SectionBasicScene {
         gameBtn1.initHint('g20Hint', this.getColWidth(-2), this.getRowHeight(0))
 
         this.anims.create({
-            key: 'ship', 
+            key: 'ship',
             frames: this.anims.generateFrameNames('ship', { prefix: 'Symbol 1', start: 0, end: 24, zeroPad: 4 }),
             repeat: -1,
             // delay: 6000,
@@ -92,7 +92,7 @@ export default class Section5Scene extends SectionBasicScene {
         animate1.play('ship')
 
         this.anims.create({
-            key: 'fish', 
+            key: 'fish',
             frames: this.anims.generateFrameNames('fish', { prefix: 'Symbol 3', start: 0, end: 29, zeroPad: 4 }),
             repeat: -1,
             // delay: 6000,

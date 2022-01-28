@@ -7,9 +7,14 @@ class ResumeBtn extends Phaser.GameObjects.Container {
         this.origSprite = null
     }
 
-    create(sprite, clickEvent) {
+    create(sprite) {
         this.origSprite = sprite;
         this.add(this.origSprite)
+        this.origSprite.setFrame(2)
+    }
+
+    setActive(clickEvent) {
+        this.origSprite.setFrame(0)
         this.origSprite.setInteractive({
             useHandCursor: true
         })
@@ -40,23 +45,27 @@ class ExistBtn extends Phaser.GameObjects.Container {
 
     }
 
-    create(sprite) {
+    create(sprite, clickEvent) {
         this.origSprite = sprite;
         this.add(this.origSprite)
         this.origSprite.setInteractive({
             useHandCursor: true
         })
             .on('pointerout', this.out.bind(this))
-            .on('pointerdown', this.down.bind(this));
+            .on('pointerdown', this.down.bind(this, clickEvent));
     }
 
     out() {
         this.origSprite.setFrame(0)
     }
 
-    down() {
+    down(clickEvent) {
         this.origSprite.setFrame(1)
-        window.location.href = window.location.origin
+        if (typeof clickEvent == 'function') {
+            setTimeout(() => {
+                clickEvent()
+            }, 500)
+        }
     }
 
 }
@@ -65,7 +74,7 @@ class RestBox extends Phaser.GameObjects.Container {
 
     constructor(scene, x, y, children) {
         super(scene, x, y, children)
-        
+
         // this.resumeBtn = new ResumeBtn(this.scene, 0, 0)
 
         this.existBtn = null;
@@ -86,7 +95,7 @@ class RestBox extends Phaser.GameObjects.Container {
 
     }
 
-} 
+}
 
 class PauseScene extends Phaser.Scene {
 
@@ -102,8 +111,8 @@ class PauseScene extends Phaser.Scene {
 
         this.load.image('pause_box', require('../assets/images/pause_block/pause_box.png'))
         this.load.image('pause_cat', require('../assets/images/pause_block/pause_cat.png'))
-        this.load.spritesheet('btn_con', require('../assets/images/pause_block/btn_con.png'), {frameWidth: 410, frameHeight: 163.5})
-        this.load.spritesheet('btn_ext', require('../assets/images/pause_block/btn_ext.png'), {frameWidth: 410, frameHeight: 163.5})
+        this.load.spritesheet('btn_con', require('../assets/images/pause_block/btn_con.png'), {frameWidth: 409, frameHeight: 174})
+        this.load.spritesheet('btn_ext', require('../assets/images/pause_block/btn_close.png'), {frameWidth: 185, frameHeight: 209})
         this.load.spritesheet('rplBtn', require('../games/game_5/assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 });
 
     }
@@ -113,26 +122,18 @@ class PauseScene extends Phaser.Scene {
         if(this.otherDom) {
             this.otherDom.style.zIndex =  -1;
         }
-        
+
         this.backDrop = this.add.renderTexture(0, 0, this.sys.game.canvas.width, this.sys.game.canvas.height)
         this.backDrop.fill('0x000000', 0.4)
-        
+
         this.bgBox = new RestBox(this, this.sys.game.canvas.width/2, this.sys.game.canvas.height/2)
         this.add.existing(this.bgBox)
 
         const resumetBtnSprite = this.add.image(0, 0, 'btn_con')
-        this.resumeBtn = new ResumeBtn(this, this.sys.game.canvas.width * 0.38, this.sys.game.canvas.height * 0.75)
-        this.resumeBtn.create(resumetBtnSprite, ()=> {
-            clearInterval(this.resumeCounter)
-            this.scene.stop()
-            gamePauseService.resumePausedScene();
-            if(this.otherDom) {
-                this.otherDom.style.zIndex = 10;
-            }
-            // lastScene.scene.start()
-        })
+        this.resumeBtn = new ResumeBtn(this, this.sys.game.canvas.width * 0.5, this.sys.game.canvas.height * 0.75)
+        this.resumeBtn.create(resumetBtnSprite)
 
-        this.countDownText = this.add.text(this.sys.game.canvas.width * 0.38, this.sys.game.canvas.height * 0.85, 'Text', {
+        this.countDownText = this.add.text(this.sys.game.canvas.width * 0.5, this.sys.game.canvas.height * 0.85, 'Text', {
             color: '#FFFFFF',
             stroke: "#000000",
             strokeThickness: 3,
@@ -141,12 +142,19 @@ class PauseScene extends Phaser.Scene {
         this.countDownText.setOrigin(0.5)
         this.countDownText.setPadding(10, 10)
         this.startResumeCount(gamePauseService.getRestTime()* 60 * 1000, gamePauseService)
-        
+
         this.add.existing(this.resumeBtn)
 
         const existSprite = this.add.image(0, 0, 'btn_ext')
-        this.existBtn = new ExistBtn(this, this.sys.game.canvas.width * 0.62, this.sys.game.canvas.height * 0.75)
-        this.existBtn.create(existSprite)
+        this.existBtn = new ExistBtn(this, this.sys.game.canvas.width * 0.67, this.sys.game.canvas.height * 0.20)
+        this.existBtn.create(existSprite, ()=> {
+            clearInterval(this.resumeCounter)
+            this.scene.stop()
+            gamePauseService.resumePausedScene();
+            if(this.otherDom) {
+                this.otherDom.style.zIndex = 10;
+            }
+        })
         this.add.existing(this.existBtn)
 
 
@@ -164,18 +172,19 @@ class PauseScene extends Phaser.Scene {
         this.countDownText.setText(this.resumeTimeFormat(this.resumeTime))
 
         this.resumeCounter = setInterval(()=> {
-            if(this.resumeTime === 0) {
-                clearInterval(this.resumeCounter)
-                this.scene.stop()
-                gamePauseService.resumePausedScene();
-                if(this.otherDom) {
-                    this.otherDom.style.zIndex = 10;
-                }
-            }
             this.resumeTime -= 1000
             const curTime = this.resumeTimeFormat(this.resumeTime)
-
             this.countDownText.setText(curTime)
+            if(this.resumeTime === 0) {
+                clearInterval(this.resumeCounter)
+                this.resumeBtn.setActive(()=> {
+                    this.scene.stop()
+                    gamePauseService.resumePausedScene()
+                    if(this.otherDom) {
+                        this.otherDom.style.zIndex = 10;
+                    }
+                })
+            }
         }, 1000)
 
     }
@@ -273,7 +282,7 @@ const install = function (Vue) {
                 scene.scene.pause()
                 scene.scene.launch('Pause', {gamePauseService: this, lastScene: scene})
 
-                
+
                 return true;
             })
             if (typeof this.onGamePauseCallback === 'function') this.onGamePauseCallback()
@@ -292,7 +301,7 @@ const install = function (Vue) {
 
         if (!this.isPause) return
 
-        //Get all scene 
+        //Get all scene
         let currentScenes = this.gameInstance.scene.getScenes(false)
         //check if the scene is paused, resume all paused scene
         if (currentScenes && typeof currentScenes.length != 'undefined' && currentScenes.length > 0) {

@@ -3,7 +3,7 @@
     <Header />
     <main>
       <div class="container">
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
         <div class="content-wrapper game-intro">
           <!-- <div class="game-intro-header">
             <img src="@/assets/images/world notext.svg" alt="">
@@ -19,7 +19,7 @@
             <game-map />
 
         </div>
-        <div class="content-space"></div>
+        <!-- <div class="content-space"></div> -->
       </div>
     </main>
     <Footer />
@@ -30,7 +30,7 @@
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import GameMap from '../components/GameMap.vue'
+import GameMap from '@/components/GameMap.vue'
 
 
 export default {

@@ -30,7 +30,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.add([
             this.rock,
             this.bamImgBad,
-            this.bamImg, 
+            this.bamImg,
             this.whiteBroad
         ]);
 
@@ -65,15 +65,15 @@ export default class ItemBam extends Phaser.GameObjects.Container {
         this.bottomHalf = this.scene.add.image(0, 0, 'itemBam')
 
         let graphics = this.scene.add.graphics({x: (this.x - this.bamImg.width*.65), y: (this.y - this.bamImg.height*.65)})
-        graphics.fillTriangle(0, 0, 
-            this.bamImg.width *1.2, this.bamImg.height* 1.2, 
+        graphics.fillTriangle(0, 0,
+            this.bamImg.width *1.2, this.bamImg.height* 1.2,
             0, this.bamImg.height*1.2,
         )
         graphics.setAlpha(0)
 
         let altGraphics = this.scene.add.graphics({x: (this.x + this.bamImg.width*.65), y: (this.y + this.bamImg.height*.65)})
         altGraphics.fillTriangle(0, 0,
-            -this.bamImg.width *1.2, -this.bamImg.height*1.2, 
+            -this.bamImg.width *1.2, -this.bamImg.height*1.2,
             0, -this.bamImg.height*1.2,
         )
         altGraphics.setAlpha(0)
@@ -122,7 +122,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             this.createCrop();
 
         })
-        
+
     }
 
     customMoveTo(x, y, time) {
@@ -136,9 +136,9 @@ export default class ItemBam extends Phaser.GameObjects.Container {
                 duration: time,
                 ease: 'Power2'
             }).on('complete', ()=> {
-    
+
                 resolve()
-    
+
             })
 
         })
@@ -178,7 +178,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
     }
 
     failedToBreak() {
-        
+
         this.bamImg.setAlpha(0)
         this.whiteBroad.setAlpha(0)
         // this.textBlock.setAlpha(0)
@@ -208,15 +208,16 @@ export default class ItemBam extends Phaser.GameObjects.Container {
     getStrike() {
 
         return new Promise((resolve)=> {
-            
+
 
             // let failSound = this.scene.sound.add('hit')
 
-            
+
             let failSound = this.scene.sound.add('thwack')
             // strikeSound.play()
 
-            let strikeSoundA = this.scene.sound.add('swing')
+            let strikeSoundB = this.scene.sound.add('swing')
+            let strikeSoundA = this.scene.sound.add('hit')
 
             let slash = this.scene.add.image( -this.bamImg.width * 0.25, -this.bamImg.height * 0.25, 'slash')
 
@@ -230,11 +231,11 @@ export default class ItemBam extends Phaser.GameObjects.Container {
             this.scene.sound.stopByKey('drums')
 
             failSound.play();
-            
-            // setTimeout(strikeSoundB.play, 400)
+
+            setTimeout(strikeSoundB.play(), 400)
 
             this.whiteBroad.getStrike()
-            
+
             this.scene.tweens.add({
                 targets: slash,
                 alpha: 1,
@@ -290,7 +291,7 @@ export default class ItemBam extends Phaser.GameObjects.Container {
                 x: this.inPosition.x + bottomRight.x,
                 y: this.inPosition.y + bottomRight.y
             }
-                        
+
         }
 
         return x >= worldBody.topLeft.x && x <= worldBody.bottomRight.x && y >= worldBody.topLeft.y && y <= worldBody.bottomRight.y;

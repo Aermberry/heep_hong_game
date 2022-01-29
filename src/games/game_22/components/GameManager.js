@@ -27,11 +27,11 @@ export default class GameManager {
     async initGameData() {
         if (localStorage) {
             localStorage.clear();
-            console.log("Hello world11111");
+            
             const vConsole = new VConsole();
             console.log("Hello world");
             vConsole.log.log("log");
-            // vConsole.destroy();
+            vConsole.destroy();
         }
 
         localStorage.setItem('gamePlayTotal', JSON.stringify(5));

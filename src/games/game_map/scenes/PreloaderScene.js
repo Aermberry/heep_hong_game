@@ -61,6 +61,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('section3Btn', require('../assets/images/buttons/3a.png'), { frameWidth: 860, frameHeight: 350 })
         this.load.spritesheet('section6Btn', require('../assets/images/buttons/6a.png'), { frameWidth: 670, frameHeight: 460 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
+        this.load.spritesheet('speakerBtn', require('../assets/images/buttons/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
+        this.load.spritesheet('offSpeakerBtn', require('../assets/images/buttons/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
 
         this.createProgressBar()
 
@@ -71,7 +73,7 @@ export default class PreloaderScene extends BasicScene {
         this.sound.stopAll()
 
         if(this.dataModel.isFirstLoad) {
-            const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
+            const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(7))
             this.add.existing(startBtn)
             this.dataModel.isFirstLoad = false
         }else {

@@ -39,6 +39,14 @@ export default {
     Header,
     Footer,
     GameMap
+  },
+  mounted (){
+    setTimeout(function() {
+      if(window.matchMedia("(pointer: coarse)").matches) {
+        const gameMap = document.querySelector('.game-intro')
+        gameMap.scrollIntoView(true)
+      }
+    }, 500)
   }
 }
 </script>

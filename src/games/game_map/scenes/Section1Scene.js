@@ -2,6 +2,7 @@ import BasicScene from './BasicScene'
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 // import StartBtn from '../objects/StartBtn'
 
 export default class Section1Scene extends BasicScene {
@@ -128,6 +129,7 @@ export default class Section1Scene extends BasicScene {
         const hintBtnA = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(7), [game1Btn], 'spaceRestaurantLogo')
         const hintBtnB = new HintBtn(this, this.getColWidth(8.3), this.getRowHeight(8.1), [game2Btn, game3Btn, game4Btn], 'spaceFactoryLogo')
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
 
         game1Btn.initHint('g1Hint', this.getColWidth(2.1), this.getColWidth(0))
         game2Btn.initHint('g2Hint', this.getColWidth(0), this.getColWidth(-1.5))
@@ -167,5 +169,6 @@ export default class Section1Scene extends BasicScene {
         this.add.existing(game3Btn)
         this.add.existing(game4Btn)
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
     }
 }

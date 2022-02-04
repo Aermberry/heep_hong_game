@@ -2,6 +2,7 @@ import SectionBasicScene from "./SectionBasicScene"
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 // import StartBtn from '../objects/StartBtn'
 
 export default class Section2Scene extends SectionBasicScene {
@@ -56,7 +57,7 @@ export default class Section2Scene extends SectionBasicScene {
 
     create() {
         super.create()
-        
+        this.sound.stopAll()
         this.initSection('game2Bg')
 
         // if(this.dataModel.isFirstLoad) {
@@ -72,6 +73,7 @@ export default class Section2Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
 
         const game4Btn = new GameNavBtn(this, this.getColWidth(2.55), this.getRowHeight(10.2), 's2btn1', '/game/8')
         const game2Btn = new GameNavBtn(this, this.getColWidth(3.85), this.getRowHeight(7.1), 's2btn2', '/game/6')
@@ -80,7 +82,7 @@ export default class Section2Scene extends SectionBasicScene {
         const game1Btn = new GameNavBtn(this, this.getColWidth(1.3), this.getRowHeight(7.3), 's2btn5', '/game/5')
         const game5Btn = new GameNavBtn(this, this.getColWidth(6.32), this.getRowHeight(9.95), 's2btn6', '/game/9')
         const hintBtn = new HintBtn(this, this.getColWidth(6.32), this.getRowHeight(5.5), [game1Btn, game2Btn, game3Btn, game4Btn, game5Btn, game6Btn], 'catLogo')
-        
+
         game1Btn.initHint('b1Hint', this.getColWidth(0), this.getRowHeight(-1.8))
         game2Btn.initHint('b2Hint', this.getColWidth(0), this.getRowHeight(-1.8))
         game3Btn.initHint('b3Hint', this.getColWidth(0), this.getRowHeight(-1.8))
@@ -89,7 +91,7 @@ export default class Section2Scene extends SectionBasicScene {
         game6Btn.initHint('b6Hint', this.getColWidth(0), this.getRowHeight(-1.8))
 
         this.anims.create({
-            key: 'tree_fall_anime', 
+            key: 'tree_fall_anime',
             frames: this.anims.generateFrameNames('tree_fall', { prefix: 'Symbol 1', start: 0, end: 35, zeroPad: 4 }),
             repeat: -1,
             delay: 6000,
@@ -101,8 +103,9 @@ export default class Section2Scene extends SectionBasicScene {
         animate.play('tree_fall_anime')
 
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's2Logo')
-        
+
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
         this.add.existing(hintBtn)
         this.add.existing(game1Btn)
         this.add.existing(game2Btn)

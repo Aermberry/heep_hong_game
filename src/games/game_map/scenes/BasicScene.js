@@ -12,6 +12,8 @@ export default class BasicScene extends Phaser.Scene {
         this.widthBlock = pageWidth / 12;
         this.heightBlock = pageHeight / 12;
 
+        this.gameMusic = this.sound.add('bgm', {volume: 0.4})
+        this.gameMusic.setLoop(true)
     }
 
     buildBg(bg) {

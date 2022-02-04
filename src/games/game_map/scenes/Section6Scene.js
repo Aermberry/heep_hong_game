@@ -1,5 +1,6 @@
 import SectionBasicScene from "./SectionBasicScene"
 import BackBtn from "../objects/BackBtn"
+import SpeakerBtn from "../objects/SpeakerBtn"
 import HintBtn from "../objects/HintBtn"
 import GameNavBtn from "../objects/GameNavBtn"
 import LampLight from "../objects/animations/LampLight"
@@ -51,7 +52,7 @@ export default class Section6Scene extends SectionBasicScene {
     create() {
 
         super.create()
-
+        this.sound.stopAll()
         this.initSection('game6Bg')
 
         // if(this.dataModel.isFirstLoad) {
@@ -67,6 +68,7 @@ export default class Section6Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
         const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1', '/game/10')
         const hintBtn = new HintBtn(this, this.getColWidth(6.8), this.getRowHeight(5.5), [gameBtn], 's6HintLogo')
 
@@ -93,6 +95,7 @@ export default class Section6Scene extends SectionBasicScene {
         this.add.existing(lampLight1)
         this.add.existing(lampLight2)
         this.add.existing(lampLight3)
+        this.add.existing(speakerBtn)
 
     }
 

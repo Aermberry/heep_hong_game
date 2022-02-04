@@ -8,20 +8,22 @@ export default class SpeakerBtn extends BasicBtn {
     if(this.scene.dataModel.bgMusicPlaying){
       this.scene.gameMusic.play()
     }
-    let sprite =  scene.add.sprite(0, 0, 'offSpeakerBtn')
-    this.create(sprite,this.onClick.bind(this))
-
+    this.sprite =  scene.add.sprite(0, 0, this.scene.dataModel.bgMusicPlaying ? 'offSpeakerBtn' : 'speakerBtn')
+    this.create(this.sprite,this.onClick.bind(this))
 
   }
 
   onClick(){
+
     if(this.scene.dataModel.bgMusicPlaying){
-      this.scene.gameMusic.mute = true
+      this.scene.gameMusic.stop()
       this.scene.dataModel.bgMusicPlaying = false
     }else{
-      this.scene.gameMusic.mute = false
+      this.scene.gameMusic.play()
       this.scene.dataModel.bgMusicPlaying = true
     }
+    this.sprite.setTexture(this.scene.dataModel.bgMusicPlaying ? 'offSpeakerBtn' : 'speakerBtn')
+
   }
 
 }

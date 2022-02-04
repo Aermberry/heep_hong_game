@@ -16,10 +16,6 @@ export default class MapScene extends BasicScene {
 
     init() {
         this.dataModel = this.sys.game.globals.model;
-
-        this.gameMusic = this.sound.add('bgm', {volume: 0.4})
-        this.gameMusic.setLoop(true)
-        this.dataModel.bgMusicPlaying = true
     }
 
     preload() {

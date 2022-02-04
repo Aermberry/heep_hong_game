@@ -23,6 +23,7 @@ export default class Section4Scene extends SectionBasicScene {
 
         const atlasFiles = {
             's4Road': { img: require('../assets/images/section_4/road.png'), data: require('../assets/images/section_4/road.json')},
+            'butterfly': { img: require('../assets/images/section_4/butterfly.png'), data: require('../assets/images/section_4/butterfly.json')},
         }
 
         const imageFiles = {
@@ -78,6 +79,12 @@ export default class Section4Scene extends SectionBasicScene {
             repeat: -1,
         });
 
+        this.anims.create({
+            key: 'butterfly',
+            frames: this.anims.generateFrameNames('butterfly', { prefix: 'Symbol 7', start: 0, end: 58, zeroPad: 4 }),
+            repeat: -1,
+        });
+
         this.initSection('game4Bg')
 
         // if(this.dataModel.isFirstLoad) {
@@ -116,10 +123,14 @@ export default class Section4Scene extends SectionBasicScene {
         let roadAnimate = this.add.sprite(this.getColWidth(5.63), this.getRowHeight(11.01), 's4Road')
         roadAnimate.play('s4_road')
 
+
         const cloud1 = new Cloud(this, this.getColWidth(3), this.getRowHeight(1))
         this.add.existing(cloud1)
         const cloud2 = new Cloud(this, this.getColWidth(11), this.getRowHeight(2.5), 'cloud_small')
         this.add.existing(cloud2)
+
+        let butterflyAnimate = this.add.sprite(this.getColWidth(8), this.getRowHeight(6), 'butterfly')
+        butterflyAnimate.play('butterfly')
 
         this.add.existing(vehicle)
         this.add.image(this.getColWidth(3.7), this.getRowHeight(1.5), 's4Logo')

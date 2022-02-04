@@ -2,6 +2,7 @@ import BasicScene from './BasicScene'
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 // import StartBtn from '../objects/StartBtn'
 
 export default class Section1Scene extends BasicScene {
@@ -41,7 +42,7 @@ export default class Section1Scene extends BasicScene {
         }
 
         const soundFiles = {
-            'bgm': require('../assets/audios/casual_game_track.mp3'),
+            // 'bgm': require('../assets/audios/casual_game_track.mp3'),
             // 'button': require('../assets/audios/comedy_pop_finger_in_mouth_002.mp3'),
             'info': require('../assets/audios/medicine_syrup_dosing_syringe_slide_with_no_syrup_inside.mp3'),
             'zoom': require('../assets/audios/Whoosh_Low_Fast_Raxr_Edos_4.mp3')
@@ -80,6 +81,8 @@ export default class Section1Scene extends BasicScene {
 
     create() {
         super.create();
+
+        this.sound.stopAll()
 
         if(this.isPreloadResolved) {
             this.initSection()
@@ -128,6 +131,7 @@ export default class Section1Scene extends BasicScene {
         const hintBtnA = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(7), [game1Btn], 'spaceRestaurantLogo')
         const hintBtnB = new HintBtn(this, this.getColWidth(8.3), this.getRowHeight(8.1), [game2Btn, game3Btn, game4Btn], 'spaceFactoryLogo')
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
 
         game1Btn.initHint('g1Hint', this.getColWidth(2.1), this.getColWidth(0))
         game2Btn.initHint('g2Hint', this.getColWidth(0), this.getColWidth(-1.5))
@@ -167,5 +171,6 @@ export default class Section1Scene extends BasicScene {
         this.add.existing(game3Btn)
         this.add.existing(game4Btn)
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
     }
 }

@@ -1,6 +1,7 @@
 import SectionBasicScene from './SectionBasicScene'
 import GameNavBtn from '../objects/GameNavBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 import HintBtn from '../objects/HintBtn'
 import Vehicle from '../objects/animations/Vehicle'
 import Cloud from '../objects/animations/Cloud'
@@ -70,7 +71,7 @@ export default class Section4Scene extends SectionBasicScene {
     create() {
 
         super.create()
-
+        this.sound.stopAll()
         this.anims.create({
             key: 's4_road',
             frames: this.anims.generateFrameNames('s4Road', { prefix: 'Symbol 7', start: 0, end: 58, zeroPad: 4 }),
@@ -92,6 +93,7 @@ export default class Section4Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
         const game19Btn = new GameNavBtn(this, this.getColWidth(2.4), this.getRowHeight(8.7), 's4btn1', '/game/19')
         const game18Btn = new GameNavBtn(this, this.getColWidth(6.8), this.getRowHeight(4.7), 's4btn2', '/game/18')
         const game29Btn = new GameNavBtn(this, this.getColWidth(7.7), this.getRowHeight(6.1), 's4btn3', '/game/29')
@@ -122,6 +124,7 @@ export default class Section4Scene extends SectionBasicScene {
         this.add.existing(vehicle)
         this.add.image(this.getColWidth(3.7), this.getRowHeight(1.5), 's4Logo')
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
         this.add.existing(game19Btn)
         this.add.existing(game18Btn)
         this.add.existing(game29Btn)

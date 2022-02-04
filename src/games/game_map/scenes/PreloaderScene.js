@@ -71,7 +71,7 @@ export default class PreloaderScene extends BasicScene {
         this.sound.stopAll()
 
         if(this.dataModel.isFirstLoad) {
-            const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
+            const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(7))
             this.add.existing(startBtn)
             this.dataModel.isFirstLoad = false
         }else {

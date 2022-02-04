@@ -1,5 +1,5 @@
 export default class Model {
-    
+
     constructor(uriParams, vueRouter) {
         this._vueRouter = vueRouter;
         this._uriParams = uriParams
@@ -21,6 +21,14 @@ export default class Model {
 
     set isFirstLoad(status) {
         this._isFirstLoad = status
+    }
+
+    set bgMusicPlaying(value) {
+        this._bgMusicPlaying = value;
+    }
+
+    get bgMusicPlaying() {
+        return this._bgMusicPlaying;
     }
 
 }

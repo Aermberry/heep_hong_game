@@ -2,6 +2,7 @@ import SectionBasicScene from "./SectionBasicScene"
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 import Balloon from '../objects/animations/Balloon'
 // import StartBtn from '../objects/StartBtn'
 
@@ -82,7 +83,7 @@ export default class Section3Scene extends SectionBasicScene {
     create() {
 
         super.create()
-
+        this.sound.stopAll()
         this.initSection('game3Bg')
 
         // if(this.dataModel.isFirstLoad) {
@@ -107,6 +108,7 @@ export default class Section3Scene extends SectionBasicScene {
         })
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
 
         const game11Btn = new GameNavBtn(this, this.getColWidth(3), this.getRowHeight(9.2), 's3btn6', '/game/11')
         const game12Btn = new GameNavBtn(this, this.getColWidth(2.8), this.getRowHeight(10.7), 's3btn7', '/game/12')
@@ -148,6 +150,7 @@ export default class Section3Scene extends SectionBasicScene {
         this.add.existing(balloon)
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's3Logo')
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
         this.add.existing(hintBtn1)
         this.add.existing(hintBtn2)
         this.add.existing(hintBtn3)

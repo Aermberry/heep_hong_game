@@ -14,7 +14,7 @@ export default class Game6Btn extends Phaser.GameObjects.Container {
 
     const zone = new Phaser.GameObjects.Ellipse (this.scene, 0, 50, this.origSprite.width - 50, this.origSprite.height/2, '#FFF', 0)
     this.add(zone)
-    
+
     zone.setInteractive({
         useHandCursor: true
     })
@@ -34,6 +34,7 @@ export default class Game6Btn extends Phaser.GameObjects.Container {
   down(clickEvent){
     this.origSprite.setFrame(1)
     if(typeof clickEvent == 'function') {
+      window.history.pushState({},"", '/game/world/6')
       setTimeout(() => {
         clickEvent()
       }, 500)

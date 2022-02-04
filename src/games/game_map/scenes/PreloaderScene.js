@@ -17,7 +17,10 @@ export default class PreloaderScene extends BasicScene {
         this.dataModel = this.sys.game.globals.model;
 
         const atlasFiles = {
-            'tree': { img: require('../assets/images/main/worldmap_tree.png'), data: require('../assets/images/main/worldmap_tree.json')}
+            'tree': { img: require('../assets/images/main/worldmap_tree.png'), data: require('../assets/images/main/worldmap_tree.json')},
+            'smoke': { img: require('../assets/images/main/worldmap_smoke.png'), data: require('../assets/images/main/worldmap_smoke.json')},
+            'dada_red': { img: require('../assets/images/main/worldmap_dada_red.png'), data: require('../assets/images/main/worldmap_dada_red.json')},
+            'dada_yellow': { img: require('../assets/images/main/worldmap_dada_yellow.png'), data: require('../assets/images/main/worldmap_dada_yellow.json')},
             // 'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             // 'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
             // 'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
@@ -39,7 +42,7 @@ export default class PreloaderScene extends BasicScene {
             'cloud_big': require('../assets/images/objects/cloud_big.png'),
             'cloud_small': require('../assets/images/objects/cloud_small.png'),
             'ufo': require('../assets/images/main/worldmap_ufo_pic.png'),
-            'lamp_light': require('../assets/images/main/worldmap_lamp_pic.png'),
+            'lamp_light': require('../assets/images/main/worldmap_lamp_pic.png')
 
         }
 

@@ -20,6 +20,7 @@ export default class Section2Scene extends SectionBasicScene {
 
         const atlasFiles = {
             'tree_fall': { img: require('../assets/images/section_2/forest_s.png'), data: require('../assets/images/section_2/forest_s.json') },
+            'tree_b': { img: require('../assets/images/section_2/forest_B.png'), data: require('../assets/images/section_2/forest_B.json') },
         }
 
         const imageFiles = {
@@ -98,9 +99,20 @@ export default class Section2Scene extends SectionBasicScene {
             repeatDelay: 5000
         });
 
+        this.anims.create({
+            key: 'tree_b_anime',
+            frames: this.anims.generateFrameNames('tree_b', { prefix: 'Symbol 1', start: 0, end: 35, zeroPad: 4 }),
+            repeat: -1,
+            delay: 0,
+            repeatDelay: 5000
+        });
 
-        let animate = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(9), 'tree_fall')
+        let animate2 = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(8.6), 'tree_b_anime')
+        animate2.play('tree_b_anime')
+
+        let animate = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(10.2), 'tree_fall')
         animate.play('tree_fall_anime')
+
 
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's2Logo')
 

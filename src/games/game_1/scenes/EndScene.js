@@ -41,9 +41,9 @@ export default class EndScene extends Scene {
 
     self.anims.create({
       key: 'char_create',
-      frames: self.anims.generateFrameNames('char_end', { 
-        prefix: self.model.character.end_key, 
-        start: self.model.character.action.end[0], 
+      frames: self.anims.generateFrameNames('char_end', {
+        prefix: self.model.character.end_key,
+        start: self.model.character.action.end[0],
         end: self.model.character.action.end[1],
         zeroPad: 4
       }),
@@ -51,9 +51,9 @@ export default class EndScene extends Scene {
 
     self.anims.create({
       key: 'char_repeat',
-      frames: self.anims.generateFrameNames('char_end', { 
-        prefix: self.model.character.end_key, 
-        start: self.model.character.action.end2[0], 
+      frames: self.anims.generateFrameNames('char_end', {
+        prefix: self.model.character.end_key,
+        start: self.model.character.action.end2[0],
         end: self.model.character.action.end2[1],
         zeroPad: 4
       }),
@@ -71,7 +71,7 @@ export default class EndScene extends Scene {
 
     let bg_rocket = self.add.sprite(config.width* 0.2, config.height * 0.4, 'bg_space_rocket')
     bg_rocket.play('bg_space_rocket')
-    
+
     let bg_ufo = self.add.sprite(config.width* 0.7, config.height * 0.8, 'bg_space_ufo')
     bg_ufo.play('bg_space_ufo')
 
@@ -88,6 +88,6 @@ export default class EndScene extends Scene {
     }, this);
 
     self.replayButton = new Button(self, config.width/2 - 220, config.height/2 + 310, 'rplBtn', 'Game', 'self')
-    self.exitButton = new Button(self, config.width/2 + 220, config.height/2 + 310, 'extBtn')
+    self.exitButton = new Button(self, config.width/2 + 220, config.height/2 + 310, 'extBtn', '', 'back')
   }
 }

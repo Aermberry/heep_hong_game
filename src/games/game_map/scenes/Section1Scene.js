@@ -42,7 +42,7 @@ export default class Section1Scene extends BasicScene {
         }
 
         const soundFiles = {
-            // 'bgm': require('../assets/audios/casual_game_track.mp3'),
+            'bgm': require('../assets/audios/casual_game_track.mp3'),
             // 'button': require('../assets/audios/comedy_pop_finger_in_mouth_002.mp3'),
             'info': require('../assets/audios/medicine_syrup_dosing_syringe_slide_with_no_syrup_inside.mp3'),
             'zoom': require('../assets/audios/Whoosh_Low_Fast_Raxr_Edos_4.mp3')

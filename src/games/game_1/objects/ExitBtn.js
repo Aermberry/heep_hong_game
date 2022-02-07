@@ -10,6 +10,7 @@ export default class ExitBtn extends BasicBtn {
   }
 
   onClick(){
-    window.history.back();
+    window.history.back()
+    this.scene.sound.stopAll()
   }
 }

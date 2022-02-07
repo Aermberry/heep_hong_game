@@ -25,6 +25,7 @@ export default class Button extends Phaser.GameObjects.Container {
       }else {
         if(target === 'back'){
           window.history.back()
+          this.scene.sound.stopAll()
         }
       }
     }.bind(this));

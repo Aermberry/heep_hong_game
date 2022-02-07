@@ -78,6 +78,7 @@ export default class PreloaderScene extends BasicScene {
     self.loadingText.setOrigin(0.5, 0.5);
 
     self.load.on('progress', function (value) {
+      console.log(value)
       self.progressBar.clear();
       self.progressBar.fillStyle(0xFC8EFA, 1);
       self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);

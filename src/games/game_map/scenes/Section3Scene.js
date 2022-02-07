@@ -79,6 +79,8 @@ export default class Section3Scene extends SectionBasicScene {
         this.load.spritesheet('s3Hint2Logo', require('../assets/images/section_3/In Game target_v2-128.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
+        this.createProgressBar()
+
     }
 
     create() {

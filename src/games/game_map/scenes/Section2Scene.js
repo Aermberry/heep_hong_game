@@ -54,6 +54,8 @@ export default class Section2Scene extends SectionBasicScene {
         this.load.spritesheet('s2btn6', require('../assets/images/section_2/btn_6.png'),{ frameWidth: 132, frameHeight: 134.5 })
         this.load.spritesheet('catLogo', require('../assets/images/section_2/logo-123.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
+
+        this.createProgressBar()
     }
 
     create() {

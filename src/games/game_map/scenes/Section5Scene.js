@@ -49,6 +49,8 @@ export default class Section5Scene extends SectionBasicScene {
         this.load.spritesheet('s5btn1', require('../assets/images/section_5/btn.png'),{ frameWidth: 131, frameHeight: 135 })
         this.load.spritesheet('s5HintLogo', require('../assets/images/section_5/logo-133.png'), { frameWidth: 305, frameHeight: 314.5 })
 
+        this.createProgressBar()
+
     }
 
     create() {

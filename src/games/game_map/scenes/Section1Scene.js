@@ -60,6 +60,8 @@ export default class Section1Scene extends BasicScene {
         this.load.spritesheet('spaceFactoryLogo', require('../assets/images/section_1/logo-122.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
+        this.createProgressBar()
+
     }
 
     buildPreloadBg(imageName) {

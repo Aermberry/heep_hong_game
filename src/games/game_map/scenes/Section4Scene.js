@@ -67,6 +67,8 @@ export default class Section4Scene extends SectionBasicScene {
         this.load.spritesheet('carerLogo', require('../assets/images/section_4/logo-132.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
+        this.createProgressBar()
+
     }
 
     create() {

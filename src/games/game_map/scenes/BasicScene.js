@@ -76,17 +76,28 @@ export default class BasicScene extends Phaser.Scene {
         this.load.on('complete', this.onLoadComplete, this)
 
         const main = this.cameras.main
-        this.progressBgRect = new Rectangle(0, 0, 0.5 * main.width, 10)
-        Rectangle.CenterOn(this.progressBgRect, 0.5 * main.width, 0.95 * main.height)
+        this.progressBgRect = new Rectangle(0, 0, 0.778 * main.width, 10)
+        Rectangle.CenterOn(this.progressBgRect, 0.5 * main.width, 0.92 * main.height)
         this.progressRect = Rectangle.Clone(this.progressBgRect);
         this.loadingBar = this.add.graphics()
+
+        this.loadingText = this.make.text({
+            x: main.width / 2,
+            y: main.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+
     }
 
     onLoadComplete(loader, totalComplete, totalFailed) {
         console.debug('complete', totalComplete)
         console.debug('failed', totalFailed)
         this.loadingBar.destroy()
-
+        this.loadingText.destroy()
     }
 
     onLoadProgress(progress) {

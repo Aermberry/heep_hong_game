@@ -74,7 +74,7 @@ export default class BasicScene extends Phaser.Scene {
     createProgressBar() {
         this.load.on('progress', this.onLoadProgress, this)
         this.load.on('complete', this.onLoadComplete, this)
-        console.log('loading bar create')
+        this.scale.refresh()
 
         const main = this.cameras.main
         this.progressBgRect = new Rectangle(0, 0, 0.778 * main.width, 10)

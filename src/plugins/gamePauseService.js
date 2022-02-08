@@ -247,6 +247,11 @@ const install = function (Vue) {
 
         this.setCookieTimer = setInterval(() => {
 
+            if (!window.localStorage.getItem('kh_game_paused')) {
+                window.localStorage.setItem('kh_game_paused', false)
+                window.localStorage.setItem('game_last_active_timestamp', now.getTime())
+            }
+
             const curStartTime = window.localStorage.getItem('game_last_active_timestamp')
             let date = new Date()
             const nowTimestamp = date.getTime()

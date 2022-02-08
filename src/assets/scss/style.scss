@@ -615,6 +615,7 @@ footer{
       > .inner{
         bottom: 0;
         height: 100%;
+        max-height: -webkit-fill-available;
         position: absolute;
         top: 0;
         width: 100%;

@@ -108,7 +108,8 @@ export default {
     windowSizeHandler: function () {
       let self = this;
       self.ww = window.innerWidth;
-      self.wh = window.innerHeight;
+      self.wh = window.innerHeight * 0.01;
+     document.querySelector('.game-wrapper').style.setProperty('--vh', `${self.wh}px`)
     }
   },
 };

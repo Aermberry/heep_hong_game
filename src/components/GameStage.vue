@@ -84,7 +84,7 @@ export default {
         self.downloaded = true
         self.$nextTick(() => {
           self.gameInstance = game.launch(self.$route.params, self.$gtag);
-          self.$gamePause.initService(self.gameInstance, 1, 5)
+          self.$gamePause.initService(self.gameInstance, 15, 5)
           self.$gamePause.initGameTrackTimer()
         });
       }

@@ -13,11 +13,23 @@ export default class SectionBtn extends BasicBtn {
 
       onClick(){
 
+        const fullscreenConfig = { navigationUI: 'hide' }
 
-          // document.getElementById("content").innerHTML = response.html;
-          // document.title = response.pageTitle;
-          window.history.pushState({},"", '/game/world/' + this.sectionKey[this.sectionKey.length-1]);
-          this.clickSound.play()
-          this.scene.scene.start(this.sectionKey)
+        const elem = document.querySelector('#game-container canvas');
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen(fullscreenConfig);
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen(fullscreenConfig);
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen(fullscreenConfig);
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(fullscreenConfig);
+        }
+
+        // document.getElementById("content").innerHTML = response.html;
+        // document.title = response.pageTitle;
+        window.history.pushState({},"", '/game/world/' + this.sectionKey[this.sectionKey.length-1]);
+        this.clickSound.play()
+        this.scene.scene.start(this.sectionKey)
       }
 }

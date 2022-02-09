@@ -9,7 +9,7 @@
           <div class="game-intro-main" :style="{backgroundImage:'url(' + require('@/assets/images/img_world_notext.png') + ')'}">
             <!-- <img src="@/assets/images/img_world_notext.png" alt=""> -->
             <img class="logo" src="@/assets/images/img_title.svg" alt="">
-            <router-link to="/game/world" @click.native="onClickHandler" class="link-entry" ><span class="inner">進入遊戲</span></router-link>
+            <router-link to="/world" @click.native="onClickHandler" class="link-entry" ><span class="inner">進入遊戲</span></router-link>
           </div>
 
           <div class="game-intro-card">

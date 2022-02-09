@@ -7,7 +7,7 @@ export default class Model {
 
     }
 
-    get gameStage() {        
+    get gameStage() {
 
         if(typeof this._gameStage === 'undefined' || this._gameStage == null) return this._gameData[0].gameStage;
         return this._gameStage;
@@ -50,4 +50,11 @@ export default class Model {
         return this._gameData[this._gameIndex].tutor
     }
 
+    set bgMusicPlaying(value) {
+        this._bgMusicPlaying = value
+    }
+
+    get bgMusicPlaying() {
+        return this._bgMusicPlaying
+    }
 }

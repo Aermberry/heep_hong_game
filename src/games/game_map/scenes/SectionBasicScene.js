@@ -34,6 +34,8 @@ export default class SectionBasicScene extends BasicScene {
                     camera.centerOn(this.cameras.main.width/2, this.cameras.main.height/2)
                 }
             })
+            // this.cameras.main.on(Phaser.Cameras.Scene2D.Events.ZOOM_COMPLETE, () => {
+            // })
         })
 
     }
@@ -56,7 +58,7 @@ export default class SectionBasicScene extends BasicScene {
         this.add.existing(this.bg)
 
         if(this.isPreloadResolved) {
- 
+
             setTimeout(
                 ()=> {
 
@@ -67,7 +69,7 @@ export default class SectionBasicScene extends BasicScene {
                         alpha: 1
                     }).on('complete', ()=> {
                         this.populateSection()
-                    })        
+                    })
 
                 },
                 1800
@@ -76,7 +78,7 @@ export default class SectionBasicScene extends BasicScene {
 
         }else {
             this.initPromise.then(()=> {
-        
+
                 this.tweens.add({
                     targets: this.bg,
                     duration: 1000,

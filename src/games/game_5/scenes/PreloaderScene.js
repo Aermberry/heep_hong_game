@@ -12,7 +12,7 @@ export default class PreloaderScene extends BasicScene {
 
         this.buildBg('bg_title');
 
-        this.dataModal = this.sys.game.globals.model;
+        this.dataModel = this.sys.game.globals.model;
 
         this.load.plugin('rexglowfilterpipelineplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js', true);
 
@@ -20,32 +20,32 @@ export default class PreloaderScene extends BasicScene {
             5: {
                 'tut1': { img: require('../assets/game5/tut1.png'), data: require('../assets/game5/tut1.json')},
                 'tut2': { img: require('../assets/game5/tut2.png'), data: require('../assets/game5/tut2.json')},
-                'tut3': { img: require('../assets/game5/tut3.png'), data: require('../assets/game5/tut3.json')}, 
+                'tut3': { img: require('../assets/game5/tut3.png'), data: require('../assets/game5/tut3.json')},
             },
             6: {
                 'tut1': { img: require('../assets/game6/tut1.png'), data: require('../assets/game6/tut1.json')},
                 'tut2': { img: require('../assets/game6/tut2.png'), data: require('../assets/game6/tut2.json')},
-                'tut3': { img: require('../assets/game6/tut3.png'), data: require('../assets/game6/tut3.json')}, 
+                'tut3': { img: require('../assets/game6/tut3.png'), data: require('../assets/game6/tut3.json')},
             },
             7: {
                 'tut1': { img: require('../assets/game7/tut1.png'), data: require('../assets/game7/tut1.json')},
                 'tut2': { img: require('../assets/game7/tut2.png'), data: require('../assets/game7/tut2.json')},
-                'tut3': { img: require('../assets/game7/tut3.png'), data: require('../assets/game7/tut3.json')}, 
+                'tut3': { img: require('../assets/game7/tut3.png'), data: require('../assets/game7/tut3.json')},
             },
             8: {
                 'tut1': { img: require('../assets/game8/tut1.png'), data: require('../assets/game8/tut1.json')},
                 'tut2': { img: require('../assets/game8/tut2.png'), data: require('../assets/game8/tut2.json')},
-                'tut3': { img: require('../assets/game8/tut3.png'), data: require('../assets/game8/tut3.json')}, 
+                'tut3': { img: require('../assets/game8/tut3.png'), data: require('../assets/game8/tut3.json')},
             },
             9: {
                 'tut1': { img: require('../assets/game9/tut1.png'), data: require('../assets/game9/tut1.json')},
                 'tut2': { img: require('../assets/game9/tut2.png'), data: require('../assets/game9/tut2.json')},
-                'tut3': { img: require('../assets/game9/tut3.png'), data: require('../assets/game9/tut3.json')}, 
+                'tut3': { img: require('../assets/game9/tut3.png'), data: require('../assets/game9/tut3.json')},
             },
             21: {
                 'tut1': { img: require('../assets/game21/tut1.png'), data: require('../assets/game21/tut1.json')},
                 'tut2': { img: require('../assets/game21/tut2.png'), data: require('../assets/game21/tut2.json')},
-                'tut3': { img: require('../assets/game21/tut3.png'), data: require('../assets/game21/tut3.json')}, 
+                'tut3': { img: require('../assets/game21/tut3.png'), data: require('../assets/game21/tut3.json')},
             }
         }
 
@@ -84,9 +84,9 @@ export default class PreloaderScene extends BasicScene {
         const atlasFiles = {
             // 'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
             // 'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
-            // 'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')}, 
+            // 'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
             'end_cat': { img: require('../assets/anims/end_cat.png'), data: require('../assets/anims/end_cat.json')},
-            ...tutResArr[this.dataModal.gameStage]
+            ...tutResArr[this.dataModel.gameStage]
         }
 
         let soundFiles = {
@@ -100,7 +100,7 @@ export default class PreloaderScene extends BasicScene {
             'childClap': require('../assets/audio/child-only-clap.mp3')
         }
 
-        if(this.dataModal.gameStage == 21) soundFiles['intro_voice'] = require('../assets/audio/game5_intro.mp3')
+        if(this.dataModel.gameStage == 21) soundFiles['intro_voice'] = require('../assets/audio/game5_intro.mp3')
 
         this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('strBtn', require('../assets/btn_str.png'),{ frameWidth: 776, frameHeight: 227 });
@@ -109,6 +109,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('cfmBtn', require('../assets/btn_cfm.png'),{ frameWidth: 917, frameHeight: 233 });
+        this.load.spritesheet('speakerBtn', require('../assets/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
+        this.load.spritesheet('offSpeakerBtn', require('../assets/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
 
         this.preloadFromArr({img: imageFiles, atlas: atlasFiles, sound: soundFiles});
 

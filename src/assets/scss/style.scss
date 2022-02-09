@@ -583,6 +583,7 @@ footer{
   }
   &-wrapper{
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     background-color: black;
     &.portrait{
@@ -605,7 +606,7 @@ footer{
       max-width: $gameWidth / $gameHeight *  100vh;
       position: relative;
       width: 100vw;
-      height: 100vh;
+      height: 100%;
       margin: auto;
       &::after{
         content: '';

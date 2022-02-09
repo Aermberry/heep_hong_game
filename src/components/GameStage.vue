@@ -77,7 +77,7 @@ export default {
     }
 
     try{
-      console.log(gameId)
+
       let gameFile = require('@/games/game_'+gameId+'/index')
       if(gameFile){
         const game = await import('@/games/game_'+gameId+'/index')
@@ -109,6 +109,9 @@ export default {
       let self = this;
       self.ww = window.innerWidth;
       self.wh = window.innerHeight;
+      if(document.querySelector('.game-wrapper')){
+        document.querySelector('.game-wrapper').style.setProperty('--vh', `${self.wh * 0.01}px`)
+      }
     }
   },
 };

@@ -14,7 +14,7 @@ export const createTutorAnimations = (anims) => {
     anims.create({
         key: 'tutor02Animation',
         delay: 200,
-        frames: anims.generateFrameNames('tutor02Texture', { prefix: 'tutor_step_2', start: 0, end: 29, zeroPad: 4 }),
+        frames: anims.generateFrameNames('tutor02Texture', { prefix: 'tutor_step_2', start: 0, end: 9, zeroPad: 4 }),
         repeat: 0,
     });
 

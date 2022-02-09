@@ -30,7 +30,7 @@
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import GameMap from '../components/GameMap.vue'
+import GameMap from '@/components/GameMap.vue'
 
 
 export default {
@@ -39,6 +39,14 @@ export default {
     Header,
     Footer,
     GameMap
+  },
+  mounted (){
+    setTimeout(function() {
+      if(window.matchMedia("(pointer: coarse)").matches) {
+        const gameMap = document.querySelector('.game-intro')
+        gameMap.scrollIntoView(true)
+      }
+    }, 500)
   }
 }
 </script>

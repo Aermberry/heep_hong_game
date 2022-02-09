@@ -341,7 +341,7 @@ export default class GameScene extends BasicScene {
                 let rightItem;
 
                 eggItemList.forEach(eggItem => {
-                    eggItem.setRemoveListener();
+                    eggItem.setRemoveListener()
                 });
 
                 targetItem.setRemoveListener();

@@ -56,6 +56,7 @@ export default class Section2Scene extends SectionBasicScene {
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
         this.createProgressBar()
+
     }
 
     create() {

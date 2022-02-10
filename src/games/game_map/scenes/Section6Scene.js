@@ -51,6 +51,23 @@ export default class Section6Scene extends SectionBasicScene {
 
     }
 
+    buildPreloadBg(imageName) {
+        this.buildBg(imageName)
+
+        this.initPromise = new Promise((resolve)=> {
+            this.tweens.add({
+                targets: this.bg,
+                duration: 1000,
+                scale: 2,
+                alpha: 0
+            }).on('complete', function() {
+                this.isPreloadResolved = true
+                resolve()
+            })
+        })
+
+    }
+
     create() {
 
         super.create()

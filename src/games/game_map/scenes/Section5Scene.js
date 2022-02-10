@@ -19,6 +19,8 @@ export default class Section5Scene extends SectionBasicScene {
 
     preload() {
 
+        this.buildPreloadBg('bg_title', {x: 0.8, y: 0.6})
+
         const atlasFiles = {
             'ship': { img: require('../assets/images/section_5/ship.png'), data: require('../assets/images/section_5/ship.json') },
             'fish': { img: require('../assets/images/section_5/fish.png'), data: require('../assets/images/section_5/fish.json') }
@@ -48,7 +50,6 @@ export default class Section5Scene extends SectionBasicScene {
         this.load.spritesheet('s5HintLogo', require('../assets/images/section_5/logo-133.png'), { frameWidth: 305, frameHeight: 314.5 })
 
         this.createProgressBar()
-        this.buildPreloadBg('bg_title', {x: 0.8, y: 0.6})
     }
 
     create() {

@@ -75,7 +75,12 @@ export default class BasicScene extends Phaser.Scene {
         this.load.on('progress', this.onLoadProgress, this)
         this.load.on('complete', this.onLoadComplete, this)
 
-        const main = this.cameras.main
+        //const main = this.cameras.main
+        const main = this.sys.game.canvas
+
+        this.backDrop = this.add.renderTexture(0, 0, main.width, main.height)
+        this.backDrop.fill('0x000000', 0.4)
+
         this.progressBgRect = new Rectangle(0, 0, 0.778 * main.width, 10)
         Rectangle.CenterOn(this.progressBgRect, 0.5 * main.width, 0.92 * main.height)
         this.progressRect = Rectangle.Clone(this.progressBgRect)

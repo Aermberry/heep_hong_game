@@ -16,6 +16,7 @@ export default class Section2Scene extends SectionBasicScene {
     }
 
     preload() {
+
         this.buildPreloadBg('bg_title', {x: 0.6, y: 0.3})
 
         const atlasFiles = {
@@ -56,24 +57,6 @@ export default class Section2Scene extends SectionBasicScene {
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
         this.createProgressBar()
-
-    }
-
-    buildPreloadBg(imageName) {
-        this.buildBg(imageName)
-
-        this.initPromise = new Promise((resolve)=> {
-            this.tweens.add({
-                targets: this.bg,
-                duration: 1000,
-                scale: 2,
-                alpha: 0
-            }).on('complete', function() {
-                this.isPreloadResolved = true
-                resolve()
-            })
-        })
-
     }
 
     create() {

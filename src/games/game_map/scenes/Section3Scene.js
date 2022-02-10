@@ -18,8 +18,6 @@ export default class Section3Scene extends SectionBasicScene {
 
     preload() {
 
-        this.buildPreloadBg('bg_title', {x: 0.5,y: 0.8})
-
         const atlasFiles = {
             'box': { img: require('../assets/images/section_3/box.png'), data: require('../assets/images/section_3/box.json') },
             'box2': { img: require('../assets/images/section_3/box.png'), data: require('../assets/images/section_3/box.json') },
@@ -80,24 +78,7 @@ export default class Section3Scene extends SectionBasicScene {
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
         this.createProgressBar()
-
-    }
-
-    buildPreloadBg(imageName) {
-        this.buildBg(imageName)
-
-        this.initPromise = new Promise((resolve)=> {
-            this.tweens.add({
-                targets: this.bg,
-                duration: 1000,
-                scale: 2,
-                alpha: 0
-            }).on('complete', function() {
-                this.isPreloadResolved = true
-                resolve()
-            })
-        })
-
+        this.buildPreloadBg('bg_title', {x: 0.5,y: 0.8})
     }
 
     create() {

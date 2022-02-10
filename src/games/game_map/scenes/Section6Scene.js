@@ -18,8 +18,6 @@ export default class Section6Scene extends SectionBasicScene {
 
     preload() {
 
-        this.buildPreloadBg('bg_title')
-
         const atlasFiles = {
 
         }
@@ -48,24 +46,7 @@ export default class Section6Scene extends SectionBasicScene {
         this.load.spritesheet('s6HintLogo', require('../assets/images/section_6/logo-134.png'),{ frameWidth: 305, frameHeight: 314.5 })
 
         this.createProgressBar()
-
-    }
-
-    buildPreloadBg(imageName) {
-        this.buildBg(imageName)
-
-        this.initPromise = new Promise((resolve)=> {
-            this.tweens.add({
-                targets: this.bg,
-                duration: 1000,
-                scale: 2,
-                alpha: 0
-            }).on('complete', function() {
-                this.isPreloadResolved = true
-                resolve()
-            })
-        })
-
+        this.buildPreloadBg('bg_title')
     }
 
     create() {

@@ -202,7 +202,7 @@ export default class GameScene extends BasicScene {
     buildUiObject(layer) {
         const exitButton = new ExitButton(this, 120, 135);
 
-        this.penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
+        this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
         const uiEgg = this.add.image(710, 890, 'uiEgg').setOrigin(0);
         const uiRecorder = this.add.image(1920, 840, 'uiRecorder').setOrigin(1, 0);

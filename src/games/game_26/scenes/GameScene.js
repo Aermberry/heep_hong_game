@@ -136,11 +136,12 @@ export default class GameScene extends BasicScene {
         eggSprite.setMask(mask);
         const ballSpinEffectSound = this.sound.add('ballSpinEffectSound');
         ballSpinEffectSound.play();
+        this.cameras.main.setSize(2180,1080)
         eggTwistingMachineSprite.on("animationcomplete", () => {
             this.add.tween({
                 targets: this.cameras.main.setOrigin(0, 1),
-                x: -400,
-                zoom: 2.6,
+                x: -260,
+                zoom: 2.8,
                 duration: 1000,
                 ease: 'Power2',
                 onComplete: () => {
@@ -159,7 +160,7 @@ export default class GameScene extends BasicScene {
                                 duration: 5000,
                                 ease: 'Power2',
                                 onComplete: () => {
-
+                                    this.cameras.main.setSize(1920,1080)
                                 }
                             });
                             answerArea.showAnswerPanelAnimation(this);

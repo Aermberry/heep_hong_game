@@ -153,7 +153,6 @@ export default class GameScene extends BasicScene {
                         duration: 2000,
                         ease: 'Power2',
                         onComplete: () => {
-                           
                             this.add.tween({
                                 targets: this.cameras.main.setOrigin(0, 1),
                                 x: 0,

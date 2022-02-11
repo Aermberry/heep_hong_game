@@ -93,6 +93,15 @@ export default class PreloaderScene extends BasicScene {
             },
             'endTexture': {
                 img: require('../assets/atlas/atlas_end.png'), data: require('../assets/atlas/atlas_end.json')
+            },
+            'tutor01Texture': {
+                img: require('../assets/atlas/tutor01.png'), data: require('../assets/atlas/tutor01.json')
+            },
+            'tutor02Texture': {
+                img: require('../assets/atlas/tutor02.png'), data: require('../assets/atlas/tutor02.json')
+            },
+            'tutor03Texture': {
+                img: require('../assets/atlas/tutor03.png'), data: require('../assets/atlas/tutor03.json')
             }
         }
 

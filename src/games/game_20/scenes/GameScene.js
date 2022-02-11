@@ -71,11 +71,16 @@ export default class GameScene extends BasicScene {
 
         const atlasFiles = {
         }
-
+        let self =this;
+        self.dataModal.gameItems.forEach((item, index) => {
+            self.load.audio(item, require(`../assets/audio/characters/game20_0${index + 1 < 10 ? '0' + (index + 1) : index + 1}.mp3`))
+        })
         this.preloadFromArr({
             img: imageFiles,
             atlas: atlasFiles
         });
+
+
 
         this.createProgressBar();
     }
@@ -136,12 +141,11 @@ export default class GameScene extends BasicScene {
             })
         })
 
-        let item = data[Math.floor(Math.random() * data.length)];
-        this.pastProblems.push(item)
-
+        this.item = data[Math.floor(Math.random() * data.length)];
+        this.pastProblems.push(this.item)
         this.strokeNum = 0;
-        var hanziData = require(`../assets/json/${item[0]}`)
-        this.writer = HanziWriter.create("grid-background-target", `${item[0]}`, {
+        var hanziData = require(`../assets/json/${this.item}`)
+        this.writer = HanziWriter.create("grid-background-target", `${this.item}`, {
             width: this.size,
             height: this.size,
             padding: 0,
@@ -230,12 +234,16 @@ export default class GameScene extends BasicScene {
     }
 
     characterSuccess() {
-        let done = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'done')
-        done.play('done');
-        let successAudio = this.sound.add('complete');
-        successAudio.play();
-        done.on('animationcomplete', () => {
-            this.endGame();
+        let textAudio = this.sound.add(this.item);
+        textAudio.play();
+        textAudio.on('complete', () => {
+            let done = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'done')
+            done.play('done');
+            let successAudio = this.sound.add('complete');
+            successAudio.play();
+            done.on('animationcomplete', () => {
+                this.endGame();
+            })
         })
     }
 

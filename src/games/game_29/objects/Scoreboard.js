@@ -45,8 +45,12 @@ export default class Scoreboard {
                 item.destroy();
             })
             gameObject.destroy();
+            let music = this.scene.sound.add('yes')
+            music.play();
             return true;
         } else {
+            let music = this.scene.sound.add('no')
+            music.play();
             return false;
         }
     }

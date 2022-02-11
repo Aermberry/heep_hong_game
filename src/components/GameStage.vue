@@ -52,7 +52,7 @@ export default {
       let self = this;
 
       let currentGameId = self.$route.params.id
-        
+
       if(typeof self.gameFileMapping[currentGameId] != 'undefined') {
 
         currentGameId = self.gameFileMapping[currentGameId];
@@ -109,6 +109,9 @@ export default {
       let self = this;
       self.ww = window.innerWidth;
       self.wh = window.innerHeight;
+      if(document.querySelector('.game-wrapper')){
+        document.querySelector('.game-wrapper').style.setProperty('--vh', `${self.wh * 0.01}px`)
+      }
     }
   },
 };

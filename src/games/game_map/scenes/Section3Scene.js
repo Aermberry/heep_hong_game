@@ -2,6 +2,7 @@ import SectionBasicScene from "./SectionBasicScene"
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 import Balloon from '../objects/animations/Balloon'
 // import StartBtn from '../objects/StartBtn'
 
@@ -20,7 +21,8 @@ export default class Section3Scene extends SectionBasicScene {
         this.buildPreloadBg('bg_title', {x: 0.5,y: 0.8})
 
         const atlasFiles = {
-
+            'box': { img: require('../assets/images/section_3/box.png'), data: require('../assets/images/section_3/box.json') },
+            'box2': { img: require('../assets/images/section_3/box.png'), data: require('../assets/images/section_3/box.json') },
         }
 
         const imageFiles = {
@@ -70,19 +72,20 @@ export default class Section3Scene extends SectionBasicScene {
         this.load.spritesheet('s3btn10', require('../assets/images/section_3/btn_10.png'),{ frameWidth: 132, frameHeight: 140 })
         this.load.spritesheet('s3btn11', require('../assets/images/section_3/btn_11.png'),{ frameWidth: 132, frameHeight: 140 })
         this.load.spritesheet('s3btn12', require('../assets/images/section_3/btn_12.png'),{ frameWidth: 132, frameHeight: 140 })
-        this.load.spritesheet('s3Hint5Logo', require('../assets/images/section_3/logo-124.png'),{ frameWidth: 305, frameHeight: 314.5 })
-        this.load.spritesheet('s3Hint3Logo', require('../assets/images/section_3/logo-125.png'),{ frameWidth: 305, frameHeight: 314.5 })
-        this.load.spritesheet('s3Hint4Logo', require('../assets/images/section_3/logo-126.png'),{ frameWidth: 305, frameHeight: 314.5 })
-        this.load.spritesheet('s3Hint1Logo', require('../assets/images/section_3/logo-127.png'),{ frameWidth: 305, frameHeight: 314.5 })
-        this.load.spritesheet('s3Hint2Logo', require('../assets/images/section_3/logo-128.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint5Logo', require('../assets/images/section_3/In Game target_v2-124.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint3Logo', require('../assets/images/section_3/In Game target_v2-125.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint4Logo', require('../assets/images/section_3/In Game target_v2-126.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint1Logo', require('../assets/images/section_3/In Game target_v2-127.png'),{ frameWidth: 305, frameHeight: 314.5 })
+        this.load.spritesheet('s3Hint2Logo', require('../assets/images/section_3/In Game target_v2-128.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
+        this.createProgressBar()
     }
 
     create() {
 
         super.create()
-
+        this.sound.stopAll()
         this.initSection('game3Bg')
 
         // if(this.dataModel.isFirstLoad) {
@@ -105,8 +108,31 @@ export default class Section3Scene extends SectionBasicScene {
             repeat: -1,
             duration: 8000
         })
-        
+
+        this.anims.create({
+            key: 'box',
+            frames: this.anims.generateFrameNames('box', { prefix: 'Symbol 1', start: 0, end: 17, zeroPad: 4 }),
+            repeat: -1,
+            delay: 3000,
+            repeatDelay: 5000
+        });
+
+        this.anims.create({
+            key: 'box2',
+            frames: this.anims.generateFrameNames('box2', { prefix: 'Symbol 1', start: 0, end: 17, zeroPad: 4 }),
+            repeat: -1,
+            delay: 1000,
+            repeatDelay: 5000
+        });
+
+        let boxAnimate1 = this.add.sprite(this.getColWidth(7.1), this.getRowHeight(10.8), 'box')
+        boxAnimate1.play('box')
+
+        let boxAnimate2 = this.add.sprite(this.getColWidth(2.4), this.getRowHeight(10), 'box2')
+        boxAnimate2.play('box2')
+
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
 
         const game11Btn = new GameNavBtn(this, this.getColWidth(3), this.getRowHeight(9.2), 's3btn6', '/game/11')
         const game12Btn = new GameNavBtn(this, this.getColWidth(2.8), this.getRowHeight(10.7), 's3btn7', '/game/12')
@@ -148,6 +174,7 @@ export default class Section3Scene extends SectionBasicScene {
         this.add.existing(balloon)
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's3Logo')
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
         this.add.existing(hintBtn1)
         this.add.existing(hintBtn2)
         this.add.existing(hintBtn3)

@@ -22,9 +22,9 @@ export default class BasicScene extends Phaser.Scene {
     }
 
     /**
-     * 
+     *
      * @param colNum    Number of columns
-     * @returns 
+     * @returns
      */
     getColWidth(colNum) {
 
@@ -43,8 +43,8 @@ export default class BasicScene extends Phaser.Scene {
     }
 
     /**
-     * 
-     * @param sources A key/path_string object 
+     *
+     * @param sources A key/path_string object
      */
     preloadFromArr({img = null, atlas = null, sound = null}) {
 

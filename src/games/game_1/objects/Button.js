@@ -16,12 +16,17 @@ export default class Button extends Phaser.GameObjects.Container {
       this.button.setFrame(1)
       if(targetScene){
         setTimeout(() => {
-          if(target == 'self'){
+          if(target === 'self'){
             this.scene.scene.start(targetScene);
-          }else{
+          }else {
             window.location.href = targetScene;
           }
         }, 500);
+      }else {
+        if(target === 'back'){
+          window.history.back()
+          this.scene.sound.stopAll()
+        }
       }
     }.bind(this));
 

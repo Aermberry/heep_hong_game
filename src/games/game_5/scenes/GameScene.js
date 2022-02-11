@@ -4,6 +4,7 @@ import ItemBam from '../objects/ItemBam'
 import CatHand from "../objects/CatHand"
 import WinCat from '../objects/Cat'
 import BackBtn from '../objects/ExitBtn'
+import SpeakerBtn from '../objects/SpeakerBtn';
 // import Leaf from '../objects/Leaf'
 import LeafGroup from '../objects/LeafGroup'
 // import Cat from "../objects/Cat"
@@ -20,7 +21,7 @@ export default class GameScene extends BasicScene {
 
     init() {
 
-        this.dataModal = this.sys.game.globals.model;
+        this.dataModel = this.sys.game.globals.model;
         this.handInBroad = false;
         this.catHandWhite = null
         this.catHandBlack = null
@@ -37,15 +38,16 @@ export default class GameScene extends BasicScene {
     preload() {
 
         this.buildBg('bg_tutor')
-        
+
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
         let gameMusic = this.sound.add('drums')
         gameMusic.setLoop(true)
+        this.dataModel.bgMusicPlaying = true
 
         let afterMatchMusic = this.sound.add('lightBattle')
         afterMatchMusic.setLoop(true)
 
-        
+
         const itemImgList = {
             5: {
                 item: require('../assets/images/item_bam.png'),
@@ -75,8 +77,8 @@ export default class GameScene extends BasicScene {
 
 
         const imageFiles = {
-            'itemBam': itemImgList[this.dataModal.gameStage].item,
-            'itemBamBad': itemImgList[this.dataModal.gameStage].itemBad,
+            'itemBam': itemImgList[this.dataModel.gameStage].item,
+            'itemBamBad': itemImgList[this.dataModel.gameStage].itemBad,
             'bg_rock': require('../assets/images/bg_rock.png'),
             'an1': require('../assets/images/an1.png'),
             'an2': require('../assets/images/an2.png'),
@@ -116,17 +118,17 @@ export default class GameScene extends BasicScene {
     *
     */
     handleGameData(itemLimit) {
-        
-        // let allItems = this.dataModal.gameItems
-        this.items = this.dataModal.gameItems
-        
+
+        // let allItems = this.dataModel.gameItems
+        this.items = this.dataModel.gameItems
+
         this.items = Untils.shuffle(this.items)
 
         this.items = this.items.splice(0,itemLimit)
 
         // this.item = allItems.splice(Math.floor(Math.random() * allItems.length), 1)[0]
 
-        let allAnswers = this.dataModal.gameAnswers
+        let allAnswers = this.dataModel.gameAnswers
 
         this.items.forEach((item)=> {
 
@@ -158,7 +160,7 @@ export default class GameScene extends BasicScene {
 
         this.curItem = item
 
-        //Remove and rendering for catHand,catBack,bamItem, 
+        //Remove and rendering for catHand,catBack,bamItem,
 
         if(this.catBack != null && typeof this.catBack.destroy === 'function') this.catBack.destroy()
         if(this.catHandWhite != null && typeof this.catHandWhite.destroy === 'function') this.catHandWhite.destroy()
@@ -167,9 +169,11 @@ export default class GameScene extends BasicScene {
         if(this.cat != null && typeof this.cat.destroy === 'function') this.cat.destroy()
 
         this.sound.stopAll()
-        this.sound.play('drums')
-       
-        if(this.dataModal.gameStage == 21 && !this.introPlayed) {
+        if (this.dataModel.bgMusicPlaying){
+            this.sound.play('drums')
+        }
+
+        if(this.dataModel.gameStage == 21 && !this.introPlayed) {
 
             this.introPlayed = true
             let introSound = this.sound.add('intro_voice')
@@ -181,27 +185,27 @@ export default class GameScene extends BasicScene {
         this.catBack.setDepth(7)
 
         this.catHandWhite = new CatHand(
-            this, 
-            this.getColWidth(1.5), 
-            this.getRowHeight(7), 
-            'white', 
-            this.answerSelected.bind(this), 
+            this,
+            this.getColWidth(1.5),
+            this.getRowHeight(7),
+            'white',
+            this.answerSelected.bind(this),
             this.onSelectingAnswer.bind(this),
             answers.splice(Math.floor(Math.random() * answers.length), 1)[0]
         )
         this.catHandBlack = new CatHand(
-            this, 
-            this.getColWidth(1.5), 
-            this.getRowHeight(9.5), 
-            'black', 
-            this.answerSelected.bind(this), 
+            this,
+            this.getColWidth(1.5),
+            this.getRowHeight(9.5),
+            'black',
+            this.answerSelected.bind(this),
             this.onSelectingAnswer.bind(this),
             answers.splice(Math.floor(Math.random() * answers.length), 1)[0]
         )
 
         this.bam = new ItemBam(this, this.getColWidth(5), this.getRowHeight(6), item)
         this.bam.setDepth(5)
-        
+
         this.add.existing(this.catHandWhite)
         this.add.existing(this.catHandBlack)
         this.add.existing(this.bam)
@@ -220,7 +224,7 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.sys.game.globals.gtag.event((`game_${this.dataModal.gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'}))
+        this.sys.game.globals.gtag.event(`game_${this.dataModel.gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
 
         this.disableInput = false;
         this.items = []
@@ -232,6 +236,8 @@ export default class GameScene extends BasicScene {
 
         this.backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5));
 
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5),this.musicPause.bind(this));
+
         this.initGameRender(this.items.pop(), this.answers.pop())
 
         this.leafGroup = new LeafGroup(this, 3, true);
@@ -240,6 +246,7 @@ export default class GameScene extends BasicScene {
 
         this.add.existing(this.backBtn)
         this.add.existing(this.leafGroup)
+        this.add.existing(this.speakerBtn);
 
 
     }
@@ -257,7 +264,7 @@ export default class GameScene extends BasicScene {
         if(!this.bam.isInside({ x: gameObject.x, y: gameObject.y}) && this.handInBroad == true) {
             this.handInBroad = false;
             this.bam.onLeave();
-            
+
         }
 
     }
@@ -282,7 +289,7 @@ export default class GameScene extends BasicScene {
         this.leafLeft.setDepth(11)
         this.leafRight.setDepth(11)
 
-        
+
         this.catHandWhite.disappear();
         this.catHandBlack.disappear();
         // catHand.disappear();
@@ -297,7 +304,7 @@ export default class GameScene extends BasicScene {
 
             setTimeout(() => {
 
-                    
+
                 this.sound.stopAll()
                 this.sound.play('lightBattle')
 
@@ -328,23 +335,23 @@ export default class GameScene extends BasicScene {
                             this.add.existing(this.cat);
                             setTimeout(this.bam.moveOut.bind(this.bam), 200)
                             this.cat.moveIn().then(() => {
-    
+
                                 setTimeout(() => {
                                     //Game win or lose anime
                                     if (catHand.getAnswer() == this.curItem.answer) {
-    
+
                                         this.bam.breakUp()
                                         this.cat.gameWin()
-    
+
                                     } else {
-    
+
                                         this.bam.failedToBreak()
                                         this.cat.gameFail()
-    
+
                                     }
-    
+
                                     setTimeout(()=> {
-                                        
+
                                         //Re-initial game stage or end game
                                         if(typeof this.items.length != 'undefined' && this.items.length > 0) {
 
@@ -357,13 +364,13 @@ export default class GameScene extends BasicScene {
 
                                         // endPromise()
                                         // this.scene.start('End')
-    
+
                                     }, 3000 * speedFactory)
-    
+
                                 }, 1000 * speedFactory)
-    
+
                             })
-    
+
                         })
                     })
                 }, 400 * speedFactory)
@@ -373,6 +380,17 @@ export default class GameScene extends BasicScene {
 
 
         });
+
+    }
+
+    musicPause() {
+        if (this.dataModel.bgMusicPlaying){
+            this.dataModel.bgMusicPlaying = false
+            this.sound.stopByKey('drums')
+        } else {
+            this.dataModel.bgMusicPlaying = true
+            this.sound.play('drums')
+        }
 
     }
 

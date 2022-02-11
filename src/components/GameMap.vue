@@ -37,7 +37,9 @@ export default {
         const game = await import('@/games/game_map/index')
         self.downloaded = true
         self.$nextTick(() => {
-          self.gameInstance = game.launch(self.$route.params, this.$router)        
+          self.gameInstance = game.launch(self.$route.params, this.$router)
+          self.$gamePause.initService(self.gameInstance, 15, 5)
+          self.$gamePause.initGameTrackTimer()
         })
       }
     }catch (e){
@@ -54,6 +56,7 @@ export default {
   },
   destroyed() {
     this.gameInstance.destroy(false)
+    this.$gamePause.clearTimer()
   },
   methods:{
     windowSizeHandler: function(){
@@ -65,5 +68,5 @@ export default {
 }
 </script>
 <style lang="">
-    
+
 </style>

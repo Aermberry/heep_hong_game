@@ -1,5 +1,6 @@
 import LocalRepository from "../repository/LocalRepository";
 import Phaser from 'phaser'
+import VConsole from "vconsole";
 
 export default class GameManager {
 
@@ -24,7 +25,15 @@ export default class GameManager {
     }
 
     async initGameData() {
-        localStorage.clear();
+        if (localStorage) {
+            localStorage.clear();
+            
+            const vConsole = new VConsole();
+            console.log("Hello world");
+            vConsole.log.log("log");
+            vConsole.destroy();
+        }
+
         localStorage.setItem('gamePlayTotal', JSON.stringify(5));
 
         if (this.questionNumberList.length > 0) {

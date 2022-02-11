@@ -41,8 +41,11 @@ function launch(urlParams) {
 
     let game = new Game22(gameConfig, urlParams)
 
-    resize(game);
-    window.addEventListener("resize", resize, false);
+    // resize(game);
+    // window.addEventListener("resize",()=>{
+        
+    //     resize(game);
+    // } , false);
 
     return game
 }
@@ -51,21 +54,23 @@ function launch(urlParams) {
 //            * 
 //            * @param {Phaser.Game} game
 //            */
-function resize(game) {
-    var canvas = document.querySelector("canvas");
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-    var windowRatio = windowWidth / windowHeight;
-    var gameRatio = game.config.width / game.config.height;
+// function resize(game) {
+//     var canvas = document.querySelector("canvas");
+//     console.log(canvas);
+//     console.log(game.config.parent);
+//     var windowWidth = window.innerWidth;
+//     var windowHeight = window.innerHeight;
+//     var windowRatio = windowWidth / windowHeight;
+//     var gameRatio = game.config.width / game.config.height;
 
-    if (windowRatio < gameRatio) {
-        canvas.style.width = windowWidth + "px";
-        canvas.style.height = (windowWidth / gameRatio) + "px";
-    } else {
-        canvas.style.width = (windowHeight * gameRatio) + "px";
-        canvas.style.height = windowHeight + "px";
-    }
-}
+//     if (windowRatio < gameRatio) {
+//         canvas.style.width = windowWidth + "px";
+//         canvas.style.height = (windowWidth / gameRatio) + "px";
+//     } else {
+//         canvas.style.width = (windowHeight * gameRatio) + "px";
+//         canvas.style.height = windowHeight + "px";
+//     }
+// }
 
 export default launch
 export { launch }

@@ -169,7 +169,9 @@ export default class GameScene extends BasicScene {
         if(this.cat != null && typeof this.cat.destroy === 'function') this.cat.destroy()
 
         this.sound.stopAll()
-        this.sound.play('drums')
+        if (this.dataModel.bgMusicPlaying){
+            this.sound.play('drums')
+        }
 
         if(this.dataModel.gameStage == 21 && !this.introPlayed) {
 
@@ -222,7 +224,7 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.sys.game.globals.gtag.event((`game_${this.dataModel.gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'}))
+        this.sys.game.globals.gtag.event(`game_${this.dataModel.gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
 
         this.disableInput = false;
         this.items = []

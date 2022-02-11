@@ -1,6 +1,7 @@
 import SectionBasicScene from './SectionBasicScene'
 import GameNavBtn from '../objects/GameNavBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 import HintBtn from '../objects/HintBtn'
 import Vehicle from '../objects/animations/Vehicle'
 import Cloud from '../objects/animations/Cloud'
@@ -22,6 +23,7 @@ export default class Section4Scene extends SectionBasicScene {
 
         const atlasFiles = {
             's4Road': { img: require('../assets/images/section_4/road.png'), data: require('../assets/images/section_4/road.json')},
+            'butterfly': { img: require('../assets/images/section_4/butterfly.png'), data: require('../assets/images/section_4/butterfly.json')},
         }
 
         const imageFiles = {
@@ -65,15 +67,22 @@ export default class Section4Scene extends SectionBasicScene {
         this.load.spritesheet('carerLogo', require('../assets/images/section_4/logo-132.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
+        this.createProgressBar()
     }
 
     create() {
 
         super.create()
-
+        this.sound.stopAll()
         this.anims.create({
             key: 's4_road',
             frames: this.anims.generateFrameNames('s4Road', { prefix: 'Symbol 7', start: 0, end: 58, zeroPad: 4 }),
+            repeat: -1,
+        });
+
+        this.anims.create({
+            key: 'butterfly',
+            frames: this.anims.generateFrameNames('butterfly', { prefix: 'Symbol 7', start: 0, end: 58, zeroPad: 4 }),
             repeat: -1,
         });
 
@@ -92,6 +101,7 @@ export default class Section4Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
         const game19Btn = new GameNavBtn(this, this.getColWidth(2.4), this.getRowHeight(8.7), 's4btn1', '/game/19')
         const game18Btn = new GameNavBtn(this, this.getColWidth(6.8), this.getRowHeight(4.7), 's4btn2', '/game/18')
         const game29Btn = new GameNavBtn(this, this.getColWidth(7.7), this.getRowHeight(6.1), 's4btn3', '/game/29')
@@ -114,14 +124,19 @@ export default class Section4Scene extends SectionBasicScene {
         let roadAnimate = this.add.sprite(this.getColWidth(5.63), this.getRowHeight(11.01), 's4Road')
         roadAnimate.play('s4_road')
 
+
         const cloud1 = new Cloud(this, this.getColWidth(3), this.getRowHeight(1))
         this.add.existing(cloud1)
         const cloud2 = new Cloud(this, this.getColWidth(11), this.getRowHeight(2.5), 'cloud_small')
         this.add.existing(cloud2)
 
+        let butterflyAnimate = this.add.sprite(this.getColWidth(8), this.getRowHeight(6), 'butterfly')
+        butterflyAnimate.play('butterfly')
+
         this.add.existing(vehicle)
         this.add.image(this.getColWidth(3.7), this.getRowHeight(1.5), 's4Logo')
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
         this.add.existing(game19Btn)
         this.add.existing(game18Btn)
         this.add.existing(game29Btn)

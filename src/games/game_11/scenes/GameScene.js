@@ -164,7 +164,7 @@ export default class GameScene extends BasicScene {
 
         super.create()
 
-        this.sys.game.globals.gtag.event((`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' }))
+        this.sys.game.globals.gtag.event(`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.playerOnLeft = true
 

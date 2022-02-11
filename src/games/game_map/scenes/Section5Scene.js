@@ -1,5 +1,6 @@
 import SectionBasicScene from "./SectionBasicScene"
 import BackBtn from "../objects/BackBtn"
+import SpeakerBtn from "../objects/SpeakerBtn"
 import HintBtn from "../objects/HintBtn"
 // import GameNavBtn from "../objects/GameNavBtn"
 import Cloud from "../objects/animations/Cloud"
@@ -48,12 +49,13 @@ export default class Section5Scene extends SectionBasicScene {
         this.load.spritesheet('s5btn1', require('../assets/images/section_5/btn.png'),{ frameWidth: 131, frameHeight: 135 })
         this.load.spritesheet('s5HintLogo', require('../assets/images/section_5/logo-133.png'), { frameWidth: 305, frameHeight: 314.5 })
 
+        this.createProgressBar()
     }
 
     create() {
 
         super.create()
-
+        this.sound.stopAll()
         this.initSection('game5Bg')
 
         // if(this.dataModel.isFirstLoad) {
@@ -69,6 +71,7 @@ export default class Section5Scene extends SectionBasicScene {
     populateSection() {
 
         const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
         // const gameBtn1 = new GameNavBtn(this, this.getColWidth(5.7), this.getRowHeight(5.3), 's5btn1', '/game/20')
         const gameBtn1 = new Game20NavBtn(this, this.getColWidth(5.7), this.getRowHeight(5.3), 's5btn1', '/game/20')
         const hintBtn = new HintBtn(this, this.getColWidth(7.3), this.getRowHeight(4.6), [gameBtn1], 's5HintLogo')
@@ -109,6 +112,7 @@ export default class Section5Scene extends SectionBasicScene {
         this.add.existing(backBtn)
         this.add.existing(hintBtn)
         this.add.existing(gameBtn1)
+        this.add.existing(speakerBtn)
 
     }
 

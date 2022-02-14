@@ -37,8 +37,6 @@ class Game22 extends Phaser.Game {
             gtag: gtag,
             gameStageIndex:urlParams
         }
-
-
     }
 }
 

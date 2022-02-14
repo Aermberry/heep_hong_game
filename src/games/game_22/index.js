@@ -30,47 +30,25 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 
 class Game22 extends Phaser.Game {
 
-    constructor(config, urlParams) {
+    constructor(config, urlParams, gtag) {
         super(config);
-        console.log(urlParams)
+
+        this.globals = {
+            gtag: gtag,
+            gameStageIndex:urlParams
+        }
+
+
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams,gtag) {
 
-    let game = new Game22(gameConfig, urlParams)
-
-    // resize(game);
-    // window.addEventListener("resize",()=>{
-        
-    //     resize(game);
-    // } , false);
+    let game = new Game22(gameConfig, urlParams,gtag);
 
     return game
 }
-
-//    /**
-//            * 
-//            * @param {Phaser.Game} game
-//            */
-// function resize(game) {
-//     var canvas = document.querySelector("canvas");
-//     console.log(canvas);
-//     console.log(game.config.parent);
-//     var windowWidth = window.innerWidth;
-//     var windowHeight = window.innerHeight;
-//     var windowRatio = windowWidth / windowHeight;
-//     var gameRatio = game.config.width / game.config.height;
-
-//     if (windowRatio < gameRatio) {
-//         canvas.style.width = windowWidth + "px";
-//         canvas.style.height = (windowWidth / gameRatio) + "px";
-//     } else {
-//         canvas.style.width = (windowHeight * gameRatio) + "px";
-//         canvas.style.height = windowHeight + "px";
-//     }
-// }
 
 export default launch
 export { launch }

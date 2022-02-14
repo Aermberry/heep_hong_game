@@ -14,6 +14,9 @@ export default class EndScene extends BasicScene {
     create() {
 
         super.create();
+
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_end`, {'event_category': 'js_games', 'event_label': 'Game End'});
+        
         this.sound.stopAll();
 
         createEndAnimation(this.anims);

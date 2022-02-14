@@ -48,7 +48,10 @@ export default class GameScene extends BasicScene {
     }
 
     create() {
+        
         super.create();
+        
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
 
         this.sound.stopAll();
 

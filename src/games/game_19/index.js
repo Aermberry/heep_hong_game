@@ -31,24 +31,24 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 
 class Game19 extends Phaser.Game {
 
-    // private globals: { model: Model }
-
-    constructor(config, urlParams) {
+    constructor(config, urlParams,gtag) {
         super(config);
         console.log(urlParams)
-        // let model = new Model()
+        
         this.globals = {
-            bgMusic: null
+            bgMusic: null,
+            gtag: gtag,
+            gameStageIndex:urlParams
         }
 
-        // this.globals.model.gameStage = urlParams.sid;
+        
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams,gtag) {
 
-    let game = new Game19(gameConfig, urlParams)
+    let game = new Game19(gameConfig, urlParams,gtag)
 
     return game
 }

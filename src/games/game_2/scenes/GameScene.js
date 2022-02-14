@@ -171,7 +171,7 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
         this.sound.stopAll();
 
@@ -396,6 +396,7 @@ export default class GameScene extends BasicScene {
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
+            this.time.addEvent({ delay: index * 500, callback: () => eggItem.playFLoatTweenAnimation() });
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
@@ -464,7 +465,7 @@ export default class GameScene extends BasicScene {
         const correctSoundEffect = this.sound.add('correctSoundEffect');
 
         correctSoundEffect.on('complete', () => {
-            GameManager.getInstance().getGameSuccess(this.questionIndex,(isLastQuestion) => {
+            GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {

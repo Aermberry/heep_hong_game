@@ -30,17 +30,20 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 
 class Game23 extends Phaser.Game {
 
-    constructor(config, urlParams) {
+    constructor(config, urlParams,gtag) {
         super(config);
-        console.log(urlParams)
         
+        this.globals = {
+            gtag: gtag,
+            gameStageIndex:urlParams
+        }
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams,gtag) {
 
-    let game = new Game23(gameConfig, urlParams)
+    let game = new Game23(gameConfig, urlParams,gtag)
 
     return game
 }

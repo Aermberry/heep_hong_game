@@ -33,18 +33,18 @@ export default class Game6Btn extends Phaser.GameObjects.Container {
 
   down(clickEvent){
 
-    const fullscreenConfig = { navigationUI: 'hide' }
+    // const fullscreenConfig = { navigationUI: 'hide' }
 
-    const elem = document.querySelector('#game-container canvas');
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen(fullscreenConfig);
-    } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen(fullscreenConfig);
-    } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen(fullscreenConfig);
-    } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen(fullscreenConfig);
-    }
+    // const elem = document.querySelector('#game-container canvas');
+    // if (elem.requestFullscreen) {
+    //     elem.requestFullscreen(fullscreenConfig);
+    // } else if (elem.msRequestFullscreen) {
+    //     elem.msRequestFullscreen(fullscreenConfig);
+    // } else if (elem.mozRequestFullScreen) {
+    //     elem.mozRequestFullScreen(fullscreenConfig);
+    // } else if (elem.webkitRequestFullscreen) {
+    //     elem.webkitRequestFullscreen(fullscreenConfig);
+    // }
 
     this.origSprite.setFrame(1)
     if(typeof clickEvent == 'function') {

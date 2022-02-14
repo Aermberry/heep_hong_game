@@ -1,5 +1,5 @@
 <template lang="">
-    <div :class="gameOrientation">
+    <div :class="`game-wrapper ${gameOrientation}`">
         <div class="outer">
             <div class="inner">
                 <div id="game-container" v-if="downloaded" />
@@ -63,6 +63,9 @@ export default {
       let self = this
       self.ww = window.innerWidth
       self.wh = window.innerHeight
+      if(document.querySelector('.game-wrapper')){
+        document.querySelector('.game-wrapper').style.setProperty('--vh', `${self.wh * 0.01}px`)
+      }
     }
   }
 }

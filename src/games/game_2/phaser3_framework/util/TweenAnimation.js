@@ -2,8 +2,6 @@ export default class TweenAnimation {
 
     constructor() { }
 
-    static currentTweenAnimation = null;
-
     /* 
     eg:
     {
@@ -33,6 +31,6 @@ export default class TweenAnimation {
             * @param {Phaser.scene} scene 
             */
     static play(scene) {
-        this.currentTweenAnimation = scene.tweens.timeline(this._tweenAnimationConfigure)
+        return scene.tweens.timeline(this._tweenAnimationConfigure)
     }
 }

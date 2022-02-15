@@ -63,7 +63,9 @@ export default class GameManager {
 
     getGameSuccess(questionIndex,callback) {
         GameModel.questionCount--;
-        this._updateGameQuestionNumberList(questionIndex)
+        
+        this._updateGameQuestionNumberList(questionIndex);
+        this.restCurrentQuestionErrorCount();
 
         callback(this._isLastQuestion());
 

@@ -339,7 +339,8 @@ export default class GameScene extends BasicScene {
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, voiceIndex, true);
-
+            this.time.addEvent({ delay: index * 500, callback: () => eggItem.playFLoatTweenAnimation() });
+            
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
                 let rightItem;

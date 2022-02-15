@@ -410,7 +410,7 @@ export default class GameScene extends BasicScene {
 
                 this.physics.world.removeCollider(collider);
                 collider.destroy();
-
+                
                 if (this.isRightDirection()) {
                     leftItem = dragItem;
                     rightItem = targetItem;
@@ -418,6 +418,8 @@ export default class GameScene extends BasicScene {
                     leftItem = targetItem;
                     rightItem = dragItem;
                 }
+
+
 
 
                 this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));

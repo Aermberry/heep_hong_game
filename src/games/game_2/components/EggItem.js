@@ -10,9 +10,7 @@ export default class EggItem extends Egg {
 
         this.objectName = objectItem.objectName;
         this.index = objectItem.index;
-        this.point = point;
         this.FLoatTweenAnimation = null;
-
 
         this.setName("EggItem");
         this.create(isEnableDraggable);
@@ -21,16 +19,34 @@ export default class EggItem extends Egg {
         this.voiceButton.setScale(0.2);
 
         this.add(this.voiceButton);
+
+
+
+
     }
 
     setRemoveListener() {
         super.setRemoveListener();
         this.voiceButton.cancelListener();
+        this.off('pointerover');
+        this.off('pointerout');
     }
 
     setEnableListener() {
         super.setEnableDraggable()
         this.voiceButton.enableListener();
+
+        this.on('pointerover', function () {
+
+            this.StopFLoatTweenAnimation()
+            
+        });
+
+        this.on('pointerout', function () {
+
+            this.playFLoatTweenAnimation()
+        });
+
     }
 
     playFLoatTweenAnimation() {
@@ -43,11 +59,11 @@ export default class EggItem extends Egg {
                 {
                     duration: 500,
                     yoyo: true,
-                    y: this.point.y + 10,
+                    y: this.y + 10,
                 }, {
                     duration: 500,
                     yoyo: true,
-                    y: this.point.y - 10,
+                    y: this.y - 10,
                 }]
         });
         this.FLoatTweenAnimation = TweenAnimation.play(this.scene)

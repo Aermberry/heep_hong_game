@@ -175,6 +175,9 @@ export default class GameScene extends BasicScene {
 
         this.sound.stopAll();
 
+        console.log({"eachQuestionChance":GameModel.eachQuestionChance})
+        console.log({"currentQuestionErrorCount":GameModel.currentQuestionErrorCount})
+
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
         this.setGameDirection(question.direction);
@@ -423,7 +426,7 @@ export default class GameScene extends BasicScene {
 
 
                 this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
-                console.log({ "GameModel": GameModel.questionCount })
+               
             });
 
             colliderList.push(collider);
@@ -693,7 +696,6 @@ export default class GameScene extends BasicScene {
         composeSprite.setVisible(false);
 
         composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer, eggItemList);
-
     }
 
     playVoice(leftVoice, rightVoice, callback) {

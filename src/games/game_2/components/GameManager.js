@@ -62,10 +62,16 @@ export default class GameManager {
     }
 
     getGameSuccess(questionIndex,callback) {
+
         GameModel.questionCount--;
+
         this._updateGameQuestionNumberList(questionIndex)
+        this.restCurrentQuestionErrorCount();
 
         callback(this._isLastQuestion());
+
+        // console.log({ "QuestionCount": GameModel.questionCount })
+        // console.log({ "CurrentQuestionErrorCount": GameModel.currentQuestionErrorCount })
 
     }
 
@@ -90,13 +96,17 @@ export default class GameManager {
 
             this.gameSceneStatus = GameSceneStatus.NormalStatus;
 
-            this._updateGameQuestionNumberList(questionIndex)
+            this._updateGameQuestionNumberList(questionIndex);
 
             this.restCurrentQuestionErrorCount();
         }
 
 
         callback(isFirstError, this._isLastQuestion() && !isFirstError);
+
+
+        // console.log({ "QuestionCount": GameModel.questionCount })
+        // console.log({ "CurrentQuestionErrorCount": GameModel.currentQuestionErrorCount })
 
     }
 

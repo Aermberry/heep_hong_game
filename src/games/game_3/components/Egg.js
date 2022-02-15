@@ -29,10 +29,10 @@ export default class Egg extends Phaser.GameObjects.Container {
        
 
         if(this.scene.isRightDirection()){
-            this.setSize(this.background.displayWidth / 2-0.5, this.background.displayHeight / 2-3);
+            this.setSize(this.background.displayWidth / 2-0.5, this.background.displayHeight / 2+40);
         }
         else{
-            this.setSize(this.background.displayWidth / 2+20, this.background.displayHeight / 2-3);
+            this.setSize(this.background.displayWidth / 2+20, this.background.displayHeight / 2+40);
         }
 
 

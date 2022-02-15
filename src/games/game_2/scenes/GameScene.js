@@ -183,7 +183,7 @@ export default class GameScene extends BasicScene {
         this.setGameDirection(question.direction);
 
         this.setWorldBounds();
-        
+
         this.paintScene(question);
 
         this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
@@ -191,19 +191,24 @@ export default class GameScene extends BasicScene {
     }
 
     setWorldBounds() {
+        let x = 0;
+
         let width = null;
         let height = null;
-        if (this.isRightDirection()) {
 
+        if (this.isRightDirection()) {
+            x = 5;
             width = this.cameras.main.width;
-            height = this.cameras.main.height-20;
+            height = this.cameras.main.height - 20;
+
 
         } else {
+            x=10;
             width = this.cameras.main.width + 19;
-            height = this.cameras.main.height-20;
+            height = this.cameras.main.height - 20;
         }
 
-        this.physics.world.setBounds(0, 0, width, height);
+        this.physics.world.setBounds(x, 0, width, height);
     }
 
     playBackgroundMusic(startSound, backgroundSound) {
@@ -262,7 +267,7 @@ export default class GameScene extends BasicScene {
 
         question = JSON.parse(localStorage.getItem(this.questionIndex));
 
-        question = JSON.parse(localStorage.getItem(2));
+        // question = JSON.parse(localStorage.getItem(2));
         // question = JSON.parse(localStorage.getItem(9));
         console.log("当前抽取的题目:%o", question);
         console.log("当前抽取的题目Index:%o", this.questionIndex)

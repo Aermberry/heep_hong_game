@@ -112,7 +112,7 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
         this.sound.stopAll();
 
@@ -263,8 +263,13 @@ export default class GameScene extends BasicScene {
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
             player.playAudio(() => {
-                this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
+                this.eggItemList.forEach(eggItem => {
+                    eggItem.setEnableListener();
+                    eggItem.body.collideWorldBounds = true;
+                    eggItem.body.bounce.set(0);
+                });
                 eggQuestion.setEnableListener();
+
             });
         });
 
@@ -340,7 +345,7 @@ export default class GameScene extends BasicScene {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, voiceIndex, true);
             this.time.addEvent({ delay: index * 500, callback: () => eggItem.playFLoatTweenAnimation() });
-            
+
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
                 let rightItem;
@@ -439,7 +444,7 @@ export default class GameScene extends BasicScene {
 
 
     paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer) {
-        
+
         targetItem.showErrorStatue();
         dragItem.showErrorStatue(() => {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {

@@ -21,16 +21,19 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
 
         this.playAnimation("clip_idleStateAnimation");
 
-        this.init(scene, dolls)
+        this.init(scene, dolls);
+
+        this.isFirstCollider = true;
     }
 
     init(scene, dolls) {
         this.on('onCollided', this.onCollideHandler, this);
         this.setColliderDetection(scene, dolls)
 
-        this.once("animationcomplete",()=>{
-            scene.sound.play('clipMovementEffectSound');
-        })
+        // this.once("animationcomplete",()=>{
+        //     scene.sound.play('clipMovementEffectSound');
+        //     console.log("dsdsds")
+        // })
     }
 
     setToPhysics(scene) {
@@ -38,7 +41,8 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
     }
 
     onCollideHandler(gameObject) {
-        console.log(gameObject)
+        console.log(gameObject);
+        this.isFirstCollider=false;
     }
 
     setColliderDetection(scene, gameDollList) {
@@ -56,17 +60,17 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
                         //         scene.sound.play('clipClampEffectSound');
                         //     }
                         // });
-                        // scene.sound.play('clipClampEffectSound');
-                        // clipMovementEffectSound
-
-                   
-                        
+                        if (this.isFirstCollider) {
+                            scene.sound.play('clipClampEffectSound');
+                            // clipMovementEffectSound
+                        }
 
                         clip.playAnimation("clip_clipStateAnimation");
 
-                        let container = scene.add.container(0, 0, [clip,doll]).setName('onSandwiched');
+                        let container = scene.add.container(0, 0, [clip, doll]).setName('onSandwiched');
                         // scene.physics.add.existing(container);
                         this.emit('onCollided', container);
+
                     }
                 })
             })
@@ -87,14 +91,14 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
         switch (tweenAnimation) {
             case ClipTweenAnimationStatus.FallingTweenAnimationStatus:
 
-                this.currentAnimationState=ClipTweenAnimationStatus.FallingTweenAnimationStatus;
+                this.currentAnimationState = ClipTweenAnimationStatus.FallingTweenAnimationStatus;
 
                 this.currentTweenAnimation = TweenAnimation.playFallingTweenAnimation(scene, config.target, config.y, config.duration);
-                
+
                 break;
             case ClipTweenAnimationStatus.MovingTweenAnimationStatus:
 
-                this.currentAnimationState=ClipTweenAnimationStatus.MovingTweenAnimationStatus;
+                this.currentAnimationState = ClipTweenAnimationStatus.MovingTweenAnimationStatus;
 
                 TweenAnimation.playMovingToTargetTweenAnimation(scene, config.target, config.x, config.y, config.duration);
                 break;

@@ -27,6 +27,10 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
     init(scene, dolls) {
         this.on('onCollided', this.onCollideHandler, this);
         this.setColliderDetection(scene, dolls)
+
+        this.once("animationcomplete",()=>{
+            scene.sound.play('clipMovementEffectSound');
+        })
     }
 
     setToPhysics(scene) {
@@ -52,7 +56,11 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
                         //         scene.sound.play('clipClampEffectSound');
                         //     }
                         // });
-                        scene.sound.play('clipClampEffectSound');
+                        // scene.sound.play('clipClampEffectSound');
+                        // clipMovementEffectSound
+
+                   
+                        
 
                         clip.playAnimation("clip_clipStateAnimation");
 

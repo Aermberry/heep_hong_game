@@ -16,6 +16,7 @@ import {
 } from '../assets/animations/GameStatusAnimation';
 import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
+import BackgroundMusicButtonButton from "../../game_22/components/BackgroundMusicButton";
 // import Colors from "../styles/Colors";
 
 
@@ -47,10 +48,6 @@ export default class GameScene extends BasicScene {
 
     }
 
-    update(){
-        console.log(this.currentDollIndex);
-    }
-
     create() {
 
         super.create();
@@ -61,20 +58,26 @@ export default class GameScene extends BasicScene {
 
         createClipAnimations(this.anims);
         createGameStatusAnimations(this.anims);
-        this.paintGameScene(this);
-        // Phaser.physics.add.overlap(this.clip, this.yellowDoll);
 
-        this.playBackgroundMusic('clipDollTableEffectSound', 'gamePlaySceneBackgroundMusic');
-
-    }
-
-    playBackgroundMusic(startSound, backgroundSound) {
-
-        const clipDollTableEffectSound = this.sound.add(startSound);
-        const backgroundMusic = this.sound.add(backgroundSound, {
+        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
             volume: 0.2,
             loop: true
         });
+
+        this.paintGameScene(backgroundMusic);
+
+        this.playBackgroundMusic('clipDollTableEffectSound', backgroundMusic);
+
+    }
+
+     /**
+     * 
+     * @param {string} startSound 
+     * @param {Phaser.Sound.BaseSound} backgroundMusic 
+     */
+    playBackgroundMusic(startSound, backgroundMusic) {
+
+        const clipDollTableEffectSound = this.sound.add(startSound);
 
         clipDollTableEffectSound.on('complete', () => {
             backgroundMusic.play();
@@ -113,7 +116,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintGameScene() {
+    paintGameScene(backgroundMusic) {
         this.playLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
@@ -124,6 +127,8 @@ export default class GameScene extends BasicScene {
         ];
 
         let exitButton = new ExitButton(this, 120, 135);
+
+        let backgroundMusicButton = new BackgroundMusicButtonButton(this, 1800, 135, backgroundMusic);
 
         let clip = new Clip(this, 970, -250, this.dolls);
 
@@ -144,7 +149,7 @@ export default class GameScene extends BasicScene {
         gameButtonControllers.add([buttonMoveLeftControl, buttonMoveDownControl, buttonMoveRightControl]);
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
-        this.playLayer.add([textDropBox, gameButtonControllers, exitButton]);
+        this.playLayer.add([textDropBox, gameButtonControllers, exitButton,backgroundMusicButton]);
     }
 
     paintGameSuccess(doll) {

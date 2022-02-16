@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2022-02-11 15:03:10
+ * @LastEditTime: 2022-02-16 17:53:52
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /hhs-jc-game/src/games/game_22/scenes/PreloaderScene.js
+ */
 import BasicScene from './BasicScene'
 import LoadProgress from '../components/LoadProgress';
 
@@ -87,6 +95,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('buttonMoveDownControl', require('../assets/images/button_move_down_control.png'), { frameWidth: 160, frameHeight: 184 });
         this.load.spritesheet('buttonMoveLeftControl', require('../assets/images/button_move_left_control.png'), { frameWidth: 160, frameHeight: 184 });
         this.load.spritesheet('buttonMoveRightControl', require('../assets/images/button_move_right_control.png'), { frameWidth: 160, frameHeight: 184 });
+        this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
 
 
 

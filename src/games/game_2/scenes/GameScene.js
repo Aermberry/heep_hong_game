@@ -201,7 +201,6 @@ export default class GameScene extends BasicScene {
             width = this.cameras.main.width;
             height = this.cameras.main.height - 20;
 
-
         } else {
             x=10;
             width = this.cameras.main.width + 19;

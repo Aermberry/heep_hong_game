@@ -23,17 +23,12 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
 
         this.init(scene, dolls);
 
-        this.isFirstCollider = true;
+        // this.isFirstCollider = true;
     }
 
     init(scene, dolls) {
         this.on('onCollided', this.onCollideHandler, this);
         this.setColliderDetection(scene, dolls)
-
-        // this.once("animationcomplete",()=>{
-        //     scene.sound.play('clipMovementEffectSound');
-        //     console.log("dsdsds")
-        // })
     }
 
     setToPhysics(scene) {
@@ -42,7 +37,7 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
 
     onCollideHandler(gameObject) {
         console.log(gameObject);
-        this.isFirstCollider=false;
+        // this.isFirstCollider=false;
     }
 
     setColliderDetection(scene, gameDollList) {
@@ -60,10 +55,10 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
                         //         scene.sound.play('clipClampEffectSound');
                         //     }
                         // });
-                        if (this.isFirstCollider) {
-                            scene.sound.play('clipClampEffectSound');
+                        // if (this.isFirstCollider) {
+                        //     scene.sound.play('clipClampEffectSound');
                             // clipMovementEffectSound
-                        }
+                        // }
 
                         clip.playAnimation("clip_clipStateAnimation");
 

@@ -175,13 +175,40 @@ export default class GameScene extends BasicScene {
 
         this.sound.stopAll();
 
+        console.log({ "eachQuestionChance": GameModel.eachQuestionChance })
+        console.log({ "currentQuestionErrorCount": GameModel.currentQuestionErrorCount })
+
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
         this.setGameDirection(question.direction);
+
+        this.setWorldBounds();
+
         this.paintScene(question);
 
         this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
 
+    }
+
+    setWorldBounds() {
+        let x = 0;
+
+        let width = null;
+        let height = null;
+
+        if (this.isRightDirection()) {
+            x = 5;
+            width = this.cameras.main.width;
+            height = this.cameras.main.height - 20;
+
+
+        } else {
+            x=10;
+            width = this.cameras.main.width + 19;
+            height = this.cameras.main.height - 20;
+        }
+
+        this.physics.world.setBounds(x, 0, width, height);
     }
 
     playBackgroundMusic(startSound, backgroundSound) {
@@ -241,7 +268,7 @@ export default class GameScene extends BasicScene {
         question = JSON.parse(localStorage.getItem(this.questionIndex));
 
         // question = JSON.parse(localStorage.getItem(2));
-        // question = JSON.parse(localStorage.getItem(16));
+        // question = JSON.parse(localStorage.getItem(9));
         console.log("当前抽取的题目:%o", question);
         console.log("当前抽取的题目Index:%o", this.questionIndex)
 
@@ -322,7 +349,14 @@ export default class GameScene extends BasicScene {
         this.eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
-            this.eggItemList.forEach(eggItem => eggItem.setEnableListener())
+            this.eggItemList.forEach(eggItem => {
+                eggItem.setEnableListener();
+
+                eggItem.body.collideWorldBounds = true;
+                eggItem.body.bounce.set(0);
+
+            })
+
         });
 
     }
@@ -410,7 +444,7 @@ export default class GameScene extends BasicScene {
 
                 this.physics.world.removeCollider(collider);
                 collider.destroy();
-                
+
                 if (this.isRightDirection()) {
                     leftItem = dragItem;
                     rightItem = targetItem;
@@ -423,7 +457,7 @@ export default class GameScene extends BasicScene {
 
 
                 this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
-                console.log({ "GameModel": GameModel.questionCount })
+
             });
 
             colliderList.push(collider);
@@ -693,7 +727,6 @@ export default class GameScene extends BasicScene {
         composeSprite.setVisible(false);
 
         composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer, eggItemList);
-
     }
 
     playVoice(leftVoice, rightVoice, callback) {

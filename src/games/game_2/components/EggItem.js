@@ -38,7 +38,7 @@ export default class EggItem extends Egg {
 
         this.on('pointerover', function () {
 
-            this.StopFLoatTweenAnimation()
+            this.stopFLoatTweenAnimation()
             
         });
 
@@ -69,7 +69,7 @@ export default class EggItem extends Egg {
         this.FLoatTweenAnimation = TweenAnimation.play(this.scene)
     }
 
-    StopFLoatTweenAnimation() {
+    stopFLoatTweenAnimation() {
         this.FLoatTweenAnimation.stop();
     }
 

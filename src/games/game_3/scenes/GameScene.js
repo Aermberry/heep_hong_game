@@ -112,17 +112,40 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
         this.sound.stopAll();
 
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
         this.setGameDirection("right");
+
+        this.setWorldBounds();
         this.paintScene(question);
 
         this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
 
+    }
+
+    setWorldBounds() {
+        let x = 0;
+
+        let width = null;
+        let height = null;
+
+        if (this.isRightDirection()) {
+            x = 5;
+            width = this.cameras.main.width;
+            height = this.cameras.main.height - 20;
+
+
+        } else {
+            x=10;
+            width = this.cameras.main.width + 19;
+            height = this.cameras.main.height - 20;
+        }
+
+        this.physics.world.setBounds(x, 0, width, height);
     }
 
     playBackgroundMusic(startSound, backgroundSound) {
@@ -263,8 +286,13 @@ export default class GameScene extends BasicScene {
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
             player.playAudio(() => {
-                this.eggItemList.forEach(eggItem => eggItem.setEnableListener());
+                this.eggItemList.forEach(eggItem => {
+                    eggItem.setEnableListener();
+                    eggItem.body.collideWorldBounds = true;
+                    eggItem.body.bounce.set(0);
+                });
                 eggQuestion.setEnableListener();
+
             });
         });
 
@@ -339,6 +367,7 @@ export default class GameScene extends BasicScene {
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, voiceIndex, true);
+            this.time.addEvent({ delay: index * 500, callback: () => eggItem.playFLoatTweenAnimation() });
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
@@ -438,7 +467,7 @@ export default class GameScene extends BasicScene {
 
 
     paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer) {
-        
+
         targetItem.showErrorStatue();
         dragItem.showErrorStatue(() => {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {

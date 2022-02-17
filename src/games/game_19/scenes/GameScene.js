@@ -420,7 +420,7 @@ export default class GameScene extends BasicScene {
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
         this.exitButton = new ExitButton(this, 100, 120);
-        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1840, 120, backgroundMusic);
+        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);

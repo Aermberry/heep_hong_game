@@ -60,7 +60,7 @@ export default class MapScene extends BasicScene {
 
         this.sound.stopAll()
 
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
 
         const game1Btn = new SectionBtn(this, this.getColWidth(2.29), this.getRowHeight(3.2), 'section1Btn', 'Section_1')
         const game2Btn = new SectionBtn(this, this.getColWidth(7.74), this.getRowHeight(3.18), 'section2Btn', 'Section_2')

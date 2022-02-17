@@ -17,6 +17,7 @@ import {
 import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
 import BackgroundMusicButtonButton from "../../game_22/components/BackgroundMusicButton";
+import LoadProgress from "../components/LoadProgress";
 // import Colors from "../styles/Colors";
 
 
@@ -45,6 +46,9 @@ export default class GameScene extends BasicScene {
         // });
 
         this.currentDollIndex = 1;
+
+        this.buildBg('bgProgressGame')
+        this.progressLoader = new LoadProgress(this);
 
     }
 

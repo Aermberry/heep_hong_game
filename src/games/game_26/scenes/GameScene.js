@@ -10,6 +10,7 @@ import GameSprite from '../components/GameSprite';
 import GameManager from '../components/GameManager';
 import AnswerArea from "../components/AnswerArea";
 import BackgroundMusicButtonButton from "../components/BackgroundMusicButton";
+import LoadProgress from "../components/LoadProgress";
 
 export default class GameScene extends BasicScene {
 
@@ -31,13 +32,16 @@ export default class GameScene extends BasicScene {
     preload() {
 
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
+
+        this.buildBg('backgroundGamePlay');
+        this.progressLoader = new LoadProgress(this);
     }
 
     create() {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
         this.sound.stopAll();
 
@@ -120,7 +124,7 @@ export default class GameScene extends BasicScene {
         let exitButton = new ExitButton(this, 100, 120);
         const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
-        this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite,backgroundMusicButton]);
+        this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite, backgroundMusicButton]);
         this.gameLayer.add([exitButton, this.answerArea]);
     }
 
@@ -141,7 +145,7 @@ export default class GameScene extends BasicScene {
         eggSprite.setMask(mask);
         const ballSpinEffectSound = this.sound.add('ballSpinEffectSound');
         ballSpinEffectSound.play();
-        this.cameras.main.setSize(2180,1080)
+        this.cameras.main.setSize(2180, 1080)
         eggTwistingMachineSprite.on("animationcomplete", () => {
             this.add.tween({
                 targets: this.cameras.main.setOrigin(0, 1),
@@ -165,7 +169,7 @@ export default class GameScene extends BasicScene {
                                 duration: 5000,
                                 ease: 'Power2',
                                 onComplete: () => {
-                                    this.cameras.main.setSize(1920,1080)
+                                    this.cameras.main.setSize(1920, 1080)
                                 }
                             });
                             answerArea.showAnswerPanelAnimation(this);
@@ -195,7 +199,7 @@ export default class GameScene extends BasicScene {
 
         this.sound.play('answerCorrectEffectSound');
         this.sound.play('gameWinEffectSound')
-        this.sound.play('voice'+this.questionIndex);
+        this.sound.play('voice' + this.questionIndex);
     }
 
 
@@ -217,7 +221,7 @@ export default class GameScene extends BasicScene {
         this.sound.play('answerErrorEffectSound');
         if (!_isFirstError) {
             this.sound.play('gameLoseEffectSound');
-            this.answerArea.showCurrentAnswer(this,this.questionIndex);
+            this.answerArea.showCurrentAnswer(this, this.questionIndex);
         }
     }
 

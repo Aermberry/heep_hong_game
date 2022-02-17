@@ -14,20 +14,7 @@ export default class PreloaderScene extends BasicScene {
     preload() {
         this.buildBackground('backgroundPreloadingScene');
 
-        this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
-
-        this.load.on('complete', (loader, totalComplete, totalFailed) => {
-
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Tutor');
-
-            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Game');
-        });
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
 
         const imageFiles = {
             'backgroundTutorEnd': require('../assets/images/background_tutor_end.png'),

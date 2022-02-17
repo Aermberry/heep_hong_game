@@ -17,7 +17,7 @@ export default class BackgroundMusicButtonButton extends Phaser.GameObjects.Cont
         super(scene, x, y);
         scene.add.existing(this);
 
-        this.texture = scene.add.sprite(0, 0, 'backgroundMusicButtonOnPlay');
+        this.texture = scene.add.sprite(0, 0, 'backgroundMusicButtonOnPlay').setScale(0.8);
 
         this.backgroundMusic = backgroundMusic;
 

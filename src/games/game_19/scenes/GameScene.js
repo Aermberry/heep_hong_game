@@ -13,6 +13,7 @@ import {
 import GameSprite from "../components/GameSprite"
 import Phaser from 'phaser'
 import CrocodileMouthLow from "../components/CrocodileMouthLow"
+import BackgroundMusicButtonButton from "../components/BackgroundMusicButton"
 
 // import FF from '../assets/images/cursor_hand1.png'
 export default class GameScene extends BasicScene {
@@ -116,23 +117,38 @@ export default class GameScene extends BasicScene {
         
         this.sound.stopAll();
 
-        this.question = this.generateQuestion();
-        this.paintGameScene(this);
-
-        this.sound.play('ahhEffectSound');
-
-        this.backgroundMusic = this.sound.add('gameSceneBgm', {
-            volume: 0.2,
-            loop: true
-        });
-
-        this.backgroundMusic.play();
-
         createStarAnimations(this.anims);
 
         // this.input.setDefaultCursor(`url(${FF}), pointer`);
         this.input.setDefaultCursor(`url(${this.cursorHandIcon}), pointer`);
 
+        this.question = this.generateQuestion();
+       
+
+        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
+            volume: 0.2,
+            loop: true
+        });
+
+        this.paintGameScene(backgroundMusic);
+
+        this.playBackgroundMusic('ahhEffectSound', backgroundMusic);
+    }
+
+     /**
+     * 
+     * @param {string} startSound 
+     * @param {Phaser.Sound.BaseSound} backgroundMusic 
+     */
+      playBackgroundMusic(startSound, backgroundMusic) {
+
+        const ahhEffectSound = this.sound.add(startSound);
+
+        ahhEffectSound.on('complete', () => {
+            backgroundMusic.play();
+        })
+
+        ahhEffectSound.play();
     }
 
 
@@ -377,7 +393,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintGameScene() {
+    paintGameScene(backgroundMusic) {
 
         this.playLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(2);
@@ -404,11 +420,13 @@ export default class GameScene extends BasicScene {
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
         this.exitButton = new ExitButton(this, 120, 135);
+        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1800, 135, backgroundMusic);
+
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
-        this.playLayer.add([this.dropContainer, this.dragContainer])
+        this.playLayer.add([this.dropContainer, this.dragContainer,backgroundMusicButton])
         this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
 
         this.uiLayer.setVisible(this.isDisplayDirectionButtonControllers(toothsContainer));

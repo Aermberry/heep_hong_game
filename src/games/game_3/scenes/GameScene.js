@@ -16,6 +16,7 @@ import LoadProgress from "../components/LoadProgress";
 import GameModel from "../game_mode/GameModel";
 import Player from "../components/Player";
 import { createPlayerAnimation } from "../assets/animations/PlayerAnimation";
+import BackgroundMusicButtonButton from "../components/BackgroundMusicButton";
 
 
 export default class GameScene extends BasicScene {
@@ -121,9 +122,15 @@ export default class GameScene extends BasicScene {
         this.setGameDirection("right");
 
         this.setWorldBounds();
-        this.paintScene(question);
 
-        this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
+        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
+            volume: 0.2,
+            loop: true
+        });
+
+        this.paintScene(question,backgroundMusic);
+
+        this.playBackgroundMusic('robotArmAppearSoundEffect', backgroundMusic);
 
     }
 
@@ -148,12 +155,8 @@ export default class GameScene extends BasicScene {
         this.physics.world.setBounds(x, 0, width, height);
     }
 
-    playBackgroundMusic(startSound, backgroundSound) {
+    playBackgroundMusic(startSound, backgroundMusic) {
         const clipDollTableEffectSound = this.sound.add(startSound);
-        const backgroundMusic = this.sound.add(backgroundSound, {
-            volume: 0.1,
-            loop: true
-        });
 
         clipDollTableEffectSound.on('complete', () => {
             backgroundMusic.play();
@@ -217,20 +220,20 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintScene(currentGameQuestion) {
+    paintScene(currentGameQuestion,backgroundMusic) {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
         /* UI Object */
-        this.buildUiObject(this.uiLayer);
-        console.log({ currentGameQuestion });
+        this.buildUiObject(this.uiLayer,backgroundMusic);
 
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
     }
 
-    buildUiObject(layer) {
+    buildUiObject(layer,backgroundMusic) {
         const exitButton = new ExitButton(this, 120, 135);
+        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1800, 135, backgroundMusic);
 
         this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
@@ -241,7 +244,7 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
+        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite,backgroundMusicButton]);
     }
 
     buildGameObject(currentGameQuestion, layer) {

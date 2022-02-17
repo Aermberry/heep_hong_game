@@ -68,8 +68,8 @@ export default class Section6Scene extends SectionBasicScene {
 
     populateSection() {
 
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
         const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1', '/game/10')
         const hintBtn = new HintBtn(this, this.getColWidth(6.8), this.getRowHeight(5.5), [gameBtn], 's6HintLogo')
 

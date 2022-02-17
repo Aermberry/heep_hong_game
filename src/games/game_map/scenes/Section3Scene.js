@@ -131,8 +131,8 @@ export default class Section3Scene extends SectionBasicScene {
         let boxAnimate2 = this.add.sprite(this.getColWidth(2.4), this.getRowHeight(10), 'box2')
         boxAnimate2.play('box2')
 
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
 
         const game11Btn = new GameNavBtn(this, this.getColWidth(3), this.getRowHeight(9.2), 's3btn6', '/game/11')
         const game12Btn = new GameNavBtn(this, this.getColWidth(2.8), this.getRowHeight(10.7), 's3btn7', '/game/12')

@@ -24,6 +24,9 @@ export default {
   max-height: 3rem;
 }
 .links {
-  margin-right: 3rem;
+  margin-right: 0;
+}
+.game{
+  margin-right: 0;
 }
 </style>

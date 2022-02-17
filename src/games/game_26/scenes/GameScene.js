@@ -35,6 +35,30 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('backgroundGamePlay');
         this.progressLoader = new LoadProgress(this);
+
+        const soundFiles = {
+            "voice0":require("../assets/audio/voice/0.mp3"),
+            "voice1":require("../assets/audio/voice/1.mp3"),
+            "voice2":require("../assets/audio/voice/2.mp3"),
+            "voice3":require("../assets/audio/voice/3.mp3"),
+            "voice4":require("../assets/audio/voice/4.mp3"),
+            "voice5":require("../assets/audio/voice/5.mp3"),
+            "voice6":require("../assets/audio/voice/6.mp3"),
+            "voice7":require("../assets/audio/voice/7.mp3"),
+            "voice8":require("../assets/audio/voice/8.mp3"),
+            "voice9":require("../assets/audio/voice/9.mp3"),
+            "voice10":require("../assets/audio/voice/10.mp3"),
+            "voice11":require("../assets/audio/voice/11.mp3"),
+            "voice12":require("../assets/audio/voice/12.mp3"),
+            "voice13":require("../assets/audio/voice/13.mp3"),
+            "voice14":require("../assets/audio/voice/14.mp3"),
+            "voice15":require("../assets/audio/voice/15.mp3"),
+            "voice16":require("../assets/audio/voice/16.mp3"),
+            "voice17":require("../assets/audio/voice/17.mp3"),
+            "voice18":require("../assets/audio/voice/18.mp3"),
+            "voice19":require("../assets/audio/voice/19.mp3"),
+        }
+        this.preloadFromArr({ sound: soundFiles });
     }
 
     create() {

@@ -50,6 +50,17 @@ export default class GameScene extends BasicScene {
         this.buildBg('bgProgressGame')
         this.progressLoader = new LoadProgress(this);
 
+        const soundFiles = {
+            'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
+            'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
+            'clipClampEffectSound': require('../assets/audio/sound_effect/effect_clip_clamp.mp3'),
+            'clipDollTableEffectSound': require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
+            'clipMovementEffectSound': require('../assets/audio/sound_effect/effect_clip_movement.mp3'),
+            'spotlightFocusEffectSound': require('../assets/audio/sound_effect/effect_spotlight_focus.mp3'),
+        }
+
+        this.preloadFromArr({ sound: soundFiles });
+
     }
 
     create() {

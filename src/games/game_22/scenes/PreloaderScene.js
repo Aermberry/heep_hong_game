@@ -58,12 +58,7 @@ export default class PreloaderScene extends BasicScene {
 
             /* Effect Sound */
             'buttonEffectSound': require('../assets/audio/sound_effect/effect_button_on_clicked.mp3'),
-            'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
-            'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
-            'clipClampEffectSound': require('../assets/audio/sound_effect/effect_clip_clamp.mp3'),
-            'clipDollTableEffectSound': require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
-            'clipMovementEffectSound': require('../assets/audio/sound_effect/effect_clip_movement.mp3'),
-            'spotlightFocusEffectSound': require('../assets/audio/sound_effect/effect_spotlight_focus.mp3'),
+         
         }
 
         this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });

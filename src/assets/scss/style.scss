@@ -92,6 +92,9 @@ body{
     flex-wrap: inherit;
     align-items: center;
     justify-content: space-between;
+    &.flex-col{
+      flex-direction: column;
+    }
   }
 }
 
@@ -503,14 +506,16 @@ footer{
 
 .partners{
   display: flex;
-  @media screen and (max-width: 768px){
-    flex-direction: column;
-  }
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px 0;
+  // @media screen and (max-width: 768px){
+  //   flex-direction: column;
+  // }
 }
 .partner{
   display: flex;
   align-items: center;
-  padding: 30px 0;
   @media screen and (max-width: 768px){
     align-items: flex-start;
   }

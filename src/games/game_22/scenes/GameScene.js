@@ -126,9 +126,9 @@ export default class GameScene extends BasicScene {
             new Doll(this, this.getColWidth(8.5), this.getRowHeight(4), "pinkDoll", "得")
         ];
 
-        let exitButton = new ExitButton(this, 120, 135);
+        let exitButton = new ExitButton(this, 100, 120);
 
-        let backgroundMusicButton = new BackgroundMusicButtonButton(this, 1800, 135, backgroundMusic);
+        let backgroundMusicButton = new BackgroundMusicButtonButton(this, 1840, 120, backgroundMusic);
 
         let clip = new Clip(this, 970, -250, this.dolls);
 

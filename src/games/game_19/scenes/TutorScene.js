@@ -39,7 +39,7 @@ export default class TutorScene extends BasicScene {
         let backgroundLayer = this.add.layer().setDepth(0);
 
         buttonLayer.add([
-            new ExitButton(this, 120, 135), 
+            new ExitButton(this, 100, 120), 
             new StartButton(this, this.getColWidth(6), 
             this.getRowHeight(10.5))]);
 

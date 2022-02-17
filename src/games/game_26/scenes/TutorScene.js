@@ -35,7 +35,7 @@ export default class TutorScene extends BasicScene {
         let animationLayer = this.add.layer().setDepth(2);
         let backgroundLayer = this.add.layer().setDepth(0);
 
-        buttonLayer.add([new ExitProgressGameButton(this, 120, 135), new StartButton(this, this.getColWidth(6), this.getRowHeight(10.8)).setScale(0.8)]);
+        buttonLayer.add([new ExitProgressGameButton(this, 100, 120), new StartButton(this, this.getColWidth(6), this.getRowHeight(10.8)).setScale(0.8)]);
         // animationLayer.add([
             // this.add.image(278 + 250, 500, 'imageTutor01').setScale(0.5),
             // this.add.image(740 + 250, 280, 'imageTutor02').setScale(0.5),

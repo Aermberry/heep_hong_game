@@ -39,7 +39,7 @@ export default class LoadProgress extends Phaser.GameObjects.Container {
             text: '連接中',
             style: {
                 font: '25px monospace',
-                fill: '#000',
+                fill: '#fff',
                 padding: {
                     left: 10,
                     right: 10,

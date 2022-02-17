@@ -58,7 +58,7 @@ export default class PreloaderScene extends BasicScene {
             'clapEffectSound': require('../assets/audio/sound_effect/effect_clap.mp3'),
             'gameSceneYouLose': require('../assets/audio/sound_background/bgm_game_scene_you_lose.mp3'),
             'gameEndHappyEnding': require('../assets/audio/sound_background/bgm_game_end_happy_ending.mp3'),
-            'gameSceneBgm': require('../assets/audio/sound_background/bgm_game_scene.mp3'),
+            'gamePlaySceneBackgroundMusic': require('../assets/audio/sound_background/bgm_game_scene.mp3'),
             'voiceAnswer0': require('../assets/audio/voice/voice_answer_00.mp3'),
             'voiceAnswer1': require('../assets/audio/voice/voice_answer_01.mp3'),
             'voiceAnswer2': require('../assets/audio/voice/voice_answer_02.mp3'),
@@ -89,6 +89,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('moveBtn', require('../assets/images/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('leftButton', require('../assets/images/btn_left_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('rightButton', require('../assets/images/btn_right_move.png'), { frameWidth: 256, frameHeight: 277 });
+        this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
 
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });

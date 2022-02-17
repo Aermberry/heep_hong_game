@@ -230,8 +230,8 @@ export default class GameScene extends BasicScene {
     }
 
     buildUiObject(layer,backgroundMusic) {
-        const exitButton = new ExitButton(this, 120, 135);
-        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1800, 135, backgroundMusic);
+        const exitButton = new ExitButton(this, 100, 120);
+        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1840, 120, backgroundMusic);
 
         this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);

@@ -117,8 +117,8 @@ export default class GameScene extends BasicScene {
 
 
 
-        let exitButton = new ExitButton(this, 120, 135);
-        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1800, 135, backgroundMusic);
+        let exitButton = new ExitButton(this, 100, 120);
+        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1840, 120, backgroundMusic);
 
         this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite,backgroundMusicButton]);
         this.gameLayer.add([exitButton, this.answerArea]);

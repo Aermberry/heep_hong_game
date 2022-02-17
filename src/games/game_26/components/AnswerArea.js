@@ -104,7 +104,6 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
             duration: 5000,
             ease: 'Power2',
             onComplete: () => {
-
                 this.SetEnableInput();
             }
         });

@@ -52,12 +52,6 @@ export default class GameScene extends BasicScene {
         this.buildBackground('backgroundGamePlay');
 
         this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
 
         const soundFiles = {
             'voice0': require('../assets/audio/voice/object/0.mp3'),

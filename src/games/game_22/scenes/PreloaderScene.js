@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2022-02-11 15:03:10
- * @LastEditTime: 2022-02-16 17:53:52
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /hhs-jc-game/src/games/game_22/scenes/PreloaderScene.js
- */
 import BasicScene from './BasicScene'
 import LoadProgress from '../components/LoadProgress';
 
@@ -20,24 +12,10 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        let self = this;
-
-       
+        
         this.buildBg('bgLoadingGame');
 
-        this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-        
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
-
-        this.load.on('complete', (loader, totalComplete, totalFailed) => {
-            console.log(loader, totalComplete, totalFailed);
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
-        });
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
 
         const imageFiles = {
             'bgTutor': require('../assets/images/bg_tutor.png'),
@@ -80,12 +58,7 @@ export default class PreloaderScene extends BasicScene {
 
             /* Effect Sound */
             'buttonEffectSound': require('../assets/audio/sound_effect/effect_button_on_clicked.mp3'),
-            'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
-            'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
-            'clipClampEffectSound':require('../assets/audio/sound_effect/effect_clip_clamp.mp3'),
-            'clipDollTableEffectSound':require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
-            'clipMovementEffectSound':require('../assets/audio/sound_effect/effect_clip_movement.mp3'),
-            'spotlightFocusEffectSound':require('../assets/audio/sound_effect/effect_spotlight_focus.mp3'),
+         
         }
 
         this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });

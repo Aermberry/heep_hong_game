@@ -14,6 +14,7 @@ import GameSprite from "../components/GameSprite"
 import Phaser from 'phaser'
 import CrocodileMouthLow from "../components/CrocodileMouthLow"
 import BackgroundMusicButtonButton from "../components/BackgroundMusicButton"
+import LoadProgress from "../components/LoadProgress"
 
 // import FF from '../assets/images/cursor_hand1.png'
 export default class GameScene extends BasicScene {
@@ -53,6 +54,8 @@ export default class GameScene extends BasicScene {
         // });
 
         this.buildBg('bgProgressGame');
+        this.progressLoader = new LoadProgress(this);
+
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
         
         const crocoElmSets = {
@@ -105,8 +108,6 @@ export default class GameScene extends BasicScene {
         })
 
         this.preloadFromArr({ 'img': imageFiles });
-
-        this.createProgressBar();
     }
 
     create() {

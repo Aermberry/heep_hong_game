@@ -1,5 +1,5 @@
 import BasicScene from './BasicScene'
-import config from '../config/index';
+import LoadProgress from '../components/LoadProgress';
 
 export default class PreloaderScene extends BasicScene {
 
@@ -10,9 +10,9 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        let self = this;
-
         this.buildBg('bgLoadingGame');
+
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
 
         const imageFiles = {
             'bgTutor': require('../assets/images/bg_tutor.png'),
@@ -94,27 +94,6 @@ export default class PreloaderScene extends BasicScene {
 
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
-
-        this.loadingText = this.make.text({
-            x: config.width / 2,
-            y: config.height * 0.89,
-            text: '連接中',
-            style: {
-                font: '25px monospace',
-                fill: '#fff'
-            }
-        });
-
-        this.createProgressBar();
-
-        this.load.on('complete', function () {
-            self.loadingText.setText('連接完成')
-            self.time.addEvent({
-                delay: 500,
-                callback: () => self.scene.start('Tutor')
-            })
-
-        });
 
     }
 

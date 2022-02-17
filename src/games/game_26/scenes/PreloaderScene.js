@@ -13,7 +13,6 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        let self = this;
 
         this.buildBg('backgroundPreloadingScene');
 
@@ -22,19 +21,7 @@ export default class PreloaderScene extends BasicScene {
         const loadingTitle = new GameSprite(this, 960, 400, 'loadingTitleTexture');
         loadingTitle.play('loadingTitleAnimation');
 
-        this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
-
-        this.load.on('complete', (loader, totalComplete, totalFailed) => {
-
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
-            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Game');
-        });
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
 
         const imageFiles = {
             'imageTutor01': require('../assets/images/image_tutor01.png'),
@@ -118,28 +105,6 @@ export default class PreloaderScene extends BasicScene {
             'gameWinEffectSound': require('../assets/audio/sound_effect/sound_effect_game_win.mp3'),
             'gameLoseEffectSound': require('../assets/audio/sound_effect/sound_effect_game_lose.mp3'),
             'answerErrorEffectSound': require('../assets/audio/sound_effect/sound_effect_answer_error.mp3'),
-
-            "voice0":require("../assets/audio/voice/0.mp3"),
-            "voice1":require("../assets/audio/voice/1.mp3"),
-            "voice2":require("../assets/audio/voice/2.mp3"),
-            "voice3":require("../assets/audio/voice/3.mp3"),
-            "voice4":require("../assets/audio/voice/4.mp3"),
-            "voice5":require("../assets/audio/voice/5.mp3"),
-            "voice6":require("../assets/audio/voice/6.mp3"),
-            "voice7":require("../assets/audio/voice/7.mp3"),
-            "voice8":require("../assets/audio/voice/8.mp3"),
-            "voice9":require("../assets/audio/voice/9.mp3"),
-            "voice10":require("../assets/audio/voice/10.mp3"),
-            "voice11":require("../assets/audio/voice/11.mp3"),
-            "voice12":require("../assets/audio/voice/12.mp3"),
-            "voice13":require("../assets/audio/voice/13.mp3"),
-            "voice14":require("../assets/audio/voice/14.mp3"),
-            "voice15":require("../assets/audio/voice/15.mp3"),
-            "voice16":require("../assets/audio/voice/16.mp3"),
-            "voice17":require("../assets/audio/voice/17.mp3"),
-            "voice18":require("../assets/audio/voice/18.mp3"),
-            "voice19":require("../assets/audio/voice/19.mp3"),
-
         }
 
         this.load.spritesheet('startButton', require('../assets/images/button_start_game.png'), { frameWidth: 776, frameHeight: 227 });

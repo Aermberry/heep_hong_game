@@ -48,6 +48,10 @@ body{
 .container-fluid{
   padding-left: 30px;
   padding-right: 30px;
+  @media screen and (max-width: 768px){
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 .container{
   max-width: 1600px;
@@ -506,12 +510,13 @@ footer{
 
 .partners{
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  //flex-wrap: wrap;
+  gap: 16px;
   padding: 30px 0;
-  // @media screen and (max-width: 768px){
-  //   flex-direction: column;
-  // }
+  flex-direction: row;
+  @media screen and (max-width: 359px){
+    flex-direction: column;
+  }
 }
 .partner{
   display: flex;

@@ -128,7 +128,7 @@ export default class GameScene extends BasicScene {
 
         let exitButton = new ExitButton(this, 100, 120);
 
-        let backgroundMusicButton = new BackgroundMusicButtonButton(this, 1840, 120, backgroundMusic);
+        let backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
         let clip = new Clip(this, 970, -250, this.dolls);
 

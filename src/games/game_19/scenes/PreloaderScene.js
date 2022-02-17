@@ -89,6 +89,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('moveBtn', require('../assets/images/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('leftButton', require('../assets/images/btn_left_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('rightButton', require('../assets/images/btn_right_move.png'), { frameWidth: 256, frameHeight: 277 });
+        this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
 
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });

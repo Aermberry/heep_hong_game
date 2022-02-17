@@ -234,9 +234,9 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('bg_base');
 
-        this.backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5));
+        this.backBtn = new BackBtn(this, 100, 120);
 
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5),this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120,this.musicPause.bind(this));
 
         this.initGameRender(this.items.pop(), this.answers.pop())
 

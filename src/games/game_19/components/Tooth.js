@@ -18,9 +18,6 @@ export default class Tooth extends Phaser.GameObjects.Container {
 
     create() {
         this.toothTexture = this.scene.add.image(0, 0, this.image).setName('toothTexture').setScale(0.5);
-        this.setSize(this.toothTexture.displayWidth, this.toothTexture.displayHeight);
-
-
 
         this.labelText = this.scene.make.text({
             x: 0,
@@ -34,55 +31,53 @@ export default class Tooth extends Phaser.GameObjects.Container {
             }
         }).setOrigin(0.5, 0.5);
 
-
+        this.setSize(this.toothTexture.displayWidth, this.toothTexture.displayHeight);
 
         this.add(
             [this.toothTexture, this.labelText]
         )
-
-        this.setSize(this.toothTexture.displayWidth, this.toothTexture.displayHeight);
-        this.setInteractive(
-            {
-                cursor: `url(${CursorHand}), pointer`,
-                // useHandCursor: true
-            }
-        )
-        this.scene.input.setDraggable(this);
-
-        this.on('pointerover', function () {
-
-            this.toothTexture.setTint(0xa7a7a7);
-            this.scene.sound.play('selectTeethEffectSound');
-
-        });
-
-        this.on('pointerout', function () {
-
-            this.toothTexture.clearTint();
-        });
-
-
-
-        this.scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
-
-            gameObject.x = dragX;
-            gameObject.y = dragY;
-
-        });
-
-        this.scene.input.on('dragend', function (pointer, gameObject, dropped) {
-
-            if (!dropped) {
-                gameObject.x = gameObject.originPoint.originPointX
-                gameObject.y = gameObject.originPoint.originPointY
-            }
-
-
-        })
     }
 
     changeStyle(scale, fontSize) {
         this.toothTexture.setScale(scale);
         this.labelText.setFontSize(fontSize);
+    }
+
+    enableGestureEventListener() {
+        this.setInteractive(
+            {
+                cursor: `url(${CursorHand}), pointer`,
+            }
+        );
+
+        this.scene.input.setDraggable(this);
+
+
+        this.on('pointerover', function () {
+            this.toothTexture.setTint(0xa7a7a7);
+            this.scene.sound.play('selectTeethEffectSound');
+        });
+
+        this.on('pointerout', () => this.toothTexture.clearTint());
+
+        this.scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+            gameObject.x = dragX;
+            gameObject.y = dragY;
+        });
+
+        this.scene.input.on('dragend', function (pointer, gameObject, dropped) {
+            if (!dropped) {
+                gameObject.x = gameObject.originPoint.originPointX
+                gameObject.y = gameObject.originPoint.originPointY
+            }
+        });
+    }
+
+    disableGestureEventListener() {
+        this.disableInteractive();
+        this.scene.input.setDraggable(this, false);
+        this.scene.input.removeListener('drag');
+        this.removeListener('pointerout');
+        this.removeListener('pointerover');
     }
 }

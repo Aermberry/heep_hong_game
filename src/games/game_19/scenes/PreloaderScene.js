@@ -48,6 +48,7 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
+            'buttonEffectSound': require('../assets/audio/sound_effect/sound_effect_button_on_clicked.mp3'),
             'childClapEffectSound': require('../assets/audio/sound_effect/effect_child_clap.mp3'),
             'popOffEffectSound': require('../assets/audio/sound_effect/effect_pop_off.mp3'),
             'ahhEffectSound': require('../assets/audio/sound_effect/effect_ahh.mp3'),
@@ -84,7 +85,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('rplLongBtn', require('../assets/images/btn_long_rpl.png'), { frameWidth: 566, frameHeight: 163.5 });
-        this.load.spritesheet('gameProgressExitBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('gameProgressExitButton', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitBtn', require('../assets/images/btn_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('moveBtn', require('../assets/images/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('leftButton', require('../assets/images/btn_left_move.png'), { frameWidth: 256, frameHeight: 277 });

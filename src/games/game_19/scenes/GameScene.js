@@ -272,7 +272,6 @@ export default class GameScene extends BasicScene {
 
 
     paintGameSuccess() {
-        this.backgroundMusic.stop();
         this.uiLayer.setVisible(false);
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
 
@@ -314,7 +313,6 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameFailed() {
-        this.backgroundMusic.stop();
         this.uiLayer.setVisible(false);
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
 

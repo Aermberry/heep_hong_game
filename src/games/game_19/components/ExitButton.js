@@ -1,21 +1,40 @@
-import BasicButton  from './BasicButton';
+import Phaser from 'phaser'
 
-export default class ExitButton extends BasicButton {
-  constructor(scene,x,y,children){
+export default class ExitProgressGameButton extends Phaser.GameObjects.Container {
 
-    super(scene, x, y,children);
+    constructor(scene, x, y) {
 
-    let sprite =  scene.add.sprite(0, 0, 'gameProgressExitBtn').setScale(0.8);
-    this.create(sprite,this.onClick.bind(this))
+        super(scene, x, y);
+        scene.add.existing(this);
 
-  }
+        this.texture = scene.add.sprite(0, 0, 'gameProgressExitButton').setScale(0.8);
 
-  onClick(){
-    window.history.back();
-  }
+        this.setSize(this.texture.width, this.texture.height);
 
-  down(clickEvent) {
-    this.origSprite.setFrame(1)
-    super.down(clickEvent)
-  }
+        this.add(this.texture);
+
+        this.setInteractive({ useHandCursor: true }).on(
+            Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                console.log("down")
+                this.texture.setFrame(1);
+                this.onDownClicked();
+            }
+        )
+            .on(
+                Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
+                    console.log("up")
+                    this.texture.setFrame(0);
+                    this.onUpClicked();
+                }
+            )
+    }
+
+    onDownClicked() {
+        this.scene.sound.play('buttonEffectSound');
+      
+    }
+
+    onUpClicked() {
+        window.history.back();
+    }
 }

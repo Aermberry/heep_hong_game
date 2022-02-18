@@ -24,7 +24,6 @@ export default class GameScene extends BasicScene {
             key: 'Game'
         });
 
-        this.exitButton = undefined
         this.leftMoveButton = undefined
         this.rightMoveButton = undefined
         this.retryButton = undefined
@@ -234,6 +233,8 @@ export default class GameScene extends BasicScene {
                 currentTooth = new SmallTooth(this, currentOffsetX, this.produceToothYValue(currentOffsetX), element)
             }
 
+            currentTooth.enableGestureEventListener();
+
             container.add(currentTooth);
         }
 
@@ -398,33 +399,25 @@ export default class GameScene extends BasicScene {
         this.uiLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        // this.crocodileMouth = this.add.image(
-        //     this.getColWidth(13.8),
-        //     this.getRowHeight(8),
-        //     'crocodileLongMouth').setScale(0.4);
-
         this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.75))
         this.crocodileMouthCont.setX(this.getColWidth(4.6))
         
-        this.add.existing(this.crocodileMouthCont)
-
         let toothsContainer = this.pintTooth(this.question.originalSentence);
 
         this.dragContainer = this.add.container(0, 0, [
             toothsContainer,
-            // this.crocodileMouth
             this.crocodileMouthCont
         ]);
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
-        this.exitButton = new ExitButton(this, 100, 120);
+        const exitButton = new ExitButton(this, 100, 120);
         const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
 
-        this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
+        this.backgroundLayer.add([this.buildBg('bgProgressGame'), exitButton]);
         this.playLayer.add([this.dropContainer, this.dragContainer,backgroundMusicButton])
         this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
 

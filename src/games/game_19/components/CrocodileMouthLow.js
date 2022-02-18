@@ -13,7 +13,9 @@ export default class CrocodileMouthLow extends Phaser.GameObjects.Container {
             'croco_low_4'
         ]
         
-        this.initRender()
+        this.initRender();
+
+        this.scene.add.existing(this);
     }
 
     initRender() {

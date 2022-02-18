@@ -35,6 +35,7 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
   }
 
   onDownClicked() {
+    this.scene.sound.play('buttonEffectSound');
     this.moveToRight();
     
   }

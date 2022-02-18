@@ -26,7 +26,7 @@ export default class ErrorRetryButton extends Phaser.GameObjects.Sprite {
 
 
     onDownClicked() {
-
+        this.scene.sound.play('buttonEffectSound');
     }
 
     onUpClicked(scene) {

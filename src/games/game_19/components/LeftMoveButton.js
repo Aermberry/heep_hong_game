@@ -35,6 +35,7 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
   }
 
   onDownClicked() {
+    this.scene.sound.play('buttonEffectSound');
     this.moveToLeft();
   }
 

@@ -11,6 +11,7 @@ export default class EndSceneExitBtn extends BasicButton {
     }
 
     onClick(){
+        this.scene.sound.play('buttonEffectSound');
         window.history.back();
     }
 

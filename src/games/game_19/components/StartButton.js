@@ -31,7 +31,7 @@ export default class StartButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        
+        this.scene.sound.play('buttonEffectSound');
     }
 
     onUpClicked() {

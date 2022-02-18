@@ -99,6 +99,8 @@ export default class BasicScene extends Phaser.Scene {
 
         this.loadingText.setOrigin(0.5, 0.5)
 
+        this.cameras.main.ignore([ this.loadingBar, this.loadingText ])
+
     }
 
     onLoadComplete(loader, totalComplete, totalFailed) {

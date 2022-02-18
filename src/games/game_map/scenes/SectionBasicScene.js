@@ -26,7 +26,7 @@ export default class SectionBasicScene extends BasicScene {
         })
 
         const loadingCam = this.cameras.add(0, 0, this.cameras.main.width, this.cameras.main.height)
-        loadingCam.ignore(this.bg)
+        loadingCam.ignore([this.bg])
 
         this.cameras.main.pan(this.cameras.main.width * anchor.x, this.cameras.main.height * anchor.y, 1500, 'Linear')
         this.initPromise = new Promise((resolve)=> {

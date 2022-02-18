@@ -6,7 +6,7 @@ import BigTooth from "../components/BigTooth"
 import SmallTooth from "../components/SmallTooth"
 import AnswerDropZone from "../components/AnswerDropZone"
 import GameManager from '../components/GameManager';
-import DialogWrongBox from "../components/DialogWrongBox"
+// import DialogWrongBox from "../components/DialogWrongBox"
 import {
     createStarAnimations
 } from "../assets/animations/StarAnimation"
@@ -381,10 +381,11 @@ export default class GameScene extends BasicScene {
     }
 
     showGameFailedTipBox() {
-        let dialogWrongBox = new DialogWrongBox(this, 0, 0);
-        dialogWrongBox.setAlignCenter();
+        // let dialogWrongBox = new DialogWrongBox(this, 0, 0);
+        // dialogWrongBox.setAlignCenter();
 
-        this.sound.play('dentistDrillEnvironmentSound');
+        // this.sound.play('dentistDrillEnvironmentSound');
+        this.scene.run('retry')
     }
 
 

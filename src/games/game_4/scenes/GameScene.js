@@ -296,58 +296,19 @@ export default class GameScene extends BasicScene {
         let points = [];
         if (this.isRightDirection()) {
             points = [{
-                x: 276,
-                y: 498
+                x: 522,
+                y: 423
             }, {
-                x: 390,
-                y: 168
-            }, {
-                x: 531,
-                y: 441
-            }, {
-                x: 766,
-                y: 216
-            }, {
-                x: 841,
-                y: 569
-            }, {
-                x: 1053,
-                y: 350
-            }, {
-                x: 1207,
-                y: 569
-            }, {
-                x: 1334,
-                y: 265
+                x: 1005,
+                y: 450
             }];
         } else {
             points = [{
-                x: 622,
-                y: 503
+                x: 522,
+                y: 423
             }, {
-                x: 794,
-                y: 285
-            }, {
-                x: 894,
-                y: 629
-            }, {
-                x: 1114,
-                y: 404
-            }, {
-                x: 1352,
-                y: 292
-            }, {
-                x: 1341,
-                y: 606
-            }, {
-                x: 1588,
-                y: 411
-            }, {
-                x: 1754,
-                y: 212
-            }, {
-                x: 1720,
-                y: 662
+                x: 1005,
+                y: 450
             }];
         }
         return this.shufflePosition(points);

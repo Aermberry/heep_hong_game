@@ -9,16 +9,12 @@ export default class DialogWrongBox extends Phaser.GameObjects.Container {
 
         scene.add.existing(this);
         this.scene = scene;
-        this.background = scene.add.image(0, 0, 'dialogWrongBox').setScale(0.5);
-        this.errorBackground = scene.buildBg('bgTutor');
+        this.boxTexture = scene.add.image(0, 0, 'dialogWrongBox').setScale(0.5);
         this.setDepth(1);
 
         let errorRetryButton = new ErrorRetryButton(scene, 0, 230);
 
-       
-
-
-        this.add([this.background, errorRetryButton]);
+        this.add([this.boxTexture, errorRetryButton]);
     }
 
     setAlignCenter() {

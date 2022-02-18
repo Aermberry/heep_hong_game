@@ -15,7 +15,6 @@ import ComposeSprite from "../components/ComposeSprite";
 import Phaser from "phaser";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import LoadProgress from "../components/LoadProgress";
-import GameModel from "../game_mode/GameModel";
 import BackgroundMusicButtonButton from "../components/BackgroundMusicButton";
 
 
@@ -170,8 +169,8 @@ export default class GameScene extends BasicScene {
 
         this.sound.stopAll();
 
-        console.log({ "eachQuestionChance": GameModel.eachQuestionChance })
-        console.log({ "currentQuestionErrorCount": GameModel.currentQuestionErrorCount })
+        // console.log({ "eachQuestionChance": GameModel.eachQuestionChance })
+        // console.log({ "currentQuestionErrorCount": GameModel.currentQuestionErrorCount })
 
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
@@ -184,7 +183,7 @@ export default class GameScene extends BasicScene {
             loop: true
         });
 
-        this.paintScene(question,backgroundMusic);
+        this.paintScene(question, backgroundMusic);
 
         this.playBackgroundMusic('robotArmAppearSoundEffect', backgroundMusic);
 
@@ -202,7 +201,7 @@ export default class GameScene extends BasicScene {
             height = this.cameras.main.height - 20;
 
         } else {
-            x=10;
+            x = 10;
             width = this.cameras.main.width + 19;
             height = this.cameras.main.height - 20;
         }
@@ -253,7 +252,6 @@ export default class GameScene extends BasicScene {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
 
         } else {
-
             if (JSON.parse(localStorage.getItem('gameChance'))) {
                 this.questionIndex = errorQuestionIndex;
             }
@@ -264,6 +262,7 @@ export default class GameScene extends BasicScene {
 
         // question = JSON.parse(localStorage.getItem(2));
         // question = JSON.parse(localStorage.getItem(9));
+
         console.log("当前抽取的题目:%o", question);
         console.log("当前抽取的题目Index:%o", this.questionIndex)
 
@@ -275,7 +274,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintScene(currentGameQuestion,backgroundMusic) {
+    paintScene(currentGameQuestion, backgroundMusic) {
 
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
@@ -283,16 +282,16 @@ export default class GameScene extends BasicScene {
 
 
         /* UI Object */
-        this.buildUiObject(this.uiLayer,backgroundMusic);
+        this.buildUiObject(this.uiLayer, backgroundMusic);
 
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
     }
 
-    buildUiObject(layer,backgroundMusic) {
+    buildUiObject(layer, backgroundMusic) {
         const exitButton = new ExitButton(this, 100, 120);
         const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
-        
+
 
         this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
@@ -303,7 +302,7 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite,backgroundMusicButton]);
+        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite, backgroundMusicButton]);
     }
 
     buildGameObject(currentGameQuestion, layer) {
@@ -359,63 +358,45 @@ export default class GameScene extends BasicScene {
     }
 
     generatePoints() {
-        let points = [];
+        let points = []
+
         if (this.isRightDirection()) {
             points = [{
-                x: 276,
-                y: 498
+                x: 297,
+                y: 413
             }, {
-                x: 390,
-                y: 168
-            }, {
-                x: 531,
-                y: 441
+                x: 601,
+                y: 200
             }, {
                 x: 766,
-                y: 216
+                y: 553
             }, {
-                x: 841,
-                y: 569
+                x: 1137,
+                y: 245
             }, {
-                x: 1053,
-                y: 350
-            }, {
-                x: 1207,
-                y: 569
-            }, {
-                x: 1334,
-                y: 265
+                x: 1194,
+                y: 607
             }];
         } else {
             points = [{
-                x: 622,
-                y: 503
+                x: 297 + 400,
+                y: 413
             }, {
-                x: 794,
-                y: 285
+                x: 601 + 400,
+                y: 200
             }, {
-                x: 894,
-                y: 629
+                x: 766 + 400,
+                y: 553
             }, {
-                x: 1114,
-                y: 404
+                x: 1137 + 400,
+                y: 245
             }, {
-                x: 1352,
-                y: 292
-            }, {
-                x: 1341,
-                y: 606
-            }, {
-                x: 1588,
-                y: 411
-            }, {
-                x: 1754,
-                y: 212
-            }, {
-                x: 1720,
-                y: 662
+                x: 1194 + 400,
+                y: 607
             }];
         }
+
+
         return this.shufflePosition(points);
 
     }

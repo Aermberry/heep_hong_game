@@ -50,7 +50,7 @@ export default class GameScene extends BasicScene {
         // });
 
         this.buildBackground('backgroundGamePlay');
-        
+
         this.progressLoader = new LoadProgress(this);
 
         const soundFiles = {
@@ -122,7 +122,7 @@ export default class GameScene extends BasicScene {
             loop: true
         });
 
-        this.paintScene(question,backgroundMusic);
+        this.paintScene(question, backgroundMusic);
 
         this.playBackgroundMusic('robotArmAppearSoundEffect', backgroundMusic);
 
@@ -141,7 +141,7 @@ export default class GameScene extends BasicScene {
 
 
         } else {
-            x=10;
+            x = 10;
             width = this.cameras.main.width + 19;
             height = this.cameras.main.height - 20;
         }
@@ -214,18 +214,18 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintScene(currentGameQuestion,backgroundMusic) {
+    paintScene(currentGameQuestion, backgroundMusic) {
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
         /* UI Object */
-        this.buildUiObject(this.uiLayer,backgroundMusic);
+        this.buildUiObject(this.uiLayer, backgroundMusic);
 
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
     }
 
-    buildUiObject(layer,backgroundMusic) {
+    buildUiObject(layer, backgroundMusic) {
         const exitButton = new ExitButton(this, 100, 120);
         const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
@@ -238,7 +238,7 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite,backgroundMusicButton]);
+        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite, backgroundMusicButton]);
     }
 
     buildGameObject(currentGameQuestion, layer) {
@@ -299,58 +299,19 @@ export default class GameScene extends BasicScene {
         let points = [];
         if (this.isRightDirection()) {
             points = [{
-                x: 276,
-                y: 498
+                x: 522,
+                y: 423
             }, {
-                x: 390,
-                y: 168
-            }, {
-                x: 531,
-                y: 441
-            }, {
-                x: 766,
-                y: 216
-            }, {
-                x: 841,
-                y: 569
-            }, {
-                x: 1053,
-                y: 350
-            }, {
-                x: 1207,
-                y: 569
-            }, {
-                x: 1334,
-                y: 265
+                x: 1005,
+                y: 450
             }];
         } else {
             points = [{
-                x: 622,
-                y: 503
+                x: 522,
+                y: 423
             }, {
-                x: 794,
-                y: 285
-            }, {
-                x: 894,
-                y: 629
-            }, {
-                x: 1114,
-                y: 404
-            }, {
-                x: 1352,
-                y: 292
-            }, {
-                x: 1341,
-                y: 606
-            }, {
-                x: 1588,
-                y: 411
-            }, {
-                x: 1754,
-                y: 212
-            }, {
-                x: 1720,
-                y: 662
+                x: 1005,
+                y: 450
             }];
         }
         return this.shufflePosition(points);

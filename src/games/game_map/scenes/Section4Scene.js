@@ -110,7 +110,7 @@ export default class Section4Scene extends SectionBasicScene {
         const game17Btn = new GameNavBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's4btn6', '/game/17')
         const HintBtn1 = new HintBtn(this, this.getColWidth(2.5), this.getRowHeight(6), [game19Btn], 'dentisitLogo')
         const HintBtn2 = new HintBtn(this, this.getColWidth(7.8), this.getRowHeight(9.3), [game16Btn, game17Btn], 'roadDesignLogo')
-        const HintBtn3 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(6), [game29Btn, game30Btn], 'carerLogo')
+        const HintBtn3 = new HintBtn(this, this.getColWidth(9.1), this.getRowHeight(6.4), [game29Btn, game30Btn], 'carerLogo')
         const HintBtn4 = new HintBtn(this, this.getColWidth(7.5), this.getRowHeight(2.5), [game18Btn], 'architectLogo')
 
         game19Btn.initHint('g19Hint', this.getColWidth(2.2), this.getRowHeight(0))

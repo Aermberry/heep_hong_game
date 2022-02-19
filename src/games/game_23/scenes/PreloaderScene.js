@@ -57,6 +57,7 @@ export default class PreloaderScene extends BasicScene {
 
             /* Effect Sound */
             'buttonEffectSound': require('../assets/audio/sound_effect/effect_button_on_clicked.mp3'),
+            'clipDollTableEffectSound': require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
         }
 
         this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });

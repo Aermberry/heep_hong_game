@@ -1,23 +1,21 @@
 
-import BasicScene from "./BasicScene"
-import Doll from '../components/Doll';
-import Clip from '../components/Clip';
-import ExitButton from '../components/ExitButton'
-import TextDropBox from '../components/TextDropBox';
-import ContainerBox from "../components/ContainerBox";
-import LeftControllerButton from '../components/LeftControllerButton';
-import RightControllerButton from '../components/RightControllerButton';
-import DownControllerButton from '../components/DownControllerButton';
 import {
     createClipAnimations
 } from '../assets/animations/ClipAnimation';
 import {
     createGameStatusAnimations
 } from '../assets/animations/GameStatusAnimation';
-import GameSprite from '../components/GameSprite';
+import Clip from '../components/Clip';
+import ContainerBox from "../components/ContainerBox";
+import Doll from '../components/Doll';
+import DownControllerButton from '../components/DownControllerButton';
 import GameManager from '../components/GameManager';
-import BackgroundMusicButtonButton from "../../game_22/components/BackgroundMusicButton";
+import GameSprite from '../components/GameSprite';
+import LeftControllerButton from '../components/LeftControllerButton';
 import LoadProgress from "../components/LoadProgress";
+import RightControllerButton from '../components/RightControllerButton';
+import TextDropBox from '../components/TextDropBox';
+import BasicScene from "./BasicScene";
 // import Colors from "../styles/Colors";
 
 
@@ -54,7 +52,6 @@ export default class GameScene extends BasicScene {
             'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
             'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
             'clipClampEffectSound':require('../assets/audio/sound_effect/effect_clip_clamp.mp3'),
-            'clipDollTableEffectSound':require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
             'clipMovementEffectSound':require('../assets/audio/sound_effect/effect_clip_movement.mp3'),
             'spotlightFocusEffectSound':require('../assets/audio/sound_effect/effect_spotlight_focus.mp3'),
         }
@@ -67,38 +64,14 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
-        
-        this.sound.stopAll();
 
         createClipAnimations(this.anims);
         createGameStatusAnimations(this.anims);
 
-        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
-            volume: 0.2,
-            loop: true
-        });
-
-        this.paintGameScene(backgroundMusic);
-
-        this.playBackgroundMusic('clipDollTableEffectSound', backgroundMusic);
+        this.paintGameScene();
 
     }
 
-     /**
-     * 
-     * @param {string} startSound 
-     * @param {Phaser.Sound.BaseSound} backgroundMusic 
-     */
-    playBackgroundMusic(startSound, backgroundMusic) {
-
-        const clipDollTableEffectSound = this.sound.add(startSound);
-
-        clipDollTableEffectSound.on('complete', () => {
-            backgroundMusic.play();
-        })
-
-        clipDollTableEffectSound.play();
-    }
 
     /**
      * generate a question from the local question data
@@ -130,7 +103,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintGameScene(backgroundMusic) {
+    paintGameScene() {
         this.playLayer = this.add.layer().setDepth(1);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
@@ -139,10 +112,6 @@ export default class GameScene extends BasicScene {
             new Doll(this, this.getColWidth(6), this.getRowHeight(4), "blueDoll", "地"),
             new Doll(this, this.getColWidth(8.5), this.getRowHeight(4), "pinkDoll", "得")
         ];
-
-        let exitButton = new ExitButton(this, 100, 120);
-
-        let backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
         let clip = new Clip(this, 970, -250, this.dolls);
 
@@ -163,7 +132,7 @@ export default class GameScene extends BasicScene {
         gameButtonControllers.add([buttonMoveLeftControl, buttonMoveDownControl, buttonMoveRightControl]);
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
-        this.playLayer.add([textDropBox, gameButtonControllers, exitButton,backgroundMusicButton]);
+        this.playLayer.add([textDropBox, gameButtonControllers]);
     }
 
     paintGameSuccess(doll) {
@@ -185,8 +154,7 @@ export default class GameScene extends BasicScene {
     paintGameFailed(clipBox) {
 
         let doll = clipBox.list[1];
-
-
+        
         let errorSprite = null;
         let _isFirstError = null;
         let targetPosition = JSON.parse(localStorage.getItem('targetPosition'));

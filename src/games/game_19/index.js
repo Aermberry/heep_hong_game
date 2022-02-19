@@ -8,9 +8,10 @@ import TutorScene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
 import RetryScene from './scenes/RetryScene'
+import UIScene from './scenes/UIScene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene,TutorScene, GameScene,EndScene,RetryScene]
+    scene: [BootScene, PreloaderScene, TutorScene, GameScene, EndScene, RetryScene,UIScene]
 });
 
 /**

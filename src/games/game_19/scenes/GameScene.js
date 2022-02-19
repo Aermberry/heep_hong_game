@@ -1,20 +1,18 @@
-import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitButton'
-import LeftMoveButton from '../components/LeftMoveButton'
-import RightMoveButton from '../components/RightMoveButton'
-import BigTooth from "../components/BigTooth"
-import SmallTooth from "../components/SmallTooth"
-import AnswerDropZone from "../components/AnswerDropZone"
-import GameManager from '../components/GameManager';
+import Phaser from 'phaser'
 // import DialogWrongBox from "../components/DialogWrongBox"
 import {
     createStarAnimations
 } from "../assets/animations/StarAnimation"
-import GameSprite from "../components/GameSprite"
-import Phaser from 'phaser'
+import AnswerDropZone from "../components/AnswerDropZone"
+import BigTooth from "../components/BigTooth"
 import CrocodileMouthLow from "../components/CrocodileMouthLow"
-import BackgroundMusicButtonButton from "../components/BackgroundMusicButton"
+import GameManager from '../components/GameManager'
+import GameSprite from "../components/GameSprite"
+import LeftMoveButton from '../components/LeftMoveButton'
 import LoadProgress from "../components/LoadProgress"
+import RightMoveButton from '../components/RightMoveButton'
+import SmallTooth from "../components/SmallTooth"
+import BasicScene from "./BasicScene"
 
 // import FF from '../assets/images/cursor_hand1.png'
 export default class GameScene extends BasicScene {
@@ -41,7 +39,6 @@ export default class GameScene extends BasicScene {
         this.questionIndex = undefined
         this.questionNumberList = []
         this.cursorHandIcon = undefined
-        this.backgroundMusic = undefined
 
     }
 
@@ -115,7 +112,6 @@ export default class GameScene extends BasicScene {
 
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
         
-        this.sound.stopAll();
 
         createStarAnimations(this.anims);
 
@@ -125,32 +121,10 @@ export default class GameScene extends BasicScene {
         this.question = this.generateQuestion();
        
 
-        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
-            volume: 0.2,
-            loop: true
-        });
+        this.paintGameScene();
 
-        this.paintGameScene(backgroundMusic);
-
-        this.playBackgroundMusic('ahhEffectSound', backgroundMusic);
+       
     }
-
-     /**
-     * 
-     * @param {string} startSound 
-     * @param {Phaser.Sound.BaseSound} backgroundMusic 
-     */
-      playBackgroundMusic(startSound, backgroundMusic) {
-
-        const ahhEffectSound = this.sound.add(startSound);
-
-        ahhEffectSound.on('complete', () => {
-            backgroundMusic.play();
-        })
-
-        ahhEffectSound.play();
-    }
-
 
 
     /**
@@ -394,7 +368,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintGameScene(backgroundMusic) {
+    paintGameScene() {
 
         this.playLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(2);
@@ -412,14 +386,11 @@ export default class GameScene extends BasicScene {
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
-        const exitButton = new ExitButton(this, 100, 120);
-        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
-
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
 
-        this.backgroundLayer.add([this.buildBg('bgProgressGame'), exitButton]);
-        this.playLayer.add([this.dropContainer, this.dragContainer,backgroundMusicButton])
+        this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
+        this.playLayer.add([this.dropContainer, this.dragContainer])
         this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
 
         this.uiLayer.setVisible(this.isDisplayDirectionButtonControllers(toothsContainer));

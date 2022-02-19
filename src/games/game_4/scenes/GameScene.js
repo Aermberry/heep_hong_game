@@ -1,22 +1,20 @@
-import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitProgressGameButton'
-import GameManager from '../components/GameManager';
 import {
     createLionLeftRecorderAnimation
 } from "../assets/animations/LionLeftRecorderAnimation";
-import GameSprite from "../phaser3_framework/object/GameSprite";
 import {
     createPenguinAnimation
 } from "../assets/animations/PenguinAnimation";
+import { createPlayerAnimation } from "../assets/animations/PlayerAnimation";
+import ClawBox from "../components/ClawBox";
 import EggItem from "../components/EggItem";
 import EggQuestion from "../components/EggQuestion";
-import ClawBox from "../components/ClawBox";
-import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
+import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
-import GameModel from "../game_mode/GameModel";
 import Player from "../components/Player";
-import { createPlayerAnimation } from "../assets/animations/PlayerAnimation";
-import BackgroundMusicButtonButton from "../components/BackgroundMusicButton";
+import GameModel from "../game_mode/GameModel";
+import GameSprite from "../phaser3_framework/object/GameSprite";
+import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
+import BasicScene from "./BasicScene";
 
 
 export default class GameScene extends BasicScene {
@@ -106,22 +104,15 @@ export default class GameScene extends BasicScene {
 
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
 
-        this.sound.stopAll();
-
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
         this.setGameDirection("right");
 
         this.setWorldBounds();
 
-        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
-            volume: 0.2,
-            loop: true
-        });
+        this.paintScene(question);
 
-        this.paintScene(question,backgroundMusic);
-
-        this.playBackgroundMusic('robotArmAppearSoundEffect', backgroundMusic);
+       
 
     }
 
@@ -211,21 +202,19 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintScene(currentGameQuestion,backgroundMusic) {
+    paintScene(currentGameQuestion) {
         
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
         /* UI Object */
-        this.buildUiObject(this.uiLayer,backgroundMusic);
+        this.buildUiObject(this.uiLayer);
 
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
     }
 
-    buildUiObject(layer,backgroundMusic) {
-        const exitButton = new ExitButton(this, 100, 120);
-        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
+    buildUiObject(layer) {
 
         this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
@@ -236,7 +225,7 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite,backgroundMusicButton]);
+        layer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
     }
 
     buildGameObject(currentGameQuestion, layer) {

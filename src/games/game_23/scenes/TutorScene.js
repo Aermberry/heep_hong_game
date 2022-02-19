@@ -1,6 +1,6 @@
 import BasicScene from "./BasicScene"
 import StartButton from "../components/StartButton"
-import ExitButton from '../components/ExitButton'
+import ExitButton from '../components/ExitProgressGameButton'
 import { createTutorAnimations } from '../assets/animations/TutorAnimation';
 import TutorSprite from '../components/TutorSprite';
 import GameManager from "../components/GameManager";

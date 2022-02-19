@@ -58,6 +58,7 @@ export default class PreloaderScene extends BasicScene {
 
             /* Effect Sound */
             'buttonEffectSound': require('../assets/audio/sound_effect/effect_button_on_clicked.mp3'),
+            'clipDollTableEffectSound': require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
          
         }
 

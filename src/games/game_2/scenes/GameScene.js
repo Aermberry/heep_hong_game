@@ -717,9 +717,12 @@ export default class GameScene extends BasicScene {
 
 
         let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
-        this.gameLayer.add(errorImage);
 
         this.errorImageList.push(errorImage);
+
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+
+        eggItemsContainer.add(errorImage)
 
         this.penguinSprite.play("penguinFallDown");
 

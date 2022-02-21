@@ -9,7 +9,7 @@ export default class SectionBtn extends BasicBtn {
         let sprite =  scene.add.sprite(0, 0, imageName)
         sprite.setInteractive(new Phaser.Geom.Polygon(polygon), Phaser.Geom.Polygon.Contains)
         this.create(sprite,this.onClick.bind(this))
-        scene.input.enableDebug(sprite, 0xff00ff)
+        //scene.input.enableDebug(sprite, 0xff00ff)
         this.clickSound = this.scene.sound.add('zoom', {volume: 4})
 
       }

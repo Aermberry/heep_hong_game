@@ -63,8 +63,10 @@ export default class GameScene extends BasicScene {
             key: 'done',
             delay: 200,
             frames: this.anims.generateFrameNames('done', { prefix: 'done', start: 0, end: 5, zeroPad: 4 }),
+            frameRate: 5,
             repeat: 0
         });
+        
         const imageFiles = {
 
         };

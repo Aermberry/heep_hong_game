@@ -2,7 +2,8 @@ import Article from "../objects/Article";
 import BasicScene from "./BasicScene"
 import Butterfly from "../objects/Butterfly";
 import Scoreboard from "../objects/Scoreboard";
-// import SpeakerBtn from '../objects/SpeakerBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
+import ExitBtn from '../objects/ExitBtn'
 export default class GameScene extends BasicScene {
     constructor() {
         super({
@@ -67,6 +68,10 @@ export default class GameScene extends BasicScene {
         this.music.setLoop(true)
         this.music.play();
 
+        let exitBtn = new ExitBtn(this, 100, 80);
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 80, this.musicPause.bind(this));
+        this.add.existing(this.speakerBtn);
+        this.add.existing(exitBtn);
         let currentZone;
         let self = this;
 
@@ -110,11 +115,11 @@ export default class GameScene extends BasicScene {
                 keys.splice(_num, 1)
                 arrNew.push(mm)
             }
-            this.butterfly = new Butterfly(this, 960, 280, arrNew)
+            this.butterfly = new Butterfly(this, 980, 290, arrNew)
             this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), this.onComplete.bind(this), true)
             this.scoreboard.init(arrNew);
         } else {
-            this.butterfly = new Butterfly(this, 960, 280)
+            this.butterfly = new Butterfly(this, 980, 250)
             this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), this.onComplete.bind(this))
             this.scoreboard.init(this.answer);
         }
@@ -134,4 +139,17 @@ export default class GameScene extends BasicScene {
         this.article.onComplete();
     }
 
+
+    musicPause() {
+        this.stopAll = !this.stopAll;
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            });
+            this.music.setLoop(true);
+            this.music.play();
+        }
+    }
 }

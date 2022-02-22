@@ -8,8 +8,8 @@ export default {
   parent: 'game-container',
   scale: {
     mode: Phaser.Scale.FIT,
-    // autoCenter: Phaser.Scale.CENTER_BOTH,
-    autoCenter: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    // autoCenter: Phaser.Scale.HEIGHT_CONTRsOLS_WIDTH,
   },
   dom: {
     createContainer: true

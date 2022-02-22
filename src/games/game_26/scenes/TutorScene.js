@@ -3,7 +3,9 @@ import StartButton from "../components/StartButton";
 import BasicScene from "./BasicScene"
 import GameSprite from '../components/GameSprite';
 import GameManager from "../components/GameManager";
-import { createTutorAnimations } from "../assets/animations/TutorAnimation";
+import {
+    createTutorAnimations
+} from "../assets/animations/TutorAnimation";
 
 export default class TutorScene extends BasicScene {
 
@@ -22,44 +24,30 @@ export default class TutorScene extends BasicScene {
         //Stop all sound, because game will return to this scene on retry.
         this.sound.stopAll();
 
-        this.#paintGameScene();
+        this.paintGameScene();
 
         await this.gameManager.initGameData();
 
     }
 
 
-    #paintGameScene() {
+    paintGameScene() {
 
         let buttonLayer = this.add.layer().setDepth(1);
         let animationLayer = this.add.layer().setDepth(2);
         let backgroundLayer = this.add.layer().setDepth(0);
 
         buttonLayer.add([new ExitProgressGameButton(this, 100, 120), new StartButton(this, this.getColWidth(6), this.getRowHeight(10.8)).setScale(0.8)]);
-        // animationLayer.add([
-            // this.add.image(278 + 250, 500, 'imageTutor01').setScale(0.5),
-            // this.add.image(740 + 250, 280, 'imageTutor02').setScale(0.5),
-            // this.add.image(1202 + 250, 500, 'imageTutor03').setScale(0.5),
-
-            // new GameSprite(this, 278, 500, 'tutor01Animation'),
-            // new GameSprite(this, 740, 280, 'tutor02Animation'),
-            // new GameSprite(this, 1202, 500, 'tutor03Animation'),
-            // new GameSprite(this, 1662, 280, 'tutor04Animation'),
-            // new GameSprite(this, 1662, 700, 'tutor05Animation'),
-        // ]
-        // );
         this.playTutorAnimation(animationLayer);
         backgroundLayer.add([this.buildBg('backgroundTutorEnd')]);
-
-
     }
 
     playTutorAnimation(layer) {
-        let tutor01Sprite = new GameSprite(this, 528, 500, 'tutor01Texture');
-        let tutor02Sprite = new GameSprite(this, 990, 280, 'tutor02Texture');
-        let tutor03Sprite = new GameSprite(this, 1452, 500, 'tutor03Texture');
+        let tutor01Sprite = new GameSprite(this, this.cameras.main.width / 2-400,  this.cameras.main.height / 2, 'tutor01Texture');
+        let tutor02Sprite = new GameSprite(this, this.cameras.main.width / 2 , this.cameras.main.height / 2 -262, 'tutor02Texture');
+        let tutor03Sprite = new GameSprite(this, this.cameras.main.width / 2 + 400,  this.cameras.main.height / 2, 'tutor03Texture');
 
-        layer.add([tutor01Sprite,tutor02Sprite,tutor03Sprite])
+        layer.add([tutor01Sprite, tutor02Sprite, tutor03Sprite])
 
         tutor01Sprite.on('animationcomplete', () => {
             tutor02Sprite.play('tutor02Animation')
@@ -70,7 +58,7 @@ export default class TutorScene extends BasicScene {
         tutor03Sprite.on('animationcomplete', () => {
             tutor01Sprite.play('tutor01Animation')
         })
-        
+
         tutor01Sprite.play('tutor01Animation')
     }
 

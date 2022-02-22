@@ -1,18 +1,18 @@
-import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitButton'
-import LeftMoveButton from '../components/LeftMoveButton'
-import RightMoveButton from '../components/RightMoveButton'
-import BigTooth from "../components/BigTooth"
-import SmallTooth from "../components/SmallTooth"
-import AnswerDropZone from "../components/AnswerDropZone"
-import GameManager from '../components/GameManager';
-import DialogWrongBox from "../components/DialogWrongBox"
+import Phaser from 'phaser'
+// import DialogWrongBox from "../components/DialogWrongBox"
 import {
     createStarAnimations
 } from "../assets/animations/StarAnimation"
-import GameSprite from "../components/GameSprite"
-import Phaser from 'phaser'
+import AnswerDropZone from "../components/AnswerDropZone"
+import BigTooth from "../components/BigTooth"
 import CrocodileMouthLow from "../components/CrocodileMouthLow"
+import GameManager from '../components/GameManager'
+import GameSprite from "../components/GameSprite"
+import LeftMoveButton from '../components/LeftMoveButton'
+import LoadProgress from "../components/LoadProgress"
+import RightMoveButton from '../components/RightMoveButton'
+import SmallTooth from "../components/SmallTooth"
+import BasicScene from "./BasicScene"
 
 // import FF from '../assets/images/cursor_hand1.png'
 export default class GameScene extends BasicScene {
@@ -22,7 +22,6 @@ export default class GameScene extends BasicScene {
             key: 'Game'
         });
 
-        this.exitButton = undefined
         this.leftMoveButton = undefined
         this.rightMoveButton = undefined
         this.retryButton = undefined
@@ -40,7 +39,6 @@ export default class GameScene extends BasicScene {
         this.questionIndex = undefined
         this.questionNumberList = []
         this.cursorHandIcon = undefined
-        this.backgroundMusic = undefined
 
     }
 
@@ -51,6 +49,8 @@ export default class GameScene extends BasicScene {
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
 
+        this.buildBg('bgProgressGame');
+        this.progressLoader = new LoadProgress(this);
 
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
         
@@ -104,45 +104,27 @@ export default class GameScene extends BasicScene {
         })
 
         this.preloadFromArr({ 'img': imageFiles });
-
-        this.createProgressBar();
     }
 
     create() {
 
         super.create();
 
-        this.sound.stopAll();
-
-        this.question = this.generateQuestion();
-        this.paintGameScene(this);
-
-        this.sound.play('ahhEffectSound');
-
-        // if (this.sys.game.globals.bgMusic == null) {
-        //     let bgMusic = this.sound.add('gameSceneBgm', {
-        //         volume: 0.2,
-        //         loop: true
-        //     });
-
-        //     bgMusic.play();
-        //     this.sys.game.globals.bgMusic = bgMusic;
-        // }
-
-        this.backgroundMusic = this.sound.add('gameSceneBgm', {
-            volume: 0.2,
-            loop: true
-        });
-
-        this.backgroundMusic.play();
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
+        
 
         createStarAnimations(this.anims);
 
         // this.input.setDefaultCursor(`url(${FF}), pointer`);
         this.input.setDefaultCursor(`url(${this.cursorHandIcon}), pointer`);
 
-    }
+        this.question = this.generateQuestion();
+       
 
+        this.paintGameScene();
+
+       
+    }
 
 
     /**
@@ -225,6 +207,8 @@ export default class GameScene extends BasicScene {
                 currentTooth = new SmallTooth(this, currentOffsetX, this.produceToothYValue(currentOffsetX), element)
             }
 
+            currentTooth.enableGestureEventListener();
+
             container.add(currentTooth);
         }
 
@@ -263,7 +247,6 @@ export default class GameScene extends BasicScene {
 
 
     paintGameSuccess() {
-        this.backgroundMusic.stop();
         this.uiLayer.setVisible(false);
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
 
@@ -305,7 +288,6 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameFailed() {
-        this.backgroundMusic.stop();
         this.uiLayer.setVisible(false);
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
 
@@ -373,10 +355,11 @@ export default class GameScene extends BasicScene {
     }
 
     showGameFailedTipBox() {
-        let dialogWrongBox = new DialogWrongBox(this, 0, 0);
-        dialogWrongBox.setAlignCenter();
+        // let dialogWrongBox = new DialogWrongBox(this, 0, 0);
+        // dialogWrongBox.setAlignCenter();
 
-        this.sound.play('dentistDrillEnvironmentSound');
+        // this.sound.play('dentistDrillEnvironmentSound');
+        this.scene.run('retry')
     }
 
 
@@ -391,31 +374,22 @@ export default class GameScene extends BasicScene {
         this.uiLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        // this.crocodileMouth = this.add.image(
-        //     this.getColWidth(13.8),
-        //     this.getRowHeight(8),
-        //     'crocodileLongMouth').setScale(0.4);
-
         this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.75))
         this.crocodileMouthCont.setX(this.getColWidth(4.6))
         
-        this.add.existing(this.crocodileMouthCont)
-
         let toothsContainer = this.pintTooth(this.question.originalSentence);
 
         this.dragContainer = this.add.container(0, 0, [
             toothsContainer,
-            // this.crocodileMouth
             this.crocodileMouthCont
         ]);
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
-        this.exitButton = new ExitButton(this, 120, 135);
         this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
         this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
 
-        this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
+        this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
         this.playLayer.add([this.dropContainer, this.dragContainer])
         this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
 

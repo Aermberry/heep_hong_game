@@ -21,7 +21,9 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
 
         this.playAnimation("clip_idleStateAnimation");
 
-        this.init(scene, dolls)
+        this.init(scene, dolls);
+
+        // this.isFirstCollider = true;
     }
 
     init(scene, dolls) {
@@ -34,7 +36,8 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
     }
 
     onCollideHandler(gameObject) {
-        console.log(gameObject)
+        console.log(gameObject);
+        // this.isFirstCollider = false;
     }
 
     setColliderDetection(scene, gameDollList) {
@@ -46,7 +49,11 @@ export default class Clip extends Phaser.Physics.Arcade.Sprite {
                         scene.physics.world.removeCollider(collider);
 
                         clip.currentTweenAnimation.pause();
-                        scene.sound.play('clipClampEffectSound');
+
+                        // if (this.isFirstCollider) {
+                        //     scene.sound.play('clipClampEffectSound');
+                        // }
+
                         clip.playAnimation("clip_clipStateAnimation");
 
                         let container = scene.add.container(0, 0, [clip, doll]).setName('onSandwiched');

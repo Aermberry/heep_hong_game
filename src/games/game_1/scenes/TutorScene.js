@@ -57,7 +57,7 @@ export default class TutorScene extends Scene {
       })
     })
 
-    let exitBtn = new ExitBtn(this, 120, 135);
+    let exitBtn = new ExitBtn(this, 100, 120);
     let startBtn = new StartBtn(this, config.width/2, config.height * 0.87);
     self.add.existing(exitBtn);
     self.add.existing(startBtn);

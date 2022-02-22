@@ -1,5 +1,6 @@
 import SectionBasicScene from "./SectionBasicScene"
 import BackBtn from "../objects/BackBtn"
+import SpeakerBtn from "../objects/SpeakerBtn"
 import HintBtn from "../objects/HintBtn"
 import GameNavBtn from "../objects/GameNavBtn"
 import LampLight from "../objects/animations/LampLight"
@@ -46,14 +47,15 @@ export default class Section6Scene extends SectionBasicScene {
         this.load.spritesheet('s6btn1', require('../assets/images/section_6/btn.png'),{ frameWidth: 132, frameHeight: 140 })
         this.load.spritesheet('s6HintLogo', require('../assets/images/section_6/logo-134.png'),{ frameWidth: 305, frameHeight: 314.5 })
 
+        this.createProgressBar()
     }
 
     create() {
-        
-        super.create()
 
+        super.create()
+        this.sound.stopAll()
         this.initSection('game6Bg')
-        
+
         // if(this.dataModel.isFirstLoad) {
         //     const startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10))
         //     this.add.existing(startBtn)
@@ -65,8 +67,9 @@ export default class Section6Scene extends SectionBasicScene {
     }
 
     populateSection() {
-    
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
         const gameBtn = new GameNavBtn(this, this.getColWidth(7.6), this.getRowHeight(7.4), 's6btn1', '/game/10')
         const hintBtn = new HintBtn(this, this.getColWidth(6.8), this.getRowHeight(5.5), [gameBtn], 's6HintLogo')
 
@@ -77,7 +80,7 @@ export default class Section6Scene extends SectionBasicScene {
         const lampLight3 = new LampLight(this, this.getColWidth(11.6), this.getRowHeight(6.4))
 
         const car = this.add.image(this.getColWidth(11.2), this.getRowHeight(6), 's6car')
-        
+
         this.tweens.add({
             targets: car,
             x: this.getColWidth(4.5),
@@ -93,6 +96,7 @@ export default class Section6Scene extends SectionBasicScene {
         this.add.existing(lampLight1)
         this.add.existing(lampLight2)
         this.add.existing(lampLight3)
+        this.add.existing(speakerBtn)
 
     }
 

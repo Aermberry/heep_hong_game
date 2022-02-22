@@ -9,26 +9,48 @@ export default class BasicBtn extends Phaser.GameObjects.Container {
     this.origSprite = null
   }
 
-  create(sprite, clickEvent){
+  create(sprite, clickEvent) {
     this.origSprite = sprite;
     this.add(this.origSprite)
     this.origSprite.setInteractive({
-        useHandCursor: true
+      useHandCursor: true
     })
-    .on('pointerout', this.out.bind(this))
-    .on('pointerdown', this.down.bind(this, clickEvent));
+      .on('pointerout', this.out.bind(this))
+      .on('pointerdown', this.down.bind(this, clickEvent));
   }
-  out(){
+
+  out() {
     this.origSprite.setFrame(0)
   }
 
-  down(clickEvent){
+  down(clickEvent) {
     this.origSprite.setFrame(1)
-    if(typeof clickEvent == 'function') {
+    if (typeof clickEvent == 'function') {
       setTimeout(() => {
         clickEvent()
       }, 500)
     }
+  }
+
+  goFullscreen() {
+
+    const fullscreenConfig = { navigationUI: 'hide' }
+
+    const elem = document.querySelector('#game-container');
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen(fullscreenConfig);
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen(fullscreenConfig);
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen(fullscreenConfig);
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen(fullscreenConfig);
+    }
+
+  }
+
+  goFullscreenOnClick() {
+    this.origSprite.on('pointerup', this.goFullscreen.bind(this))
   }
 
 }

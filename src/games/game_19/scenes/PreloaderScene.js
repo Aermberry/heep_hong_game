@@ -1,5 +1,5 @@
 import BasicScene from './BasicScene'
-import config from '../config/index';
+import LoadProgress from '../components/LoadProgress';
 
 export default class PreloaderScene extends BasicScene {
 
@@ -10,9 +10,9 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        let self = this;
-
         this.buildBg('bgLoadingGame');
+
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
 
         const imageFiles = {
             'bgTutor': require('../assets/images/bg_tutor.png'),
@@ -48,6 +48,7 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
+            'buttonEffectSound': require('../assets/audio/sound_effect/sound_effect_button_on_clicked.mp3'),
             'childClapEffectSound': require('../assets/audio/sound_effect/effect_child_clap.mp3'),
             'popOffEffectSound': require('../assets/audio/sound_effect/effect_pop_off.mp3'),
             'ahhEffectSound': require('../assets/audio/sound_effect/effect_ahh.mp3'),
@@ -58,7 +59,7 @@ export default class PreloaderScene extends BasicScene {
             'clapEffectSound': require('../assets/audio/sound_effect/effect_clap.mp3'),
             'gameSceneYouLose': require('../assets/audio/sound_background/bgm_game_scene_you_lose.mp3'),
             'gameEndHappyEnding': require('../assets/audio/sound_background/bgm_game_end_happy_ending.mp3'),
-            'gameSceneBgm': require('../assets/audio/sound_background/bgm_game_scene.mp3'),
+            'gamePlaySceneBackgroundMusic': require('../assets/audio/sound_background/bgm_game_scene.mp3'),
             'voiceAnswer0': require('../assets/audio/voice/voice_answer_00.mp3'),
             'voiceAnswer1': require('../assets/audio/voice/voice_answer_01.mp3'),
             'voiceAnswer2': require('../assets/audio/voice/voice_answer_02.mp3'),
@@ -81,38 +82,19 @@ export default class PreloaderScene extends BasicScene {
             'voiceAnswer19': require('../assets/audio/voice/voice_answer_19.mp3'),
         }
 
-        this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
+        this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('rplLongBtn', require('../assets/images/btn_long_rpl.png'), { frameWidth: 566, frameHeight: 163.5 });
-        this.load.spritesheet('gameProgressExitBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('gameProgressExitButton', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitBtn', require('../assets/images/btn_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('moveBtn', require('../assets/images/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('leftButton', require('../assets/images/btn_left_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('rightButton', require('../assets/images/btn_right_move.png'), { frameWidth: 256, frameHeight: 277 });
+        this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
 
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
-
-        this.loadingText = this.make.text({
-            x: config.width / 2,
-            y: config.height * 0.89,
-            text: '連接中',
-            style: {
-                font: '25px monospace',
-                fill: '#fff'
-            }
-        });
-
-        this.createProgressBar();
-
-        this.load.on('complete', function () {
-            self.loadingText.setText('連接完成')
-            self.time.addEvent({
-                delay: 500,
-                callback: () => self.scene.start('Tutor')
-            })
-
-        });
 
     }
 

@@ -9,13 +9,14 @@ export default {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 0 }
+      gravity: { y: 0 },
+      // debug:true,
     }
   },
   scale: {
     mode: Phaser.Scale.FIT,
-    // autoCenter: Phaser.Scale.CENTER_BOTH,
-    autoCenter: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+    // autoCenter: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   // audio: {
   //   disableWebAudio: true

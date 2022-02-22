@@ -1,0 +1,462 @@
+[
+  {
+    "phrases": {
+      "main": {
+        "objectName": "腸仔包",
+        "index": 0
+      },
+      "items": [
+        {
+          "objectName": "麵包",
+          "index": 20
+        },
+        {
+          "objectName": "包裹",
+          "index": 21
+        }
+      ]
+    },
+    "answer": {
+      "objectName": "麵包",
+      "index": 0
+    },
+    "keywordVoiceIndex": 30
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "朱古力包",
+        "index": 1
+      },
+      "items": [
+        {
+          "objectName": "麵包",
+          "index": 20
+        },
+        {
+          "objectName": "包裹",
+          "index": 21
+        }
+      ]
+    },
+    "keywordVoiceIndex": 30,
+    "answer": {
+      "objectName": "麵包",
+      "index": 1
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "包紮",
+        "index": 2
+      },
+      "items": [
+        {
+          "objectName": "麵包",
+          "index": 20
+        },
+        {
+          "objectName": "包裹",
+          "index": 21
+        }
+      ]
+    },
+    "keywordVoiceIndex": 30,
+    "answer": {
+      "objectName": "包裹",
+      "index": 2
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "包禮物",
+        "index": 3
+      },
+      "items": [
+        {
+          "objectName": "麵包",
+          "index": 20
+        },
+        {
+          "objectName": "包裹",
+          "index": 21
+        }
+      ]
+    },
+    "keywordVoiceIndex": 30,
+    "answer": {
+      "objectName": "包裹",
+      "index": 3
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "心跳",
+        "index": 4
+      },
+      "items": [
+        {
+          "objectName": "心臟",
+          "index": 23
+        },
+        {
+          "objectName": "中心",
+          "index": 24
+        }
+      ]
+    },
+    "keywordVoiceIndex": 31,
+    "answer": {
+      "objectName": "心臟",
+      "index": 4
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "心肺復甦",
+        "index": 5
+      },
+      "items": [
+        {
+          "objectName": "心臟",
+          "index": 23
+        },
+        {
+          "objectName": "中心",
+          "index": 24
+        }
+      ]
+    },
+    "keywordVoiceIndex": 31,
+    "answer": {
+      "objectName": "心臟",
+      "index": 5
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "溏心蛋",
+        "index": 6
+      },
+      "items": [
+        {
+          "objectName": "心臟",
+          "index": 23
+        },
+        {
+          "objectName": "中心",
+          "index": 24
+        }
+      ]
+    },
+    "keywordVoiceIndex": 31,
+    "answer": {
+      "objectName": "中心",
+      "index": 6
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "紅心",
+        "index": 7
+      },
+      "items": [
+        {
+          "objectName": "心臟",
+          "index": 23
+        },
+        {
+          "objectName": "中心",
+          "index": 24
+        }
+      ]
+    },
+    "keywordVoiceIndex": 31,
+    "answer": {
+      "objectName": "中心",
+      "index": 7
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "家門",
+        "index": 8
+      },
+      "items": [
+        {
+          "objectName": "家庭",
+          "index": 25
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 32,
+    "answer": {
+      "objectName": "家庭",
+      "index": 8
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "搬家",
+        "index": 9
+      },
+      "items": [
+        {
+          "objectName": "家庭",
+          "index": 25
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 32,
+    "answer": {
+      "objectName": "家庭",
+      "index": 9
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "畫家",
+        "index": 10
+      },
+      "items": [
+        {
+          "objectName": "家庭",
+          "index": 25
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 32,
+    "answer": {
+      "objectName": "人物",
+      "index": 10
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "作家",
+        "index": 11
+      },
+      "items": [
+        {
+          "objectName": "家庭",
+          "index": 25
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 32,
+    "answer": {
+      "objectName": "人物",
+      "index": 11
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "扶手",
+        "index": 12
+      },
+      "items": [
+        {
+          "objectName": "一隻手",
+          "index": 27
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 33,
+    "answer": {
+      "objectName": "一隻手",
+      "index": 12
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "手錶",
+        "index": 13
+      },
+      "items": [
+        {
+          "objectName": "一隻手",
+          "index": 27
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 33,
+    "answer": {
+      "objectName": "一隻手",
+      "index": 13
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "水手",
+        "index": 14
+      },
+      "items": [
+        {
+          "objectName": "一隻手",
+          "index": 27
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 33,
+    "answer": {
+      "objectName": "人物",
+      "index": 14
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "賽車手",
+        "index": 15
+      },
+      "items": [
+        {
+          "objectName": "一隻手",
+          "index": 27
+        },
+        {
+          "objectName": "人物",
+          "index": 26
+        }
+      ]
+    },
+    "keywordVoiceIndex": 33,
+    "answer": {
+      "objectName": "人物",
+      "index": 15
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "中樂",
+        "index": 16
+      },
+      "items": [
+        {
+          "objectName": "中式",
+          "index": 28
+        },
+        {
+          "objectName": "中間",
+          "index": 29
+        }
+      ]
+    },
+    "keywordVoiceIndex": 34,
+    "answer": {
+      "objectName": "中式",
+      "index": 16
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "中文書",
+        "index": 17
+      },
+      "items": [
+        {
+          "objectName": "中式",
+          "index": 28
+        },
+        {
+          "objectName": "中間",
+          "index": 29
+        }
+      ]
+    },
+    "keywordVoiceIndex": 34,
+    "answer": {
+      "objectName": "中式",
+      "index": 17
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "途中",
+        "index": 18
+      },
+      "items": [
+        {
+          "objectName": "中式",
+          "index": 28
+        },
+        {
+          "objectName": "中間",
+          "index": 29
+        }
+      ]
+    },
+    "keywordVoiceIndex": 34,
+    "answer": {
+      "objectName": "中間",
+      "index": 18
+    }
+  },
+  {
+    "phrases": {
+      "main": {
+        "objectName": "中午",
+        "index": 19
+      },
+      "items": [
+        {
+          "objectName": "中式",
+          "index": 28
+        },
+        {
+          "objectName": "中間",
+          "index": 29
+        }
+      ]
+    },
+    "keywordVoiceIndex": 34,
+    "answer": {
+      "objectName": "中間",
+      "index": 19
+    }
+  }
+]

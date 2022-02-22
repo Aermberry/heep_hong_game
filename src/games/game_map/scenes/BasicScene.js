@@ -12,6 +12,8 @@ export default class BasicScene extends Phaser.Scene {
         this.widthBlock = pageWidth / 12;
         this.heightBlock = pageHeight / 12;
 
+        this.gameMusic = this.sound.add('bgm', {volume: 0.4})
+        this.gameMusic.setLoop(true)
     }
 
     buildBg(bg) {
@@ -23,9 +25,9 @@ export default class BasicScene extends Phaser.Scene {
     }
 
     /**
-     * 
+     *
      * @param colNum    Number of columns
-     * @returns 
+     * @returns
      */
     getColWidth(colNum) {
 
@@ -44,8 +46,8 @@ export default class BasicScene extends Phaser.Scene {
     }
 
     /**
-     * 
-     * @param sources A key/path_string object 
+     *
+     * @param sources A key/path_string object
      */
     preloadFromArr({img = null, atlas = null, sound = null}) {
 
@@ -73,18 +75,40 @@ export default class BasicScene extends Phaser.Scene {
         this.load.on('progress', this.onLoadProgress, this)
         this.load.on('complete', this.onLoadComplete, this)
 
-        const main = this.cameras.main
-        this.progressBgRect = new Rectangle(0, 0, 0.5 * main.width, 10)
-        Rectangle.CenterOn(this.progressBgRect, 0.5 * main.width, 0.95 * main.height)
-        this.progressRect = Rectangle.Clone(this.progressBgRect);
+        //const main = this.cameras.main
+        const main = this.sys.game.canvas
+
+        // this.backDrop = this.add.renderTexture(0, 0, main.width, main.height)
+        // this.backDrop.fill('0x000000', 0.4)
+
+        this.progressBgRect = new Rectangle(0, 0, 0.778 * main.width, 10)
+        Rectangle.CenterOn(this.progressBgRect, 0.5 * main.width, 0.92 * main.height)
+        this.progressRect = Rectangle.Clone(this.progressBgRect)
         this.loadingBar = this.add.graphics()
+
+
+        this.loadingText = this.make.text({
+            x: main.width / 2,
+            y: main.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        })
+
+        this.loadingText.setOrigin(0.5, 0.5)
+
+        this.cameras.main.ignore([ this.loadingBar, this.loadingText ])
+
     }
 
     onLoadComplete(loader, totalComplete, totalFailed) {
         console.debug('complete', totalComplete)
         console.debug('failed', totalFailed)
         this.loadingBar.destroy()
-
+        this.loadingText.destroy()
+        this.scale.refresh()
     }
 
     onLoadProgress(progress) {

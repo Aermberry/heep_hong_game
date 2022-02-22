@@ -7,9 +7,11 @@ import PreloaderScene from './scenes/PreloaderScene'
 import TutorScene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
+import RetryScene from './scenes/RetryScene'
+import UIScene from './scenes/UIScene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene,TutorScene, GameScene,EndScene]
+    scene: [BootScene, PreloaderScene, TutorScene, GameScene, EndScene, RetryScene,UIScene]
 });
 
 /**
@@ -31,24 +33,24 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 
 class Game19 extends Phaser.Game {
 
-    // private globals: { model: Model }
-
-    constructor(config, urlParams) {
+    constructor(config, urlParams,gtag) {
         super(config);
         console.log(urlParams)
-        // let model = new Model()
+        
         this.globals = {
-            bgMusic: null
+            bgMusic: null,
+            gtag: gtag,
+            gameStageIndex:urlParams
         }
 
-        // this.globals.model.gameStage = urlParams.sid;
+        
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams,gtag) {
 
-    let game = new Game19(gameConfig, urlParams)
+    let game = new Game19(gameConfig, urlParams,gtag)
 
     return game
 }

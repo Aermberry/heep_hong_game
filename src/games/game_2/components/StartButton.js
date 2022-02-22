@@ -32,16 +32,26 @@ export default class StartButton extends Phaser.GameObjects.Container {
 
     onDownClicked() {
         this.scene.sound.play('buttonEffectSound');
+        
     }
 
     onUpClicked() {
-        this.scene.scene.start('Game');
+        this.scene.scene.start('UI');
 
     }
 
-    _setFullScreen(scene) {
-        if (!scene.scale.isFullscreen) {
-            scene.scale.startFullscreen();
+    _setFullScreen() {
+        const fullscreenConfig = { navigationUI: 'hide' }
+
+        const elem = document.querySelector('#game-container canvas');
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen(fullscreenConfig);
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen(fullscreenConfig);
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen(fullscreenConfig);
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(fullscreenConfig);
         }
     }
 }

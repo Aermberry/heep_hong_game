@@ -12,21 +12,9 @@ export default class PreloaderScene extends BasicScene {
     }
 
     preload() {
-        let self = this;
-
         this.buildBg('bgLoadingGame');
 
-        this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
-
-        this.load.on('complete', (loader, totalComplete, totalFailed) => {
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, self, 'Tutor');
-        });
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
 
         const imageFiles = {
             'bgTutor': require('../assets/images/bg_tutor.png'),
@@ -69,21 +57,18 @@ export default class PreloaderScene extends BasicScene {
 
             /* Effect Sound */
             'buttonEffectSound': require('../assets/audio/sound_effect/effect_button_on_clicked.mp3'),
-            'starEffectSound': require('../assets/audio/sound_effect/effect_star.mp3'),
-            'electricShockEffectSound': require('../assets/audio/sound_effect/effect_electric_shock.mp3'),
-            'clipClampEffectSound':require('../assets/audio/sound_effect/effect_clip_clamp.mp3'),
-            'clipDollTableEffectSound':require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
-            'clipMovementEffectSound':require('../assets/audio/sound_effect/effect_clip_movement.mp3'),
-            'spotlightFocusEffectSound':require('../assets/audio/sound_effect/effect_spotlight_focus.mp3'),
+            'clipDollTableEffectSound': require('../assets/audio/sound_effect/effect_clip_doll_table.mp3'),
         }
 
-        this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
+        this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('gameProgressExitBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('gameEndExitBtn', require('../assets/images/btn_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('buttonMoveDownControl', require('../assets/images/button_move_down_control.png'), { frameWidth: 160, frameHeight: 184 });
         this.load.spritesheet('buttonMoveLeftControl', require('../assets/images/button_move_left_control.png'), { frameWidth: 160, frameHeight: 184 });
         this.load.spritesheet('buttonMoveRightControl', require('../assets/images/button_move_right_control.png'), { frameWidth: 160, frameHeight: 184 });
+        this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
 
 
 

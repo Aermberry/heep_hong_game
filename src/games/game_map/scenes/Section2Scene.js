@@ -2,6 +2,7 @@ import SectionBasicScene from "./SectionBasicScene"
 import GameNavBtn from '../objects/GameNavBtn'
 import HintBtn from '../objects/HintBtn'
 import BackBtn from '../objects/BackBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 // import StartBtn from '../objects/StartBtn'
 
 export default class Section2Scene extends SectionBasicScene {
@@ -15,10 +16,12 @@ export default class Section2Scene extends SectionBasicScene {
     }
 
     preload() {
+
         this.buildPreloadBg('bg_title', {x: 0.6, y: 0.3})
 
         const atlasFiles = {
             'tree_fall': { img: require('../assets/images/section_2/forest_s.png'), data: require('../assets/images/section_2/forest_s.json') },
+            'tree_b': { img: require('../assets/images/section_2/forest_B.png'), data: require('../assets/images/section_2/forest_B.json') },
         }
 
         const imageFiles = {
@@ -52,11 +55,13 @@ export default class Section2Scene extends SectionBasicScene {
         this.load.spritesheet('s2btn6', require('../assets/images/section_2/btn_6.png'),{ frameWidth: 132, frameHeight: 134.5 })
         this.load.spritesheet('catLogo', require('../assets/images/section_2/logo-123.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
+
+        this.createProgressBar()
     }
 
     create() {
         super.create()
-        
+        this.sound.stopAll()
         this.initSection('game2Bg')
 
         // if(this.dataModel.isFirstLoad) {
@@ -71,7 +76,8 @@ export default class Section2Scene extends SectionBasicScene {
 
     populateSection() {
 
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
 
         const game4Btn = new GameNavBtn(this, this.getColWidth(2.55), this.getRowHeight(10.2), 's2btn1', '/game/8')
         const game2Btn = new GameNavBtn(this, this.getColWidth(3.85), this.getRowHeight(7.1), 's2btn2', '/game/6')
@@ -80,7 +86,7 @@ export default class Section2Scene extends SectionBasicScene {
         const game1Btn = new GameNavBtn(this, this.getColWidth(1.3), this.getRowHeight(7.3), 's2btn5', '/game/5')
         const game5Btn = new GameNavBtn(this, this.getColWidth(6.32), this.getRowHeight(9.95), 's2btn6', '/game/9')
         const hintBtn = new HintBtn(this, this.getColWidth(6.32), this.getRowHeight(5.5), [game1Btn, game2Btn, game3Btn, game4Btn, game5Btn, game6Btn], 'catLogo')
-        
+
         game1Btn.initHint('b1Hint', this.getColWidth(0), this.getRowHeight(-1.8))
         game2Btn.initHint('b2Hint', this.getColWidth(0), this.getRowHeight(-1.8))
         game3Btn.initHint('b3Hint', this.getColWidth(0), this.getRowHeight(-1.8))
@@ -89,20 +95,32 @@ export default class Section2Scene extends SectionBasicScene {
         game6Btn.initHint('b6Hint', this.getColWidth(0), this.getRowHeight(-1.8))
 
         this.anims.create({
-            key: 'tree_fall_anime', 
+            key: 'tree_fall_anime',
             frames: this.anims.generateFrameNames('tree_fall', { prefix: 'Symbol 1', start: 0, end: 35, zeroPad: 4 }),
             repeat: -1,
             delay: 6000,
             repeatDelay: 5000
         });
 
+        this.anims.create({
+            key: 'tree_b_anime',
+            frames: this.anims.generateFrameNames('tree_b', { prefix: 'Symbol 1', start: 0, end: 35, zeroPad: 4 }),
+            repeat: -1,
+            delay: 0,
+            repeatDelay: 5000
+        });
 
-        let animate = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(9), 'tree_fall')
+        let animate2 = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(8.6), 'tree_b_anime')
+        animate2.play('tree_b_anime')
+
+        let animate = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(10.2), 'tree_fall')
         animate.play('tree_fall_anime')
 
+
         this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's2Logo')
-        
+
         this.add.existing(backBtn)
+        this.add.existing(speakerBtn)
         this.add.existing(hintBtn)
         this.add.existing(game1Btn)
         this.add.existing(game2Btn)

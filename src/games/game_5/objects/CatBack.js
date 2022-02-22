@@ -31,7 +31,7 @@ export default class CatBack extends Phaser.GameObjects.Container {
 
         // catBack.play('cat_back')
         headBand.play('headband')
-        
+
     }
 
     strike() {
@@ -60,7 +60,7 @@ export default class CatBack extends Phaser.GameObjects.Container {
             }).on('complete', ()=> {
                 resolve(this);
             })
-        
+
         })
 
     }

@@ -48,7 +48,7 @@ export default class VocieBtn extends Phaser.GameObjects.Container {
     });
 
     self.wave = self.scene.add.sprite(-85, 0, 'Wave')
-    self.wave.setScale(0.45);
+    self.wave.setScale(0.4);
 
     self.add(self.background);
     self.add(self.sprite);

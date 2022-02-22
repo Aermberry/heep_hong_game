@@ -48,6 +48,10 @@ body{
 .container-fluid{
   padding-left: 30px;
   padding-right: 30px;
+  @media screen and (max-width: 768px){
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 .container{
   max-width: 1600px;
@@ -92,6 +96,9 @@ body{
     flex-wrap: inherit;
     align-items: center;
     justify-content: space-between;
+    &.flex-col{
+      flex-direction: column;
+    }
   }
 }
 
@@ -100,10 +107,8 @@ body{
   > .wrapper{
     background-color: #fff578;
     min-height: 100%;
-    @media screen and (min-width: 768px){
-      display: flex;
-      flex-direction: column;
-    }
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -161,15 +166,23 @@ header{
 
 main{
   height: 100%;
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
   @media screen and (max-width: 768px){
-    height: calc(100% - 90px);
+    min-height: calc(100% - 50px);
   }
   >.container{
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 1.5rem 0;
+    @media screen and (max-width: 768px){
+      padding: 0;
+    }
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
     >.content-wrapper{
       height: 100%;
       width: 100%;
@@ -193,6 +206,7 @@ main{
   background-image: url('../images/img_landing.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   position: relative;
   display: flex;
   @media screen and (max-width: 768px){
@@ -222,6 +236,7 @@ main{
     }
     img{
       width: 80%;
+      height: 100%;
       align-self: center;
       margin: auto;
     }
@@ -307,16 +322,76 @@ footer{
   &-bar{
     position: fixed;
     right: 0;
-    top:30%;
+    top:35%;
     z-index: 10;
-    a{
+    button{
+      margin-left: auto;
+      margin-bottom: 0!important;
+      padding: 0 0.625rem;
       display: block;
-      background-color: #B4B4B4;
-      &:not(:last-child){
-        margin-bottom: 1px;
+      width: 3.0625rem;
+      height: 3.0625rem;
+      line-height: 3.0625em!important;
+      background: #b4b4b4;
+      text-align: center;
+      -webkit-transition: background .6s,width .6s;
+      transition: background .6s,width .6s;
+      white-space: nowrap;
+      overflow: hidden;
+      border: 0;
+      cursor: pointer;
+      &:hover, &:focus{
+        width: 7.8125rem;
+        .btn-text{
+          margin-left: 0.4rem;
+          visibility: visible;
+          opacity: 1;
+          width: auto;
+          height: auto;
+        }
+      }
+      &.share{
+        &-facebook{
+          &:hover, &:focus{
+            background: #4b6ea8;
+          }
+        }
+        &-whatsapp{
+          &:hover, &:focus{
+            background: #00e97f;
+          }
+        }
+        &-wechat{
+          &:hover, &:focus{
+            background: #00bd2b;
+          }
+        }
+        &-copylink{
+          &:hover, &:focus{
+            background: #ee6c1f;
+          }
+        }
       }
       img{
         display: block;
+      }
+      .btn-text, .svg-container{
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1;
+      }
+      .btn-text{
+        margin-left: 0;
+        overflow: hidden;
+        font-size: .9375rem;
+        font-weight: 700;
+        color: #fff;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .6s,visibility .6s;
+        
       }
     }
   }
@@ -435,14 +510,16 @@ footer{
 
 .partners{
   display: flex;
-  @media screen and (max-width: 768px){
+  gap: 16px;
+  padding: 30px 0;
+  flex-direction: row;
+  @media screen and (max-width: 359px){
     flex-direction: column;
   }
 }
 .partner{
   display: flex;
   align-items: center;
-  padding: 30px 0;
   @media screen and (max-width: 768px){
     align-items: flex-start;
   }
@@ -559,9 +636,23 @@ footer{
         }
       }
     }
+    .landscape{
+      .outer{
+        padding-top:(9 / 16) * 100%;
+        position: relative;
+        >.inner{
+          position:absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+      }
+    }
   }
   &-wrapper{
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     background-color: black;
     &.portrait{
@@ -584,7 +675,7 @@ footer{
       max-width: $gameWidth / $gameHeight *  100vh;
       position: relative;
       width: 100vw;
-      height: 100vh;
+      height: 100%;
       margin: auto;
       &::after{
         content: '';
@@ -603,3 +694,44 @@ footer{
   }
 }
 
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #ea5515;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 5%;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 5%; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 5%; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 5%; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 5%; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}

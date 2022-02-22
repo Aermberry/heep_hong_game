@@ -6,9 +6,11 @@ import PreloaderScene from './scenes/PreloaderScene'
 import TutorScene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
+import UIScene from './scenes/UIScene'
+
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene, TutorScene, GameScene, EndScene]
+    scene: [BootScene, PreloaderScene, TutorScene, GameScene, EndScene, UIScene]
 });
 
 /**
@@ -30,41 +32,22 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 
 class Game22 extends Phaser.Game {
 
-    constructor(config, urlParams) {
+    constructor(config, urlParams, gtag) {
         super(config);
-        console.log(urlParams)
+
+        this.globals = {
+            gtag: gtag,
+            gameStageIndex:urlParams
+        }
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams,gtag) {
 
-    let game = new Game22(gameConfig, urlParams)
-
-    resize(game);
-    window.addEventListener("resize", resize, false);
+    let game = new Game22(gameConfig, urlParams,gtag);
 
     return game
-}
-
-//    /**
-//            * 
-//            * @param {Phaser.Game} game
-//            */
-function resize(game) {
-    var canvas = document.querySelector("canvas");
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-    var windowRatio = windowWidth / windowHeight;
-    var gameRatio = game.config.width / game.config.height;
-
-    if (windowRatio < gameRatio) {
-        canvas.style.width = windowWidth + "px";
-        canvas.style.height = (windowWidth / gameRatio) + "px";
-    } else {
-        canvas.style.width = (windowHeight * gameRatio) + "px";
-        canvas.style.height = windowHeight + "px";
-    }
 }
 
 export default launch

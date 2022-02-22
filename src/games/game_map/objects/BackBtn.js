@@ -6,6 +6,7 @@ export default class BackBtn extends BasicBtn {
         super(scene, x, y,[]);
 
         let sprite =  scene.add.sprite(0, 0, 'backBtn')
+        sprite.setScale(0.8)
         this.create(sprite,this.onClick.bind(this))
     
     }

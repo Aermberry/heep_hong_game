@@ -1,31 +1,56 @@
-import BasicButton from './BasicButton';
+import Phaser from 'phaser'
 
-export default class StartButton extends BasicButton {
-  constructor(scene, x, y, children) {
-    super(scene, x, y, children)
+export default class StartButton extends Phaser.GameObjects.Container {
 
-    this.scene = scene;
-    let sprite = scene.add.sprite(0, 0, 'strBtn')
-    this.create(sprite, this.onClick.bind(this))
+    constructor(scene, x, y) {
 
-  }
+        super(scene, x, y);
+        scene.add.existing(this);
 
-  onClick() {
+        this.texture = scene.add.sprite(0, 0, 'startButton');
 
-    this.scene.scene.start('Game')
+        this.setSize(this.texture.width, this.texture.height);
 
-  }
+        this.add(this.texture);
 
-  down(clickEvent) {
-    this.scene.sound.play('buttonEffectSound');
-    this.origSprite.setFrame(1);
-    this._setFullScreen(this.scene);
-    super.down(clickEvent)
-  }
-
-  _setFullScreen(scene) {
-    if (!scene.scale.isFullscreen) {
-      scene.scale.startFullscreen();
+        this.setInteractive({ useHandCursor: true }).on(
+            Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                console.log("down")
+                this.texture.setFrame(1);
+                this.onDownClicked();
+            }
+        )
+            .on(
+                Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
+                    console.log("up")
+                    this.texture.setFrame(0);
+                    // this._setFullScreen(scene);
+                    this.onUpClicked();
+                }
+            )
     }
-  }
+
+    onDownClicked() {
+        this.scene.sound.play('buttonEffectSound');
+    }
+
+    onUpClicked() {
+        this.scene.scene.start('UI');
+
+    }
+
+    _setFullScreen() {
+        const fullscreenConfig = { navigationUI: 'hide' }
+
+        const elem = document.querySelector('#game-container canvas');
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen(fullscreenConfig);
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen(fullscreenConfig);
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen(fullscreenConfig);
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(fullscreenConfig);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 import Egg from "./Egg";
 import VoiceButton from "./VoiceButton";
+import TweenAnimation from "../phaser3_framework/util/TweenAnimation"
 
 export default class EggItem extends Egg {
 
@@ -9,7 +10,7 @@ export default class EggItem extends Egg {
 
         this.objectName = objectItem.objectName;
         this.index = objectItem.index;
-
+        this.FLoatTweenAnimation = null;
 
         this.setName("EggItem");
         this.create(isEnableDraggable);
@@ -18,16 +19,58 @@ export default class EggItem extends Egg {
         this.voiceButton.setScale(0.2);
 
         this.add(this.voiceButton);
+
+
+
+
     }
 
-    setRemoveListener(){
+    setRemoveListener() {
         super.setRemoveListener();
-        this.voiceButton.cancelListener( );
+        this.voiceButton.cancelListener();
+        this.off('pointerover');
+        this.off('pointerout');
     }
 
-    setEnableListener(){
+    setEnableListener() {
         super.setEnableDraggable()
-        this.voiceButton.enableListener( );
+        this.voiceButton.enableListener();
+
+        this.on('pointerover', function () {
+
+            this.stopFLoatTweenAnimation()
+            
+        });
+
+        this.on('pointerout', function () {
+
+            this.playFLoatTweenAnimation()
+        });
+
+    }
+
+    playFLoatTweenAnimation() {
+        TweenAnimation.setTweenAnimation({
+            targets: this,
+            ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 1000,
+            loop: -1,
+            tweens: [
+                {
+                    duration: 500,
+                    yoyo: true,
+                    y: this.y + 10,
+                }, {
+                    duration: 500,
+                    yoyo: true,
+                    y: this.y - 10,
+                }]
+        });
+        this.FLoatTweenAnimation = TweenAnimation.play(this.scene)
+    }
+
+    stopFLoatTweenAnimation() {
+        this.FLoatTweenAnimation.stop();
     }
 
 }

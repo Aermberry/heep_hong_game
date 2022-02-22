@@ -1,5 +1,5 @@
 <template lang="">
-    <div :class="gameOrientation">
+    <div :class="`game-wrapper ${gameOrientation}`">
         <div class="outer">
             <div class="inner">
                 <div id="game-container" v-if="downloaded" />
@@ -37,7 +37,9 @@ export default {
         const game = await import('@/games/game_map/index')
         self.downloaded = true
         self.$nextTick(() => {
-          self.gameInstance = game.launch(self.$route.params, this.$router)        
+          self.gameInstance = game.launch(self.$route.params, this.$router)
+          self.$gamePause.initService(self.gameInstance, 15, 5)
+          self.$gamePause.initGameTrackTimer()
         })
       }
     }catch (e){
@@ -54,16 +56,20 @@ export default {
   },
   destroyed() {
     this.gameInstance.destroy(false)
+    this.$gamePause.clearTimer()
   },
   methods:{
     windowSizeHandler: function(){
       let self = this
       self.ww = window.innerWidth
       self.wh = window.innerHeight
+      if(document.querySelector('.game-wrapper')){
+        document.querySelector('.game-wrapper').style.setProperty('--vh', `${self.wh * 0.01}px`)
+      }
     }
   }
 }
 </script>
 <style lang="">
-    
+
 </style>

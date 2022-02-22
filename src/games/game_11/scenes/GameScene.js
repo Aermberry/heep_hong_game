@@ -16,7 +16,8 @@ import ShipFg from "../objects/foregrounds/ShipFg"
 import Untils from "../../common/Untils"
 import ToLeftBtn from "../objects/buttons/ToLeftBtn"
 import ToRightBtn from "../objects/buttons/ToRightBtn"
-import ExitBtn from "../objects/buttons/ExitBtn";
+import ExitBtn from "../objects/buttons/ExitBtn"
+import SpeakerBtn from '../objects/buttons/SpeakerBtn'
 import Ufo from "../objects/players/Ufo"
 import UfoBg from "../objects/backgrounds/UfoBg"
 import UfoFg from "../objects/foregrounds/UfoFg"
@@ -34,7 +35,7 @@ export default class GameScene extends BasicScene {
     constructor() {
         super('Game')
 
-        // this.dataModal = this.sys.game.globals.model;
+        // this.dataModel = this.sys.game.globals.model;
         this.cursorKeys = null
         this.playerOnLeft = true
         this.totalSocre = 0
@@ -88,6 +89,8 @@ export default class GameScene extends BasicScene {
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
         this.gameMusic = this.sound.add('bgm')
         this.gameMusic.setLoop(true)
+        this.dataModel.bgMusicPlaying = true
+        this.sys.game.globals.bgMusic = self.gameMusic
 
     }
 
@@ -161,7 +164,7 @@ export default class GameScene extends BasicScene {
 
         super.create()
 
-        this.sys.game.globals.gtag.event((`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' }))
+        this.sys.game.globals.gtag.event(`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.playerOnLeft = true
 
@@ -199,7 +202,8 @@ export default class GameScene extends BasicScene {
 
         this.toLeftBtn = new ToLeftBtn(this, this.getColWidth(9.5), this.getRowHeight(10), this._playerToLeft.bind(this, 500))
         this.toRightBtn = new ToRightBtn(this, this.getColWidth(11), this.getRowHeight(10), this._playerToRight.bind(this, 500))
-        this.existBtn = new ExitBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
+        this.existBtn = new ExitBtn(this, 100, 120)
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120,this.musicPause.bind(this))
 
         this.toLeftBtn.setDepth(8)
         this.toRightBtn.setDepth(8)
@@ -207,6 +211,7 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.toLeftBtn)
         this.add.existing(this.toRightBtn)
         this.add.existing(this.existBtn)
+        this.add.existing(this.speakerBtn)
 
     }
 
@@ -278,6 +283,17 @@ export default class GameScene extends BasicScene {
             this.scene.start('End')
         })
 
+
+    }
+
+    musicPause() {
+        if (this.dataModel.bgMusicPlaying){
+            this.dataModel.bgMusicPlaying = false
+            this.gameMusic.mute = true
+        } else {
+            this.dataModel.bgMusicPlaying = true
+            this.gameMusic.mute = false
+        }
 
     }
 

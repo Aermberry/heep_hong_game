@@ -1,5 +1,4 @@
 import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitProgressGameButton'
 import GameManager from '../components/GameManager';
 import {
     createLionLeftRecorderAnimation
@@ -15,7 +14,6 @@ import ComposeSprite from "../components/ComposeSprite";
 import Phaser from "phaser";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import LoadProgress from "../components/LoadProgress";
-import GameModel from "../game_mode/GameModel";
 
 
 export default class GameScene extends BasicScene {
@@ -51,12 +49,6 @@ export default class GameScene extends BasicScene {
         this.buildBackground('backgroundGamePlay');
 
         this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
 
         const soundFiles = {
             'voiceAnswerObject0': require('../assets/audio/voice/answer_objects/voice_answer_object_0.mp3'),
@@ -129,73 +121,188 @@ export default class GameScene extends BasicScene {
             'voiceItemObject36': require('../assets/audio/voice/item_objects/voice_item_object_36.mp3'),
         }
 
-        this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), { frameWidth: 612, frameHeight: 770 });
-        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), { frameWidth: 633, frameHeight: 630 });
-        this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), { frameWidth: 2180, frameHeight: 1980 });
+        this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
+            frameWidth: 612,
+            frameHeight: 770
+        });
+        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), {
+            frameWidth: 633,
+            frameHeight: 630
+        });
+        this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), {
+            frameWidth: 2180,
+            frameHeight: 1980
+        });
 
-        this.load.spritesheet("textureAnswerObject0", require('../assets/images/objects/texture_answer_objects/texture_answer_object_0.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject1", require('../assets/images/objects/texture_answer_objects/texture_answer_object_1.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject2", require('../assets/images/objects/texture_answer_objects/texture_answer_object_2.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject3", require('../assets/images/objects/texture_answer_objects/texture_answer_object_3.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject4", require('../assets/images/objects/texture_answer_objects/texture_answer_object_4.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject5", require('../assets/images/objects/texture_answer_objects/texture_answer_object_5.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject6", require('../assets/images/objects/texture_answer_objects/texture_answer_object_6.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject7", require('../assets/images/objects/texture_answer_objects/texture_answer_object_7.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject8", require('../assets/images/objects/texture_answer_objects/texture_answer_object_8.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject9", require('../assets/images/objects/texture_answer_objects/texture_answer_object_9.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject10", require('../assets/images/objects/texture_answer_objects/texture_answer_object_10.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject11", require('../assets/images/objects/texture_answer_objects/texture_answer_object_11.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject12", require('../assets/images/objects/texture_answer_objects/texture_answer_object_12.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject13", require('../assets/images/objects/texture_answer_objects/texture_answer_object_13.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject14", require('../assets/images/objects/texture_answer_objects/texture_answer_object_14.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject15", require('../assets/images/objects/texture_answer_objects/texture_answer_object_15.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject16", require('../assets/images/objects/texture_answer_objects/texture_answer_object_16.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject17", require('../assets/images/objects/texture_answer_objects/texture_answer_object_17.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject18", require('../assets/images/objects/texture_answer_objects/texture_answer_object_18.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject19", require('../assets/images/objects/texture_answer_objects/texture_answer_object_19.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject20", require('../assets/images/objects/texture_answer_objects/texture_answer_object_20.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject21", require('../assets/images/objects/texture_answer_objects/texture_answer_object_21.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject22", require('../assets/images/objects/texture_answer_objects/texture_answer_object_22.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject23", require('../assets/images/objects/texture_answer_objects/texture_answer_object_23.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject24", require('../assets/images/objects/texture_answer_objects/texture_answer_object_24.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject25", require('../assets/images/objects/texture_answer_objects/texture_answer_object_25.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject26", require('../assets/images/objects/texture_answer_objects/texture_answer_object_26.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject27", require('../assets/images/objects/texture_answer_objects/texture_answer_object_27.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject28", require('../assets/images/objects/texture_answer_objects/texture_answer_object_28.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject29", require('../assets/images/objects/texture_answer_objects/texture_answer_object_29.png'), { frameWidth: 636, frameHeight: 630 });
+        this.load.spritesheet("textureAnswerObject0", require('../assets/images/objects/texture_answer_objects/texture_answer_object_0.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject1", require('../assets/images/objects/texture_answer_objects/texture_answer_object_1.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject2", require('../assets/images/objects/texture_answer_objects/texture_answer_object_2.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject3", require('../assets/images/objects/texture_answer_objects/texture_answer_object_3.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject4", require('../assets/images/objects/texture_answer_objects/texture_answer_object_4.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject5", require('../assets/images/objects/texture_answer_objects/texture_answer_object_5.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject6", require('../assets/images/objects/texture_answer_objects/texture_answer_object_6.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject7", require('../assets/images/objects/texture_answer_objects/texture_answer_object_7.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject8", require('../assets/images/objects/texture_answer_objects/texture_answer_object_8.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject9", require('../assets/images/objects/texture_answer_objects/texture_answer_object_9.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject10", require('../assets/images/objects/texture_answer_objects/texture_answer_object_10.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject11", require('../assets/images/objects/texture_answer_objects/texture_answer_object_11.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject12", require('../assets/images/objects/texture_answer_objects/texture_answer_object_12.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject13", require('../assets/images/objects/texture_answer_objects/texture_answer_object_13.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject14", require('../assets/images/objects/texture_answer_objects/texture_answer_object_14.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject15", require('../assets/images/objects/texture_answer_objects/texture_answer_object_15.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject16", require('../assets/images/objects/texture_answer_objects/texture_answer_object_16.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject17", require('../assets/images/objects/texture_answer_objects/texture_answer_object_17.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject18", require('../assets/images/objects/texture_answer_objects/texture_answer_object_18.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject19", require('../assets/images/objects/texture_answer_objects/texture_answer_object_19.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject20", require('../assets/images/objects/texture_answer_objects/texture_answer_object_20.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject21", require('../assets/images/objects/texture_answer_objects/texture_answer_object_21.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject22", require('../assets/images/objects/texture_answer_objects/texture_answer_object_22.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject23", require('../assets/images/objects/texture_answer_objects/texture_answer_object_23.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject24", require('../assets/images/objects/texture_answer_objects/texture_answer_object_24.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject25", require('../assets/images/objects/texture_answer_objects/texture_answer_object_25.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject26", require('../assets/images/objects/texture_answer_objects/texture_answer_object_26.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject27", require('../assets/images/objects/texture_answer_objects/texture_answer_object_27.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject28", require('../assets/images/objects/texture_answer_objects/texture_answer_object_28.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject29", require('../assets/images/objects/texture_answer_objects/texture_answer_object_29.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
 
-        this.preloadFromArr({ sound: soundFiles });
+        this.preloadFromArr({
+            sound: soundFiles
+        });
     }
 
     create() {
 
         super.create();
 
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, {
+            'event_category': 'js_games',
+            'event_label': 'Game Start'
+        });
+
+        // this.sound.stopAll();
+
+        // console.log({ "eachQuestionChance": GameModel.eachQuestionChance })
+        // console.log({ "currentQuestionErrorCount": GameModel.currentQuestionErrorCount })
+
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
         this.setGameDirection(question.direction);
+
+        this.setWorldBounds();
+        
         this.paintScene(question);
 
-        this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
-
     }
 
-    playBackgroundMusic(startSound, backgroundSound) {
+    setWorldBounds() {
+        let x = 0;
 
-        const clipDollTableEffectSound = this.sound.add(startSound);
-        const backgroundMusic = this.sound.add(backgroundSound, {
-            volume: 0.1,
-            loop: true
-        });
+        let width = null;
+        let height = null;
 
-        clipDollTableEffectSound.on('complete', () => {
-            backgroundMusic.play();
+        if (this.isRightDirection()) {
+            x = 5;
+            width = this.cameras.main.width;
+            height = this.cameras.main.height - 20;
 
-        })
+        } else {
+            x = 10;
+            width = this.cameras.main.width + 19;
+            height = this.cameras.main.height - 20;
+        }
 
-        clipDollTableEffectSound.play();
+        this.physics.world.setBounds(x, 0, width, height);
     }
-
 
     createAnimation(animationManager) {
         createLionLeftRecorderAnimation(animationManager);
@@ -227,7 +334,6 @@ export default class GameScene extends BasicScene {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
 
         } else {
-
             if (JSON.parse(localStorage.getItem('gameChance'))) {
                 this.questionIndex = errorQuestionIndex;
             }
@@ -237,7 +343,8 @@ export default class GameScene extends BasicScene {
         question = JSON.parse(localStorage.getItem(this.questionIndex));
 
         // question = JSON.parse(localStorage.getItem(2));
-        // question = JSON.parse(localStorage.getItem(16));
+        // question = JSON.parse(localStorage.getItem(9));
+
         console.log("当前抽取的题目:%o", question);
         console.log("当前抽取的题目Index:%o", this.questionIndex)
 
@@ -264,9 +371,11 @@ export default class GameScene extends BasicScene {
     }
 
     buildUiObject(layer) {
-        const exitButton = new ExitButton(this, 120, 135);
+        // const exitButton = new ExitButton(this, 100, 120);
+        // const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
-        this.penguinSprite = new GameSprite(this, 1370, 700, "penguinTexture").setOrigin(0);
+
+        this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
         const uiEgg = this.add.image(710, 890, 'uiEgg').setOrigin(0);
         const uiRecorder = this.add.image(1920, 840, 'uiRecorder').setOrigin(1, 0);
@@ -275,7 +384,7 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
+        layer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
     }
 
     buildGameObject(currentGameQuestion, layer) {
@@ -288,21 +397,30 @@ export default class GameScene extends BasicScene {
         let clawBoxPosition;
         let clawAnimationTargetPosition;
 
-        let clawBox = new ClawBox(this, { x: 0, y: 0 }, eggQuestion);
+        let clawBox = new ClawBox(this, {
+            x: 0,
+            y: 0
+        }, eggQuestion);
 
         /* 以右方向为正方向*/
         if (this.isRightDirection()) {
-            console.log({ direction: currentGameQuestion.direction });
+            console.log({
+                direction: currentGameQuestion.direction
+            });
             clawBoxPosition = {
                 x: 2200,
                 y: 410
             }
             clawAnimationTargetPosition = 1800;
             clawBox.eggQuestion.setPosition(-200, 0);
-        }
-        else {
-            console.log({ direction: currentGameQuestion.direction });
-            clawBoxPosition = { x: 0, y: 410 };
+        } else {
+            console.log({
+                direction: currentGameQuestion.direction
+            });
+            clawBoxPosition = {
+                x: 0,
+                y: 410
+            };
             clawAnimationTargetPosition = 120;
 
             clawBox.eggQuestion.setPosition(200, 0);
@@ -318,69 +436,58 @@ export default class GameScene extends BasicScene {
         this.eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
-            this.eggItemList.forEach(eggItem => eggItem.setEnableListener())
+            this.eggItemList.forEach(eggItem => {
+                eggItem.setEnableListener();
+
+                eggItem.body.collideWorldBounds = true;
+                eggItem.body.bounce.set(0);
+
+            })
+
         });
 
     }
 
     generatePoints() {
-        let points = [];
+        let points = []
+
         if (this.isRightDirection()) {
             points = [{
-                x: 276,
-                y: 498
+                x: 297,
+                y: 413
             }, {
-                x: 390,
-                y: 168
-            }, {
-                x: 531,
-                y: 441
+                x: 601,
+                y: 200
             }, {
                 x: 766,
-                y: 216
+                y: 553
             }, {
-                x: 841,
-                y: 569
+                x: 1137,
+                y: 245
             }, {
-                x: 1053,
-                y: 350
-            }, {
-                x: 1207,
-                y: 569
-            }, {
-                x: 1334,
-                y: 265
+                x: 1194,
+                y: 607
             }];
         } else {
             points = [{
-                x: 622,
-                y: 503
+                x: 297 + 400,
+                y: 413
             }, {
-                x: 794,
-                y: 285
+                x: 601 + 400,
+                y: 200
             }, {
-                x: 894,
-                y: 629
+                x: 766 + 400,
+                y: 553
             }, {
-                x: 1114,
-                y: 404
+                x: 1137 + 400,
+                y: 245
             }, {
-                x: 1352,
-                y: 292
-            }, {
-                x: 1341,
-                y: 606
-            }, {
-                x: 1588,
-                y: 411
-            }, {
-                x: 1754,
-                y: 212
-            }, {
-                x: 1720,
-                y: 662
+                x: 1194 + 400,
+                y: 607
             }];
         }
+
+
         return this.shufflePosition(points);
 
     }
@@ -392,6 +499,10 @@ export default class GameScene extends BasicScene {
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
+            this.time.addEvent({
+                delay: index * 500,
+                callback: () => eggItem.playFLoatTweenAnimation()
+            });
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
@@ -415,8 +526,10 @@ export default class GameScene extends BasicScene {
                 }
 
 
+
+
                 this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
-                console.log({ "GameModel": GameModel.questionCount })
+
             });
 
             colliderList.push(collider);
@@ -460,7 +573,7 @@ export default class GameScene extends BasicScene {
         const correctSoundEffect = this.sound.add('correctSoundEffect');
 
         correctSoundEffect.on('complete', () => {
-            GameManager.getInstance().getGameSuccess(this.questionIndex,(isLastQuestion) => {
+            GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {
@@ -537,7 +650,10 @@ export default class GameScene extends BasicScene {
 
                             } else {
                                 this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
-                                this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
+                                this.errorImageList.forEach((errorImage) => {
+                                    errorImage.setVisible(false);
+                                    errorImage.destroy()
+                                });
                                 currentAnswer.showSuccessStatus();
 
                                 this.time.addEvent({
@@ -591,8 +707,7 @@ export default class GameScene extends BasicScene {
                 x: dragItem.x + 50,
                 y: dragItem.y - 150
             }
-        }
-        else {
+        } else {
             errorImagePoint = {
                 x: dragItem.x - 100,
                 y: dragItem.y - 150
@@ -602,9 +717,12 @@ export default class GameScene extends BasicScene {
 
 
         let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
-        this.gameLayer.add(errorImage);
 
         this.errorImageList.push(errorImage);
+
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+
+        eggItemsContainer.add(errorImage)
 
         this.penguinSprite.play("penguinFallDown");
 
@@ -624,11 +742,10 @@ export default class GameScene extends BasicScene {
                         callback: () => {
                             TweenAnimation.setTweenAnimation({
                                 targets: dragItem,
-                                ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+                                ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
                                 duration: 800,
                                 loop: 0,
-                                tweens: [
-                                    {
+                                tweens: [{
                                         x: dragItem.x + 10,
                                         ease: 'Bounce',
                                         duration: 50,
@@ -646,9 +763,9 @@ export default class GameScene extends BasicScene {
                                             callback();
 
                                         }
-                                    }]
-                            }
-                            );
+                                    }
+                                ]
+                            });
                             TweenAnimation.play(this);
                         }
                     })
@@ -686,7 +803,6 @@ export default class GameScene extends BasicScene {
         composeSprite.setVisible(false);
 
         composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer, eggItemList);
-
     }
 
     playVoice(leftVoice, rightVoice, callback) {

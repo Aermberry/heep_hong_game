@@ -18,27 +18,27 @@ export default class Game20NavBtn extends BasicBtn {
         super.create(sprite, handler)
         this.onBtnMount()
     }
-    
+
     async onPointerUp() {
         if(typeof this.gamePath == 'string') {
             await this.dataModal.vueRouter.push(this.gamePath)
 
-            const fullscreenConfig = { navigationUI: 'hide' }
-            setTimeout(
-                ()=> {
-                    const elem = document.querySelector('#game-container');
-                    if (elem.requestFullscreen) {
-                        elem.requestFullscreen(fullscreenConfig);
-                    } else if (elem.msRequestFullscreen) {
-                        elem.msRequestFullscreen(fullscreenConfig);
-                    } else if (elem.mozRequestFullScreen) {
-                        elem.mozRequestFullScreen(fullscreenConfig);
-                    } else if (elem.webkitRequestFullscreen) {
-                        elem.webkitRequestFullscreen(fullscreenConfig);
-                    }
-                },
-                500
-            )
+            // const fullscreenConfig = { navigationUI: 'hide' }
+            // setTimeout(
+            //     ()=> {
+            //         const elem = document.querySelector('#game-container');
+            //         if (elem.requestFullscreen) {
+            //             elem.requestFullscreen(fullscreenConfig);
+            //         } else if (elem.msRequestFullscreen) {
+            //             elem.msRequestFullscreen(fullscreenConfig);
+            //         } else if (elem.mozRequestFullScreen) {
+            //             elem.mozRequestFullScreen(fullscreenConfig);
+            //         } else if (elem.webkitRequestFullscreen) {
+            //             elem.webkitRequestFullscreen(fullscreenConfig);
+            //         }
+            //     },
+            //     500
+            // )
         }
 
     }

@@ -48,7 +48,7 @@ export default class TutorScene extends BasicScene {
 
         this._repeatAnimate({tut1, tut2, tut3})
 
-        let exitBtn = new ExitBtn(this, this.getColWidth(1), this.getRowHeight(1.5));
+        let exitBtn = new ExitBtn(this, 100, 120);
         let startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10.5));
         this.add.existing(exitBtn);
         this.add.existing(startBtn);

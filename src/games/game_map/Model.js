@@ -1,26 +1,43 @@
 export default class Model {
-    
+
     constructor(uriParams, vueRouter) {
-        this._vueRouter = vueRouter;
+        this._vueRouter = vueRouter
         this._uriParams = uriParams
         this._isFirstLoad = true
+        this._isZoom  = false
         console.log('uriParams', this._uriParams)
     }
 
     get vueRouter() {
-        return this._vueRouter
+        return this._vueRouter;
     }
 
     get sectionId() {
-        return typeof this._uriParams.sid === 'undefined' ? null : this._uriParams.sid
+        return typeof this._uriParams.sid === 'undefined' ? null : this._uriParams.sid;
     }
 
     get isFirstLoad() {
-        return this._isFirstLoad
+        return this._isFirstLoad;
     }
 
     set isFirstLoad(status) {
-        this._isFirstLoad = status
+        this._isFirstLoad = status;
+    }
+
+    set bgMusicPlaying(value) {
+        this._bgMusicPlaying = value;
+    }
+
+    get bgMusicPlaying() {
+        return this._bgMusicPlaying;
+    }
+
+    get isZoom() {
+        return this._isZoom;
+    }
+
+    set isZoom(value) {
+        this._isZoom = value;
     }
 
 }

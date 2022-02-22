@@ -6,9 +6,11 @@ import PreloaderScene from './scenes/PreloaderScene'
 import TutorScene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
+import UIScene from './scenes/UIScene'
+
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene,TutorScene, GameScene,EndScene]
+    scene: [BootScene, PreloaderScene, TutorScene, GameScene, EndScene, UIScene]
 });
 
 /**
@@ -30,17 +32,20 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
 
 class Game23 extends Phaser.Game {
 
-    constructor(config, urlParams) {
+    constructor(config, urlParams,gtag) {
         super(config);
-        console.log(urlParams)
         
+        this.globals = {
+            gtag: gtag,
+            gameStageIndex:urlParams
+        }
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams,gtag) {
 
-    let game = new Game23(gameConfig, urlParams)
+    let game = new Game23(gameConfig, urlParams,gtag)
 
     return game
 }

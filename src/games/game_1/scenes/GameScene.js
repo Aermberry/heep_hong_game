@@ -7,6 +7,7 @@ import QuestionBase from '../objects/QuestionBase';
 import VoiceBtn from '../objects/VoiceBtn';
 import Tray from '../objects/Tray';
 import VipAlertBoard from '../objects/VipAlertBoard';
+import SpeakerBtn from '../objects/SpeakerBtn';
 
 import Choice from '../assets/json/choice.json';
 import Question from '../assets/json/question.json';
@@ -146,7 +147,7 @@ export default class GameScene extends BasicScene {
   create () {
     let self = this
 
-    this.sys.game.globals.gtag.event(('game_1_start', { 'event_category': 'js_games', 'event_label': 'Game Start' }))
+    this.sys.game.globals.gtag.event('game_1_start', { 'event_category': 'js_games', 'event_label': 'Game Start' })
 
     this.bg.destroy()
 
@@ -163,10 +164,15 @@ export default class GameScene extends BasicScene {
     self.char = self.add.sprite(config.width/2 + 564, config.height/2 - 159, 'Char');
     self.char.play('char_idle');
 
-    self.exitBtn = new ExitBtn(this, 120, 135);
+    self.exitBtn = new ExitBtn(this,  100, 120);
     self.add.image(115, 175, 'ltpBg').setDepth(2);
-    self.exitBtn.setDepth(3)
+    self.exitBtn.setDepth(3);
     self.add.existing(self.exitBtn);
+
+    self.speakerBtn = new SpeakerBtn(this, 1820, 120, this.musicPause.bind(this));
+    self.speakerBtn.setDepth(3);
+    self.add.existing(self.speakerBtn);
+
 
 
     self.new();
@@ -411,6 +417,18 @@ export default class GameScene extends BasicScene {
   end(){
     let self = this
     self.scene.start('End');
+  }
+
+  musicPause() {
+    let self = this
+    if (self.model.bgMusicPlaying){
+      self.bgMusic.mute = true
+      self.model.bgMusicPlaying = false
+    } else {
+      self.bgMusic.mute = false
+      self.model.bgMusicPlaying = true
+    }
+
   }
 
 }

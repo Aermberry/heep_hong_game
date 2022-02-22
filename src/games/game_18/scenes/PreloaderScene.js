@@ -41,7 +41,7 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-            'loading': require('../assets/audio/loading.mp3'),
+            // 'loading': require('../assets/audio/loading.mp3'),
             // 'done': require('../assets/audio/done.mp3'),
             // 'end_pic': require('../assets/audio/end_pic.mp3'),
             // 'Bgm': require('../assets/audio/bgm.mp3'),

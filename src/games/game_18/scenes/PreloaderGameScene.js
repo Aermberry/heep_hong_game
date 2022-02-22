@@ -42,12 +42,32 @@ export default class PreloaderGameScene extends BasicScene {
 
         const soundFiles = {
             'done': require('../assets/audio/done.mp3'),
-            // 'loading': require('../assets/audio/loading.mp3'),
             'end_pic': require('../assets/audio/end_pic.mp3'),
             'Bgm': require('../assets/audio/bgm.mp3'),
             'wrongAudio': require('../assets/audio/wrong.mp3'),
             'yesAudio': require('../assets/audio/yes.mp3'),
-            'build':require('../assets/audio/build.mp3')
+            'build':require('../assets/audio/build.mp3'),
+            'G18_001':require('../assets/audio/G18_001.mp3'),
+            'G18_002':require('../assets/audio/G18_002.mp3'),
+            'G18_003':require('../assets/audio/G18_003.mp3'),
+            'G18_004':require('../assets/audio/G18_004.mp3'),
+            'G18_005':require('../assets/audio/G18_005.mp3'),
+            'G18_006':require('../assets/audio/G18_006.mp3'),
+            'G18_007':require('../assets/audio/G18_007.mp3'),
+            'G18_008':require('../assets/audio/G18_008.mp3'),
+            'G18_009':require('../assets/audio/G18_009.mp3'),
+            'G18_010':require('../assets/audio/G18_010.mp3'),
+            'G18_011':require('../assets/audio/G18_011.mp3'),
+            'G18_012':require('../assets/audio/G18_012.mp3'),
+            'G18_013':require('../assets/audio/G18_013.mp3'),
+            'G18_014':require('../assets/audio/G18_014.mp3'),
+            'G18_015':require('../assets/audio/G18_015.mp3'),
+            'G18_016':require('../assets/audio/G18_016.mp3'),
+            'G18_017':require('../assets/audio/G18_017.mp3'),
+            'G18_018':require('../assets/audio/G18_018.mp3'),
+            'G18_019':require('../assets/audio/G18_019.mp3'),
+            'G18_020':require('../assets/audio/G18_020.mp3')
+
         }
         // self.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'), { frameWidth: 186, frameHeight: 209 });
         // self.load.spritesheet('strBtn', require('../assets/btn_str.png'), { frameWidth: 776, frameHeight: 227 });

@@ -64,14 +64,14 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'house_b',
             delay: 200,
-            frames: this.anims.generateFrameNames('house_b', { prefix: 'house_b', start: 0, end: 24, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('house_b', { prefix: 'house_b', start: 0, end: 9, zeroPad: 4 }),
             // repeat: 1
             duration: 2000
         });
         this.anims.create({
             key: 'house_a',
             delay: 200,
-            frames: this.anims.generateFrameNames('house_a', { prefix: 'house_a', start: 0, end: 24, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('house_a', { prefix: 'house_a', start: 0, end: 11, zeroPad: 4 }),
             // repeat: 1
             duration: 2000
         });
@@ -89,15 +89,15 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         this.buildBg('bg')
-        let exitBtn = new ExitBtn(this, 120, 125);
+        let exitBtn = new ExitBtn(this, 100, 120);
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
-        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.3), 125, this.offSpeaker.bind(this));
+        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.5), 120, this.offSpeaker.bind(this));
         this.bearW = this.add.sprite(this.getColWidth(9), this.getRowHeight(5.8), 'bearW');
         this.bear_job = this.add.sprite(this.getColWidth(9), this.getRowHeight(2.2), 'bear_job');
         this.bear_job.play('bearJob');
         this.add.image(this.getColWidth(3.8), this.getRowHeight(8.5), 'home');
-        this.answers = new Answers(this, this.getColWidth(7.75), this.getRowHeight(5.8), this.currentQuestionGroup[this.currentIndex], this.CompleteAnswerAnimation.bind(this));
+        this.answers = new Answers(this, this.getColWidth(7.75), this.getRowHeight(5.8), this.currentQuestionGroup[this.currentIndex].data, this.CompleteAnswerAnimation.bind(this));
         this.AnswerBox1 = new AnswerBox(this, this.getColWidth(2.6), this.getRowHeight(7.8),);
         this.AnswerBox2 = new AnswerBox(this, this.getColWidth(5.09), this.getRowHeight(7.8),);
         this.done = new Done(this, this.getColWidth(9.5), this.getRowHeight(11), this.completeGame.bind(this))
@@ -149,6 +149,7 @@ export default class GameScene extends BasicScene {
         if (state) {
             let houseNameList = ['house_a','house_b'];
             let houseName = houseNameList[Math.floor((Math.random() * houseNameList.length))];
+            this.sound.play(this.currentQuestionGroup[this.currentIndex].audio);
             this.currentIndex++;
             let house = this.add.sprite(houseName == 'house_a'?this.getColWidth(3.8):this.getColWidth(4), this.getRowHeight(3.7), houseName);
             let yes = this.add.sprite(this.getColWidth(3.8), this.getRowHeight(3.7), 'yes');
@@ -170,7 +171,7 @@ export default class GameScene extends BasicScene {
                         } else {
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
-                    }, 1000
+                    }, 6000
                 )
             });
         } else {

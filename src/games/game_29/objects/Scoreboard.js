@@ -18,7 +18,7 @@ export default class Scoreboard {
         if (this.isGame30) {
             data.forEach((key, i) => {
                 let textureName = key == 'l' ? 'lv3hinsbx1' : key == 't' ? 'lv3hinsbx2' : key == 'r' ? 'lv3hinsbx3' : key == 'a' ? 'lv3hinsbx4' : key == 'p' ? 'lv3hinsbx5' : 'lv3hinsbx6';
-                this.scoreTypeArr.push(new ScoreType(this.scene, this.x + (i == 1 ? 500 : 0), this.y + (i == 2 ? 50 : 0), textureName, this.scene.answer.type[key], key, this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this)))
+                this.scoreTypeArr.push(new ScoreType(this.scene, this.x , this.y + 50 * i, textureName, this.scene.answer.type[key], key, this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this)))
             })
         } else {
             this.time = new ScoreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, 't', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));

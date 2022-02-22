@@ -70,7 +70,7 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'correct_answer',
             delay: 200,
-            frames: this.anims.generateFrameNames('correct_answer', { prefix: 'correct_answer', start: 0, end: 29, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('correct_answer', { prefix: 'Symbol 1', start: 0, end: 9, zeroPad: 4 }),
             repeat: 0
         });
 

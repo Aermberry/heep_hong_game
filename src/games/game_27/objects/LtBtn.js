@@ -15,6 +15,8 @@ export default class LtBtn extends BasicBtn {
         this.scene.subjectItem.list.forEach(item => {
             length += item.width;
         });
+        let audio = this.scene.sound.add('buttonOnClcik');
+        audio.play();
         length = length / 2;
         if (this.scene.subjectItem.x + 100 <= length) {
             let self = this;

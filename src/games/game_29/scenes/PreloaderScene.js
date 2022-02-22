@@ -1,4 +1,5 @@
 import BasicScene from './BasicScene'
+import config from '../config/index';
 
 export default class PreloaderScene extends BasicScene {
 
@@ -51,20 +52,20 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('nextBtn', require('../assets/img/btn_nxtq.png'), { frameWidth: 572, frameHeight: 290 });
 
-        this.load.spritesheet('but_shw_body', require('../assets/img/but5.png'), { frameWidth: 761, frameHeight: 1085 });
-        this.load.spritesheet('but_shw_head', require('../assets/img/but3.png'), { frameWidth: 451, frameHeight: 490 });
-        this.load.spritesheet('but_shw_sol', require('../assets/img/but1.png'), { frameWidth: 254, frameHeight: 318.5 });
-        this.load.spritesheet('but_shw_sor', require('../assets/img/but2.png'), { frameWidth: 263, frameHeight: 330 });
-        this.load.spritesheet('but_shw_wl', require('../assets/img/but4.png'), { frameWidth: 833, frameHeight: 905 });
-        this.load.spritesheet('but_shw_wr', require('../assets/img/but6.png'), { frameWidth: 833, frameHeight: 904 });
+        this.load.spritesheet('but_shw_body', require('../assets/img/but5.png'), { frameWidth: 807, frameHeight: 1177.5 });
+        this.load.spritesheet('but_shw_head', require('../assets/img/but3.png'), { frameWidth: 451, frameHeight: 490.5 });
+        this.load.spritesheet('but_shw_sol', require('../assets/img/but1.png'), { frameWidth: 372, frameHeight: 399.5 });
+        this.load.spritesheet('but_shw_sor', require('../assets/img/but2.png'), { frameWidth: 372, frameHeight: 399.5 });
+        this.load.spritesheet('but_shw_wl', require('../assets/img/but4.png'), { frameWidth: 870, frameHeight: 1007.5 });
+        this.load.spritesheet('but_shw_wr', require('../assets/img/but6.png'), { frameWidth: 870, frameHeight: 1007 });
         this.load.spritesheet('chkmrk', require('../assets/img/chkmrk.png'), { frameWidth: 111, frameHeight: 111 });
 
-        this.load.spritesheet('but_bx1', require('../assets/img/but_tag1.png'), { frameWidth: 247, frameHeight: 323.5 });
-        this.load.spritesheet('but_bx2', require('../assets/img/but_tag3.png'), { frameWidth: 248, frameHeight: 322 });
-        this.load.spritesheet('but_bx3', require('../assets/img/but_tag2.png'), { frameWidth: 248, frameHeight: 309 });
-        this.load.spritesheet('but_bx4', require('../assets/img/but_tag4.png'), { frameWidth: 617, frameHeight: 301 });
-        this.load.spritesheet('but_bx5', require('../assets/img/but_tag5.png'), { frameWidth: 312, frameHeight: 343 });
-        this.load.spritesheet('but_bx6', require('../assets/img/but_tag6.png'), { frameWidth: 427, frameHeight: 242 });
+        this.load.spritesheet('but_bx1', require('../assets/img/but_tag1.png'), { frameWidth: 274, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx2', require('../assets/img/but_tag2.png'), { frameWidth: 274, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx3', require('../assets/img/but_tag3.png'), { frameWidth: 274, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx4', require('../assets/img/but_tag4.png'), { frameWidth: 652, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx5', require('../assets/img/but_tag5.png'), { frameWidth: 365, frameHeight: 354 });
+        this.load.spritesheet('but_bx6', require('../assets/img/but_tag6.png'), { frameWidth: 466, frameHeight: 400.5 });
 
         this.load.spritesheet('hinsbx1', require('../assets/img/hin_box1.png'), { frameWidth: 118, frameHeight: 93 });
         this.load.spritesheet('hinsbx2', require('../assets/img/hin_box2.png'), { frameWidth: 118, frameHeight: 93 });
@@ -83,20 +84,40 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('cha3', require('../assets/img/cha4.png'), { frameWidth: 769, frameHeight: 3132 / 3 });
         this.load.spritesheet('cha2', require('../assets/img/cha5.png'), { frameWidth: 661, frameHeight: 3307 / 3 });
         this.load.spritesheet('cha1', require('../assets/img/cha6.png'), { frameWidth: 1071, frameHeight: 3904 / 3 });
-
+        this.load.spritesheet('speakerBtn', require('../assets/img/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
+        this.load.spritesheet('offSpeakerBtn', require('../assets/img/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
-        this.createProgressBar();
-
-    }
-
-    create() {
-        super.create();
-        setTimeout(
-            () => {
-                this.scene.start('Tutor')
-            }, 1
-        )
-    }
+        let self = this;
+        self.progressBar = self.add.graphics();
+        self.loadingText = self.make.text({
+            x: config.width / 2,
+            y: config.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+        self.loadingText.setOrigin(0.5, 0.5);
+    
+        self.load.on('progress', function (value) {
+          self.progressBar.clear();
+          self.progressBar.fillStyle(0xFC8EFA, 1);
+          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+        });
+    
+        self.load.on('complete', function () {
+          self.loadingText.setText('連接完成');
+          self.ready();
+        }.bind(self));
+    
+      }
+    
+      ready () {
+        let self = this
+        self.scene.start('Tutor');
+      }
+    
 
 }

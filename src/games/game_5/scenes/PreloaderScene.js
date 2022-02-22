@@ -94,7 +94,7 @@ export default class PreloaderScene extends BasicScene {
             'impactSplat': require('../assets/audio/impactsplat05.mp3'),
             'swing': require('../assets/audio/swing3.mp3'),
             'swordUnsheathe': require('../assets/audio/sword-unsheathe5.mp3'),
-            'lightBattle': require('../assets/audio/Light_battle_chopped.mp3'),
+            'lightBattle': require('../assets/audio/light_battle_chopped_2.mp3'),
             'drums': require('../assets/audio/taiko-drums_chopped.mp3'),
             'thwack': require('../assets/audio/thwack-06.mp3'),
             'childClap': require('../assets/audio/child-only-clap.mp3')

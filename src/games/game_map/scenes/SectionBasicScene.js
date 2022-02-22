@@ -26,16 +26,20 @@ export default class SectionBasicScene extends BasicScene {
         })
 
         const loadingCam = this.cameras.add(0, 0, this.cameras.main.width, this.cameras.main.height)
-        loadingCam.ignore(this.bg)
+        loadingCam.ignore([this.bg])
 
         this.cameras.main.pan(this.cameras.main.width * anchor.x, this.cameras.main.height * anchor.y, 1500, 'Linear')
         this.initPromise = new Promise((resolve)=> {
             this.cameras.main.zoomTo(2.5, 1500, 'Linear', false, (camera, progress)=>  {
+                
                 if(progress === 1) {
                     resolve()
                     this.bg.destroy()
                     camera.setZoom(1)
                     camera.centerOn(this.cameras.main.width/2, this.cameras.main.height/2)
+                    this.sys.game.globals.model.isZoom = false
+                } else {
+                    this.sys.game.globals.model.isZoom = true
                 }
             })
         })

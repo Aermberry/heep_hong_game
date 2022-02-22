@@ -7,6 +7,6 @@ export default Object.freeze({
     lightBlue: '0x0ca8a3',
     lightYellow: '0xffe070',
     darkPurple: '0xac2f70',
-    pink: '0xff7bac',
+    pink: '0xFC8EFA',
     grayWhite: '0xF5F5F5'
 })

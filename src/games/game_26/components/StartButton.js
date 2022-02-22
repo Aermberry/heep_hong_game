@@ -31,11 +31,11 @@ export default class StartButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        this.scene.sound.play('buttonOnClickedEffectSound');
+        this.scene.sound.play('buttonEffectSound');
     }
 
     onUpClicked() {
-        this.scene.scene.start('Game');
+        this.scene.scene.start('UI');
     }
 
     _setFullScreen() {

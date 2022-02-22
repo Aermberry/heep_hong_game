@@ -164,12 +164,12 @@ export default class GameScene extends BasicScene {
     self.char = self.add.sprite(config.width/2 + 564, config.height/2 - 159, 'Char');
     self.char.play('char_idle');
 
-    self.exitBtn = new ExitBtn(this, 120, 135);
+    self.exitBtn = new ExitBtn(this,  100, 120);
     self.add.image(115, 175, 'ltpBg').setDepth(2);
     self.exitBtn.setDepth(3);
     self.add.existing(self.exitBtn);
 
-    self.speakerBtn = new SpeakerBtn(this, config.width - 120, 135, this.musicPause.bind(this));
+    self.speakerBtn = new SpeakerBtn(this, 1820, 120, this.musicPause.bind(this));
     self.speakerBtn.setDepth(3);
     self.add.existing(self.speakerBtn);
 

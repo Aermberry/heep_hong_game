@@ -1,21 +1,22 @@
-import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitProgressGameButton'
-import GameManager from '../components/GameManager';
 import {
     createLionLeftRecorderAnimation
 } from "../assets/animations/LionLeftRecorderAnimation";
-import GameSprite from "../phaser3_framework/object/GameSprite";
 import {
     createPenguinAnimation
 } from "../assets/animations/PenguinAnimation";
+import {
+    createPlayerAnimation
+} from "../assets/animations/PlayerAnimation";
+import ClawBox from "../components/ClawBox";
 import EggItem from "../components/EggItem";
 import EggQuestion from "../components/EggQuestion";
-import ClawBox from "../components/ClawBox";
-import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
+import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
-import GameModel from "../game_mode/GameModel";
 import Player from "../components/Player";
-import { createPlayerAnimation } from "../assets/animations/PlayerAnimation";
+import GameModel from "../game_mode/GameModel";
+import GameSprite from "../phaser3_framework/object/GameSprite";
+import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
+import BasicScene from "./BasicScene";
 
 
 export default class GameScene extends BasicScene {
@@ -51,12 +52,6 @@ export default class GameScene extends BasicScene {
         this.buildBackground('backgroundGamePlay');
 
         this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
 
         const soundFiles = {
             'voice0': require('../assets/audio/voice/object/0.mp3'),
@@ -98,29 +93,42 @@ export default class GameScene extends BasicScene {
             'voiceOver1': require('../assets/audio/voice/voice_over/1.mp3'),
         }
 
-        this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), { frameWidth: 612, frameHeight: 770 });
-        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), { frameWidth: 633, frameHeight: 630 });
-        this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), { frameWidth: 2180, frameHeight: 1980 });
+        this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
+            frameWidth: 612,
+            frameHeight: 770
+        });
+        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), {
+            frameWidth: 633,
+            frameHeight: 630
+        });
+        this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), {
+            frameWidth: 2180,
+            frameHeight: 1980
+        });
 
-        this.preloadFromArr({ sound: soundFiles });
+        this.preloadFromArr({
+            sound: soundFiles
+        });
     }
 
     create() {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
-
-        this.sound.stopAll();
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, {
+            'event_category': 'js_games',
+            'event_label': 'Game Start'
+        });
 
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
         this.setGameDirection("right");
 
         this.setWorldBounds();
+
         this.paintScene(question);
 
-        this.playBackgroundMusic('robotArmAppearSoundEffect', 'gamePlaySceneBackgroundMusic');
+
 
     }
 
@@ -137,7 +145,7 @@ export default class GameScene extends BasicScene {
 
 
         } else {
-            x=10;
+            x = 10;
             width = this.cameras.main.width + 19;
             height = this.cameras.main.height - 20;
         }
@@ -145,12 +153,8 @@ export default class GameScene extends BasicScene {
         this.physics.world.setBounds(x, 0, width, height);
     }
 
-    playBackgroundMusic(startSound, backgroundSound) {
+    playBackgroundMusic(startSound, backgroundMusic) {
         const clipDollTableEffectSound = this.sound.add(startSound);
-        const backgroundMusic = this.sound.add(backgroundSound, {
-            volume: 0.1,
-            loop: true
-        });
 
         clipDollTableEffectSound.on('complete', () => {
             backgroundMusic.play();
@@ -215,7 +219,7 @@ export default class GameScene extends BasicScene {
      * 绘制GameScene的所有Ui元素
      */
     paintScene(currentGameQuestion) {
-        
+
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
@@ -227,7 +231,6 @@ export default class GameScene extends BasicScene {
     }
 
     buildUiObject(layer) {
-        const exitButton = new ExitButton(this, 120, 135);
 
         this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
         const lionLeftRecorderSprite = new GameSprite(this, 0, 620, "lionLeftRecorderTexture").setOrigin(0);
@@ -238,7 +241,7 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
+        layer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
     }
 
     buildGameObject(currentGameQuestion, layer) {
@@ -252,9 +255,15 @@ export default class GameScene extends BasicScene {
         let clawBoxPosition;
         let clawAnimationTargetPosition;
 
-        let clawBox = new ClawBox(this, { x: 0, y: 0 }, eggQuestion);
+        let clawBox = new ClawBox(this, {
+            x: 0,
+            y: 0
+        }, eggQuestion);
 
-        let player = new Player(this, { x: 1000, y: 940 }, 'voice' + currentGameQuestion.phrases.main.index, 'voice' + currentGameQuestion.keywordVoiceIndex);
+        let player = new Player(this, {
+            x: 1000,
+            y: 940
+        }, 'voice' + currentGameQuestion.phrases.main.index, 'voice' + currentGameQuestion.keywordVoiceIndex);
 
         /* 以右方向为正方向*/
         if (this.isRightDirection()) {
@@ -264,9 +273,11 @@ export default class GameScene extends BasicScene {
             }
             clawAnimationTargetPosition = 1800;
             clawBox.eggQuestion.setPosition(-200, 0);
-        }
-        else {
-            clawBoxPosition = { x: 0, y: 410 };
+        } else {
+            clawBoxPosition = {
+                x: 0,
+                y: 410
+            };
             clawAnimationTargetPosition = 120;
 
             clawBox.eggQuestion.setPosition(200, 0);
@@ -298,58 +309,19 @@ export default class GameScene extends BasicScene {
         let points = [];
         if (this.isRightDirection()) {
             points = [{
-                x: 276,
-                y: 498
+                x: 522,
+                y: 423
             }, {
-                x: 390,
-                y: 168
-            }, {
-                x: 531,
-                y: 441
-            }, {
-                x: 766,
-                y: 216
-            }, {
-                x: 841,
-                y: 569
-            }, {
-                x: 1053,
-                y: 350
-            }, {
-                x: 1207,
-                y: 569
-            }, {
-                x: 1334,
-                y: 265
+                x: 1005,
+                y: 450
             }];
         } else {
             points = [{
-                x: 622,
-                y: 503
+                x: 522,
+                y: 423
             }, {
-                x: 794,
-                y: 285
-            }, {
-                x: 894,
-                y: 629
-            }, {
-                x: 1114,
-                y: 404
-            }, {
-                x: 1352,
-                y: 292
-            }, {
-                x: 1341,
-                y: 606
-            }, {
-                x: 1588,
-                y: 411
-            }, {
-                x: 1754,
-                y: 212
-            }, {
-                x: 1720,
-                y: 662
+                x: 1005,
+                y: 450
             }];
         }
         return this.shufflePosition(points);
@@ -365,7 +337,10 @@ export default class GameScene extends BasicScene {
             const phrase = phrases[index];
 
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
-            this.time.addEvent({ delay: index * 500, callback: () => eggItem.playFLoatTweenAnimation() });
+            this.time.addEvent({
+                delay: index * 500,
+                callback: () => eggItem.playFLoatTweenAnimation()
+            });
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
@@ -389,11 +364,17 @@ export default class GameScene extends BasicScene {
                     rightItem = dragItem;
                 }
 
-                console.log({ leftItem });
-                console.log({ rightItem });
+                console.log({
+                    leftItem
+                });
+                console.log({
+                    rightItem
+                });
 
                 this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
-                console.log({ "GameModel": GameModel.questionCount })
+                console.log({
+                    "GameModel": GameModel.questionCount
+                })
             });
 
             colliderList.push(collider);
@@ -448,7 +429,7 @@ export default class GameScene extends BasicScene {
 
                             leftVoicePlayer.on('complete', () => {
                                 this.time.addEvent({
-                                    delay: 1000,                // ms
+                                    delay: 1000, // ms
                                     callback: () =>
                                         this.scene.start(isLastQuestion ? 'End' : 'Game')
                                 });
@@ -482,14 +463,17 @@ export default class GameScene extends BasicScene {
                         delay: 2000,
                         callback: () => {
                             this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
-                            this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
+                            this.errorImageList.forEach((errorImage) => {
+                                errorImage.setVisible(false);
+                                errorImage.destroy()
+                            });
                             currentAnswerItem.showSuccessStatus();
 
                             const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.index);
 
                             currentQuestionAnswerPlayer.on('complete', () => {
                                 this.time.addEvent({
-                                    delay: 1000,                // ms
+                                    delay: 1000, // ms
                                     callback: () => {
                                         value ? this.scene.start('End') : this.scene.restart('Game');
                                     }
@@ -513,8 +497,7 @@ export default class GameScene extends BasicScene {
                 x: dragItem.x + 50,
                 y: dragItem.y - 150
             }
-        }
-        else {
+        } else {
             errorImagePoint = {
                 x: dragItem.x - 100,
                 y: dragItem.y - 150
@@ -522,11 +505,13 @@ export default class GameScene extends BasicScene {
         }
 
 
-
         let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
-        this.gameLayer.add(errorImage);
 
         this.errorImageList.push(errorImage);
+
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+
+        eggItemsContainer.add(errorImage)
 
         this.penguinSprite.play("penguinFallDown");
 
@@ -546,11 +531,10 @@ export default class GameScene extends BasicScene {
                         callback: () => {
                             TweenAnimation.setTweenAnimation({
                                 targets: dragItem,
-                                ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+                                ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
                                 duration: 800,
                                 loop: 0,
-                                tweens: [
-                                    {
+                                tweens: [{
                                         x: dragItem.x + 10,
                                         ease: 'Bounce',
                                         duration: 50,
@@ -569,9 +553,9 @@ export default class GameScene extends BasicScene {
                                             callback();
 
                                         }
-                                    }]
-                            }
-                            );
+                                    }
+                                ]
+                            });
                             TweenAnimation.play(this);
                         }
                     })

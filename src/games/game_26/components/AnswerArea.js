@@ -104,13 +104,12 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
             duration: 5000,
             ease: 'Power2',
             onComplete: () => {
-
                 this.SetEnableInput();
             }
         });
         scene.add.tween({
             targets: this.phraseLabelsContainer,
-            y: { from: 1200, to: 0 },
+            y: { from: 1200, to: 140 },
             scale: { from: 0.5, to: 1 },
             alpha: { from: 0.5, to: 1 },
             duration: 6000,

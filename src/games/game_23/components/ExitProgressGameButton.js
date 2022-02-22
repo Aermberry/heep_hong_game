@@ -5,7 +5,7 @@ export default class ExitButton extends BasicButton {
 
     super(scene, x, y,children);
 
-    let sprite =  scene.add.sprite(0, 0, 'gameProgressExitBtn')
+    let sprite =  scene.add.sprite(0, 0, 'gameProgressExitBtn').setScale(0.8);
     this.create(sprite,this.onClick.bind(this))
 
   }
@@ -15,7 +15,10 @@ export default class ExitButton extends BasicButton {
   }
 
   down(clickEvent) {
+    
+    this.scene.sound.play('buttonEffectSound');
     this.origSprite.setFrame(1)
+
     super.down(clickEvent)
   }
 }

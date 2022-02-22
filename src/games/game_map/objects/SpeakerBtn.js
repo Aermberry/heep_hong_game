@@ -9,6 +9,7 @@ export default class SpeakerBtn extends BasicBtn {
       this.scene.gameMusic.play()
     }
     this.sprite =  scene.add.sprite(0, 0, this.scene.dataModel.bgMusicPlaying ? 'speakerBtn' : 'offSpeakerBtn')
+    this.sprite.setScale(0.8)
     this.create(this.sprite,this.onClick.bind(this))
 
   }

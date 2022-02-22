@@ -14,21 +14,8 @@ export default class PreloaderScene extends BasicScene {
     preload() {
         this.buildBackground('backgroundPreloadingScene');
 
-        this.progressLoader = new LoadProgress(this);
-        this.progressLoader.create();
-
-        this.load.on('progress', (params) => {
-            this.progressLoader.onLoadProgress(params)
-        }
-        );
-
-        this.load.on('complete', (loader, totalComplete, totalFailed) => {
-
-            this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Tutor');
-
-            // this.progressLoader.onLoadComplete(loader, totalComplete, totalFailed, this, 'Game');
-        });
-
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
+        
         const imageFiles = {
             'backgroundTutorEnd': require('../assets/images/background_tutor_end.png'),
             'backgroundGamePlay': require('../assets/images/background_game_play_scene.png'),
@@ -76,13 +63,25 @@ export default class PreloaderScene extends BasicScene {
             'textureObject34': require('../assets/images/objects/texture_item_objects/texture_object_34.png'),
             'textureObject35': require('../assets/images/objects/texture_item_objects/texture_object_35.png'),
             'textureObject36': require('../assets/images/objects/texture_item_objects/texture_object_36.png'),
-           
+
         };
 
         const atlasFiles = {
             'tutorTexture': {
                 img: require('../assets/atlas/atlas_tutor.png'), data: require('../assets/atlas/atlas_tutor.json')
             },
+             'tutorTexture01': {
+                 img: require('../assets/atlas/atlas_tutor01.png'),
+                 data: require('../assets/atlas/atlas_tutor01.json')
+             },
+             'tutorTexture02': {
+                 img: require('../assets/atlas/atlas_tutor02.png'),
+                 data: require('../assets/atlas/atlas_tutor02.json')
+             },
+             'tutorTexture03': {
+                 img: require('../assets/atlas/atlas_tutor03.png'),
+                 data: require('../assets/atlas/atlas_tutor03.json')
+             },
             'penguinTexture': {
                 img: require('../assets/atlas/atlas_penguin.png'), data: require('../assets/atlas/atlas_penguin.json')
             },
@@ -113,8 +112,10 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
         this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
         this.load.spritesheet('voiceButton', require('../assets/images/button_voice.png'), { frameWidth: 186, frameHeight: 210 });
+        this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
 
-       
+
 
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });

@@ -70,8 +70,8 @@ export default class Section5Scene extends SectionBasicScene {
 
     populateSection() {
 
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
         // const gameBtn1 = new GameNavBtn(this, this.getColWidth(5.7), this.getRowHeight(5.3), 's5btn1', '/game/20')
         const gameBtn1 = new Game20NavBtn(this, this.getColWidth(5.7), this.getRowHeight(5.3), 's5btn1', '/game/20')
         const hintBtn = new HintBtn(this, this.getColWidth(7.3), this.getRowHeight(4.6), [gameBtn1], 's5HintLogo')

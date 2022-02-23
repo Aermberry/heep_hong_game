@@ -71,7 +71,7 @@ export default class BasicScene extends Phaser.Scene {
 
     }
 
-    createProgressBar() {
+    createProgressBar(zoom = true) {
         this.load.on('progress', this.onLoadProgress, this)
         this.load.on('complete', this.onLoadComplete, this)
 
@@ -99,7 +99,9 @@ export default class BasicScene extends Phaser.Scene {
 
         this.loadingText.setOrigin(0.5, 0.5)
 
-        this.cameras.main.ignore([ this.loadingBar, this.loadingText ])
+        if(zoom){
+            this.cameras.main.ignore([ this.loadingBar, this.loadingText ])
+        }
 
     }
 

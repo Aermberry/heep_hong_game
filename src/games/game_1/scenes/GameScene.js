@@ -323,16 +323,17 @@ export default class GameScene extends BasicScene {
 
       if(!this.stageRepeat) {
         this.stageRepeat = true
+
       }else {
         this.stageRepeat = false
-        self.tray = new Tray(self,config.width/2 + 564, 300);
-        self.add.existing(self.tray);
-        self.tray.init(itemsName,correct);
-
         self.model.stage++;
       }
 
       self.wrong();
+
+      self.tray = new Tray(self,config.width/2 + 564, 300);
+      self.add.existing(self.tray);
+      self.tray.init(itemsName,correct);
     }
 
     self.tweens.add({
@@ -375,10 +376,10 @@ export default class GameScene extends BasicScene {
     const soundEffect = self.sound.add('wrong')
     soundEffect.play()
     self.char.play('char_sad').once("animationcomplete", function(){
-      soundEffectCompleted = true
+      animationCompleted = true
     })
     soundEffect.on('complete', function(){
-      animationCompleted = true
+      soundEffectCompleted = true
     })
     const interval = setInterval(function() {
       if (soundEffectCompleted && animationCompleted) {

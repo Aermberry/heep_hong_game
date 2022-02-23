@@ -58,7 +58,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('but_shw_sor', require('../assets/img/but2.png'), { frameWidth: 372, frameHeight: 399.5 });
         this.load.spritesheet('but_shw_wl', require('../assets/img/but4.png'), { frameWidth: 870, frameHeight: 1007.5 });
         this.load.spritesheet('but_shw_wr', require('../assets/img/but6.png'), { frameWidth: 870, frameHeight: 1007 });
-        this.load.spritesheet('chkmrk', require('../assets/img/chkmrk.png'), { frameWidth: 111, frameHeight: 111 });
+        this.load.spritesheet('chkmrk', require('../assets/img/chkmrk.png'), { frameWidth: 151, frameHeight: 150.5 });
 
         this.load.spritesheet('but_bx1', require('../assets/img/but_tag1.png'), { frameWidth: 274, frameHeight: 400.5 });
         this.load.spritesheet('but_bx2', require('../assets/img/but_tag2.png'), { frameWidth: 274, frameHeight: 400.5 });

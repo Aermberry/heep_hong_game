@@ -5,11 +5,9 @@ export default class StartBtn extends BasicBtn {
     super(scene, x, y, children)
 
     let sprite = scene.add.sprite(0, 0, 'strBtn')
-    this.music = scene.sound.add('loading');
-    this.music.setLoop(true);
-    this.music.play();
+
     this.create(sprite, this.onClick.bind(this))
-    this.goFullscreenOnClick();
+    // this.goFullscreenOnClick();
   }
 
   onClick() {

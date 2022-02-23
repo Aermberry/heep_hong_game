@@ -37,9 +37,9 @@ export default class TutorSecene extends BasicScene {
         //Stop all sound, because game will return to this scene on retry.
         // this.sound.stopAll();
 
-        let tut1 = this.add.sprite(this.getColWidth(3), this.getRowHeight(3.5), 'tut_1')
-        let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(5.5), 'tut_2')
-        let tut3 = this.add.sprite(this.getColWidth(9), this.getRowHeight(3.5), 'tut_3')
+        let tut1 = this.add.sprite(this.getColWidth(3.5), this.getRowHeight(3.5), 'tut_1')
+        let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(5), 'tut_2')
+        let tut3 = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(3.5), 'tut_3')
 
         this._repeatAnimate({tut1, tut2, tut3})
         

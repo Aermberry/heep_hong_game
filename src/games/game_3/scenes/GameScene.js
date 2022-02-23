@@ -409,7 +409,7 @@ export default class GameScene extends BasicScene {
 
         this.penguinSprite.play("penguinHappy");
         const correctSoundEffect = this.sound.add('correctSoundEffect');
-
+        this.setCorrectSprite(leftItem);
         correctSoundEffect.on('complete', () => {
             GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({
@@ -482,6 +482,14 @@ export default class GameScene extends BasicScene {
         });
     }
 
+    setCorrectSprite(dragItem) {
+        let correctImage = this.add.image(dragItem.x+100 , dragItem.y, "correctTexture");
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+
+        eggItemsContainer.add(correctImage);
+
+    }
+
     setErrorSprite(dragItem, targetItem, eggItems, callback) {
         let errorImagePoint;
         if (this.isRightDirection()) {
@@ -496,13 +504,13 @@ export default class GameScene extends BasicScene {
             }
         }
 
-           let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
+        let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
 
-           this.errorImageList.push(errorImage);
+        this.errorImageList.push(errorImage);
 
-           const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
 
-           eggItemsContainer.add(errorImage)
+        eggItemsContainer.add(errorImage)
 
         this.penguinSprite.play("penguinFallDown");
 
@@ -526,25 +534,25 @@ export default class GameScene extends BasicScene {
                                 duration: 800,
                                 loop: 0,
                                 tweens: [{
-                                        x: dragItem.x + 10,
-                                        ease: 'Bounce',
-                                        duration: 50,
-                                        repeat: 5,
-                                        yoyo: true
-                                    },
-                                    {
-                                        x: dragItem.originPoint.x,
-                                        y: dragItem.originPoint.y,
-                                        onComplete: () => {
-                                            errorImage.setPosition(dragItem.x, dragItem.y);
-                                            this.sound.add("loseSoundEffect").play();
-                                            errorImage.setVisible(true);
-                                            targetItem.resetStatue();
-                                            this.penguinSprite.play("penguinIdle");
-                                            callback();
+                                    x: dragItem.x + 10,
+                                    ease: 'Bounce',
+                                    duration: 50,
+                                    repeat: 5,
+                                    yoyo: true
+                                },
+                                {
+                                    x: dragItem.originPoint.x,
+                                    y: dragItem.originPoint.y,
+                                    onComplete: () => {
+                                        errorImage.setPosition(dragItem.x, dragItem.y);
+                                        this.sound.add("loseSoundEffect").play();
+                                        errorImage.setVisible(true);
+                                        targetItem.resetStatue();
+                                        this.penguinSprite.play("penguinIdle");
+                                        callback();
 
-                                        }
                                     }
+                                }
                                 ]
                             });
                             TweenAnimation.play(this);

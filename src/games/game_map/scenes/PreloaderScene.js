@@ -65,7 +65,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('section6Btn', require('../assets/images/buttons/6a.png'), { frameWidth: 670, frameHeight: 460 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
-        this.createProgressBar()
+        this.createProgressBar(false)
 
     }
 

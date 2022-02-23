@@ -1,5 +1,4 @@
 import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitProgressGameButton'
 import GameManager from '../components/GameManager';
 import {
     createLionLeftRecorderAnimation
@@ -15,7 +14,6 @@ import ComposeSprite from "../components/ComposeSprite";
 import Phaser from "phaser";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import LoadProgress from "../components/LoadProgress";
-import BackgroundMusicButtonButton from "../components/BackgroundMusicButton";
 
 
 export default class GameScene extends BasicScene {
@@ -123,51 +121,155 @@ export default class GameScene extends BasicScene {
             'voiceItemObject36': require('../assets/audio/voice/item_objects/voice_item_object_36.mp3'),
         }
 
-        this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), { frameWidth: 612, frameHeight: 770 });
-        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), { frameWidth: 633, frameHeight: 630 });
-        this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), { frameWidth: 2180, frameHeight: 1980 });
+        this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
+            frameWidth: 612,
+            frameHeight: 770
+        });
+        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), {
+            frameWidth: 633,
+            frameHeight: 630
+        });
+        this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), {
+            frameWidth: 2180,
+            frameHeight: 1980
+        });
 
-        this.load.spritesheet("textureAnswerObject0", require('../assets/images/objects/texture_answer_objects/texture_answer_object_0.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject1", require('../assets/images/objects/texture_answer_objects/texture_answer_object_1.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject2", require('../assets/images/objects/texture_answer_objects/texture_answer_object_2.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject3", require('../assets/images/objects/texture_answer_objects/texture_answer_object_3.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject4", require('../assets/images/objects/texture_answer_objects/texture_answer_object_4.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject5", require('../assets/images/objects/texture_answer_objects/texture_answer_object_5.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject6", require('../assets/images/objects/texture_answer_objects/texture_answer_object_6.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject7", require('../assets/images/objects/texture_answer_objects/texture_answer_object_7.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject8", require('../assets/images/objects/texture_answer_objects/texture_answer_object_8.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject9", require('../assets/images/objects/texture_answer_objects/texture_answer_object_9.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject10", require('../assets/images/objects/texture_answer_objects/texture_answer_object_10.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject11", require('../assets/images/objects/texture_answer_objects/texture_answer_object_11.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject12", require('../assets/images/objects/texture_answer_objects/texture_answer_object_12.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject13", require('../assets/images/objects/texture_answer_objects/texture_answer_object_13.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject14", require('../assets/images/objects/texture_answer_objects/texture_answer_object_14.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject15", require('../assets/images/objects/texture_answer_objects/texture_answer_object_15.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject16", require('../assets/images/objects/texture_answer_objects/texture_answer_object_16.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject17", require('../assets/images/objects/texture_answer_objects/texture_answer_object_17.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject18", require('../assets/images/objects/texture_answer_objects/texture_answer_object_18.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject19", require('../assets/images/objects/texture_answer_objects/texture_answer_object_19.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject20", require('../assets/images/objects/texture_answer_objects/texture_answer_object_20.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject21", require('../assets/images/objects/texture_answer_objects/texture_answer_object_21.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject22", require('../assets/images/objects/texture_answer_objects/texture_answer_object_22.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject23", require('../assets/images/objects/texture_answer_objects/texture_answer_object_23.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject24", require('../assets/images/objects/texture_answer_objects/texture_answer_object_24.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject25", require('../assets/images/objects/texture_answer_objects/texture_answer_object_25.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject26", require('../assets/images/objects/texture_answer_objects/texture_answer_object_26.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject27", require('../assets/images/objects/texture_answer_objects/texture_answer_object_27.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject28", require('../assets/images/objects/texture_answer_objects/texture_answer_object_28.png'), { frameWidth: 636, frameHeight: 630 });
-        this.load.spritesheet("textureAnswerObject29", require('../assets/images/objects/texture_answer_objects/texture_answer_object_29.png'), { frameWidth: 636, frameHeight: 630 });
+        this.load.spritesheet("textureAnswerObject0", require('../assets/images/objects/texture_answer_objects/texture_answer_object_0.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject1", require('../assets/images/objects/texture_answer_objects/texture_answer_object_1.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject2", require('../assets/images/objects/texture_answer_objects/texture_answer_object_2.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject3", require('../assets/images/objects/texture_answer_objects/texture_answer_object_3.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject4", require('../assets/images/objects/texture_answer_objects/texture_answer_object_4.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject5", require('../assets/images/objects/texture_answer_objects/texture_answer_object_5.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject6", require('../assets/images/objects/texture_answer_objects/texture_answer_object_6.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject7", require('../assets/images/objects/texture_answer_objects/texture_answer_object_7.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject8", require('../assets/images/objects/texture_answer_objects/texture_answer_object_8.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject9", require('../assets/images/objects/texture_answer_objects/texture_answer_object_9.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject10", require('../assets/images/objects/texture_answer_objects/texture_answer_object_10.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject11", require('../assets/images/objects/texture_answer_objects/texture_answer_object_11.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject12", require('../assets/images/objects/texture_answer_objects/texture_answer_object_12.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject13", require('../assets/images/objects/texture_answer_objects/texture_answer_object_13.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject14", require('../assets/images/objects/texture_answer_objects/texture_answer_object_14.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject15", require('../assets/images/objects/texture_answer_objects/texture_answer_object_15.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject16", require('../assets/images/objects/texture_answer_objects/texture_answer_object_16.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject17", require('../assets/images/objects/texture_answer_objects/texture_answer_object_17.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject18", require('../assets/images/objects/texture_answer_objects/texture_answer_object_18.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject19", require('../assets/images/objects/texture_answer_objects/texture_answer_object_19.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject20", require('../assets/images/objects/texture_answer_objects/texture_answer_object_20.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject21", require('../assets/images/objects/texture_answer_objects/texture_answer_object_21.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject22", require('../assets/images/objects/texture_answer_objects/texture_answer_object_22.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject23", require('../assets/images/objects/texture_answer_objects/texture_answer_object_23.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject24", require('../assets/images/objects/texture_answer_objects/texture_answer_object_24.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject25", require('../assets/images/objects/texture_answer_objects/texture_answer_object_25.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject26", require('../assets/images/objects/texture_answer_objects/texture_answer_object_26.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject27", require('../assets/images/objects/texture_answer_objects/texture_answer_object_27.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject28", require('../assets/images/objects/texture_answer_objects/texture_answer_object_28.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
+        this.load.spritesheet("textureAnswerObject29", require('../assets/images/objects/texture_answer_objects/texture_answer_object_29.png'), {
+            frameWidth: 636,
+            frameHeight: 630
+        });
 
-        this.preloadFromArr({ sound: soundFiles });
+        this.preloadFromArr({
+            sound: soundFiles
+        });
     }
 
     create() {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, {
+            'event_category': 'js_games',
+            'event_label': 'Game Start'
+        });
 
-        this.sound.stopAll();
+        // this.sound.stopAll();
 
         // console.log({ "eachQuestionChance": GameModel.eachQuestionChance })
         // console.log({ "currentQuestionErrorCount": GameModel.currentQuestionErrorCount })
@@ -177,15 +279,8 @@ export default class GameScene extends BasicScene {
         this.setGameDirection(question.direction);
 
         this.setWorldBounds();
-
-        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
-            volume: 0.2,
-            loop: true
-        });
-
-        this.paintScene(question, backgroundMusic);
-
-        this.playBackgroundMusic('robotArmAppearSoundEffect', backgroundMusic);
+        
+        this.paintScene(question);
 
     }
 
@@ -208,19 +303,6 @@ export default class GameScene extends BasicScene {
 
         this.physics.world.setBounds(x, 0, width, height);
     }
-
-    playBackgroundMusic(startSound, backgroundMusic) {
-
-        const clipDollTableEffectSound = this.sound.add(startSound);
-
-        clipDollTableEffectSound.on('complete', () => {
-            backgroundMusic.play();
-
-        })
-
-        clipDollTableEffectSound.play();
-    }
-
 
     createAnimation(animationManager) {
         createLionLeftRecorderAnimation(animationManager);
@@ -274,7 +356,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintScene(currentGameQuestion, backgroundMusic) {
+    paintScene(currentGameQuestion) {
 
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
@@ -282,15 +364,15 @@ export default class GameScene extends BasicScene {
 
 
         /* UI Object */
-        this.buildUiObject(this.uiLayer, backgroundMusic);
+        this.buildUiObject(this.uiLayer);
 
         /* Game Object */
         this.buildGameObject(currentGameQuestion, this.gameLayer);
     }
 
-    buildUiObject(layer, backgroundMusic) {
-        const exitButton = new ExitButton(this, 100, 120);
-        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
+    buildUiObject(layer) {
+        // const exitButton = new ExitButton(this, 100, 120);
+        // const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
 
 
         this.penguinSprite = new GameSprite(this, 1375, 720, "penguinTexture").setOrigin(0);
@@ -302,7 +384,7 @@ export default class GameScene extends BasicScene {
         lionLeftRecorderSprite.play('lionLeftRecorderAnimation');
         this.penguinSprite.play('penguinIdle');
 
-        layer.add([this.buildBackground('backgroundGamePlay'), exitButton, lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite, backgroundMusicButton]);
+        layer.add([this.buildBackground('backgroundGamePlay'), lionLeftRecorderSprite, uiEgg, uiRecorder, this.penguinSprite]);
     }
 
     buildGameObject(currentGameQuestion, layer) {
@@ -315,21 +397,30 @@ export default class GameScene extends BasicScene {
         let clawBoxPosition;
         let clawAnimationTargetPosition;
 
-        let clawBox = new ClawBox(this, { x: 0, y: 0 }, eggQuestion);
+        let clawBox = new ClawBox(this, {
+            x: 0,
+            y: 0
+        }, eggQuestion);
 
         /* 以右方向为正方向*/
         if (this.isRightDirection()) {
-            console.log({ direction: currentGameQuestion.direction });
+            console.log({
+                direction: currentGameQuestion.direction
+            });
             clawBoxPosition = {
                 x: 2200,
                 y: 410
             }
             clawAnimationTargetPosition = 1800;
             clawBox.eggQuestion.setPosition(-200, 0);
-        }
-        else {
-            console.log({ direction: currentGameQuestion.direction });
-            clawBoxPosition = { x: 0, y: 410 };
+        } else {
+            console.log({
+                direction: currentGameQuestion.direction
+            });
+            clawBoxPosition = {
+                x: 0,
+                y: 410
+            };
             clawAnimationTargetPosition = 120;
 
             clawBox.eggQuestion.setPosition(200, 0);
@@ -408,7 +499,10 @@ export default class GameScene extends BasicScene {
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
             const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, true);
-            this.time.addEvent({ delay: index * 500, callback: () => eggItem.playFLoatTweenAnimation() });
+            this.time.addEvent({
+                delay: index * 500,
+                callback: () => eggItem.playFLoatTweenAnimation()
+            });
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
                 let leftItem;
@@ -556,7 +650,10 @@ export default class GameScene extends BasicScene {
 
                             } else {
                                 this.errorItemList.forEach((errorItem) => errorItem.resetStatue());
-                                this.errorImageList.forEach((errorImage) => { errorImage.setVisible(false); errorImage.destroy() });
+                                this.errorImageList.forEach((errorImage) => {
+                                    errorImage.setVisible(false);
+                                    errorImage.destroy()
+                                });
                                 currentAnswer.showSuccessStatus();
 
                                 this.time.addEvent({
@@ -610,8 +707,7 @@ export default class GameScene extends BasicScene {
                 x: dragItem.x + 50,
                 y: dragItem.y - 150
             }
-        }
-        else {
+        } else {
             errorImagePoint = {
                 x: dragItem.x - 100,
                 y: dragItem.y - 150
@@ -621,9 +717,12 @@ export default class GameScene extends BasicScene {
 
 
         let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
-        this.gameLayer.add(errorImage);
 
         this.errorImageList.push(errorImage);
+
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+
+        eggItemsContainer.add(errorImage)
 
         this.penguinSprite.play("penguinFallDown");
 
@@ -643,11 +742,10 @@ export default class GameScene extends BasicScene {
                         callback: () => {
                             TweenAnimation.setTweenAnimation({
                                 targets: dragItem,
-                                ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+                                ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
                                 duration: 800,
                                 loop: 0,
-                                tweens: [
-                                    {
+                                tweens: [{
                                         x: dragItem.x + 10,
                                         ease: 'Bounce',
                                         duration: 50,
@@ -665,9 +763,9 @@ export default class GameScene extends BasicScene {
                                             callback();
 
                                         }
-                                    }]
-                            }
-                            );
+                                    }
+                                ]
+                            });
                             TweenAnimation.play(this);
                         }
                     })

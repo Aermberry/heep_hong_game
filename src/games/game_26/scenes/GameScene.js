@@ -1,16 +1,14 @@
-import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitProgressGameButton'
 import {
     createEggTwistingMachineAnimation
 } from '../assets/animations/EggTwistingMachineAnimation';
 import {
     createStarAnimation
 } from '../assets/animations/StarAnimation';
-import GameSprite from '../components/GameSprite';
-import GameManager from '../components/GameManager';
 import AnswerArea from "../components/AnswerArea";
-import BackgroundMusicButtonButton from "../components/BackgroundMusicButton";
+import GameManager from '../components/GameManager';
+import GameSprite from '../components/GameSprite';
 import LoadProgress from "../components/LoadProgress";
+import BasicScene from "./BasicScene";
 
 export default class GameScene extends BasicScene {
 
@@ -67,24 +65,13 @@ export default class GameScene extends BasicScene {
 
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
-        this.sound.stopAll();
-
         createEggTwistingMachineAnimation(this.anims);
         createStarAnimation(this.anims);
 
-        const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
-            volume: 0.2,
-            loop: true
-        });
+        this.paintGameScene();
 
-        this.paintGameScene(backgroundMusic);
-
-        this.playBackgroundMusic(backgroundMusic);
     }
 
-    playBackgroundMusic(backgroundMusic) {
-        backgroundMusic.play();
-    }
 
     /**
      * generate a question from the local question data
@@ -122,7 +109,7 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintGameScene(backgroundMusic) {
+    paintGameScene() {
 
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
@@ -144,12 +131,8 @@ export default class GameScene extends BasicScene {
         }
 
 
-
-        let exitButton = new ExitButton(this, 100, 120);
-        const backgroundMusicButton = new BackgroundMusicButtonButton(this, 1820, 120, backgroundMusic);
-
-        this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite, backgroundMusicButton]);
-        this.gameLayer.add([exitButton, this.answerArea]);
+        this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite]);
+        this.gameLayer.add([this.answerArea]);
     }
 
 

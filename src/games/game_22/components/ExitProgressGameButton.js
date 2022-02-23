@@ -1,6 +1,6 @@
 import BasicButton from './BasicButton';
 
-export default class ExitButton extends BasicButton {
+export default class ExitProgressGameButton extends BasicButton {
   constructor(scene, x, y, children) {
 
     super(scene, x, y, children);

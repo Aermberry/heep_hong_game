@@ -37,17 +37,18 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
     paintPhraseLabels(scene, preposition, phrases, gameObject) {
 
         let points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 557 }];
+        
+        const prepositionLabelBoxPoint = points[1];
+        points.splice(1,1);
 
         points = this.ShufflePosition(points);
 
         let container = scene.add.container(0, 1200);
 
         const prepositionIndexPosition = phrases.indexOf(preposition);
-        const prepositionLabelBoxPoint = points[prepositionIndexPosition];
-
+      
         let phraseLabelBoxPoints = Array.from(points);
         phrases.splice(prepositionIndexPosition, 1);
-        phraseLabelBoxPoints.splice(prepositionIndexPosition, 1);
 
         if (prepositionLabelBoxPoint != null) {
             container.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle, gameObject));

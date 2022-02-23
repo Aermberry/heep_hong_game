@@ -24,7 +24,8 @@ export default class PreloaderScene extends BasicScene {
             'stageBigTooth': require('../assets/images/stage_big_tooth.png'),
             'bgProgressGame': require('../assets/images/bg_progress_game.png'),
             'stageSmallTooth': require('../assets/images/stage_small_tooth.png'),
-            'bgGameFailed': require('../assets/images/bg_game_failed.png')
+            'bgGameFailed': require('../assets/images/bg_game_failed.png'),
+            'errorImage': require('../assets/images/image_error.png')
         };
 
         const atlasFiles = {
@@ -45,7 +46,7 @@ export default class PreloaderScene extends BasicScene {
                 img: require('../assets/atlas/animation_tutor03.png'),
                 data: require('../assets/atlas/animation_tutor03.json'),
             },
-        }
+        };
 
         const soundFiles = {
             'buttonEffectSound': require('../assets/audio/sound_effect/sound_effect_button_on_clicked.mp3'),
@@ -80,7 +81,7 @@ export default class PreloaderScene extends BasicScene {
             'voiceAnswer17': require('../assets/audio/voice/voice_answer_17.mp3'),
             'voiceAnswer18': require('../assets/audio/voice/voice_answer_18.mp3'),
             'voiceAnswer19': require('../assets/audio/voice/voice_answer_19.mp3'),
-        }
+        };
 
         this.load.spritesheet('startButton', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
         this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
@@ -92,10 +93,9 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('rightButton', require('../assets/images/btn_right_move.png'), { frameWidth: 256, frameHeight: 277 });
         this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
         this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
-
+        this.load.spritesheet('showAnswerButton', require('../assets/images/button_show_answer.png'), { frameWidth: 1203, frameHeight: 250 });
 
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
-
     }
 
 

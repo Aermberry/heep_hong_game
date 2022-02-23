@@ -27,13 +27,13 @@ build:node:
   before_script:
     - npm install
   script:
-    - npx browserslist@latest --update-db
+  #  - npx browserslist@latest --update-db
     - npm run build
   only:
     - master
   artifacts:
     name: "$CI_JOB_STAGE-$CI_COMMIT_REF_NAME"
-    paths: 
+    paths:
       - 'dist/*'
     expire_in: 1 day
     when: always

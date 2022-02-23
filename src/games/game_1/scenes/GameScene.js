@@ -34,17 +34,13 @@ export default class GameScene extends BasicScene {
 
     this.buildBg('bootBg')
 
-    // let stageBg = self.add.image(config.width/2, config.height/2, 'stageBg').setOrigin(.5, .5)
-    // stageBg.setDisplaySize(config.width, config.height)
+    // this.bgMusic = this.sound.add('bgMusic', { volume: 0.2, loop: true });
+    // this.model.bgMusicPlaying = true;
+    // this.sys.game.globals.bgMusic = this.bgMusic;
 
-    // this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
-
-    //if (self.model.musicOn === true && self.model.bgMusicPlaying === false) {
-      self.bgMusic = self.sound.add('bgMusic', { volume: 0.2, loop: true });
-      self.bgMusic.play();
-      self.model.bgMusicPlaying = true;
-      self.sys.game.globals.bgMusic = self.bgMusic;
-    //}
+    let gameMusic = this.sound.add('bgMusic')
+    gameMusic.setLoop(true)
+    this.model.bgMusicPlaying = true
 
     let imageFiles = {
       'l2Tut0': require('../assets/lv2_tut_0.png'),
@@ -152,6 +148,11 @@ export default class GameScene extends BasicScene {
     this.bg.destroy()
 
     this.buildBg('stageBg')
+
+    this.sound.stopAll()
+    if (this.model.bgMusicPlaying){
+        this.sound.play('bgMusic')
+    }
 
     this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
 
@@ -323,16 +324,17 @@ export default class GameScene extends BasicScene {
 
       if(!this.stageRepeat) {
         this.stageRepeat = true
+
       }else {
         this.stageRepeat = false
-        self.tray = new Tray(self,config.width/2 + 564, 300);
-        self.add.existing(self.tray);
-        self.tray.init(itemsName,correct);
-
         self.model.stage++;
       }
 
       self.wrong();
+
+      self.tray = new Tray(self,config.width/2 + 564, 300);
+      self.add.existing(self.tray);
+      self.tray.init(itemsName,correct);
     }
 
     self.tweens.add({
@@ -375,10 +377,10 @@ export default class GameScene extends BasicScene {
     const soundEffect = self.sound.add('wrong')
     soundEffect.play()
     self.char.play('char_sad').once("animationcomplete", function(){
-      soundEffectCompleted = true
+      animationCompleted = true
     })
     soundEffect.on('complete', function(){
-      animationCompleted = true
+      soundEffectCompleted = true
     })
     const interval = setInterval(function() {
       if (soundEffectCompleted && animationCompleted) {
@@ -422,10 +424,10 @@ export default class GameScene extends BasicScene {
   musicPause() {
     let self = this
     if (self.model.bgMusicPlaying){
-      self.bgMusic.mute = true
+      self.sound.stopByKey('bgMusic')
       self.model.bgMusicPlaying = false
     } else {
-      self.bgMusic.mute = false
+      self.sound.play('bgMusic')
       self.model.bgMusicPlaying = true
     }
 

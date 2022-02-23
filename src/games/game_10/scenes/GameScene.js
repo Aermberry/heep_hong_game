@@ -2,13 +2,13 @@ import BasicScene from "./BasicScene";
 // import Phaser from "phaser";
 import ExitBtn from '../objects/ExitBtn'
 // import DoneBtn from '../objects/DoneBtn'
-// import SpeakerBtn from '../objects/SpeakerBtn'
 import Question from '../objects/Question';
 import Answers from '../objects/Answers';
 import Holder from "../objects/Holder";
 import Shelf from "../objects/Shelf";
 import Bsk from "../objects/Bsk";
 import Choice from '../assets/json/choice.json'
+import SpeakerBtn from '../objects/SpeakerBtn'
 
 export default class GameScene extends BasicScene {
     constructor() {
@@ -151,6 +151,16 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
+        this.sound.stopAll();
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            })
+            this.music.setLoop(true)
+            this.music.play();
+        }
         this.regSprite = this.currentLevel == 1 ? 'reg_market' : this.currentLevel == 2 ? 'reg_travel' : 'reg_class'
         this.signSprite = this.currentLevel == 1 ? 's1_sign' : this.currentLevel == 2 ? 's2_sign' : 's3_sign'
         this.gameStart();
@@ -162,7 +172,9 @@ export default class GameScene extends BasicScene {
         rectangle.setDepth(999);
         rectangle.setAlpha(1);
         this.gameStartAnimations(rectangle);
-        let exitBtn = new ExitBtn(this, 120, 135);
+        let exitBtn = new ExitBtn(this, 120, 120);
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
+        this.add.existing(this.speakerBtn);
         this.add.existing(exitBtn);
 
     }
@@ -231,6 +243,18 @@ export default class GameScene extends BasicScene {
         });
     }
 
+    musicPause() {
+        this.stopAll = !this.stopAll;
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            });
+            this.music.setLoop(true);
+            this.music.play();
+        }
+    }
 
 
 }

@@ -72,7 +72,7 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'correct_answer',
             delay: 200,
-            frames: this.anims.generateFrameNames('correct_answer', { prefix: 'correct_answer', start: 0, end: 29, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('correct_answer', { prefix: 'Symbol 1', start: 0, end: 9, zeroPad: 4 }),
             repeat: 0
         });
 
@@ -280,10 +280,10 @@ export default class GameScene extends BasicScene {
         let exitBtn = new ExitBtn(this, 100, 120);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
-        console.log(this.getColWidth(11.5))
+        this.add.existing(this.speakerBtn);
+
         this.add.existing(exitBtn);
         this.add.existing(this.doneBtn);
-        this.add.existing(this.speakerBtn);
     }
 
     winnerCallBack(flag) {

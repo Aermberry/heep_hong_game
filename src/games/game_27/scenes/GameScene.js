@@ -5,7 +5,7 @@ import RtBtn from "../objects/RtBtn";
 import LtBtn from "../objects/LtBtn";
 import TrackZone from "../objects/TrackZone";
 import GoBtn from "../objects/goBtn";
-// import SpeakerBtn from '../objects/SpeakerBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
 export default class GameScene extends BasicScene {
     constructor() {
         super({
@@ -68,6 +68,16 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
+        this.sound.stopAll();
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            })
+            this.music.setLoop(true)
+            this.music.play();
+        }
         this.buildBg('bg_L1');
         // this.sound.stopAll();
         // if (this.stopAll) {
@@ -82,10 +92,11 @@ export default class GameScene extends BasicScene {
         this.trackZone = new TrackZone(this, 0, this.getRowHeight(6));
         this.question = new Question(this);
         let exitBtn = new ExitBtn(this, 100, 120);
-        // this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
         this.rtBtn = new RtBtn(this, this.getColWidth(10.6), this.getRowHeight(11));
         this.ltBtn = new LtBtn(this, this.getColWidth(9.5), this.getRowHeight(11));
         this.goBtn = new GoBtn(this, 1690, 385);
+        this.add.existing(this.speakerBtn);
         this.add.existing(this.goBtn);
         this.add.existing(exitBtn);
         this.add.existing(this.rtBtn);

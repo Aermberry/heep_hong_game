@@ -4,14 +4,16 @@ import DropZone from "./DropZone";
 import SubjectItem from "./SubjectItem";
 export default class Question {
     constructor(scene) {
+        this.wow_car = scene.add.sprite(880, 740, 'w4_car1').setAngle(-18).setDepth(-1);
+
         let question = scene.dataModal[Math.floor(Math.random() * scene.dataModal.length)];
         let regex = /\((.+?)\)/g;
         let answer = question.split(regex); // 完整的答案
         let items = question.match(regex) // 上方的选择项
-        for(var i = 0;i<answer.length;i++){
-            if(answer[i]==''||answer[i]==null||typeof(answer[i])==undefined){
-                answer.splice(i,1);
-                i=i-1;
+        for (var i = 0; i < answer.length; i++) {
+            if (answer[i] == '' || answer[i] == null || typeof (answer[i]) == undefined) {
+                answer.splice(i, 1);
+                i = i - 1;
             }
         }
         this.scene = scene;
@@ -29,13 +31,12 @@ export default class Question {
                 }
             });
         });
-
         // let dropZone = 
         new DropZone(scene, 400, 40);
         scene.subjectItem = new SubjectItem(scene, 0, 450, [])
         // 渲染题目
         subject.forEach((v, i) => {
-            scene.subjectItem.add(new Car(scene, scene.subjectItem.length < 1 ? 0 : scene.subjectItem.list[i - 1].x + scene.subjectItem.list[i - 1].width - 20, 450, v));
+            scene.subjectItem.add(new Car(scene, scene.subjectItem.length < 1 ? 0 : scene.subjectItem.list[i - 1].x + scene.subjectItem.list[i - 1].width + 20, 450, v));
         });
         this.selectItem = [];
         //渲染选择项
@@ -83,10 +84,15 @@ export default class Question {
         this.scene.ltBtn.destroy();
         this.scene.rtBtn.destroy();
         let self = this;
+        let audio = this.scene.sound.add('winnerSound');
+        audio.play();
         this.move(this.scene.subjectItem, 2000).then(() => {
-            let wow_car = self.scene.add.sprite(1100, 550, 'wow_car');
-            wow_car.play('wow_car')
-            wow_car.on('animationcomplete', () => {
+            // let sprite = scene.add.sprite(880, 740, '4w_car1').setDepth(200).setAngle(-18);
+            this.wow_car.play('wow_car')
+            this.wow_car.setDepth(1)
+            let audio = this.scene.sound.add('winnerSound2');
+            audio.play();
+            this.wow_car.on('animationcomplete', () => {
                 if (self.scene.currentLevel == 5) {
                     self.scene.scene.start('End')
                 } else {
@@ -107,6 +113,8 @@ export default class Question {
             this.showRightAnswer();
             return;
         }
+        let audio = this.scene.sound.add('errorSound');
+        audio.play();
         self.move(self.scene.subjectItem, 100, 200).then(() => {
             self.move(self.scene.subjectItem, -100, 200).then(() => {
                 self.move(self.scene.subjectItem, 100, 200).then(() => {
@@ -136,13 +144,13 @@ export default class Question {
                 }
             });
         })
-    self.scene.subjectItem.sortBySeed();
-    let animation = self.scene.add.sprite(960,840,'answer');
-    animation.play('answer');
-    animation.on('animationcomplete',() => {
-        animation.destroy();
-        self.gameWinner();
-    })
+        self.scene.subjectItem.sortBySeed();
+        let animation = self.scene.add.sprite(960, 840, 'answer');
+        animation.play('answer');
+        animation.on('animationcomplete', () => {
+            animation.destroy();
+            self.gameWinner();
+        })
     }
 
 

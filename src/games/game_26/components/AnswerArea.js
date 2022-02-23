@@ -40,8 +40,6 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         points = this.ShufflePosition(points);
 
-        // console.log({ points })
-
         let container = scene.add.container(0, 1200);
 
         const prepositionIndexPosition = phrases.indexOf(preposition);
@@ -50,11 +48,6 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         let phraseLabelBoxPoints = Array.from(points);
         phrases.splice(prepositionIndexPosition, 1);
         phraseLabelBoxPoints.splice(prepositionIndexPosition, 1);
-
-        // console.log({phrases})
-        // console.log({ points: points })
-        // console.log({ prepositionLabelBoxPoint: prepositionLabelBoxPoint })
-        // console.log({ phraseLabelBoxPoints: phraseLabelBoxPoints });
 
         if (prepositionLabelBoxPoint != null) {
             container.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle, gameObject));
@@ -117,16 +110,16 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         });
     }
 
-    showDisplay() {
+    showDisplay(data) {
         this.answerPanel.setPosition(1000, 900);
-        this.phraseLabelsContainer.setPosition(0, 0);
+        this.phraseLabelsContainer.setPosition(0, data.y);
 
         this.SetEnableInput();
     }
 
-    showCurrentAnswer(scene,questionIndex) {
+    showCurrentAnswer(scene,questionIndexVoice) {
         console.log("showCurrentAnswer");
-        this.answerPanel.setCurrentAnswer(scene,questionIndex)
+        this.answerPanel.setCurrentAnswer(scene,questionIndexVoice)
     }
 
     SetEnableInput() {

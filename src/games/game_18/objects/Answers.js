@@ -12,7 +12,7 @@ export default class Answers extends Phaser.GameObjects.Container {
         this.completeAnswerAnimation = completeAnswerAnimation;
         this.selectItems = [];
         this.errorNumber = 0;
-        this.drag_times = 0;
+        // this.drag_times = 0;
         this.answers = [];
         this.completeButtonState = false;
         this.dropZoneArr = [];
@@ -24,10 +24,9 @@ export default class Answers extends Phaser.GameObjects.Container {
         let that = this;
         scene.input.on('drop', function (pointer, gameObject, dropZone) {
             let type = dropZone.x == 416 ? 1 : 2; //根据位置判断主语谓语框；
-            console.log(that.answers);
             if (dropZone.data != null) { //判断答案框是否已经存在答案；
-
                 if (gameObject.name == dropZone.data.name) {
+                    console.log('不做任何处理');
                     that.scene.tweens.add({
                         targets: gameObject,
                         x: dropZone.x - (gameObject.type == 1 ? 7 : 11),
@@ -37,6 +36,7 @@ export default class Answers extends Phaser.GameObjects.Container {
                     })
                 } else {
                     for (var i = 0; i < that.answers.length; i++) {
+                        //答案区插入新的答案
                         if (that.answers[i].name == gameObject.name) {
                             that.scene.tweens.add({
                                 targets: gameObject,
@@ -48,14 +48,14 @@ export default class Answers extends Phaser.GameObjects.Container {
                             that.dropZoneArr.forEach((item) => item.data = null);
                             that.selectItems = [];
                             that.dropZoneArr = [];
-                            that.drag_times = 1;
+                            // that.drag_times = 1;
                             dropZone.data = gameObject;
                             that.dropZoneArr.push(dropZone);
                             if (gameObject.type == type) {
                                 that.selectItems.push(gameObject);
                             }
-                        
-                            if(that.remind != undefined) {
+
+                            if (that.remind != undefined) {
                                 that.remind.visible = false;
                             }
                         } else {
@@ -82,9 +82,30 @@ export default class Answers extends Phaser.GameObjects.Container {
                 }
                 return;
             }
-            that.drag_times++;
+            // that.drag_times++;
             dropZone.data = gameObject;
-            that.dropZoneArr.push(dropZone);
+            if (that.dropZoneArr.length == 0) {
+                that.dropZoneArr.push(dropZone);
+                if (gameObject.type == type) {
+                    that.selectItems.push(gameObject);
+                }
+            } else {
+                if (that.dropZoneArr[0].data.name == gameObject.name) {
+                    that.dropZoneArr.forEach((item) => item.data = null);
+                    that.dropZoneArr = [];
+                    that.selectItems = [];
+                    that.dropZoneArr.push(dropZone);
+                    if (gameObject.type == type) {
+                        that.selectItems.push(gameObject);
+                    }
+                } else {
+                    that.dropZoneArr.push(dropZone);
+                    if (gameObject.type == type) {
+                        that.selectItems.push(gameObject);
+                    }
+                }
+
+            }
             that.scene.tweens.add({
                 targets: gameObject,
                 x: dropZone.x - (gameObject.type == 1 ? 7 : 11),
@@ -92,10 +113,7 @@ export default class Answers extends Phaser.GameObjects.Container {
                 duration: 500,
                 ease: 'Power2'
             })
-            if (gameObject.type == type) {
-                that.selectItems.push(gameObject);
-            }
-            if (that.drag_times == 2) {
+            if (that.dropZoneArr.length == 2) {
                 let remind = that.scene.add.sprite(gameObject.type == 1 ? 300 : 400, 150, 'remind');
                 that.add(remind);
                 remind.play('remind');
@@ -118,7 +136,7 @@ export default class Answers extends Phaser.GameObjects.Container {
                     this.completeAnswerAnimation(true);
                 } else {
                     this.errorNumber++;
-                    this.drag_times = 0;
+                    // this.drag_times = 0;
                     this.completeAnswerAnimation(false, this.errorNumber);
                     // }
                     this.clickStatus = true;
@@ -129,10 +147,12 @@ export default class Answers extends Phaser.GameObjects.Container {
     }
 
     answerError() {
+        this.dropZoneArr.forEach((item) => item.data = null);
+        this.dropZoneArr = [];
         for (var i = 0; i < this.answers.length; i++) {
             this.answers[i].input.draggable = true;
-            this.answers[i].data = null;
-            this.dropZoneArr[i].data = null;
+            // this.answers[i].data = null;
+            // this.dropZoneArr[i].data = null;
             if (this.answers[i].name == 'up') {
                 this.scene.tweens.add({
                     targets: this.answers[i],
@@ -142,7 +162,6 @@ export default class Answers extends Phaser.GameObjects.Container {
                     ease: 'Power2'
                 });
             } else {
-                console.log(i)
                 this.scene.tweens.add({
                     targets: this.answers[i],
                     x: this.x + 400,
@@ -152,7 +171,6 @@ export default class Answers extends Phaser.GameObjects.Container {
                 })
             }
         }
-        this.selectItems = [];
     }
 
 }

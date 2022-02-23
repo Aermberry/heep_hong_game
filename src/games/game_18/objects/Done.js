@@ -10,7 +10,7 @@ export default class Done extends BasicBtn {
   }
 
   onClick(){
-    this.scene.music = this.scene.sound.add('done');
+    this.scene.music = this.scene.sound.add('effect_select_teeth');
     this.scene.music.setLoop(false);
     this.scene.music.play();
     this.musicPause()

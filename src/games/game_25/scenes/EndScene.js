@@ -16,7 +16,7 @@ export default class EndScene extends BasicScene {
 
         this.buildBg('end_bg')
 
-        this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(5.5))
+        this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
 
         this.add.existing(this.endBroad)
 

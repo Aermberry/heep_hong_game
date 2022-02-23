@@ -13,6 +13,11 @@ export default class Article {
         this.sprite.width = this.sprite.displayWidth
         this.sprite.height = this.sprite.displayHeight
         this.highlight;
+        let colorArr = ['#83A9E5', '#E882A4', '#6fb26f', '#f9c543'];
+        this.shuffColorArr = colorArr.sort(function() {
+            return .5 - Math.random();
+        });
+
     }
 
     createArticle(data) {
@@ -132,7 +137,7 @@ export default class Article {
                     new DragText(this.scene, originX + item.index % rowMaxChat * 60, originY + item.row * 75, item.data.text, {
                         fontSize: '55px',
                         color: "#000000",
-                        backgroundColor: '#E882A4',
+                        backgroundColor: ['p','t','l'].includes(type) ? this.shuffColorArr[0] : type == 'a' ? this.shuffColorArr[1] : type == 'b' ?  this.shuffColorArr[2] : this.shuffColorArr[3],
                         padding: {
                             x: 5, y: 5
                         },
@@ -206,7 +211,7 @@ export default class Article {
                     new DragText(this.scene, originX + item.index % rowMaxChat * 60, originY + item.row * 75, item.data.text, {
                         fontSize: '55px',
                         color: "#000000",
-                        backgroundColor: '#83A9E5',
+                        backgroundColor: type.includes(['p','t','l']) ? this.shuffColorArr[0] : type == 'a' ? this.shuffColorArr[1] : type == 'b' ?  this.shuffColorArr[2] : this.shuffColorArr[3],
                         fontWeight: 'bold',
                         padding: {
                             x: this.level != 1 ? 0 : 5

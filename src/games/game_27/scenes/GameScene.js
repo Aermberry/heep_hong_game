@@ -39,7 +39,7 @@ export default class GameScene extends BasicScene {
             key: 'wow_car',
             delay: 200,
             frameRate: 8,
-            frames: this.anims.generateFrameNames('wow_car', { prefix: 'Symbol 1', start: 0, end: 12, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('wow_car', { prefix: 'Symbol 1', start: 0, end: 13, zeroPad: 4 }),
             repeat: 0
         });
         this.anims.create({

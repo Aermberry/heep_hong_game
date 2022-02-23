@@ -4,8 +4,6 @@ import DropZone from "./DropZone";
 import SubjectItem from "./SubjectItem";
 export default class Question {
     constructor(scene) {
-        this.wow_car = scene.add.sprite(880, 740, 'w4_car1').setAngle(-18).setDepth(-1);
-
         let question = scene.dataModal[Math.floor(Math.random() * scene.dataModal.length)];
         let regex = /\((.+?)\)/g;
         let answer = question.split(regex); // 完整的答案
@@ -87,12 +85,11 @@ export default class Question {
         let audio = this.scene.sound.add('winnerSound');
         audio.play();
         this.move(this.scene.subjectItem, 2000).then(() => {
-            // let sprite = scene.add.sprite(880, 740, '4w_car1').setDepth(200).setAngle(-18);
-            this.wow_car.play('wow_car')
-            this.wow_car.setDepth(1)
+            let wow_car = this.scene.add.sprite(1100, 600, 'wow_car')
+            wow_car.play('wow_car')
             let audio = this.scene.sound.add('winnerSound2');
             audio.play();
-            this.wow_car.on('animationcomplete', () => {
+            wow_car.on('animationcomplete', () => {
                 if (self.scene.currentLevel == 5) {
                     self.scene.scene.start('End')
                 } else {

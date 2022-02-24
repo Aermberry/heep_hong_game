@@ -176,8 +176,9 @@ export default class GameScene extends BasicScene {
     self.add.existing(self.speakerBtn);
 
 
-
-    self.new();
+    setTimeout(function(){
+      self.new();
+    }, 1000);
 
     self.l2AlertBoard = new VipAlertBoard(this, config.width * 0.325, config.height * 0.4);
     self.l2AlertBoard.setScale(1.2)

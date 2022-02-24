@@ -150,8 +150,9 @@ export default class GameScene extends BasicScene {
     this.buildBg('stageBg')
 
     this.sound.stopAll()
+
     if (this.model.bgMusicPlaying){
-        this.sound.play('bgMusic')
+        // this.sound.play('bgMusic')
     }
 
     this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)

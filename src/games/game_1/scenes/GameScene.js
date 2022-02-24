@@ -13,8 +13,11 @@ import Choice from '../assets/json/choice.json';
 import Question from '../assets/json/question.json';
 
 export default class GameScene extends BasicScene {
-  constructor () {
-    super('Game');
+  constructor() {
+      super({
+          key: 'Game'
+      });
+
   }
 
   init(){
@@ -152,7 +155,7 @@ export default class GameScene extends BasicScene {
     this.sound.stopAll()
 
     if (this.model.bgMusicPlaying){
-        // this.sound.play('bgMusic')
+        this.sound.play('bgMusic')
     }
 
     this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
@@ -176,9 +179,7 @@ export default class GameScene extends BasicScene {
     self.add.existing(self.speakerBtn);
 
 
-    setTimeout(function(){
-      self.new();
-    }, 1000);
+    self.new();
 
     self.l2AlertBoard = new VipAlertBoard(this, config.width * 0.325, config.height * 0.4);
     self.l2AlertBoard.setScale(1.2)

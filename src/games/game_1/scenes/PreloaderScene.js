@@ -52,7 +52,7 @@ export default class PreloaderScene extends BasicScene {
     }
 
     const soundFiles = {
-      'bgMusic': require('../assets/audio/taiko-drums.mp3'),
+      'bgMusic': require('../assets/voice/bg.mp3'),
     }
 
 

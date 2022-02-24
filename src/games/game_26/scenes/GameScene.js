@@ -61,7 +61,7 @@ export default class GameScene extends BasicScene {
     }
 
     create(data) {
-        console.log(data);
+        
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
         createEggTwistingMachineAnimation(this.anims);

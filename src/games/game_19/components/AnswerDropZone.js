@@ -35,7 +35,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
         set drop event listener
       */
     addDropEventListener(scene, callback, question, self) {
-        scene.input.on('drop', (pointer, gameObject, dropZone) => callback(pointer, gameObject, dropZone, question, self,scene));
+        scene.input.on('drop', (pointer, gameObject, dropZone) => callback(pointer, gameObject, dropZone, question, self, scene));
     }
 
     /*
@@ -54,9 +54,9 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
        set failed event listener
      */
     addFailedEventListener(scene) {
-        this.on('gameFailed', () => {
-            console.log('failed')
-            scene.paintGameFailed()
+        this.on('gameFailed', (gameObject) => {
+            console.log('failed');
+            scene.paintGameFailed({x:gameObject.x,y:gameObject.y});
         })
     }
 
@@ -64,73 +64,82 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      * check answer
      * 检测drop的内容 
      */
-    checkAnswer(pointer, gameObject, dropZone, question, self,scene) {
+    checkAnswer(pointer, gameObject, dropZone, question, self, scene) {
 
-        scene.sound.play('dropEffectSound')
+        console.log({ gameObject })
+
+        scene.sound.play('dropEffectSound');
+
+
+
 
         if (question.modifier.indexOf(gameObject.labelText.text) > -1) {
-
-            gameObject.changeStyle(0.3, '35px');
-
             self.add([gameObject]);
-
-            let toothList = self.list.filter(item => item.name == 'tooth');
-            console.log({ toothList });
-
-            for (let index = 0; index < toothList.length; index++) {
-
-                if (index == 0) {
-                    switch (gameObject.type) {
-                        case 'bigTooth':
-                            gameObject.x = -dropZone.width / 2 + 210;
-                            break;
-                        case 'smallTooth':
-                            gameObject.x = -dropZone.width / 2 + 170;
-                            break;
-                    }
-                }
-                else {
-                    let currentTooth = toothList[index];
-                    let previousTooth = toothList[index - 1];
-
-                    if (currentTooth.displayWidth != previousTooth.displayWidth) {
-
-                        let currentToothWidth = currentTooth.getByName('toothTexture').displayWidth / 2;
-                        let previousToothWidth = previousTooth.getByName('toothTexture').displayWidth / 2;
-
-                        let distance = currentToothWidth + previousToothWidth + 10;
-
-                        currentTooth.x = previousTooth.x + distance;
-
-                    } else {
-
-                        let distance = previousTooth.getByName('toothTexture').displayWidth + 10;
-
-                        currentTooth.x = previousTooth.x + distance;
-                    }
-
-
-                }
-
-
-            }
-
-            gameObject.y = 0;
-
-
-            gameObject.input.enabled = false;
-
+            self.setToothPosition(gameObject, dropZone);
 
             if (self.count('visible', true) - 2 == question.modifier.length) {
-                self.emit('gameSuccess')
+                self.emit('gameSuccess');
             }
         } else {
+
             gameObject.x = gameObject.originPoint.originPointX
             gameObject.y = gameObject.originPoint.originPointY
 
             /* 顯示打錯的頁面 */
-            self.emit('gameFailed')
+            self.emit('gameFailed',gameObject);
         }
+    }
+
+
+    setToothPosition(tooth, dropZone) {
+        tooth.changeStyle(0.3, '35px');
+
+        let toothList = this.list.filter(item => item.name == 'tooth');
+        console.log({ toothList });
+
+        for (let index = 0; index < toothList.length; index++) {
+
+            if (index == 0) {
+                switch (tooth.type) {
+                    case 'bigTooth':
+                        tooth.x = -dropZone.width / 2 + 210;
+                        break;
+                    case 'smallTooth':
+                        tooth.x = -dropZone.width / 2 + 170;
+                        break;
+                }
+            }
+            else {
+                let currentTooth = toothList[index];
+                let previousTooth = toothList[index - 1];
+
+                if (currentTooth.displayWidth != previousTooth.displayWidth) {
+
+                    let currentToothWidth = currentTooth.getByName('toothTexture').displayWidth / 2;
+                    let previousToothWidth = previousTooth.getByName('toothTexture').displayWidth / 2;
+
+                    let distance = currentToothWidth + previousToothWidth + 10;
+
+                    currentTooth.x = previousTooth.x + distance;
+
+                } else {
+
+                    let distance = previousTooth.getByName('toothTexture').displayWidth + 10;
+
+                    currentTooth.x = previousTooth.x + distance;
+                }
+
+
+            }
+
+
+        }
+
+        tooth.y = 0;
+
+
+        tooth.input.enabled = false;
+
     }
 
 

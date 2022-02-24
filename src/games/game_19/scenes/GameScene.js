@@ -53,7 +53,7 @@ export default class GameScene extends BasicScene {
         this.progressLoader = new LoadProgress(this);
 
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
-        
+
         const crocoElmSets = {
             'brn': {
                 'croco_low_1': require('../assets/images/croco/a_brn_low_long1.png'),
@@ -92,14 +92,14 @@ export default class GameScene extends BasicScene {
         ];
 
         const crocoColorName = crocoColors[Math.round(Math.random() * 4)]
-        
+
         const currCrocoSet = crocoElmSets[crocoColorName]
 
         const imageFiles = {
             'crocoBed': require('../assets/images/croco/bed.png')
         };
 
-        Object.keys(currCrocoSet).forEach((elmKey)=> {
+        Object.keys(currCrocoSet).forEach((elmKey) => {
             imageFiles[elmKey] = currCrocoSet[elmKey]
         })
 
@@ -110,8 +110,8 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'});
-        
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
+
 
         createStarAnimations(this.anims);
 
@@ -119,11 +119,11 @@ export default class GameScene extends BasicScene {
         this.input.setDefaultCursor(`url(${this.cursorHandIcon}), pointer`);
 
         this.question = this.generateQuestion();
-       
+
 
         this.paintGameScene();
 
-       
+
     }
 
 
@@ -287,16 +287,26 @@ export default class GameScene extends BasicScene {
         this.dragContainer.add(startAnimation);
     }
 
-    paintGameFailed() {
-        this.uiLayer.setVisible(false);
+    paintGameFailed(position) {
+        console.log({ position });
+        // this.uiLayer.setVisible(false);
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
-
             if (isFirstError) {
-                this.sound.play('biteCrunchEffectSound');
-                this.showGameFailedTipBox();
-                this.playLayer.setVisible(false);
-                this.uiLayer.setVisible(false);
-                this.input.setDefaultCursor(`url(), auto`);
+                const errorImage=this.add.image(position.x, position.y-100, 'errorImage');
+                this.playLayer.add(errorImage);
+
+                const biteCrunchEffectSound=this.sound.add('biteCrunchEffectSound');
+
+                biteCrunchEffectSound.once('complete',()=>{
+                    errorImage.destroy();
+                })
+
+                biteCrunchEffectSound.play();
+
+                // this.showGameFailedTipBox();
+                // this.playLayer.setVisible(false);
+                // this.uiLayer.setVisible(false);
+                // this.input.setDefaultCursor(`url(), auto`);
 
             } else {
                 this.showAnswer(false);
@@ -376,7 +386,7 @@ export default class GameScene extends BasicScene {
 
         this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.75))
         this.crocodileMouthCont.setX(this.getColWidth(4.6))
-        
+
         let toothsContainer = this.pintTooth(this.question.originalSentence);
 
         this.dragContainer = this.add.container(0, 0, [

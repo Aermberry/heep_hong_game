@@ -40,7 +40,7 @@ class Game19 extends Phaser.Game {
         this.globals = {
             bgMusic: null,
             gtag: gtag,
-            gameStageIndex:urlParams
+            gameStageIndex:urlParams.id
         }
 
         

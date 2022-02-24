@@ -1,5 +1,5 @@
 import BasicScene from './BasicScene'
-import config from '../config/index';
+import LoadProgress from '../objects/LoadProgress';
 
 export default class PreloaderGameScene extends BasicScene {
 
@@ -12,6 +12,7 @@ export default class PreloaderGameScene extends BasicScene {
     preload() {
         let self = this;
         self.buildBg('loading');
+        self.progressLoader = new LoadProgress(this, () => this.scene.start('Game',{number:0,currentQuestionGroup:[],stopAll: false}));
         const imageFiles = {
             // 'end_bg': require('../assets/img/end_bg.png'),
             // 'end_box': require('../assets/img/end_box.png'),
@@ -42,7 +43,7 @@ export default class PreloaderGameScene extends BasicScene {
 
         const soundFiles = {
             'Bgm': require('../assets/audio/Bgm.mp3'),
-            'Button': require('../assets/audio/Button.mp3'),
+            'effect_select_teeth': require('../assets/audio/effect_select_teeth.mp3'),
             'End_pic': require('../assets/audio/End_pic.mp3'),
             'win': require('../assets/audio/win.mp3'),
             'wrong': require('../assets/audio/wrong.mp3'),
@@ -68,49 +69,7 @@ export default class PreloaderGameScene extends BasicScene {
             '219': require('../assets/audio/Game24.25_219.mp3'),
             '220': require('../assets/audio/Game24.25_220.mp3'),
         }
-        // self.load.spritesheet('extSmBtn', require('../assets/img/btn_ext_1.png'), { frameWidth: 186, frameHeight: 209 });
-        // self.load.spritesheet('strBtn', require('../assets/img/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
-        // self.load.spritesheet('rplBtn', require('../assets/img/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
-        // self.load.spritesheet('extBtn', require('../assets/img/btn_ext.png'), { frameWidth: 410, frameHeight: 163.5 });
-        // self.load.spritesheet('btn_car', require('../assets/img/btn_car_1.png'), { frameWidth: 640, frameHeight: 320 });
-        // self.load.spritesheet('btn_and', require('../assets/img/btn_and.png'), { frameWidth: 192, frameHeight: 201 });
-        // self.load.spritesheet('btn_com', require('../assets/img/btn_com.png'), { frameWidth: 188, frameHeight: 205 });
-        // self.load.spritesheet('btn_ex', require('../assets/img/btn_ex.png'), { frameWidth: 176, frameHeight: 264 });
-        // self.load.spritesheet('btn_que', require('../assets/img/btn_que.png'), { frameWidth: 213, frameHeight: 252 });
-        // self.load.spritesheet('moveBtn', require('../assets/img/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
-        // self.load.spritesheet('speakerBtn',require('../assets/img/btn_speaker.png'), { frameWidth: 186, frameHeight: 209 });
-        // self.load.spritesheet('speakerBtnOff',require('../assets/img/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209 });
         self.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
-
-        self.preloadFromArr({ img: imageFiles, sound: soundFiles });
-
-        self.progressBar = self.add.graphics();
-        self.loadingText = self.make.text({
-            x: config.width / 2,
-            y: config.height * 0.89,
-            text: '連接中',
-            style: {
-                font: '25px monospace',
-                fill: '#fff'
-            }
-        });
-        self.loadingText.setOrigin(0.5, 0.5);
-
-        self.load.on('progress', function (value) {
-            self.progressBar.clear();
-            self.progressBar.fillStyle(0xFC8EFA, 1);
-            self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
-        });
-
-        self.load.on('complete', function () {
-            self.loadingText.setText('連接完成');
-            self.ready();
-        }.bind(self));
-    }
-
-    ready() {
-        let self = this
-        self.scene.start('Game',{number:0,currentQuestionGroup:[],stopAll: false});
     }
 
 }

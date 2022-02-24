@@ -18,7 +18,7 @@ export default class DialogTipBox extends Phaser.GameObjects.Container {
 
         this.add([
             dialogTipBox,
-            new GameSprite(scene, 25, -20, 'victoryAnimation').setScale(0.90),
+            new GameSprite(scene, 2, -20, 'victoryAnimation').setOrigin(0.5, 0.5),
             new RetryButton(scene, - dialogTipBox.width * 0.22, dialogTipBox.height * 0.35, 'Tutor'),
             new EndSceneExitButton(scene, dialogTipBox.width * 0.22, dialogTipBox.height * 0.35)
         ])

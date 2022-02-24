@@ -9,10 +9,10 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
 
         // let bj = scene.add.rectangle(0, 0, 1920, 1280, 0xfffffff, 0.8)
         let endBox = scene.add.image(0, 0, 'end_box');
-        endBox.setDisplaySize(650, 650);
+        endBox.setDisplaySize(900, 900);
 
-        let retryBtn = new RetryBtn(scene, - endBox.width * 0.1, endBox.height * 0.13);
-        let existBtn = new ExistBigBtn(scene, endBox.width * 0.1, endBox.height * 0.13);
+        let retryBtn = new RetryBtn(scene, - endBox.width * 0.135, endBox.height * 0.2);
+        let existBtn = new ExistBigBtn(scene, endBox.width * 0.135, endBox.height * 0.2);
 
         this.add([
             endBox,

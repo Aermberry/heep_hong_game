@@ -178,7 +178,7 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.sound.play('Bgm',{ volume: 0.2, loop: true });
+        this.sound.play('Bgm', { volume: 0.2, loop: true });
         this.stopAll = false;
     }
 
@@ -229,7 +229,7 @@ export default class GameScene extends BasicScene {
             this.questionUi.add([this.bg_up, this.answersContainer, this.bg_up_cl1, this.bg_up_cl1_1, this.bg_up_cl1_2, this.bg_up_cl1_3, this.bg_up_cl2, this.bg_up_cl2_1, this.leftMoveButton, this.rightMoveButton,]);
         }
         this.backgroundUi = this.add.layer(); //背景；
-        this.exitBtn = new ExitBtn(this, 120, 135);
+        this.exitBtn = new ExitBtn(this, 100, 120);
         this.btnCar = new BtnCar(this, this.getColWidth(9.5), this.getRowHeight(10.8), this.completeAnswerAnimation.bind(this));
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
@@ -239,7 +239,7 @@ export default class GameScene extends BasicScene {
             this.speakerBtn.visible = true;
             this.speakerOffBtn.visible = false;
         } else {
-            this.sound.play('Bgm',{ volume: 0.2, loop: true });
+            this.sound.play('Bgm', { volume: 0.2, loop: true });
             this.speakerBtn.visible = false;
             this.speakerOffBtn.visible = true;
         }
@@ -268,15 +268,18 @@ export default class GameScene extends BasicScene {
                 this.currentQuestionGroup[this.currentIndex].data[index] = answer;
                 if (this.currentQuestionGroup[this.currentIndex].data.every((item) => item.result != null)) { //答案选完；
                     this.btnCar.setIsBtn();
-                    this.container.list.forEach(element => {
-                        element.setFramebtn(2)
-                    })
+                    // this.container.list.forEach(element => {
+                    //     element.setFramebtn(2)
+                    // })
                 }
             }
         }
     }
 
     completeAnswerAnimation() {
+        this.container.list.forEach(element => {
+            element.setFramebtn(2)
+        })
         if (this.isBtn) {
             if (!this.currentQuestionGroup[this.currentIndex].data.every((item) => item.result != null)) {
                 return;
@@ -370,7 +373,7 @@ export default class GameScene extends BasicScene {
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
 
-                    }, 12000
+                    }, this.currentQuestionGroup[this.currentIndex].seconds
                 )
 
             }

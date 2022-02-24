@@ -11,19 +11,23 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
         this.stageSlaverSprite = undefined;
         this.offset = 0;
 
-        this.init(this, scene, question);
+        this.init(scene, question);
     }
 
-    init(self, scene, question) {
+    init(scene, question) {
 
         this.stageSlaverSprite = scene.add.image(0, 0, 'stageSalver').setScale(0.6);
 
-        let dropZone = scene.add.zone(0, 0, this.stageSlaverSprite.displayWidth + 60, this.stageSlaverSprite.displayHeight + 60)
+        let dropZone = scene.add.zone(0, 0, this.stageSlaverSprite.displayWidth + 100, this.stageSlaverSprite.displayHeight + 100)
             .setRectangleDropZone(this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight);
 
-        self.add([this.stageSlaverSprite, dropZone]);
+        this.add([this.stageSlaverSprite, dropZone]);
 
-        this.addDropEventListener(scene, this.checkAnswer, question, self);
+        this.setSize(dropZone.displayWidth,dropZone.displayHeight);
+
+        // this.scene.physics.add.existing(this);
+
+        this.addDropEventListener(scene, this.checkAnswer, question, this);
 
         this.addSuccessEventListener(scene);
         this.addFailedEventListener(scene);
@@ -56,7 +60,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
     addFailedEventListener(scene) {
         this.on('gameFailed', (gameObject) => {
             console.log('failed');
-            scene.paintGameFailed({x:gameObject.x,y:gameObject.y});
+            scene.paintGameFailed({ x: gameObject.x, y: gameObject.y });
         })
     }
 
@@ -86,7 +90,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
             gameObject.y = gameObject.originPoint.originPointY
 
             /* 顯示打錯的頁面 */
-            self.emit('gameFailed',gameObject);
+            self.emit('gameFailed', gameObject);
         }
     }
 
@@ -102,10 +106,10 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
             if (index == 0) {
                 switch (tooth.type) {
                     case 'bigTooth':
-                        tooth.x = -dropZone.width / 2 + 210;
+                        tooth.x = -dropZone.width / 2 + 220;
                         break;
                     case 'smallTooth':
-                        tooth.x = -dropZone.width / 2 + 170;
+                        tooth.x = -dropZone.width / 2 + 180;
                         break;
                 }
             }

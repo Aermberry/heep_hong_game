@@ -24,10 +24,9 @@ export default class GameScene extends BasicScene {
 
         this.leftMoveButton = undefined
         this.rightMoveButton = undefined
-        this.retryButton = undefined
         this.stageSlaverSprite = undefined
         this.backgroundLayer = undefined
-        this.uiLayer = undefined
+        this.buttonControllerLayer = undefined
         this.playLayer = undefined
         this.crocodileMouth = undefined
         this.gameFailed = undefined
@@ -111,7 +110,7 @@ export default class GameScene extends BasicScene {
         super.create();
 
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
-
+        this.add.zone()
 
         createStarAnimations(this.anims);
 
@@ -247,12 +246,12 @@ export default class GameScene extends BasicScene {
 
 
     paintGameSuccess() {
-        this.uiLayer.setVisible(false);
+        this.buttonControllerLayer.setVisible(false);
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
 
         GameManager.getInstance().updateGamePlayTotal(() => {
             this.setDragContainerToOriginPosition();
-            this.showAnswer(true);
+            this.showCorrectAnswer(true);
 
             this.sound.play('popOffEffectSound');
 
@@ -292,38 +291,47 @@ export default class GameScene extends BasicScene {
         // this.uiLayer.setVisible(false);
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
             if (isFirstError) {
-                const errorImage=this.add.image(position.x, position.y-100, 'errorImage');
+                const errorImage = this.add.image(position.x, position.y - 100, 'errorImage');
                 this.playLayer.add(errorImage);
 
-                const biteCrunchEffectSound=this.sound.add('biteCrunchEffectSound');
+                const firstErrorEffectSound = this.sound.add('firstErrorEffectSound');
 
-                biteCrunchEffectSound.once('complete',()=>{
+                firstErrorEffectSound.once('complete', () => {
                     errorImage.destroy();
                 })
 
-                biteCrunchEffectSound.play();
+                firstErrorEffectSound.play();
 
-                // this.showGameFailedTipBox();
                 // this.playLayer.setVisible(false);
                 // this.uiLayer.setVisible(false);
                 // this.input.setDefaultCursor(`url(), auto`);
 
             } else {
-                this.showAnswer(false);
-                this.sound.play('gameSceneYouLose');
-                this.sound.play('dentistDrillEnvironmentSound');
-                this.time.addEvent({
-                    delay: 5000,
-                    callback: () => {
-                        this.scene.start(value ? 'End' : 'Game');
-                    }
+                this.scene.run('Retry');
+
+                this.scene.sleep();
+
+                this.events.once('wake', () => {
+
+                    const currentAnswerVoice = this.sound.add('voiceAnswer' + this.questionIndex);
+
+                    currentAnswerVoice.once('complete', () => {
+                        this.time.addEvent({
+                            delay: 1000,
+                            callback: () => {
+                                this.scene.start(value ? 'End' : 'Game');
+                            }
+                        })
+                    });
+
+                    this.showCorrectAnswer(false);
+                    currentAnswerVoice.play();
                 })
             }
-
         });
     }
 
-    showAnswer(isSuccess) {
+    showCorrectAnswer(isSuccess) {
         this.dragContainer.removeAt(0, true)
 
         let paintToothContainer = this.pintTooth(this.question.answer);
@@ -364,14 +372,6 @@ export default class GameScene extends BasicScene {
         this.dragContainer.addAt(paintToothContainer, 0);
     }
 
-    showGameFailedTipBox() {
-        // let dialogWrongBox = new DialogWrongBox(this, 0, 0);
-        // dialogWrongBox.setAlignCenter();
-
-        // this.sound.play('dentistDrillEnvironmentSound');
-        this.scene.run('retry')
-    }
-
 
 
     /**
@@ -381,7 +381,7 @@ export default class GameScene extends BasicScene {
     paintGameScene() {
 
         this.playLayer = this.add.layer().setDepth(1);
-        this.uiLayer = this.add.layer().setDepth(2);
+        this.buttonControllerLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
         this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.75))
@@ -396,15 +396,21 @@ export default class GameScene extends BasicScene {
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
-        this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
-        this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
+        this.buildControllerButtons(this.isDisplayDirectionButtonControllers(toothsContainer));
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
-        this.playLayer.add([this.dropContainer, this.dragContainer])
-        this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
-
-        this.uiLayer.setVisible(this.isDisplayDirectionButtonControllers(toothsContainer));
+        this.playLayer.add([this.dropContainer, this.dragContainer]);
     }
+
+    buildControllerButtons(isBuild) {
+        if(isBuild){
+            this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
+            this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
+            this.buttonControllerLayer.add([this.rightMoveButton, this.leftMoveButton])
+        }
+    }
+
+
 
     isDisplayDirectionButtonControllers(toothsContainer) {
 

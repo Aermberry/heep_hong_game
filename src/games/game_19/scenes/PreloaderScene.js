@@ -61,6 +61,8 @@ export default class PreloaderScene extends BasicScene {
             'gameSceneYouLose': require('../assets/audio/sound_background/bgm_game_scene_you_lose.mp3'),
             'gameEndHappyEnding': require('../assets/audio/sound_background/bgm_game_end_happy_ending.mp3'),
             'gamePlaySceneBackgroundMusic': require('../assets/audio/sound_background/bgm_game_scene.mp3'),
+            'firstErrorEffectSound':require('../assets/audio/sound_effect/effect_first_error.mp3'),
+            
             'voiceAnswer0': require('../assets/audio/voice/voice_answer_00.mp3'),
             'voiceAnswer1': require('../assets/audio/voice/voice_answer_01.mp3'),
             'voiceAnswer2': require('../assets/audio/voice/voice_answer_02.mp3'),

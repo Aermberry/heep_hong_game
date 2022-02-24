@@ -20,6 +20,10 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
     this.setSize(this.texture.width, this.texture.height);
     this.add(this.texture);
 
+   this.enableTouchEventListener();
+  }
+
+  enableTouchEventListener(){
     this.setInteractive({ useHandCursor: true }).on(
       Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
         // this.texture.setFrame(0);
@@ -32,6 +36,11 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
           this.onUpClicked();
         }
       );
+  }
+
+  unableTouchEventListener(){
+    this.off(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN);
+    this.off(Phaser.Input.Events.GAMEOBJECT_POINTER_UP);
   }
 
   onDownClicked() {

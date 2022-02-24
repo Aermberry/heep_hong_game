@@ -30,6 +30,11 @@ export default class ErrorRetryButton extends Phaser.GameObjects.Sprite {
     }
 
     onUpClicked(scene) {
-        scene.scene.start('Game')
+
+        scene.sound.stopByKey('gameSceneYouLose');
+        scene.sound.stopByKey('dentistDrillEnvironmentSound');
+
+        scene.scene.stop();
+        scene.scene.run('Game');
     }
 }

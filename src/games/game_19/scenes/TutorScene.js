@@ -40,8 +40,8 @@ export default class TutorScene extends BasicScene {
 
         buttonLayer.add([
             new ExitButton(this, 100, 120), 
-            new StartButton(this, this.getColWidth(6), 
-            this.getRowHeight(10.5))]);
+            new StartButton(this, this.cameras.main.displayWidth/2+50, 
+                this.getRowHeight(10)).setScale(0.8)]);
 
         backgroundLayer.add([this.buildBg('bgTutor')]);
 
@@ -50,9 +50,10 @@ export default class TutorScene extends BasicScene {
 
 
     playTutorAnimation(layer) {
-        let tutor01Sprite = new TutorSprite(this, 300, 500, 'tutorTexture01');
-        let tutor02Sprite = new TutorSprite(this, 930, 280, 'tutorTexture02');
-        let tutor03Sprite = new TutorSprite(this, 1600, 500, 'tutorTexture03');
+
+        let tutor01Sprite = new TutorSprite(this, this.cameras.main.width/2-300, 500, 'tutorTexture01').setScale(0.7);
+        let tutor02Sprite = new TutorSprite(this, this.cameras.main.width/2, 280, 'tutorTexture02').setScale(0.7);
+        let tutor03Sprite = new TutorSprite(this, this.cameras.main.width/2+tutor02Sprite.displayWidth-43, 500, 'tutorTexture03').setScale(0.7);
 
         layer.add([tutor01Sprite])
 

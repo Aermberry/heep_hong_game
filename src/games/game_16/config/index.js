@@ -12,7 +12,7 @@ export default {
 
 
   },
-  // audio: {
-  //   disableWebAudio: true
-  // },
+  audio: {
+    disableWebAudio: true
+  },
 };

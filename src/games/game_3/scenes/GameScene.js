@@ -409,7 +409,9 @@ export default class GameScene extends BasicScene {
 
         this.penguinSprite.play("penguinHappy");
         const correctSoundEffect = this.sound.add('correctSoundEffect');
+
         this.setCorrectSprite(leftItem);
+        
         correctSoundEffect.on('complete', () => {
             GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({

@@ -34,7 +34,7 @@ export default class PreloaderScene extends BasicScene {
       'bluescreenLogo': require('../assets/bluescreen_logo.png'),
       'ph1Bg': require('../assets/bg_ph1.png'),
       'ph2Bg': require('../assets/bg_ph2.png'),
-      'tray': require('../assets/tray.png')
+      'tray': require('../assets/tray.png'),
     }
 
     const atlasFiles = {
@@ -55,7 +55,7 @@ export default class PreloaderScene extends BasicScene {
       'bgMusic': require('../assets/voice/bg.mp3'),
     }
 
-    this.preloadFromArr({img: imageFiles, atlas: atlasFiles, sound: soundFiles});
+
 
     this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });
     this.load.spritesheet('strBtn', require('../assets/btn_str.png'),{ frameWidth: 776, frameHeight: 227 });
@@ -65,38 +65,21 @@ export default class PreloaderScene extends BasicScene {
     this.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
     this.load.spritesheet('cfmBtn', require('../assets/btn_cfm.png'),{ frameWidth: 917, frameHeight: 233 });
     this.load.spritesheet('speakerBtn', require('../assets/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
-    this.load.spritesheet('offSpeakerBtn', require('../assets/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
+    this.load.spritesheet('offSpeakerBtn', require('../assets/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  });
 
-
-    self.progressBar = self.add.graphics();
-    self.loadingText = self.make.text({
-        x: config.width / 2,
-        y: config.height * 0.89,
-        text: '連接中',
-        style: {
-            font: '25px monospace',
-            fill: '#fff'
-        }
-    });
-    self.loadingText.setOrigin(0.5, 0.5);
-
-    self.load.on('progress', function (value) {
-      console.log(value)
-      self.progressBar.clear();
-      self.progressBar.fillStyle(0xFC8EFA, 1);
-      self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
-    });
-
-    self.load.on('complete', function () {
-      self.loadingText.setText('連接完成');
-      self.ready();
-    }.bind(self));
+    this.preloadFromArr({img: imageFiles, atlas: atlasFiles, sound: soundFiles});
+    this.createProgressBar();
 
   }
 
-  ready () {
-    let self = this
-    self.scene.start('Tutor');
+  create() {
+    super.create();
+
+        setTimeout(
+            ()=> {
+                this.scene.start('Tutor')
+            }, 1
+        )
   }
 
 }

@@ -279,7 +279,7 @@ export default class GameScene extends BasicScene {
         this.setGameDirection(question.direction);
 
         this.setWorldBounds();
-        
+
         this.paintScene(question);
 
     }
@@ -572,6 +572,8 @@ export default class GameScene extends BasicScene {
         this.penguinSprite.play("penguinHappy");
         const correctSoundEffect = this.sound.add('correctSoundEffect');
 
+        this.setCorrectSprite(leftItem);
+
         correctSoundEffect.on('complete', () => {
             GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({
@@ -638,7 +640,7 @@ export default class GameScene extends BasicScene {
                                 this.sound.add("loseSoundEffect").play();
 
                                 this.time.addEvent({
-                                    delay: 2000,
+                                    delay: 5000,
                                     callback: () => {
                                         composeSprite.setVisible(false);
                                         this.eggItemList.forEach(eggItem => {
@@ -699,6 +701,14 @@ export default class GameScene extends BasicScene {
             });
         });
     }
+
+      setCorrectSprite(dragItem) {
+          let correctImage = this.add.image(dragItem.x + 100, dragItem.y, "correctTexture");
+          const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+
+          eggItemsContainer.add(correctImage);
+
+      }
 
     setErrorSprite(dragItem, targetItem, eggItems, callback) {
         let errorImagePoint;

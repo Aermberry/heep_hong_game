@@ -22,18 +22,9 @@ export default class Egg extends Phaser.GameObjects.Container {
     create() {
         this.background = this.scene.add.sprite(0, 0, this.image, 0).setScale(0.5).setName("background");
 
-        const objectTexture = this.scene.add.image(0, 0, this.objectTexture).setScale(0.48).setName("texture");
+        const objectTexture = this.scene.add.image(0, 0, this.objectTexture).setScale(0.40).setName("texture");
 
         Phaser.Display.Align.In.Center(objectTexture, this.background, -10);
-
-       
-
-        // if(this.scene.isRightDirection()){
-        //     this.setSize(this.background.displayWidth / 2-0.5, this.background.displayHeight / 2-3);
-        // }
-        // else{
-        //     this.setSize(this.background.displayWidth / 2+20, this.background.displayHeight / 2-3);
-        // }
 
         if(this.scene.isRightDirection()){
             this.setSize(this.background.displayWidth / 2-0.5, this.background.displayHeight / 2+40);

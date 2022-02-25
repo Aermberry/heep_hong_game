@@ -1,10 +1,12 @@
 import Phaser from "phaser";
 import DialogWrongBox from "../components/DialogWrongBox";
 
-export default class RetryScene extends Phaser.Scene {
+export default class SecondErrorScene extends Phaser.Scene {
 
     constructor() {
-        super({ key: 'Retry' })
+        super({
+            key: 'SecondError'
+        })
     }
 
     init() {

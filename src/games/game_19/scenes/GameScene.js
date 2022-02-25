@@ -307,7 +307,7 @@ export default class GameScene extends BasicScene {
                 // this.input.setDefaultCursor(`url(), auto`);
 
             } else {
-                this.scene.run('Retry');
+                this.scene.run('SecondError');
 
                 this.scene.sleep();
 

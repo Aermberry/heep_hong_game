@@ -16,7 +16,8 @@ export default class EndScene extends BasicScene {
 
         this.buildBg('bg_tutor')
         this.sound.stopAll();
-
+        let gameStage = this.sys.game.globals.model.game;
+        this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
 
         let music = this.sound.add('win');
         music.setLoop(true);

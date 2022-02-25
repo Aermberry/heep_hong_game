@@ -18,7 +18,7 @@ export default class Scoreboard {
         if (this.isGame30) {
             data.forEach((key, i) => {
                 let textureName = key == 'l' ? 'lv3hinsbx1' : key == 't' ? 'lv3hinsbx2' : key == 'r' ? 'lv3hinsbx3' : key == 'a' ? 'lv3hinsbx4' : key == 'p' ? 'lv3hinsbx5' : 'lv3hinsbx6';
-                this.scoreTypeArr.push(new ScoreType(this.scene, this.x , this.y + 50 * i, textureName, this.scene.answer.type[key], key, this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this)))
+                this.scoreTypeArr.push(new ScoreType(this.scene, this.x, this.y + 50 * i, textureName, this.scene.answer.type[key], key, this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this), true))
             })
         } else {
             this.time = new ScoreType(this.scene, this.x + 0, this.y + 0, 'hinsbx1', data.type.t, 't', this.onComplete.bind(this), this.onScoreTypeBtnClick.bind(this));
@@ -88,7 +88,7 @@ export default class Scoreboard {
 
 
 class ScoreType extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, sprite, num, type, onComplete, onHighlightCallback) {
+    constructor(scene, x, y, sprite, num, type, onComplete, onHighlightCallback, isGame30 = false) {
         super(scene, x, y);
         this.title = scene.add.sprite(0, 0, sprite).setOrigin(0).setScale(.5);
         this.onHighlightCallback = onHighlightCallback;
@@ -100,13 +100,17 @@ class ScoreType extends Phaser.GameObjects.Container {
         let index = 0;
         while (index < num) {
             let sprite;
-            if (index >= 8) {
-                sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * (index % 8), 100, 'chkmrk').setOrigin(0).setScale(0.4);
-            } else if (index >= 4 && index < 8) {
-                sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * (index % 4), 50, 'chkmrk').setOrigin(0).setScale(0.4);
-            }
-            else {
-                sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * index, 0, 'chkmrk').setOrigin(0).setScale(0.4);
+            if (isGame30) {
+                sprite = scene.add.sprite(this.title.displayWidth + 20 + 70 * index, 0, 'chkmrk').setOrigin(0).setScale(0.4);
+            } else {
+                if (index >= 8) {
+                    sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * (index % 8), 100, 'chkmrk').setOrigin(0).setScale(0.4);
+                } else if (index >= 4 && index < 8) {
+                    sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * (index % 4), 50, 'chkmrk').setOrigin(0).setScale(0.4);
+                }
+                else {
+                    sprite = scene.add.sprite(this.title.displayWidth + 20 + 100 * index, 0, 'chkmrk').setOrigin(0).setScale(0.4);
+                }
             }
             this.arr.push(sprite)
             index++

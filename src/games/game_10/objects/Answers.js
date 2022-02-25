@@ -60,6 +60,7 @@ export default class Answers {
                 gameObject.x = gameObject.inPosition.x;
                 gameObject.y = gameObject.inPosition.y;
             } else {
+                self.scene.bag.toggleStatus(false);
                 if (self.playerSelectAnswers.includes(gameObject.name)) {
                     self.playerSelectAnswers.splice(self.playerSelectAnswers.indexOf(gameObject.name), 1);
                     self.scene.bag.toggleStatus(false);

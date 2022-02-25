@@ -4480,13 +4480,6 @@
                     "type": "r"
                 },
                 {
-                    "text": "",
-                    "z-index": [
-                        0
-                    ],
-                    "type": ""
-                },
-                {
                     "text": "到",
                     "z-index": [
                         0
@@ -8787,23 +8780,23 @@
                 {
                     "text": "玫",
                     "z-index": [
-                        1
+                        1,2
                     ],
-                    "type": "r"
+                    "type": "l"
                 },
                 {
                     "text": "瑰",
                     "z-index": [
-                        1
+                        1,2
                     ],
-                    "type": "r"
+                    "type": "l"
                 },
                 {
                     "text": "的",
                     "z-index": [
-                        1
+                        1,2
                     ],
-                    "type": "r"
+                    "type": "l"
                 },
                 {
                     "text": "花",

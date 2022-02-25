@@ -11,6 +11,8 @@ export default class Model {
         return this._gameStage;
     }
 
+
+
     set gameStage(stage) {
         
         this._gameStage = stage;

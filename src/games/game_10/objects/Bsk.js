@@ -8,8 +8,13 @@ export default class Bsk {
         this.sprite = scene.add.sprite(x, y, this.bsk);
         this.erroNum = 0;
         this.bb = new Bb(this.scene, this.scene.getColWidth(9.2), this.scene.getRowHeight(3));
-
     }
+
+    refreshZone() {
+        this.sprite.setInteractive();
+        this.sprite.input.dropZone = true;
+    }
+
 
     toggleStatus(flag) {
         this.status = flag;
@@ -17,11 +22,14 @@ export default class Bsk {
             let { x, y } = this.sprite
             this.sprite.destroy()
             this.sprite = this.scene.add.sprite(x, y, this.bsk);
+            this.sprite.setInteractive();
+            this.sprite.input.dropZone = true;
             this.bb.destroy();
         } else {
             let { x, y } = this.sprite
             this.sprite.destroy()
             this.sprite = this.scene.add.sprite(x, y, `${this.bsk}_on`);
+            // this.sprite.input.dropZone = true;
             this.bb.play();
             this.sprite.setInteractive({
                 useHandCursor: true

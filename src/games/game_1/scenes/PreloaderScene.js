@@ -34,7 +34,7 @@ export default class PreloaderScene extends BasicScene {
       'bluescreenLogo': require('../assets/bluescreen_logo.png'),
       'ph1Bg': require('../assets/bg_ph1.png'),
       'ph2Bg': require('../assets/bg_ph2.png'),
-      'tray': require('../assets/tray.png')
+      'tray': require('../assets/tray.png'),
     }
 
     const atlasFiles = {

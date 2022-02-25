@@ -17,6 +17,9 @@ export default class EggQuestion extends Egg {
         this.voiceButton.setScale(0.2);
 
         this.add(this.voiceButton);
+
+        this.getByName('texture').setX(0);
+
     }
 
 

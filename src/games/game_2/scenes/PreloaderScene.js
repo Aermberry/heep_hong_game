@@ -25,6 +25,7 @@ export default class PreloaderScene extends BasicScene {
             'uiRecorder': require('../assets/images/ui_recorder.png'),
             'clawTexture': require('../assets/images/texture_claw.png'),
             'errorTexture': require('../assets/images/texture_error.png'),
+            'correctTexture': require('../assets/images/texture_correct.png'),
 
             'textureObject0': require('../assets/images/objects/texture_item_objects/texture_object_0.png'),
             'textureObject1': require('../assets/images/objects/texture_item_objects/texture_object_1.png'),

@@ -3,12 +3,12 @@ import Phaser from 'phaser'
 export default class ErrorRetryButton extends Phaser.GameObjects.Sprite {
 
     constructor(scene, x, y) {
-        super(scene, x, y, 'rplLongBtn', 0);
+        super(scene, x, y, 'showAnswerButton', 0);
         scene.add.existing(this);
 
         this.setInteractive({ useHandCursor: true }).on(
             Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                console.log("down")
+                console.log("down");
 
                 this.setFrame(1);
 

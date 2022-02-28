@@ -58,20 +58,20 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
             y: 178
         }, {
             x: 1696,
-            y: 175
+            y: 220
         }, {
             x: 1278,
             y: 355
         }, {
             x: 1699,
-            y: 390
+            y: 430
         }, {
-            x: 1500,
-            y: 557
+            x: 1390,
+            y: 560
         }];
 
-        const prepositionLabelBoxPoint = points[1];
-        points.splice(1, 1);
+        const prepositionLabelBoxPoint = points[4];
+        points.splice(4, 1);
 
         points = this.ShufflePosition(points);
 

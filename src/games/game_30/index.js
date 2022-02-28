@@ -1,8 +1,8 @@
 import Game29 from '../game_29/index'
 
 
-function launch(urlParams) {
-    let game = new Game29(urlParams)
+function launch(urlParams,gtag) {
+    let game = new Game29(urlParams, gtag)
     return game
 }
 

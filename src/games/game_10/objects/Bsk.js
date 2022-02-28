@@ -222,7 +222,7 @@ export default class Bsk {
         })
         setTimeout(() => {
             self.winner();
-        }, 1500);
+        }, 5000);
     }
 
 

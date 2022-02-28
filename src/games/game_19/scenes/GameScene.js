@@ -102,15 +102,20 @@ export default class GameScene extends BasicScene {
             imageFiles[elmKey] = currCrocoSet[elmKey]
         })
 
-        this.preloadFromArr({ 'img': imageFiles });
+        this.preloadFromArr({
+            'img': imageFiles
+        });
     }
 
     create() {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
-    
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, {
+            'event_category': 'js_games',
+            'event_label': 'Game Start'
+        });
+
 
         createStarAnimations(this.anims);
 
@@ -136,7 +141,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            // this.questionIndex = 10;
+            this.questionIndex = 10;
 
         } else {
 
@@ -246,7 +251,16 @@ export default class GameScene extends BasicScene {
 
 
     paintGameSuccess() {
-        this.buttonControllerLayer.setVisible(false);
+
+
+        if (this.buttonControllerLayer.count() != 0) {
+            this.buttonControllerLayer.setVisible(false);
+            this.buttonControllerLayer.getChildren().forEach((button) => {
+                button.unableTouchEventListener();
+            })
+
+        }
+
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
 
         GameManager.getInstance().updateGamePlayTotal(() => {
@@ -287,7 +301,9 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameFailed(position) {
-        console.log({ position });
+        console.log({
+            position
+        });
         // this.uiLayer.setVisible(false);
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
             if (isFirstError) {
@@ -381,6 +397,7 @@ export default class GameScene extends BasicScene {
     paintGameScene() {
 
         this.playLayer = this.add.layer().setDepth(1);
+        0
         this.buttonControllerLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
@@ -403,8 +420,8 @@ export default class GameScene extends BasicScene {
     }
 
     buildControllerButtons(isBuild) {
-        if(isBuild){
-            this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
+        if (isBuild) {
+            this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep, );
             this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
             this.buttonControllerLayer.add([this.rightMoveButton, this.leftMoveButton])
         }

@@ -343,7 +343,7 @@ export default class GameScene extends BasicScene {
         question = JSON.parse(localStorage.getItem(this.questionIndex));
 
         // question = JSON.parse(localStorage.getItem(2));
-        question = JSON.parse(localStorage.getItem(9));
+        // question = JSON.parse(localStorage.getItem(9));
 
         console.log("当前抽取的题目:%o", question);
         console.log("当前抽取的题目Index:%o", this.questionIndex)
@@ -719,7 +719,7 @@ export default class GameScene extends BasicScene {
 
         if (this.isRightDirection()) {
             correctImagePoint = {
-                x: dragItem.x + 50,
+                x: dragItem.x + 100,
                 y: dragItem.y - 150
             }
         } else {

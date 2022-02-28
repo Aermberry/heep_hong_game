@@ -38,7 +38,8 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
       );
   }
 
-  unableTouchEventListener(){
+  unableTouchEventListener() {
+    this.disableInteractive();
     this.off(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN);
     this.off(Phaser.Input.Events.GAMEOBJECT_POINTER_UP);
   }

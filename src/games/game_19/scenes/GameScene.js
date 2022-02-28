@@ -141,7 +141,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            this.questionIndex = 10;
+            // this.questionIndex = 10;
 
         } else {
 

@@ -89,6 +89,9 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
+        let gameStage = this.dataModal.gameStage
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
+
         this.buildBg('bg');
         this.sound.stopAll();
         if (this.stopAll) {

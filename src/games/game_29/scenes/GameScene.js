@@ -25,15 +25,18 @@ export default class GameScene extends BasicScene {
         this.gameNum = this.sys.game.globals.model.game;
         if (this.gameNum == 29) {
             this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
-            // this.answer = this.dataModal['level2'][2]
         } else {
             this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+            // this.answer = this.dataModal['level1'][5]
+
         }
 
     }
 
     preload() {
         this.buildBg('bg_tutor')
+        let gameStage = this.sys.game.globals.model.game
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
         this.anims.create({
             key: 'crt_ans_star',
             delay: 200,

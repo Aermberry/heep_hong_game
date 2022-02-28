@@ -9,7 +9,7 @@ import Shelf from "../objects/Shelf";
 import Bsk from "../objects/Bsk";
 import Choice from '../assets/json/choice.json'
 import SpeakerBtn from '../objects/SpeakerBtn'
-
+import VoiceBtn from '../objects/VoiceBtn'
 export default class GameScene extends BasicScene {
     constructor() {
         super({
@@ -107,23 +107,7 @@ export default class GameScene extends BasicScene {
         const imageFiles = {
 
         };
-        if (this.currentLevel == 1) {
-            Choice.level1.forEach((item) => {
-                imageFiles[item.name] = require('../assets/img/LV1/' + item.logo);
-                imageFiles[`${item.name} shadow`] = require('../assets/img/LV1/' + item.shadow);
-            })
-        } else if (this.currentLevel == 2) {
-            Choice.level2.forEach((item) => {
-                imageFiles[item.name] = require('../assets/img/LV2/' + item.logo);
-                imageFiles[`${item.name} shadow`] = require('../assets/img/LV2/' + item.shadow);
-            })
 
-        } else if (this.currentLevel == 3) {
-            Choice.level3.forEach((item) => {
-                imageFiles[item.name] = require('../assets/img/LV3/' + item.logo);
-                imageFiles[`${item.name} shadow`] = require('../assets/img/LV3/' + item.shadow);
-            })
-        }
 
         const atlasFiles = {
         }
@@ -140,6 +124,27 @@ export default class GameScene extends BasicScene {
             'end_pic': require('../assets/audio/which_brand_of_mustard_shall_i_buy.mp3')
         }
 
+        if (this.currentLevel == 1) {
+            Choice.level1.forEach((item) => {
+                imageFiles[item.name] = require('../assets/img/LV1/' + item.logo);
+                imageFiles[`${item.name} shadow`] = require('../assets/img/LV1/' + item.shadow);
+                soundFiles[item.name] = require('../assets/audio/item/' + item.audio + '.mp3');
+            })
+        } else if (this.currentLevel == 2) {
+            Choice.level2.forEach((item) => {
+                imageFiles[item.name] = require('../assets/img/LV2/' + item.logo);
+                imageFiles[`${item.name} shadow`] = require('../assets/img/LV2/' + item.shadow);
+                soundFiles[item.name] = require('../assets/audio/item/' + item.audio + '.mp3');
+            })
+        } else if (this.currentLevel == 3) {
+            Choice.level3.forEach((item) => {
+                imageFiles[item.name] = require('../assets/img/LV3/' + item.logo);
+                imageFiles[`${item.name} shadow`] = require('../assets/img/LV3/' + item.shadow);
+                soundFiles[item.name] = require('../assets/audio/item/' + item.audio + '.mp3');
+            })
+        }
+
+
         this.preloadFromArr({
             img: imageFiles,
             sound: soundFiles,
@@ -151,6 +156,9 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
+        let gameStage = this.dataModal.gameStage
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
+
         this.sound.stopAll();
         if (this.stopAll) {
             this.sound.stopAll();
@@ -164,6 +172,20 @@ export default class GameScene extends BasicScene {
         this.regSprite = this.currentLevel == 1 ? 'reg_market' : this.currentLevel == 2 ? 'reg_travel' : 'reg_class'
         this.signSprite = this.currentLevel == 1 ? 's1_sign' : this.currentLevel == 2 ? 's2_sign' : 's3_sign'
         this.gameStart();
+
+        this.input.on('dragenter', function (pointer, gameObject, dropZone) {
+            if (dropZone.type == 'Sprite') {
+                let tKey =  dropZone.texture.key;
+                dropZone.setTexture(tKey.split('_on')[0] + '_on')
+            }
+        })
+
+        this.input.on('dragleave', (pointer, gameObject, dropZone) => {
+            if (dropZone.type == 'Sprite') {
+                let tKey =  dropZone.texture.key;
+                dropZone.setTexture(tKey.split('_on')[0])
+            }
+        })
 
     }
 
@@ -210,8 +232,8 @@ export default class GameScene extends BasicScene {
                 this.bag = new Bsk(this, this.getColWidth(2), this.getRowHeight(15));
                 this.move(this.list, this.getColWidth(1.7), this.getRowHeight(7), 1000)
                 let self = this;
-                this.move(this.holder.holder, this.getColWidth(6.3), this.getRowHeight(11)).then(() => self.holder.refreshZone());
-                this.move(this.bag.sprite, this.getColWidth(2), this.getRowHeight(10.5))
+                this.move(this.holder.holder, this.getColWidth(6.3), this.getRowHeight(11));
+                this.move(this.bag.sprite, this.getColWidth(2), this.getRowHeight(10.5)).then(() => self.bag.refreshZone())
                 this.gameStartAnimations(o)
             } else if (o.fillAlpha > 0) {
                 this.gameStartAnimations(o)
@@ -225,8 +247,11 @@ export default class GameScene extends BasicScene {
                 music.play();
 
                 this.Answers = new Answers(this, this.getColWidth(4), this.getRowHeight(2.3))
+                let voiceBtn = new VoiceBtn(this, 80, 300, this.question);
+                this.add.existing(voiceBtn);
             }
         })
+
     }
 
     move(o, x, y, d = 200) {

@@ -11,7 +11,13 @@ export default class PreloaderScene extends BasicScene {
 
     preload() {
 
-        this.buildBg('bg_title');
+        this.gameNum = this.sys.game.globals.model.game;
+        console.log(this.sys.game.globals.model)
+        if (this.gameNum == 29) {
+            this.buildBg('loading_1');
+        } else {
+            this.buildBg('loading_2');
+        }
         const imageFiles = {
             'bg': require('../assets/img/bg.png'),
             'bg_tutor': require('../assets/img/tut_bg.png'),
@@ -58,7 +64,7 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('but_shw_sor', require('../assets/img/but2.png'), { frameWidth: 372, frameHeight: 399.5 });
         this.load.spritesheet('but_shw_wl', require('../assets/img/but4.png'), { frameWidth: 870, frameHeight: 1007.5 });
         this.load.spritesheet('but_shw_wr', require('../assets/img/but6.png'), { frameWidth: 870, frameHeight: 1007 });
-        this.load.spritesheet('chkmrk', require('../assets/img/chkmrk.png'), { frameWidth: 111, frameHeight: 111 });
+        this.load.spritesheet('chkmrk', require('../assets/img/chkmrk.png'), { frameWidth: 151, frameHeight: 150.5 });
 
         this.load.spritesheet('but_bx1', require('../assets/img/but_tag1.png'), { frameWidth: 274, frameHeight: 400.5 });
         this.load.spritesheet('but_bx2', require('../assets/img/but_tag2.png'), { frameWidth: 274, frameHeight: 400.5 });
@@ -84,8 +90,8 @@ export default class PreloaderScene extends BasicScene {
         this.load.spritesheet('cha3', require('../assets/img/cha4.png'), { frameWidth: 769, frameHeight: 3132 / 3 });
         this.load.spritesheet('cha2', require('../assets/img/cha5.png'), { frameWidth: 661, frameHeight: 3307 / 3 });
         this.load.spritesheet('cha1', require('../assets/img/cha6.png'), { frameWidth: 1071, frameHeight: 3904 / 3 });
-        this.load.spritesheet('speakerBtn', require('../assets/img/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  });
-        this.load.spritesheet('offSpeakerBtn', require('../assets/img/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
+        this.load.spritesheet('speakerBtn', require('../assets/img/btn_speaker.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('offSpeakerBtn', require('../assets/img/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209 })
         this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
 
         let self = this;
@@ -100,24 +106,24 @@ export default class PreloaderScene extends BasicScene {
             }
         });
         self.loadingText.setOrigin(0.5, 0.5);
-    
+
         self.load.on('progress', function (value) {
-          self.progressBar.clear();
-          self.progressBar.fillStyle(0xFC8EFA, 1);
-          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+            self.progressBar.clear();
+            self.progressBar.fillStyle(0xFC8EFA, 1);
+            self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
         });
-    
+
         self.load.on('complete', function () {
-          self.loadingText.setText('連接完成');
-          self.ready();
+            self.loadingText.setText('連接完成');
+            self.ready();
         }.bind(self));
-    
-      }
-    
-      ready () {
+
+    }
+
+    ready() {
         let self = this
         self.scene.start('Tutor');
-      }
-    
+    }
+
 
 }

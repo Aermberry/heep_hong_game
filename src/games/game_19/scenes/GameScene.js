@@ -277,7 +277,7 @@ export default class GameScene extends BasicScene {
             let currentAnswerVoice = this.sound.add('voiceAnswer' + this.questionIndex);
 
             currentAnswerVoice.on('complete', () => {
-                console.log("currentAnswerVoice");
+                // console.log("currentAnswerVoice");
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {
@@ -301,10 +301,6 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameFailed(position) {
-        console.log({
-            position
-        });
-        // this.uiLayer.setVisible(false);
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
             if (isFirstError) {
                 const errorImage = this.add.image(position.x, position.y - 100, 'errorImage');

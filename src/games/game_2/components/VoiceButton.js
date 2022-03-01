@@ -24,11 +24,9 @@ export default class VoiceButton extends Button {
 
         this.voice.on('play', () => {
             this.texture.setFrame(0);
-            console.log('play')
         });
         this.voice.on('complete', () => {
             this.texture.setFrame(2);
-            console.log('complete')
         });
 
     }

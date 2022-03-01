@@ -29,11 +29,9 @@ export default class GameManager {
         localStorage.setItem('gamePlayTotal', JSON.stringify(5));
 
         if (this.questionNumberList.length > 0) {
-            console.log("data 不为空");
+         
             this.questionNumberList = []
         }
-
-        console.log(this.questionNumberList)
 
         let questions = await this.localRepository.loadData();
 
@@ -46,9 +44,6 @@ export default class GameManager {
     }
 
     updateGameQuestionNumberList(questionIndex) {
-        console.log({
-            questionIndex
-        })
         this.questionNumberList.splice(this.questionNumberList.indexOf(questionIndex), 1);
 
         localStorage.removeItem('questionNumberList');

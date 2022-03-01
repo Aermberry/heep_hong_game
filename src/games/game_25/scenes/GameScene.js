@@ -374,6 +374,7 @@ export default class GameScene extends BasicScene {
                             this.scene.start('End');
                             return;
                         } else {
+                            this.sound.stopAll();
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
 

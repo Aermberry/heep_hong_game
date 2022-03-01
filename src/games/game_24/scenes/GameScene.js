@@ -178,7 +178,7 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.sound.play('Bgm', { volume: 0.2, loop: true });
+        this.sound.play('Bgm');
         this.stopAll = false;
     }
 
@@ -239,7 +239,8 @@ export default class GameScene extends BasicScene {
             this.speakerBtn.visible = true;
             this.speakerOffBtn.visible = false;
         } else {
-            this.sound.play('Bgm', { volume: 0.2, loop: true });
+            // this.bmg = this.sound.add('Bgm')
+            this.sound.play('Bgm');
             this.speakerBtn.visible = false;
             this.speakerOffBtn.visible = true;
         }
@@ -370,6 +371,7 @@ export default class GameScene extends BasicScene {
                             this.scene.start('End');
                             return;
                         } else {
+                            this.sound.stopAll();
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
 

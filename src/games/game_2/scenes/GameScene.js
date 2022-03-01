@@ -565,14 +565,14 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess(leftItem, rightItem, composeSprite) {
-        leftItem.showSuccessStatus();
-        rightItem.showSuccessStatus();
+    paintGameSuccess(dragItem, targetItem, composeSprite, currentAnswer) {
+        dragItem.showSuccessStatus();
+        targetItem.showSuccessStatus();
 
         this.penguinSprite.play("penguinHappy");
         const correctSoundEffect = this.sound.add('correctSoundEffect');
 
-        this.setCorrectSprite(leftItem);
+        this.setCorrectSprite(dragItem);
 
         correctSoundEffect.on('complete', () => {
             GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
@@ -589,6 +589,17 @@ export default class GameScene extends BasicScene {
 
                         winSoundEffect.on('complete', () => {
                             // this.sound.stopAll();
+                            let leftItem;
+                            let rightItem;
+
+                            if (this.isRightDirection()) {
+                                leftItem = currentAnswer;
+                                rightItem = targetItem;
+                            } else {
+                                leftItem = targetItem;
+                                rightItem = currentAnswer;
+                            }
+
                             const leftVoicePlayer = this.sound.add("voiceItemObject" + leftItem.index);
                             const rightVoicePlayer = this.sound.add("voiceItemObject" + rightItem.index);
 
@@ -702,13 +713,28 @@ export default class GameScene extends BasicScene {
         });
     }
 
-      setCorrectSprite(dragItem) {
-          let correctImage = this.add.image(dragItem.x + 100, dragItem.y, "correctTexture");
-          const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+    setCorrectSprite(dragItem) {
 
-          eggItemsContainer.add(correctImage);
+        let correctImagePoint;
 
-      }
+        if (this.isRightDirection()) {
+            correctImagePoint = {
+                x: dragItem.x + 100,
+                y: dragItem.y - 150
+            }
+        } else {
+            correctImagePoint = {
+                x: dragItem.x-50 ,
+                y: dragItem.y - 150
+            }
+        }
+
+        let correctImage = this.add.image(correctImagePoint.x, correctImagePoint.y, "correctTexture");
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+
+        eggItemsContainer.add(correctImage);
+
+    }
 
     setErrorSprite(dragItem, targetItem, eggItems, callback) {
         let errorImagePoint;
@@ -812,7 +838,7 @@ export default class GameScene extends BasicScene {
 
         composeSprite.setVisible(false);
 
-        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, composeSprite) : this.paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer, eggItemList);
+        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(dragItem, targetItem, composeSprite, currentAnswer) : this.paintGameFailed(dragItem, targetItem, composeSprite, currentAnswer);
     }
 
     playVoice(leftVoice, rightVoice, callback) {

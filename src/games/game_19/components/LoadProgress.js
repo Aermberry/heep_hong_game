@@ -80,7 +80,6 @@ export default class LoadProgress extends Phaser.GameObjects.Container {
 
 
     onLoadComplete(loader, totalComplete, totalFailed, scene, callback) {
-        console.log({ loader })
 
         if (loader.totalToLoad == totalComplete) {
             this.loadingText.setText('連接完成');

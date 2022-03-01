@@ -15,14 +15,12 @@ export default class StartButton extends Phaser.GameObjects.Container {
 
         this.setInteractive({ useHandCursor: true }).on(
             Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                console.log("down")
                 this.texture.setFrame(1);
                 this.onDownClicked();
             }
         )
             .on(
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-                    console.log("up")
                     this.texture.setFrame(0);
                     // this._setFullScreen(scene);
                     this.onUpClicked();

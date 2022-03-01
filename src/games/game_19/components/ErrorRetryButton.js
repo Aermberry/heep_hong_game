@@ -8,8 +8,6 @@ export default class ErrorRetryButton extends Phaser.GameObjects.Sprite {
 
         this.setInteractive({ useHandCursor: true }).on(
             Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                console.log("down");
-
                 this.setFrame(1);
 
                 this.onDownClicked(scene);
@@ -17,7 +15,6 @@ export default class ErrorRetryButton extends Phaser.GameObjects.Sprite {
         )
             .on(
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-                    console.log("up")
                     this.setFrame(0);
                     this.onUpClicked(scene);
                 }

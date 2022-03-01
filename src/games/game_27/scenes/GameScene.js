@@ -25,7 +25,9 @@ export default class GameScene extends BasicScene {
         }
         this.dataModal = this.sys.game.globals.model.gameData;
 
+
     }
+
 
     preload() {
         this.buildBg('bg_tutor')
@@ -69,7 +71,7 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         let gameStage = this.sys.game.globals.model.game
-        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.sound.stopAll();
         if (this.stopAll) {
@@ -95,7 +97,7 @@ export default class GameScene extends BasicScene {
         this.trackZone = new TrackZone(this, 0, this.getRowHeight(6));
         this.question = new Question(this);
         let exitBtn = new ExitBtn(this, 100, 120);
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.4), 120, this.musicPause.bind(this));
         this.rtBtn = new RtBtn(this, this.getColWidth(10.6), this.getRowHeight(11));
         this.ltBtn = new LtBtn(this, this.getColWidth(9.5), this.getRowHeight(11));
         this.goBtn = new GoBtn(this, 1690, 385);

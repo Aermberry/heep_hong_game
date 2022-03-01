@@ -11,7 +11,12 @@ export default class PreloaderScene extends BasicScene {
 
     preload() {
 
-        this.buildBg('bg_title');
+        this.gameNum = this.sys.game.globals.model.game;
+        if (this.gameNum == 27) {
+            this.buildBg('bg_title1');
+        } else {
+            this.buildBg('bg_title2');
+        }
         const imageFiles = {
             'bg_L1': require('../assets/img/Bg.png'),
             'bg_tutor': require('../assets/img/tut_bg.png'),

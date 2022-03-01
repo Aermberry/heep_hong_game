@@ -12,7 +12,6 @@ export default class PreloaderScene extends BasicScene {
     preload() {
 
         this.gameNum = this.sys.game.globals.model.game;
-        console.log(this.sys.game.globals.model)
         if (this.gameNum == 29) {
             this.buildBg('loading_1');
         } else {

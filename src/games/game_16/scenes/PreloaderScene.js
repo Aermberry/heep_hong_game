@@ -102,6 +102,7 @@ export default class PreloaderScene extends BasicScene {
     ready () {
         let self = this
         self.scene.start('Tutor');
+
       }
 
 }

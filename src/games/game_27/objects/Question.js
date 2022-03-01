@@ -4,7 +4,16 @@ import DropZone from "./DropZone";
 import SubjectItem from "./SubjectItem";
 export default class Question {
     constructor(scene) {
-        let question = scene.dataModal[Math.floor(Math.random() * scene.dataModal.length)];
+
+        let data = scene.dataModal.filter((item) =>
+            !scene.pastProblems.includes(item))
+
+        let random = Math.floor(Math.random() * data.length)
+        let question = data[random];
+        scene.pastProblems.push(question);
+
+
+
         let regex = /\((.+?)\)/g;
         let answer = question.split(regex); // 完整的答案
         let items = question.match(regex) // 上方的选择项
@@ -95,6 +104,7 @@ export default class Question {
                 } else {
                     self.scene.scene.start('Game', {
                         level: self.scene.currentLevel + 1,
+                        pastProblems: self.scene.pastProblems
                     })
                 }
             });
@@ -115,9 +125,10 @@ export default class Question {
         self.move(self.scene.subjectItem, 100, 200).then(() => {
             self.move(self.scene.subjectItem, -100, 200).then(() => {
                 self.move(self.scene.subjectItem, 100, 200).then(() => {
-                    self.move(self.scene.subjectItem, -100, 200).then(() => {
+                    self.move(self.scene.subjectItem, 0, 200).then(() => {
                         setTimeout(() => {
                             self.scene.goBtn.setStatus(true);
+                            self.scene.subjectItem.reset();
                             this.openDrop();
                         }, 500)
                     })
@@ -145,8 +156,10 @@ export default class Question {
         let animation = self.scene.add.sprite(960, 840, 'answer');
         animation.play('answer');
         animation.on('animationcomplete', () => {
-            animation.destroy();
-            self.gameWinner();
+            setTimeout(() => {
+                animation.destroy();
+                self.gameWinner();
+            }, 3000);
         })
     }
 

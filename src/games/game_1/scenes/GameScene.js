@@ -41,9 +41,9 @@ export default class GameScene extends BasicScene {
     // this.model.bgMusicPlaying = true;
     // this.sys.game.globals.bgMusic = this.bgMusic;
 
-    let gameMusic = this.sound.add('bgMusic')
-    gameMusic.setLoop(true)
+    this.bgMusic = this.sound.add('bgMusic', { volume: 0.2, loop: true })
     this.model.bgMusicPlaying = true
+    this.sys.game.globals.bgMusic = this.bgMusic
 
     let imageFiles = {
       'l2Tut0': require('../assets/lv2_tut_0.png'),

@@ -27,7 +27,7 @@ build:node:
   before_script:
     - npm install
   script:
-  #  - npx browserslist@latest --update-db
+    - npx browserslist@latest --update-db
     - npm run build
   only:
     - master

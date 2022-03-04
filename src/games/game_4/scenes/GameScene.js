@@ -491,7 +491,7 @@ export default class GameScene extends BasicScene {
     }
 
     setCorrectSprite(dragItem) {
-        let correctImage = this.add.image(dragItem.x + 100, dragItem.y - 150, "correctTexture");
+        let correctImage = this.add.image(dragItem.x + 100, dragItem.y - 200, "correctTexture");
         const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
 
         eggItemsContainer.add(correctImage);

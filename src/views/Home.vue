@@ -7,7 +7,8 @@
         <!-- <div class="content-space"></div> -->
         <div class="content-wrapper landing">
           <img src="@/assets/images/img_title.svg" alt="">
-          <router-link to="/game/world" class="link-entry" target="_blank"><span class="inner">進入遊戲</span></router-link>
+          <router-link to="/world" class="link-entry" target="_blank" ><span class="inner">進入遊戲</span></router-link>
+          <!-- <a href="/game/world" class="link-entry"><span class="inner">進入遊戲</span></a> -->
         </div>
         <!-- <div class="content-space"></div> -->
       </div>

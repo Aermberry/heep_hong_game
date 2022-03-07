@@ -166,7 +166,11 @@ export default class GameScene extends BasicScene {
             highlightOnComplete: false,
             charDataLoader: () => hanziData
         });
+        let element = document.querySelector('#gameCanvas')
+        let el = document.getElementById('grid-background-target')
 
+        let gameCanvasHeight = `${Number(element.style.height.split('px')[0]) * 0.20 + Number(element.style.marginTop.split('px')[0])}px`;
+        el.style.marginTop = gameCanvasHeight;
         let that = this;
         this.writer.quiz({
             onCorrectStroke: function (strokeData) {
@@ -208,7 +212,11 @@ export default class GameScene extends BasicScene {
         let element = document.querySelector('#gameCanvas')
         let that = this;
         this.observer = new MutationObserver(() => {
+            
             let width = getComputedStyle(element).getPropertyValue('width')
+            let el = document.getElementById('grid-background-target')
+            let gameCanvasHeight = `${Number(element.style.height.split('px')[0]) * 0.20 + Number(element.style.marginTop.split('px')[0])}px`;
+            el.style.marginTop = gameCanvasHeight;
             that.size = Number(width.split('px')[0]) / 2.953;
             that.writer.updateDimensions({ width: that.size, height: that.size });
         })

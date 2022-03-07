@@ -122,12 +122,12 @@ export default class GameScene extends BasicScene {
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
-            frameWidth: 672,
-            frameHeight: 680
-        });
-        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), {
             frameWidth: 671,
             frameHeight: 687
+        });
+        this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), {
+            frameWidth: 672,
+            frameHeight: 680
         });
         this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), {
             frameWidth: 2180,

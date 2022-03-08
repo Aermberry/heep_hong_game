@@ -57,9 +57,7 @@ export default class TutorScene extends BasicScene {
 
         layer.add([tutor01Sprite])
 
-        tutor01Sprite.on('animationcomplete', (dd) => {
-            console.log("dsdsds");
-            console.log(dd)
+        tutor01Sprite.on('animationcomplete', () => {
             tutor02Sprite.play('tutor02Animation')
         })
         tutor02Sprite.on('animationcomplete', () => {

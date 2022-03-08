@@ -32,6 +32,7 @@ export default class GameScene extends BasicScene {
         this.curItem = null
         this.cat = null
         this.introPlayed = false
+        this.gameMusic = null
 
     }
 
@@ -40,8 +41,8 @@ export default class GameScene extends BasicScene {
         this.buildBg('bg_tutor')
 
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
-        let gameMusic = this.sound.add('drums')
-        gameMusic.setLoop(true)
+        this.gameMusic = this.sound.add('drums', { volume: 0.5, loop: true })
+        this.gameMusic.setLoop(true)
         this.dataModel.bgMusicPlaying = true
 
         let afterMatchMusic = this.sound.add('lightBattle')
@@ -170,7 +171,8 @@ export default class GameScene extends BasicScene {
 
         this.sound.stopAll()
         if (this.dataModel.bgMusicPlaying){
-            this.sound.play('drums')
+            //this.sound.play('drums')
+            this.gameMusic.play()
         }
 
         if(this.dataModel.gameStage == 21 && !this.introPlayed) {
@@ -386,10 +388,12 @@ export default class GameScene extends BasicScene {
     musicPause() {
         if (this.dataModel.bgMusicPlaying){
             this.dataModel.bgMusicPlaying = false
-            this.sound.stopByKey('drums')
+            //this.sound.stopByKey('drums')
+            this.gameMusic.pause()
         } else {
             this.dataModel.bgMusicPlaying = true
-            this.sound.play('drums')
+            //this.sound.play('drums')
+            this.gameMusic.resume()
         }
 
     }

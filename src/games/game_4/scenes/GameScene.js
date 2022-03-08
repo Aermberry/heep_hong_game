@@ -94,12 +94,12 @@ export default class GameScene extends BasicScene {
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
-            frameWidth: 612,
-            frameHeight: 770
+            frameWidth: 671,
+            frameHeight: 687
         });
         this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), {
-            frameWidth: 633,
-            frameHeight: 630
+            frameWidth: 672,
+            frameHeight: 680
         });
         this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), {
             frameWidth: 2180,
@@ -491,7 +491,7 @@ export default class GameScene extends BasicScene {
     }
 
     setCorrectSprite(dragItem) {
-        let correctImage = this.add.image(dragItem.x + 100, dragItem.y - 150, "correctTexture");
+        let correctImage = this.add.image(dragItem.x + 100, dragItem.y - 200, "correctTexture");
         const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
 
         eggItemsContainer.add(correctImage);

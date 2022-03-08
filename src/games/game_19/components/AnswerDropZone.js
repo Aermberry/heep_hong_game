@@ -23,7 +23,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
 
         this.add([this.stageSlaverSprite, dropZone]);
 
-        this.setSize(dropZone.displayWidth,dropZone.displayHeight);
+        this.setSize(dropZone.displayWidth, dropZone.displayHeight);
 
         // this.scene.physics.add.existing(this);
 
@@ -48,7 +48,6 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      */
     addSuccessEventListener(scene) {
         this.on('gameSuccess', () => {
-            console.log('gameSuccess')
             scene.paintGameSuccess();
         })
     }
@@ -59,8 +58,10 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      */
     addFailedEventListener(scene) {
         this.on('gameFailed', (gameObject) => {
-            console.log('failed');
-            scene.paintGameFailed({ x: gameObject.x, y: gameObject.y });
+            scene.paintGameFailed({
+                x: gameObject.x,
+                y: gameObject.y
+            });
         })
     }
 
@@ -70,13 +71,8 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      */
     checkAnswer(pointer, gameObject, dropZone, question, self, scene) {
 
-        console.log({ gameObject })
-
         scene.sound.play('dropEffectSound');
-
-
-
-
+        
         if (question.modifier.indexOf(gameObject.labelText.text) > -1) {
             self.add([gameObject]);
             self.setToothPosition(gameObject, dropZone);
@@ -99,8 +95,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
         tooth.changeStyle(0.3, '35px');
 
         let toothList = this.list.filter(item => item.name == 'tooth');
-        console.log({ toothList });
-
+      
         for (let index = 0; index < toothList.length; index++) {
 
             if (index == 0) {
@@ -112,8 +107,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
                         tooth.x = -dropZone.width / 2 + 180;
                         break;
                 }
-            }
-            else {
+            } else {
                 let currentTooth = toothList[index];
                 let previousTooth = toothList[index - 1];
 

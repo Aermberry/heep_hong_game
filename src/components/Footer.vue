@@ -19,9 +19,9 @@
         </div>
 
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="/sitemap">網頁指南</a></li>
-            <li class="nav-item"><a href="/privacy-policy">私隱政策</a></li>
-            <li class="nav-item"><a href="/important-notices">重要告示</a></li>
+            <li class="nav-item"><router-link to="/sitemap">網頁指南</router-link></li>
+            <li class="nav-item"><router-link to="/privacy-policy">私隱政策</router-link></li>
+            <li class="nav-item"><router-link to="/important-notices">重要告示</router-link></li>
             <li class="nav-item">©{{currentYear}} 協康會，版權所有</li>
         </ul>
 

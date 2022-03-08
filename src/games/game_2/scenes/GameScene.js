@@ -122,12 +122,12 @@ export default class GameScene extends BasicScene {
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
-            frameWidth: 612,
-            frameHeight: 770
+            frameWidth: 671,
+            frameHeight: 687
         });
         this.load.spritesheet('eggQuestionTexture', require('../assets/images/texture_egg_question.png'), {
-            frameWidth: 633,
-            frameHeight: 630
+            frameWidth: 672,
+            frameHeight: 680
         });
         this.load.spritesheet('cloudTexture', require('../assets/images/texture_cloud.png'), {
             frameWidth: 2180,
@@ -404,9 +404,9 @@ export default class GameScene extends BasicScene {
 
         /* 以右方向为正方向*/
         if (this.isRightDirection()) {
-            console.log({
-                direction: currentGameQuestion.direction
-            });
+            // console.log({
+            //     direction: currentGameQuestion.direction
+            // });
             clawBoxPosition = {
                 x: 2200,
                 y: 410
@@ -414,9 +414,9 @@ export default class GameScene extends BasicScene {
             clawAnimationTargetPosition = 1800;
             clawBox.eggQuestion.setPosition(-200, 0);
         } else {
-            console.log({
-                direction: currentGameQuestion.direction
-            });
+            // console.log({
+            //     direction: currentGameQuestion.direction
+            // });
             clawBoxPosition = {
                 x: 0,
                 y: 410
@@ -631,9 +631,9 @@ export default class GameScene extends BasicScene {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {
 
                 GameManager.getInstance().getGameFail(this.questionIndex, (isFirstError, value) => {
-                    console.log({
-                        isLastQuestion: value
-                    })
+                    // console.log({
+                    //     isLastQuestion: value
+                    // })
 
                     this.time.addEvent({
                         delay: 2000,

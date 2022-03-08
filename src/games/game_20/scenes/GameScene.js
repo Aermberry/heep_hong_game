@@ -171,6 +171,7 @@ export default class GameScene extends BasicScene {
 
         let gameCanvasHeight = `${Number(element.style.height.split('px')[0]) * 0.20 + Number(element.style.marginTop.split('px')[0])}px`;
         el.style.marginTop = gameCanvasHeight;
+
         let that = this;
         this.writer.quiz({
             onCorrectStroke: function (strokeData) {
@@ -249,7 +250,7 @@ export default class GameScene extends BasicScene {
     characterSuccess() {
         let textAudio = this.sound.add(this.item);
         textAudio.play();
-        textAudio.on('complete', () => {
+            textAudio.on('complete', () => {
             let done = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'done')
             done.play('done');
             let successAudio = this.sound.add('complete');

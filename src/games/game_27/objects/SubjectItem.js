@@ -115,6 +115,14 @@ export default class SubjectItem extends Phaser.GameObjects.Container {
 
     sortBySeed() {
         this.list.sort(this.compare('seed'))
+        let width = 0;
+        this.list.forEach((item) => {
+            width += item.width;
+        })
+        if (width > 2000) {
+            this.y += 100;
+            this.setScale(0.8)
+        }
         this.reRender();
     }
 
@@ -136,7 +144,7 @@ export default class SubjectItem extends Phaser.GameObjects.Container {
                 car.y = car.selectAreaOring.y;
                 this.reset(i);
             } else {
-                this.reset(i+1);
+                this.reset(i + 1);
             }
         }
     }

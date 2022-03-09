@@ -20,19 +20,7 @@ export default class PreloaderScene extends BasicScene {
         const imageFiles = {
             'bg_L1': require('../assets/img/Bg.png'),
             'bg_tutor': require('../assets/img/tut_bg.png'),
-            'end_box': require('../assets/img/end_box.png'),
-            '4w_car1': require('../assets/img/4w_car1.png'),
-            '4w_car2': require('../assets/img/4w_car2.png'),
-            '4w_car3': require('../assets/img/4w_car3.png'),
-            '4w_car4': require('../assets/img/4w_car4.png'),
-            '4w_car5': require('../assets/img/4w_car5.png'),
-            '4w_car6': require('../assets/img/4w_car6.png'),
-            '6w_car1': require('../assets/img/6w_car1.png'),
-            '6w_car2': require('../assets/img/6w_car2.png'),
-            '6w_car3': require('../assets/img/6w_car3.png'),
-            '13w_car1': require('../assets/img/13w_car1.png'),
-            '13w_car2': require('../assets/img/13w_car2.png'),
-            'car_box': require('../assets/img/car_box.png'),
+
         };
 
         const atlasFiles = {
@@ -45,14 +33,7 @@ export default class PreloaderScene extends BasicScene {
         }
 
         const soundFiles = {
-            'bgm': require('../assets/audio/Circus Theme(loop).mp3'),
-            'buttonOnClcik': require('../assets/audio/comedy_pop_finger_in_mouth_002.mp3'),
-            'drop': require('../assets/audio/HAMMER, WAR 81.mp3'),
-            'goButtonOnClcik': require('../assets/audio/School Bell (short).mp3'),
-            'winnerSound': require('../assets/audio/css1_lift1.mp3'),
-            'errorSound': require('../assets/audio/css1_launch2.mp3'),
-            'winnerSound2': require('../assets/audio/Roller Coaster Ride 1 (short).mp3'),
-            'endpic': require('../assets/audio/Waltzing Circus (short).mp3')
+
         }
 
 

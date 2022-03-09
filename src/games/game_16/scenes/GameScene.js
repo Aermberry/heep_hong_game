@@ -259,14 +259,14 @@ export default class GameScene extends BasicScene {
         this.currentCar = parseInt(Math.random() * (6 - 1 + 1) + 1, 10);
 
         this.car = this.add.follower(curve, this.getColWidth(1), this.getRowHeight(5.5), `car_${this.currentCar}`).setDepth(10)
-        this.car.play(`car_${this.currentCar}_idle`)
+        this.car.play(`car_${this.currentCar}_idle`);
 
 
         let data = this.dataModal.gameItems;
 
         this.pastProblems.forEach((item) => {
             data = data.filter((problems) => {
-                if (item.join('|') !== problems.join('|')) {
+                if (item.join('|') !== problems.join('|')) {``
                     return problems
                 }
             })

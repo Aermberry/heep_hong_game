@@ -1,5 +1,5 @@
 import Road from "./Road"
-
+import Phaser from "phaser";
 export default class Answers {
 
     constructor(scene, x, y, winnerHandler, item) {
@@ -135,6 +135,14 @@ export default class Answers {
                             duration: 100,
                             ease: 'Power2'
                         }).on('complete', () => {
+                            this.scene.car.destroy();
+                            let startY = this.scene.getRowHeight(5.5);
+                            let startX = this.scene.getColWidth(1.7)
+                            let points = [
+                                startX, startY, 2200, startY
+                            ];
+                            let curve = new Phaser.Curves.Spline(points);                    
+                            this.scene.car = this.scene.add.follower(curve, this.scene.getColWidth(1), this.scene.getRowHeight(5.5), `car_${this.scene.currentCar}`).setDepth(10)
                             this.scene.car.play(`car_${this.scene.currentCar}_idle`)
                         })
                     })
@@ -142,19 +150,19 @@ export default class Answers {
 
 
                     setTimeout(() => {
-                        if (this.errorFrequency == 1) {
+                        if (this.errorFrequency < 2) {
                             let sprite = this.scene.add.sprite(this.scene.getColWidth(11), this.scene.getRowHeight(7), 'addoil');
                             sprite.play('addoil');
                             sprite.on('animationcomplete', () => {
                                 sprite.destroy();
                             });
-                        } else if (this.errorFrequency > 1) {
+                        } else if (this.errorFrequency > 2) {
                             this.scene.doneBtn.destroy();
                             this.disRoad();
                             this.badEnd();
                         }
 
-                        if (this.errorFrequency < 2) {
+                        if (this.errorFrequency < 3) {
                             this.answers.forEach((item, index) => {
                                 if (this.selectItems.includes(item.container)) {
                                     this.roadReset(item, index)

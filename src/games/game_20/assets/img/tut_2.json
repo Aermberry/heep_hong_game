@@ -109,7 +109,7 @@
 	"frame": {"x":647,"y":1216,"w":645,"h":606},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":645,"h":622},
+	"spriteSourceSize": {"x":0,"y":16,"w":645,"h":622},
 	"sourceSize": {"w":645,"h":622}
 }},
 "meta": {

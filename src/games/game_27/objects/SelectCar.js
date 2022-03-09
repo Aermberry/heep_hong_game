@@ -14,6 +14,7 @@ export default class SelectCar extends Phaser.GameObjects.Container {
         });
         text.x = text.width / 2 - text.width;
         this.add([itemImg, text]);
+        this.setDepth(3)
         this.setSize(itemImg.width, itemImg.height);
         this.selectAreaOring = {
             x: x,

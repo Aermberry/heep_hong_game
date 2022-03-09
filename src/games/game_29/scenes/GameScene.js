@@ -4,6 +4,8 @@ import Butterfly from "../objects/Butterfly";
 import Scoreboard from "../objects/Scoreboard";
 import SpeakerBtn from '../objects/SpeakerBtn'
 import ExitBtn from '../objects/ExitBtn'
+import config from '../config/index'
+
 export default class GameScene extends BasicScene {
     constructor() {
         super({
@@ -26,8 +28,8 @@ export default class GameScene extends BasicScene {
         if (this.gameNum == 29) {
             this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
         } else {
-            this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
-            // this.answer = this.dataModal['level1'][5]
+            // this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+            this.answer = this.dataModal['level1'][3]
 
         }
 
@@ -57,7 +59,28 @@ export default class GameScene extends BasicScene {
             atlas: atlasFiles
         });
 
-        this.createProgressBar();
+        let self = this;
+        self.progressBar = self.add.graphics();
+        self.loadingText = self.make.text({
+            x: config.width / 2,
+            y: config.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+        self.loadingText.setOrigin(0.5, 0.5);
+    
+        self.load.on('progress', function (value) {
+          self.progressBar.clear();
+          self.progressBar.fillStyle(0xFC8EFA, 1);
+          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+        });
+    
+        self.load.on('complete', function () {
+          self.loadingText.setText('連接完成');
+        }.bind(self));
     }
 
     create() {

@@ -6,6 +6,7 @@ import LtBtn from "../objects/LtBtn";
 import TrackZone from "../objects/TrackZone";
 import GoBtn from "../objects/goBtn";
 import SpeakerBtn from '../objects/SpeakerBtn'
+import config from '../config/index'
 export default class GameScene extends BasicScene {
     constructor() {
         super({
@@ -54,18 +55,65 @@ export default class GameScene extends BasicScene {
 
 
         const imageFiles = {
-
+            'end_box': require('../assets/img/end_box.png'),
+            '4w_car1': require('../assets/img/4w_car1.png'),
+            '4w_car2': require('../assets/img/4w_car2.png'),
+            '4w_car3': require('../assets/img/4w_car3.png'),
+            '4w_car4': require('../assets/img/4w_car4.png'),
+            '4w_car5': require('../assets/img/4w_car5.png'),
+            '4w_car6': require('../assets/img/4w_car6.png'),
+            '6w_car1': require('../assets/img/6w_car1.png'),
+            '6w_car2': require('../assets/img/6w_car2.png'),
+            '6w_car3': require('../assets/img/6w_car3.png'),
+            '13w_car1': require('../assets/img/13w_car1.png'),
+            '13w_car2': require('../assets/img/13w_car2.png'),
+            'car_box': require('../assets/img/car_box.png'),
         };
 
         const atlasFiles = {
         }
 
+
+        const soundFiles = {
+            'bgm': require('../assets/audio/Circus Theme(loop).mp3'),
+            'buttonOnClcik': require('../assets/audio/comedy_pop_finger_in_mouth_002.mp3'),
+            'drop': require('../assets/audio/HAMMER, WAR 81.mp3'),
+            'goButtonOnClcik': require('../assets/audio/School Bell (short).mp3'),
+            'winnerSound': require('../assets/audio/css1_lift1.mp3'),
+            'errorSound': require('../assets/audio/css1_launch2.mp3'),
+            'winnerSound2': require('../assets/audio/Roller Coaster Ride 1 (short).mp3'),
+            'endpic': require('../assets/audio/Waltzing Circus (short).mp3')
+        }
+
         this.preloadFromArr({
             img: imageFiles,
-            atlas: atlasFiles
+            atlas: atlasFiles,
+            sound: soundFiles
         });
 
-        this.createProgressBar();
+        // this.createProgressBar();
+        let self = this;
+        self.progressBar = self.add.graphics();
+        self.loadingText = self.make.text({
+            x: config.width / 2,
+            y: config.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+        self.loadingText.setOrigin(0.5, 0.5);
+    
+        self.load.on('progress', function (value) {
+          self.progressBar.clear();
+          self.progressBar.fillStyle(0xFC8EFA, 1);
+          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+        });
+    
+        self.load.on('complete', function () {
+          self.loadingText.setText('連接完成');
+        }.bind(self));
     }
 
     create() {

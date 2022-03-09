@@ -219,11 +219,36 @@ export default class GameScene extends BasicScene {
         };
 
         const atlasFiles = {
+
+        }
+
+        const soundFiles = {
+            '0': require('../assets/audio/level/Game16.17_101.mp3'),
+            '1': require('../assets/audio/level/Game16.17_102.mp3'),
+            '2': require('../assets/audio/level/Game16.17_103.mp3'),
+            '3': require('../assets/audio/level/Game16.17_104.mp3'),
+            '4': require('../assets/audio/level/Game16.17_105.mp3'),
+            '5': require('../assets/audio/level/Game16.17_106.mp3'),
+            '6': require('../assets/audio/level/Game16.17_107.mp3'),
+            '7': require('../assets/audio/level/Game16.17_108.mp3'),
+            '8': require('../assets/audio/level/Game16.17_109.mp3'),
+            '9': require('../assets/audio/level/Game16.17_110.mp3'),
+            '10': require('../assets/audio/level/Game16.17_111.mp3'),
+            '11': require('../assets/audio/level/Game16.17_112.mp3'),
+            '12': require('../assets/audio/level/Game16.17_113.mp3'),
+            '13': require('../assets/audio/level/Game16.17_114.mp3'),
+            '14': require('../assets/audio/level/Game16.17_115.mp3'),
+            '15': require('../assets/audio/level/Game16.17_116.mp3'),
+            '16': require('../assets/audio/level/Game16.17_117.mp3'),
+            '17': require('../assets/audio/level/Game16.17_118.mp3'),
+            '18': require('../assets/audio/level/Game16.17_119.mp3'),
+            '19': require('../assets/audio/level/Game16.17_120.mp3')
         }
 
         this.preloadFromArr({
             img: imageFiles,
-            atlas: atlasFiles
+            atlas: atlasFiles,
+            sound: soundFiles
         });
 
         this.createProgressBar();
@@ -233,8 +258,7 @@ export default class GameScene extends BasicScene {
         super.create();
         this.buildBg('bg_L1');
         let gameStage = this.dataModal.gameStage
-        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
-
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
         this.hoverArea = [];
         this.sound.stopAll();
         if (this.stopAll) {
@@ -246,7 +270,6 @@ export default class GameScene extends BasicScene {
             this.music.setLoop(true)
             this.music.play();
         }
-
 
         this.disableInput = false;
         // let sky = this.add.sprite(this.getColWidth(8.5), this.getRowHeight(.5), 'sun')
@@ -266,7 +289,8 @@ export default class GameScene extends BasicScene {
 
         this.pastProblems.forEach((item) => {
             data = data.filter((problems) => {
-                if (item.join('|') !== problems.join('|')) {``
+                if (item.join('|') !== problems.join('|')) {
+                    ``
                     return problems
                 }
             })
@@ -274,6 +298,7 @@ export default class GameScene extends BasicScene {
 
         // data.splice(data.indexOf(this.pastProblems), 0);
         let item = data[Math.floor(Math.random() * data.length)];
+        this.index = this.dataModal.gameItems.indexOf(item)
         this.pastProblems.push(item)
         this.answers = new Answers(this, this.getColWidth(1.7), this.getRowHeight(9.8), this.winnerCallBack.bind(this), item);
         this.blankRoad = new BlankRoad(this, this.getColWidth(6), this.getRowHeight(6));
@@ -290,17 +315,18 @@ export default class GameScene extends BasicScene {
     }
 
     winnerCallBack(flag) {
-        setTimeout(() => {
-            this.endGame();
-        }, 3000)
         let run = this.sound.add(flag ? 'run' : 'erro_run');
         run.play();
+        let text = this.sound.add(this.index);
         if (flag) {
             let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
             correct.play('correct_answer');
             let child = this.sound.add('child_clap')
             child.play();
         }
+        text.on('complete', () => {
+            this.endGame();
+        })
         this.car.play(`car_${this.currentCar}_run`).startFollow({
             duration: 3000,
             yoyo: false,
@@ -308,6 +334,10 @@ export default class GameScene extends BasicScene {
             rotateToPath: true,
             verticalAdjust: true
         })
+
+        setTimeout(() => {
+            text.play();
+        }, 3000);
     }
 
     endGame() {

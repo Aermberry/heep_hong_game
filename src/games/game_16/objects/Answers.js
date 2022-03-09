@@ -141,7 +141,7 @@ export default class Answers {
                             let points = [
                                 startX, startY, 2200, startY
                             ];
-                            let curve = new Phaser.Curves.Spline(points);                    
+                            let curve = new Phaser.Curves.Spline(points);
                             this.scene.car = this.scene.add.follower(curve, this.scene.getColWidth(1), this.scene.getRowHeight(5.5), `car_${this.scene.currentCar}`).setDepth(10)
                             this.scene.car.play(`car_${this.scene.currentCar}_idle`)
                         })
@@ -161,7 +161,6 @@ export default class Answers {
                             this.disRoad();
                             this.badEnd();
                         }
-
                         if (this.errorFrequency < 3) {
                             this.answers.forEach((item, index) => {
                                 if (this.selectItems.includes(item.container)) {

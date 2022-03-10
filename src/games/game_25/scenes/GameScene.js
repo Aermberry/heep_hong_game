@@ -159,6 +159,8 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
         // this.sound.play('Bgm');
+        let gameStage = this.dataModal.gameStage
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
         this.bg_up_cl1 = this.add.sprite(this.getColWidth(5), this.getRowHeight(1), 'cl1');
         this.bg_up_cl1.play('cl1');
         this.bg_up_cl1_1 = this.add.sprite(this.getColWidth(9), this.getRowHeight(1.2), 'cl1');

@@ -25,7 +25,6 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
         let music = scene.sound.add('end_pic')
         music.setLoop(false)
         music.play()
-
         this.add([
             bj,
             endBox,

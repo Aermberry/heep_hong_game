@@ -85,6 +85,14 @@ export default class GameScene extends BasicScene {
             'endpic': require('../assets/audio/Waltzing Circus (short).mp3')
         }
 
+        this.gameNum = this.sys.game.globals.model.game;
+        //目前只有20題，如有更改再改變該方法
+        let i =0;
+        while(i<20) {
+            soundFiles[i] =  require(`../assets/audio/item/Game27.28_${this.gameNum == 27 ? '1': '2'}${i < 9 ? '0' + (i + 1) : i+1 }.mp3`);
+            i++;
+        }
+
         this.preloadFromArr({
             img: imageFiles,
             atlas: atlasFiles,

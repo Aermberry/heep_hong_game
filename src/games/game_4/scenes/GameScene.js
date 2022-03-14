@@ -91,6 +91,7 @@ export default class GameScene extends BasicScene {
 
             'voiceOver0': require('../assets/audio/voice/voice_over/0.mp3'),
             'voiceOver1': require('../assets/audio/voice/voice_over/1.mp3'),
+            'voiceOver4': require('../assets/audio/voice/voice_over/4.mp3'),
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {

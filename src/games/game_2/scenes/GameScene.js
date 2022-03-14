@@ -119,6 +119,8 @@ export default class GameScene extends BasicScene {
             'voiceItemObject34': require('../assets/audio/voice/item_objects/voice_item_object_34.mp3'),
             'voiceItemObject35': require('../assets/audio/voice/item_objects/voice_item_object_35.mp3'),
             'voiceItemObject36': require('../assets/audio/voice/item_objects/voice_item_object_36.mp3'),
+
+            'voiceOver': require('../assets/audio/voice/voice_over/voice_over.mp3'),
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
@@ -435,7 +437,9 @@ export default class GameScene extends BasicScene {
 
         this.eggItemList = this.generateEggItems(phrases, this.generatePoints(), eggQuestion, this.gameLayer);
 
-        clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
+        const voiceOver = this.sound.add('voiceOver');
+
+        voiceOver.on('complete', () => {
             this.eggItemList.forEach(eggItem => {
                 eggItem.setEnableListener();
 
@@ -443,8 +447,11 @@ export default class GameScene extends BasicScene {
                 eggItem.body.bounce.set(0);
 
             })
+        })
 
-        });
+        voiceOver.play();
+
+        clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {});
 
     }
 

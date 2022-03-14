@@ -89,7 +89,8 @@ export default class GameScene extends BasicScene {
     create() {
         super.create();
 
-       this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
+        let gameStage = this.dataModal.gameStage
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.buildBg('bg')
         let exitBtn = new ExitBtn(this, 100, 120);
@@ -150,11 +151,11 @@ export default class GameScene extends BasicScene {
 
     CompleteAnswerAnimation(state, errorNumber) {
         if (state) {
-            let houseNameList = ['house_a','house_b'];
+            let houseNameList = ['house_a', 'house_b'];
             let houseName = houseNameList[Math.floor((Math.random() * houseNameList.length))];
             this.sound.play(this.currentQuestionGroup[this.currentIndex].audio);
             this.currentIndex++;
-            let house = this.add.sprite(houseName == 'house_a'?this.getColWidth(3.8):this.getColWidth(4), this.getRowHeight(3.7), houseName);
+            let house = this.add.sprite(houseName == 'house_a' ? this.getColWidth(3.8) : this.getColWidth(4), this.getRowHeight(3.7), houseName);
             let yes = this.add.sprite(this.getColWidth(3.8), this.getRowHeight(3.7), 'yes');
             yes.setDisplaySize(900, 400);
             let music = this.sound.add('yesAudio')
@@ -170,6 +171,8 @@ export default class GameScene extends BasicScene {
                             this.bear_job.stop();
                             this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
                             this.add.existing(this.endBroad)
+                            let gameStage = this.sys.game.globals.model.gameStage;
+                            this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
                             return;
                         } else {
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
@@ -190,6 +193,8 @@ export default class GameScene extends BasicScene {
                     setTimeout(
                         () => {
                             if (this.currentIndex == this.currentQuestionGroup.length) {
+                                let gameStage = this.dataModal.gameStage
+                                this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
                                 this.music.pause();
                                 this.bear_job.stop();
                                 this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)

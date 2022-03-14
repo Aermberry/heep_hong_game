@@ -47,8 +47,8 @@ export default class TutorScene extends BasicScene {
     }
 
    playTutorAnimation(layer) {
-       const tutorSprite01 = new GameSprite(this, this.cameras.main.width / 2 - 100, this.cameras.main.height / 2 - 50, 'tutorTexture01');
-       const tutorSprite02 = new GameSprite(this, this.cameras.main.width / 2 + 180, this.cameras.main.height / 2, 'tutorTexture02');
+       const tutorSprite01 = new GameSprite(this, this.cameras.main.width / 2 - 150, this.cameras.main.height / 2 - 110, 'tutorTexture01').setScale(1.3);
+       const tutorSprite02 = new GameSprite(this, this.cameras.main.width / 2 + 220, this.cameras.main.height / 2-120, 'tutorTexture02').setScale(1.3);
        // const tutorSprite03 = new GameSprite(this, this.cameras.main.width / 2 + 390, this.cameras.main.height / 2 - 70, 'tutorTexture03').setScale(0.75);
 
        layer.add([tutorSprite02, tutorSprite01])

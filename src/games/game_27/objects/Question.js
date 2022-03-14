@@ -11,8 +11,7 @@ export default class Question {
         let random = Math.floor(Math.random() * data.length)
         let question = data[random];
         scene.pastProblems.push(question);
-
-
+        this.index = scene.dataModal.indexOf(question);
 
         let regex = /\((.+?)\)/g;
         let answer = question.split(regex); // 完整的答案
@@ -87,27 +86,32 @@ export default class Question {
     }
 
     gameWinner() {
-        this.scene.subjectItem.x = 0;
-        this.scene.ltBtn.destroy();
-        this.scene.rtBtn.destroy();
-        let self = this;
-        let audio = this.scene.sound.add('winnerSound');
-        audio.play();
-        this.move(this.scene.subjectItem, 2000).then(() => {
-            let wow_car = this.scene.add.sprite(1100, 600, 'wow_car')
-            wow_car.play('wow_car')
-            let audio = this.scene.sound.add('winnerSound2');
+        //獲取當前句子音頻索引
+        let correctAudio = this.scene.sound.add(this.index);
+        correctAudio.play();
+        correctAudio.on('complete', () => {  
+            this.scene.subjectItem.x = 0;
+            this.scene.ltBtn.destroy();
+            this.scene.rtBtn.destroy();
+            let self = this;
+            let audio = this.scene.sound.add('winnerSound');
             audio.play();
-            wow_car.on('animationcomplete', () => {
-                if (self.scene.currentLevel == 5) {
-                    self.scene.scene.start('End')
-                } else {
-                    self.scene.scene.start('Game', {
-                        level: self.scene.currentLevel + 1,
-                        pastProblems: self.scene.pastProblems
-                    })
-                }
-            });
+            this.move(this.scene.subjectItem, 2000).then(() => {
+                let wow_car = this.scene.add.sprite(1100, 600, 'wow_car')
+                wow_car.play('wow_car')
+                let audio = this.scene.sound.add('winnerSound2');
+                audio.play();
+                wow_car.on('animationcomplete', () => {
+                    if (self.scene.currentLevel == 5) {
+                        self.scene.scene.start('End')
+                    } else {
+                        self.scene.scene.start('Game', {
+                            level: self.scene.currentLevel + 1,
+                            pastProblems: self.scene.pastProblems
+                        })
+                    }
+                });
+            })
         })
     }
 

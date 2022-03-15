@@ -94,6 +94,7 @@ export default class GameScene extends BasicScene {
             'voiceOver1': require('../assets/audio/voice/voice_over/1.mp3'),
             'voiceOver2': require('../assets/audio/voice/voice_over/2.mp3'),
             'voiceOver3': require('../assets/audio/voice/voice_over/3.mp3'),
+            'voiceOver4': require('../assets/audio/voice/voice_over/4.mp3'),
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
@@ -496,13 +497,13 @@ export default class GameScene extends BasicScene {
             }
         }
 
-           let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
+        let errorImage = this.add.image(errorImagePoint.x, errorImagePoint.y, "errorTexture");
 
-           this.errorImageList.push(errorImage);
+        this.errorImageList.push(errorImage);
 
-           const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
+        const eggItemsContainer = this.gameLayer.getByName("eggItemsContainer");
 
-           eggItemsContainer.add(errorImage)
+        eggItemsContainer.add(errorImage)
 
         this.penguinSprite.play("penguinFallDown");
 
@@ -586,16 +587,31 @@ export default class GameScene extends BasicScene {
         const leftVoicePlayer = this.sound.add("voice" + leftVoice);
         const rightVoicePlayer = this.sound.add("voice" + rightVoice);
 
-        leftVoicePlayer.on('complete', () => {
-            rightVoicePlayer.play();
+        const voiceOver0 = this.sound.add("voiceOver0");
+        const voiceOver4 = this.sound.add("voiceOver4");
 
-        })
+        rightVoicePlayer.once('complete', () => {
+            voiceOver0.play();
+        });
 
-        rightVoicePlayer.on('complete', () => {
+        voiceOver4.once('complete', () => {
+            leftVoicePlayer.play();
             callback;
-        })
+        });
 
-        leftVoicePlayer.play();
+        rightVoicePlayer.play();
+
+
+
+        // leftVoicePlayer.on('complete', () => {
+        //     rightVoicePlayer.play();
+        // });
+
+        // rightVoicePlayer.on('complete', () => {
+        //     callback;
+        // })
+
+        // leftVoicePlayer.play();
 
     }
 

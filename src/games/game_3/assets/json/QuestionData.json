@@ -21,6 +21,9 @@
     "answer": {
       "object": "紅",
       "voiceIndex": 7
+    },
+    "conclusion":{
+      "phrase":0
     }
   },
   {
@@ -45,6 +48,9 @@
     "answer": {
       "object": "紅",
       "voiceIndex": 8
+    },
+    "conclusion":{
+      "phrase":0
     }
   },
   {
@@ -69,6 +75,9 @@
     "answer": {
       "object": "熊",
       "voiceIndex": 9
+    },
+    "conclusion":{
+      "phrase":1
     }
   },
   {
@@ -93,6 +102,9 @@
     "answer": {
       "object": "熊",
       "voiceIndex": 10
+    },
+    "conclusion":{
+      "phrase":1
     }
   },
   {
@@ -117,6 +129,9 @@
     "answer": {
       "object": "三",
       "voiceIndex": 11
+    },
+    "conclusion":{
+      "phrase":2
     }
   },
   {
@@ -141,6 +156,9 @@
     "answer": {
       "object": "三",
       "voiceIndex": 12
+    },
+    "conclusion":{
+      "phrase":2
     }
   },
   {
@@ -165,6 +183,9 @@
     "answer": {
       "object": "衫",
       "voiceIndex": 13
+    },
+    "conclusion":{
+      "phrase":3
     }
   },
   {
@@ -189,6 +210,9 @@
     "answer": {
       "object": "衫",
       "voiceIndex": 14
+    },
+    "conclusion":{
+      "phrase":3
     }
   },
   {
@@ -213,6 +237,9 @@
     "answer": {
       "object": "窗",
       "voiceIndex": 15
+    },
+    "conclusion":{
+      "phrase":4
     }
   },
   {
@@ -237,6 +264,9 @@
     "answer": {
       "object": "窗",
       "voiceIndex": 16
+    },
+    "conclusion":{
+      "phrase":4
     }
   },
   {
@@ -261,6 +291,9 @@
     "answer": {
       "object": "槍",
       "voiceIndex": 17
+    },
+    "conclusion":{
+      "phrase":5
     }
   },
   {
@@ -285,6 +318,9 @@
     "answer": {
       "object": "槍",
       "voiceIndex": 18
+    },
+    "conclusion":{
+      "phrase":5
     }
   },
   {
@@ -309,6 +345,9 @@
     "answer": {
       "object": "指",
       "voiceIndex": 19
+    },
+    "conclusion":{
+      "phrase":6
     }
   },
   {
@@ -333,6 +372,9 @@
     "answer": {
       "object": "指",
       "voiceIndex": 20
+    },
+    "conclusion":{
+      "phrase":6
     }
   },
   {
@@ -357,6 +399,9 @@
     "answer": {
       "object": "紙",
       "voiceIndex": 21
+    },
+    "conclusion":{
+      "phrase":7
     }
   },
   {
@@ -381,6 +426,9 @@
     "answer": {
       "object": "紙",
       "voiceIndex": 22
+    },
+    "conclusion":{
+      "phrase":7
     }
   },
   {
@@ -405,6 +453,9 @@
     "answer": {
       "object": "蜜",
       "voiceIndex": 23
+    },
+    "conclusion":{
+      "phrase":8
     }
   },
   {
@@ -429,6 +480,9 @@
     "answer": {
       "object": "蜜",
       "voiceIndex": 24
+    },
+    "conclusion":{
+      "phrase":8
     }
   },
   {
@@ -453,6 +507,9 @@
     "answer": {
       "object": "襪",
       "voiceIndex": 25
+    },
+    "conclusion":{
+      "phrase":9
     }
   },
   {
@@ -477,6 +534,9 @@
     "answer": {
       "object": "襪",
       "voiceIndex": 26
+    },
+    "conclusion":{
+      "phrase":9
     }
   },
   {
@@ -501,6 +561,9 @@
     "answer": {
       "object": "升",
       "voiceIndex": 27
+    },
+    "conclusion":{
+      "phrase":10
     }
   },
   {
@@ -525,6 +588,9 @@
     "answer": {
       "object": "升",
       "voiceIndex": 28
+    },
+    "conclusion":{
+      "phrase":10
     }
   },
   {
@@ -549,6 +615,9 @@
     "answer": {
       "object": "星",
       "voiceIndex": 29
+    },
+    "conclusion":{
+      "phrase":11
     }
   },
   {
@@ -573,6 +642,9 @@
     "answer": {
       "object": "星",
       "voiceIndex": 30
+    },
+    "conclusion":{
+      "phrase":11
     }
   },
   {
@@ -597,6 +669,9 @@
     "answer": {
       "object": "豬",
       "voiceIndex": 31
+    },
+    "conclusion":{
+      "phrase":12
     }
   },
   {
@@ -621,6 +696,9 @@
     "answer": {
       "object": "豬",
       "voiceIndex": 32
+    },
+    "conclusion":{
+      "phrase":12
     }
   },
   {
@@ -645,6 +723,9 @@
     "answer": {
       "object": "珠",
       "voiceIndex": 33
+    },
+    "conclusion":{
+      "phrase":13
     }
   },
   {
@@ -669,6 +750,9 @@
     "answer": {
       "object": "珠",
       "voiceIndex": 34
+    },
+    "conclusion":{
+      "phrase":13
     }
   }
 ]

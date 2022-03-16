@@ -13,7 +13,7 @@ import EggQuestion from "../components/EggQuestion";
 import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
 import Player from "../components/Player";
-import GameModel from "../game_mode/GameModel";
+// import GameModel from "../game_mode/GameModel";
 import GameSprite from "../phaser3_framework/object/GameSprite";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import BasicScene from "./BasicScene";
@@ -94,6 +94,22 @@ export default class GameScene extends BasicScene {
             'voiceOver1': require('../assets/audio/voice/voice_over/1.mp3'),
             'voiceOver2': require('../assets/audio/voice/voice_over/2.mp3'),
             'voiceOver3': require('../assets/audio/voice/voice_over/3.mp3'),
+            'voiceOver4': require('../assets/audio/voice/voice_over/4.mp3'),
+
+            'conclusionPhraseVoice0': require('../assets/audio/voice/conclusion_phrase/0.mp3'),
+            'conclusionPhraseVoice1': require('../assets/audio/voice/conclusion_phrase/1.mp3'),
+            'conclusionPhraseVoice2': require('../assets/audio/voice/conclusion_phrase/2.mp3'),
+            'conclusionPhraseVoice3': require('../assets/audio/voice/conclusion_phrase/3.mp3'),
+            'conclusionPhraseVoice4': require('../assets/audio/voice/conclusion_phrase/4.mp3'),
+            'conclusionPhraseVoice5': require('../assets/audio/voice/conclusion_phrase/5.mp3'),
+            'conclusionPhraseVoice6': require('../assets/audio/voice/conclusion_phrase/6.mp3'),
+            'conclusionPhraseVoice7': require('../assets/audio/voice/conclusion_phrase/7.mp3'),
+            'conclusionPhraseVoice8': require('../assets/audio/voice/conclusion_phrase/8.mp3'),
+            'conclusionPhraseVoice9': require('../assets/audio/voice/conclusion_phrase/9.mp3'),
+            'conclusionPhraseVoice10': require('../assets/audio/voice/conclusion_phrase/10.mp3'),
+            'conclusionPhraseVoice11': require('../assets/audio/voice/conclusion_phrase/11.mp3'),
+            'conclusionPhraseVoice12': require('../assets/audio/voice/conclusion_phrase/12.mp3'),
+            'conclusionPhraseVoice13': require('../assets/audio/voice/conclusion_phrase/13.mp3'),
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
@@ -290,7 +306,7 @@ export default class GameScene extends BasicScene {
 
         layer.add([clawBox, player]);
 
-        this.eggItemList = this.generateEggItems(phrases, currentGameQuestion.item.voiceIndex, this.generatePoints(), eggQuestion, player, this.gameLayer);
+        this.eggItemList = this.generateEggItems(phrases, currentGameQuestion.item.voiceIndex, currentGameQuestion.conclusion.phrase, this.generatePoints(), eggQuestion, player, this.gameLayer);
 
         clawBox.showAppearanceAnimation(clawAnimationTargetPosition, () => {
             player.playAudio(() => {
@@ -329,7 +345,7 @@ export default class GameScene extends BasicScene {
 
     }
 
-    generateEggItems(phrases, voiceIndex, points, eggQuestion, player, layer) {
+    generateEggItems(phrases, voiceIndex, conclusionPhraseVoiceIndex, points, eggQuestion, player, layer) {
         let eggItemList = [];
         let colliderList = [];
 
@@ -342,8 +358,8 @@ export default class GameScene extends BasicScene {
             });
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
-                let leftItem;
-                let rightItem;
+                // let leftItem;
+                // let rightItem;
 
                 eggItemList.forEach(eggItem => {
                     eggItem.setRemoveListener()
@@ -355,19 +371,19 @@ export default class GameScene extends BasicScene {
                 this.physics.world.removeCollider(collider);
                 collider.destroy();
 
-                if (this.isRightDirection()) {
-                    leftItem = dragItem;
-                    rightItem = targetItem;
-                } else {
-                    leftItem = targetItem;
-                    rightItem = dragItem;
-                }
+                // if (this.isRightDirection()) {
+                //     leftItem = dragItem;
+                //     rightItem = targetItem;
+                // } else {
+                //     leftItem = targetItem;
+                //     rightItem = dragItem;
+                // }
 
 
-                this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
-                console.log({
-                    "GameModel": GameModel.questionCount
-                })
+                
+
+                this.checkAnswer(dragItem, targetItem, conclusionPhraseVoiceIndex, this.currentQuestionAnswer, eggItemList)
+               
             });
 
             colliderList.push(collider);
@@ -403,7 +419,7 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess(leftItem, rightItem, currentQuestionAnswer) {
+    paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex) {
         leftItem.showSuccessStatus();
         rightItem.showSuccessStatus();
 
@@ -421,16 +437,16 @@ export default class GameScene extends BasicScene {
 
                         winSoundEffect.on('complete', () => {
                             // this.sound.stopAll();
-                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.voiceIndex);
+                          
+                            this.playVoice(leftItem.index, rightItem.index, conclusionPhraseVoiceIndex, () => {
+                                    this.time.addEvent({
+                                                         delay: 1000, // ms
+                                                         callback: () =>
+                                                             this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                                     });
+                            });
 
-                            currentQuestionAnswerPlayer.on('complete', () => {
-                                this.time.addEvent({
-                                    delay: 1000, // ms
-                                    callback: () =>
-                                        this.scene.start(isLastQuestion ? 'End' : 'Game')
-                                });
-                            })
-                            currentQuestionAnswerPlayer.play();
+                           
                         })
 
                         winSoundEffect.play();
@@ -442,17 +458,14 @@ export default class GameScene extends BasicScene {
     }
 
 
-    paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer) {
+    paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex, currentAnswerItem) {
 
         targetItem.showErrorStatue();
         dragItem.showErrorStatue(() => {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {
 
                 GameManager.getInstance().getGameFail(this.questionIndex, (isFirstError, value) => {
-                    console.log({
-                        isLastQuestion: value
-                    })
-
+               
                     this.time.addEvent({
                         delay: 2000,
                         callback: () => {
@@ -463,19 +476,13 @@ export default class GameScene extends BasicScene {
                             });
                             currentAnswerItem.showSuccessStatus();
 
-                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.voiceIndex);
-
-                            currentQuestionAnswerPlayer.on('complete', () => {
-                                this.time.addEvent({
-                                    delay: 1000, // ms
-                                    callback: () => {
-                                        value ? this.scene.start('End') : this.scene.restart('Game');
-                                    }
-
-                                });
-                            })
-                            currentQuestionAnswerPlayer.play();
-
+                               this.playVoice(dragItem.index, targetItem.index, conclusionPhraseVoiceIndex, () => {
+                                   this.time.addEvent({
+                                       delay: 1000, // ms
+                                       callback: () =>
+                                            value ? this.scene.start('End') : this.scene.restart('Game')
+                                   });
+                               });
                         }
                     });
 
@@ -569,7 +576,7 @@ export default class GameScene extends BasicScene {
 
     }
 
-    checkAnswer(dragItem, targetItem, currentQuestionAnswer, eggItemList) {
+    checkAnswer(dragItem, targetItem, conclusionPhraseVoiceIndex, currentQuestionAnswer, eggItemList) {
         let leftItem;
         let rightItem;
 
@@ -587,25 +594,53 @@ export default class GameScene extends BasicScene {
             return egg.objectName == currentQuestionAnswer.object
         });
 
-        composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer);
+        composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex) : this.paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex,currentAnswerItem);
 
     }
 
-    playVoice(leftVoice, rightVoice, callback) {
+    playVoice(leftVoice, rightVoice, conclusionPhraseVoiceIndex, callback) {
+
         // this.sound.stopAll();
         const leftVoicePlayer = this.sound.add("voice" + leftVoice);
+        
         const rightVoicePlayer = this.sound.add("voice" + rightVoice);
 
-        leftVoicePlayer.on('complete', () => {
-            rightVoicePlayer.play();
+        const voiceOver0 = this.sound.add("voiceOver0");
+        
+        const voiceOver4 = this.sound.add("voiceOver4");
 
-        })
+        const conclusionPhrasePlayer = this.sound.add('conclusionPhraseVoice' + conclusionPhraseVoiceIndex);
 
-        rightVoicePlayer.on('complete', () => {
-            callback;
-        })
+        rightVoicePlayer.once('complete', () => {
+            voiceOver0.play();
+        });
 
-        leftVoicePlayer.play();
+        voiceOver0.once('complete', () => {
+            leftVoicePlayer.play();
+        });
+
+        leftVoicePlayer.once('complete', () => {
+            voiceOver4.play();
+        });
+
+        voiceOver4.once('complete', () => {
+            conclusionPhrasePlayer.play();
+        });
+
+        conclusionPhrasePlayer.once('complete', () => {
+
+            voiceOver0.once('complete', () => {
+                leftVoicePlayer.once('complete', () => {
+                    callback();
+                })
+
+                 leftVoicePlayer.play();
+            });
+
+            voiceOver0.play();
+        });
+
+        rightVoicePlayer.play();
 
     }
 

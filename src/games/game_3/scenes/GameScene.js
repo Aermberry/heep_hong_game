@@ -429,7 +429,7 @@ export default class GameScene extends BasicScene {
         correctSoundEffect.on('complete', () => {
             GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({
-                    delay: 2000,
+                    delay: 0,
                     callback: () => {
                         const winSoundEffect = this.sound.add("winSoundEffect");
 

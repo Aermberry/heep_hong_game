@@ -41,9 +41,9 @@ export default class GameScene extends BasicScene {
     // this.model.bgMusicPlaying = true;
     // this.sys.game.globals.bgMusic = this.bgMusic;
 
-    let gameMusic = this.sound.add('bgMusic')
-    gameMusic.setLoop(true)
+    this.bgMusic = this.sound.add('bgMusic', { volume: 0.2, loop: true })
     this.model.bgMusicPlaying = true
+    this.sys.game.globals.bgMusic = this.bgMusic
 
     let imageFiles = {
       'l2Tut0': require('../assets/lv2_tut_0.png'),
@@ -155,7 +155,9 @@ export default class GameScene extends BasicScene {
     this.sound.stopAll()
 
     if (this.model.bgMusicPlaying){
-        this.sound.play('bgMusic')
+        //this.sound.play('bgMusic')
+
+        this.bgMusic.play()
     }
 
     this.blueScreenLogo = self.add.image(config.width * 0.325, config.height * 0.5, 'bluescreenLogo').setOrigin(.5, .5)
@@ -427,10 +429,12 @@ export default class GameScene extends BasicScene {
   musicPause() {
     let self = this
     if (self.model.bgMusicPlaying){
-      self.sound.stopByKey('bgMusic')
+      this.bgMusic.pause()
+      //self.sound.stopByKey('bgMusic')
       self.model.bgMusicPlaying = false
     } else {
-      self.sound.play('bgMusic')
+      this.bgMusic.resume()
+      //self.sound.play('bgMusic')
       self.model.bgMusicPlaying = true
     }
 

@@ -30,6 +30,7 @@ export default class Player extends Phaser.GameObjects.Container {
     playAudio(onCompleteCallback) {
         const voiceOver0 = this.scene.sound.add('voiceOver0'); //嘅
         const voiceOver1 = this.scene.sound.add('voiceOver1'); //邊個意思呀？
+        const voiceOver4 = this.scene.sound.add('voiceOver4'); //係
 
         const questionObjectVoiceSprite = this.scene.sound.add(this.questionObjectVoice);
         const homophoneVoiceSprite = this.scene.sound.add(this.homophoneVoice);
@@ -49,7 +50,7 @@ export default class Player extends Phaser.GameObjects.Container {
         });
 
         homophoneVoiceSprite.on('complete', () => {
-            voiceOver1.play();
+            voiceOver4.play();
         });
 
         voiceOver0.on('complete', () => {
@@ -67,6 +68,10 @@ export default class Player extends Phaser.GameObjects.Container {
                 onCompleteCallback();
             }
         });
+
+        voiceOver4.on('complete', () => {
+            voiceOver1.play();
+        })
 
 
         questionObjectVoiceSprite.play();

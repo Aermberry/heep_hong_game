@@ -190,32 +190,33 @@ export default class Answers {
                             duration: 100,
                             ease: 'Power2'
                         }).on('complete', () => {
+                            this.scene.car.destroy();
+                            this.scene.car = this.scene.add.sprite(this.scene.getColWidth(0.5), this.scene.getRowHeight(4.5), `car_${this.scene.currentCar}`).setDepth(10)
+
                             this.scene.car.play(`car_${this.scene.currentCar}_idle`)
                         })
                     }, 4000);
 
                     setTimeout(() => {
-                        if (this.errorFrequency == 1) {
+                        if (this.errorFrequency < 2) {
                             let sprite = this.scene.add.sprite(this.scene.getColWidth(3), this.scene.getRowHeight(6.5), 'addoil');
                             sprite.play('addoil');
                             sprite.on('animationcomplete', () => {
                                 sprite.destroy();
                             });
-                        } else if (this.errorFrequency > 1) {
+                        } else if (this.errorFrequency > 2) {
                             this.scene.doneBtn.destroy();
                             this.disRoad();
                             this.badEnd();
                         }
-
-                        if (this.errorFrequency < 2) {
+                        if (this.errorFrequency < 3) {
                             this.answers.forEach((item, index) => {
                                 if (this.selectItems.includes(item.container) || this.selectItems2.includes(item.container)) {
                                     this.roadReset(item, index)
                                 }
                             })
                         }
-
-                    }, 3000)
+                    }, 6000)
 
                 });
             }

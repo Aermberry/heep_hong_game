@@ -24,7 +24,7 @@ export const createTutorAnimation = (anims) => {
             end: 39,
             zeroPad: 4
         }),
-        repeat: 0
+        repeat: -1
     });
     anims.create({
         key: 'tutorAnimation02',
@@ -32,21 +32,16 @@ export const createTutorAnimation = (anims) => {
         frames: anims.generateFrameNames('tutorTexture02', {
             prefix: 'tutor_',
             start: 0,
-            end: 0,
-            zeroPad: 4
-        }),
-        repeat: 0
-    });
-    anims.create({
-        key: 'tutorAnimation03',
-        // delay: 200,
-        frames: anims.generateFrameNames('tutorTexture03', {
-            prefix: 'tutor_',
-            start: 10,
             end: 39,
             zeroPad: 4
         }),
-        // duration:5 00,
-        repeat: 0
+        repeat: -1
     });
+    // anims.create({
+    //     key: 'tutorAnimation03',
+    //     // delay: 200,
+    //     frames: anims.generateFrameNames('tutorTexture03', { prefix: 'tutor_', start: 10, end: 39, zeroPad: 4 }),
+    //     // duration:5 00,
+    //     repeat: 0
+    // });
 }

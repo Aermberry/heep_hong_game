@@ -20,9 +20,10 @@ export default class EndScene extends BasicScene {
 
         this.playBackgroundMusic();
 
-        this.buildBg('bgVictory')
+        this.buildBg('bgVictory');
 
-        this.endBroad = new VictoryDialog(this, this.getColWidth(6), this.getRowHeight(6));
+        this.endBroad = new VictoryDialog(this, this.cameras.main.width/2 , this.cameras.main.height/2);
+        
         localStorage.clear()
 
     }

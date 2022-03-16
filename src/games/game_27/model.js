@@ -14,5 +14,8 @@ export default class Model {
         return this._gameData['gameData' + this._routeId];
     }
 
+    get game() {
+        return this._routeId;
+    }
 
 }

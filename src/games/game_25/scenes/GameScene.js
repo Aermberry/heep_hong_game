@@ -158,7 +158,9 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
-        this.sound.play('Bgm');
+        // this.sound.play('Bgm');
+        let gameStage = this.dataModal.gameStage
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
         this.bg_up_cl1 = this.add.sprite(this.getColWidth(5), this.getRowHeight(1), 'cl1');
         this.bg_up_cl1.play('cl1');
         this.bg_up_cl1_1 = this.add.sprite(this.getColWidth(9), this.getRowHeight(1.2), 'cl1');
@@ -228,7 +230,7 @@ export default class GameScene extends BasicScene {
             this.questionUi.add([this.bg_up, this.answersContainer, this.bg_up_cl1, this.bg_up_cl1_1, this.bg_up_cl1_2, this.bg_up_cl1_3, this.bg_up_cl2, this.bg_up_cl2_1, this.leftMoveButton, this.rightMoveButton]);
         }
         this.backgroundUi = this.add.layer(); //背景；
-        this.exitBtn = new ExitBtn(this, 120, 135);
+        this.exitBtn = new ExitBtn(this, 100, 120);
         this.btnCar = new BtnCar(this, this.getColWidth(9.5), this.getRowHeight(10.8), this.completeAnswerAnimation.bind(this));
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
@@ -272,9 +274,9 @@ export default class GameScene extends BasicScene {
                 console.log(this.currentQuestionGroup[this.currentIndex])
                 if (this.currentQuestionGroup[this.currentIndex].data.every((item) => item.result != null)) { //答案选完；
                     this.btnCar.setIsBtn();
-                    this.container.list.forEach(element => {
-                        element.setFramebtn(2)
-                    })
+                    // this.container.list.forEach(element => {
+                    //     element.setFramebtn(2)
+                    // })
                 }
             }
         }
@@ -374,10 +376,11 @@ export default class GameScene extends BasicScene {
                             this.scene.start('End');
                             return;
                         } else {
+                            this.sound.stopAll();
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
 
-                    }, 12000
+                    }, this.currentQuestionGroup[this.currentIndex].seconds
                 )
             }
         });

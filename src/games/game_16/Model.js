@@ -3,13 +3,15 @@ export default class Model {
     constructor() {
         this._gameStage = null;
         this._gameIndex = 0;
-        this._gameData = JSON.parse(require('./assets/json/game_data.json'))
+        this._gameData = require('./assets/json/game_data.json')
 
     }
 
     get gameStage() {
         return this._gameStage;
     }
+
+
 
     set gameStage(stage) {
         

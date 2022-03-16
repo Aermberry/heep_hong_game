@@ -2,7 +2,10 @@ import Article from "../objects/Article";
 import BasicScene from "./BasicScene"
 import Butterfly from "../objects/Butterfly";
 import Scoreboard from "../objects/Scoreboard";
-// import SpeakerBtn from '../objects/SpeakerBtn'
+import SpeakerBtn from '../objects/SpeakerBtn'
+import ExitBtn from '../objects/ExitBtn'
+import config from '../config/index'
+
 export default class GameScene extends BasicScene {
     constructor() {
         super({
@@ -24,15 +27,18 @@ export default class GameScene extends BasicScene {
         this.gameNum = this.sys.game.globals.model.game;
         if (this.gameNum == 29) {
             this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
-            // this.answer = this.dataModal['level2'][2]
         } else {
-            this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+            // this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+            this.answer = this.dataModal['level1'][3]
+
         }
 
     }
 
     preload() {
         this.buildBg('bg_tutor')
+        let gameStage = this.sys.game.globals.model.game
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start'})
         this.anims.create({
             key: 'crt_ans_star',
             delay: 200,
@@ -53,7 +59,28 @@ export default class GameScene extends BasicScene {
             atlas: atlasFiles
         });
 
-        this.createProgressBar();
+        let self = this;
+        self.progressBar = self.add.graphics();
+        self.loadingText = self.make.text({
+            x: config.width / 2,
+            y: config.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+        self.loadingText.setOrigin(0.5, 0.5);
+    
+        self.load.on('progress', function (value) {
+          self.progressBar.clear();
+          self.progressBar.fillStyle(0xFC8EFA, 1);
+          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+        });
+    
+        self.load.on('complete', function () {
+          self.loadingText.setText('連接完成');
+        }.bind(self));
     }
 
     create() {
@@ -67,6 +94,10 @@ export default class GameScene extends BasicScene {
         this.music.setLoop(true)
         this.music.play();
 
+        let exitBtn = new ExitBtn(this, 100, 80);
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 80, this.musicPause.bind(this));
+        this.add.existing(this.speakerBtn);
+        this.add.existing(exitBtn);
         let currentZone;
         let self = this;
 
@@ -110,11 +141,11 @@ export default class GameScene extends BasicScene {
                 keys.splice(_num, 1)
                 arrNew.push(mm)
             }
-            this.butterfly = new Butterfly(this, 960, 280, arrNew)
+            this.butterfly = new Butterfly(this, 980, 290, arrNew)
             this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), this.onComplete.bind(this), true)
             this.scoreboard.init(arrNew);
         } else {
-            this.butterfly = new Butterfly(this, 960, 280)
+            this.butterfly = new Butterfly(this, 980, 250)
             this.scoreboard = new Scoreboard(this, 950, 50, this.onCompleteOnce.bind(this), this.onHighlight.bind(this), this.onComplete.bind(this))
             this.scoreboard.init(this.answer);
         }
@@ -134,4 +165,17 @@ export default class GameScene extends BasicScene {
         this.article.onComplete();
     }
 
+
+    musicPause() {
+        this.stopAll = !this.stopAll;
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm', {
+                volume: 0.1
+            });
+            this.music.setLoop(true);
+            this.music.play();
+        }
+    }
 }

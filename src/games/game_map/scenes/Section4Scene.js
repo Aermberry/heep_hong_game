@@ -100,8 +100,8 @@ export default class Section4Scene extends SectionBasicScene {
 
     populateSection() {
 
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
         const game19Btn = new GameNavBtn(this, this.getColWidth(2.4), this.getRowHeight(8.7), 's4btn1', '/game/19')
         const game18Btn = new GameNavBtn(this, this.getColWidth(6.8), this.getRowHeight(4.7), 's4btn2', '/game/18')
         const game29Btn = new GameNavBtn(this, this.getColWidth(7.7), this.getRowHeight(6.1), 's4btn3', '/game/29')
@@ -110,7 +110,7 @@ export default class Section4Scene extends SectionBasicScene {
         const game17Btn = new GameNavBtn(this, this.getColWidth(5.8), this.getRowHeight(10), 's4btn6', '/game/17')
         const HintBtn1 = new HintBtn(this, this.getColWidth(2.5), this.getRowHeight(6), [game19Btn], 'dentisitLogo')
         const HintBtn2 = new HintBtn(this, this.getColWidth(7.8), this.getRowHeight(9.3), [game16Btn, game17Btn], 'roadDesignLogo')
-        const HintBtn3 = new HintBtn(this, this.getColWidth(9), this.getRowHeight(6), [game29Btn, game30Btn], 'carerLogo')
+        const HintBtn3 = new HintBtn(this, this.getColWidth(9.1), this.getRowHeight(6.4), [game29Btn, game30Btn], 'carerLogo')
         const HintBtn4 = new HintBtn(this, this.getColWidth(7.5), this.getRowHeight(2.5), [game18Btn], 'architectLogo')
 
         game19Btn.initHint('g19Hint', this.getColWidth(2.2), this.getRowHeight(0))

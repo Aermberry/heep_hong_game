@@ -31,45 +31,43 @@ export default class GameScene extends BasicScene {
 
         //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
 
-        this.buildBg('backgroundGamePlay');
+        // this.buildBg('backgroundGamePlay');
+        this.eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
         this.progressLoader = new LoadProgress(this);
 
         const soundFiles = {
-            "voice0":require("../assets/audio/voice/0.mp3"),
-            "voice1":require("../assets/audio/voice/1.mp3"),
-            "voice2":require("../assets/audio/voice/2.mp3"),
-            "voice3":require("../assets/audio/voice/3.mp3"),
-            "voice4":require("../assets/audio/voice/4.mp3"),
-            "voice5":require("../assets/audio/voice/5.mp3"),
-            "voice6":require("../assets/audio/voice/6.mp3"),
-            "voice7":require("../assets/audio/voice/7.mp3"),
-            "voice8":require("../assets/audio/voice/8.mp3"),
-            "voice9":require("../assets/audio/voice/9.mp3"),
-            "voice10":require("../assets/audio/voice/10.mp3"),
-            "voice11":require("../assets/audio/voice/11.mp3"),
-            "voice12":require("../assets/audio/voice/12.mp3"),
-            "voice13":require("../assets/audio/voice/13.mp3"),
-            "voice14":require("../assets/audio/voice/14.mp3"),
-            "voice15":require("../assets/audio/voice/15.mp3"),
-            "voice16":require("../assets/audio/voice/16.mp3"),
-            "voice17":require("../assets/audio/voice/17.mp3"),
-            "voice18":require("../assets/audio/voice/18.mp3"),
-            "voice19":require("../assets/audio/voice/19.mp3"),
+            "voice0": require("../assets/audio/voice/0.mp3"),
+            "voice1": require("../assets/audio/voice/1.mp3"),
+            "voice2": require("../assets/audio/voice/2.mp3"),
+            "voice3": require("../assets/audio/voice/3.mp3"),
+            "voice4": require("../assets/audio/voice/4.mp3"),
+            "voice5": require("../assets/audio/voice/5.mp3"),
+            "voice6": require("../assets/audio/voice/6.mp3"),
+            "voice7": require("../assets/audio/voice/7.mp3"),
+            "voice8": require("../assets/audio/voice/8.mp3"),
+            "voice9": require("../assets/audio/voice/9.mp3"),
+            "voice10": require("../assets/audio/voice/10.mp3"),
+            "voice11": require("../assets/audio/voice/11.mp3"),
+            "voice12": require("../assets/audio/voice/12.mp3"),
+            "voice13": require("../assets/audio/voice/13.mp3"),
+            "voice14": require("../assets/audio/voice/14.mp3"),
+            "voice15": require("../assets/audio/voice/15.mp3"),
+            "voice16": require("../assets/audio/voice/16.mp3"),
+            "voice17": require("../assets/audio/voice/17.mp3"),
+            "voice18": require("../assets/audio/voice/18.mp3"),
+            "voice19": require("../assets/audio/voice/19.mp3"),
         }
         this.preloadFromArr({ sound: soundFiles });
     }
 
-    create() {
-
-        super.create();
-
+    create(data) {
+        
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
         createEggTwistingMachineAnimation(this.anims);
         createStarAnimation(this.anims);
 
-        this.paintGameScene();
-
+        this.paintGameScene(data);
     }
 
 
@@ -109,29 +107,27 @@ export default class GameScene extends BasicScene {
      * paint all game ui element in this scene
      * 绘制GameScene的所有Ui元素
      */
-    paintGameScene() {
+    paintGameScene(data) {
 
         this.gameLayer = this.add.layer().setDepth(1);
         this.uiLayer = this.add.layer().setDepth(0);
 
         this.answerArea = new AnswerArea(this, this.generateQuestion());
 
-        let eggTwistingMachineSprite = new GameSprite(this, 960, 540, 'eggTwistingMachineTexture');
-
         if (this.hasGameChance == undefined) {
-            this.playEggAnimation(eggTwistingMachineSprite, this.answerArea, this.questionIndex);
+            this.playEggAnimation(this.eggTwistingMachineSprite, this.answerArea, this.questionIndex);
         } else {
             if (this.hasGameChance) {
                 this.add.image(583, 372, 'questionPicture' + this.questionIndex).setScale(0.5);
-                this.answerArea.showDisplay();
+                this.answerArea.showDisplay(data);
             }
             else {
-                this.playEggAnimation(eggTwistingMachineSprite, this.answerArea, this.questionIndex);
+                this.playEggAnimation(this.eggTwistingMachineSprite, this.answerArea, this.questionIndex);
             }
         }
 
 
-        this.uiLayer.add([this.buildBg('backgroundGamePlay'), eggTwistingMachineSprite]);
+        this.uiLayer.add([this.buildBg('backgroundGamePlay'), this.eggTwistingMachineSprite]);
         this.gameLayer.add([this.answerArea]);
     }
 
@@ -195,41 +191,53 @@ export default class GameScene extends BasicScene {
     }
 
     paintGameSuccess() {
-        GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
-        GameManager.getInstance().updateGamePlayTotal((value) => {
-            this.time.addEvent({
-                delay: 10000,
-                callback: () => this.scene.start(value ? 'Game' : 'End')
-            })
-        });
-
-
         this.sound.play('answerCorrectEffectSound');
-        this.sound.play('gameWinEffectSound')
-        this.sound.play('voice' + this.questionIndex);
+
+        const gameWinEffectSound = this.sound.add('gameWinEffectSound');
+        const questionIndexVoice = this.sound.add('voice' + this.questionIndex);
+
+        gameWinEffectSound.once('complete', () => {
+            questionIndexVoice.play();
+        })
+
+        questionIndexVoice.once('complete', () => {
+            GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
+            GameManager.getInstance().updateGamePlayTotal((value) => {
+                this.scene.start(value ? 'Game' : 'End');
+            });
+        })
+
+        gameWinEffectSound.play();
     }
 
 
     paintGameFailed() {
+        const answerErrorEffectSound = this.sound.add('answerErrorEffectSound');
 
-        let _isFirstError = null;
+        answerErrorEffectSound.once('complete', () => {
+            GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
+                if (!isFirstError) {
+                    const gameLoseEffectSound = this.sound.add('gameLoseEffectSound');
 
-        GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
+                    gameLoseEffectSound.once('complete', () => {
+                        const questionIndexVoice = this.sound.add('voice' + this.questionIndex);
 
-            _isFirstError = isFirstError;
-            console.log({ isLastQuestion: value })
-            this.time.addEvent({
-                delay: isFirstError ? 2000 : 10000,
-                callback: () => value ? this.scene.start('End') : this.scene.restart('Game')
-            });
-        }
-        );
+                        questionIndexVoice.once('complete', () => {
+                            value ? this.scene.start('End') : this.scene.restart('Game');
+                        })
+                        this.answerArea.showCurrentAnswer(this, questionIndexVoice);
+                    });
 
-        this.sound.play('answerErrorEffectSound');
-        if (!_isFirstError) {
-            this.sound.play('gameLoseEffectSound');
-            this.answerArea.showCurrentAnswer(this, this.questionIndex);
-        }
+                    gameLoseEffectSound.play();
+                }
+                else {
+                    value ? this.scene.start('End') : this.scene.restart({ y: 140 });
+                }
+            }
+            );
+        })
+
+        answerErrorEffectSound.play();
     }
 
 

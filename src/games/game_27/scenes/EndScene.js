@@ -13,12 +13,15 @@ export default class EndScene extends BasicScene {
     create() {
 
         super.create();
+        let gameStage = this.sys.game.globals.model.game;
+        this.sys.game.globals.gtag.event(`game_${gameStage}_end`, {'event_category': 'js_games', 'event_label': 'Game End'})
 
         this.buildBg('bg_L1')
+        this.sound.stopAll();
 
-        // let music = this.sound.add('end_pic');
-        // music.setLoop(true);
-        // music.play();
+        let music = this.sound.add('endpic');
+        music.setLoop(true);
+        music.play();
         this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
         this.add.rectangle(0,0,10000,10000, 0x0d6f3f, 0.9)
         this.add.existing(this.endBroad)        

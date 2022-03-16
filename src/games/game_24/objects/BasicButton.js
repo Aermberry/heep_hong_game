@@ -25,6 +25,7 @@ export default class BasicButton extends Phaser.GameObjects.Container {
   }
 
   down(clickEvent) {
+    this.origSprite.setFrame(1)
     if (typeof clickEvent == 'function') {
       setTimeout(() => {
         clickEvent()

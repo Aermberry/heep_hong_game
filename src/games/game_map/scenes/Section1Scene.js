@@ -60,7 +60,7 @@ export default class Section1Scene extends BasicScene {
         this.load.spritesheet('spaceFactoryLogo', require('../assets/images/section_1/logo-122.png'),{ frameWidth: 305, frameHeight: 314.5 })
         this.load.spritesheet('strBtn', require('../assets/images/buttons/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
 
-        this.createProgressBar()
+        this.createProgressBar(false)
 
     }
 
@@ -132,8 +132,8 @@ export default class Section1Scene extends BasicScene {
         const game4Btn = new GameNavBtn(this, this.getColWidth(10.6), this.getRowHeight(7.5), 's1btn4', '/game/4')
         const hintBtnA = new HintBtn(this, this.getColWidth(3.2), this.getRowHeight(7), [game1Btn], 'spaceRestaurantLogo')
         const hintBtnB = new HintBtn(this, this.getColWidth(8.3), this.getRowHeight(8.1), [game2Btn, game3Btn, game4Btn], 'spaceFactoryLogo')
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
 
         game1Btn.initHint('g1Hint', this.getColWidth(2.1), this.getColWidth(0))
         game2Btn.initHint('g2Hint', this.getColWidth(0), this.getColWidth(-1.5))

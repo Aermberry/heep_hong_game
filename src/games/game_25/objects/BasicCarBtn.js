@@ -25,7 +25,7 @@ export default class BasicCarBtn extends Phaser.GameObjects.Container {
 
   down(clickEvent) {
     if(this.isBtn) {
-      let Button = this.scene.sound.add('Button')
+      let Button = this.scene.sound.add('effect_select_teeth')
       Button.setLoop(false)
       Button.play()
       this.isBtn = false;

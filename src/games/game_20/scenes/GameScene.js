@@ -63,15 +63,17 @@ export default class GameScene extends BasicScene {
             key: 'done',
             delay: 200,
             frames: this.anims.generateFrameNames('done', { prefix: 'done', start: 0, end: 5, zeroPad: 4 }),
+            frameRate: 5,
             repeat: 0
         });
+
         const imageFiles = {
 
         };
 
         const atlasFiles = {
         }
-        let self =this;
+        let self = this;
         self.dataModal.gameItems.forEach((item, index) => {
             self.load.audio(item, require(`../assets/audio/characters/game20_0${index + 1 < 10 ? '0' + (index + 1) : index + 1}.mp3`))
         })
@@ -87,6 +89,9 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
+        let gameStage = this.dataModal.gameStage
+        this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
+
         this.buildBg('bg');
         this.sound.stopAll();
         if (this.stopAll) {
@@ -161,27 +166,39 @@ export default class GameScene extends BasicScene {
             highlightOnComplete: false,
             charDataLoader: () => hanziData
         });
+        let element = document.querySelector('#gameCanvas')
+        let el = document.getElementById('grid-background-target')
+
+        let gameCanvasHeight = `${Number(element.style.height.split('px')[0]) * 0.20 + Number(element.style.marginTop.split('px')[0])}px`;
+        el.style.marginTop = gameCanvasHeight;
+
+        let gameCanvasWidth = `${Number(element.style.width.split('px')[0]) * 0.33 + Number(element.style.marginLeft.split('px')[0])}px`;
+        el.style.marginLeft = gameCanvasWidth;
+
 
         let that = this;
-        this.writer.quiz({
-            onCorrectStroke: function (strokeData) {
-                let writingAudio = that.sound.add('writing');
-                writingAudio.play();
-                if (strokeData.strokesRemaining > 0) {
-                    that.strokeNum = strokeData.strokeNum + 1;
-                }
-            },
-            onMistake: function () {
-                that.strokeError();
-                // document.getElementById('grid-background-target').
-                // console.log("您在该笔画上错了 " + strokeData.mistakesOnStroke + " 次");
-                // console.log("本次测验共错了 " + strokeData.totalMistakes + " 次");
-                // console.log("此字还剩 " + strokeData.strokesRemaining + "笔");
-            },
-            onComplete: function () {
-                that.characterSuccess();
-            },
-        });
+        setTimeout(() => {
+            that.writer.quiz({
+                onCorrectStroke: function (strokeData) {
+                    let writingAudio = that.sound.add('writing');
+                    writingAudio.play();
+                    if (strokeData.strokesRemaining > 0) {
+                        that.strokeNum = strokeData.strokeNum + 1;
+                    }
+                },
+                onMistake: function () {
+                    that.strokeError();
+                    // document.getElementById('grid-background-target').
+                    // console.log("您在该笔画上错了 " + strokeData.mistakesOnStroke + " 次");
+                    // console.log("本次测验共错了 " + strokeData.totalMistakes + " 次");
+                    // console.log("此字还剩 " + strokeData.strokesRemaining + "笔");
+                },
+                onComplete: function () {
+                    that.characterSuccess();
+                },
+            });
+        }, 2000);
+
 
     }
 
@@ -204,6 +221,11 @@ export default class GameScene extends BasicScene {
         let that = this;
         this.observer = new MutationObserver(() => {
             let width = getComputedStyle(element).getPropertyValue('width')
+            let el = document.getElementById('grid-background-target')
+            let gameCanvasHeight = `${Number(element.style.height.split('px')[0]) * 0.20 + Number(element.style.marginTop.split('px')[0])}px`;
+            el.style.marginTop = gameCanvasHeight;
+            let gameCanvasWidth = `${Number(element.style.width.split('px')[0]) * 0.33 + Number(element.style.marginLeft.split('px')[0])}px`;
+            el.style.marginLeft = gameCanvasWidth;
             that.size = Number(width.split('px')[0]) / 2.953;
             that.writer.updateDimensions({ width: that.size, height: that.size });
         })
@@ -256,6 +278,7 @@ export default class GameScene extends BasicScene {
     endGame() {
         let body = document.getElementById('game-container');
         body.removeChild(this.g);
+        this.observer.disconnect();
         if (this.currentLevel == 5) {
             this.scene.start('End')
         } else {

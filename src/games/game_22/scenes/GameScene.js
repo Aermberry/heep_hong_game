@@ -65,7 +65,6 @@ export default class GameScene extends BasicScene {
 
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
 
-
         createClipAnimations(this.anims);
         createGameStatusAnimations(this.anims);
 

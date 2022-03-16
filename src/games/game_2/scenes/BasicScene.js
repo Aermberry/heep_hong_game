@@ -72,7 +72,6 @@ export default class BasicScene extends Phaser.Scene {
 
     toScene(scene, sceneName, delay) {
 
-        console.log(scene)
         scene.time.addEvent({
             delay: delay,
             callback: () => scene.scene.start(sceneName)

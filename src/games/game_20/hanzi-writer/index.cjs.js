@@ -173,7 +173,7 @@ class RenderState {
 
   run(mutations, options = {}) {
     const scopes = mutations.map(mut => mut.scope);
-    this.cancelMutations(scopes);
+    // this.cancelMutations(scopes);
     return new Promise(resolve => {
       const mutationChain = {
         _isActive: true,
@@ -1266,7 +1266,6 @@ class Quiz {
 
   _handleFailure() {
     var _this$_options$onMist, _this$_options;
-
     this._mistakesOnStroke += 1;
     this._totalMistakes += 1;
     (_this$_options$onMist = (_this$_options = this._options).onMistake) === null || _this$_options$onMist === void 0 ? void 0 : _this$_options$onMist.call(_this$_options, this._getStrokeData());
@@ -1464,7 +1463,6 @@ class CharacterRenderer {
       this._group.style.opacity = opacity.toString(); // MS browsers seem to have a bug where if SVG is set to display:none, it sometimes breaks.
       // More info: https://github.com/chanind/hanzi-writer/issues/164
       // this is just a perf improvement, so disable for MS browsers
-
       if (!isMsBrowser) {
         var _this$_oldProps2;
 
@@ -1773,6 +1771,7 @@ class RenderTargetBase {
 
 }
 
+//渲染目标类 用于渲染笔画
 class RenderTarget extends RenderTargetBase {
   constructor(svg, defs) {
     super(svg);

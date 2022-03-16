@@ -14,6 +14,7 @@ export default class SelectCar extends Phaser.GameObjects.Container {
         });
         text.x = text.width / 2 - text.width;
         this.add([itemImg, text]);
+        this.setDepth(3)
         this.setSize(itemImg.width, itemImg.height);
         this.selectAreaOring = {
             x: x,
@@ -46,6 +47,8 @@ export default class SelectCar extends Phaser.GameObjects.Container {
             if (this.isDrag) {
                 if (Phaser.Geom.Rectangle.Overlaps(scene.trackZone.getBounds(), itemImg.getBounds())) {
                     // this.x += this.scene.subjectItem.x;
+                    let audio = this.scene.sound.add('drop');
+                    audio.play();
                     this.origin.x = this.x;
                     let self = this;
                     self.scene.subjectItem.add(self);

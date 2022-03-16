@@ -5,8 +5,8 @@ export default class RightMoveButton extends BasicButton {
 
     super(scene, x, y);
     this.gameObject = gameObject;
-    this.create(scene.add.sprite(0, 0, 'moveBtn', 1).setScale(0.5),
-      this.onClick.bind(this))
+    this.create(scene.add.sprite(0, 0, 'btnRt').setDisplaySize(120, 130),
+    this.onClick.bind(this))
 
   }
 

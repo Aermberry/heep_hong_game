@@ -88,8 +88,6 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
             new GameSprite(scene, this.labelText.x + this.labelText.displayWidth / 2, this.labelText.y, 'uiError');
         errorSprite.setScale(0.8);
 
-        console.log("errorSprite:%o", this.errorSprite);
-
         scene.time.addEvent({
             delay: 2000,
             callback: () => {
@@ -118,12 +116,12 @@ export default class AnswerPanel extends Phaser.GameObjects.Container {
         })
     }
 
-    setCurrentAnswer(scene,questionIndex) {
+    setCurrentAnswer(scene,questionIndexVoice) {
 
         scene.time.addEvent({
             delay: 2000,
             callback: () => {
-                this.scene.sound.play("voice"+questionIndex);
+                questionIndexVoice.play();
                 this._text = this._answer;
                 this.labelText.setText(this._text);
             },

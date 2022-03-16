@@ -76,8 +76,8 @@ export default class Section2Scene extends SectionBasicScene {
 
     populateSection() {
 
-        const backBtn = new BackBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const backBtn = new BackBtn(this, 100, 120)
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
 
         const game4Btn = new GameNavBtn(this, this.getColWidth(2.55), this.getRowHeight(10.2), 's2btn1', '/game/8')
         const game2Btn = new GameNavBtn(this, this.getColWidth(3.85), this.getRowHeight(7.1), 's2btn2', '/game/6')

@@ -60,13 +60,76 @@ export default class MapScene extends BasicScene {
 
         this.sound.stopAll()
 
-        const speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5))
+        const speakerBtn = new SpeakerBtn(this, 1820, 120)
 
-        const game1Btn = new SectionBtn(this, this.getColWidth(2.29), this.getRowHeight(3.2), 'section1Btn', 'Section_1')
-        const game2Btn = new SectionBtn(this, this.getColWidth(7.74), this.getRowHeight(3.18), 'section2Btn', 'Section_2')
-        const game3Btn = new SectionBtn(this, this.getColWidth(5.64), this.getRowHeight(8.9), 'section3Btn', 'Section_3')
-        const game4Btn = new SectionBtn(this, this.getColWidth(2.95), this.getRowHeight(6.1), 'section4Btn', 'Section_4')
-        const game5Btn = new SectionBtn(this, this.getColWidth(9.5), this.getRowHeight(7.1), 'section5Btn', 'Section_5')
+        const game1Btn = new SectionBtn(this, this.getColWidth(2.29), this.getRowHeight(3.2), 'section1Btn', 'Section_1', 
+        [
+            0,0,
+            -50,400,
+            100, 400,
+            350, 320,
+            450, 220,
+            630, 210,
+            650,0
+        ])
+        const game2Btn = new SectionBtn(this, this.getColWidth(7.74), this.getRowHeight(3.18), 'section2Btn', 'Section_2', 
+        [
+            10, 310,
+            10, 240,
+            100, 165,
+            250, 0,
+            350, 20,
+            760, 400,
+            600, 380,
+            400, 500,
+            100, 330,
+        ])
+        const game3Btn = new SectionBtn(this, this.getColWidth(5.64), this.getRowHeight(8.9), 'section3Btn', 'Section_3', 
+        [ 
+            20, 150, 
+            10, 235,
+            100, 290,
+            310, 380, 
+            550, 360,
+            680, 370,
+            870, 230,
+            750, 100,
+            750, 10,
+            550, 80,
+            430, 0,
+            200, 100,
+            180, 170
+        ])
+        const game4Btn = new SectionBtn(this, this.getColWidth(2.95), this.getRowHeight(6.1), 'section4Btn', 'Section_4', 
+        [ 
+            30, 380, 
+            30, 250, 
+            180, 170, 
+            300, 140, 
+            350, 120, 
+            460, 20, 
+            560, 15, 
+            700, 120, 
+            680, 190, 
+            600, 200, 
+            830, 350, 
+            620, 440,
+            620, 500,
+            280, 490
+        ])
+        const game5Btn = new SectionBtn(this, this.getColWidth(9.5), this.getRowHeight(7.1), 'section5Btn', 'Section_5', [ 
+            110, 405, 
+            10, 300, 
+            60, 100, 
+            244, 14, 
+            330, 0, 
+            458, 12, 
+            574, 90, 
+            580, 120, 
+            594, 300, 
+            480, 405, 
+            400, 405
+        ])
 //        const game6Btn = new SectionBtn(this, this.getColWidth(6.15), this.getRowHeight(5.27), 'section6Btn', 'Section_6')
         const game6Btn = new Game6Btn(this, this.getColWidth(6.15), this.getRowHeight(5.27), 'section6Btn')
         // const game6Btn = new Game6Btn(this, this.getColWidth(6.15), this.getRowHeight(5.27))
@@ -92,7 +155,7 @@ export default class MapScene extends BasicScene {
 
         const dada_yellow = this.add.sprite(this.getColWidth(9.2), this.getRowHeight(9.8), 'dada_yellow')
         dada_yellow.play('dada_yellow')
-
+        
         this.add.existing(game1Btn)
         this.add.existing(game2Btn)
         this.add.existing(game3Btn)
@@ -111,6 +174,7 @@ export default class MapScene extends BasicScene {
         this.add.existing(cloud2)
         this.add.existing(cloud3)
         this.add.existing(cloud4)
+    
 
 
 

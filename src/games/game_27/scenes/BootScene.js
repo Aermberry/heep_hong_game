@@ -7,7 +7,8 @@ export default class BootScene extends Scene {
   }
 
   preload () {
-    this.load.image('bg_title', require('../assets/img/title_1.png'))
+    this.load.image('bg_title1', require('../assets/img/title_1.png'))
+    this.load.image('bg_title2', require('../assets/img/title_2.png'))
 
   }
 

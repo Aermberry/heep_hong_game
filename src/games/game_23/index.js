@@ -37,7 +37,7 @@ class Game23 extends Phaser.Game {
         
         this.globals = {
             gtag: gtag,
-            gameStageIndex:urlParams
+            gameStageIndex:urlParams.id
         }
     }
 }

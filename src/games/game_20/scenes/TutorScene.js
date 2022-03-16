@@ -14,12 +14,12 @@ export default class TutorSecene extends BasicScene {
         this.anims.create({
             key: 'tut1',
             delay: 200,
-            frames: this.anims.generateFrameNames('tut1', { prefix: 'tut1', start: 0, end: 29, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('tut1', { prefix: 'Symbol 1', start: 0, end: 19, zeroPad: 4 }),
         });
         this.anims.create({
             key: 'tut2',
             delay: 200,
-            frames: this.anims.generateFrameNames('tut2', { prefix: 'tut2', start: 0, end: 29, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('tut2', { prefix: 'Symbol 1', start: 0, end: 13, zeroPad: 4 }),
         });
     }
 
@@ -31,8 +31,8 @@ export default class TutorSecene extends BasicScene {
         //Stop all sound, because game will return to this scene on retry.
         // this.sound.stopAll();
 
-        let tut1 = this.add.sprite(this.getColWidth(4), this.getRowHeight(5), 'tut1')
-        let tut2 = this.add.sprite(this.getColWidth(9), this.getRowHeight(5), 'tut2')
+        let tut1 = this.add.sprite(this.getColWidth(4.4), this.getRowHeight(5), 'tut1')
+        let tut2 = this.add.sprite(this.getColWidth(8.6), this.getRowHeight(5), 'tut2')
 
         this._repeatAnimate({tut1, tut2})
         

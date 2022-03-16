@@ -26,6 +26,7 @@ export default class PreloaderScene extends BasicScene {
             'uiRecorder': require('../assets/images/ui_recorder.png'),
             'clawTexture': require('../assets/images/texture_claw.png'),
             'errorTexture': require('../assets/images/texture_error.png'),
+            'correctTexture':require('../assets/images/texture_correct.png'),
 
             'textureObject0': require('../assets/images/objects/0.png'),
             'textureObject1': require('../assets/images/objects/1.png'),
@@ -81,9 +82,6 @@ export default class PreloaderScene extends BasicScene {
             },
             'tutorTexture02': {
                 img: require('../assets/atlas/atlas_tutor02.png'), data: require('../assets/atlas/atlas_tutor02.json')
-            },
-            'tutorTexture03': {
-                img: require('../assets/atlas/atlas_tutor03.png'), data: require('../assets/atlas/atlas_tutor03.json')
             },
             'penguinTexture': {
                 img: require('../assets/atlas/atlas_penguin.png'), data: require('../assets/atlas/atlas_penguin.json')

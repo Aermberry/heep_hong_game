@@ -202,8 +202,8 @@ export default class GameScene extends BasicScene {
 
         this.toLeftBtn = new ToLeftBtn(this, this.getColWidth(9.5), this.getRowHeight(10), this._playerToLeft.bind(this, 500))
         this.toRightBtn = new ToRightBtn(this, this.getColWidth(11), this.getRowHeight(10), this._playerToRight.bind(this, 500))
-        this.existBtn = new ExitBtn(this, this.getColWidth(1), this.getRowHeight(1.5))
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), this.getRowHeight(1.5),this.musicPause.bind(this))
+        this.existBtn = new ExitBtn(this, 100, 120)
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120,this.musicPause.bind(this))
 
         this.toLeftBtn.setDepth(8)
         this.toRightBtn.setDepth(8)

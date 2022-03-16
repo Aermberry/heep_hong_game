@@ -44,15 +44,16 @@ export default class SubjectItem extends Phaser.GameObjects.Container {
         let i = 0;
         while (i < this.list.length) {
             if (this.list[i] != gameObject) {
-            if (this.list[i - 1] == gameObject) {
-                this.ignoreItemRender(this.list[i], i)
-            } else {
-                this.itemRender(this.list[i], i)
+                if (this.list[i - 1] == gameObject) {
+                    this.ignoreItemRender(this.list[i], i)
+                } else {
+                    this.itemRender(this.list[i], i)
+                }
+                this.list[i].origin = {
+                    x: this.list[i].x,
+                    y: this.list[i].y
+                }
             }
-            this.list[i].origin = {
-                x: this.list[i].x,
-                y: this.list[i].y
-            }}
             i++;
         }
     }
@@ -114,15 +115,40 @@ export default class SubjectItem extends Phaser.GameObjects.Container {
 
     sortBySeed() {
         this.list.sort(this.compare('seed'))
+        let width = 0;
+        this.list.forEach((item) => {
+            width += item.width;
+        })
+        if (width > 2000) {
+            this.y += 100;
+            this.setScale(0.8)
+        }
         this.reRender();
     }
 
-    compare(p){ //这是比较函数
-        return function(m,n){
+    compare(p) { //这是比较函数
+        return function (m, n) {
             var a = m[p];
             var b = n[p];
             return a - b; //升序
         }
     }
+
+    reset(i = 0) {
+        if (i < this.list.length) {
+            let item = this.list[i];
+            if (item instanceof SelectCar) {
+                let car = item;
+                this.remove(item)
+                car.x = car.selectAreaOring.x;
+                car.y = car.selectAreaOring.y;
+                this.reset(i);
+            } else {
+                this.reset(i + 1);
+            }
+        }
+    }
+
+
 }
 

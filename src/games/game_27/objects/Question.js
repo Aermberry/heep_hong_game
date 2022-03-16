@@ -4,14 +4,22 @@ import DropZone from "./DropZone";
 import SubjectItem from "./SubjectItem";
 export default class Question {
     constructor(scene) {
-        let question = scene.dataModal[Math.floor(Math.random() * scene.dataModal.length)];
+
+        let data = scene.dataModal.filter((item) =>
+            !scene.pastProblems.includes(item))
+
+        let random = Math.floor(Math.random() * data.length)
+        let question = data[random];
+        scene.pastProblems.push(question);
+        this.index = scene.dataModal.indexOf(question);
+
         let regex = /\((.+?)\)/g;
         let answer = question.split(regex); // 完整的答案
         let items = question.match(regex) // 上方的选择项
-        for(var i = 0;i<answer.length;i++){
-            if(answer[i]==''||answer[i]==null||typeof(answer[i])==undefined){
-                answer.splice(i,1);
-                i=i-1;
+        for (var i = 0; i < answer.length; i++) {
+            if (answer[i] == '' || answer[i] == null || typeof (answer[i]) == undefined) {
+                answer.splice(i, 1);
+                i = i - 1;
             }
         }
         this.scene = scene;
@@ -29,13 +37,12 @@ export default class Question {
                 }
             });
         });
-
         // let dropZone = 
         new DropZone(scene, 400, 40);
         scene.subjectItem = new SubjectItem(scene, 0, 450, [])
         // 渲染题目
         subject.forEach((v, i) => {
-            scene.subjectItem.add(new Car(scene, scene.subjectItem.length < 1 ? 0 : scene.subjectItem.list[i - 1].x + scene.subjectItem.list[i - 1].width - 20, 450, v));
+            scene.subjectItem.add(new Car(scene, scene.subjectItem.length < 1 ? 0 : scene.subjectItem.list[i - 1].x + scene.subjectItem.list[i - 1].width + 20, 450, v));
         });
         this.selectItem = [];
         //渲染选择项
@@ -79,22 +86,32 @@ export default class Question {
     }
 
     gameWinner() {
-        this.scene.subjectItem.x = 0;
-        this.scene.ltBtn.destroy();
-        this.scene.rtBtn.destroy();
-        let self = this;
-        this.move(this.scene.subjectItem, 2000).then(() => {
-            let wow_car = self.scene.add.sprite(1100, 550, 'wow_car');
-            wow_car.play('wow_car')
-            wow_car.on('animationcomplete', () => {
-                if (self.scene.currentLevel == 5) {
-                    self.scene.scene.start('End')
-                } else {
-                    self.scene.scene.start('Game', {
-                        level: self.scene.currentLevel + 1,
-                    })
-                }
-            });
+        //獲取當前句子音頻索引
+        let correctAudio = this.scene.sound.add(this.index);
+        correctAudio.play();
+        correctAudio.on('complete', () => {  
+            this.scene.subjectItem.x = 0;
+            this.scene.ltBtn.destroy();
+            this.scene.rtBtn.destroy();
+            let self = this;
+            let audio = this.scene.sound.add('winnerSound');
+            audio.play();
+            this.move(this.scene.subjectItem, 2000).then(() => {
+                let wow_car = this.scene.add.sprite(1100, 600, 'wow_car')
+                wow_car.play('wow_car')
+                let audio = this.scene.sound.add('winnerSound2');
+                audio.play();
+                wow_car.on('animationcomplete', () => {
+                    if (self.scene.currentLevel == 5) {
+                        self.scene.scene.start('End')
+                    } else {
+                        self.scene.scene.start('Game', {
+                            level: self.scene.currentLevel + 1,
+                            pastProblems: self.scene.pastProblems
+                        })
+                    }
+                });
+            })
         })
     }
 
@@ -107,12 +124,15 @@ export default class Question {
             this.showRightAnswer();
             return;
         }
+        let audio = this.scene.sound.add('errorSound');
+        audio.play();
         self.move(self.scene.subjectItem, 100, 200).then(() => {
             self.move(self.scene.subjectItem, -100, 200).then(() => {
                 self.move(self.scene.subjectItem, 100, 200).then(() => {
-                    self.move(self.scene.subjectItem, -100, 200).then(() => {
+                    self.move(self.scene.subjectItem, 0, 200).then(() => {
                         setTimeout(() => {
                             self.scene.goBtn.setStatus(true);
+                            self.scene.subjectItem.reset();
                             this.openDrop();
                         }, 500)
                     })
@@ -136,13 +156,15 @@ export default class Question {
                 }
             });
         })
-    self.scene.subjectItem.sortBySeed();
-    let animation = self.scene.add.sprite(960,840,'answer');
-    animation.play('answer');
-    animation.on('animationcomplete',() => {
-        animation.destroy();
-        self.gameWinner();
-    })
+        self.scene.subjectItem.sortBySeed();
+        let animation = self.scene.add.sprite(960, 840, 'answer');
+        animation.play('answer');
+        animation.on('animationcomplete', () => {
+            setTimeout(() => {
+                animation.destroy();
+                self.gameWinner();
+            }, 3000);
+        })
     }
 
 

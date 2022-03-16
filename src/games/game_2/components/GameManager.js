@@ -32,11 +32,8 @@ export default class GameManager {
         GameModel.init();
 
         if (this.questionNumberList.length > 0) {
-            console.log("data 不为空");
             this.questionNumberList = []
         }
-
-        console.log(this.questionNumberList)
 
         let questions = await this.questionDataLocalRepository.loadData();
 

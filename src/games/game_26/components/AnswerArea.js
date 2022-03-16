@@ -9,12 +9,29 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
         super(scene, 0, 0);
 
-        this.textStyle = {
+        this.phraseLabelTextStyle = {
             fontSize: '55px',
             fontFamily: 'Arial',
             // backgroundColor:'#fb022b',
             align: 'justify',
             color: '#000',
+            padding: {
+                left: 50,
+                right: 50,
+                top: 20,
+                bottom: 10,
+            }
+
+        }
+
+        this.PrepositionLabelTextStyle = {
+            fontSize: '100px',
+            fontFamily: 'Arial',
+            // backgroundColor:'#fb022b',
+            align: 'justify',
+            color: '#000',
+            stroke: '#000000',
+            strokeThickness: 5,
             padding: {
                 left: 50,
                 right: 50,
@@ -36,34 +53,43 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
 
     paintPhraseLabels(scene, preposition, phrases, gameObject) {
 
-        let points = [{ x: 1278, y: 178 }, { x: 1696, y: 175 }, { x: 1278, y: 355 }, { x: 1699, y: 390 }, { x: 1500, y: 557 }];
+        let points = [{
+            x: 1278,
+            y: 178
+        }, {
+            x: 1696,
+            y: 220
+        }, {
+            x: 1278,
+            y: 355
+        }, {
+            x: 1699,
+            y: 430
+        }, {
+            x: 1390,
+            y: 560
+        }];
+
+        const prepositionLabelBoxPoint = points[4];
+        points.splice(4, 1);
 
         points = this.ShufflePosition(points);
-
-        // console.log({ points })
 
         let container = scene.add.container(0, 1200);
 
         const prepositionIndexPosition = phrases.indexOf(preposition);
-        const prepositionLabelBoxPoint = points[prepositionIndexPosition];
 
         let phraseLabelBoxPoints = Array.from(points);
         phrases.splice(prepositionIndexPosition, 1);
-        phraseLabelBoxPoints.splice(prepositionIndexPosition, 1);
-
-        // console.log({phrases})
-        // console.log({ points: points })
-        // console.log({ prepositionLabelBoxPoint: prepositionLabelBoxPoint })
-        // console.log({ phraseLabelBoxPoints: phraseLabelBoxPoints });
 
         if (prepositionLabelBoxPoint != null) {
-            container.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.textStyle, gameObject));
+            container.add(new PrepositionLabelBox(scene, prepositionLabelBoxPoint, preposition, this.PrepositionLabelTextStyle, gameObject));
         }
 
         if (phraseLabelBoxPoints != null) {
             for (let index = 0; index < phrases.length; index++) {
                 const phrase = phrases[index];
-                container.add(new PhraseLabelBox(scene, phraseLabelBoxPoints[index], phrase, this.textStyle, gameObject));
+                container.add(new PhraseLabelBox(scene, phraseLabelBoxPoints[index], phrase, this.phraseLabelTextStyle, gameObject));
             }
         }
 
@@ -100,7 +126,10 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         this.scene.sound.play('openCapsuleEffectSound');
         scene.add.tween({
             targets: this.answerPanel,
-            x: { from: 3000, to: 1000 },
+            x: {
+                from: 3000,
+                to: 1000
+            },
             duration: 5000,
             ease: 'Power2',
             onComplete: () => {
@@ -109,24 +138,33 @@ export default class AnswerArea extends Phaser.GameObjects.Container {
         });
         scene.add.tween({
             targets: this.phraseLabelsContainer,
-            y: { from: 1200, to: 140 },
-            scale: { from: 0.5, to: 1 },
-            alpha: { from: 0.5, to: 1 },
+            y: {
+                from: 1200,
+                to: 140
+            },
+            scale: {
+                from: 0.5,
+                to: 1
+            },
+            alpha: {
+                from: 0.5,
+                to: 1
+            },
             duration: 6000,
             ease: 'Power2',
         });
     }
 
-    showDisplay() {
+    showDisplay(data) {
         this.answerPanel.setPosition(1000, 900);
-        this.phraseLabelsContainer.setPosition(0, 0);
+        this.phraseLabelsContainer.setPosition(0, data.y);
 
         this.SetEnableInput();
     }
 
-    showCurrentAnswer(scene,questionIndex) {
+    showCurrentAnswer(scene, questionIndexVoice) {
         console.log("showCurrentAnswer");
-        this.answerPanel.setCurrentAnswer(scene,questionIndex)
+        this.answerPanel.setCurrentAnswer(scene, questionIndexVoice)
     }
 
     SetEnableInput() {

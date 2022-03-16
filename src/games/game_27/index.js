@@ -31,22 +31,24 @@ class Game27 extends Phaser.Game {
 
     // private globals: { model: Model }
 
-    constructor(config, urlParams) {
+    constructor(config, urlParams, gtag) {
         super(config);
         let model = new Model()
         this.globals = {
-            model
+            model,
+            gtag
         }
 
         this.globals.model.gameId = urlParams.id;
-
+        this.globals.gtag = gtag
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams, gtag) {
 
-    let game = new Game27(gameConfig, urlParams)
+    let game = new Game27(gameConfig, urlParams, gtag)
+
     return game
 }
 

@@ -3,6 +3,7 @@ import config from '../config/Config';
 
 
 import Button from '../objects/Button';
+import SpeakerBtn from '../objects/SpeakerBtn';
 
 export default class EndScene extends Scene {
   constructor () {
@@ -89,5 +90,23 @@ export default class EndScene extends Scene {
 
     self.replayButton = new Button(self, config.width/2 - 220, config.height/2 + 310, 'rplBtn', 'Game', 'self')
     self.exitButton = new Button(self, config.width/2 + 220, config.height/2 + 310, 'extBtn', '', 'back')
+
+    self.speakerBtn = new SpeakerBtn(this, 1820, 120, this.musicPause.bind(this));
+    self.speakerBtn.setDepth(3);
+    self.add.existing(self.speakerBtn);
+  }
+
+  musicPause() {
+    let self = this
+    if (self.model.bgMusicPlaying){
+      this.sys.game.globals.bgMusic.pause()
+      //self.sound.stopByKey('bgMusic')
+      self.model.bgMusicPlaying = false
+    } else {
+      this.sys.game.globals.bgMusic.resume()
+      //self.sound.play('bgMusic')
+      self.model.bgMusicPlaying = true
+    }
+
   }
 }

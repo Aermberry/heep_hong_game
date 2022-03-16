@@ -95,6 +95,8 @@ export default class GameScene extends BasicScene {
             'voiceOver2': require('../assets/audio/voice/voice_over/2.mp3'),
             'voiceOver3': require('../assets/audio/voice/voice_over/3.mp3'),
             'voiceOver4': require('../assets/audio/voice/voice_over/4.mp3'),
+
+            'conclusionPhraseVoice0': require('../assets/audio/voice/voice_over/0.mp3'),
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
@@ -582,7 +584,7 @@ export default class GameScene extends BasicScene {
 
     }
 
-    playVoice(leftVoice, rightVoice, callback) {
+    playVoice(leftVoice, rightVoice, conclusionPhraseVoice, callback) {
         // this.sound.stopAll();
         const leftVoicePlayer = this.sound.add("voice" + leftVoice);
         const rightVoicePlayer = this.sound.add("voice" + rightVoice);
@@ -590,14 +592,26 @@ export default class GameScene extends BasicScene {
         const voiceOver0 = this.sound.add("voiceOver0");
         const voiceOver4 = this.sound.add("voiceOver4");
 
+        const conclusionPhrasePlayer = this.sound.add('conclusionPhraseVoice');
+
         rightVoicePlayer.once('complete', () => {
             voiceOver0.play();
         });
 
-        voiceOver4.once('complete', () => {
+        voiceOver0.once('complete', () => {
             leftVoicePlayer.play();
             callback;
         });
+
+        leftVoicePlayer.once('complete', () => {
+            voiceOver4.play();
+        });
+
+        voiceOver4.on('complete', () => {
+            
+        })
+
+
 
         rightVoicePlayer.play();
 

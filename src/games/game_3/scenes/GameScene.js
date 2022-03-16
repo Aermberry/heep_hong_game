@@ -604,11 +604,10 @@ export default class GameScene extends BasicScene {
 
         // this.sound.stopAll();
         const leftVoicePlayer = this.sound.add("voice" + leftVoice);
-        const leftVoicePlayer_1 = this.sound.add("voice" + leftVoice);
+        
         const rightVoicePlayer = this.sound.add("voice" + rightVoice);
 
         const voiceOver0 = this.sound.add("voiceOver0");
-        const voiceOver0_1 = this.sound.add("voiceOver0");
         
         const voiceOver4 = this.sound.add("voiceOver4");
 
@@ -631,19 +630,17 @@ export default class GameScene extends BasicScene {
         });
 
         conclusionPhrasePlayer.once('complete', () => {
-            voiceOver0_1.play();
+
+            voiceOver0.once('complete', () => {
+                leftVoicePlayer.once('complete', () => {
+                    callback();
+                })
+
+                 leftVoicePlayer.play();
+            });
+
+            voiceOver0.play();
         });
-
-        voiceOver0_1.once('complete', () => {
-             console.log("ssssssss");
-            leftVoicePlayer_1.play();
-        });
-
-        leftVoicePlayer_1.once('complete', () => {
-
-            console.log("DSD");
-            callback();
-        })
 
         rightVoicePlayer.play();
 

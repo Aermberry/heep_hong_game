@@ -419,7 +419,7 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex, currentQuestionAnswer) {
+    paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex) {
         leftItem.showSuccessStatus();
         rightItem.showSuccessStatus();
 
@@ -435,10 +435,7 @@ export default class GameScene extends BasicScene {
 
                         winSoundEffect.on('complete', () => {
                             // this.sound.stopAll();
-                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.voiceIndex);
-
-                            console.log(currentQuestionAnswerPlayer)
-                            
+                          
                             this.playVoice(leftItem.index, rightItem.index, conclusionPhraseVoiceIndex, () => {
                                     this.time.addEvent({
                                                          delay: 1000, // ms
@@ -459,17 +456,14 @@ export default class GameScene extends BasicScene {
     }
 
 
-    paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex, currentAnswerItem, currentQuestionAnswer) {
+    paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex, currentAnswerItem) {
 
         targetItem.showErrorStatue();
         dragItem.showErrorStatue(() => {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {
 
                 GameManager.getInstance().getGameFail(this.questionIndex, (isFirstError, value) => {
-                    console.log({
-                        isLastQuestion: value
-                    })
-
+               
                     this.time.addEvent({
                         delay: 2000,
                         callback: () => {
@@ -480,19 +474,13 @@ export default class GameScene extends BasicScene {
                             });
                             currentAnswerItem.showSuccessStatus();
 
-                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.voiceIndex);
-
-                            currentQuestionAnswerPlayer.on('complete', () => {
-                                this.time.addEvent({
-                                    delay: 1000, // ms
-                                    callback: () => {
-                                        value ? this.scene.start('End') : this.scene.restart('Game');
-                                    }
-
-                                });
-                            })
-                            currentQuestionAnswerPlayer.play();
-
+                               this.playVoice(dragItem.index, targetItem.index, conclusionPhraseVoiceIndex, () => {
+                                   this.time.addEvent({
+                                       delay: 1000, // ms
+                                       callback: () =>
+                                            value ? this.scene.start('End') : this.scene.restart('Game')
+                                   });
+                               });
                         }
                     });
 
@@ -596,7 +584,7 @@ export default class GameScene extends BasicScene {
             return egg.objectName == currentQuestionAnswer.object
         });
 
-        composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex,currentAnswerItem, currentQuestionAnswer);
+        composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex) : this.paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex,currentAnswerItem);
 
     }
 

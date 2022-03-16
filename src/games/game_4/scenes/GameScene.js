@@ -603,19 +603,29 @@ export default class GameScene extends BasicScene {
 
     playVoice(leftVoice, rightVoice, callback) {
         // this.sound.stopAll();
-        const leftVoicePlayer = this.sound.add("voice" + leftVoice);
+        // const leftVoicePlayer = this.sound.add("voice" + leftVoice);
         const rightVoicePlayer = this.sound.add("voice" + rightVoice);
 
-        leftVoicePlayer.on('complete', () => {
-            rightVoicePlayer.play();
-
-        })
+        const voiceOver0 = this.sound.add('voiceOver0');
 
         rightVoicePlayer.on('complete', () => {
-            callback;
+            voiceOver0.play();
+
+            callback
         })
 
-        leftVoicePlayer.play();
+        rightVoicePlayer.play();
+
+        // leftVoicePlayer.on('complete', () => {
+        //     rightVoicePlayer.play();
+
+        // })
+
+        // rightVoicePlayer.on('complete', () => {
+        //     callback;
+        // })
+
+        // leftVoicePlayer.play();
 
     }
 

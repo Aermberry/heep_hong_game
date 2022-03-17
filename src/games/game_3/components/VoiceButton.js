@@ -18,6 +18,9 @@ export default class VoiceButton extends Button {
 
         SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => {
             value ? this.cancelListener() : this.enableListener();
+             console.log({
+                 value
+             })
         });
     }
 

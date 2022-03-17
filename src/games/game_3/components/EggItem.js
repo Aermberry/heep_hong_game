@@ -12,9 +12,17 @@ export default class EggItem extends Egg {
         this.objectName = objectItem.object;
         this.index = voiceIndexObject.voiceIndex;
 
-        console.log(voiceIndexObject)
+
+
+        
         this.setName("EggItem");
         this.create(isEnableDraggable);
+
+        voiceIndexObject.itemVoiceIndex = objectItem.itemVoice;
+
+        console.log({
+            voiceIndexObject
+        });
 
         // this.voiceButton = new VoiceButton(this.scene, -20, 120, "voice" + voiceIndexObject.voiceIndex);
         this.voiceButton = new EggItemVoiceButton(this.scene, -20, 120, voiceIndexObject);

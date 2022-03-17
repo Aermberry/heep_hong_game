@@ -10,12 +10,12 @@ export default class EggItemVoiceButton extends Button {
 
         this.keywordVoice = scene.sound.add('voice' + voiceIndexObject.voiceIndex);
         this.voiceOver0 = scene.sound.add('voiceOver0');
-        this.conclusionPhraseVoice = scene.sound.add('conclusionPhraseVoice' + voiceIndexObject.conclusionPhraseVoiceIndex);
+        this.itemVoice = scene.sound.add('conclusionPhraseVoice' + voiceIndexObject.itemVoiceIndex);
 
         console.log({
             "keywordVoice": this.keywordVoice,
             "voiceOver0": this.voiceOver0,
-            "conclusionPhraseVoice": this.conclusionPhraseVoice,
+            "conclusionPhraseVoice": this.itemVoice,
         })
 
         this.init();
@@ -26,18 +26,20 @@ export default class EggItemVoiceButton extends Button {
 
         SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => {
             value ? this.cancelListener() : this.enableListener();
+
+            console.log({value})
         });
     }
 
     onDownClicked() {
-        this.texture.setFrame(this.keywordVoice.isPlay||this.voiceOver0.isPlay||this.conclusionPhraseVoice.isPlay ? 1 : 3);
+        this.texture.setFrame(this.keywordVoice.isPlay||this.voiceOver0.isPlay||this.itemVoice.isPlay ? 1 : 3);
     }
 
     onUpClicked() {
         this.texture.setFrame(2);
         // this.voice.play();
 
-        this.conclusionPhraseVoice.once('complete', () => {
+        this.itemVoice.once('complete', () => {
             this.voiceOver0.play();
         });
 
@@ -45,11 +47,11 @@ export default class EggItemVoiceButton extends Button {
             this.keywordVoice.play();
         })
 
-        this.conclusionPhraseVoice.play();
+        this.itemVoice.play();
     }
 
     addButtonStatusListener() {
-        this.conclusionPhraseVoice.on('play', () => {
+        this.itemVoice.on('play', () => {
             SoundOnPlayEvent.emit("updateEggItemOnPlayStatus", true);
             this.texture.setFrame(0);
             console.log('play')

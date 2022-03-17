@@ -32,6 +32,7 @@ export default class GameScene extends BasicScene {
 
         this.answerArea = undefined;
         this.currentQuestionAnswer = undefined;
+        this.keywordVoiceIndex = undefined;
         this.questionDisplayDirection = undefined;
         this.positions = undefined;
         this._gameDirection = undefined;
@@ -212,6 +213,7 @@ export default class GameScene extends BasicScene {
         console.log("当前抽取的题目Index:%o", this.questionIndex)
 
         this.currentQuestionAnswer = question.answer;
+        this.keywordVoiceIndex = question.keywordVoiceIndex;
 
         return question;
     }
@@ -372,10 +374,9 @@ export default class GameScene extends BasicScene {
                     rightItem
                 });
 
-                this.playVoice(leftItem.index, rightItem.index, this.checkAnswer(dragItem, targetItem, this.currentQuestionAnswer, eggItemList));
-                console.log({
-                    "GameModel": GameModel.questionCount
-                })
+                this.checkAnswer(dragItem, targetItem, this.keywordVoiceIndex, this.currentQuestionAnswer, eggItemList);
+
+
             });
 
             colliderList.push(collider);
@@ -411,7 +412,7 @@ export default class GameScene extends BasicScene {
         return result;
     }
 
-    paintGameSuccess(leftItem, rightItem, currentQuestionAnswer) {
+    paintGameSuccess(leftItem, rightItem, keywordVoiceIndex, currentQuestionAnswer) {
         leftItem.showSuccessStatus();
         rightItem.showSuccessStatus();
 
@@ -426,17 +427,27 @@ export default class GameScene extends BasicScene {
                         const winSoundEffect = this.sound.add("winSoundEffect");
 
                         winSoundEffect.on('complete', () => {
-                            const leftVoicePlayer = this.sound.add("voice" + currentQuestionAnswer.index);
 
-                            leftVoicePlayer.on('complete', () => {
+                            // const leftVoicePlayer = this.sound.add("voice" + currentQuestionAnswer.index);
+
+                            // leftVoicePlayer.on('complete', () => {
+                            //     this.time.addEvent({
+                            //         delay: 1000, // ms
+                            //         callback: () =>
+                            //             this.scene.start(isLastQuestion ? 'End' : 'Game')
+                            //     });
+                            // })
+
+                            // leftVoicePlayer.play();
+
+
+                            this.playVoice(leftItem.index, rightItem.index, keywordVoiceIndex, currentQuestionAnswer, () => {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () =>
                                         this.scene.start(isLastQuestion ? 'End' : 'Game')
                                 });
-                            })
-
-                            leftVoicePlayer.play();
+                            });
                         })
 
                         winSoundEffect.play();
@@ -448,7 +459,7 @@ export default class GameScene extends BasicScene {
     }
 
 
-    paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer) {
+    paintGameFailed(dragItem, targetItem, keywordVoiceIndex, currentAnswerItem, currentQuestionAnswer) {
 
         targetItem.showErrorStatue();
 
@@ -470,18 +481,22 @@ export default class GameScene extends BasicScene {
                             });
                             currentAnswerItem.showSuccessStatus();
 
-                            const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswer.index);
 
-                            currentQuestionAnswerPlayer.on('complete', () => {
-                                this.time.addEvent({
-                                    delay: 1000, // ms
-                                    callback: () => {
-                                        value ? this.scene.start('End') : this.scene.restart('Game');
-                                    }
+                            const keywordVoicePlayer = this.sound.add('voice' + keywordVoiceIndex);
 
-                                });
-                            })
-                            currentQuestionAnswerPlayer.play();
+
+                            this.playVoice(dragItem)
+
+                            // currentQuestionAnswerPlayer.on('complete', () => {
+                            //     this.time.addEvent({
+                            //         delay: 1000, // ms
+                            //         callback: () => {
+                            //             value ? this.scene.start('End') : this.scene.restart('Game');
+                            //         }
+
+                            //     });
+                            // })
+                            // currentQuestionAnswerPlayer.play();
 
                         }
                     });
@@ -577,7 +592,7 @@ export default class GameScene extends BasicScene {
 
     }
 
-    checkAnswer(dragItem, targetItem, currentQuestionAnswer, eggItemList) {
+    checkAnswer(dragItem, targetItem, keywordVoiceIndex, currentQuestionAnswer, eggItemList) {
 
 
         let leftItem;
@@ -597,22 +612,43 @@ export default class GameScene extends BasicScene {
             return egg.objectName == currentQuestionAnswer.objectName
         });
 
-        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, currentAnswerItem, currentQuestionAnswer);
+        composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, keywordVoiceIndex, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, keywordVoiceIndex, currentAnswerItem, currentQuestionAnswer);
 
     }
 
-    playVoice(leftVoice, rightVoice, callback) {
+    playVoice(leftVoiceIndex, rightVoiceIndex, keywordVoiceIndex, currentQuestionAnswerIndex, callback) {
         // this.sound.stopAll();
-        // const leftVoicePlayer = this.sound.add("voice" + leftVoice);
-        const rightVoicePlayer = this.sound.add("voice" + rightVoice);
+        // const leftVoicePlayer = this.sound.add("voice" + leftVoiceIndex);
+
+        const rightVoicePlayer = this.sound.add("voice" + rightVoiceIndex);
+        const keywordVoicePlayer = this.sound.add('voice' + keywordVoiceIndex);
+        const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswerIndex);
 
         const voiceOver0 = this.sound.add('voiceOver0');
+        const voiceOver4 = this.sound.add('voiceOver4');
 
-        rightVoicePlayer.on('complete', () => {
+        rightVoicePlayer.once('complete', () => {
             voiceOver0.play();
+        });
 
-            callback
+        voiceOver0.once('complete', () => {
+            keywordVoicePlayer.play();
+        });
+
+        keywordVoicePlayer.once('complete', () => {
+            voiceOver4.play();
         })
+
+        voiceOver4.once('complete', () => {
+            currentQuestionAnswerPlayer.play();
+            callback;
+        })
+
+        currentQuestionAnswerPlayer.once('complete', () => {
+            
+        })
+
+
 
         rightVoicePlayer.play();
 

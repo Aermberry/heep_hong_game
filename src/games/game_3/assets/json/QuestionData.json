@@ -8,12 +8,14 @@
     "item": {
       "items": [
         {
-          "object": "紅",
-          "imageIndex": 0
+          "object": "紅色",
+          "imageIndex": 0,
+          "itemVoice": 0
         },
         {
-          "object": "熊",
-          "imageIndex": 1
+          "object": "小熊",
+          "imageIndex": 1,
+          "itemVoice": 1
         }
       ],
       "voiceIndex": 0
@@ -22,8 +24,8 @@
       "object": "紅",
       "voiceIndex": 7
     },
-    "conclusion":{
-      "phrase":0
+    "conclusion": {
+      "phrase": 0
     }
   },
   {
@@ -35,12 +37,14 @@
     "item": {
       "items": [
         {
-          "object": "紅",
-          "imageIndex": 0
+          "object": "紅色",
+          "imageIndex": 0,
+          "itemVoice": 0
         },
         {
-          "object": "熊",
-          "imageIndex": 1
+          "object": "小熊",
+          "imageIndex": 1,
+          "itemVoice": 1
         }
       ],
       "voiceIndex": 0
@@ -49,8 +53,8 @@
       "object": "紅",
       "voiceIndex": 8
     },
-    "conclusion":{
-      "phrase":0
+    "conclusion": {
+      "phrase": 0
     }
   },
   {
@@ -62,12 +66,14 @@
     "item": {
       "items": [
         {
-          "object": "紅",
-          "imageIndex": 0
+          "object": "紅色",
+          "imageIndex": 0,
+          "itemVoice": 0
         },
         {
-          "object": "熊",
-          "imageIndex": 1
+          "object": "小熊",
+          "imageIndex": 1,
+          "itemVoice": 1
         }
       ],
       "voiceIndex": 0
@@ -76,8 +82,8 @@
       "object": "熊",
       "voiceIndex": 9
     },
-    "conclusion":{
-      "phrase":1
+    "conclusion": {
+      "phrase": 1
     }
   },
   {
@@ -89,12 +95,14 @@
     "item": {
       "items": [
         {
-          "object": "紅",
-          "imageIndex": 0
+          "object": "紅色",
+          "imageIndex": 0,
+          "itemVoice": 0
         },
         {
-          "object": "熊",
-          "imageIndex": 1
+          "object": "小熊",
+          "imageIndex": 1,
+          "itemVoice": 1
         }
       ],
       "voiceIndex": 0
@@ -103,8 +111,8 @@
       "object": "熊",
       "voiceIndex": 10
     },
-    "conclusion":{
-      "phrase":1
+    "conclusion": {
+      "phrase": 1
     }
   },
   {
@@ -116,12 +124,14 @@
     "item": {
       "items": [
         {
-          "object": "三",
-          "imageIndex": 2
+          "object": "數字三",
+          "imageIndex": 2,
+          "itemVoice": 2
         },
         {
-          "object": "衫",
-          "imageIndex": 3
+          "object": "著衫",
+          "imageIndex": 3,
+          "itemVoice": 3
         }
       ],
       "voiceIndex": 1
@@ -130,8 +140,8 @@
       "object": "三",
       "voiceIndex": 11
     },
-    "conclusion":{
-      "phrase":2
+    "conclusion": {
+      "phrase": 2
     }
   },
   {
@@ -143,12 +153,14 @@
     "item": {
       "items": [
         {
-          "object": "三",
-          "imageIndex": 2
+          "object": "數字三",
+          "imageIndex": 2,
+          "itemVoice": 2
         },
         {
-          "object": "衫",
-          "imageIndex": 3
+          "object": "著衫",
+          "imageIndex": 3,
+          "itemVoice": 3
         }
       ],
       "voiceIndex": 1
@@ -157,8 +169,8 @@
       "object": "三",
       "voiceIndex": 12
     },
-    "conclusion":{
-      "phrase":2
+    "conclusion": {
+      "phrase": 2
     }
   },
   {
@@ -170,12 +182,14 @@
     "item": {
       "items": [
         {
-          "object": "三",
-          "imageIndex": 2
+          "object": "數字三",
+          "imageIndex": 2,
+          "itemVoice": 2
         },
         {
-          "object": "衫",
-          "imageIndex": 3
+          "object": "著衫",
+          "imageIndex": 3,
+          "itemVoice": 3
         }
       ],
       "voiceIndex": 1
@@ -184,8 +198,8 @@
       "object": "衫",
       "voiceIndex": 13
     },
-    "conclusion":{
-      "phrase":3
+    "conclusion": {
+      "phrase": 3
     }
   },
   {
@@ -197,12 +211,14 @@
     "item": {
       "items": [
         {
-          "object": "三",
-          "imageIndex": 2
+          "object": "數字三",
+          "imageIndex": 2,
+          "itemVoice": 2
         },
         {
-          "object": "衫",
-          "imageIndex": 3
+          "object": "著衫",
+          "imageIndex": 3,
+          "itemVoice": 3
         }
       ],
       "voiceIndex": 1
@@ -211,8 +227,8 @@
       "object": "衫",
       "voiceIndex": 14
     },
-    "conclusion":{
-      "phrase":3
+    "conclusion": {
+      "phrase": 3
     }
   },
   {
@@ -224,12 +240,14 @@
     "item": {
       "items": [
         {
-          "object": "窗",
-          "imageIndex": 4
+          "object": "窗口",
+          "imageIndex": 4,
+          "itemVoice": 4
         },
         {
-          "object": "槍",
-          "imageIndex": 5
+          "object": "一支槍",
+          "imageIndex": 5,
+          "itemVoice": 5
         }
       ],
       "voiceIndex": 2
@@ -238,8 +256,8 @@
       "object": "窗",
       "voiceIndex": 15
     },
-    "conclusion":{
-      "phrase":4
+    "conclusion": {
+      "phrase": 4
     }
   },
   {
@@ -251,22 +269,24 @@
     "item": {
       "items": [
         {
-          "object": "窗",
-          "imageIndex": 4
+          "object": "窗口",
+          "imageIndex": 4,
+          "itemVoice": 4
         },
         {
-          "object": "槍",
-          "imageIndex": 5
+          "object": "一支槍",
+          "imageIndex": 5,
+          "itemVoice": 5
         }
       ],
       "voiceIndex": 2
     },
     "answer": {
-      "object": "窗",
+      "object": "窗口",
       "voiceIndex": 16
     },
-    "conclusion":{
-      "phrase":4
+    "conclusion": {
+      "phrase": 4
     }
   },
   {
@@ -278,12 +298,14 @@
     "item": {
       "items": [
         {
-          "object": "窗",
-          "imageIndex": 4
+          "object": "窗口",
+          "imageIndex": 4,
+          "itemVoice": 4
         },
         {
-          "object": "槍",
-          "imageIndex": 5
+          "object": "一支槍",
+          "imageIndex": 5,
+          "itemVoice": 5
         }
       ],
       "voiceIndex": 2
@@ -292,8 +314,8 @@
       "object": "槍",
       "voiceIndex": 17
     },
-    "conclusion":{
-      "phrase":5
+    "conclusion": {
+      "phrase": 5
     }
   },
   {
@@ -305,12 +327,14 @@
     "item": {
       "items": [
         {
-          "object": "窗",
-          "imageIndex": 4
+          "object": "窗口",
+          "imageIndex": 4,
+          "itemVoice": 4
         },
         {
-          "object": "槍",
-          "imageIndex": 5
+          "object": "一支槍",
+          "imageIndex": 5,
+          "itemVoice": 5
         }
       ],
       "voiceIndex": 2
@@ -319,8 +343,8 @@
       "object": "槍",
       "voiceIndex": 18
     },
-    "conclusion":{
-      "phrase":5
+    "conclusion": {
+      "phrase": 5
     }
   },
   {
@@ -332,12 +356,14 @@
     "item": {
       "items": [
         {
-          "object": "指",
-          "imageIndex": 6
+          "object": "手指",
+          "imageIndex": 6,
+          "itemVoice": 6
         },
         {
-          "object": "紙",
-          "imageIndex": 7
+          "object": "紙張",
+          "imageIndex": 7,
+          "itemVoice": 7
         }
       ],
       "voiceIndex": 3
@@ -346,8 +372,8 @@
       "object": "指",
       "voiceIndex": 19
     },
-    "conclusion":{
-      "phrase":6
+    "conclusion": {
+      "phrase": 6
     }
   },
   {
@@ -359,12 +385,14 @@
     "item": {
       "items": [
         {
-          "object": "指",
-          "imageIndex": 6
+          "object": "手指",
+          "imageIndex": 6,
+          "itemVoice": 6
         },
         {
-          "object": "紙",
-          "imageIndex": 7
+          "object": "紙張",
+          "imageIndex": 7,
+          "itemVoice": 7
         }
       ],
       "voiceIndex": 3
@@ -373,8 +401,8 @@
       "object": "指",
       "voiceIndex": 20
     },
-    "conclusion":{
-      "phrase":6
+    "conclusion": {
+      "phrase": 6
     }
   },
   {
@@ -386,12 +414,14 @@
     "item": {
       "items": [
         {
-          "object": "指",
-          "imageIndex": 6
+          "object": "手指",
+          "imageIndex": 6,
+          "itemVoice": 6
         },
         {
-          "object": "紙",
-          "imageIndex": 7
+          "object": "紙張",
+          "imageIndex": 7,
+          "itemVoice": 7
         }
       ],
       "voiceIndex": 3
@@ -400,8 +430,8 @@
       "object": "紙",
       "voiceIndex": 21
     },
-    "conclusion":{
-      "phrase":7
+    "conclusion": {
+      "phrase": 7
     }
   },
   {
@@ -413,12 +443,14 @@
     "item": {
       "items": [
         {
-          "object": "指",
-          "imageIndex": 6
+          "object": "手指",
+          "imageIndex": 6,
+          "itemVoice": 6
         },
         {
-          "object": "紙",
-          "imageIndex": 7
+          "object": "紙張",
+          "imageIndex": 7,
+          "itemVoice": 7
         }
       ],
       "voiceIndex": 3
@@ -427,8 +459,8 @@
       "object": "紙",
       "voiceIndex": 22
     },
-    "conclusion":{
-      "phrase":7
+    "conclusion": {
+      "phrase": 7
     }
   },
   {
@@ -440,12 +472,14 @@
     "item": {
       "items": [
         {
-          "object": "蜜",
-          "imageIndex": 8
+          "object": "蜜糖",
+          "imageIndex": 8,
+          "itemVoice": 8
         },
         {
-          "object": "襪",
-          "imageIndex": 9
+          "object": "著襪",
+          "imageIndex": 9,
+          "itemVoice": 9
         }
       ],
       "voiceIndex": 4
@@ -454,8 +488,8 @@
       "object": "蜜",
       "voiceIndex": 23
     },
-    "conclusion":{
-      "phrase":8
+    "conclusion": {
+      "phrase": 8
     }
   },
   {
@@ -467,12 +501,14 @@
     "item": {
       "items": [
         {
-          "object": "蜜",
-          "imageIndex": 8
+          "object": "蜜糖",
+          "imageIndex": 8,
+          "itemVoice": 8
         },
         {
-          "object": "襪",
-          "imageIndex": 9
+          "object": "著襪",
+          "imageIndex": 9,
+          "itemVoice": 9
         }
       ],
       "voiceIndex": 4
@@ -481,8 +517,8 @@
       "object": "蜜",
       "voiceIndex": 24
     },
-    "conclusion":{
-      "phrase":8
+    "conclusion": {
+      "phrase": 8
     }
   },
   {
@@ -494,12 +530,14 @@
     "item": {
       "items": [
         {
-          "object": "蜜",
-          "imageIndex": 8
+          "object": "蜜糖",
+          "imageIndex": 8,
+          "itemVoice": 8
         },
         {
-          "object": "襪",
-          "imageIndex": 9
+          "object": "著襪",
+          "imageIndex": 9,
+          "itemVoice": 9
         }
       ],
       "voiceIndex": 4
@@ -508,8 +546,8 @@
       "object": "襪",
       "voiceIndex": 25
     },
-    "conclusion":{
-      "phrase":9
+    "conclusion": {
+      "phrase": 9
     }
   },
   {
@@ -521,12 +559,14 @@
     "item": {
       "items": [
         {
-          "object": "蜜",
-          "imageIndex": 8
+          "object": "蜜糖",
+          "imageIndex": 8,
+          "itemVoice": 8
         },
         {
-          "object": "襪",
-          "imageIndex": 9
+          "object": "著襪",
+          "imageIndex": 9,
+          "itemVoice": 9
         }
       ],
       "voiceIndex": 4
@@ -535,8 +575,8 @@
       "object": "襪",
       "voiceIndex": 26
     },
-    "conclusion":{
-      "phrase":9
+    "conclusion": {
+      "phrase": 9
     }
   },
   {
@@ -548,12 +588,14 @@
     "item": {
       "items": [
         {
-          "object": "升",
-          "imageIndex": 10
+          "object": "上升",
+          "imageIndex": 10,
+          "itemVoice": 10
         },
         {
-          "object": "星",
-          "imageIndex": 11
+          "object": "一粒星",
+          "imageIndex": 11,
+          "itemVoice": 11
         }
       ],
       "voiceIndex": 5
@@ -562,8 +604,8 @@
       "object": "升",
       "voiceIndex": 27
     },
-    "conclusion":{
-      "phrase":10
+    "conclusion": {
+      "phrase": 10
     }
   },
   {
@@ -575,12 +617,14 @@
     "item": {
       "items": [
         {
-          "object": "升",
-          "imageIndex": 10
+          "object": "上升",
+          "imageIndex": 10,
+          "itemVoice": 10
         },
         {
-          "object": "星",
-          "imageIndex": 11
+          "object": "一粒星",
+          "imageIndex": 11,
+          "itemVoice": 11
         }
       ],
       "voiceIndex": 5
@@ -589,8 +633,8 @@
       "object": "升",
       "voiceIndex": 28
     },
-    "conclusion":{
-      "phrase":10
+    "conclusion": {
+      "phrase": 10
     }
   },
   {
@@ -602,12 +646,14 @@
     "item": {
       "items": [
         {
-          "object": "升",
-          "imageIndex": 10
+          "object": "上升",
+          "imageIndex": 10,
+          "itemVoice": 10
         },
         {
-          "object": "星",
-          "imageIndex": 11
+          "object": "一粒星",
+          "imageIndex": 11,
+          "itemVoice": 11
         }
       ],
       "voiceIndex": 5
@@ -616,8 +662,8 @@
       "object": "星",
       "voiceIndex": 29
     },
-    "conclusion":{
-      "phrase":11
+    "conclusion": {
+      "phrase": 11
     }
   },
   {
@@ -629,12 +675,14 @@
     "item": {
       "items": [
         {
-          "object": "升",
-          "imageIndex": 10
+          "object": "上升",
+          "imageIndex": 10,
+          "itemVoice": 10
         },
         {
-          "object": "星",
-          "imageIndex": 11
+          "object": "一粒星",
+          "imageIndex": 11,
+          "itemVoice": 11
         }
       ],
       "voiceIndex": 5
@@ -643,8 +691,8 @@
       "object": "星",
       "voiceIndex": 30
     },
-    "conclusion":{
-      "phrase":11
+    "conclusion": {
+      "phrase": 11
     }
   },
   {
@@ -656,12 +704,14 @@
     "item": {
       "items": [
         {
-          "object": "豬",
-          "imageIndex": 12
+          "object": "小豬",
+          "imageIndex": 12,
+          "itemVoice": 12
         },
         {
-          "object": "珠",
-          "imageIndex": 13
+          "object": "一粒珠",
+          "imageIndex": 13,
+          "itemVoice": 13
         }
       ],
       "voiceIndex": 6
@@ -670,8 +720,8 @@
       "object": "豬",
       "voiceIndex": 31
     },
-    "conclusion":{
-      "phrase":12
+    "conclusion": {
+      "phrase": 12
     }
   },
   {
@@ -683,12 +733,14 @@
     "item": {
       "items": [
         {
-          "object": "豬",
-          "imageIndex": 12
+          "object": "小豬",
+          "imageIndex": 12,
+          "itemVoice": 12
         },
         {
-          "object": "珠",
-          "imageIndex": 13
+          "object": "一粒珠",
+          "imageIndex": 13,
+          "itemVoice": 13
         }
       ],
       "voiceIndex": 6
@@ -697,8 +749,8 @@
       "object": "豬",
       "voiceIndex": 32
     },
-    "conclusion":{
-      "phrase":12
+    "conclusion": {
+      "phrase": 12
     }
   },
   {
@@ -710,12 +762,14 @@
     "item": {
       "items": [
         {
-          "object": "豬",
-          "imageIndex": 12
+          "object": "小豬",
+          "imageIndex": 12,
+          "itemVoice": 12
         },
         {
-          "object": "珠",
-          "imageIndex": 13
+          "object": "一粒珠",
+          "imageIndex": 13,
+          "itemVoice": 13
         }
       ],
       "voiceIndex": 6
@@ -724,8 +778,8 @@
       "object": "珠",
       "voiceIndex": 33
     },
-    "conclusion":{
-      "phrase":13
+    "conclusion": {
+      "phrase": 13
     }
   },
   {
@@ -737,12 +791,14 @@
     "item": {
       "items": [
         {
-          "object": "豬",
-          "imageIndex": 12
+          "object": "小豬",
+          "imageIndex": 12,
+          "itemVoice": 12
         },
         {
-          "object": "珠",
-          "imageIndex": 13
+          "object": "一粒珠",
+          "imageIndex": 13,
+          "itemVoice": 13
         }
       ],
       "voiceIndex": 6
@@ -751,8 +807,8 @@
       "object": "珠",
       "voiceIndex": 34
     },
-    "conclusion":{
-      "phrase":13
+    "conclusion": {
+      "phrase": 13
     }
   }
 ]

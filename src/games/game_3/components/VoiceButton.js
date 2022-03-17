@@ -4,10 +4,11 @@ import SoundOnPlayEvent from "../phaser3_framework/event/SoundOnPlayEvent"
 
 export default class VoiceButton extends Button {
 
-    constructor(scene, x, y, voiceName) {
+    constructor(scene, x, y, voiceNameObject) {
 
         super(scene, x, y, 'voiceButton', 2);
-        this.voice = scene.sound.add(voiceName);
+
+        this.voice = scene.sound.add(voiceNameObject);
 
         this.init();
     }
@@ -15,7 +16,12 @@ export default class VoiceButton extends Button {
     init() {
         this.addButtonStatusListener();
 
-        SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => { value ? this.cancelListener() : this.enableListener(); });
+        SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => {
+            value ? this.cancelListener() : this.enableListener();
+             console.log({
+                 value
+             })
+        });
     }
 
     onDownClicked() {

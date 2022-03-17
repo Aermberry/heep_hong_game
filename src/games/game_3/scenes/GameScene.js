@@ -13,7 +13,6 @@ import EggQuestion from "../components/EggQuestion";
 import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
 import Player from "../components/Player";
-// import GameModel from "../game_mode/GameModel";
 import GameSprite from "../phaser3_framework/object/GameSprite";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import BasicScene from "./BasicScene";

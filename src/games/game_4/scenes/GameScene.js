@@ -13,7 +13,6 @@ import EggQuestion from "../components/EggQuestion";
 import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
 import Player from "../components/Player";
-// import GameModel from "../game_mode/GameModel";
 import GameSprite from "../phaser3_framework/object/GameSprite";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import BasicScene from "./BasicScene";
@@ -93,6 +92,7 @@ export default class GameScene extends BasicScene {
             'voiceOver0': require('../assets/audio/voice/voice_over/0.mp3'),
             'voiceOver1': require('../assets/audio/voice/voice_over/1.mp3'),
             'voiceOver4': require('../assets/audio/voice/voice_over/4.mp3'),
+            'voiceOver5': require('../assets/audio/voice/voice_over/5.mp3')
         }
 
         this.load.spritesheet('eggAnswerItemTexture', require('../assets/images/texture_egg_answer_item.png'), {
@@ -422,7 +422,7 @@ export default class GameScene extends BasicScene {
         correctSoundEffect.on('complete', () => {
             GameManager.getInstance().getGameSuccess(this.questionIndex, (isLastQuestion) => {
                 this.time.addEvent({
-                    delay: 2000,
+                    delay: 0,
                     callback: () => {
                         const winSoundEffect = this.sound.add("winSoundEffect");
 
@@ -441,7 +441,7 @@ export default class GameScene extends BasicScene {
                             // leftVoicePlayer.play();
 
 
-                            this.playVoice(leftItem.index, rightItem.index, keywordVoiceIndex, currentQuestionAnswer, () => {
+                            this.playVoice(leftItem.index, rightItem.index, keywordVoiceIndex, currentQuestionAnswer.answerVoiceIndex, () => {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () =>
@@ -482,12 +482,24 @@ export default class GameScene extends BasicScene {
                             currentAnswerItem.showSuccessStatus();
 
 
-                            const keywordVoicePlayer = this.sound.add('voice' + keywordVoiceIndex);
+                            // const keywordVoicePlayer = this.sound.add('voice' + keywordVoiceIndex);
 
 
-                            console.log(keywordVoicePlayer);
-                            console.log(currentQuestionAnswer)
-                            this.playVoice(dragItem)
+                            // console.log(keywordVoicePlayer);
+                            // console.log(currentQuestionAnswer)
+                            console.log({
+                                currentQuestionAnswer
+                            });
+
+                            this.playVoice(dragItem.index, targetItem.index, keywordVoiceIndex, currentQuestionAnswer.answerVoiceIndex, () => {
+                                this.time.addEvent({
+                                    delay: 1000, // ms
+                                    callback: () => {
+                                        value ? this.scene.start('End') : this.scene.restart('Game');
+                                    }
+
+                                });
+                            })
 
                             // currentQuestionAnswerPlayer.on('complete', () => {
                             //     this.time.addEvent({
@@ -624,10 +636,14 @@ export default class GameScene extends BasicScene {
 
         const rightVoicePlayer = this.sound.add("voice" + rightVoiceIndex);
         const keywordVoicePlayer = this.sound.add('voice' + keywordVoiceIndex);
+
+
+        console.log(currentQuestionAnswerIndex);
         const currentQuestionAnswerPlayer = this.sound.add("voice" + currentQuestionAnswerIndex);
 
         const voiceOver0 = this.sound.add('voiceOver0');
         const voiceOver4 = this.sound.add('voiceOver4');
+        const voiceOver5 = this.sound.add('voiceOver5');
 
         rightVoicePlayer.once('complete', () => {
             voiceOver0.play();
@@ -639,15 +655,19 @@ export default class GameScene extends BasicScene {
 
         keywordVoicePlayer.once('complete', () => {
             voiceOver4.play();
-        })
+        });
 
         voiceOver4.once('complete', () => {
             currentQuestionAnswerPlayer.play();
-            callback;
-        })
+
+        });
 
         currentQuestionAnswerPlayer.once('complete', () => {
-            
+            voiceOver5.play();
+        });
+
+        voiceOver5.once('complete', () => {
+            callback();
         })
 
 

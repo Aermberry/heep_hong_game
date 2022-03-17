@@ -13,7 +13,7 @@ import EggQuestion from "../components/EggQuestion";
 import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
 import Player from "../components/Player";
-import GameModel from "../game_mode/GameModel";
+// import GameModel from "../game_mode/GameModel";
 import GameSprite from "../phaser3_framework/object/GameSprite";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import BasicScene from "./BasicScene";
@@ -485,6 +485,8 @@ export default class GameScene extends BasicScene {
                             const keywordVoicePlayer = this.sound.add('voice' + keywordVoiceIndex);
 
 
+                            console.log(keywordVoicePlayer);
+                            console.log(currentQuestionAnswer)
                             this.playVoice(dragItem)
 
                             // currentQuestionAnswerPlayer.on('complete', () => {

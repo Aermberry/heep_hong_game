@@ -1,21 +1,23 @@
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import Egg from "./Egg";
-import VoiceButton from "./VoiceButton";
+import EggItemVoiceButton from "./EggItemVoiceButton";
+
 
 export default class EggItem extends Egg {
 
-    constructor(scene, point, texture, objectItem, voiceIndex, isEnableDraggable) {
+    constructor(scene, point, texture, objectItem, voiceIndexObject, isEnableDraggable) {
 
         super(scene, point, texture, "textureObject" + objectItem.imageIndex);
 
         this.objectName = objectItem.object;
-        this.index = voiceIndex;
+        this.index = voiceIndexObject.voiceIndex;
 
-
+        console.log(voiceIndexObject)
         this.setName("EggItem");
         this.create(isEnableDraggable);
 
-        this.voiceButton = new VoiceButton(this.scene, -20, 120, "voice" + voiceIndex);
+        // this.voiceButton = new VoiceButton(this.scene, -20, 120, "voice" + voiceIndexObject.voiceIndex);
+        this.voiceButton = new EggItemVoiceButton(this.scene, -20, 120, voiceIndexObject);
         this.voiceButton.setScale(0.2);
 
         this.add(this.voiceButton);
@@ -35,7 +37,7 @@ export default class EggItem extends Egg {
         this.on('pointerover', function () {
 
             this.stopFLoatTweenAnimation()
-            
+
         });
 
         this.on('pointerout', function () {
@@ -47,19 +49,18 @@ export default class EggItem extends Egg {
     playFLoatTweenAnimation() {
         TweenAnimation.setTweenAnimation({
             targets: this,
-            ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
             duration: 1000,
             loop: -1,
-            tweens: [
-                {
-                    duration: 500,
-                    yoyo: true,
-                    y: this.y + 10,
-                }, {
-                    duration: 500,
-                    yoyo: true,
-                    y: this.y - 10,
-                }]
+            tweens: [{
+                duration: 500,
+                yoyo: true,
+                y: this.y + 10,
+            }, {
+                duration: 500,
+                yoyo: true,
+                y: this.y - 10,
+            }]
         });
         this.FLoatTweenAnimation = TweenAnimation.play(this.scene)
     }

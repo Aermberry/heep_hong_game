@@ -351,7 +351,10 @@ export default class GameScene extends BasicScene {
 
         for (let index = 0; index < phrases.length; index++) {
             const phrase = phrases[index];
-            const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, voiceIndex, true);
+            const eggItem = new EggItem(this, points[index], "eggAnswerItemTexture", phrase, {
+                voiceIndex,
+                conclusionPhraseVoiceIndex
+            }, true);
             this.time.addEvent({
                 delay: index * 500,
                 callback: () => eggItem.playFLoatTweenAnimation()
@@ -380,10 +383,10 @@ export default class GameScene extends BasicScene {
                 // }
 
 
-                
+
 
                 this.checkAnswer(dragItem, targetItem, conclusionPhraseVoiceIndex, this.currentQuestionAnswer, eggItemList)
-               
+
             });
 
             colliderList.push(collider);
@@ -437,16 +440,16 @@ export default class GameScene extends BasicScene {
 
                         winSoundEffect.on('complete', () => {
                             // this.sound.stopAll();
-                          
+
                             this.playVoice(leftItem.index, rightItem.index, conclusionPhraseVoiceIndex, () => {
-                                    this.time.addEvent({
-                                                         delay: 1000, // ms
-                                                         callback: () =>
-                                                             this.scene.start(isLastQuestion ? 'End' : 'Game')
-                                                     });
+                                this.time.addEvent({
+                                    delay: 1000, // ms
+                                    callback: () =>
+                                        this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                });
                             });
 
-                           
+
                         })
 
                         winSoundEffect.play();
@@ -465,7 +468,7 @@ export default class GameScene extends BasicScene {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {
 
                 GameManager.getInstance().getGameFail(this.questionIndex, (isFirstError, value) => {
-               
+
                     this.time.addEvent({
                         delay: 2000,
                         callback: () => {
@@ -476,13 +479,13 @@ export default class GameScene extends BasicScene {
                             });
                             currentAnswerItem.showSuccessStatus();
 
-                               this.playVoice(dragItem.index, targetItem.index, conclusionPhraseVoiceIndex, () => {
-                                   this.time.addEvent({
-                                       delay: 1000, // ms
-                                       callback: () =>
-                                            value ? this.scene.start('End') : this.scene.restart('Game')
-                                   });
-                               });
+                            this.playVoice(dragItem.index, targetItem.index, conclusionPhraseVoiceIndex, () => {
+                                this.time.addEvent({
+                                    delay: 1000, // ms
+                                    callback: () =>
+                                        value ? this.scene.start('End') : this.scene.restart('Game')
+                                });
+                            });
                         }
                     });
 
@@ -594,7 +597,7 @@ export default class GameScene extends BasicScene {
             return egg.objectName == currentQuestionAnswer.object
         });
 
-        composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex) : this.paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex,currentAnswerItem);
+        composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex) : this.paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex, currentAnswerItem);
 
     }
 
@@ -602,11 +605,11 @@ export default class GameScene extends BasicScene {
 
         // this.sound.stopAll();
         const leftVoicePlayer = this.sound.add("voice" + leftVoice);
-        
+
         const rightVoicePlayer = this.sound.add("voice" + rightVoice);
 
         const voiceOver0 = this.sound.add("voiceOver0");
-        
+
         const voiceOver4 = this.sound.add("voiceOver4");
 
         const conclusionPhrasePlayer = this.sound.add('conclusionPhraseVoice' + conclusionPhraseVoiceIndex);
@@ -634,7 +637,7 @@ export default class GameScene extends BasicScene {
                     callback();
                 })
 
-                 leftVoicePlayer.play();
+                leftVoicePlayer.play();
             });
 
             voiceOver0.play();

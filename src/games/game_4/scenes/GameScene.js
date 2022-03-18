@@ -428,24 +428,12 @@ export default class GameScene extends BasicScene {
 
                         winSoundEffect.on('complete', () => {
 
-                            // const leftVoicePlayer = this.sound.add("voice" + currentQuestionAnswer.index);
-
-                            // leftVoicePlayer.on('complete', () => {
-                            //     this.time.addEvent({
-                            //         delay: 1000, // ms
-                            //         callback: () =>
-                            //             this.scene.start(isLastQuestion ? 'End' : 'Game')
-                            //     });
-                            // })
-
-                            // leftVoicePlayer.play();
-
-
                             this.playVoice(leftItem.index, rightItem.index, keywordVoiceIndex, currentQuestionAnswer.answerVoiceIndex, () => {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () =>
-                                        this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                        this.scene.get('UI').scene.start(isLastQuestion ? 'End' : 'Game')
+                                        // this.scene.start(isLastQuestion ? 'End' : 'Game')
                                 });
                             });
                         })

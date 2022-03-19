@@ -17,15 +17,16 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
         });
 
 
-        let animate = scene.add.sprite(0, 0, 'end_pic')
+        let animate = scene.add.sprite(0, 0, 'end_pic').setScale(0.8)
         // let bg = scene.add.image(0,0, 'end_pic_bg')
         // let fg = scene.add.image(0, bg.height *0.25 , 'end_pic_fg')
 
         let retryBtn = new RetryBtn(scene, - endBox.width * 0.20, endBox.height * 0.35)
         let existBtn = new ExistBigBtn(scene, endBox.width * 0.20, endBox.height * 0.35)
 
-        animate.displayWidth = 1000
-        animate.displayHeight = 1000
+        // animate.displayWidth = 1000
+        // animate.displayHeight = 1000
+
         animate.play('end_pic')
 
         this.add([

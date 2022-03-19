@@ -44,6 +44,7 @@ export default class GameScene extends BasicScene {
         this.gameMusic = this.sound.add('drums', { volume: 0.5, loop: true })
         this.gameMusic.setLoop(true)
         this.dataModel.bgMusicPlaying = true
+        this.sys.game.globals.bgMusic = this.gameMusic
 
         let afterMatchMusic = this.sound.add('lightBattle')
         afterMatchMusic.setLoop(true)

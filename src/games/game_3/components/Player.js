@@ -24,6 +24,8 @@ export default class Player extends Phaser.GameObjects.Container {
 
         SoundOnPlayEvent.on("updateEggItemOnPlayStatus", (value) => {
             value ? playerButton.cancelListener() : playerButton.enableListener();
+
+            console.log({value})
         });
     }
 

@@ -37,7 +37,7 @@ export default class Butterfly extends Phaser.GameObjects.Container {
         } else {
             let butterfly = [];
             this.sol = new ButterflyBody(this.scene, { x: 420, y: 210, textureName: 'but_bx1' }, { x: 450, y: -50, textureName: 'but_shw_sol' }, 't')
-            this.head = new ButterflyBody(this.scene, { x: 800, y: 150, textureName: 'but_bx2' }, { x: 605, y: 200, textureName: 'but_shw_head' }, 'p')
+            this.head = new ButterflyBody(this.scene, { x: 800, y: 150, textureName: 'but_bx2' }, { x: 575, y: 200, textureName: 'but_shw_head' }, 'p')
             this.sor = new ButterflyBody(this.scene, { x: 1200, y: 180, textureName: 'but_bx3' }, { x: 800, y: -50, textureName: 'but_shw_sor' }, 'l')
             this.butteryflyBody = new ButterflyBody(this.scene, { x: 750, y: 1000, textureName: 'but_bx5' }, { x: 380, y: 400, textureName: 'but_shw_body' }, 'a')
             this.wl = new ButterflyBody(this.scene, { x: 150, y: 800, textureName: 'but_bx4' }, { x: 0, y: 400, textureName: 'but_shw_wl' }, 'b')

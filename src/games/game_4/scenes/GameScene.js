@@ -432,8 +432,8 @@ export default class GameScene extends BasicScene {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () =>
-                                        this.scene.get('UI').scene.start(isLastQuestion ? 'End' : 'Game')
-                                        // this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                        // this.scene.get('UI').scene.start(isLastQuestion ? 'End' : 'Game')
+                                        this.scene.start(isLastQuestion ? 'End' : 'Game')
                                 });
                             });
                         })

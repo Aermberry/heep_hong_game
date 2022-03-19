@@ -1,4 +1,6 @@
 import BasicScene from "./BasicScene";
+import config from '../config/index'
+
 // import Phaser from "phaser";
 // import ExitBtn from '../objects/ExitBtn'
 // import DoneBtn from '../objects/DoneBtn'
@@ -35,7 +37,29 @@ export default class GameStarScene extends BasicScene {
             sound: soundFiles,
         });
 
-        this.createProgressBar();
+        // this.createProgressBar();
+        let self = this;
+        self.progressBar = self.add.graphics();
+        self.loadingText = self.make.text({
+            x: config.width / 2,
+            y: config.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+        self.loadingText.setOrigin(0.5, 0.5);
+    
+        self.load.on('progress', function (value) {
+          self.progressBar.clear();
+          self.progressBar.fillStyle(0xFC8EFA, 1);
+          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+        });
+    
+        self.load.on('complete', function () {
+          self.loadingText.setText('連接完成');
+        }.bind(self));
     }
 
     create() {

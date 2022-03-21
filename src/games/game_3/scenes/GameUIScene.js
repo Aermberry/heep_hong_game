@@ -5,7 +5,7 @@ import ExitButton from "../components/ExitProgressGameButton";
 export default class UIScene extends Phaser.Scene {
 
     constructor() {
-        super('UI')
+        super('GameUI')
     }
 
     create() {

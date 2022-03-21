@@ -2,10 +2,10 @@ import Phaser from "phaser";
 import BackgroundMusicButton from "../components/BackgroundMusicButton";
 import ExitButton from "../components/ExitProgressGameButton";
 
-export default class UIScene extends Phaser.Scene {
+export default class GameUIScene extends Phaser.Scene {
 
     constructor() {
-        super('UI')
+        super('GameUI')
     }
 
     create() {

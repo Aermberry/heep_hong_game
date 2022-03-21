@@ -35,7 +35,7 @@ export default class StartButton extends Phaser.GameObjects.Container {
     }
 
     onUpClicked() {
-        this.scene.scene.start('UI');
+        this.scene.scene.start('GameUI');
 
     }
 

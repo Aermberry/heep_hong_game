@@ -616,7 +616,7 @@ export default class GameScene extends BasicScene {
                             })
 
                             rightVoicePlayer.on('complete', () => {
-                                this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                isLastQuestion ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.get('GameUI').scene.start();
                             })
                             leftVoicePlayer.play();
                         })
@@ -706,7 +706,7 @@ export default class GameScene extends BasicScene {
 
                                         rightVoicePlayer.on('complete', () => {
                                             composeSprite.setVisible(false);
-                                            value ? this.scene.start('End') : this.scene.restart('Game');
+                                            value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.restart('Game');
                                         })
                                         leftVoicePlayer.play();
                                     }

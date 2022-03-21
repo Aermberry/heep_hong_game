@@ -203,7 +203,8 @@ export default class GameScene extends BasicScene {
         questionIndexVoice.once('complete', () => {
             GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
             GameManager.getInstance().updateGamePlayTotal((value) => {
-                this.scene.start(value ? 'Game' : 'End');
+                // this.scene.start(value ? 'Game' : 'End');
+                value ? this.scene.start('Game') : this.scene.get('GameUI').scene.start('EndUI')
             });
         })
 
@@ -223,7 +224,7 @@ export default class GameScene extends BasicScene {
                         const questionIndexVoice = this.sound.add('voice' + this.questionIndex);
 
                         questionIndexVoice.once('complete', () => {
-                            value ? this.scene.start('End') : this.scene.restart('Game');
+                            value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.restart('Game');
                         })
                         this.answerArea.showCurrentAnswer(this, questionIndexVoice);
                     });
@@ -231,7 +232,9 @@ export default class GameScene extends BasicScene {
                     gameLoseEffectSound.play();
                 }
                 else {
-                    value ? this.scene.start('End') : this.scene.restart({ y: 140 });
+                    value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.restart({
+                        y: 140
+                    });
                 }
             }
             );

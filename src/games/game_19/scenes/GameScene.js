@@ -281,7 +281,8 @@ export default class GameScene extends BasicScene {
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {
-                        this.scene.start(GameManager.getInstance().isLastQuestion ? 'Game' : 'End')
+                        // this.scene.start(GameManager.getInstance().isLastQuestion ? 'Game' : 'End')
+                        GameManager.getInstance().isLastQuestion ?this.scene.get('GameUI').scene.start():this.scene.get('GameUI').scene.start('EndUI')
                     }
                 })
             });
@@ -331,7 +332,9 @@ export default class GameScene extends BasicScene {
                         this.time.addEvent({
                             delay: 1000,
                             callback: () => {
-                                this.scene.start(value ? 'End' : 'Game');
+                                // this.scene.start(value ? 'EndUI' : 'Game');
+                                value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.start('Game')
+
                             }
                         })
                     });

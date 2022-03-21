@@ -13,12 +13,14 @@ export default class ExitProgressGameButton extends Phaser.GameObjects.Container
 
         this.add(this.texture);
 
-        this.setInteractive({ useHandCursor: true }).on(
-            Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                this.texture.setFrame(1);
-                this.onDownClicked();
-            }
-        )
+        this.setInteractive({
+                useHandCursor: true
+            }).on(
+                Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                    this.texture.setFrame(1);
+                    this.onDownClicked();
+                }
+            )
             .on(
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     this.texture.setFrame(0);
@@ -29,7 +31,7 @@ export default class ExitProgressGameButton extends Phaser.GameObjects.Container
 
     onDownClicked() {
         this.scene.sound.play('buttonEffectSound');
-      
+
     }
 
     onUpClicked() {

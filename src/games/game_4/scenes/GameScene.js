@@ -432,8 +432,7 @@ export default class GameScene extends BasicScene {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () =>
-                                        // this.scene.get('UI').scene.start(isLastQuestion ? 'End' : 'Game')
-                                        this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                        this.scene.get('GameUI').scene.start(isLastQuestion ? 'EndUI' : 'Game')
                                 });
                             });
                         })
@@ -469,37 +468,15 @@ export default class GameScene extends BasicScene {
                             });
                             currentAnswerItem.showSuccessStatus();
 
-
-                            // const keywordVoicePlayer = this.sound.add('voice' + keywordVoiceIndex);
-
-
-                            // console.log(keywordVoicePlayer);
-                            // console.log(currentQuestionAnswer)
-                            console.log({
-                                currentQuestionAnswer
-                            });
-
                             this.playVoice(dragItem.index, targetItem.index, keywordVoiceIndex, currentQuestionAnswer.answerVoiceIndex, () => {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () => {
-                                        value ? this.scene.start('End') : this.scene.restart('Game');
+                                        value ? this.scene.start('EndUI') : this.scene.restart('Game');
                                     }
 
                                 });
                             })
-
-                            // currentQuestionAnswerPlayer.on('complete', () => {
-                            //     this.time.addEvent({
-                            //         delay: 1000, // ms
-                            //         callback: () => {
-                            //             value ? this.scene.start('End') : this.scene.restart('Game');
-                            //         }
-
-                            //     });
-                            // })
-                            // currentQuestionAnswerPlayer.play();
-
                         }
                     });
 
@@ -658,21 +635,7 @@ export default class GameScene extends BasicScene {
             callback();
         })
 
-
-
         rightVoicePlayer.play();
-
-        // leftVoicePlayer.on('complete', () => {
-        //     rightVoicePlayer.play();
-
-        // })
-
-        // rightVoicePlayer.on('complete', () => {
-        //     callback;
-        // })
-
-        // leftVoicePlayer.play();
-
     }
 
 

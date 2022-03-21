@@ -6,8 +6,7 @@ export default class GameModel {
 
     static init() {
         this.currentQuestionErrorCount = 0;
-        // this.questionCount = 3
-        this.questionCount = 1
+        this.questionCount = 3
         this.eachQuestionChance = 1;
     }
 }

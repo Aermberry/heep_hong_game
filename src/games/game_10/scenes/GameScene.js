@@ -195,7 +195,7 @@ export default class GameScene extends BasicScene {
         rectangle.setAlpha(1);
         this.gameStartAnimations(rectangle);
         let exitBtn = new ExitBtn(this, 120, 120);
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.30), 120, this.musicPause.bind(this));
         this.add.existing(this.speakerBtn);
         this.add.existing(exitBtn);
 

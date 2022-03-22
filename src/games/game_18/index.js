@@ -39,10 +39,9 @@ class Game2 extends Phaser.Game {
         let model = new Model()
         this.globals = {
             model,
-            gtag
+            gtag,
         }
-
-        this.globals.model.gameStage = urlParams.id;
+        this.globals.model.gameStage = urlParams.sid;
         this.globals.gtag = gtag
     }
 }

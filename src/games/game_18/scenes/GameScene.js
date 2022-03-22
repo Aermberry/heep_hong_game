@@ -17,6 +17,7 @@ export default class GameScene extends BasicScene {
 
     init(data) {
         this.dataModal = this.sys.game.globals.model;
+        console.log(this.dataModal);
         this.currentIndex = data.number;
         console.log(data.stopAll)
         this.stopAll = data.stopAll;
@@ -71,7 +72,7 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'house_a',
             delay: 200,
-            frames: this.anims.generateFrameNames('house_a', { prefix: 'house_a', start: 0, end: 11, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('house_a', { prefix: 'house_a', start: 0, end: 13, zeroPad: 4 }),
             // repeat: 1
             duration: 2000
         });
@@ -96,7 +97,7 @@ export default class GameScene extends BasicScene {
         let exitBtn = new ExitBtn(this, 100, 120);
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
-        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.5), 120, this.offSpeaker.bind(this));
+        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.3), 125, this.offSpeaker.bind(this));
         this.bearW = this.add.sprite(this.getColWidth(9), this.getRowHeight(5.8), 'bearW');
         this.bear_job = this.add.sprite(this.getColWidth(9), this.getRowHeight(2.2), 'bear_job');
         this.bear_job.play('bearJob');
@@ -169,12 +170,16 @@ export default class GameScene extends BasicScene {
                         if (this.currentIndex == this.currentQuestionGroup.length) {
                             this.musicStart.pause();
                             this.bear_job.stop();
+                            this.sound.stopAll();
+                            this.answers.setviser();
+                            house.visible = false;
                             this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
                             this.add.existing(this.endBroad)
                             let gameStage = this.sys.game.globals.model.gameStage;
                             this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
                             return;
                         } else {
+                            this.sound.stopAll();
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
                     }, 6000
@@ -197,11 +202,13 @@ export default class GameScene extends BasicScene {
                                 this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
                                 this.music.pause();
                                 this.bear_job.stop();
+                                this.sound.stopAll();
+                                this.answers.setviser();
                                 this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
                                 this.add.existing(this.endBroad)
-                                this.sound.stopAll();
                                 return;
                             } else {
+                                this.sound.stopAll();
                                 this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                             }
                         }, 1000

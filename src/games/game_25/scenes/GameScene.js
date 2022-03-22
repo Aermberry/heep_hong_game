@@ -232,9 +232,9 @@ export default class GameScene extends BasicScene {
         this.backgroundUi = this.add.layer(); //背景；
         this.exitBtn = new ExitBtn(this, 100, 120);
         this.btnCar = new BtnCar(this, this.getColWidth(9.5), this.getRowHeight(10.8), this.completeAnswerAnimation.bind(this));
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
-        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.3), 125, this.offSpeaker.bind(this));
+        this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
         if (this.stopAll) {
             this.sound.stopAll();
             this.speakerBtn.visible = true;

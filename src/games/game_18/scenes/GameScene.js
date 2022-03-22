@@ -5,7 +5,7 @@ import SpeakerBtnOff from '../objects/SpeakerBtnOff'
 import Done from '../objects/Done'
 import Answers from "../objects/Answers";
 import AnswerBox from "../objects/AnswerBox";
-import EndBroad from '../objects/EndGameBroad'
+// import EndBroad from '../objects/EndGameBroad'
 export default class GameScene extends BasicScene {
 
     constructor() {
@@ -94,10 +94,10 @@ export default class GameScene extends BasicScene {
         this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.buildBg('bg')
-        let exitBtn = new ExitBtn(this, 100, 120);
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
+        this.exitBtn = new ExitBtn(this,  100, 120);
+        this.speakerBtn = new SpeakerBtn(this, this, 1820, 120, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
-        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.3), 125, this.offSpeaker.bind(this));
+        this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
         this.bearW = this.add.sprite(this.getColWidth(9), this.getRowHeight(5.8), 'bearW');
         this.bear_job = this.add.sprite(this.getColWidth(9), this.getRowHeight(2.2), 'bear_job');
         this.bear_job.play('bearJob');
@@ -109,7 +109,7 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.AnswerBox1);
         this.add.existing(this.AnswerBox2);
         this.add.existing(this.answers)
-        this.add.existing(exitBtn);
+        this.add.existing(this.exitBtn);
         this.add.existing(this.speakerBtn);
         this.add.existing(this.speakerOffBtn);
         this.add.existing(this.done)
@@ -167,16 +167,21 @@ export default class GameScene extends BasicScene {
             house.play(houseName).on('animationcomplete', () => {
                 setTimeout(
                     () => {
-                        if (this.currentIndex == this.currentQuestionGroup.length) {
-                            this.musicStart.pause();
-                            this.bear_job.stop();
+                        if (this.currentIndex == 1) {
+                            // this.musicStart.pause();
+                            // this.bear_job.stop();
                             this.sound.stopAll();
-                            this.answers.setviser();
-                            house.visible = false;
-                            this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
-                            this.add.existing(this.endBroad)
-                            let gameStage = this.sys.game.globals.model.gameStage;
-                            this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
+                            // this.answers.setviser();
+                            // this.exitBtn.visible = false;
+                            // this.speakerBtn.visible = false;
+                            // // this.speakerBtn.visible = false;
+                            // this.speakerOffBtn.visible = false;
+                            // house.visible = false;
+                            this.scene.start('End');
+                            // this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
+                            // this.add.existing(this.endBroad)
+                            // let gameStage = this.sys.game.globals.model.gameStage;
+                            // this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
                             return;
                         } else {
                             this.sound.stopAll();
@@ -198,14 +203,17 @@ export default class GameScene extends BasicScene {
                     setTimeout(
                         () => {
                             if (this.currentIndex == this.currentQuestionGroup.length) {
-                                let gameStage = this.dataModal.gameStage
-                                this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
-                                this.music.pause();
-                                this.bear_job.stop();
+                                // let gameStage = this.dataModal.gameStage
+                                // this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
+                                // this.music.pause();
+                                // this.bear_job.stop();
                                 this.sound.stopAll();
-                                this.answers.setviser();
-                                this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
-                                this.add.existing(this.endBroad)
+                                // this.answers.setviser();
+                                // this.exitBtn.visible = false;
+                                // this.speakerBtn.visible = false;
+                                // // this.speakerBtn.visible = false;
+                                // this.speakerOffBtn.visible = false;
+                                this.scene.start('End');
                                 return;
                             } else {
                                 this.sound.stopAll();

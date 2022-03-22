@@ -95,7 +95,7 @@ export default class GameScene extends BasicScene {
 
         this.buildBg('bg')
         this.exitBtn = new ExitBtn(this,  100, 120);
-        this.speakerBtn = new SpeakerBtn(this, this, 1820, 120, this.openSpeaker.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
         this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
         this.bearW = this.add.sprite(this.getColWidth(9), this.getRowHeight(5.8), 'bearW');
@@ -133,9 +133,7 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.music = this.sound.add('Bgm');
-        this.music.setLoop(true);
-        this.music.play();
+        this.sound.play('Bgm');
         this.stopAll = false;
     }
 

@@ -165,7 +165,7 @@ export default class GameScene extends BasicScene {
             house.play(houseName).on('animationcomplete', () => {
                 setTimeout(
                     () => {
-                        if (this.currentIndex == 1) {
+                        if (this.currentIndex == this.currentQuestionGroup.length) {
                             // this.musicStart.pause();
                             // this.bear_job.stop();
                             this.sound.stopAll();

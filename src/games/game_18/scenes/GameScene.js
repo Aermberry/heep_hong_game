@@ -5,7 +5,7 @@ import SpeakerBtnOff from '../objects/SpeakerBtnOff'
 import Done from '../objects/Done'
 import Answers from "../objects/Answers";
 import AnswerBox from "../objects/AnswerBox";
-import EndBroad from '../objects/EndGameBroad'
+// import EndBroad from '../objects/EndGameBroad'
 export default class GameScene extends BasicScene {
 
     constructor() {
@@ -17,6 +17,7 @@ export default class GameScene extends BasicScene {
 
     init(data) {
         this.dataModal = this.sys.game.globals.model;
+        console.log(this.dataModal);
         this.currentIndex = data.number;
         console.log(data.stopAll)
         this.stopAll = data.stopAll;
@@ -71,7 +72,7 @@ export default class GameScene extends BasicScene {
         this.anims.create({
             key: 'house_a',
             delay: 200,
-            frames: this.anims.generateFrameNames('house_a', { prefix: 'house_a', start: 0, end: 11, zeroPad: 4 }),
+            frames: this.anims.generateFrameNames('house_a', { prefix: 'house_a', start: 0, end: 13, zeroPad: 4 }),
             // repeat: 1
             duration: 2000
         });
@@ -93,10 +94,10 @@ export default class GameScene extends BasicScene {
         this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.buildBg('bg')
-        let exitBtn = new ExitBtn(this, 100, 120);
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.3), 125, this.openSpeaker.bind(this));
+        this.exitBtn = new ExitBtn(this,  100, 120);
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
-        this.speakerOffBtn = new SpeakerBtnOff(this, this.getColWidth(11.5), 120, this.offSpeaker.bind(this));
+        this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
         this.bearW = this.add.sprite(this.getColWidth(9), this.getRowHeight(5.8), 'bearW');
         this.bear_job = this.add.sprite(this.getColWidth(9), this.getRowHeight(2.2), 'bear_job');
         this.bear_job.play('bearJob');
@@ -108,7 +109,7 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.AnswerBox1);
         this.add.existing(this.AnswerBox2);
         this.add.existing(this.answers)
-        this.add.existing(exitBtn);
+        this.add.existing(this.exitBtn);
         this.add.existing(this.speakerBtn);
         this.add.existing(this.speakerOffBtn);
         this.add.existing(this.done)
@@ -132,9 +133,7 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.music = this.sound.add('Bgm');
-        this.music.setLoop(true);
-        this.music.play();
+        this.sound.play('Bgm');
         this.stopAll = false;
     }
 
@@ -167,14 +166,23 @@ export default class GameScene extends BasicScene {
                 setTimeout(
                     () => {
                         if (this.currentIndex == this.currentQuestionGroup.length) {
-                            this.musicStart.pause();
-                            this.bear_job.stop();
-                            this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
-                            this.add.existing(this.endBroad)
-                            let gameStage = this.sys.game.globals.model.gameStage;
-                            this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
+                            // this.musicStart.pause();
+                            // this.bear_job.stop();
+                            this.sound.stopAll();
+                            // this.answers.setviser();
+                            // this.exitBtn.visible = false;
+                            // this.speakerBtn.visible = false;
+                            // // this.speakerBtn.visible = false;
+                            // this.speakerOffBtn.visible = false;
+                            // house.visible = false;
+                            this.scene.start('End');
+                            // this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
+                            // this.add.existing(this.endBroad)
+                            // let gameStage = this.sys.game.globals.model.gameStage;
+                            // this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
                             return;
                         } else {
+                            this.sound.stopAll();
                             this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                         }
                     }, 6000
@@ -193,15 +201,20 @@ export default class GameScene extends BasicScene {
                     setTimeout(
                         () => {
                             if (this.currentIndex == this.currentQuestionGroup.length) {
-                                let gameStage = this.dataModal.gameStage
-                                this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
-                                this.music.pause();
-                                this.bear_job.stop();
-                                this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6)).setDepth(50)
-                                this.add.existing(this.endBroad)
+                                // let gameStage = this.dataModal.gameStage
+                                // this.sys.game.globals.gtag.event(`game_${gameStage}_end`, { 'event_category': 'js_games', 'event_label': 'Game End' })
+                                // this.music.pause();
+                                // this.bear_job.stop();
                                 this.sound.stopAll();
+                                // this.answers.setviser();
+                                // this.exitBtn.visible = false;
+                                // this.speakerBtn.visible = false;
+                                // // this.speakerBtn.visible = false;
+                                // this.speakerOffBtn.visible = false;
+                                this.scene.start('End');
                                 return;
                             } else {
+                                this.sound.stopAll();
                                 this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                             }
                         }, 1000

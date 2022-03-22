@@ -14,8 +14,8 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
     this.gameObjectOriginPosition = { "x": gameObject.x, "y": gameObject.y }
     this.step = step
 
-    this.texture = scene.add.sprite(0, 0, 'moveBtn', 1).setScale(0.5);
-    // this.texture = scene.add.sprite(0, 0, 'rightButton',1).setScale(0.5);
+    // this.texture = scene.add.sprite(0, 0, 'moveBtn', 1).setScale(0.5);
+    this.texture = scene.add.sprite(0, 0, 'rightButton',1).setScale(0.5);
 
     this.setSize(this.texture.width, this.texture.height);
     this.add(this.texture);
@@ -26,13 +26,13 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
   enableTouchEventListener() {
     this.setInteractive({ useHandCursor: true }).on(
       Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-        // this.texture.setFrame(0);
+        this.texture.setFrame(0);
         this.onDownClicked();
       }
     )
       .on(
         Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-          // this.texture.setFrame(1);
+          this.texture.setFrame(1);
           this.onUpClicked();
         }
       );

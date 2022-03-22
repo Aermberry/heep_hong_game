@@ -12,7 +12,7 @@ export default class RetryBtn extends BasicButton {
     }
 
     onClick() {
-        this.scene.scene.start(this.targetScene)
+        this.scene.scene.start(this.targetScene).stop('Game');
     }
 
     down(clickEvent) {

@@ -16,9 +16,9 @@ export default class EndScene extends BasicScene {
         
         this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_end`, {'event_category': 'js_games', 'event_label': 'Game End'})
 
-        this.sound.stopAll();
+        // this.sound.stopAll();
 
-        this.playBackgroundMusic();
+        // this.playBackgroundMusic();
 
         this.buildBg('bgVictory');
 
@@ -29,13 +29,13 @@ export default class EndScene extends BasicScene {
     }
 
 
-    playBackgroundMusic(){
-        const backgroundMusic = this.sound.add('preloaderSceneGameEndSceneBackgroundMusic', {
-            volume: 0.2,
-            loop: true
-        });
+    // playBackgroundMusic(){
+    //     const backgroundMusic = this.sound.add('preloaderSceneGameEndSceneBackgroundMusic', {
+    //         volume: 0.2,
+    //         loop: true
+    //     });
 
-        backgroundMusic.play();
-    }
+    //     backgroundMusic.play();
+    // }
 
 }

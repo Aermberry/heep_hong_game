@@ -7,9 +7,10 @@ import PreloaderScene from './scenes/PreloaderScene'
 import TutorSecene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import PreloaderGameScene from './scenes/PreloaderGameScene'
+import EndScene from './scenes/EndScene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene,PreloaderScene,TutorSecene,PreloaderGameScene,GameScene]
+    scene: [BootScene,PreloaderScene,TutorSecene,PreloaderGameScene,GameScene,EndScene]
 });
 
 /**
@@ -39,10 +40,9 @@ class Game2 extends Phaser.Game {
         let model = new Model()
         this.globals = {
             model,
-            gtag
+            gtag,
         }
-
-        this.globals.model.gameStage = urlParams.id;
+        this.globals.model.gameStage = urlParams.sid;
         this.globals.gtag = gtag
     }
 }

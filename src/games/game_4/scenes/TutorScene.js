@@ -36,9 +36,7 @@ export default class TutorScene extends BasicScene {
 
         const exitProgressGameButton = new ExitProgressGameButton(this, 100, 120);
         const startButton = new StartButton(this, this.getColWidth(6), this.getRowHeight(10)).setScale(0.8);
-
-
-
+        
         uiLayer.add([this.buildBackground('backgroundTutorEnd'), exitProgressGameButton, startButton]);
 
         this.playTutorAnimation(uiLayer)

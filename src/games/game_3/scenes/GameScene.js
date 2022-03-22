@@ -360,9 +360,6 @@ export default class GameScene extends BasicScene {
             });
 
             const collider = this.physics.add.collider(eggItem, eggQuestion, (dragItem, targetItem) => {
-                // let leftItem;
-                // let rightItem;
-
                 eggItemList.forEach(eggItem => {
                     eggItem.setRemoveListener()
                 });
@@ -372,17 +369,6 @@ export default class GameScene extends BasicScene {
 
                 this.physics.world.removeCollider(collider);
                 collider.destroy();
-
-                // if (this.isRightDirection()) {
-                //     leftItem = dragItem;
-                //     rightItem = targetItem;
-                // } else {
-                //     leftItem = targetItem;
-                //     rightItem = dragItem;
-                // }
-
-
-
 
                 this.checkAnswer(dragItem, targetItem, conclusionPhraseVoiceIndex, this.currentQuestionAnswer, eggItemList)
 
@@ -444,7 +430,7 @@ export default class GameScene extends BasicScene {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () =>
-                                        this.scene.start(isLastQuestion ? 'End' : 'Game')
+                                        isLastQuestion ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.get('GameUI').scene.start()
                                 });
                             });
 
@@ -482,7 +468,7 @@ export default class GameScene extends BasicScene {
                                 this.time.addEvent({
                                     delay: 1000, // ms
                                     callback: () =>
-                                        value ? this.scene.start('End') : this.scene.restart('Game')
+                                        value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.restart('Game')
                                 });
                             });
                         }

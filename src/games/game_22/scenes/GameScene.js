@@ -1,4 +1,3 @@
-
 import {
     createClipAnimations
 } from '../assets/animations/ClipAnimation';
@@ -55,7 +54,9 @@ export default class GameScene extends BasicScene {
             'spotlightFocusEffectSound': require('../assets/audio/sound_effect/effect_spotlight_focus.mp3'),
         }
 
-        this.preloadFromArr({ sound: soundFiles });
+        this.preloadFromArr({
+            sound: soundFiles
+        });
 
     }
 
@@ -63,7 +64,10 @@ export default class GameScene extends BasicScene {
 
         super.create();
 
-        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' });
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_start`, {
+            'event_category': 'js_games',
+            'event_label': 'Game Start'
+        });
 
         createClipAnimations(this.anims);
         createGameStatusAnimations(this.anims);
@@ -144,7 +148,7 @@ export default class GameScene extends BasicScene {
         GameManager.getInstance().updateGamePlayTotal((value) => {
             this.time.addEvent({
                 delay: 2000,
-                callback: () => this.scene.start(value ? 'Game' : 'End')
+                callback: () => value ? this.scene.start('Game') : this.scene.get('GameUI').scene.start('EndUI')
             })
         });
 
@@ -167,13 +171,15 @@ export default class GameScene extends BasicScene {
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
             _isFirstError = isFirstError;
 
-            console.log({ isLastQuestion: value })
+            console.log({
+                isLastQuestion: value
+            })
             this.time.addEvent({
                 delay: isFirstError ? 2000 : 5000,
-                callback: () => value ? this.scene.start('End') : this.scene.restart('Game')
+                callback: () => value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.restart('Game')
+
             });
-        }
-        );
+        });
 
         errorSprite = new GameSprite(this, targetPosition.x + doll.x, targetPosition.y + doll.y - 500, "gameFailAnimation")
 
@@ -224,12 +230,11 @@ export default class GameScene extends BasicScene {
         lights.forEach((light) => light.setAlpha(0));
         this.sound.play('spotlightFocusEffectSound');
 
-        this.tweens.add(
-            {
-                targets: lights[index],
-                alpha: 1,
-                ease: 'Bounce',
-                duration: 1000
-            });
+        this.tweens.add({
+            targets: lights[index],
+            alpha: 1,
+            ease: 'Bounce',
+            duration: 1000
+        });
     }
 }

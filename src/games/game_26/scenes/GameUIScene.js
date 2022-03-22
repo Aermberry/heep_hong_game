@@ -5,7 +5,7 @@ import ExitButton from "../components/ExitProgressGameButton";
 export default class UIScene extends Phaser.Scene {
 
     constructor() {
-        super('UI')
+        super('GameUI')
     }
 
     create() {
@@ -20,7 +20,7 @@ export default class UIScene extends Phaser.Scene {
 
         this.scene.run('Game')
 
-        this.playBackgroundMusic('robotArmAppearSoundEffect', backgroundMusic);
+        this.playBackgroundMusic(backgroundMusic);
 
         this.buildUiObject(this.uiLayer, backgroundMusic);
 
@@ -35,15 +35,8 @@ export default class UIScene extends Phaser.Scene {
     }
 
 
-    playBackgroundMusic(startSound, backgroundMusic) {
-
-        const clipDollTableEffectSound = this.sound.add(startSound);
-
-        clipDollTableEffectSound.on('complete', () => {
-            backgroundMusic.play();
-        })
-       
-        clipDollTableEffectSound.play();
-    }
+     playBackgroundMusic(backgroundMusic) {
+         backgroundMusic.play();
+     }
 
 }

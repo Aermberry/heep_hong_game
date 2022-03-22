@@ -32,7 +32,7 @@ export default class RetryButton extends Phaser.GameObjects.Container {
     }
 
     onDownClicked() {
-        this.scene.scene.start(this.targetScene)
+        this.scene.scene.start(this.targetScene).stop('Game');
     }
 
     onUpClicked() {

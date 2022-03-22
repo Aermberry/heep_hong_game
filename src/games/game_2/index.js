@@ -6,12 +6,13 @@ import PreloaderScene from './scenes/PreloaderScene'
 import TutorScene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
-import UIScene from './scenes/UIScene'
+import UIScene from './scenes/GameUIScene'
+import EndUIScene from './scenes/EndUIScene'
 
 
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene,TutorScene,GameScene,EndScene,UIScene]
+    scene: [BootScene, PreloaderScene, TutorScene, GameScene, EndScene, UIScene, EndUIScene]
 });
 
 /**

@@ -13,12 +13,14 @@ export default class StartButton extends Phaser.GameObjects.Container {
 
         this.add(this.texture);
 
-        this.setInteractive({ useHandCursor: true }).on(
-            Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                this.texture.setFrame(1);
-                this.onDownClicked();
-            }
-        )
+        this.setInteractive({
+                useHandCursor: true
+            }).on(
+                Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                    this.texture.setFrame(1);
+                    this.onDownClicked();
+                }
+            )
             .on(
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     this.texture.setFrame(0);
@@ -33,12 +35,13 @@ export default class StartButton extends Phaser.GameObjects.Container {
     }
 
     onUpClicked() {
-        this.scene.scene.start('UI');
-
+        this.scene.scene.start('GameUI');
     }
 
     _setFullScreen() {
-        const fullscreenConfig = { navigationUI: 'hide' }
+        const fullscreenConfig = {
+            navigationUI: 'hide'
+        }
 
         const elem = document.querySelector('#game-container canvas');
         if (elem.requestFullscreen) {

@@ -43,7 +43,7 @@ export default class TutorSecene extends BasicScene {
         // this.sound.stopAll();
         this.gameNum = this.sys.game.globals.model.game;
         let tut2 = this.add.sprite(this.getColWidth(8), this.getRowHeight(5), `tut2${this.gameNum == 30 ? '_lv3' : ''}`)
-        let tut1 = this.add.sprite(this.gameNum == 30 ? this.getColWidth(6.2) : this.getColWidth(5.2), this.getRowHeight(3.5), `tut1${this.gameNum == 30 ? '_lv3' : ''}`)
+        let tut1 = this.add.sprite(this.gameNum == 30 ? this.getColWidth(6.2) : this.getColWidth(5),this.gameNum == 30 ? this.getRowHeight(3.5) : this.getRowHeight(4.5), `tut1${this.gameNum == 30 ? '_lv3' : ''}`)
 
         this._repeatAnimate({ tut1, tut2 })
 

@@ -1,11 +1,11 @@
 import Phaser from "phaser";
 import BackgroundMusicButton from "../components/BackgroundMusicButton";
-import ExitProgressGameButton from "../components/ExitProgressGameButton";
+import ExitButton from "../components/ExitProgressGameButton";
 
 export default class UIScene extends Phaser.Scene {
 
     constructor() {
-        super('UI')
+        super('GameUI')
     }
 
     create() {
@@ -20,7 +20,7 @@ export default class UIScene extends Phaser.Scene {
 
         this.scene.run('Game')
 
-        this.playBackgroundMusic('clipDollTableEffectSound', backgroundMusic);
+        this.playBackgroundMusic('robotArmAppearSoundEffect', backgroundMusic);
 
         this.buildUiObject(this.uiLayer, backgroundMusic);
 
@@ -28,7 +28,7 @@ export default class UIScene extends Phaser.Scene {
     }
 
     buildUiObject(layer, backgroundMusic) {
-        const exitButton = new ExitProgressGameButton(this, 100, 120);
+        const exitButton = new ExitButton(this, 100, 120);
         const backgroundMusicButton = new BackgroundMusicButton(this, 1820, 120, backgroundMusic);
 
         layer.add([exitButton, backgroundMusicButton]);
@@ -42,7 +42,7 @@ export default class UIScene extends Phaser.Scene {
         clipDollTableEffectSound.on('complete', () => {
             backgroundMusic.play();
         })
-
+       
         clipDollTableEffectSound.play();
     }
 

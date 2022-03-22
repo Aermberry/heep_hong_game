@@ -54,6 +54,39 @@ export default class GameScene extends BasicScene {
         const atlasFiles = {
         }
 
+        this.load.spritesheet('but_shw_body', require('../assets/img/but5.png'), { frameWidth: 807, frameHeight: 1177.5 });
+        this.load.spritesheet('but_shw_head', require('../assets/img/but3.png'), { frameWidth: 523, frameHeight: 521.5 });
+        this.load.spritesheet('but_shw_sol', require('../assets/img/but1.png'), { frameWidth: 372, frameHeight: 399.5 });
+        this.load.spritesheet('but_shw_sor', require('../assets/img/but2.png'), { frameWidth: 372, frameHeight: 399.5 });
+        this.load.spritesheet('but_shw_wl', require('../assets/img/but4.png'), { frameWidth: 870, frameHeight: 1007.5 });
+        this.load.spritesheet('but_shw_wr', require('../assets/img/but6.png'), { frameWidth: 870, frameHeight: 1007 });
+        this.load.spritesheet('chkmrk', require('../assets/img/chkmrk.png'), { frameWidth: 151, frameHeight: 150.5 });
+
+        this.load.spritesheet('but_bx1', require('../assets/img/but_tag1.png'), { frameWidth: 274, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx2', require('../assets/img/but_tag2.png'), { frameWidth: 274, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx3', require('../assets/img/but_tag3.png'), { frameWidth: 274, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx4', require('../assets/img/but_tag4.png'), { frameWidth: 652, frameHeight: 400.5 });
+        this.load.spritesheet('but_bx5', require('../assets/img/but_tag5.png'), { frameWidth: 365, frameHeight: 354 });
+        this.load.spritesheet('but_bx6', require('../assets/img/but_tag6.png'), { frameWidth: 466, frameHeight: 400.5 });
+
+        this.load.spritesheet('hinsbx1', require('../assets/img/hin_box1.png'), { frameWidth: 118, frameHeight: 93 });
+        this.load.spritesheet('hinsbx2', require('../assets/img/hin_box2.png'), { frameWidth: 118, frameHeight: 93 });
+        this.load.spritesheet('hinsbx3', require('../assets/img/hin_box3.png'), { frameWidth: 118, frameHeight: 93 });
+        this.load.spritesheet('hinsbx4', require('../assets/img/hin_box4.png'), { frameWidth: 313, frameHeight: 95 });
+        this.load.spritesheet('hinsbx5', require('../assets/img/hin_box5.png'), { frameWidth: 175, frameHeight: 95 });
+        this.load.spritesheet('hinsbx6', require('../assets/img/hin_box6.png'), { frameWidth: 175, frameHeight: 95 });
+
+        for (let index = 1; index <= 6; index++) {
+            this.load.spritesheet(`lv3hinsbx${index}`, require(`../assets/img/lv3_hin_box${index}.png`), { frameWidth: 218, frameHeight: 92 });
+        }
+
+        this.load.spritesheet('cha6', require('../assets/img/cha1.png'), { frameWidth: 522, frameHeight: 2491 / 3 });
+        this.load.spritesheet('cha5', require('../assets/img/cha2.png'), { frameWidth: 751, frameHeight: 2720 / 3 });
+        this.load.spritesheet('cha4', require('../assets/img/cha3.png'), { frameWidth: 740, frameHeight: 2804 / 3 });
+        this.load.spritesheet('cha3', require('../assets/img/cha4.png'), { frameWidth: 769, frameHeight: 3132 / 3 });
+        this.load.spritesheet('cha2', require('../assets/img/cha5.png'), { frameWidth: 661, frameHeight: 3307 / 3 });
+        this.load.spritesheet('cha1', require('../assets/img/cha6.png'), { frameWidth: 1071, frameHeight: 3904 / 3 });
+
         this.preloadFromArr({
             img: imageFiles,
             atlas: atlasFiles

@@ -19,13 +19,13 @@ export default class EndScene extends BasicScene {
 
         this.buildBg('cover_bg')
         this.sound.stopAll();
-        let music = this.sound.add('end_pic');
-        music.play();
+        this.music = this.sound.add('end_pic');
+        this.music.play();
         // this.sound.stopByKey('lightBattle')
         // let music = this.sound.add('jump')
         // music.setLoop(true)
         // music.play()
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.30), 120, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.30), 120, this.musicPause.bind(this), 'end_pic');
         this.add.existing(this.speakerBtn);
         this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
         this.add.existing(this.endBroad)        
@@ -37,9 +37,7 @@ export default class EndScene extends BasicScene {
         if (this.stopAll) {
             this.sound.stopAll();
         } else {
-            this.music = this.sound.add('bgm', {
-                volume: 0.1
-            });
+            this.music = this.sound.add('end_pic');
             this.music.setLoop(true);
             this.music.play();
         }

@@ -123,10 +123,14 @@ export default class GameScene extends BasicScene {
 
         //初始化游戏场景
         this.initScene();
-        this.music = this.sound.add('bgm')
-        this.music.setLoop(true)
-        this.music.play();
-
+        this.sound.stopAll();
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm')
+            this.music.setLoop(true)
+            this.music.play();
+        }
         let exitBtn = new ExitBtn(this, 100, 80);
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 80, this.musicPause.bind(this));
         this.add.existing(this.speakerBtn);

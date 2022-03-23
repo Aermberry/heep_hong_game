@@ -28,8 +28,8 @@ export default class GameScene extends BasicScene {
         if (this.gameNum == 29) {
             this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
         } else {
-            // this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
-            this.answer = this.dataModal['level1'][3]
+            this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+            // this.answer = this.dataModal['level1'][3]
 
         }
 
@@ -123,10 +123,14 @@ export default class GameScene extends BasicScene {
 
         //初始化游戏场景
         this.initScene();
-        this.music = this.sound.add('bgm')
-        this.music.setLoop(true)
-        this.music.play();
-
+        this.sound.stopAll();
+        if (this.stopAll) {
+            this.sound.stopAll();
+        } else {
+            this.music = this.sound.add('bgm')
+            this.music.setLoop(true)
+            this.music.play();
+        }
         let exitBtn = new ExitBtn(this, 100, 80);
         this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 80, this.musicPause.bind(this));
         this.add.existing(this.speakerBtn);
@@ -205,7 +209,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 0.1
+                volume: 1
             });
             this.music.setLoop(true);
             this.music.play();

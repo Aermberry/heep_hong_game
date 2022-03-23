@@ -143,7 +143,7 @@ export default class GameScene extends BasicScene {
 
         let exitBtn = new ExitBtn(this, 120, 135);
         this.tipsBtn = new TipsBtn(this, this.getColWidth(10), this.getRowHeight(10))
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11), 135, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.28), 135, this.musicPause.bind(this));
 
         this.add.existing(exitBtn);
         this.add.existing(this.tipsBtn);

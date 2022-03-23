@@ -65,7 +65,7 @@ export default class Bsk {
             let rectangle = self.scene.add.rectangle(self.scene.getColWidth(6), self.scene.getRowHeight(6), 1920, 1080, 0x000000, 0.4);
             rectangle.setDepth(999);
             let pack_bg_1 = self.scene.add.sprite(self.scene.getColWidth(6), self.scene.getRowHeight(8), self.scene.currentLevel == 1 ?
-                'pack_bg_1' : self.scene.currentLevel == 2 ? 'pack_bg_2' : 'pack_bg_3').setScale(5);
+                'pack_bg_1' : self.scene.currentLevel == 2 ? 'pack_bg_2' : 'pack_bg_3').setScale(1);
             pack_bg_1.setDepth(1000)
             let pack_dog = self.scene.add.sprite(self.scene.getColWidth(8), self.scene.getRowHeight(6), 'pack_dog').setDepth(1001);
             pack_dog.play('pack_dog');

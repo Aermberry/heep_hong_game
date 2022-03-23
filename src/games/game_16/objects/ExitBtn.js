@@ -5,7 +5,7 @@ export default class ExitBtn extends BasicBtn {
     super(scene, x, y,children);
 
     let sprite =  scene.add.sprite(0, 0, 'extSmBtn')
-         sprite.setScale(0.8)
+         sprite.setScale(0.7)
          this.create(sprite,this.onClick.bind(this))
 
   }

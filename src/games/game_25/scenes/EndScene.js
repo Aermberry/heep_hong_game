@@ -18,9 +18,9 @@ export default class EndScene extends BasicScene {
         this.sys.game.globals.gtag.event(`game_${gameStage}_end`, {'event_category': 'js_games', 'event_label': 'Game End'})
         this.buildBg('end_bg')
 
-        this.speakerBtn = new SpeakerBtn(this, this, 1820, 120,this.openSpeaker.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120,this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
-        this.speakerOffBtn = new SpeakerBtnOff(this, this, 1820, 120, this.offSpeaker.bind(this));
+        this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
 
         // this.End_pic = this.sound.add('End_pic')
         // this.End_pic.setLoop(false)

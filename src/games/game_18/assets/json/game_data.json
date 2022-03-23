@@ -151,12 +151,7 @@
                         "status": null
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "gameStage": 2,
-        "items": [
+            },
             {
                 "audio": "G18_011",
                 "data": [

@@ -53,7 +53,7 @@ export default class GameScene extends BasicScene {
 
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
 
-        const crocoElmSets = {
+        const crocodileColors = {
             'brn': {
                 'croco_low_1': require('../assets/images/croco/a_brn_low_long1.png'),
                 'croco_low_2': require('../assets/images/croco/a_brn_low_long2.png'),
@@ -86,20 +86,20 @@ export default class GameScene extends BasicScene {
             }
         }
 
-        const crocoColors = [
+        const colors = [
             'brn', 'grn', 'gry', 'org', 'pur'
         ];
 
-        const crocoColorName = crocoColors[Math.round(Math.random() * 4)]
+        const crocoColorName = colors[Math.round(Math.random() * 4)]
 
-        const currCrocoSet = crocoElmSets[crocoColorName]
+        const currentCrocodileColor = crocodileColors[crocoColorName]
 
         const imageFiles = {
             'crocoBed': require('../assets/images/croco/bed.png')
         };
 
-        Object.keys(currCrocoSet).forEach((elmKey) => {
-            imageFiles[elmKey] = currCrocoSet[elmKey]
+        Object.keys(currentCrocodileColor).forEach((key) => {
+            imageFiles[key] = currentCrocodileColor[key]
         })
 
         this.preloadFromArr({

@@ -132,8 +132,7 @@ export default class GameScene extends BasicScene {
 
     update() {
 
-        if (this.leftMoveButton && this.rightMoveButton)
-
+        if (this.leftMoveButton && this.rightMoveButton) {
             if (this.cursors.left.isDown) {
                 this.leftMoveButton.onDownClicked();
             } else {
@@ -141,10 +140,13 @@ export default class GameScene extends BasicScene {
             }
 
             if (this.cursors.right.isDown) {
-            this.rightMoveButton.onDownClicked();
+                this.rightMoveButton.onDownClicked();
             } else {
                 this.rightMoveButton.onUpClicked();
             }
+        }
+
+
     }
 
 

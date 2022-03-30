@@ -121,7 +121,6 @@ export default class GameScene extends BasicScene {
             'correct': require('../assets/audio/Magic_Game_Potion_Pop_Off_4_Cork.mp3'),
             'level_up': require('../assets/audio/Magic.mp3'),
             'level_up_bgm': require('../assets/audio/levelup.mp3'),
-            'end_pic': require('../assets/audio/which_brand_of_mustard_shall_i_buy.mp3')
         }
 
         if (this.currentLevel == 1) {
@@ -164,7 +163,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 0.1
+                volume: 1
             })
             this.music.setLoop(true)
             this.music.play();
@@ -241,8 +240,10 @@ export default class GameScene extends BasicScene {
                 o.destroy();
                 let music = this.sound.add('stage_items');
                 music.once('complete', () => {
-                    let bgm = this.sound.add('bgm', { loop: true, volume: 1 })
-                    bgm.play();
+                    if (!this.stopAll) {
+                        let bgm = this.sound.add('bgm', { loop: true, volume: 1 })
+                        bgm.play();
+                    }
                 });
                 music.play();
 
@@ -274,7 +275,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 0.1
+                volume: 1
             });
             this.music.setLoop(true);
             this.music.play();

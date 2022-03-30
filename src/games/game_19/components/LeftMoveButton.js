@@ -1,4 +1,7 @@
 import Phaser from 'phaser'
+import {
+  ButtonStatus
+} from './ButtonStatues';
 import TweenAnimation from './TweenAnimation';
 
 export default class LeftMoveButton extends Phaser.GameObjects.Container {
@@ -24,6 +27,14 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
     this.add(this.texture);
 
     this.enableTouchEventListener();
+
+    this.buttonStatues = ButtonStatus.up;
+
+    this.buttonEffectSound = this.scene.sound.add('buttonEffectSound');
+
+    // this.buttonEffectSound.on('complete', () => {
+    //   this.buttonStatues = ButtonStatus.up;
+    // })
   }
 
   enableTouchEventListener() {
@@ -50,13 +61,22 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
   }
 
   onDownClicked() {
+
+
     this.texture.setFrame(0);
-    this.scene.sound.play('buttonEffectSound');
+
     this.moveToLeft();
+
+    if (this.buttonStatues == ButtonStatus.up) {
+      this.buttonEffectSound.play();
+      this.buttonStatues = ButtonStatus.down
+    }
+
   }
 
   onUpClicked() {
     this.texture.setFrame(1);
+    this.buttonStatues = ButtonStatus.up;
   }
 
   /**

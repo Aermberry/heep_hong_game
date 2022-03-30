@@ -31,13 +31,11 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
         useHandCursor: true
       }).on(
         Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-          this.texture.setFrame(0);
           this.onDownClicked();
         }
       )
       .on(
         Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-          this.texture.setFrame(1);
           this.onUpClicked();
         }
       );
@@ -50,13 +48,14 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
   }
 
   onDownClicked() {
+    this.texture.setFrame(0);
     this.scene.sound.play('buttonEffectSound');
     this.moveToRight();
 
   }
 
   onUpClicked() {
-
+    this.texture.setFrame(1);
   }
 
   /**

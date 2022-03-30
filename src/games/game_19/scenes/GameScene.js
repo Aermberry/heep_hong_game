@@ -127,32 +127,20 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene();
 
-        this.cursors = this.input.keyboard.createCursorKeys();
+        // this.cursors = this.input.keyboard.createCursorKeys();
     }
 
     update() {
-        if (this.cursors.up.isDown) {
 
-            this.camera.y -= 4;
-            console.log("up")
-
-        } else if (this.cursors.down.isDown) {
-
-            this.camera.y += 4;
-            console.log("down")
-        }
-
-        if (this.cursors.left.isDown) {
-
-            console.log("left")
-            this.cameras.main.x -= 4
-
-        } else if (this.cursors.right.isDown) {
-
-            this.x += 4
-            this.cameras.main.x += 4
-
-        }
+        // if (this.cursors.left.isDown) {
+        //     this.leftMoveButton.onDownClicked();
+        // } else if (this.cursors.left.isUp) {
+        //     this.leftMoveButton.onUpClicked();
+        // } else if (this.cursors.right.isDown) {
+        //     this.rightMoveButton.onDownClicked();
+        // } else if (this.cursors.right.isUp) {
+        //     this.rightMoveButton.onUpClicked();
+        // }
     }
 
 
@@ -304,7 +292,6 @@ export default class GameScene extends BasicScene {
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {
-                        // this.scene.start(GameManager.getInstance().isLastQuestion ? 'Game' : 'End')
                         GameManager.getInstance().isLastQuestion ? this.scene.get('GameUI').scene.start() : this.scene.get('GameUI').scene.start('EndUI')
                     }
                 })
@@ -324,7 +311,7 @@ export default class GameScene extends BasicScene {
             if (isFirstError) {
 
                 gameObject.showErrorStatues();
-                
+
                 const firstErrorEffectSound = this.sound.add('firstErrorEffectSound');
 
                 firstErrorEffectSound.once('complete', () => {
@@ -333,10 +320,6 @@ export default class GameScene extends BasicScene {
                 })
 
                 firstErrorEffectSound.play();
-
-                // this.playLayer.setVisible(false);
-                // this.uiLayer.setVisible(false);
-                // this.input.setDefaultCursor(`url(), auto`);
 
             } else {
                 this.scene.run('SecondError');
@@ -351,7 +334,6 @@ export default class GameScene extends BasicScene {
                         this.time.addEvent({
                             delay: 1000,
                             callback: () => {
-                                // this.scene.start(value ? 'EndUI' : 'Game');
                                 value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.start('Game')
 
                             }
@@ -436,9 +418,6 @@ export default class GameScene extends BasicScene {
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
         this.buildControllerButtons(this.isDisplayDirectionButtonControllers(toothsContainer));
-
-        // this.background = this.buildBg('bgProgressGame');
-
 
         this.backgroundLayer.add([this.background]);
         this.playLayer.add([this.dropContainer, this.dragContainer]);

@@ -10,7 +10,7 @@ export default class RetryButton extends Phaser.GameObjects.Container {
 
         this.texture = scene.add.sprite(0, 0, 'retryButton');
 
-        this.setSize(this.texture.width, this.texture.height);
+        this.setSize(this.texture.displayWidth, this.texture.displayHeight);
 
         this.add(this.texture);
 

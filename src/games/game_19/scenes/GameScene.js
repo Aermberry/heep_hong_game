@@ -127,20 +127,24 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene();
 
-        // this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys();
     }
 
     update() {
 
-        // if (this.cursors.left.isDown) {
-        //     this.leftMoveButton.onDownClicked();
-        // } else if (this.cursors.left.isUp) {
-        //     this.leftMoveButton.onUpClicked();
-        // } else if (this.cursors.right.isDown) {
-        //     this.rightMoveButton.onDownClicked();
-        // } else if (this.cursors.right.isUp) {
-        //     this.rightMoveButton.onUpClicked();
-        // }
+        if (this.leftMoveButton && this.rightMoveButton)
+
+            if (this.cursors.left.isDown) {
+                this.leftMoveButton.onDownClicked();
+            } else {
+                this.leftMoveButton.onUpClicked();
+            }
+
+            if (this.cursors.right.isDown) {
+            this.rightMoveButton.onDownClicked();
+            } else {
+                this.rightMoveButton.onUpClicked();
+            }
     }
 
 

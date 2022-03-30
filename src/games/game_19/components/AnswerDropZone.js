@@ -58,10 +58,10 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
      */
     addFailedEventListener(scene) {
         this.on('gameFailed', (gameObject) => {
-            scene.paintGameFailed({
-                x: gameObject.x,
-                y: gameObject.y
-            });
+
+            scene.paintGameFailed(gameObject);
+            
+            
         })
     }
 
@@ -72,7 +72,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
     checkAnswer(pointer, gameObject, dropZone, question, self, scene) {
 
         scene.sound.play('dropEffectSound');
-        
+
         if (question.modifier.indexOf(gameObject.labelText.text) > -1) {
             self.add([gameObject]);
             self.setToothPosition(gameObject, dropZone);
@@ -95,7 +95,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
         tooth.changeStyle(0.3, '35px');
 
         let toothList = this.list.filter(item => item.name == 'tooth');
-      
+
         for (let index = 0; index < toothList.length; index++) {
 
             if (index == 0) {

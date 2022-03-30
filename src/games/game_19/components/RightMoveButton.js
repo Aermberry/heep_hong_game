@@ -65,13 +65,11 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
   moveToRight() {
 
     if (this.isEnableMove()) {
-      // TweenAnimation.playHorizontalMoveTweenAnimation(this.scene, this.gameObject, this.gameObject.x + this.step, 1000);
       TweenAnimation.playHorizontalMoveTweenAnimation(this.scene, this.gameObject, this.gameObject.x - this.step, 1000);
     }
   }
 
   isEnableMove() {
-    // return Math.abs(this.gameObject.x + this.step - this.gameObjectOriginPosition.x) <= this.allowableMovingDistance;
     return Math.abs(this.gameObject.x - this.step - this.gameObjectOriginPosition.x) <= this.allowableMovingDistance
   }
 

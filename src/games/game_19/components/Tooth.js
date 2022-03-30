@@ -12,7 +12,10 @@ export default class Tooth extends Phaser.GameObjects.Container {
         this.image = image;
 
         this.setName('tooth');
-        this.originPoint = { originPointX: x, originPointY: y }
+        this.originPoint = {
+            originPointX: x,
+            originPointY: y
+        }
         scene.add.existing(this);
     }
 
@@ -27,7 +30,10 @@ export default class Tooth extends Phaser.GameObjects.Container {
                 align: 'center',
                 color: 'black',
                 fontSize: '50px',
-                padding: { x: 100, y: 100 }
+                padding: {
+                    x: 100,
+                    y: 100
+                }
             }
         }).setOrigin(0.5, 0.5);
 
@@ -44,11 +50,9 @@ export default class Tooth extends Phaser.GameObjects.Container {
     }
 
     enableGestureEventListener() {
-        this.setInteractive(
-            {
-                cursor: `url(${CursorHand}), pointer`,
-            }
-        );
+        this.setInteractive({
+            cursor: `url(${CursorHand}), pointer`,
+        });
 
         this.scene.input.setDraggable(this);
 
@@ -79,5 +83,14 @@ export default class Tooth extends Phaser.GameObjects.Container {
         this.scene.input.removeListener('drag');
         this.removeListener('pointerout');
         this.removeListener('pointerover');
+    }
+
+    showErrorStatues() {
+        const errorImage = this.scene.add.image(0, 0 - 100, 'errorImage').setName('errorImage');
+        this.add(errorImage);
+    }
+
+    hideErrorStatues() {
+        this.getByName("errorImage").destroy();
     }
 }

@@ -38,6 +38,7 @@ export default class GameScene extends BasicScene {
         this.questionIndex = undefined
         this.questionNumberList = []
         this.cursorHandIcon = undefined
+        this.background = undefined
 
     }
 
@@ -48,7 +49,7 @@ export default class GameScene extends BasicScene {
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
 
-        this.buildBg('bgProgressGame');
+        this.background = this.buildBg('bgProgressGame');
         this.progressLoader = new LoadProgress(this);
 
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
@@ -124,10 +125,34 @@ export default class GameScene extends BasicScene {
 
         this.question = this.generateQuestion();
 
-
         this.paintGameScene();
 
+        this.cursors = this.input.keyboard.createCursorKeys();
+    }
 
+    update() {
+        if (this.cursors.up.isDown) {
+
+            this.camera.y -= 4;
+            console.log("up")
+
+        } else if (this.cursors.down.isDown) {
+
+            this.camera.y += 4;
+            console.log("down")
+        }
+
+        if (this.cursors.left.isDown) {
+
+            console.log("left")
+            this.cameras.main.x -= 4
+
+        } else if (this.cursors.right.isDown) {
+
+            this.x += 4
+            this.cameras.main.x += 4
+
+        }
     }
 
 
@@ -262,7 +287,7 @@ export default class GameScene extends BasicScene {
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
 
         GameManager.getInstance().updateGamePlayTotal(() => {
-            this.setDragContainerToOriginPosition();
+
             this.showCorrectAnswer(true);
 
             this.sound.play('popOffEffectSound');
@@ -280,7 +305,7 @@ export default class GameScene extends BasicScene {
                     delay: 2000,
                     callback: () => {
                         // this.scene.start(GameManager.getInstance().isLastQuestion ? 'Game' : 'End')
-                        GameManager.getInstance().isLastQuestion ?this.scene.get('GameUI').scene.start():this.scene.get('GameUI').scene.start('EndUI')
+                        GameManager.getInstance().isLastQuestion ? this.scene.get('GameUI').scene.start() : this.scene.get('GameUI').scene.start('EndUI')
                     }
                 })
             });
@@ -289,26 +314,22 @@ export default class GameScene extends BasicScene {
         });
     }
 
-    setDragContainerToOriginPosition() {
-        this.dragContainer.x = 0;
-    }
-
-
     showStarAnimation(x, y) {
         let startAnimation = new GameSprite(this, x, y, 'star_idleStateAnimation').setScale(0.4);
         this.dragContainer.add(startAnimation);
     }
 
-    paintGameFailed(position) {
+    paintGameFailed(gameObject) {
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
             if (isFirstError) {
-                const errorImage = this.add.image(position.x, position.y - 100, 'errorImage');
-                this.playLayer.add(errorImage);
 
+                gameObject.showErrorStatues();
+                
                 const firstErrorEffectSound = this.sound.add('firstErrorEffectSound');
 
                 firstErrorEffectSound.once('complete', () => {
-                    errorImage.destroy();
+
+                    gameObject.hideErrorStatues();
                 })
 
                 firstErrorEffectSound.play();
@@ -382,10 +403,10 @@ export default class GameScene extends BasicScene {
             })
         }
 
+        this.dragContainer.x = 0; //将dragContainer放置回初始位置
+
         this.dragContainer.addAt(paintToothContainer, 0);
     }
-
-
 
     /**
      * paint all game ui element in this scene
@@ -398,21 +419,28 @@ export default class GameScene extends BasicScene {
         this.buttonControllerLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.75))
-        this.crocodileMouthCont.setX(this.getColWidth(4.6))
+        this.crocodileMouthContainer = new CrocodileMouthLow(this, this.getColWidth(4.6), this.getRowHeight(6.75))
+
+        this.data.set("crocodileMouthContainerOriginPosition", {
+            x: this.crocodileMouthContainer.x,
+            y: this.crocodileMouthContainer.y
+        });
 
         let toothsContainer = this.pintTooth(this.question.originalSentence);
 
         this.dragContainer = this.add.container(0, 0, [
             toothsContainer,
-            this.crocodileMouthCont
+            this.crocodileMouthContainer
         ]);
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
         this.buildControllerButtons(this.isDisplayDirectionButtonControllers(toothsContainer));
 
-        this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
+        // this.background = this.buildBg('bgProgressGame');
+
+
+        this.backgroundLayer.add([this.background]);
         this.playLayer.add([this.dropContainer, this.dragContainer]);
     }
 

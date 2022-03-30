@@ -58,14 +58,12 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
   moveToLeft() {
 
     if (this.isEnableMove()) {
-      // TweenAnimation.playHorizontalMoveTweenAnimation(this.scene, this.gameObject, this.gameObject.x - this.step, 1000);
       TweenAnimation.playHorizontalMoveTweenAnimation(this.scene, this.gameObject, this.gameObject.x + this.step, 1000);
     }
 
   }
 
   isEnableMove() {
-    // return Math.abs(this.gameObject.x - this.step - this.gameObjectOriginPosition.x) <= this.allowableMovingDistance
     return Math.abs(this.gameObject.x + this.step - this.gameObjectOriginPosition.x) <= this.allowableMovingDistance;
   }
 

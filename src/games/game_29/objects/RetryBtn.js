@@ -6,7 +6,7 @@ export default class RetryBtn extends BasicBtn {
         super(scene, x, y, children)
 
         let sprite =  scene.add.sprite(0, 0, 'rplBtn')
-         sprite.setScale(0.7)
+        //  sprite.setScale(0.7)
 
         this.create(sprite,this.onClick.bind(this))
     }

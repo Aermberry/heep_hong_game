@@ -34,9 +34,9 @@ export default class PreloaderScene extends BasicScene {
           's2_sign': require('../assets/img/s2_sign.png'),
           's3_shelf': require('../assets/img/s3_shelf.png'),
           's3_sign': require('../assets/img/s3_sign.png'),
-          'pack_bg_1': require('../assets/img/pack_bg_1.svg'),
-          'pack_bg_2': require('../assets/img/pack_bg_2.svg'),
-          'pack_bg_3': require('../assets/img/pack_bg_3.svg'),
+          'pack_bg_1': require('../assets/img/pack_bg_1.png'),
+          'pack_bg_2': require('../assets/img/pack_bg_2.png'),
+          'pack_bg_3': require('../assets/img/pack_bg_3.png'),
           'cover_bg': require('../assets/img/cover_bg.png'),
         };
 
@@ -59,6 +59,7 @@ export default class PreloaderScene extends BasicScene {
         const soundFiles = {
           'loading': require('../assets/audio/Lonely_Witch_short.mp3'),
           'dog_walk_in': require('../assets/audio/Shop_Door_Bell_PE802601.mp3'),
+          'end_pic': require('../assets/audio/which_brand_of_mustard_shall_i_buy.mp3')
         }
 
         
@@ -105,7 +106,7 @@ export default class PreloaderScene extends BasicScene {
       ready () {
         let self = this
         self.scene.start('Tutor');
-        // self.scene.start('Game');
+        // self.scene.start('End');
       }
 
 }

@@ -173,4 +173,10 @@ export default class Answers extends Phaser.GameObjects.Container {
         }
     }
 
+    setviser() {
+        for (var i = 0; i < this.answers.length; i++) {
+            this.answers[i].visible = false;
+        }
+    }
+
 }

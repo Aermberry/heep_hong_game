@@ -7,7 +7,7 @@ export default class EndGameBroad extends Phaser.GameObjects.Container {
     constructor(scene, x, y, children) {
         super(scene, x, y, children);
 
-        let endBox = scene.add.sprite( 0, 0, 'end_box').setScale(0.5)
+        let endBox = scene.add.sprite( 0, 0, 'end_box').setScale(0.7)
         endBox.width = endBox.displayWidth
         endBox.height = endBox.displayHeight
 

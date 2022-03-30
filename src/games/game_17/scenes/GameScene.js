@@ -289,7 +289,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 0.1
+                volume: 1
             })
             this.music.setLoop(true)
             this.music.play();
@@ -327,7 +327,7 @@ export default class GameScene extends BasicScene {
 
         let exitBtn = new ExitBtn(this, 100, 120);
         this.doneBtn = new DoneBtn(this, this.getColWidth(10), this.getRowHeight(10))
-        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.5), 120, this.musicPause.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, this.getColWidth(11.4), 120, this.musicPause.bind(this));
         this.add.existing(exitBtn);
         this.add.existing(this.doneBtn);
         this.add.existing(this.speakerBtn);
@@ -416,7 +416,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 0.1
+                volume: 1
             });
             this.music.setLoop(true);
             this.music.play();

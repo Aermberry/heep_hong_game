@@ -11,25 +11,30 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
     this.scene = scene;
     this.gameObject = gameObject;
     this.allowableMovingDistance = step + 1250;
-    this.gameObjectOriginPosition = { "x": gameObject.x, "y": gameObject.y }
+    this.gameObjectOriginPosition = {
+      "x": gameObject.x,
+      "y": gameObject.y
+    }
     this.step = step
 
     // this.texture = scene.add.sprite(0, 0, 'moveBtn', 1).setScale(0.5);
-    this.texture = scene.add.sprite(0, 0, 'rightButton',1).setScale(0.5);
+    this.texture = scene.add.sprite(0, 0, 'rightButton', 1).setScale(0.5);
 
-    this.setSize(this.texture.width, this.texture.height);
+    this.setSize(this.texture.displayWidth, this.texture.displayHeight);
     this.add(this.texture);
 
     this.enableTouchEventListener();
   }
 
   enableTouchEventListener() {
-    this.setInteractive({ useHandCursor: true }).on(
-      Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-        this.texture.setFrame(0);
-        this.onDownClicked();
-      }
-    )
+    this.setInteractive({
+        useHandCursor: true
+      }).on(
+        Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+          this.texture.setFrame(0);
+          this.onDownClicked();
+        }
+      )
       .on(
         Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
           this.texture.setFrame(1);
@@ -55,8 +60,8 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
   }
 
   /**
-    * 往右移动
-     */
+   * 往右移动
+   */
   moveToRight() {
 
     if (this.isEnableMove()) {

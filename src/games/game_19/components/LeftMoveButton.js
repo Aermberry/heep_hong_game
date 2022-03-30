@@ -17,7 +17,7 @@ export default class LeftMoveButton extends Phaser.GameObjects.Container {
     // this.texture = scene.add.sprite(0, 0, 'moveBtn', 0).setScale(0.5);
     this.texture = scene.add.sprite(0, 0, 'leftButton',1).setScale(0.5);
 
-    this.setSize(this.texture.width, this.texture.height);
+    this.setSize(this.texture.displayWidth, this.texture.displayHeight);
     this.add(this.texture);
 
    this.enableTouchEventListener();

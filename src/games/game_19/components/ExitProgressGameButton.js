@@ -9,7 +9,7 @@ export default class ExitProgressGameButton extends Phaser.GameObjects.Container
 
         this.texture = scene.add.sprite(0, 0, 'gameProgressExitButton').setScale(0.8);
 
-        this.setSize(this.texture.width, this.texture.height);
+        this.setSize(this.texture.displayWidth, this.texture.displayHeight);
 
         this.add(this.texture);
 

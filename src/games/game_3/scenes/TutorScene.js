@@ -23,6 +23,10 @@ export default class TutorScene extends BasicScene {
         //Stop all sound, because game will return to this scene on retry.
         this.sound.stopAll();
 
+         if (this.scene.get('EndUI')) {
+             this.scene.stop('EndUI');
+         }
+
         createTutorAnimation(this.anims);
 
         this.paintScene();

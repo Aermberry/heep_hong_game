@@ -131,7 +131,6 @@ export default class Question {
                 self.move(self.scene.subjectItem, 100, 200).then(() => {
                     self.move(self.scene.subjectItem, 0, 200).then(() => {
                         setTimeout(() => {
-                            self.scene.goBtn.setStatus(true);
                             self.scene.subjectItem.reset();
                             this.openDrop();
                         }, 500)

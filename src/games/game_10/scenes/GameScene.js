@@ -163,7 +163,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.5
             })
             this.music.setLoop(true)
             this.music.play();
@@ -241,7 +241,7 @@ export default class GameScene extends BasicScene {
                 let music = this.sound.add('stage_items');
                 music.once('complete', () => {
                     if (!this.stopAll) {
-                        let bgm = this.sound.add('bgm', { loop: true, volume: 1 })
+                        let bgm = this.sound.add('bgm', { loop: true, volume: 0.5 })
                         bgm.play();
                     }
                 });
@@ -275,7 +275,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.5
             });
             this.music.setLoop(true);
             this.music.play();

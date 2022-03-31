@@ -726,224 +726,224 @@
                 {
                     "text": "當",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "我",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "們",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "看",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "到",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "洋",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "娃",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "娃",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "被",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "夾",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "起",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "，",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "再",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "被",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "投",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "進",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "機",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "器",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "出",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "口",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "的",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "一",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "刻",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "，",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": "r"
                 },
                 {
                     "text": "興",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "奮",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "得",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "跳",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "了",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "起",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "來",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 },
                 {
                     "text": "!",
                     "z-index": [
-                        1
+                        0
                     ],
                     "type": ""
                 }
@@ -1739,7 +1739,7 @@
             "type": {
                 "t": 1,
                 "l": 1,
-                "p": 3,
+                "p": 5,
                 "b": 1,
                 "a": 1,
                 "r": 1
@@ -1899,6 +1899,7 @@
                 },
                 {
                     "text": "媽",
+                    "isSpace": true,
                     "z-index": [
                         1,
                         2
@@ -2214,6 +2215,7 @@
                 },
                 {
                     "text": "姨",
+                    "isSpace": true,
                     "z-index": [
                         1,
                         2
@@ -2530,7 +2532,7 @@
             "type": {
                 "t": 1,
                 "l": 1,
-                "p": 3,
+                "p": 4,
                 "b": 1,
                 "a": 1,
                 "r": 1
@@ -2630,16 +2632,16 @@
                 {
                     "text": "我",
                     "z-index": [
-                        0
+                        2
                     ],
-                    "type": ""
+                    "type": "p"
                 },
                 {
                     "text": "們",
                     "z-index": [
-                        0
+                        2
                     ],
-                    "type": ""
+                    "type": "p"
                 },
                 {
                     "text": "到",
@@ -4043,7 +4045,7 @@
             "type": {
                 "t": 1,
                 "l": 1,
-                "p": 7,
+                "p": 8,
                 "b": 1,
                 "a": 1,
                 "r": 1
@@ -4053,7 +4055,8 @@
                     "text": "今",
                     "z-index": [
                         1,
-                        2
+                        2,
+                        3
                     ],
                     "type": "t"
                 },
@@ -4061,14 +4064,15 @@
                     "text": "天",
                     "z-index": [
                         1,
-                        2
+                        2,
+                        3
                     ],
                     "type": "t"
                 },
                 {
                     "text": "是",
                     "z-index": [
-                        1
+                        1,2
                     ],
                     "type": "a"
                 },
@@ -4076,7 +4080,8 @@
                     "text": "弟",
                     "z-index": [
                         1,
-                        2
+                        2,
+                        3
                     ],
                     "type": "p"
                 },
@@ -4084,49 +4089,50 @@
                     "text": "弟",
                     "z-index": [
                         1,
-                        2
+                        2,
+                        3
                     ],
                     "type": "p"
                 },
                 {
                     "text": "的",
                     "z-index": [
-                        1
+                        1,2
                     ],
                     "type": "a"
                 },
                 {
                     "text": "一",
                     "z-index": [
-                        1
+                        1,2
                     ],
                     "type": "a"
                 },
                 {
                     "text": "歲",
                     "z-index": [
-                        1
+                        1,2
                     ],
                     "type": "a"
                 },
                 {
                     "text": "生",
                     "z-index": [
-                        1
+                        1,2
                     ],
                     "type": "a"
                 },
                 {
                     "text": "日",
                     "z-index": [
-                        1
+                        1,2
                     ],
                     "type": "a"
                 },
                 {
                     "text": "，",
                     "z-index": [
-                        0
+                        1
                     ],
                     "type": ""
                 },
@@ -4163,6 +4169,7 @@
                 },
                 {
                     "text": "媽",
+                    "isSpace":true,
                     "z-index": [
                         1,
                         2
@@ -5110,7 +5117,7 @@
             "type": {
                 "t": 1,
                 "l": 1,
-                "p": 3,
+                "p": 4,
                 "b": 1,
                 "a": 1,
                 "r": 1
@@ -5304,6 +5311,7 @@
                 },
                 {
                     "text": "媽",
+                    "isSpace": true,
                     "z-index": [
                         1,
                         2
@@ -6222,7 +6230,7 @@
             "type": {
                 "t": 1,
                 "l": 1,
-                "p": 2,
+                "p": 3,
                 "b": 1,
                 "a": 1,
                 "r": 1
@@ -6337,18 +6345,16 @@
                 {
                     "text": "爸",
                     "z-index": [
-                        1,
-                        2
+                        1
                     ],
-                    "type": "p"
+                    "type": "b"
                 },
                 {
                     "text": "媽",
                     "z-index": [
-                        1,
-                        2
+                        1
                     ],
-                    "type": "p"
+                    "type": "b"
                 },
                 {
                     "text": "到",
@@ -6524,16 +6530,16 @@
                 {
                     "text": "媽",
                     "z-index": [
-                        1
+                        1,2
                     ],
-                    "type": "r"
+                    "type": "p"
                 },
                 {
                     "text": "媽",
                     "z-index": [
-                        1
+                        1,2
                     ],
-                    "type": "r"
+                    "type": "p"
                 },
                 {
                     "text": "手",
@@ -6979,16 +6985,16 @@
                 {
                     "text": "爸",
                     "z-index": [
-                        1
+                        1,2
                     ],
-                    "type": ""
+                    "type": "p"
                 },
                 {
                     "text": "爸",
                     "z-index": [
-                        1
+                        1,2
                     ],
-                    "type": ""
+                    "type": "p"
                 },
                 {
                     "text": "方",

@@ -27,9 +27,10 @@ export default class GameScene extends BasicScene {
         this.gameNum = this.sys.game.globals.model.game;
         if (this.gameNum == 29) {
             this.answer = this.dataModal['level' + this.currentLevel][Math.floor(Math.random() * this.dataModal['level' + this.currentLevel].length)] // this.currentLevel - 1
+            // this.answer = this.dataModal['level2'][3]
         } else {
-            this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
-            // this.answer = this.dataModal['level1'][3]
+            // this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
+            this.answer = this.dataModal['level1'][8]
 
         }
 

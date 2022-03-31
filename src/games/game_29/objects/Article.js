@@ -13,14 +13,16 @@ export default class Article {
         this.sprite.width = this.sprite.displayWidth
         this.sprite.height = this.sprite.displayHeight
         this.highlight;
+        this.title;
         let colorArr = ['#83A9E5', '#E882A4', '#6fb26f', '#f9c543'];
-        this.shuffColorArr = colorArr.sort(function() {
+        this.shuffColorArr = colorArr.sort(function () {
             return .5 - Math.random();
         });
 
     }
 
     createArticle(data) {
+        this.title = data.title;
         let title = this.scene.add.text(this.oring.x + this.sprite.displayWidth / 2, this.oring.y + 45, data.title, {
             fontSize: '40px', //30px
             color: '#000000',
@@ -38,6 +40,7 @@ export default class Article {
         let secondeArr = [];
         let lastArr = [];
         let rowMaxChat = 14;  //横着30字 竖直文本框15字
+        let fourthArr = [];
         this.group = this.scene.add.group();
         data.forEach((word, i) => {
             if (i % rowMaxChat == 0) {
@@ -63,8 +66,14 @@ export default class Article {
                             index: i,
                             data: word
                         })
-                    } else {
+                    } else if(v==2) {
                         lastArr.push({
+                            row: row,
+                            index: i,
+                            data: word
+                        })
+                    } else {
+                        fourthArr.push({
                             row: row,
                             index: i,
                             data: word
@@ -75,6 +84,9 @@ export default class Article {
         });
         this.secondeRender(secondeArr);
         this.lastRender(lastArr);
+        if(this.title == '弟弟的生日會') {
+            this.fourthRenderer(fourthArr);
+        }
     }
 
     secondeRender(data) {
@@ -110,34 +122,13 @@ export default class Article {
                 }
                 this.group.getChildren()[v.index].type += type;
             })
-            //将每一行的文字生成
-            // let group = arr.map((item) => {
-            //     return {
-            //         index: item[0].index,
-            //         row: item[0].row,
-            //         text: item.map((item) => item.data.text).join('')
-            //     }
-            // })
-
-            // group.forEach((item) => {
-            //     new DragText(this.scene, originX + item.index % rowMaxChat * 55, originY + item.row * 75, item.text, {
-            //         fontSize: '55px',
-            //         color: "#000000",
-            //         backgroundColor: '#E882A4',
-            //         padding: {
-            //             x: 5, y: 5
-            //         },
-            //         fontWeight: 'bold',
-            //         fontFamily: "system-ui"
-            //     }, type, 2, group.map((item) => item.text).join(''), this.level != 1)
-            // })
 
             arr.forEach((value) => {
                 value.forEach((item) => {
                     new DragText(this.scene, originX + item.index % rowMaxChat * 60, originY + item.row * 75, item.data.text, {
                         fontSize: '55px',
                         color: "#000000",
-                        backgroundColor: ['p','t','l'].includes(type) ? this.shuffColorArr[0] : type == 'a' ? this.shuffColorArr[1] : type == 'b' ?  this.shuffColorArr[2] : this.shuffColorArr[3],
+                        backgroundColor: ['p', 't', 'l'].includes(type) ? this.shuffColorArr[0] : type == 'a' ? this.shuffColorArr[1] : type == 'b' ? this.shuffColorArr[2] : this.shuffColorArr[3],
                         padding: {
                             x: 5, y: 5
                         },
@@ -161,12 +152,18 @@ export default class Article {
                 if (item.index - data[i - 1].index > 1) {
                     arr.push([item])
                 } else {
-                    arr[arr.length - 1].push(item);
+                    if (item.data.isSpace) {
+                        arr.push([item])
+                    } else {
+                        arr[arr.length - 1].push(item);
+                    }
                 }
             } else {
                 arr.push([item])
             }
         })
+
+        console.log(arr);
 
         // 可拖拽的段落 由于一个段落可能有多行，所以将多行分割生成多个可拖拽text，成为一组拖拽时一起移动！
         arr.forEach((item) => {
@@ -211,7 +208,62 @@ export default class Article {
                     new DragText(this.scene, originX + item.index % rowMaxChat * 60, originY + item.row * 75, item.data.text, {
                         fontSize: '55px',
                         color: "#000000",
-                        backgroundColor: type.includes(['p','t','l']) ? this.shuffColorArr[0] : type == 'a' ? this.shuffColorArr[1] : type == 'b' ?  this.shuffColorArr[2] : this.shuffColorArr[3],
+                        backgroundColor: type.includes(['p', 't', 'l']) ? this.shuffColorArr[0] : type == 'a' ? this.shuffColorArr[1] : type == 'b' ? this.shuffColorArr[2] : this.shuffColorArr[3],
+                        fontWeight: 'bold',
+                        padding: {
+                            x: this.level != 1 ? 0 : 5
+                        },
+                        fontFamily: "system-ui"
+                    }, type, 2, arr.map((value) => value.map((item) => item.data.text).join('')).join(''), this.level != 1)
+                })
+
+            })
+
+        })
+    }
+
+    fourthRenderer(data) {
+        let originX = this.oring.x + 40
+        let originY = this.oring.y + 45
+        let rowMaxChat = 14;
+        let arr = [];
+        data.forEach((item, i) => {
+            if (i != 0) {
+                if (item.index - data[i - 1].index > 1) {
+                    arr.push([item])
+                } else {
+                    if (item.data.isSpace) {
+                        arr.push([item])
+                    } else {
+                        arr[arr.length - 1].push(item);
+                    }
+                }
+            } else {
+                arr.push([item])
+            }
+        })
+
+        arr.forEach((item) => {
+            let type = item.map((item) => item.data.type).filter((item) => item != "").getMost();
+            let arr = [];
+            item.forEach((v, i) => {
+                if (i != 0) {
+                    if (i - 1 && v.row != item[i - 1].row) {
+                        arr.push([v])
+                    } else {
+                        arr[arr.length - 1].push(v);
+                    }
+                } else {
+                    arr.push([v])
+                }
+                this.group.getChildren()[v.index].type += type;
+            })
+            arr.forEach((value) => {
+                value.forEach((item) => {
+                    new DragText(this.scene, originX + item.index % rowMaxChat * 60, originY + item.row * 75, item.data.text, {
+                        fontSize: '55px',
+                        color: "#000000",
+                        backgroundColor: type.includes(['p', 't', 'l']) ? this.shuffColorArr[0] : type == 'a' ? this.shuffColorArr[1] : type == 'b' ? this.shuffColorArr[2] : this.shuffColorArr[3],
                         fontWeight: 'bold',
                         padding: {
                             x: this.level != 1 ? 0 : 5

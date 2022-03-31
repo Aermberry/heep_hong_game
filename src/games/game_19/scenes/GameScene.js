@@ -130,24 +130,24 @@ export default class GameScene extends BasicScene {
 
         // this.cursors = this.input.keyboard.createCursorKeys();
 
-        const leftButtonKey = this.input.keyboard.addKey('left');
-        const rightButtonKey = this.input.keyboard.addKey('right');
+        // const leftButtonKey = this.input.keyboard.addKey('left');
+        // const rightButtonKey = this.input.keyboard.addKey('right');
 
-        leftButtonKey.on('down', () => {
-            this.leftMoveButton.onDownClicked();
-        });
+        // leftButtonKey.on('down', () => {
+        //     this.leftMoveButton.onDownClicked();
+        // });
 
-        leftButtonKey.on('up', () => {
-            this.leftMoveButton.onUpClicked();
-        })
+        // leftButtonKey.on('up', () => {
+        //     this.leftMoveButton.onUpClicked();
+        // })
 
-        rightButtonKey.on('down', () => {
-            this.rightMoveButton.onDownClicked();
-        });
+        // rightButtonKey.on('down', () => {
+        //     this.rightMoveButton.onDownClicked();
+        // });
 
-        rightButtonKey.on('up', () => {
-            this.rightMoveButton.onUpClicked();
-        });
+        // rightButtonKey.on('up', () => {
+        //     this.rightMoveButton.onUpClicked();
+        // });
     }
 
     update() {

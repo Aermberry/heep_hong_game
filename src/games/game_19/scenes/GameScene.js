@@ -150,6 +150,27 @@ export default class GameScene extends BasicScene {
         });
     }
 
+    update() {
+
+        // if (this.leftMoveButton && this.rightMoveButton) {
+        // if (this.cursors.left.isDown) {
+        //     this.leftMoveButton.onDownClicked();
+        // }
+        // else {
+        //     this.leftMoveButton.onUpClicked();
+        // }
+
+        // if (this.cursors.right.isDown) {
+        //     this.rightMoveButton.onDownClicked();
+        // }
+        // else {
+        //     this.rightMoveButton.onUpClicked();
+        // }
+        // }
+
+
+    }
+
 
     /**
      * generate a question from the local question data

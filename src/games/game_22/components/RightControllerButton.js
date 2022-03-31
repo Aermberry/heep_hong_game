@@ -1,5 +1,10 @@
 import Phaser from 'phaser'
-import { ClipTweenAnimationStatus } from './ClipTweenAnimationStatus';
+import {
+    ButtonStatus
+} from './ButtonStatus';
+import {
+    ClipTweenAnimationStatus
+} from './ClipTweenAnimationStatus';
 import TweenAnimation from './TweenAnimation';
 export default class RightControllerButton extends Phaser.GameObjects.Container {
 
@@ -9,24 +14,28 @@ export default class RightControllerButton extends Phaser.GameObjects.Container 
         scene.add.existing(this);
 
         this.step = step
+        this.dolls = dolls;
         this.gameController = gameController;
         this.texture = scene.add.sprite(0, 0, 'buttonMoveRightControl');
+        this.buttonStatus = ButtonStatus.up;
 
         this.setSize(this.texture.width, this.texture.height);
 
         this.add(this.texture);
 
-        this.setInteractive({ useHandCursor: true }).on(
-            Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                console.log("down")
-                this.texture.setFrame(1);
-                this.onDownClicked(scene, dolls);
-            }
-        )
+        this.setInteractive({
+                useHandCursor: true
+            }).on(
+                Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                    console.log("down")
+
+                    this.onDownClicked();
+                }
+            )
             .on(
                 Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     console.log("up")
-                    this.texture.setFrame(0);
+
                     this.onUpClicked();
                 }
             )
@@ -34,26 +43,31 @@ export default class RightControllerButton extends Phaser.GameObjects.Container 
         this.gameController.addListener('onCollided', this.onCollideHandler, this);
     }
 
-    onDownClicked(scene, dolls) {
-        scene.sound.play('buttonEffectSound');
+    onDownClicked() {
+
+        this.texture.setFrame(1);
+
+        if (this.buttonStatus == ButtonStatus.up) {
+            this.scene.sound.play('buttonEffectSound');
+            this.buttonStatus = ButtonStatus.down;
+        }
 
         if (this.gameController.name != "onSandwiched" && ClipTweenAnimationStatus.IdleAnimationStatus == this.gameController.currentAnimationState) {
 
             this.gameController.currentAnimationState = ClipTweenAnimationStatus.MovingTweenAnimationStatus;
-            const clipMovementEffectSound = scene.sound.add('clipMovementEffectSound');
-            
-            let nextDollIndex = scene.currentDollIndex + 1;
+            const clipMovementEffectSound = this.scene.sound.add('clipMovementEffectSound');
+
+            let nextDollIndex = this.scene.currentDollIndex + 1;
 
             if (nextDollIndex <= 2) {
 
-                TweenAnimation.playHorizontalDirectionTweenAnimation(scene, this.gameController, dolls[nextDollIndex].x, 1000,  () => this.onHorizontalDirectionTweenAnimationStartEventCallback(clipMovementEffectSound),
-                () => this.onHorizontalDirectionTweenAnimationCompleteEventCallback(scene, nextDollIndex, this.gameController, clipMovementEffectSound));
+                TweenAnimation.playHorizontalDirectionTweenAnimation(this.scene, this.gameController, this.dolls[nextDollIndex].x, 1000, () => this.onHorizontalDirectionTweenAnimationStartEventCallback(clipMovementEffectSound),
+                    () => this.onHorizontalDirectionTweenAnimationCompleteEventCallback(this.scene, nextDollIndex, this.gameController, clipMovementEffectSound));
 
 
 
-            }
-            else {
-                scene.currentDollIndex = 2;
+            } else {
+                this.scene.currentDollIndex = 2;
                 this.gameController.currentAnimationState = ClipTweenAnimationStatus.IdleAnimationStatus;
             }
 
@@ -73,7 +87,8 @@ export default class RightControllerButton extends Phaser.GameObjects.Container 
     }
 
     onUpClicked() {
-        console.log("father on up")
+        this.texture.setFrame(0);
+        this.buttonStatus = ButtonStatus.up;
     }
 
     onCollideHandler(gameObject) {

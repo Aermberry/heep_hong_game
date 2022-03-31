@@ -24,11 +24,11 @@ export default class EggItemVoiceButton extends Button {
     init() {
         this.addButtonStatusListener();
 
-        SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => {
-            value ? this.cancelListener() : this.enableListener();
+        // SoundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => {
+        //     value ? this.cancelListener() : this.enableListener();
 
-            console.log({value})
-        });
+        //     console.log({value})
+        // });
     }
 
     onDownClicked() {

@@ -311,6 +311,7 @@ export default class GameScene extends BasicScene {
             player.playAudio(() => {
                 this.eggItemList.forEach(eggItem => {
                     eggItem.setEnableListener();
+                    eggItem.setOnPlayerListener();
                     eggItem.body.collideWorldBounds = true;
                     eggItem.body.bounce.set(0);
                 });

@@ -1,3 +1,4 @@
+import soundOnPlayEvent from "../phaser3_framework/event/SoundOnPlayEvent";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import Egg from "./Egg";
 import EggItemVoiceButton from "./EggItemVoiceButton";
@@ -11,9 +12,6 @@ export default class EggItem extends Egg {
 
         this.objectName = objectItem.object;
         this.index = voiceIndexObject.voiceIndex;
-
-
-
         
         this.setName("EggItem");
         this.create(isEnableDraggable);
@@ -30,6 +28,8 @@ export default class EggItem extends Egg {
 
         this.add(this.voiceButton);
     }
+
+
 
     setRemoveListener() {
         super.setDisableDraggableListener();
@@ -52,6 +52,16 @@ export default class EggItem extends Egg {
 
             this.playFLoatTweenAnimation()
         });
+    }
+
+    setOnPlayerListener() {
+          soundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => {
+              value ? this.setRemoveListener() : this.setEnableListener();
+
+              console.log({
+                  value
+              })
+          });
     }
 
     playFLoatTweenAnimation() {

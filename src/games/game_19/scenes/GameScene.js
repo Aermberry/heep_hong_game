@@ -39,7 +39,7 @@ export default class GameScene extends BasicScene {
         this.questionNumberList = []
         this.cursorHandIcon = undefined
         this.background = undefined
-        this.cursors=undefined
+        this.cursors = undefined
 
     }
 
@@ -128,23 +128,44 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene();
 
-        this.cursors = this.input.keyboard.createCursorKeys();
+        // this.cursors = this.input.keyboard.createCursorKeys();
+
+        const leftButtonKey = this.input.keyboard.addKey('left');
+        const rightButtonKey = this.input.keyboard.addKey('right');
+
+        leftButtonKey.on('down', () => {
+            this.leftMoveButton.onDownClicked();
+        });
+
+        leftButtonKey.on('up', () => {
+            this.leftMoveButton.onUpClicked();
+        })
+
+        rightButtonKey.on('down', () => {
+            this.rightMoveButton.onDownClicked();
+        });
+
+        rightButtonKey.on('up', () => {
+            this.rightMoveButton.onUpClicked();
+        });
     }
 
     update() {
 
         // if (this.leftMoveButton && this.rightMoveButton) {
-        //     if (this.cursors.left.isDown) {
-        //         this.leftMoveButton.onDownClicked();
-        //     } else {
-        //         this.leftMoveButton.onUpClicked();
-        //     }
+        // if (this.cursors.left.isDown) {
+        //     this.leftMoveButton.onDownClicked();
+        // }
+        // else {
+        //     this.leftMoveButton.onUpClicked();
+        // }
 
-        //     if (this.cursors.right.isDown) {
-        //         this.rightMoveButton.onDownClicked();
-        //     } else {
-        //         this.rightMoveButton.onUpClicked();
-        //     }
+        // if (this.cursors.right.isDown) {
+        //     this.rightMoveButton.onDownClicked();
+        // }
+        // else {
+        //     this.rightMoveButton.onUpClicked();
+        // }
         // }
 
 
@@ -160,8 +181,8 @@ export default class GameScene extends BasicScene {
         let errorQuestionIndex = JSON.parse(localStorage.getItem('errorQuestionIndex'));
 
         if (errorQuestionIndex == null) {
-            this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            // this.questionIndex = 10;
+            // this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
+            this.questionIndex = 10;
 
         } else {
             if (JSON.parse(localStorage.getItem('gameChance'))) {

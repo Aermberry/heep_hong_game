@@ -133,43 +133,43 @@ export default class GameScene extends BasicScene {
         // const leftButtonKey = this.input.keyboard.addKey('left');
         // const rightButtonKey = this.input.keyboard.addKey('right');
 
-        // leftButtonKey.on('down', () => {
-        //     this.leftMoveButton.onDownClicked();
-        // });
+        // // leftButtonKey.on('down', () => {
+        // //     this.leftMoveButton.onDownClicked();
+        // // });
 
         // leftButtonKey.on('up', () => {
         //     this.leftMoveButton.onUpClicked();
         // })
 
-        // rightButtonKey.on('down', () => {
-        //     this.rightMoveButton.onDownClicked();
-        // });
+        // // rightButtonKey.on('down', () => {
+        // //     this.rightMoveButton.onDownClicked();
+        // // });
 
         // rightButtonKey.on('up', () => {
         //     this.rightMoveButton.onUpClicked();
         // });
     }
 
-    update() {
+    // update() {
 
-        // if (this.leftMoveButton && this.rightMoveButton) {
-        // if (this.cursors.left.isDown) {
-        //     this.leftMoveButton.onDownClicked();
-        // }
-        // else {
-        //     this.leftMoveButton.onUpClicked();
-        // }
+    //     if (this.leftMoveButton && this.rightMoveButton) {
+    //     if (this.cursors.left.isDown) {
+    //         this.leftMoveButton.onDownClicked();
+    //     }
+            
+    //     // else {
+    //     //     this.leftMoveButton.onUpClicked();
+    //     // }
 
-        // if (this.cursors.right.isDown) {
-        //     this.rightMoveButton.onDownClicked();
-        // }
-        // else {
-        //     this.rightMoveButton.onUpClicked();
-        // }
-        // }
-
-
-    }
+    //     if (this.cursors.right.isDown) {
+    //         this.rightMoveButton.onDownClicked();
+    //     }
+            
+    //     // else {
+    //     //     this.rightMoveButton.onUpClicked();
+    //     // }
+    //     }
+    // }
 
 
     /**
@@ -182,7 +182,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            // this.questionIndex = 10;
+            this.questionIndex = 10;
 
         } else {
             if (JSON.parse(localStorage.getItem('gameChance'))) {

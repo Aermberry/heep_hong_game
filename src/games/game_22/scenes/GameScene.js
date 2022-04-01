@@ -79,31 +79,31 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene();
 
-        // this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys();
 
         const leftButtonKey = this.input.keyboard.addKey('left');
         const rightButtonKey = this.input.keyboard.addKey('right');
         const downButtonKey = this.input.keyboard.addKey('down');
 
-        leftButtonKey.on('down', () => {
-            this.buttonMoveLeftControl.onDownClicked();
-        });
+        // leftButtonKey.on('down', () => {
+        //     this.buttonMoveLeftControl.onDownClicked();
+        // });
 
         leftButtonKey.on('up', () => {
             this.buttonMoveLeftControl.onUpClicked();
         })
 
-        rightButtonKey.on('down', () => {
-            this.buttonMoveRightControl.onDownClicked();
-        });
+        // rightButtonKey.on('down', () => {
+        //     this.buttonMoveRightControl.onDownClicked();
+        // });
 
         rightButtonKey.on('up', () => {
             this.buttonMoveRightControl.onUpClicked();
         });
 
-        downButtonKey.on('down', () => {
-            this.buttonMoveDownControl.onDownClicked();
-        });
+        // downButtonKey.on('down', () => {
+        //     this.buttonMoveDownControl.onDownClicked();
+        // });
 
         downButtonKey.on('up', () => {
             this.buttonMoveDownControl.onUpClicked();
@@ -111,33 +111,38 @@ export default class GameScene extends BasicScene {
 
     }
 
-    // update() {
+    update() {
 
-    //     if (this.buttonMoveLeftControl && this.buttonMoveRightControl && this.buttonMoveDownControl) {
-    //         if (this.cursors.left.isDown) {
-    //             console.log("left")
-    //             this.buttonMoveLeftControl.onDownClicked();
-    //         } else {
-    //             this.buttonMoveLeftControl.onUpClicked();
-    //         }
+        if (this.buttonMoveLeftControl && this.buttonMoveRightControl && this.buttonMoveDownControl) {
+            if (this.cursors.left.isDown) {
+                console.log("left")
+                this.buttonMoveLeftControl.onDownClicked();
+            }
+            
+            // else {
+            //     this.buttonMoveLeftControl.onUpClicked();
+            // }
 
-    //         if (this.cursors.right.isDown) {
-    //             console.log(" right")
-    //             this.buttonMoveRightControl.onDownClicked();
-    //         } else {
-    //             this.buttonMoveRightControl.onUpClicked();
-    //         }
+            if (this.cursors.right.isDown) {
+                console.log(" right")
+                this.buttonMoveRightControl.onDownClicked();
+            }
+            
+            // else {
+            //     this.buttonMoveRightControl.onUpClicked();
+            // }
 
-    //         if (this.cursors.down.isDown) {
-    //             console.log("down")
-    //             this.buttonMoveDownControl.onDownClicked();
-    //         } else {
-    //             this.buttonMoveDownControl.onUpClicked();
-    //         }
-    //     }
+            if (this.cursors.down.isDown) {
+                console.log("down")
+                this.buttonMoveDownControl.onDownClicked();
+            }
+            // else {
+            //     this.buttonMoveDownControl.onUpClicked();
+            // }
+        }
 
 
-    // }
+    }
 
 
     /**

@@ -112,7 +112,6 @@ export default class GameScene extends BasicScene {
     }
 
     update() {
-
         if (this.buttonMoveLeftControl && this.buttonMoveRightControl && this.buttonMoveDownControl) {
             if (this.cursors.left.isDown) {
                 console.log("left")
@@ -140,8 +139,6 @@ export default class GameScene extends BasicScene {
             //     this.buttonMoveDownControl.onUpClicked();
             // }
         }
-
-
     }
 
 

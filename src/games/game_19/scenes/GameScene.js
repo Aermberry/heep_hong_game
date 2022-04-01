@@ -156,6 +156,7 @@ export default class GameScene extends BasicScene {
         if (this.cursors.left.isDown) {
             this.leftMoveButton.onDownClicked();
         }
+            
         // else {
         //     this.leftMoveButton.onUpClicked();
         // }
@@ -163,6 +164,7 @@ export default class GameScene extends BasicScene {
         if (this.cursors.right.isDown) {
             this.rightMoveButton.onDownClicked();
         }
+            
         // else {
         //     this.rightMoveButton.onUpClicked();
         // }

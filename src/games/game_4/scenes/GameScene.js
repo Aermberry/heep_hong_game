@@ -13,6 +13,7 @@ import EggQuestion from "../components/EggQuestion";
 import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
 import Player from "../components/Player";
+import soundOnPlayEvent from "../phaser3_framework/event/SoundOnPlayEvent";
 import GameSprite from "../phaser3_framework/object/GameSprite";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import BasicScene from "./BasicScene";
@@ -592,6 +593,7 @@ export default class GameScene extends BasicScene {
             return egg.objectName == currentQuestionAnswer.objectName
         });
 
+        soundOnPlayEvent.removeAllListeners();
         composeWords == currentQuestionAnswer.objectName ? this.paintGameSuccess(leftItem, rightItem, keywordVoiceIndex, currentQuestionAnswer) : this.paintGameFailed(dragItem, targetItem, keywordVoiceIndex, currentAnswerItem, currentQuestionAnswer);
 
     }

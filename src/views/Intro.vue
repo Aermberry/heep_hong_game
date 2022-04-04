@@ -14,8 +14,8 @@
             <div class="inner">
               <div class="sub-title">本遊戲平台</div>
               <div class="title">簡介</div>
-              <div class="lead">協康會賽馬會「吾讀吾識」專業團隊為K2至小三有潛在讀寫困難的兒童量身訂造了三十個網上小遊戲，兒童能在樂園的六大園區暢遊，透過有趣的小遊戲打好語文基礎，提升讀寫能力。本計劃由協康會主辦，「香港賽馬會慈善信托基金」贊助。</div>
-              <a href="" class="link-more">按此了解更多</a>
+              <div class="lead">協康會賽馬會「吾讀吾識」專業團隊為幼稚園低班至小三有潛在讀寫困難的兒童量身訂造了三十個網上小遊戲，兒童能在樂園的六大園區暢遊，透過有趣的小遊戲鞏固語文基礎，提升讀寫能力。本計劃由協康會主辦，「香港賽馬會慈善信托基金」贊助。</div>
+              <router-link to="/game-intro" class="link-more">按此了解更多</router-link>
             </div>
           </div>
 

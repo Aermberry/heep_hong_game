@@ -122,9 +122,10 @@ export default {
 <style scoped>
 .logo {
   position: absolute;
-  top: 0;
-  right: 0;
   max-width:50%;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
 }
 .game-intro-main {
     position: relative;
@@ -137,9 +138,6 @@ export default {
 }
 @media screen and (max-width: 850px) {
   .logo {
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
     max-width: inherit;
     width: 90%
   }

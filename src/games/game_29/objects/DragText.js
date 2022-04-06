@@ -17,6 +17,11 @@ export default class DragText extends Phaser.GameObjects.Text {
         })
         scene.add.existing(this);
 
+        this.on('pointerdown', function () {
+            let matching = this.scene.sound.add('matching');
+            matching.play();
+        });
+
         if (!isHard) {
             scene.input.setDraggable(this);
         } else {
@@ -31,7 +36,7 @@ export default class DragText extends Phaser.GameObjects.Text {
                 fontFamily: "system-ui"
             });
             this.updateText();
-            this.on('pointerdown', function () {
+            this.on('pointerdown', function () { 
                 this.onDragTextClick()
             })
         }

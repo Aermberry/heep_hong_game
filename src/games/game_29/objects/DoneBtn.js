@@ -11,6 +11,9 @@ export default class ExitBtn extends BasicBtn {
   }
 
   onClick() {
+    let clickAudio = this.scene.sound.add('button');
+    clickAudio.play();
+
     if (this.scene.currentLevel == 2) {
       this.scene.scene.start('End')
     } else {

@@ -52,7 +52,7 @@ export default {
           window.open('https://www.addthis.com/bookmark.php?v=300&winname=addthis&pub=ra-5b9736b2f9e2d52b&source=men-300&lng=zh-hk&s=wechat&url=https%3A%2F%2Fjc-ireadilearn.heephong.org%2F&title=iReadilearn&ate=AT-ra-5b9736b2f9e2d52b/-/-/620da6c938326634/2&frommenu=1&uid=61c183befad01cf0&ct=1&tt=0&captcha_provider=recaptcha2&pro=0')
           break
         case 'copylink':
-          navigator.clipboard.writeText('https://jc-ireadilearn.heephong.org/game/').then(function () {
+          this.copyToClipboard('https://jc-ireadilearn.heephong.org/game/').then(function () {
             const x = document.getElementById("snackbar");
             x.className = "show";
             x.innerHTML = "已復製到剪貼板";
@@ -66,6 +66,25 @@ export default {
       const top = (screen.height / 2) - (h / 2)
       return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left)
     },
+    copyToClipboard(textToCopy) {
+      if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(textToCopy)
+      } else {
+        let textArea = document.createElement("textarea")
+        textArea.value = textToCopy
+        textArea.style.position = "absolute"
+        textArea.style.opacity = 0
+        textArea.style.left = "-999999px"
+        textArea.style.top = "-999999px"
+        document.body.appendChild(textArea)
+        textArea.focus()
+        textArea.select()
+        return new Promise((res, rej) => {
+            document.execCommand('copy') ? res() : rej()
+            textArea.remove()
+        })
+      }
+    }
   }
 }
 </script>

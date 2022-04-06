@@ -159,15 +159,6 @@ export default class GameScene extends BasicScene {
         this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.sound.stopAll();
-        if (this.stopAll) {
-            this.sound.stopAll();
-        } else {
-            this.music = this.sound.add('bgm', {
-                volume: 0.5
-            })
-            this.music.setLoop(true)
-            this.music.play();
-        }
         this.regSprite = this.currentLevel == 1 ? 'reg_market' : this.currentLevel == 2 ? 'reg_travel' : 'reg_class'
         this.signSprite = this.currentLevel == 1 ? 's1_sign' : this.currentLevel == 2 ? 's2_sign' : 's3_sign'
         this.gameStart();
@@ -240,13 +231,17 @@ export default class GameScene extends BasicScene {
                 o.destroy();
                 let music = this.sound.add('stage_items');
                 music.once('complete', () => {
-                    if (!this.stopAll) {
-                        let bgm = this.sound.add('bgm', { loop: true, volume: 0.5 })
-                        bgm.play();
+                    if (this.stopAll) {
+                        this.sound.stopAll();
+                    } else {
+                        this.music = this.sound.add('bgm', {
+                            volume: 0.5
+                        })
+                        this.music.setLoop(true)
+                        this.music.play();
                     }
                 });
                 music.play();
-
                 this.Answers = new Answers(this, this.getColWidth(4), this.getRowHeight(2.3))
                 let voiceBtn = new VoiceBtn(this, 80, 300, this.question);
                 this.add.existing(voiceBtn);

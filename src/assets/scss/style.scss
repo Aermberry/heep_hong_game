@@ -228,12 +228,7 @@ main{
     background-color: $color-CadetBlue;
     position: relative;
     display: flex;
-    @media screen and (max-width: 768px){
-      height: 40%;
-    }
-    @media screen and (min-width: 768px){
-      width: 50%;
-    }
+    flex-basis: 50%;
     img{
       width: 80%;
       height: 100%;
@@ -245,16 +240,11 @@ main{
     @media screen and (max-width: 768px){
       height: 60%;
     }
-    @media screen and (min-width: 768px){
-      width: 50%;
-    }
     background-color: white;
     display: flex;
     align-items: center;
-    padding: 45px;
-    .inner{
-      max-width: 380px;
-    }
+    padding: 50px;
+    flex-basis: 50%;
     .sub-title{
       color: $color-BitterSweet;
       font-weight: bold;
@@ -560,14 +550,17 @@ footer{
       position: relative;
       display: flex;
       background-color: white;
+      padding-bottom: 110px;
+      @media screen and (max-width: 1280px){
+        padding-bottom: 75px;
+      }
       @media screen and (max-width: 768px){
         flex-direction: column;
         padding-top: 45px;
-        min-height: 100vh;
       }
       &:nth-child(odd){
         background-color: $color-Cream;
-        @media screen and (min-width: 768px){
+        @media screen and (min-width: 769px){
           flex-direction: row-reverse;
           .description{
             justify-content: flex-end;
@@ -583,10 +576,7 @@ footer{
       .cover{
         position: relative;
         display: flex;
-        @media screen and (max-width: 768px){
-          height: 40%;
-        }
-        @media screen and (min-width: 768px){
+        @media screen and (min-width: 769px){
           width: 50%;
         }
         img{
@@ -596,6 +586,9 @@ footer{
           margin: auto;
           transform: translatey(0px);
           animation: float 6s ease-in-out infinite;
+          @media screen and (max-width: 768px){
+            max-width: 50%;
+          }
         }
       }
       .description{

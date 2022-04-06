@@ -3,6 +3,7 @@ export default class VoiceBtn extends Button {
 
     constructor(scene, x, y, voiceName) {
         super(scene, x, y, 'voiceBtn');
+        this.scene = scene;
         this.voiceList = voiceName.map(element => {
             return scene.sound.add(element);
         });
@@ -31,13 +32,10 @@ export default class VoiceBtn extends Button {
     playAudioList(i) {
         if(i < this.voiceList.length) {
             this.voiceList[i].play();
-            // this.voiceList[i].on('play', () => {
-            //     // this.texture.setFrame(0);
-            // });
             this.voiceList[i].on('complete', () => {
                 this.playAudioList(i+1)
             });
-        }
+        } 
     }
 
     addButtonStatusListener() {

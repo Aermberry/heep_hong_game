@@ -30,7 +30,7 @@ export default class GameScene extends BasicScene {
             // this.answer = this.dataModal['level1'][1]
         } else {
             this.answer = this.dataModal['level1'][Math.floor(Math.random() * this.dataModal['level1'].length)]
-            // this.answer = this.dataModal['level1'][1]
+            // this.answer = this.dataModal['level1'][0]
 
         }
 

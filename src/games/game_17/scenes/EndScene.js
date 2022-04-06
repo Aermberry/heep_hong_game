@@ -24,6 +24,7 @@ export default class EndScene extends BasicScene {
         // let music = this.sound.add('jump')
         // music.setLoop(true)
         // music.play()
+        this.sound.stopAll();
 
         this.music = this.sound.add('end_pic');
         this.music.setLoop(true);

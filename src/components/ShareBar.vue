@@ -55,7 +55,7 @@ export default {
           this.copyToClipboard('https://jc-ireadilearn.heephong.org/game/').then(function () {
             const x = document.getElementById("snackbar");
             x.className = "show";
-            x.innerHTML = "已復製到剪貼板";
+            x.innerHTML = "已複製到剪貼板";
             setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
           })
           break

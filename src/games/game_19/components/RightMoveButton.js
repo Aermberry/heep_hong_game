@@ -1,4 +1,7 @@
 import Phaser from 'phaser'
+import {
+  ButtonStatus
+} from './ButtonStatues';
 import TweenAnimation from './TweenAnimation';
 
 export default class RightMoveButton extends Phaser.GameObjects.Container {
@@ -11,28 +14,39 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
     this.scene = scene;
     this.gameObject = gameObject;
     this.allowableMovingDistance = step + 1250;
-    this.gameObjectOriginPosition = { "x": gameObject.x, "y": gameObject.y }
+    this.gameObjectOriginPosition = {
+      "x": gameObject.x,
+      "y": gameObject.y
+    }
     this.step = step
 
     // this.texture = scene.add.sprite(0, 0, 'moveBtn', 1).setScale(0.5);
-    this.texture = scene.add.sprite(0, 0, 'rightButton',1).setScale(0.5);
+    this.texture = scene.add.sprite(0, 0, 'rightButton', 1).setScale(0.5);
 
-    this.setSize(this.texture.width, this.texture.height);
+    this.setSize(this.texture.displayWidth, this.texture.displayHeight);
     this.add(this.texture);
 
     this.enableTouchEventListener();
+
+    this.buttonStatues = ButtonStatus.up;
+
+    this.buttonEffectSound = this.scene.sound.add('buttonEffectSound');
+
+    // this.buttonEffectSound.on('complete', () => {
+    //   this.buttonStatues = ButtonStatus.up;
+    // })
   }
 
   enableTouchEventListener() {
-    this.setInteractive({ useHandCursor: true }).on(
-      Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-        this.texture.setFrame(0);
-        this.onDownClicked();
-      }
-    )
+    this.setInteractive({
+        useHandCursor: true
+      }).on(
+        Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+          this.onDownClicked();
+        }
+      )
       .on(
         Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-          this.texture.setFrame(1);
           this.onUpClicked();
         }
       );
@@ -45,28 +59,34 @@ export default class RightMoveButton extends Phaser.GameObjects.Container {
   }
 
   onDownClicked() {
-    this.scene.sound.play('buttonEffectSound');
+    this.texture.setFrame(0);
+
     this.moveToRight();
+
+    if (this.buttonStatues == ButtonStatus.up) {
+      this.buttonEffectSound.play();
+      this.buttonStatues = ButtonStatus.down
+    }
+
 
   }
 
   onUpClicked() {
-
+    this.texture.setFrame(1);
+    this.buttonStatues = ButtonStatus.up;
   }
 
   /**
-    * 往右移动
-     */
+   * 往右移动
+   */
   moveToRight() {
 
     if (this.isEnableMove()) {
-      // TweenAnimation.playHorizontalMoveTweenAnimation(this.scene, this.gameObject, this.gameObject.x + this.step, 1000);
       TweenAnimation.playHorizontalMoveTweenAnimation(this.scene, this.gameObject, this.gameObject.x - this.step, 1000);
     }
   }
 
   isEnableMove() {
-    // return Math.abs(this.gameObject.x + this.step - this.gameObjectOriginPosition.x) <= this.allowableMovingDistance;
     return Math.abs(this.gameObject.x - this.step - this.gameObjectOriginPosition.x) <= this.allowableMovingDistance
   }
 

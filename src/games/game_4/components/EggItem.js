@@ -1,4 +1,5 @@
 import TweenAnimation from "../../game_4/phaser3_framework/util/TweenAnimation";
+import soundOnPlayEvent from "../phaser3_framework/event/SoundOnPlayEvent";
 import Egg from "./Egg";
 import VoiceButton from "./VoiceButton";
 
@@ -34,7 +35,7 @@ export default class EggItem extends Egg {
         this.on('pointerover', function () {
 
             this.stopFLoatTweenAnimation()
-            
+
         });
 
         this.on('pointerout', function () {
@@ -43,22 +44,31 @@ export default class EggItem extends Egg {
         });
     }
 
+    setOnPlayerListener() {
+        soundOnPlayEvent.on('updatePlayerOnPlayStatus', (value) => {
+            value ? this.setRemoveListener() : this.setEnableListener();
+
+            console.log({
+                value
+            })
+        });
+    }
+
     playFLoatTweenAnimation() {
         TweenAnimation.setTweenAnimation({
             targets: this,
-            ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
             duration: 1000,
             loop: -1,
-            tweens: [
-                {
-                    duration: 500,
-                    yoyo: true,
-                    y: this.y + 10,
-                }, {
-                    duration: 500,
-                    yoyo: true,
-                    y: this.y - 10,
-                }]
+            tweens: [{
+                duration: 500,
+                yoyo: true,
+                y: this.y + 10,
+            }, {
+                duration: 500,
+                yoyo: true,
+                y: this.y - 10,
+            }]
         });
         this.FLoatTweenAnimation = TweenAnimation.play(this.scene)
     }

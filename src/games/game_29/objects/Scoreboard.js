@@ -71,6 +71,8 @@ export default class Scoreboard {
             crt_ans_star.play('crt_ans_star')
             crt_ans_star2.play('crt_ans_star')
             crt_ans_star3.play('crt_ans_star')
+            let complete = this.scene.sound.add('complete');
+            complete.play();
             new DoneBtn(this.scene, this.x + 700, 1000)
         }
     }
@@ -144,6 +146,8 @@ class ScoreType extends Phaser.GameObjects.Container {
     }
 
     onHighlight() {
+        let clickAudio = this.scene.sound.add('button');
+        clickAudio.play();
         this.onHighlightCallback(this.type)
     }
 

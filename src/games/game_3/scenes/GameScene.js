@@ -13,6 +13,7 @@ import EggQuestion from "../components/EggQuestion";
 import GameManager from '../components/GameManager';
 import LoadProgress from "../components/LoadProgress";
 import Player from "../components/Player";
+import soundOnPlayEvent from "../phaser3_framework/event/SoundOnPlayEvent";
 import GameSprite from "../phaser3_framework/object/GameSprite";
 import TweenAnimation from "../phaser3_framework/util/TweenAnimation";
 import BasicScene from "./BasicScene";
@@ -311,6 +312,7 @@ export default class GameScene extends BasicScene {
             player.playAudio(() => {
                 this.eggItemList.forEach(eggItem => {
                     eggItem.setEnableListener();
+                    eggItem.setOnPlayerListener();
                     eggItem.body.collideWorldBounds = true;
                     eggItem.body.bounce.set(0);
                 });
@@ -447,7 +449,6 @@ export default class GameScene extends BasicScene {
 
 
     paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex, currentAnswerItem) {
-
         targetItem.showErrorStatue();
         dragItem.showErrorStatue(() => {
             this.setErrorSprite(dragItem, targetItem, this.eggItemList, () => {
@@ -582,6 +583,7 @@ export default class GameScene extends BasicScene {
             return egg.objectName == currentQuestionAnswer.object
         });
 
+        soundOnPlayEvent.removeAllListeners();
         composeWords == currentQuestionAnswer.object ? this.paintGameSuccess(leftItem, rightItem, conclusionPhraseVoiceIndex) : this.paintGameFailed(dragItem, targetItem, conclusionPhraseVoiceIndex, currentAnswerItem);
 
     }

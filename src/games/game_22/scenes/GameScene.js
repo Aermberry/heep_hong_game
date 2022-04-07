@@ -32,7 +32,11 @@ export default class GameScene extends BasicScene {
         this.backgroundLayer = undefined
         this.gameFailedLayer = undefined
         this.currentDollIndex = undefined;
-        this.currentQuestionAnswer = undefined
+        this.currentQuestionAnswer = undefined;
+        this.buttonMoveLeftControl = undefined;
+        this.buttonMoveRightControl = undefined;
+        this.buttonMoveDownControl = undefined;
+        this.cursors = undefined;
     }
 
     preload() {
@@ -75,6 +79,40 @@ export default class GameScene extends BasicScene {
 
         this.paintGameScene();
 
+        this.cursors = this.input.keyboard.createCursorKeys();
+
+        const leftButtonKey = this.input.keyboard.addKey('left');
+        const rightButtonKey = this.input.keyboard.addKey('right');
+        const downButtonKey = this.input.keyboard.addKey('down');
+
+        leftButtonKey.on('up', () => {
+            this.buttonMoveLeftControl.onUpClicked();
+        })
+
+        rightButtonKey.on('up', () => {
+            this.buttonMoveRightControl.onUpClicked();
+        });
+
+        downButtonKey.on('up', () => {
+            this.buttonMoveDownControl.onUpClicked();
+        })
+
+    }
+
+    update() {
+        if (this.buttonMoveLeftControl && this.buttonMoveRightControl && this.buttonMoveDownControl) {
+            if (this.cursors.left.isDown) {
+                this.buttonMoveLeftControl.onDownClicked();
+            }
+
+            if (this.cursors.right.isDown) {
+                this.buttonMoveRightControl.onDownClicked();
+            }
+
+            if (this.cursors.down.isDown) {
+                this.buttonMoveDownControl.onDownClicked();
+            }
+        }
     }
 
 
@@ -123,9 +161,9 @@ export default class GameScene extends BasicScene {
 
         let textDropBox = new TextDropBox(this, this.getColWidth(6), this.getRowHeight(8.2), this.generateQuestion(), clip);
 
-        let buttonMoveLeftControl = new LeftControllerButton(this, this.getColWidth(0.6), this.getRowHeight(1.1), 20, clip, this.dolls);
-        let buttonMoveDownControl = new DownControllerButton(this, this.getColWidth(1.8), this.getRowHeight(1.1), 20, clip);
-        let buttonMoveRightControl = new RightControllerButton(this, this.getColWidth(3.0), this.getRowHeight(1.1), 20, clip, this.dolls);
+        this.buttonMoveLeftControl = new LeftControllerButton(this, this.getColWidth(0.6), this.getRowHeight(1.1), 20, clip, this.dolls);
+        this.buttonMoveDownControl = new DownControllerButton(this, this.getColWidth(1.8), this.getRowHeight(1.1), 20, clip);
+        this.buttonMoveRightControl = new RightControllerButton(this, this.getColWidth(3.0), this.getRowHeight(1.1), 20, clip, this.dolls);
 
         let gameButtonControllers = new ContainerBox({
             "scene": this,
@@ -136,7 +174,7 @@ export default class GameScene extends BasicScene {
             "backgroundColor": GameColors.grayWhite
         });
 
-        gameButtonControllers.add([buttonMoveLeftControl, buttonMoveDownControl, buttonMoveRightControl]);
+        gameButtonControllers.add([this.buttonMoveLeftControl, this.buttonMoveDownControl, this.buttonMoveRightControl]);
 
         this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
         this.playLayer.add([textDropBox, gameButtonControllers]);

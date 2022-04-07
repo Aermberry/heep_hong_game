@@ -7,44 +7,58 @@ export default class BasicBtn extends Phaser.GameObjects.Container {
   constructor(scene, x, y, children) {
     super(scene, x, y, children)
     this.origSprite = null
+    this.clickEvent = null
   }
 
-  create(sprite, clickEvent){
+  create(sprite, clickEvent) {
     this.origSprite = sprite;
     this.add(this.origSprite)
+    this.clickEvent = clickEvent;
     this.origSprite.setInteractive({
-        useHandCursor: true
+      useHandCursor: true
     })
-    .on('pointerout', this.out.bind(this))
-    .on('pointerdown', this.down.bind(this, clickEvent));
+      .on('pointerout', this.out.bind(this))
+      .on('pointerdown', this.down.bind(this, clickEvent));
   }
 
-  out(){
+  out() {
     this.origSprite.setFrame(0)
   }
 
-  down(clickEvent){
+  isEnable(bool) {
+    if (bool) {
+      this.origSprite.setInteractive({
+        useHandCursor: true
+      })
+        .on('pointerout', this.out.bind(this))
+        .on('pointerdown', this.down.bind(this, this.clickEvent));
+    } else {
+      this.origSprite.disableInteractive()
+    }
+  }
+
+  down(clickEvent) {
     this.origSprite.setFrame(1)
-    if(typeof clickEvent == 'function') {
+    if (typeof clickEvent == 'function') {
       setTimeout(() => {
         clickEvent()
       }, 500)
     }
   }
-  
+
   goFullscreen() {
 
     const fullscreenConfig = { navigationUI: 'hide' }
 
     const elem = document.querySelector('#game-container canvas');
     if (elem.requestFullscreen) {
-        elem.requestFullscreen(fullscreenConfig);
+      elem.requestFullscreen(fullscreenConfig);
     } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen(fullscreenConfig);
+      elem.msRequestFullscreen(fullscreenConfig);
     } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen(fullscreenConfig);
+      elem.mozRequestFullScreen(fullscreenConfig);
     } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen(fullscreenConfig);
+      elem.webkitRequestFullscreen(fullscreenConfig);
     }
 
   }

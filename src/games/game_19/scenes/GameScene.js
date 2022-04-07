@@ -38,6 +38,8 @@ export default class GameScene extends BasicScene {
         this.questionIndex = undefined
         this.questionNumberList = []
         this.cursorHandIcon = undefined
+        this.background = undefined
+        this.cursors = undefined
 
     }
 
@@ -48,12 +50,12 @@ export default class GameScene extends BasicScene {
         // sound: this.sound.add('drums').setLoop(true).play()
         // });
 
-        this.buildBg('bgProgressGame');
+        this.background = this.buildBg('bgProgressGame');
         this.progressLoader = new LoadProgress(this);
 
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
 
-        const crocoElmSets = {
+        const crocodileColors = {
             'brn': {
                 'croco_low_1': require('../assets/images/croco/a_brn_low_long1.png'),
                 'croco_low_2': require('../assets/images/croco/a_brn_low_long2.png'),
@@ -86,20 +88,20 @@ export default class GameScene extends BasicScene {
             }
         }
 
-        const crocoColors = [
+        const colors = [
             'brn', 'grn', 'gry', 'org', 'pur'
         ];
 
-        const crocoColorName = crocoColors[Math.round(Math.random() * 4)]
+        const crocoColorName = colors[Math.round(Math.random() * 4)]
 
-        const currCrocoSet = crocoElmSets[crocoColorName]
+        const currentCrocodileColor = crocodileColors[crocoColorName]
 
         const imageFiles = {
             'crocoBed': require('../assets/images/croco/bed.png')
         };
 
-        Object.keys(currCrocoSet).forEach((elmKey) => {
-            imageFiles[elmKey] = currCrocoSet[elmKey]
+        Object.keys(currentCrocodileColor).forEach((key) => {
+            imageFiles[key] = currentCrocodileColor[key]
         })
 
         this.preloadFromArr({
@@ -124,11 +126,50 @@ export default class GameScene extends BasicScene {
 
         this.question = this.generateQuestion();
 
-
         this.paintGameScene();
 
+        // this.cursors = this.input.keyboard.createCursorKeys();
 
+        // const leftButtonKey = this.input.keyboard.addKey('left');
+        // const rightButtonKey = this.input.keyboard.addKey('right');
+
+        // // leftButtonKey.on('down', () => {
+        // //     this.leftMoveButton.onDownClicked();
+        // // });
+
+        // leftButtonKey.on('up', () => {
+        //     this.leftMoveButton.onUpClicked();
+        // })
+
+        // // rightButtonKey.on('down', () => {
+        // //     this.rightMoveButton.onDownClicked();
+        // // });
+
+        // rightButtonKey.on('up', () => {
+        //     this.rightMoveButton.onUpClicked();
+        // });
     }
+
+    // update() {
+
+    //     if (this.leftMoveButton && this.rightMoveButton) {
+    //     if (this.cursors.left.isDown) {
+    //         this.leftMoveButton.onDownClicked();
+    //     }
+            
+    //     // else {
+    //     //     this.leftMoveButton.onUpClicked();
+    //     // }
+
+    //     if (this.cursors.right.isDown) {
+    //         this.rightMoveButton.onDownClicked();
+    //     }
+            
+    //     // else {
+    //     //     this.rightMoveButton.onUpClicked();
+    //     // }
+    //     }
+    // }
 
 
     /**
@@ -144,11 +185,9 @@ export default class GameScene extends BasicScene {
             // this.questionIndex = 10;
 
         } else {
-
             if (JSON.parse(localStorage.getItem('gameChance'))) {
                 this.questionIndex = errorQuestionIndex;
             }
-
         }
 
         question = JSON.parse(localStorage.getItem(this.questionIndex));
@@ -264,7 +303,7 @@ export default class GameScene extends BasicScene {
         GameManager.getInstance().updateGameQuestionNumberList(this.questionIndex);
 
         GameManager.getInstance().updateGamePlayTotal(() => {
-            this.setDragContainerToOriginPosition();
+
             this.showCorrectAnswer(true);
 
             this.sound.play('popOffEffectSound');
@@ -281,8 +320,7 @@ export default class GameScene extends BasicScene {
                 this.time.addEvent({
                     delay: 2000,
                     callback: () => {
-                        // this.scene.start(GameManager.getInstance().isLastQuestion ? 'Game' : 'End')
-                        GameManager.getInstance().isLastQuestion ?this.scene.get('GameUI').scene.start():this.scene.get('GameUI').scene.start('EndUI')
+                        GameManager.getInstance().isLastQuestion ? this.scene.get('GameUI').scene.start() : this.scene.get('GameUI').scene.start('EndUI')
                     }
                 })
             });
@@ -291,33 +329,25 @@ export default class GameScene extends BasicScene {
         });
     }
 
-    setDragContainerToOriginPosition() {
-        this.dragContainer.x = 0;
-    }
-
-
     showStarAnimation(x, y) {
         let startAnimation = new GameSprite(this, x, y, 'star_idleStateAnimation').setScale(0.4);
         this.dragContainer.add(startAnimation);
     }
 
-    paintGameFailed(position) {
+    paintGameFailed(gameObject) {
         GameManager.getInstance().setGameQuestionError(this.questionIndex, (isFirstError, value) => {
             if (isFirstError) {
-                const errorImage = this.add.image(position.x, position.y - 100, 'errorImage');
-                this.playLayer.add(errorImage);
+
+                gameObject.showErrorStatues();
 
                 const firstErrorEffectSound = this.sound.add('firstErrorEffectSound');
 
                 firstErrorEffectSound.once('complete', () => {
-                    errorImage.destroy();
+
+                    gameObject.hideErrorStatues();
                 })
 
                 firstErrorEffectSound.play();
-
-                // this.playLayer.setVisible(false);
-                // this.uiLayer.setVisible(false);
-                // this.input.setDefaultCursor(`url(), auto`);
 
             } else {
                 this.scene.run('SecondError');
@@ -332,7 +362,6 @@ export default class GameScene extends BasicScene {
                         this.time.addEvent({
                             delay: 1000,
                             callback: () => {
-                                // this.scene.start(value ? 'EndUI' : 'Game');
                                 value ? this.scene.get('GameUI').scene.start('EndUI') : this.scene.start('Game')
 
                             }
@@ -384,10 +413,10 @@ export default class GameScene extends BasicScene {
             })
         }
 
+        this.dragContainer.x = 0; //将dragContainer放置回初始位置
+
         this.dragContainer.addAt(paintToothContainer, 0);
     }
-
-
 
     /**
      * paint all game ui element in this scene
@@ -400,21 +429,25 @@ export default class GameScene extends BasicScene {
         this.buttonControllerLayer = this.add.layer().setDepth(2);
         this.backgroundLayer = this.add.layer().setDepth(0);
 
-        this.crocodileMouthCont = new CrocodileMouthLow(this, 0, this.getRowHeight(6.75))
-        this.crocodileMouthCont.setX(this.getColWidth(4.6))
+        this.crocodileMouthContainer = new CrocodileMouthLow(this, this.getColWidth(4.6), this.getRowHeight(6.75))
+
+        this.data.set("crocodileMouthContainerOriginPosition", {
+            x: this.crocodileMouthContainer.x,
+            y: this.crocodileMouthContainer.y
+        });
 
         let toothsContainer = this.pintTooth(this.question.originalSentence);
 
         this.dragContainer = this.add.container(0, 0, [
             toothsContainer,
-            this.crocodileMouthCont
+            this.crocodileMouthContainer
         ]);
 
         this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question);
 
         this.buildControllerButtons(this.isDisplayDirectionButtonControllers(toothsContainer));
 
-        this.backgroundLayer.add([this.buildBg('bgProgressGame')]);
+        this.backgroundLayer.add([this.background]);
         this.playLayer.add([this.dropContainer, this.dragContainer]);
     }
 

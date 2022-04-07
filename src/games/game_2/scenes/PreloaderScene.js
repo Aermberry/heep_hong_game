@@ -104,7 +104,6 @@ export default class PreloaderScene extends BasicScene {
             'correctSoundEffect': require('../assets/audio/sound_effect/sound_effect_correct.mp3'),
             'loseSoundEffect': require('../assets/audio/sound_effect/sound_effect_lose.mp3'),
             'winSoundEffect': require('../assets/audio/sound_effect/sound_effect_win.mp3'),
-
         }
 
         this.load.spritesheet('startButton', require('../assets/images/button_start_game.png'), { frameWidth: 776, frameHeight: 227 });

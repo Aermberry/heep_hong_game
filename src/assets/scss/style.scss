@@ -165,14 +165,13 @@ header{
 }
 
 main{
-  height: 100%;
   flex-grow: 1;
   position: relative;
   display: flex;
   align-items: center;
-  @media screen and (max-width: 768px){
-    min-height: calc(100% - 50px);
-  }
+  // @media screen and (max-width: 768px){
+  //   min-height: calc(100% - 50px);
+  // }
   >.container{
     height: 100%;
     padding: 1.5rem 0;

@@ -16,6 +16,7 @@ export default class Answers extends Phaser.GameObjects.Container {
         this.answers = [];
         this.completeButtonState = false;
         this.dropZoneArr = [];
+        this.lastDropZone;
         this.remind;
         this.clickStatus = true;
         for (let i = 0; i < answer.length; i++) {
@@ -25,6 +26,43 @@ export default class Answers extends Phaser.GameObjects.Container {
         scene.input.on('drop', function (pointer, gameObject, dropZone) {
             let type = dropZone.x == 416 ? 1 : 2; //根据位置判断主语谓语框；
             if (dropZone.data != null) { //判断答案框是否已经存在答案；
+                if (that.dropZoneArr.length == 2) {
+                    console.log('交换答案')
+                    for (var j = 0; j < that.dropZoneArr.length; j++) {
+                        that.scene.tweens.add({
+                            targets: that.dropZoneArr[j].data,
+                            x: that.dropZoneArr[j].x == 416 ? 814.4 - 11 : 416 - 7,
+                            y: dropZone.y + 100,
+                            duration: 500,
+                            ease: 'Power2'
+                        })
+                        if (gameObject.name == that.dropZoneArr[j].data.name) {
+                            console.log(that.dropZoneArr[j].x);
+                            that.dropZoneArr[j].x = that.dropZoneArr[j].x == 416 ? 814.4 : 416;
+                            console.log(that.dropZoneArr[j].x);
+                        } else {
+                            console.log(that.dropZoneArr[j].x);
+                            that.dropZoneArr[j].x = that.dropZoneArr[j].x == 416 ? 814.4 : 416;
+                            console.log(that.dropZoneArr[j].x);
+                        }
+                    }
+                    console.log(that.selectItems.length)
+                    // return;
+                    if (that.selectItems.length == 2) {
+                        that.selectItems = [];
+                        console.log('答案1')
+                        console.log(that.selectItems)
+                        return;
+                    } else {
+                        for (var e = 0; e < that.answers.length; e++) {
+                            that.selectItems.push(that.answers[e]);
+                            console.log(that.selectItems)
+                        }
+                        console.log('答案2')
+                        console.log(that.selectItems)
+                        return;
+                    }
+                }
                 if (gameObject.name == dropZone.data.name) {
                     console.log('不做任何处理');
                     that.scene.tweens.add({
@@ -34,8 +72,11 @@ export default class Answers extends Phaser.GameObjects.Container {
                         duration: 500,
                         ease: 'Power2'
                     })
+                    return
                 } else {
                     for (var i = 0; i < that.answers.length; i++) {
+                        console.log('答案区插入新的答案')
+
                         //答案区插入新的答案
                         if (that.answers[i].name == gameObject.name) {
                             that.scene.tweens.add({
@@ -68,7 +109,6 @@ export default class Answers extends Phaser.GameObjects.Container {
                                     ease: 'Power2'
                                 });
                             } else {
-                                console.log(i)
                                 that.scene.tweens.add({
                                     targets: that.answers[i],
                                     x: that.x + 400,

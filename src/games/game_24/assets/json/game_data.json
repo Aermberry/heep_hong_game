@@ -29,7 +29,7 @@
                 "seconds":5000,
                 "data": [
                     {
-                        "value": "我和「小美」是好朋友",
+                        "value": "我和小美是好朋友",
                         "type": "full",
                         "result": null
                     }
@@ -73,7 +73,7 @@
                 "seconds":5000,
                 "data": [
                     {
-                        "value": "草莓是「小天」最愛的水果",
+                        "value": "草莓是小天最愛的水果",
                         "type": "full",
                         "result": null
                     }
@@ -234,7 +234,7 @@
                         "result": null
                     },
                     {
-                        "value": "「小英」演唱了一首歌",
+                        "value": "小英演唱了一首歌",
                         "type": "comm",
                         "result": null
                     },
@@ -255,7 +255,7 @@
                         "result": null
                     },
                     {
-                        "value": "我和「小美」一起玩捉迷藏",
+                        "value": "我和小美一起玩捉迷藏",
                         "type": "comm",
                         "result": null
                     },

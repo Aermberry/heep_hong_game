@@ -180,7 +180,9 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.sound.play('Bgm');
+        this.musicStart = this.sound.add('Bgm');
+        this.musicStart.setLoop(true);
+        this.musicStart.play();
         this.stopAll = false;
     }
 
@@ -232,7 +234,7 @@ export default class GameScene extends BasicScene {
         this.backgroundUi = this.add.layer(); //背景；
         this.exitBtn = new ExitBtn(this, 100, 120);
         this.btnCar = new BtnCar(this, this.getColWidth(9.5), this.getRowHeight(10.8), this.completeAnswerAnimation.bind(this));
-        this.speakerBtn = new SpeakerBtn(this,  1820, 120, this.openSpeaker.bind(this));
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
         this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
         if (this.stopAll) {
@@ -241,7 +243,9 @@ export default class GameScene extends BasicScene {
             this.speakerOffBtn.visible = false;
         } else {
             // this.bmg = this.sound.add('Bgm')
-            this.sound.play('Bgm');
+            this.musicStart = this.sound.add('Bgm');
+            this.musicStart.setLoop(true);
+            this.musicStart.play();
             this.speakerBtn.visible = false;
             this.speakerOffBtn.visible = true;
         }

@@ -28,7 +28,7 @@ export default class Question {
         this.container.setDepth(4);
         this.container.setSize(roadImg.width, roadImg.height);
         this.container.setInteractive({
-            useHandCursor: false
+            useHandCursor: true
         })
         this.container.type = item.type;
         this.container.last.type = item.type;
@@ -41,7 +41,7 @@ export default class Question {
             that.container.y = dragY;
             that.container.setDepth(20);
         });
-
+        console.log(this.container.input)
         this.container.on('dragend', function (pointer, dragX, dragY, dropped) {
             that.container.setDepth(4)
             if (!dropped) {
@@ -52,7 +52,6 @@ export default class Question {
             // that.container.x = that.container.input.dragStartX;
             // that.container.y = that.container.input.dragStartY;
         });
-
     }
 
 }

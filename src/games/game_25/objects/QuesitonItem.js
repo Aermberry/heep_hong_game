@@ -17,6 +17,7 @@ export default class QuestionItem extends Phaser.GameObjects.Container {
                 fontSize: '60px',
                 color: '#FFFFFF',
                 fontFamily: "STKaitiTC-Black"
+                
             }
         )
         if (this.answer.type == null) {

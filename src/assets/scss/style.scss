@@ -506,7 +506,6 @@ footer{
 
 .partners{
   display: flex;
-  gap: 16px;
   padding: 30px 0;
   flex-direction: row;
   @media screen and (max-width: 359px){
@@ -514,6 +513,7 @@ footer{
   }
 }
 .partner{
+  margin-right: 24px;
   display: flex;
   align-items: center;
   @media screen and (max-width: 768px){

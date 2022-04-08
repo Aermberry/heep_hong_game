@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper h-100">
+  <div class="wrapper ">
     <Header />
     <ShareBar />
     <main>

@@ -169,9 +169,9 @@ main{
   position: relative;
   display: flex;
   align-items: stretch;
-  // @media screen and (max-width: 768px){
-  //   min-height: calc(100% - 50px);
-  // }
+  //@media screen and (max-width: 768px){
+    min-height: calc(100% - 50px);
+  //}
   >.container{
     padding: 1.5rem 0;
     @media screen and (max-width: 768px){

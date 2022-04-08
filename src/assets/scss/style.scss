@@ -170,7 +170,7 @@ main{
   display: flex;
   align-items: stretch;
   //@media screen and (max-width: 768px){
-    min-height: calc(100% - 50px);
+    min-height: calc(100% - 70px);
   //}
   >.container{
     padding: 1.5rem 0;
@@ -243,8 +243,13 @@ main{
     background-color: white;
     display: flex;
     align-items: center;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     flex-basis: 50%;
+    .inner{
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
     .sub-title{
       color: $color-BitterSweet;
       font-weight: bold;

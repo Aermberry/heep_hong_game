@@ -202,6 +202,7 @@ main{
 }
 
 .landing{
+  min-height: 50vh;
   background-image: url('../images/img_landing.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -312,8 +313,9 @@ footer{
   &-bar{
     position: fixed;
     right: 0;
-    top:35%;
+    top:50%;
     z-index: 10;
+    transform: translateY(-50%);
     button{
       margin-left: auto;
       margin-bottom: 0!important;

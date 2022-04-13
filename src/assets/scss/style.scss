@@ -168,12 +168,11 @@ main{
   flex-grow: 1;
   position: relative;
   display: flex;
-  align-items: center;
-  // @media screen and (max-width: 768px){
-  //   min-height: calc(100% - 50px);
-  // }
+  align-items: stretch;
+  //@media screen and (max-width: 768px){
+  //min-height: calc(100% - 70px);
+  //}
   >.container{
-    height: 100%;
     padding: 1.5rem 0;
     @media screen and (max-width: 768px){
       padding: 0;
@@ -210,9 +209,11 @@ main{
   display: flex;
   @media screen and (max-width: 768px){
     background-position: center bottom;
+    background-image: url('../images/img_landing_768.png');
   }
   img{
-    width: 80%;
+    height: 80%;
+    max-width: 80%;
     align-self: center;
     margin: auto;
   }
@@ -242,8 +243,13 @@ main{
     background-color: white;
     display: flex;
     align-items: center;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     flex-basis: 50%;
+    .inner{
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
     .sub-title{
       color: $color-BitterSweet;
       font-weight: bold;
@@ -311,8 +317,9 @@ footer{
   &-bar{
     position: fixed;
     right: 0;
-    top:35%;
+    top:50%;
     z-index: 10;
+    transform: translateY(-50%);
     button{
       margin-left: auto;
       margin-bottom: 0!important;
@@ -499,7 +506,6 @@ footer{
 
 .partners{
   display: flex;
-  gap: 16px;
   padding: 30px 0;
   flex-direction: row;
   @media screen and (max-width: 359px){
@@ -507,6 +513,7 @@ footer{
   }
 }
 .partner{
+  margin-right: 24px;
   display: flex;
   align-items: center;
   @media screen and (max-width: 768px){
@@ -545,6 +552,12 @@ footer{
         display: block;
       }
     }
+    &-main{
+      background-image: url('../images/img_world_notext.png');
+      @media screen and (max-width: 768px){
+        background-image: url('../images/img_world_notext_768.png');
+      }
+    }
     &-card{
       position: relative;
       display: flex;
@@ -577,11 +590,10 @@ footer{
         display: flex;
         @media screen and (min-width: 769px){
           width: 50%;
+          padding: 5%;
         }
         img{
-          max-width: 80%;
-          max-height: 80%;
-          height: auto;
+          width: 100%;
           align-self: center;
           margin: auto;
           transform: translatey(0px);

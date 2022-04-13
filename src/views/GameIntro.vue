@@ -6,7 +6,7 @@
       <div class="container">
         <!-- <div class="content-space"></div> -->
         <div class="content-wrapper game-intro">
-          <div class="game-intro-main" :style="{backgroundImage:'url(' + require('@/assets/images/img_world_notext.png') + ')'}">
+          <div class="game-intro-main">
             <!-- <img src="@/assets/images/img_world_notext.png" alt=""> -->
             <img class="logo" src="@/assets/images/img_title.svg" alt="">
             <router-link to="/world" class="link-entry" target="_blank" ><span class="inner">進入遊戲</span></router-link>

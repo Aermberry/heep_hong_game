@@ -22,7 +22,6 @@ export default class LoadProgress extends Phaser.GameObjects.Container {
 
 
     init(scene, onCompletedCallback) {
-
         const main = scene.cameras.main
 
         /* 进度条的底部背景 */
@@ -62,6 +61,7 @@ export default class LoadProgress extends Phaser.GameObjects.Container {
         );
 
         scene.load.on('complete', (loader, totalComplete, totalFailed) => {
+            console.log('执行加载进度条')
             this.onLoadComplete(loader, totalComplete, totalFailed, scene, onCompletedCallback);
         });
     }

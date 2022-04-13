@@ -271,11 +271,6 @@ export default class GameScene extends BasicScene {
             'event_label': 'Game Start'
         });
 
-        // this.sound.stopAll();
-
-        // console.log({ "eachQuestionChance": GameModel.eachQuestionChance })
-        // console.log({ "currentQuestionErrorCount": GameModel.currentQuestionErrorCount })
-
         this.createAnimation(this.anims);
         const question = this.generateQuestion();
         this.setGameDirection(question.direction);

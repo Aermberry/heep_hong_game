@@ -6,6 +6,7 @@ import RightMoveButton from '../objects/RightMoveButton'
 import QuestionItem from "../objects/QuesitonItem"
 import SpeakerBtn from '../objects/SpeakerBtn'
 import SpeakerBtnOff from '../objects/SpeakerBtnOff'
+import config from '../config/index';
 export default class GameScene extends BasicScene {
 
     constructor() {
@@ -41,7 +42,84 @@ export default class GameScene extends BasicScene {
     }
 
     preload() {
+        this.buildBg('loading');
+        const imageFiles = {
+            'car1': require('../assets/img/car1.png'),
+            'car2': require('../assets/img/car2.png'),
+            'bg_low': require('../assets/img/bg_low2.png'),
+            'bg_low_long': require('../assets/img/bg_low_long2.png'),
+            'award_platform': require('../assets/img/123box.png'),
+            'bg_up': require('../assets/img/bg_up1.png'),
+            'bg_up_clo': require('../assets/img/bg_up_clo.png'),
+        };
 
+        const atlasFiles = {
+            'bear': { img: require('../assets/img/bear.png'), data: require('../assets/img/bear.json') },
+            'cl1': { img: require('../assets/img/bg_up_cl1.png'), data: require('../assets/img/bg_up_cl1.json') },
+            'cl2': { img: require('../assets/img/bg_up_cl2.png'), data: require('../assets/img/bg_up_cl2.json') },
+            'fat': { img: require('../assets/img/fat.png'), data: require('../assets/img/fat.json') },
+            'leo': { img: require('../assets/img/leo.png'), data: require('../assets/img/leo.json') },
+            'pen': { img: require('../assets/img/pen.png'), data: require('../assets/img/pen.json') },
+            'pink_car': { img: require('../assets/img/pink_car crush.png'), data: require('../assets/img/pink_car crush.json') },
+
+        }
+
+        const soundFiles = {
+            'Bgm': require('../assets/audio/Bgm.mp3'),
+            'effect_select_teeth': require('../assets/audio/effect_select_teeth.mp3'),
+            'End_pic': require('../assets/audio/End_pic.mp3'),
+            'win': require('../assets/audio/win.mp3'),
+            'wrong': require('../assets/audio/wrong.mp3'),
+            'yes': require('../assets/audio/yes.mp3'),
+            '101': require('../assets/audio/Game24.25_101.mp3'),
+            '102': require('../assets/audio/Game24.25_102.mp3'),
+            '103': require('../assets/audio/Game24.25_103.mp3'),
+            '104': require('../assets/audio/Game24.25_104.mp3'),
+            '105': require('../assets/audio/Game24.25_105.mp3'),
+            '106': require('../assets/audio/Game24.25_106_B.mp3'),
+            '107': require('../assets/audio/Game24.25_107.mp3'),
+            '108': require('../assets/audio/Game24.25_108.mp3'),
+            '109': require('../assets/audio/Game24.25_109_A.mp3'),
+            '110': require('../assets/audio/Game24.25_110.mp3'),
+            '111': require('../assets/audio/Game24.25_111.mp3'),
+            '112': require('../assets/audio/Game24.25_112.mp3'),
+            '113': require('../assets/audio/Game24.25_113.mp3'),
+            '114': require('../assets/audio/Game24.25_114_A.mp3'),
+            '115': require('../assets/audio/Game24.25_115.mp3'),
+            '116': require('../assets/audio/Game24.25_116.mp3'),
+            '117': require('../assets/audio/Game24.25_117.mp3'),
+            '118': require('../assets/audio/Game24.25_118_new.mp3'),
+            '119': require('../assets/audio/Game24.25_119.mp3'),
+            '120': require('../assets/audio/Game24.25_120.mp3'),
+
+        }
+        this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
+        let self = this;
+        self.progressBar = self.add.graphics();
+        self.loadingText = self.make.text({
+            x: config.width / 2,
+            y: config.height * 0.89,
+            text: '連接中',
+            style: {
+                font: '25px monospace',
+                fill: '#fff'
+            }
+        });
+        self.loadingText.setOrigin(0.5, 0.5);
+    
+        self.load.on('progress', function (value) {
+          self.progressBar.clear();
+          self.progressBar.fillStyle(0xFC8EFA, 1);
+          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+        });
+    
+        self.load.on('complete', function () {
+          self.loadingText.setText('連接完成');
+        }.bind(self));
+    }
+
+    create() {
+        super.create();
         this.anims.create({
             key: 'pink_car_run',
             delay: 200,
@@ -154,10 +232,6 @@ export default class GameScene extends BasicScene {
             repeat: 0,
             // duration: 5000
         });
-    }
-
-    create() {
-        super.create();
         let gameStage = this.dataModal.gameStage
         this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
         this.bg_up_cl1 = this.add.sprite(this.getColWidth(5), this.getRowHeight(1), 'cl1');
@@ -175,6 +249,20 @@ export default class GameScene extends BasicScene {
         this.bg_up = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'bg_up');
         // this.bg_up.play('bg_up');
         this.paintGameScene();
+        if (this.stopAll) {
+            this.sound.stopAll();
+            this.speakerBtn.visible = true;
+            this.speakerOffBtn.visible = false;
+        } else {
+            // this.bmg = this.sound.add('Bgm')
+            console.log('音乐播放')
+            this.musicStart = this.sound.add('Bgm');
+            this.musicStart.setLoop(true);
+            this.musicStart.play();
+            this.speakerBtn.visible = false;
+            this.speakerOffBtn.visible = true;
+            return;
+        }
     }
 
     openSpeaker() {
@@ -237,18 +325,6 @@ export default class GameScene extends BasicScene {
         this.speakerBtn = new SpeakerBtn(this, 1820, 120, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
         this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
-        if (this.stopAll) {
-            this.sound.stopAll();
-            this.speakerBtn.visible = true;
-            this.speakerOffBtn.visible = false;
-        } else {
-            // this.bmg = this.sound.add('Bgm')
-            this.musicStart = this.sound.add('Bgm');
-            this.musicStart.setLoop(true);
-            this.musicStart.play();
-            this.speakerBtn.visible = false;
-            this.speakerOffBtn.visible = true;
-        }
         this.backgroundUi.add([this.exitBtn, this.btnCar, this.speakerBtn, this.speakerOffBtn]);
     }
 

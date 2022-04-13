@@ -12,8 +12,9 @@ export default class RetryBtn extends BasicBtn {
     }
 
     onClick(){
-        this.scene.scene.start('Tutor');
+        console.log("retry")
         this.scene.sound.stopAll();
+        this.scene.scene.start('Tutor');
     }
 
 }

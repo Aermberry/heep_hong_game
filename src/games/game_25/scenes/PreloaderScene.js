@@ -46,9 +46,9 @@ export default class PreloaderScene extends BasicScene {
         self.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }
 
-    ready() {
-        let self = this
-        self.scene.start('Tutor');
-    }
+    // ready() {
+    //     let self = this
+    //     self.scene.start('Tutor');
+    // }
 
 }

@@ -1,6 +1,5 @@
-import BasicBtn from './BasicBtn'
-
-export default class GoBtn extends BasicBtn {
+import GoBtnParent  from "./GoBtnParent";
+export default class GoBtn extends GoBtnParent {
 
     constructor(scene, x, y) {
         super(scene, x, y)
@@ -27,3 +26,4 @@ export default class GoBtn extends BasicBtn {
         }
     }
 }
+

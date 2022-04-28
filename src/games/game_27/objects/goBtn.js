@@ -22,6 +22,7 @@ export default class GoBtn extends GoBtnParent {
 
     onClick() {        
         if(this.flag) {
+            this.flag = false;
             this.scene.question.onGoButtonClcik();
         }
     }

@@ -55,46 +55,54 @@ export default class GameScene extends BasicScene {
 
         this.cursorHandIcon = require('../assets/images/cursor_hand.png');
 
-        const crocodileColors = {
-            'brn': {
-                'croco_low_1': require('../assets/images/croco/a_brn_low_long1.png'),
-                'croco_low_2': require('../assets/images/croco/a_brn_low_long2.png'),
-                'croco_low_3': require('../assets/images/croco/a_brn_low_long3.png'),
-                'croco_low_4': require('../assets/images/croco/a_brn_low_long4.png'),
-            },
-            'grn': {
-                'croco_low_1': require('../assets/images/croco/a_grn_low_long1.png'),
-                'croco_low_2': require('../assets/images/croco/a_grn_low_long2.png'),
-                'croco_low_3': require('../assets/images/croco/a_grn_low_long3.png'),
-                'croco_low_4': require('../assets/images/croco/a_grn_low_long4.png'),
-            },
-            'gry': {
-                'croco_low_1': require('../assets/images/croco/a_gry_low_long1.png'),
-                'croco_low_2': require('../assets/images/croco/a_gry_low_long2.png'),
-                'croco_low_3': require('../assets/images/croco/a_gry_low_long3.png'),
-                'croco_low_4': require('../assets/images/croco/a_gry_low_long4.png'),
-            },
-            'org': {
-                'croco_low_1': require('../assets/images/croco/a_org_low_long1.png'),
-                'croco_low_2': require('../assets/images/croco/a_org_low_long2.png'),
-                'croco_low_3': require('../assets/images/croco/a_org_low_long3.png'),
-                'croco_low_4': require('../assets/images/croco/a_org_low_long4.png'),
-            },
-            'pur': {
-                'croco_low_1': require('../assets/images/croco/a_pur_low_long1.png'),
-                'croco_low_2': require('../assets/images/croco/a_pur_low_long2.png'),
-                'croco_low_3': require('../assets/images/croco/a_pur_low_long3.png'),
-                'croco_low_4': require('../assets/images/croco/a_pur_low_long4.png'),
-            }
-        }
+        // const crocodileColors = {
+        //     'brn': {
+        //         'croco_low_1': require('../assets/images/croco/a_brn_low_long1.png'),
+        //         'croco_low_2': require('../assets/images/croco/a_brn_low_long2.png'),
+        //         'croco_low_3': require('../assets/images/croco/a_brn_low_long3.png'),
+        //         'croco_low_4': require('../assets/images/croco/a_brn_low_long4.png'),
+        //     },
+        //     'grn': {
+        //         'croco_low_1': require('../assets/images/croco/a_grn_low_long1.png'),
+        //         'croco_low_2': require('../assets/images/croco/a_grn_low_long2.png'),
+        //         'croco_low_3': require('../assets/images/croco/a_grn_low_long3.png'),
+        //         'croco_low_4': require('../assets/images/croco/a_grn_low_long4.png'),
+        //     },
+        //     'gry': {
+        //         'croco_low_1': require('../assets/images/croco/a_gry_low_long1.png'),
+        //         'croco_low_2': require('../assets/images/croco/a_gry_low_long2.png'),
+        //         'croco_low_3': require('../assets/images/croco/a_gry_low_long3.png'),
+        //         'croco_low_4': require('../assets/images/croco/a_gry_low_long4.png'),
+        //     },
+        //     'org': {
+        //         'croco_low_1': require('../assets/images/croco/a_org_low_long1.png'),
+        //         'croco_low_2': require('../assets/images/croco/a_org_low_long2.png'),
+        //         'croco_low_3': require('../assets/images/croco/a_org_low_long3.png'),
+        //         'croco_low_4': require('../assets/images/croco/a_org_low_long4.png'),
+        //     },
+        //     'pur': {
+        //         'croco_low_1': require('../assets/images/croco/a_pur_low_long1.png'),
+        //         'croco_low_2': require('../assets/images/croco/a_pur_low_long2.png'),
+        //         'croco_low_3': require('../assets/images/croco/a_pur_low_long3.png'),
+        //         'croco_low_4': require('../assets/images/croco/a_pur_low_long4.png'),
+        //     }
+        // }
 
         const colors = [
             'brn', 'grn', 'gry', 'org', 'pur'
         ];
 
         const crocoColorName = colors[Math.round(Math.random() * 4)]
+        const crocodileColor = {
+            'croco_low_1': require(`../assets/images/croco/a_${crocoColorName}_low_long1.png`),
+            'croco_low_2': require(`../assets/images/croco/a_${crocoColorName}_low_long2.png`),
+            'croco_low_3': require(`../assets/images/croco/a_${crocoColorName}_low_long3.png`),
+            'croco_low_4': require(`../assets/images/croco/a_${crocoColorName}_low_long4.png`),
 
-        const currentCrocodileColor = crocodileColors[crocoColorName]
+        };
+
+        // const currentCrocodileColor = crocodileColors[crocoColorName]
+        const currentCrocodileColor = crocodileColor;
 
         const imageFiles = {
             'crocoBed': require('../assets/images/croco/bed.png')
@@ -156,7 +164,7 @@ export default class GameScene extends BasicScene {
     //     if (this.cursors.left.isDown) {
     //         this.leftMoveButton.onDownClicked();
     //     }
-            
+
     //     // else {
     //     //     this.leftMoveButton.onUpClicked();
     //     // }
@@ -164,7 +172,7 @@ export default class GameScene extends BasicScene {
     //     if (this.cursors.right.isDown) {
     //         this.rightMoveButton.onDownClicked();
     //     }
-            
+
     //     // else {
     //     //     this.rightMoveButton.onUpClicked();
     //     // }

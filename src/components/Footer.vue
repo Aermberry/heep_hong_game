@@ -40,5 +40,6 @@ export default {
 <style scoped>
 .logo {
   max-height: 2.5rem;
+  width: 100%;
 }
 </style>

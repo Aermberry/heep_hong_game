@@ -34,6 +34,7 @@ export default class Section1Scene extends BasicScene {
             game1Bg: require('../assets/images/section_1/game_bg.png'),
             // s1Hint1: require('../assets/images/section_1/target_1.png'),
             // s1Hint2: require('../assets/images/section_1/target_2.png'),
+            s1Logo: require('../assets/images/section_1/Game_space.png'),
             g1Hint: require('../assets/images/section_1/Game_target_Z-01.png'),
             g2Hint: require('../assets/images/section_1/Game_target_Z-02.png'),
             g3Hint: require('../assets/images/section_1/Game_target_Z-03.png'),
@@ -165,6 +166,8 @@ export default class Section1Scene extends BasicScene {
 
         let animate3 = this.add.sprite(this.getColWidth(4), this.getRowHeight(9), 'star')
         animate3.play('star')
+
+        this.add.image(this.getColWidth(3.3), this.getRowHeight(1.5), 's1Logo')
 
         this.add.existing(hintBtnA)
         this.add.existing(hintBtnB)

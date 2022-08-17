@@ -94,7 +94,9 @@ export default class GameScene extends BasicScene {
 
         const crocoColorName = colors[Math.round(Math.random() * 4)]
 
+
         const currentCrocodileColor = crocodileColors[crocoColorName]
+
 
         const imageFiles = {
             'crocoBed': require('../assets/images/croco/bed.png')
@@ -156,7 +158,7 @@ export default class GameScene extends BasicScene {
     //     if (this.cursors.left.isDown) {
     //         this.leftMoveButton.onDownClicked();
     //     }
-            
+
     //     // else {
     //     //     this.leftMoveButton.onUpClicked();
     //     // }
@@ -164,7 +166,7 @@ export default class GameScene extends BasicScene {
     //     if (this.cursors.right.isDown) {
     //         this.rightMoveButton.onDownClicked();
     //     }
-            
+
     //     // else {
     //     //     this.rightMoveButton.onUpClicked();
     //     // }
@@ -182,7 +184,7 @@ export default class GameScene extends BasicScene {
 
         if (errorQuestionIndex == null) {
             this.questionIndex = GameManager.getInstance().generateGameQuestionIndex();
-            this.questionIndex = 9;
+            // this.questionIndex = 10;
 
         } else {
             if (JSON.parse(localStorage.getItem('gameChance'))) {
@@ -307,11 +309,16 @@ export default class GameScene extends BasicScene {
             this.showCorrectAnswer(true);
 
             this.sound.play('popOffEffectSound');
+            const childClapEffectSound = this.sound.add('childClapEffectSound');
 
             this.time.addEvent({
                 delay: 500,
-                callback: () => this.sound.play('childClapEffectSound')
+                callback: () => childClapEffectSound.play()
             })
+
+            childClapEffectSound.on('complete', () => {
+                currentAnswerVoice.play();
+            });
 
             let currentAnswerVoice = this.sound.add('voiceAnswer' + this.questionIndex);
 
@@ -324,8 +331,6 @@ export default class GameScene extends BasicScene {
                     }
                 })
             });
-
-            currentAnswerVoice.play();
         });
     }
 
@@ -453,7 +458,7 @@ export default class GameScene extends BasicScene {
 
     buildControllerButtons(isBuild) {
         if (isBuild) {
-            this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep, );
+            this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
             this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
             this.buttonControllerLayer.add([this.rightMoveButton, this.leftMoveButton])
         }

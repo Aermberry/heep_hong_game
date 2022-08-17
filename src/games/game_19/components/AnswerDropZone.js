@@ -16,7 +16,7 @@ export default class AnswerDropZone extends Phaser.GameObjects.Container {
 
     init(scene, question) {
 
-        this.stageSlaverSprite = scene.add.image(0, 0, 'stageSalver').setScale(0.6);
+        this.stageSlaverSprite = scene.add.image(0, 0, 'stageSalver');
 
         let dropZone = scene.add.zone(0, 0, this.stageSlaverSprite.displayWidth + 100, this.stageSlaverSprite.displayHeight + 100)
             .setRectangleDropZone(this.stageSlaverSprite.displayWidth, this.stageSlaverSprite.displayHeight);

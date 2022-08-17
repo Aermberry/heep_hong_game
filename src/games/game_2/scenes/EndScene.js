@@ -30,7 +30,7 @@ export default class EndScene extends BasicScene {
     playBackgroundMusic(sound){
         
         const backgroundMusic = this.sound.add(sound, {
-            volume: 0.8,
+            volume: 0.2,
             loop: true
         });
         

@@ -14,7 +14,7 @@ export default class UIScene extends Phaser.Scene {
         this.uiLayer = this.add.layer().setDepth(0);
 
         const backgroundMusic = this.sound.add('gamePlaySceneBackgroundMusic', {
-            volume: 0.2,
+            volume: 2,
             loop: true
         });
 

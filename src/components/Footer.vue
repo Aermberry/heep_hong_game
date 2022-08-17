@@ -19,9 +19,8 @@
         </div>
 
         <ul class="navbar-nav">
-            <li class="nav-item"><router-link to="/sitemap">網頁指南</router-link></li>
-            <li class="nav-item"><router-link to="/privacy-policy">私隱政策</router-link></li>
-            <li class="nav-item"><router-link to="/important-notices">重要告示</router-link></li>
+            <li class="nav-item"><a href="https://jc-ireadilearn.heephong.org/privacy-policy">私隱政策</a></li>
+            <li class="nav-item"><a href="https://jc-ireadilearn.heephong.org/important-notices">重要告示</a></li>
             <li class="nav-item">©{{currentYear}} 協康會，版權所有</li>
         </ul>
 
@@ -41,5 +40,6 @@ export default {
 <style scoped>
 .logo {
   max-height: 2.5rem;
+  width: 100%;
 }
 </style>

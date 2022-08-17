@@ -93,8 +93,10 @@ export default class GameScene extends BasicScene {
         ];
 
         const crocoColorName = colors[Math.round(Math.random() * 4)]
+        
 
         const currentCrocodileColor = crocodileColors[crocoColorName]
+        
 
         const imageFiles = {
             'crocoBed': require('../assets/images/croco/bed.png')
@@ -156,7 +158,7 @@ export default class GameScene extends BasicScene {
     //     if (this.cursors.left.isDown) {
     //         this.leftMoveButton.onDownClicked();
     //     }
-            
+
     //     // else {
     //     //     this.leftMoveButton.onUpClicked();
     //     // }
@@ -164,7 +166,7 @@ export default class GameScene extends BasicScene {
     //     if (this.cursors.right.isDown) {
     //         this.rightMoveButton.onDownClicked();
     //     }
-            
+
     //     // else {
     //     //     this.rightMoveButton.onUpClicked();
     //     // }

@@ -21,12 +21,16 @@ export default {
 </script>
 <style scoped>
 .logo {
-  max-height: 3rem;
+  height: 70px;
 }
 .links {
   margin-right: 0;
 }
 .game{
   margin-right: 0;
+}
+nav{
+  padding-top: 0.9375em;
+  padding-bottom: 0.9375em;
 }
 </style>

@@ -89,12 +89,12 @@ export default class GameScene extends BasicScene {
 
     create() {
         super.create();
-
+        this.musicStart = this.sound.add('Bgm',{volume:0.3});
         let gameStage = this.dataModal.gameStage
         this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
 
         this.buildBg('bg')
-        this.exitBtn = new ExitBtn(this,  100, 120);
+        this.exitBtn = new ExitBtn(this, 100, 120);
         this.speakerBtn = new SpeakerBtn(this, 1820, 120, this.openSpeaker.bind(this));
         // this.speakerBtn.visible = false;
         this.speakerOffBtn = new SpeakerBtnOff(this, 1820, 120, this.offSpeaker.bind(this));
@@ -115,17 +115,16 @@ export default class GameScene extends BasicScene {
         this.add.existing(this.done)
 
         if (this.stopAll) {
-            this.sound.stopAll();
+            this.musicStart.stop();
             this.speakerBtn.visible = true;
             this.speakerOffBtn.visible = false;
         } else {
-            this.musicStart = this.sound.add('Bgm');
             this.musicStart.setLoop(true);
             this.musicStart.play();
             this.speakerBtn.visible = false;
             this.speakerOffBtn.visible = true;
         }
-        let build = this.sound.add('build')
+        let build = this.sound.add('build',{volume:0.3})
         build.play();
     }
 
@@ -133,7 +132,8 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.sound.play('Bgm');
+        this.musicStart.setLoop(true);
+        this.musicStart.play();
         this.stopAll = false;
     }
 
@@ -141,7 +141,7 @@ export default class GameScene extends BasicScene {
         this.speakerBtn.visible = true;
         this.speakerOffBtn.visible = false;
         this.stopAll = true;
-        this.sound.stopAll();
+        this.musicStart.stop();
     }
 
     completeGame() {
@@ -152,8 +152,6 @@ export default class GameScene extends BasicScene {
         if (state) {
             let houseNameList = ['house_a', 'house_b'];
             let houseName = houseNameList[Math.floor((Math.random() * houseNameList.length))];
-            this.sound.play(this.currentQuestionGroup[this.currentIndex].audio);
-            this.currentIndex++;
             let house = this.add.sprite(houseName == 'house_a' ? this.getColWidth(3.8) : this.getColWidth(4), this.getRowHeight(3.7), houseName);
             let yes = this.add.sprite(this.getColWidth(3.8), this.getRowHeight(3.7), 'yes');
             yes.setDisplaySize(900, 400);
@@ -163,6 +161,8 @@ export default class GameScene extends BasicScene {
             house.setDisplaySize(900, 800)
             yes.play('yes');
             house.play(houseName).on('animationcomplete', () => {
+                this.sound.play(this.currentQuestionGroup[this.currentIndex].audio);
+                this.currentIndex++;
                 setTimeout(
                     () => {
                         if (this.currentIndex == this.currentQuestionGroup.length) {

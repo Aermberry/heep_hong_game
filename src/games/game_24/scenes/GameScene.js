@@ -233,6 +233,7 @@ export default class GameScene extends BasicScene {
             // duration: 5000
         });
         let gameStage = this.dataModal.gameStage
+        this.musicStart = this.sound.add('Bgm',{volume:0.4});
         this.sys.game.globals.gtag.event(`game_${gameStage}_start`, { 'event_category': 'js_games', 'event_label': 'Game Start' })
         this.bg_up_cl1 = this.add.sprite(this.getColWidth(5), this.getRowHeight(1), 'cl1');
         this.bg_up_cl1.play('cl1');
@@ -250,13 +251,12 @@ export default class GameScene extends BasicScene {
         // this.bg_up.play('bg_up');
         this.paintGameScene();
         if (this.stopAll) {
-            this.sound.stopAll();
+            this.musicStart.stop();
             this.speakerBtn.visible = true;
             this.speakerOffBtn.visible = false;
         } else {
             // this.bmg = this.sound.add('Bgm')
             console.log('音乐播放')
-            this.musicStart = this.sound.add('Bgm');
             this.musicStart.setLoop(true);
             this.musicStart.play();
             this.speakerBtn.visible = false;
@@ -268,7 +268,6 @@ export default class GameScene extends BasicScene {
     openSpeaker() {
         this.speakerBtn.visible = false;
         this.speakerOffBtn.visible = true;
-        this.musicStart = this.sound.add('Bgm');
         this.musicStart.setLoop(true);
         this.musicStart.play();
         this.stopAll = false;
@@ -278,7 +277,7 @@ export default class GameScene extends BasicScene {
         this.speakerBtn.visible = true;
         this.speakerOffBtn.visible = false;
         this.stopAll = true;
-        this.sound.stopAll();
+        this.musicStart.stop();
     }
 
     //绘制游戏页面
@@ -435,29 +434,31 @@ export default class GameScene extends BasicScene {
                     })
                 });
             } else {
-                this.sound.play('win');
-                this.sound.play(this.currentQuestionGroup[this.currentIndex].audio);
-                setTimeout(
-                    () => {
-                        this.currentQuestionGroup[this.currentIndex].data.forEach(element => {
-                            if (element.type != null) {
-                                element.result = null;
+                let win = this.sound.add('win', { volume: 1 })
+                win.once('complete', () => {
+                    this.sound.play(this.currentQuestionGroup[this.currentIndex].audio);
+                    setTimeout(
+                        () => {
+                            this.currentQuestionGroup[this.currentIndex].data.forEach(element => {
+                                if (element.type != null) {
+                                    element.result = null;
+                                }
+                            })
+                            this.isBtn = true;
+                            this.currentIndex++;
+                            if (this.currentIndex == this.currentQuestionGroup.length) {
+                                console.log('已经答完5道题');
+                                this.sound.stopAll();
+                                this.scene.start('End');
+                                return;
+                            } else {
+                                this.sound.stopAll();
+                                this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
                             }
-                        })
-                        this.isBtn = true;
-                        this.currentIndex++;
-                        if (this.currentIndex == this.currentQuestionGroup.length) {
-                            console.log('已经答完5道题');
-                            this.sound.stopAll();
-                            this.scene.start('End');
-                            return;
-                        } else {
-                            this.sound.stopAll();
-                            this.scene.start('Game', { number: this.currentIndex, currentQuestionGroup: this.currentQuestionGroup, stopAll: this.stopAll });
-                        }
 
-                    }, this.currentQuestionGroup[this.currentIndex].seconds
-                )
+                        }, this.currentQuestionGroup[this.currentIndex].seconds
+                    )
+                }).play()
 
             }
         });

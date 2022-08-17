@@ -289,7 +289,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.25
             })
             this.music.setLoop(true)
             this.music.play();
@@ -338,22 +338,32 @@ export default class GameScene extends BasicScene {
 
     winnerCallBack(flag) {
         this.music.pause();
-        let music = this.sound.add('run')
+        // let music = this.sound.add('run')
         let run = this.sound.add(flag ? 'run' : 'erro_run');
         run.play();
         let text = this.sound.add(this.index);
-        if (flag) {
-            let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
-            correct.play('correct_answer');
-            let child = this.sound.add('child_clap')
-            child.play();
-        }
-        music.addMarker({
-            name: 'run1',
-            start: 2,
-            duration: 5
-        });
-        music.play('run1')
+
+        // run.on('complete', () => {
+        //     if (flag) {
+        //         let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
+        //         correct.play('correct_answer');
+        //         let child = this.sound.add('child_clap')
+        //         child.play();
+        //         child.on('complete', () => {
+        //             text.play();
+        //         })
+        //     } else {
+        //         text.play();
+        //     }
+        // })
+
+        // music.addMarker({
+        //     name: 'run1',
+        //     start: 2,
+        //     duration: 5
+        // });
+        // music.play('run1')
+
         text.on('complete', () => {
             this.endGame();
         })
@@ -391,7 +401,17 @@ export default class GameScene extends BasicScene {
                             ease: 'Power2'
                         }).on('complete', () => {
                             run.stop();
-                            text.play();
+                            if (flag) {
+                                let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
+                                correct.play('correct_answer');
+                                let child = this.sound.add('child_clap')
+                                child.play();
+                                child.on('complete', () => {
+                                    text.play();
+                                })
+                            } else {
+                                text.play();
+                            }
                         })
                     })
                 })
@@ -416,7 +436,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.25
             });
             this.music.setLoop(true);
             this.music.play();

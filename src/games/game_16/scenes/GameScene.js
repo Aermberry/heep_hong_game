@@ -265,15 +265,15 @@ export default class GameScene extends BasicScene {
             }
         });
         self.loadingText.setOrigin(0.5, 0.5);
-    
+
         self.load.on('progress', function (value) {
-          self.progressBar.clear();
-          self.progressBar.fillStyle(0xFC8EFA, 1);
-          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+            self.progressBar.clear();
+            self.progressBar.fillStyle(0xFC8EFA, 1);
+            self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
         });
-    
+
         self.load.on('complete', function () {
-          self.loadingText.setText('連接完成');
+            self.loadingText.setText('連接完成');
         }.bind(self));
     }
 
@@ -288,7 +288,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.5
             })
             this.music.setLoop(true)
             this.music.play();
@@ -341,26 +341,31 @@ export default class GameScene extends BasicScene {
         let run = this.sound.add(flag ? 'run' : 'erro_run');
         run.play();
         let text = this.sound.add(this.index);
-        if (flag) {
-            let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
-            correct.play('correct_answer');
-            let child = this.sound.add('child_clap')
-            child.play();
-        }
+        run.on('complete', () => {
+            if (flag) {
+                let correct = this.add.sprite(this.getColWidth(6), this.getRowHeight(4), 'correct_answer').setDepth(1000);
+                correct.play('correct_answer');
+                let child = this.sound.add('child_clap')
+                child.play();
+                child.on('complete', () => {
+                    text.play();
+                })
+            } else {
+                text.play();
+            }
+        })
+
         text.on('complete', () => {
             this.endGame();
         })
         this.car.play(`car_${this.currentCar}_run`).startFollow({
-            duration: 3000,
+            duration: 5000,
             yoyo: false,
             repeat: 0,
             rotateToPath: true,
             verticalAdjust: true
         })
 
-        setTimeout(() => {
-            text.play();
-        }, 3000);
     }
 
     endGame() {
@@ -380,7 +385,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.5
             });
             this.music.setLoop(true);
             this.music.play();

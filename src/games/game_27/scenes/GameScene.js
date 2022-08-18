@@ -87,9 +87,9 @@ export default class GameScene extends BasicScene {
 
         this.gameNum = this.sys.game.globals.model.game;
         //目前只有20題，如有更改再改變該方法
-        let i =0;
-        while(i<20) {
-            soundFiles[i] =  require(`../assets/audio/item/Game27.28_${this.gameNum == 27 ? '1': '2'}${i < 9 ? '0' + (i + 1) : i+1 }.mp3`);
+        let i = 0;
+        while (i < 20) {
+            soundFiles[i] = require(`../assets/audio/item/Game27.28_${this.gameNum == 27 ? '1' : '2'}${i < 9 ? '0' + (i + 1) : i + 1}.mp3`);
             i++;
         }
 
@@ -112,15 +112,15 @@ export default class GameScene extends BasicScene {
             }
         });
         self.loadingText.setOrigin(0.5, 0.5);
-    
+
         self.load.on('progress', function (value) {
-          self.progressBar.clear();
-          self.progressBar.fillStyle(0xFC8EFA, 1);
-          self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
+            self.progressBar.clear();
+            self.progressBar.fillStyle(0xFC8EFA, 1);
+            self.progressBar.fillRect(config.width * 0.118, config.height * 0.92, (config.width * 0.778) * value, 10);
         });
-    
+
         self.load.on('complete', function () {
-          self.loadingText.setText('連接完成');
+            self.loadingText.setText('連接完成');
         }.bind(self));
     }
 
@@ -134,22 +134,12 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.25
             })
             this.music.setLoop(true)
             this.music.play();
         }
         this.buildBg('bg_L1');
-        // this.sound.stopAll();
-        // if (this.stopAll) {
-        //     this.sound.stopAll();
-        // } else {
-        //     this.music = this.sound.add('bgm', {
-        //         volume: 0.1
-        //     })
-        //     this.music.setLoop(true)
-        //     this.music.play();
-        // }
         this.trackZone = new TrackZone(this, 0, this.getRowHeight(6));
         this.question = new Question(this);
         let exitBtn = new ExitBtn(this, 100, 120);
@@ -172,7 +162,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 1
+                volume: 0.25
             });
             this.music.setLoop(true);
             this.music.play();

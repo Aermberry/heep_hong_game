@@ -39,7 +39,7 @@ export default class Question {
         });
         // let dropZone = 
         new DropZone(scene, 400, 40);
-        scene.subjectItem = new SubjectItem(scene, 0, 450, [])
+        scene.subjectItem = new SubjectItem(scene, 300, 450, [])
         // 渲染题目
         subject.forEach((v, i) => {
             scene.subjectItem.add(new Car(scene, scene.subjectItem.length < 1 ? 0 : scene.subjectItem.list[i - 1].x + scene.subjectItem.list[i - 1].width + 20, 450, v));
@@ -89,7 +89,7 @@ export default class Question {
         //獲取當前句子音頻索引
         let correctAudio = this.scene.sound.add(this.index);
         correctAudio.play();
-        correctAudio.on('complete', () => {  
+        correctAudio.on('complete', () => {
             this.scene.subjectItem.x = 0;
             this.scene.ltBtn.destroy();
             this.scene.rtBtn.destroy();
@@ -126,10 +126,10 @@ export default class Question {
         }
         let audio = this.scene.sound.add('errorSound');
         audio.play();
-        self.move(self.scene.subjectItem, 100, 200).then(() => {
-            self.move(self.scene.subjectItem, -100, 200).then(() => {
-                self.move(self.scene.subjectItem, 100, 200).then(() => {
-                    self.move(self.scene.subjectItem, 0, 200).then(() => {
+        self.move(self.scene.subjectItem, self.scene.subjectItem.x + 100, 200).then(() => {
+            self.move(self.scene.subjectItem, self.scene.subjectItem.x + -100, 200).then(() => {
+                self.move(self.scene.subjectItem, self.scene.subjectItem.x + 100, 200).then(() => {
+                    self.move(self.scene.subjectItem, self.scene.subjectItem.x + 0, 200).then(() => {
                         setTimeout(() => {
                             self.scene.subjectItem.reset();
                             this.openDrop();

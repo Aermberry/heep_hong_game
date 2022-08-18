@@ -235,7 +235,7 @@ export default class GameScene extends BasicScene {
                         this.sound.stopAll();
                     } else {
                         this.music = this.sound.add('bgm', {
-                            volume: 0.5
+                            volume: 0.25
                         })
                         this.music.setLoop(true)
                         this.music.play();
@@ -270,7 +270,7 @@ export default class GameScene extends BasicScene {
             this.sound.stopAll();
         } else {
             this.music = this.sound.add('bgm', {
-                volume: 0.5
+                volume: 0.25
             });
             this.music.setLoop(true);
             this.music.play();

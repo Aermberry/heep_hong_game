@@ -1,13 +1,6 @@
 import Phaser from 'phaser'
 
 export default class BackgroundMusicButtonButton extends Phaser.GameObjects.Container {
-
-    /**
-     * 
-     * @type {Phaser.Sound.BaseSound} backgroundMusic 
-     */
-    backgroundMusic
-
     /**
      *
      * @param { Phaser.Sound.BaseSound} backgroundMusic

@@ -126,10 +126,10 @@ export default class Question {
         }
         let audio = this.scene.sound.add('errorSound');
         audio.play();
-        self.move(self.scene.subjectItem, self.scene.subjectItem.x + 100, 200).then(() => {
-            self.move(self.scene.subjectItem, self.scene.subjectItem.x + -100, 200).then(() => {
-                self.move(self.scene.subjectItem, self.scene.subjectItem.x + 100, 200).then(() => {
-                    self.move(self.scene.subjectItem, self.scene.subjectItem.x + 0, 200).then(() => {
+        self.move(self.scene.subjectItem,  500, 200).then(() => {
+            self.move(self.scene.subjectItem, 400, 200).then(() => {
+                self.move(self.scene.subjectItem, 500, 200).then(() => {
+                    self.move(self.scene.subjectItem,400, 200).then(() => {
                         setTimeout(() => {
                             self.scene.subjectItem.reset();
                             this.openDrop();

@@ -433,7 +433,8 @@ export default class GameScene extends BasicScene {
     musicPause() {
         this.stopAll = !this.stopAll;
         if (this.stopAll) {
-            this.sound.stopAll();
+            // this.sound.stopAll();
+            this.music.stop();
         } else {
             this.music = this.sound.add('bgm', {
                 volume: 0.25

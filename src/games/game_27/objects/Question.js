@@ -39,7 +39,7 @@ export default class Question {
         });
         // let dropZone = 
         new DropZone(scene, 400, 40);
-        scene.subjectItem = new SubjectItem(scene, 300, 450, [])
+        scene.subjectItem = new SubjectItem(scene, 400, 450, [])
         // 渲染题目
         subject.forEach((v, i) => {
             scene.subjectItem.add(new Car(scene, scene.subjectItem.length < 1 ? 0 : scene.subjectItem.list[i - 1].x + scene.subjectItem.list[i - 1].width + 20, 450, v));

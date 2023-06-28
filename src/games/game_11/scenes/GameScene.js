@@ -1,243 +1,300 @@
 import BasicScene from "./BasicScene"
-import ExitButton from '../components/ExitButton'
-import LeftMoveButton from '../components/LeftMoveButton'
-import RightMoveButton from '../components/RightMoveButton'
-import BigTooth from "../components/BigTooth"
-import SmallTooth from "../components/SmallTooth"
-import Phaser from 'phaser'
-import AnswerDropZone from "../components/AnswerDropZone"
-import RetryBtn from "../components/RetryButton"
-// import FF from '../assets/images/cursor_hand1.png'
+
+import Truck from "../objects/players/Truck"
+import Ship from "../objects/players/Ship"
+
+import Scene1Block from "../objects/targets/Scene1Block"
+import ShipTargets from "../objects/targets/ShipTargets"
+import UfoTargets from "../objects/targets/UfoTargets"
+
+import TruckBg from "../objects/backgrounds/TruckBg"
+import ShipBg from "../objects/backgrounds/ShipBg"
+
+import TruckFg from "../objects/foregrounds/TruckFg"
+import ShipFg from "../objects/foregrounds/ShipFg"
+
+import Untils from "../../common/Untils"
+import ToLeftBtn from "../objects/buttons/ToLeftBtn"
+import ToRightBtn from "../objects/buttons/ToRightBtn"
+import ExitBtn from "../objects/buttons/ExitBtn"
+import SpeakerBtn from '../objects/buttons/SpeakerBtn'
+import Ufo from "../objects/players/Ufo"
+import UfoBg from "../objects/backgrounds/UfoBg"
+import UfoFg from "../objects/foregrounds/UfoFg"
+import BalloonBg from "../objects/backgrounds/BalloonBg"
+import IcemanBg from "../objects/backgrounds/IcemanBg"
+import BalloonFg from "../objects/foregrounds/BalloonFg"
+import IcemanFg from "../objects/foregrounds/IcemanFg"
+import BalloonTargets from "../objects/targets/BalloonTargets"
+import IcemanTargets from "../objects/targets/IcemanTargets"
+import FlyPen from "../objects/players/FlyPen"
+import SkiPen from "../objects/players/SkiPen"
 export default class GameScene extends BasicScene {
 
-    constructor() {
-        super({
-            key: 'Game'
-        });
 
-        this.exitButton = undefined
-        this.leftMoveButton = undefined
-        this.rightMoveButton = undefined
-        this.retryButton = undefined
-        this.stageSlaverSprite = undefined
-        this.backgroundLayer = undefined
-        this.uiLayer = undefined
-        this.playLayer = undefined
-        this.crocodileMouth = undefined
-        this.gameFailed = undefined
-        this.gameFailedLayer = undefined
-        this.question = undefined
-        this.dragContainer = undefined
-        this.dropContainer = undefined
-        this.moveStep = undefined
-        this.questionIndex = undefined
-        this.questionNumberList = []
-        this.cursorHandIcon = undefined
+    constructor() {
+        super('Game')
+
+        // this.dataModel = this.sys.game.globals.model;
+        this.cursorKeys = null
+        this.playerOnLeft = true
+        this.totalSocre = 0
+
+        this.blockClassMap = {
+            'Scene1Block': Scene1Block,
+            'ShipTargets': ShipTargets,
+            'UfoTargets': UfoTargets,
+            'BalloonTargets': BalloonTargets,
+            'IcemanTargets': IcemanTargets
+        }
+        this.playerClassMap = {
+            'Truck': Truck,
+            'Ship': Ship,
+            'Ufo': Ufo,
+            'FlyPen': FlyPen,
+            'SkiPen': SkiPen
+        }
+        this.bgClassMap = {
+            'TruckBg':TruckBg,
+            'ShipBg': ShipBg,
+            'UfoBg': UfoBg,
+            'BalloonBg': BalloonBg,
+            'IcemanBg': IcemanBg
+        }
+        this.fgClassMap = {
+            'TruckFg': TruckFg,
+            'ShipFg': ShipFg,
+            'UfoFg': UfoFg,
+            'BalloonFg': BalloonFg,
+            'IcemanFg': IcemanFg
+        }
+
+        this.itemBlockClass = null
+        this.playerClass = null
+        this.bgClass = null
+
+    }
+
+    init() {
+
+        this.roadBlock = null
+
+        this.dataModel = this.sys.game.globals.model;
+
+        this.itemBlockClass = this.blockClassMap[this.dataModel.blockItem]
+        this.playerClass = this.playerClassMap[this.dataModel.playerItem]
+        this.bgClass = this.bgClassMap[this.dataModel.backgroundItem]
+        this.fgClass = this.fgClassMap[this.dataModel.foregroundItem]
+
+        //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
+        this.gameMusic = this.sound.add('bgm')
+        this.gameMusic.setLoop(true)
+        this.dataModel.bgMusicPlaying = true
+        this.sys.game.globals.bgMusic = self.gameMusic
+
     }
 
     preload() {
 
-        //User need to press the Start Button to reach here, all audio need to be play after the first user touch event in mobile device.
-        // this.preloadFromArr({
-        // sound: this.sound.add('drums').setLoop(true).play()
-        // });
+        this.buildBg('bg_title')
 
-        this.question = this.generateQuestion();
-        this.cursorHandIcon = require('../assets/images/cursor_hand.png');
-        console.log(this.questionIndex)
+
+        let blockAssets = this.itemBlockClass.getAssetArray()
+        let playerAssets = this.playerClass.getAssetArray()
+        let bgAssets = this.bgClass.getAssetArray()
+        let fgAssets = this.fgClass.getAssetArray()
+
+        const imageFiles = {
+            'end_box': require('../assets/images/end_box.png'),
+            'end_pic_bg': require('../assets/images/end_pic_bg.png'),
+            ...blockAssets.img,
+            ...playerAssets.img,
+            ...bgAssets.img,
+            ...fgAssets.img
+        }
+
+        const atlasFiles = {
+            'end_pic': { img: require('../assets/anims/end_pic.png'), data: require('../assets/anims/end_pic.json') },
+            ...blockAssets.atlas,
+            ...playerAssets.atlas,
+            ...bgAssets.atlas,
+            ...fgAssets.atlas
+        }
+
+        const soundFiles = {
+            'end_bgm': require('../assets/audios/A_Cloudy_Morning_(2012)_01_shorten.mp3'),
+            'win': require('../assets/audios/child_clap.mp3')
+        }
+
+        this.preloadFromArr({
+            img: imageFiles,
+            atlas: atlasFiles,
+            sound: soundFiles
+        })
 
         this.createProgressBar();
+
+
+    }
+
+    _handleGameData(correctArr = [], wrongArr = []) {
+
+        let result = []
+
+        let index = 0
+        let curCorrect = null
+        let curWrong = null
+        while (correctArr.length > 0) {
+            curCorrect = correctArr.pop()
+            if (typeof wrongArr[index] == 'undefined') index = 0
+            curWrong = wrongArr[index++]
+            result.push(
+                {
+                    answers: Math.random() > 0.5 ? [curCorrect, curWrong] : [curWrong, curCorrect],
+                    correctAnswer: curCorrect
+                }
+            )
+        }
+
+        return result
+
     }
 
     create() {
 
-        super.create();
+        super.create()
 
-        this.paintGameScene(this);
+        this.sys.game.globals.gtag.event(`game_${this.dataModel.gameStage}_start`, {'event_category': 'js_games', 'event_label': 'Game Start' })
 
-        // this.input.setDefaultCursor(`url(${FF}), pointer`);
-        this.input.setDefaultCursor(`url(${this.cursorHandIcon}), pointer`);
+        this.playerOnLeft = true
+
+        this.gameMusic.play()
+
+        let bg = new this.bgClass(this, 0, 0);
+
+        this.add.existing(bg)
+
+        let fg = new this.fgClass(this, 0, 0)
+
+        this.add.existing(fg)
+
+        // road.play('road')
+
+        this.player = new this.playerClass(this, this.getColWidth(4.5), this.getRowHeight(9.5), this.dataModel.gameQuestion)
+
+        this.player.setDepth(5)
+
+        this.add.existing(this.player)
+
+
+        this.cursorKeys = this.input.keyboard.createCursorKeys()
+
+
+        const correctAns = [...this.dataModel.gameAnswers.correct]
+
+        const miscAns = [...this.dataModel.gameAnswers.misc]
+
+
+        let gameData = this._handleGameData(Untils.shuffle(correctAns), Untils.shuffle(miscAns))
+
+        this.recurringAnswerBlock(gameData)
+
+
+        this.toLeftBtn = new ToLeftBtn(this, this.getColWidth(9.5), this.getRowHeight(10), this._playerToLeft.bind(this, 500))
+        this.toRightBtn = new ToRightBtn(this, this.getColWidth(11), this.getRowHeight(10), this._playerToRight.bind(this, 500))
+        this.existBtn = new ExitBtn(this, 100, 120)
+        this.speakerBtn = new SpeakerBtn(this, 1820, 120,this.musicPause.bind(this))
+
+        this.toLeftBtn.setDepth(8)
+        this.toRightBtn.setDepth(8)
+
+        this.add.existing(this.toLeftBtn)
+        this.add.existing(this.toRightBtn)
+        this.add.existing(this.existBtn)
+        this.add.existing(this.speakerBtn)
 
     }
 
 
-    /**
-     * generate a question from the local question data
-     * 从题库中随机抽取一道题目
-      */
-    generateQuestion() {
+    update() {
 
-        let errorQuestionIndex = JSON.parse(localStorage.getItem('errorQuestionIndex'));
+        if (this.cursorKeys.left.isDown) {
+            this._playerToLeft(500)
+        }
 
-        if (errorQuestionIndex == null) {
-            this.questionNumberList = JSON.parse(localStorage.getItem('questionNumberList'));
-            this.questionIndex = Phaser.Math.RND.pick(this.questionNumberList);
-            console.log("新题目")
+        if (this.cursorKeys.right.isDown) {
+            this._playerToRight(500)
+        }
 
+    }
+
+    _playerToLeft(distance) {
+        if(this.playerOnLeft) return
+        this.player.toLeft(this.player.x - distance).then(()=> this.playerOnLeft = true)
+    }
+
+    _playerToRight(distance) {
+        if(!this.playerOnLeft) return
+        this.player.toRight(this.player.x + distance).then(() => this.playerOnLeft = false)
+    }
+
+    recurringAnswerBlock(gameDataArr = []) {
+
+
+        gameDataArr.reduce((lastPromise, nextAnswer, ind) => {
+
+            return lastPromise.then(() => {
+
+                if (this.roadBlock != null && typeof this.roadBlock.destroy == 'function') this.roadBlock.destroy()
+
+                this.roadBlock = new this.itemBlockClass(
+                    this,
+                    this.getColWidth(5.95),
+                    this.getRowHeight(5),
+                    nextAnswer,
+                    {
+                        checkAnswer: () => {
+                            let attempedItem = this.roadBlock.getItem(this.playerOnLeft ? 'left' : 'right')
+
+                            let currentResult = attempedItem.getAnswerValue() === nextAnswer.correctAnswer
+
+                            if (currentResult) {
+                                attempedItem.playCorrect()
+                                this.totalSocre++;
+                            } else {
+                                attempedItem.playWrong()
+                            }
+
+                            return currentResult;
+                        },
+                        speedFactor: 1 - (0.07 * ind)
+                    }
+                )
+
+                this.add.existing(this.roadBlock)
+
+                return this.roadBlock.getEndPromise()
+
+            })
+
+        }, Promise.resolve())
+        .then(() => {
+            this.gameMusic.stop()
+            this.scene.start('End')
+        })
+
+
+    }
+
+    musicPause() {
+        if (this.dataModel.bgMusicPlaying){
+            this.dataModel.bgMusicPlaying = false
+            this.gameMusic.mute = true
         } else {
-            this.questionIndex = errorQuestionIndex;
-            console.log(errorQuestionIndex);
-            console.log("错题目 重做")
-
+            this.dataModel.bgMusicPlaying = true
+            this.gameMusic.mute = false
         }
 
-        console.log(JSON.parse(localStorage.getItem(this.questionIndex)))
-
-        return JSON.parse(localStorage.getItem(this.questionIndex));
-
-
     }
 
-    /* 
-     * paint tooth
-     * 绘制牙齿
-     * 
-     */
-    pintTooth(question) {
-        let container = this.add.container(0, 0);
-
-        let currentToothWidth = 0;
-        let currentTooth = undefined;
-
-        let currentOffsetX = 120;
-
-        let bigTooth = this.add.image(0, 0, 'stageBigTooth').setScale(0.5);
-        let smallTooth = this.add.image(0, 0, 'stageSmallTooth').setScale(0.5);
-
-        let bigToothWidth = bigTooth.displayWidth;
-        let smallToothWidth = smallTooth.displayWidth;
-
-        this.moveStep = (bigToothWidth + smallToothWidth) / 2
-
-        bigTooth.destroy();
-        smallTooth.destroy();
-
-        console.log(bigToothWidth);
-        console.log(smallToothWidth);
-
-
-        for (let index = 0; index < question.length; index++) {
-
-            const element = question[index];
-
-            if (element.length > 3) {
-                currentToothWidth = bigToothWidth;
-
-            } else {
-                currentToothWidth = smallToothWidth;
-            }
-
-            if (container.getAll().length > 0) {
-                console.log(index);
-                console.log(container.getAll().length);
-                if (currentToothWidth != container.getAll()[index - 1].displayWidth) {
-                    currentOffsetX += (currentToothWidth + container.getAll()[index - 1].displayWidth) / 2;
-                }
-                else {
-                    currentOffsetX += currentToothWidth;
-                }
-            }
-            else {
-                currentOffsetX += currentToothWidth / 2
-            }
-
-            if (element.length > 3) {
-                currentTooth = new BigTooth(this, currentOffsetX, 680, element)
-            }
-            else {
-                currentTooth = new SmallTooth(this, currentOffsetX, 680, element)
-            }
-
-            container.add(currentTooth);
-        }
-        console.log(container.getAll());
-
-        return container
-    }
-
-    paintGameSuccess() {
-        console.log("-------question-------")
-        console.log(this.questionIndex)
-        console.log("-------index-------")
-
-        this.questionNumberList.splice(this.questionNumberList.indexOf(this.questionIndex), 1);
-        console.log(this.questionNumberList)
-
-        localStorage.setItem('questionNumberList', JSON.stringify(this.questionNumberList));
-
-        if (localStorage.getItem('errorQuestionIndex') != null) {
-            localStorage.removeItem('errorQuestionIndex')
-        }
-
-        this.dragContainer.removeAt(0, true)
-
-        let paintToothContainer = this.pintTooth(this.question.answer);
-
-        paintToothContainer.list.forEach((item => {
-            item.input.enabled = false;
-        }))
-
-        this.dragContainer.addAt(paintToothContainer, 0);
-    }
-
-    paintGameFailed() {
-
-        this.input.setDefaultCursor(`url(), auto`);
-
-        localStorage.setItem('errorQuestionIndex', JSON.stringify(this.questionIndex));
-
-        this.playLayer.setVisible(false);
-        this.uiLayer.setVisible(false);
-
-        this.buildBg('bgProgressGame')
-
-        this.retryButton = new RetryBtn(this, this.cameras.main.width / 2 + 80, this.cameras.main.height / 2 + 180, 'Game');
-        this.gameFailedLayer = this.add.layer().setDepth(1);
-        this.gameFailed = this.add.image(1450, 350, 'bgGameFailed').setScale(0.35);
-
-        this.failedText = this.make.text({
-            x: this.cameras.main.width / 2,
-            y: this.cameras.main.height / 2,
-            text: '失败了',
-            style: {
-                font: '60px',
-                fill: '#fff'
-            }
-        });
-
-        this.gameFailedLayer.add([this.gameFailed, this.retryButton, this.failedText, this.exitButton]);
-    }
-
-
-    /**
-     * paint all game ui element in this scene
-     * 绘制GameScene的所有Ui元素
-    */
-    paintGameScene() {
-
-        this.playLayer = this.add.layer().setDepth(1);
-        this.uiLayer = this.add.layer().setDepth(2);
-        this.backgroundLayer = this.add.layer().setDepth(0);
-
-        this.crocodileMouth = this.add.image(this.getColWidth(9.4), this.getRowHeight(8), 'crocodileMouth').setScale(0.4);
-
-
-        this.dropContainer = new AnswerDropZone(this, this.getColWidth(8.5), this.getRowHeight(2.5), this.question)
-        this.dragContainer = this.add.container(0, 0, [
-            this.pintTooth(this.question.originalSentence),
-            this.crocodileMouth]);
-
-        this.exitButton = new ExitButton(this, 120, 135);
-        this.leftMoveButton = new LeftMoveButton(this, this.getColWidth(10), this.getRowHeight(11), this.dragContainer, this.moveStep,);
-        this.rightMoveButton = new RightMoveButton(this, this.getColWidth(11), this.getRowHeight(11), this.dragContainer, this.moveStep);
-
-        console.log('--------')
-        console.log(this.dragContainer.x);
-        console.log(this.dragContainer.y);
-        console.log('--------')
-
-        this.backgroundLayer.add([this.buildBg('bgProgressGame'), this.exitButton]);
-        this.playLayer.add([this.dropContainer, this.dragContainer])
-        this.uiLayer.add([this.rightMoveButton, this.leftMoveButton])
-    }
 }

@@ -1,0 +1,187 @@
+﻿{"frames": {
+
+"lion_left_recorder_0000":
+{
+	"frame": {"x":0,"y":0,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0001":
+{
+	"frame": {"x":605,"y":0,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0002":
+{
+	"frame": {"x":1210,"y":0,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0003":
+{
+	"frame": {"x":1815,"y":0,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0004":
+{
+	"frame": {"x":2420,"y":0,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0005":
+{
+	"frame": {"x":3025,"y":0,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0006":
+{
+	"frame": {"x":0,"y":423,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0007":
+{
+	"frame": {"x":605,"y":423,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0008":
+{
+	"frame": {"x":1210,"y":423,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0009":
+{
+	"frame": {"x":1815,"y":423,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0010":
+{
+	"frame": {"x":2420,"y":423,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0011":
+{
+	"frame": {"x":3025,"y":423,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0012":
+{
+	"frame": {"x":0,"y":846,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0013":
+{
+	"frame": {"x":605,"y":846,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0014":
+{
+	"frame": {"x":1210,"y":846,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0015":
+{
+	"frame": {"x":1815,"y":846,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0016":
+{
+	"frame": {"x":2420,"y":846,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0017":
+{
+	"frame": {"x":3025,"y":846,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0018":
+{
+	"frame": {"x":0,"y":1269,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0019":
+{
+	"frame": {"x":605,"y":1269,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0020":
+{
+	"frame": {"x":1210,"y":1269,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+},
+"lion_left_recorder_0021":
+{
+	"frame": {"x":0,"y":0,"w":603,"h":421},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":421},
+	"sourceSize": {"w":603,"h":421}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.5.191",
+	"image": "atlas_lion_left_recorder.png",
+	"format": "RGBA8888",
+	"size": {"w":4096,"h":2048},
+	"scale": "1"
+}
+}

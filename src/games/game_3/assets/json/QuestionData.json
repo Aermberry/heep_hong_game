@@ -1,0 +1,814 @@
+[
+  {
+    "question": {
+      "object": "紅綠燈",
+      "imageIndex": 14,
+      "voiceIndex": 7
+    },
+    "item": {
+      "items": [
+        {
+          "object": "紅",
+          "imageIndex": 0,
+          "itemVoice": 0
+        },
+        {
+          "object": "熊",
+          "imageIndex": 1,
+          "itemVoice": 1
+        }
+      ],
+      "voiceIndex": 0
+    },
+    "answer": {
+      "object": "紅",
+      "voiceIndex": 7
+    },
+    "conclusion": {
+      "phrase": 0
+    }
+  },
+  {
+    "question": {
+      "object": "口紅",
+      "imageIndex": 15,
+      "voiceIndex": 8
+    },
+    "item": {
+      "items": [
+        {
+          "object": "紅",
+          "imageIndex": 0,
+          "itemVoice": 0
+        },
+        {
+          "object": "熊",
+          "imageIndex": 1,
+          "itemVoice": 1
+        }
+      ],
+      "voiceIndex": 0
+    },
+    "answer": {
+      "object": "紅",
+      "voiceIndex": 8
+    },
+    "conclusion": {
+      "phrase": 0
+    }
+  },
+  {
+    "question": {
+      "object": "熊貓",
+      "imageIndex": 16,
+      "voiceIndex": 9
+    },
+    "item": {
+      "items": [
+        {
+          "object": "紅",
+          "imageIndex": 0,
+          "itemVoice": 0
+        },
+        {
+          "object": "熊",
+          "imageIndex": 1,
+          "itemVoice": 1
+        }
+      ],
+      "voiceIndex": 0
+    },
+    "answer": {
+      "object": "熊",
+      "voiceIndex": 9
+    },
+    "conclusion": {
+      "phrase": 1
+    }
+  },
+  {
+    "question": {
+      "object": "玩具熊",
+      "imageIndex": 17,
+      "voiceIndex": 10
+    },
+    "item": {
+      "items": [
+        {
+          "object": "紅",
+          "imageIndex": 0,
+          "itemVoice": 0
+        },
+        {
+          "object": "熊",
+          "imageIndex": 1,
+          "itemVoice": 1
+        }
+      ],
+      "voiceIndex": 0
+    },
+    "answer": {
+      "object": "熊",
+      "voiceIndex": 10
+    },
+    "conclusion": {
+      "phrase": 1
+    }
+  },
+  {
+    "question": {
+      "object": "三角形",
+      "imageIndex": 18,
+      "voiceIndex": 11
+    },
+    "item": {
+      "items": [
+        {
+          "object": "三",
+          "imageIndex": 2,
+          "itemVoice": 2
+        },
+        {
+          "object": "衫",
+          "imageIndex": 3,
+          "itemVoice": 3
+        }
+      ],
+      "voiceIndex": 1
+    },
+    "answer": {
+      "object": "三",
+      "voiceIndex": 11
+    },
+    "conclusion": {
+      "phrase": 2
+    }
+  },
+  {
+    "question": {
+      "object": "第三名",
+      "imageIndex": 19,
+      "voiceIndex": 12
+    },
+    "item": {
+      "items": [
+        {
+          "object": "三",
+          "imageIndex": 2,
+          "itemVoice": 2
+        },
+        {
+          "object": "衫",
+          "imageIndex": 3,
+          "itemVoice": 3
+        }
+      ],
+      "voiceIndex": 1
+    },
+    "answer": {
+      "object": "三",
+      "voiceIndex": 12
+    },
+    "conclusion": {
+      "phrase": 2
+    }
+  },
+  {
+    "question": {
+      "object": "短袖衫",
+      "imageIndex": 20,
+      "voiceIndex": 13
+    },
+    "item": {
+      "items": [
+        {
+          "object": "三",
+          "imageIndex": 2,
+          "itemVoice": 2
+        },
+        {
+          "object": "衫",
+          "imageIndex": 3,
+          "itemVoice": 3
+        }
+      ],
+      "voiceIndex": 1
+    },
+    "answer": {
+      "object": "衫",
+      "voiceIndex": 13
+    },
+    "conclusion": {
+      "phrase": 3
+    }
+  },
+  {
+    "question": {
+      "object": "晾衫",
+      "imageIndex": 21,
+      "voiceIndex": 14
+    },
+    "item": {
+      "items": [
+        {
+          "object": "三",
+          "imageIndex": 2,
+          "itemVoice": 2
+        },
+        {
+          "object": "衫",
+          "imageIndex": 3,
+          "itemVoice": 3
+        }
+      ],
+      "voiceIndex": 1
+    },
+    "answer": {
+      "object": "衫",
+      "voiceIndex": 14
+    },
+    "conclusion": {
+      "phrase": 3
+    }
+  },
+  {
+    "question": {
+      "object": "窗簾",
+      "imageIndex": 22,
+      "voiceIndex": 15
+    },
+    "item": {
+      "items": [
+        {
+          "object": "窗",
+          "imageIndex": 4,
+          "itemVoice": 4
+        },
+        {
+          "object": "槍",
+          "imageIndex": 5,
+          "itemVoice": 5
+        }
+      ],
+      "voiceIndex": 2
+    },
+    "answer": {
+      "object": "窗",
+      "voiceIndex": 15
+    },
+    "conclusion": {
+      "phrase": 4
+    }
+  },
+  {
+    "question": {
+      "object": "窗門",
+      "imageIndex": 23,
+      "voiceIndex": 16
+    },
+    "item": {
+      "items": [
+        {
+          "object": "窗",
+          "imageIndex": 4,
+          "itemVoice": 4
+        },
+        {
+          "object": "槍",
+          "imageIndex": 5,
+          "itemVoice": 5
+        }
+      ],
+      "voiceIndex": 2
+    },
+    "answer": {
+      "object": "窗",
+      "voiceIndex": 16
+    },
+    "conclusion": {
+      "phrase": 4
+    }
+  },
+  {
+    "question": {
+      "object": "玩具槍",
+      "imageIndex": 24,
+      "voiceIndex": 17
+    },
+    "item": {
+      "items": [
+        {
+          "object": "窗",
+          "imageIndex": 4,
+          "itemVoice": 4
+        },
+        {
+          "object": "槍",
+          "imageIndex": 5,
+          "itemVoice": 5
+        }
+      ],
+      "voiceIndex": 2
+    },
+    "answer": {
+      "object": "槍",
+      "voiceIndex": 17
+    },
+    "conclusion": {
+      "phrase": 5
+    }
+  },
+  {
+    "question": {
+      "object": "槍手",
+      "imageIndex": 25,
+      "voiceIndex": 18
+    },
+    "item": {
+      "items": [
+        {
+          "object": "窗",
+          "imageIndex": 4,
+          "itemVoice": 4
+        },
+        {
+          "object": "槍",
+          "imageIndex": 5,
+          "itemVoice": 5
+        }
+      ],
+      "voiceIndex": 2
+    },
+    "answer": {
+      "object": "槍",
+      "voiceIndex": 18
+    },
+    "conclusion": {
+      "phrase": 5
+    }
+  },
+  {
+    "question": {
+      "object": "戒指",
+      "imageIndex": 26,
+      "voiceIndex": 19
+    },
+    "item": {
+      "items": [
+        {
+          "object": "指",
+          "imageIndex": 6,
+          "itemVoice": 6
+        },
+        {
+          "object": "紙",
+          "imageIndex": 7,
+          "itemVoice": 7
+        }
+      ],
+      "voiceIndex": 3
+    },
+    "answer": {
+      "object": "指",
+      "voiceIndex": 19
+    },
+    "conclusion": {
+      "phrase": 6
+    }
+  },
+  {
+    "question": {
+      "object": "指紋",
+      "imageIndex": 27,
+      "voiceIndex": 20
+    },
+    "item": {
+      "items": [
+        {
+          "object": "指",
+          "imageIndex": 6,
+          "itemVoice": 6
+        },
+        {
+          "object": "紙",
+          "imageIndex": 7,
+          "itemVoice": 7
+        }
+      ],
+      "voiceIndex": 3
+    },
+    "answer": {
+      "object": "指",
+      "voiceIndex": 20
+    },
+    "conclusion": {
+      "phrase": 6
+    }
+  },
+  {
+    "question": {
+      "object": "廁紙",
+      "imageIndex": 28,
+      "voiceIndex": 21
+    },
+    "item": {
+      "items": [
+        {
+          "object": "指",
+          "imageIndex": 6,
+          "itemVoice": 6
+        },
+        {
+          "object": "紙",
+          "imageIndex": 7,
+          "itemVoice": 7
+        }
+      ],
+      "voiceIndex": 3
+    },
+    "answer": {
+      "object": "紙",
+      "voiceIndex": 21
+    },
+    "conclusion": {
+      "phrase": 7
+    }
+  },
+  {
+    "question": {
+      "object": "紙",
+      "imageIndex": 29,
+      "voiceIndex": 22
+    },
+    "item": {
+      "items": [
+        {
+          "object": "指",
+          "imageIndex": 6,
+          "itemVoice": 6
+        },
+        {
+          "object": "紙",
+          "imageIndex": 7,
+          "itemVoice": 7
+        }
+      ],
+      "voiceIndex": 3
+    },
+    "answer": {
+      "object": "紙",
+      "voiceIndex": 22
+    },
+    "conclusion": {
+      "phrase": 7
+    }
+  },
+  {
+    "question": {
+      "object": "蜜蜂",
+      "imageIndex": 30,
+      "voiceIndex": 23
+    },
+    "item": {
+      "items": [
+        {
+          "object": "蜜",
+          "imageIndex": 8,
+          "itemVoice": 8
+        },
+        {
+          "object": "襪",
+          "imageIndex": 9,
+          "itemVoice": 9
+        }
+      ],
+      "voiceIndex": 4
+    },
+    "answer": {
+      "object": "蜜",
+      "voiceIndex": 23
+    },
+    "conclusion": {
+      "phrase": 8
+    }
+  },
+  {
+    "question": {
+      "object": "花蜜",
+      "imageIndex": 31,
+      "voiceIndex": 24
+    },
+    "item": {
+      "items": [
+        {
+          "object": "蜜",
+          "imageIndex": 8,
+          "itemVoice": 8
+        },
+        {
+          "object": "襪",
+          "imageIndex": 9,
+          "itemVoice": 9
+        }
+      ],
+      "voiceIndex": 4
+    },
+    "answer": {
+      "object": "蜜",
+      "voiceIndex": 24
+    },
+    "conclusion": {
+      "phrase": 8
+    }
+  },
+  {
+    "question": {
+      "object": "襪褲",
+      "imageIndex": 32,
+      "voiceIndex": 25
+    },
+    "item": {
+      "items": [
+        {
+          "object": "蜜",
+          "imageIndex": 8,
+          "itemVoice": 8
+        },
+        {
+          "object": "襪",
+          "imageIndex": 9,
+          "itemVoice": 9
+        }
+      ],
+      "voiceIndex": 4
+    },
+    "answer": {
+      "object": "襪",
+      "voiceIndex": 25
+    },
+    "conclusion": {
+      "phrase": 9
+    }
+  },
+  {
+    "question": {
+      "object": "長襪",
+      "imageIndex": 33,
+      "voiceIndex": 26
+    },
+    "item": {
+      "items": [
+        {
+          "object": "蜜",
+          "imageIndex": 8,
+          "itemVoice": 8
+        },
+        {
+          "object": "襪",
+          "imageIndex": 9,
+          "itemVoice": 9
+        }
+      ],
+      "voiceIndex": 4
+    },
+    "answer": {
+      "object": "襪",
+      "voiceIndex": 26
+    },
+    "conclusion": {
+      "phrase": 9
+    }
+  },
+  {
+    "question": {
+      "object": "升降機",
+      "imageIndex": 34,
+      "voiceIndex": 27
+    },
+    "item": {
+      "items": [
+        {
+          "object": "升",
+          "imageIndex": 10,
+          "itemVoice": 10
+        },
+        {
+          "object": "星",
+          "imageIndex": 11,
+          "itemVoice": 11
+        }
+      ],
+      "voiceIndex": 5
+    },
+    "answer": {
+      "object": "升",
+      "voiceIndex": 27
+    },
+    "conclusion": {
+      "phrase": 10
+    }
+  },
+  {
+    "question": {
+      "object": "直升機",
+      "imageIndex": 35,
+      "voiceIndex": 28
+    },
+    "item": {
+      "items": [
+        {
+          "object": "升",
+          "imageIndex": 10,
+          "itemVoice": 10
+        },
+        {
+          "object": "星",
+          "imageIndex": 11,
+          "itemVoice": 11
+        }
+      ],
+      "voiceIndex": 5
+    },
+    "answer": {
+      "object": "升",
+      "voiceIndex": 28
+    },
+    "conclusion": {
+      "phrase": 10
+    }
+  },
+  {
+    "question": {
+      "object": "流星",
+      "imageIndex": 36,
+      "voiceIndex": 29
+    },
+    "item": {
+      "items": [
+        {
+          "object": "升",
+          "imageIndex": 10,
+          "itemVoice": 10
+        },
+        {
+          "object": "星",
+          "imageIndex": 11,
+          "itemVoice": 11
+        }
+      ],
+      "voiceIndex": 5
+    },
+    "answer": {
+      "object": "星",
+      "voiceIndex": 29
+    },
+    "conclusion": {
+      "phrase": 11
+    }
+  },
+  {
+    "question": {
+      "object": "星空",
+      "imageIndex": 37,
+      "voiceIndex": 30
+    },
+    "item": {
+      "items": [
+        {
+          "object": "升",
+          "imageIndex": 10,
+          "itemVoice": 10
+        },
+        {
+          "object": "星",
+          "imageIndex": 11,
+          "itemVoice": 11
+        }
+      ],
+      "voiceIndex": 5
+    },
+    "answer": {
+      "object": "星",
+      "voiceIndex": 30
+    },
+    "conclusion": {
+      "phrase": 11
+    }
+  },
+  {
+    "question": {
+      "object": "豬扒",
+      "imageIndex": 38,
+      "voiceIndex": 31
+    },
+    "item": {
+      "items": [
+        {
+          "object": "豬",
+          "imageIndex": 12,
+          "itemVoice": 12
+        },
+        {
+          "object": "珠",
+          "imageIndex": 13,
+          "itemVoice": 13
+        }
+      ],
+      "voiceIndex": 6
+    },
+    "answer": {
+      "object": "豬",
+      "voiceIndex": 31
+    },
+    "conclusion": {
+      "phrase": 12
+    }
+  },
+  {
+    "question": {
+      "object": "黑毛豬",
+      "imageIndex": 39,
+      "voiceIndex": 32
+    },
+    "item": {
+      "items": [
+        {
+          "object": "豬",
+          "imageIndex": 12,
+          "itemVoice": 12
+        },
+        {
+          "object": "珠",
+          "imageIndex": 13,
+          "itemVoice": 13
+        }
+      ],
+      "voiceIndex": 6
+    },
+    "answer": {
+      "object": "豬",
+      "voiceIndex": 32
+    },
+    "conclusion": {
+      "phrase": 12
+    }
+  },
+  {
+    "question": {
+      "object": "眼珠",
+      "imageIndex": 40,
+      "voiceIndex": 33
+    },
+    "item": {
+      "items": [
+        {
+          "object": "豬",
+          "imageIndex": 12,
+          "itemVoice": 12
+        },
+        {
+          "object": "珠",
+          "imageIndex": 13,
+          "itemVoice": 13
+        }
+      ],
+      "voiceIndex": 6
+    },
+    "answer": {
+      "object": "珠",
+      "voiceIndex": 33
+    },
+    "conclusion": {
+      "phrase": 13
+    }
+  },
+  {
+    "question": {
+      "object": "珍珠",
+      "imageIndex": 41,
+      "voiceIndex": 34
+    },
+    "item": {
+      "items": [
+        {
+          "object": "豬",
+          "imageIndex": 12,
+          "itemVoice": 12
+        },
+        {
+          "object": "珠",
+          "imageIndex": 13,
+          "itemVoice": 13
+        }
+      ],
+      "voiceIndex": 6
+    },
+    "answer": {
+      "object": "珠",
+      "voiceIndex": 34
+    },
+    "conclusion": {
+      "phrase": 13
+    }
+  }
+]

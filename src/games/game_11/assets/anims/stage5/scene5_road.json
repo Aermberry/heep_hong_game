@@ -1,0 +1,299 @@
+﻿{"frames": {
+
+"snowroad0000":
+{
+	"frame": {"x":0,"y":0,"w":906,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0001":
+{
+	"frame": {"x":0,"y":0,"w":906,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0002":
+{
+	"frame": {"x":0,"y":0,"w":906,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0003":
+{
+	"frame": {"x":0,"y":0,"w":906,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0004":
+{
+	"frame": {"x":908,"y":0,"w":976,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0005":
+{
+	"frame": {"x":908,"y":0,"w":976,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0006":
+{
+	"frame": {"x":908,"y":0,"w":976,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0007":
+{
+	"frame": {"x":908,"y":0,"w":976,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0008":
+{
+	"frame": {"x":1886,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0009":
+{
+	"frame": {"x":1886,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0010":
+{
+	"frame": {"x":1886,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0011":
+{
+	"frame": {"x":1886,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0012":
+{
+	"frame": {"x":2898,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0013":
+{
+	"frame": {"x":2898,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0014":
+{
+	"frame": {"x":2898,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0015":
+{
+	"frame": {"x":2898,"y":0,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0016":
+{
+	"frame": {"x":0,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0017":
+{
+	"frame": {"x":0,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0018":
+{
+	"frame": {"x":0,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0019":
+{
+	"frame": {"x":0,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0020":
+{
+	"frame": {"x":1012,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0021":
+{
+	"frame": {"x":1012,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0022":
+{
+	"frame": {"x":1012,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0023":
+{
+	"frame": {"x":1012,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0024":
+{
+	"frame": {"x":2024,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0025":
+{
+	"frame": {"x":2024,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0026":
+{
+	"frame": {"x":2024,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0027":
+{
+	"frame": {"x":2024,"y":808,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0028":
+{
+	"frame": {"x":0,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0029":
+{
+	"frame": {"x":0,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0030":
+{
+	"frame": {"x":0,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0031":
+{
+	"frame": {"x":0,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0032":
+{
+	"frame": {"x":1012,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0033":
+{
+	"frame": {"x":1012,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0034":
+{
+	"frame": {"x":1012,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+},
+"snowroad0035":
+{
+	"frame": {"x":2024,"y":1616,"w":1010,"h":806},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1010,"h":806},
+	"sourceSize": {"w":1010,"h":806}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.1.105",
+	"image": "scene5_road.png",
+	"format": "RGBA8888",
+	"size": {"w":3910,"h":2500},
+	"scale": "1"
+}
+}

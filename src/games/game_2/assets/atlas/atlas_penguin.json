@@ -1,0 +1,187 @@
+﻿{"frames": {
+
+"penguin_0000":
+{
+	"frame": {"x":0,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0001":
+{
+	"frame": {"x":255,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0002":
+{
+	"frame": {"x":510,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0003":
+{
+	"frame": {"x":765,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0004":
+{
+	"frame": {"x":1020,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0005":
+{
+	"frame": {"x":1275,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0006":
+{
+	"frame": {"x":1530,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0007":
+{
+	"frame": {"x":0,"y":309,"w":258,"h":303},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":10,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0008":
+{
+	"frame": {"x":260,"y":309,"w":264,"h":300},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":6,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0009":
+{
+	"frame": {"x":526,"y":309,"w":268,"h":296},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":3,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0010":
+{
+	"frame": {"x":796,"y":309,"w":274,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0011":
+{
+	"frame": {"x":1072,"y":309,"w":274,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0012":
+{
+	"frame": {"x":1348,"y":309,"w":268,"h":296},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":3,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0013":
+{
+	"frame": {"x":0,"y":614,"w":264,"h":300},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":6,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0014":
+{
+	"frame": {"x":266,"y":614,"w":258,"h":303},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":10,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0015":
+{
+	"frame": {"x":1530,"y":0,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0016":
+{
+	"frame": {"x":526,"y":614,"w":253,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":13,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0017":
+{
+	"frame": {"x":781,"y":614,"w":261,"h":300},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":22,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0018":
+{
+	"frame": {"x":1044,"y":614,"w":269,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":32,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0019":
+{
+	"frame": {"x":1315,"y":614,"w":278,"h":284},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":42,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0020":
+{
+	"frame": {"x":1315,"y":614,"w":278,"h":284},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":42,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+},
+"penguin_0021":
+{
+	"frame": {"x":1315,"y":614,"w":278,"h":284},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":42,"w":278,"h":326},
+	"sourceSize": {"w":278,"h":326}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "21.0.9.42677",
+	"image": "atlas_penguin.png",
+	"format": "RGBA8888",
+	"size": {"w":1790,"h":930},
+	"scale": "1"
+}
+}

@@ -6,10 +6,12 @@ export default class StartBtn extends BasicBtn {
 
     let sprite =  scene.add.sprite(0, 0, 'strBtn')
     this.create(sprite,this.onClick.bind(this))
+    // this.goFullscreenOnClick()
 
   }
 
   onClick(){
     this.scene.scene.start('Game');
+
   }
 }

@@ -1,0 +1,12 @@
+game 29 audio
+
+bgm: forest.mp3
+buttom: comedy_pop_finger_in_mouth_002.mp3
+
+matching: 383577_SOUNDDOGS__ca.mp3
+yes: Cartoon correct answer.mp3
+no: game_wrong_3.mp3
+complete: Win Sound 2.mp3
+
+win:child only clap.mp3
+end: wintery loop.mp3

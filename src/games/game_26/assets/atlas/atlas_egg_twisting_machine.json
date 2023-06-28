@@ -1,0 +1,259 @@
+﻿{"frames": {
+
+"eggTwistingMachine_0000":
+{
+	"frame": {"x":0,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0001":
+{
+	"frame": {"x":0,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0002":
+{
+	"frame": {"x":0,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0003":
+{
+	"frame": {"x":0,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0004":
+{
+	"frame": {"x":1922,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0005":
+{
+	"frame": {"x":1922,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0006":
+{
+	"frame": {"x":1922,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0007":
+{
+	"frame": {"x":1922,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0008":
+{
+	"frame": {"x":1922,"y":0,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0009":
+{
+	"frame": {"x":0,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0010":
+{
+	"frame": {"x":0,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0011":
+{
+	"frame": {"x":0,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0012":
+{
+	"frame": {"x":0,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0013":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0014":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0015":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0016":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0017":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0018":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0019":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0020":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0021":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0022":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0023":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0024":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0025":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0026":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0027":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0028":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0029":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+},
+"eggTwistingMachine_0030":
+{
+	"frame": {"x":1922,"y":1085,"w":1920,"h":1083},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1083},
+	"sourceSize": {"w":1920,"h":1083}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.0.93",
+	"image": "eggTwistingMachine_.png",
+	"format": "RGBA8888",
+	"size": {"w":4096,"h":4096},
+	"scale": "1"
+}
+}

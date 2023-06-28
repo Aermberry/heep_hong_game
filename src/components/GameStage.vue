@@ -1,20 +1,26 @@
 <template>
-  <div :class="'game-wrapper ' + gameOrientation">
+  <div :class="`game-wrapper ${gameOrientation}`">
     <div class="outer">
       <div class="inner">
-        <div id="game-container" v-if="downloaded" />
+        <div id="game-container" :class="`game-${gameID}`" v-if="downloaded" />
         <div class="placeholder" v-else>Downloading ...</div>
+
       </div>
     </div>
   </div>
 </template>
 
 <style>
-@font-face {
-  font-family: "Custom-Han-Serif";
-  src: local("Custom-Han-Serif"),
-    url(../games/game_3/assets/font/game_3.ttf) format("truetype");
-}
+  @font-face {
+    font-family: "Custom-STKaitiTC";
+    src: url(../games/common/fonts/Custom-STKaitiTC.ttf) format("truetype");
+  }
+  .game-5 {
+    font-family: "Custom-STKaitiTC";
+  }
+  .game-18 {
+    font-family: "Custom-STKaitiTC";
+  }
 </style>
 
 <script>
@@ -26,12 +32,33 @@ export default {
       gameInstance: null,
       ww: 0,
       wh: 0,
+      gameFileMapping: {
+        5: 5,
+        6: 5,
+        7: 5,
+        8: 5,
+        9: 5,
+        21: 5,
+        11: 11,
+        12: 11,
+        13: 11,
+        14: 11,
+        15: 11
+      }
     };
   },
   computed: {
     gameID: function () {
       let self = this;
-      return self.$route.params.id;
+
+      let currentGameId = self.$route.params.id
+
+      if(typeof self.gameFileMapping[currentGameId] != 'undefined') {
+
+        currentGameId = self.gameFileMapping[currentGameId];
+
+      }
+      return currentGameId;
     },
     gameOrientation: function () {
       let self = this;
@@ -39,15 +66,27 @@ export default {
     },
   },
   async mounted() {
-    let self = this;
-    try {
-      console.log("game load");
-      let gameFile = require("@/games/game_" + self.gameID + "/index");
-      if (gameFile) {
-        const game = await import("@/games/game_" + self.gameID + "/index");
-        self.downloaded = true;
+    let self = this
+
+    let gameId = self.gameID;
+
+    if(typeof self.gameFileMapping[self.gameID] != 'undefined') {
+
+      gameId = self.gameFileMapping[self.gameID];
+
+    }
+
+    try{
+
+      let gameFile = require('@/games/game_'+gameId+'/index')
+      if(gameFile){
+        const game = await import('@/games/game_'+gameId+'/index')
+        self.downloaded = true
         self.$nextTick(() => {
-          self.gameInstance = game.launch(self.$route.params);
+          self.gameInstance = game.launch(self.$route.params, self.$gtag)
+          self.$gamePause.initService(self.gameInstance, 15, 5)
+          //self.$gamePause.initService(self.gameInstance, 1, 5)
+          self.$gamePause.initGameTrackTimer()
         });
       }
     } catch (e) {
@@ -59,16 +98,22 @@ export default {
     window.addEventListener("resize", function () {
       self.windowSizeHandler();
     });
+
   },
   destroyed() {
     this.gameInstance.destroy(false);
+    this.$gamePause.clearTimer()
+//    clearInterval(this.setCookieTimer);
   },
   methods: {
     windowSizeHandler: function () {
       let self = this;
       self.ww = window.innerWidth;
       self.wh = window.innerHeight;
-    },
+      if(document.querySelector('.game-wrapper')){
+        document.querySelector('.game-wrapper').style.setProperty('--vh', `${self.wh * 0.01}px`)
+      }
+    }
   },
 };
 </script>

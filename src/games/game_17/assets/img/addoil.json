@@ -1,0 +1,91 @@
+﻿{"frames": {
+
+"addoil0000":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0001":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0002":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0003":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":6,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0004":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":8,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0005":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":6,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0006":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0007":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0008":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+},
+"addoil0009":
+{
+	"frame": {"x":2,"y":2,"w":297,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":297,"h":194},
+	"sourceSize": {"w":297,"h":194}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "16.1.0.86",
+	"image": "addoil.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1"
+}
+}

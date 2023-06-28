@@ -1,0 +1,91 @@
+﻿{"frames": {
+
+"Symbol 10000":
+{
+	"frame": {"x":0,"y":0,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10001":
+{
+	"frame": {"x":0,"y":631,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10002":
+{
+	"frame": {"x":0,"y":631,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10003":
+{
+	"frame": {"x":0,"y":631,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10004":
+{
+	"frame": {"x":0,"y":631,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10005":
+{
+	"frame": {"x":0,"y":631,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10006":
+{
+	"frame": {"x":0,"y":631,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10007":
+{
+	"frame": {"x":0,"y":631,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":243,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10008":
+{
+	"frame": {"x":0,"y":1262,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":122,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+},
+"Symbol 10009":
+{
+	"frame": {"x":0,"y":0,"w":1443,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":1443,"h":874},
+	"sourceSize": {"w":1443,"h":874}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.2.168",
+	"image": "correct answer.png",
+	"format": "RGBA8888",
+	"size": {"w":1500,"h":2048},
+	"scale": "1"
+}
+}

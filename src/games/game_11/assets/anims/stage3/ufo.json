@@ -1,0 +1,155 @@
+﻿{"frames": {
+
+"ufo0000":
+{
+	"frame": {"x":0,"y":0,"w":499,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0001":
+{
+	"frame": {"x":0,"y":0,"w":499,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0002":
+{
+	"frame": {"x":501,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0003":
+{
+	"frame": {"x":501,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0004":
+{
+	"frame": {"x":1004,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0005":
+{
+	"frame": {"x":1004,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0006":
+{
+	"frame": {"x":1507,"y":0,"w":501,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0007":
+{
+	"frame": {"x":1507,"y":0,"w":501,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0008":
+{
+	"frame": {"x":0,"y":410,"w":499,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0009":
+{
+	"frame": {"x":0,"y":410,"w":499,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0010":
+{
+	"frame": {"x":1507,"y":0,"w":501,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0011":
+{
+	"frame": {"x":1507,"y":0,"w":501,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0012":
+{
+	"frame": {"x":1004,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0013":
+{
+	"frame": {"x":1004,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0014":
+{
+	"frame": {"x":501,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0015":
+{
+	"frame": {"x":501,"y":0,"w":501,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0016":
+{
+	"frame": {"x":0,"y":0,"w":499,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+},
+"ufo0017":
+{
+	"frame": {"x":0,"y":0,"w":499,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":501,"h":408},
+	"sourceSize": {"w":501,"h":408}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "21.0.7.42652",
+	"image": "ufo.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":1024},
+	"scale": "1"
+}
+}

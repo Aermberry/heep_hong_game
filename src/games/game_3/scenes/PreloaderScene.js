@@ -1,84 +1,128 @@
 import BasicScene from './BasicScene'
+import LoadProgress from '../components/LoadProgress';
+
 
 export default class PreloaderScene extends BasicScene {
 
     constructor() {
-        super({
-            key: "Preloader"
-        })
+        super("Preloader"
+        )
+
+        this.progressLoader = null;
     }
 
     preload() {
+        this.buildBackground('backgroundPreloadingScene');
 
-        this.buildBg('bg_title');
+        this.progressLoader = new LoadProgress(this, () => this.scene.start('Tutor'));
 
         const imageFiles = {
-            'bg_base': require('../assets/images/bg_stage.png'),
-            'bg_end': require('../assets/images/bg_end.png'),
-            'bg_tutor': require('../assets/images/bg_tutor.png'),
-            'an_BL': require('../assets/images/an_BL.png'),
-            'an_LMR': require('../assets/images/an_LMR.png'),
-            'an_LR': require('../assets/images/an_LR.png'),
-            'an_LsR': require('../assets/images/an_LsR.png'),
-            'an_sLR': require('../assets/images/an_sLR.png'),
-            'an_sUB': require('../assets/images/an_sUB.png'),
-            'an_UB': require('../assets/images/an_UB.png'),
-            'an_UL': require('../assets/images/an_UL.png'),
-            'an_UMB': require('../assets/images/an_UMB.png'),
-            'an_UsB': require('../assets/images/an_UsB.png'),
-            'an_warp': require('../assets/images/an_warp.png'),
-            'an_whole': require('../assets/images/an_whole.png'),
-            'an_hfB': require('../assets/images/an_hfB.png'),
-            'an_hfR': require('../assets/images/an_hfR.png'),
-            'an_n': require('../assets/images/an_n.png'),
-            'an_y': require('../assets/images/an_y.png'),
-            'an_tngl': require('../assets/images/an_tngl.png'),
-            'end_box': require('../assets/images/end_box.png'),
-            'leaf': require('../assets/images/leaf.png'),
-            'leaf1': require('../assets/images/leaf1.png'),
-            'leaf2': require('../assets/images/leaf2.png'),
-            'end_pic_bg': require('../assets/images/end_pic_bg.png'),
-            'end_pic_fg': require('../assets/images/end_pic_fg.png')
+            'backgroundTutorEnd': require('../assets/images/background_tutor_end.png'),
+            'backgroundGamePlay': require('../assets/images/background_game_play_scene.png'),
+            'backgroundPlayer': require('../assets/images/background_player.png'),
+            'gameEndDialogBox': require('../assets/images/background_game_end_dialog.png'),
+            'gameEndDialogBoxTexture': require('../assets/images/texture_game_end_scene_dialog_box.png'),
+            'uiEgg': require('../assets/images/ui_egg.png'),
+            'uiRecorder': require('../assets/images/ui_recorder.png'),
+            'clawTexture': require('../assets/images/texture_claw.png'),
+            'errorTexture': require('../assets/images/texture_error.png'),
+            'correctTexture':require('../assets/images/texture_correct.png'),
+
+            'textureObject0': require('../assets/images/objects/0.png'),
+            'textureObject1': require('../assets/images/objects/1.png'),
+            'textureObject2': require('../assets/images/objects/2.png'),
+            'textureObject3': require('../assets/images/objects/3.png'),
+            'textureObject4': require('../assets/images/objects/4.png'),
+            'textureObject5': require('../assets/images/objects/5.png'),
+            'textureObject6': require('../assets/images/objects/6.png'),
+            'textureObject7': require('../assets/images/objects/7.png'),
+            'textureObject8': require('../assets/images/objects/8.png'),
+            'textureObject9': require('../assets/images/objects/9.png'),
+            'textureObject10': require('../assets/images/objects/10.png'),
+            'textureObject11': require('../assets/images/objects/11.png'),
+            'textureObject12': require('../assets/images/objects/12.png'),
+            'textureObject13': require('../assets/images/objects/13.png'),
+            'textureObject14': require('../assets/images/objects/14.png'),
+            'textureObject15': require('../assets/images/objects/15.png'),
+            'textureObject16': require('../assets/images/objects/16.png'),
+            'textureObject17': require('../assets/images/objects/17.png'),
+            'textureObject18': require('../assets/images/objects/18.png'),
+            'textureObject19': require('../assets/images/objects/19.png'),
+            'textureObject20': require('../assets/images/objects/20.png'),
+            'textureObject21': require('../assets/images/objects/21.png'),
+            'textureObject22': require('../assets/images/objects/22.png'),
+            'textureObject23': require('../assets/images/objects/23.png'),
+            'textureObject24': require('../assets/images/objects/24.png'),
+            'textureObject25': require('../assets/images/objects/25.png'),
+            'textureObject26': require('../assets/images/objects/26.png'),
+            'textureObject27': require('../assets/images/objects/27.png'),
+            'textureObject28': require('../assets/images/objects/28.png'),
+            'textureObject29': require('../assets/images/objects/29.png'),
+            'textureObject30': require('../assets/images/objects/30.png'),
+            'textureObject31': require('../assets/images/objects/31.png'),
+            'textureObject32': require('../assets/images/objects/32.png'),
+            'textureObject33': require('../assets/images/objects/33.png'),
+            'textureObject34': require('../assets/images/objects/34.png'),
+            'textureObject35': require('../assets/images/objects/35.png'),
+            'textureObject36': require('../assets/images/objects/36.png'),
+            'textureObject37': require('../assets/images/objects/37.png'),
+            'textureObject38': require('../assets/images/objects/38.png'),
+            'textureObject39': require('../assets/images/objects/39.png'),
+            'textureObject40': require('../assets/images/objects/40.png'),
+            'textureObject41': require('../assets/images/objects/41.png'),
+
         };
 
         const atlasFiles = {
-            'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
-            'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
-            'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
-            'end_cat': { img: require('../assets/anims/end_cat.png'), data: require('../assets/anims/end_cat.json')}
+            'tutorTexture': {
+                img: require('../assets/atlas/atlas_tutor.png'), data: require('../assets/atlas/atlas_tutor.json')
+            },
+            'tutorTexture01': {
+                img: require('../assets/atlas/atlas_tutor01.png'), data: require('../assets/atlas/atlas_tutor01.json')
+            },
+            'tutorTexture02': {
+                img: require('../assets/atlas/atlas_tutor02.png'), data: require('../assets/atlas/atlas_tutor02.json')
+            },
+            'penguinTexture': {
+                img: require('../assets/atlas/atlas_penguin.png'), data: require('../assets/atlas/atlas_penguin.json')
+            },
+            'endTexture': {
+                img: require('../assets/atlas/atlas_end.png'), data: require('../assets/atlas/atlas_end.json')
+            },
+            'lionLeftRecorderTexture': {
+                img: require('../assets/atlas/atlas_lion_left_recorder.png'), data: require('../assets/atlas/atlas_lion_left_recorder.json')
+            },
+            'playerOnPlayingTexture': {
+                img: require('../assets/atlas/atlas_player_on_playing.png'), data: require('../assets/atlas/atlas_player_on_playing.json')
+            }
         }
 
         const soundFiles = {
-            'hit': require('../assets/audio/hit36.mp3'),
-            'impactSplat': require('../assets/audio/impactsplat05.mp3'),
-            'swing': require('../assets/audio/swing3.mp3'),
-            'swordUnsheathe': require('../assets/audio/sword-unsheathe5.mp3'),
-            'lightBattle': require('../assets/audio/light_battle_chopped.mp3'),
-            'drums': require('../assets/audio/taiko-drums_chopped.mp3')
+            'buttonEffectSound': require('../assets/audio/sound_effect/sound_effect_button_on_clicked.mp3'),
+            'gamePlaySceneBackgroundMusic': require('../assets/audio/bgm_game_play_scene.mp3'),
+            'gameEndSceneBackgroundMusic': require('../assets/audio/bgm_game_end_scene.mp3'),
+
+            'robotArmAppearSoundEffect': require('../assets/audio/sound_effect/sound_effect_robot_arm_appear_on_the_scene.mp3'),
+            'errorSoundEffect': require('../assets/audio/sound_effect/sound_effect_error.mp3'),
+            'correctSoundEffect': require('../assets/audio/sound_effect/sound_effect_correct.mp3'),
+            'loseSoundEffect': require('../assets/audio/sound_effect/sound_effect_lose.mp3'),
+            'winSoundEffect': require('../assets/audio/sound_effect/sound_effect_win.mp3'),
+
         }
 
-        this.load.spritesheet('extSmBtn', require('../assets/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 });
-        this.load.spritesheet('strBtn', require('../assets/btn_str.png'),{ frameWidth: 776, frameHeight: 227 });
-        this.load.spritesheet('plyBtn', require('../assets/btn_ply.png'),{ frameWidth: 186, frameHeight: 209 });
-        this.load.spritesheet('pusBtn', require('../assets/btn_pus.png'),{ frameWidth: 186, frameHeight: 209 });
-        this.load.spritesheet('rplBtn', require('../assets/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('extBtn', require('../assets/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('cfmBtn', require('../assets/btn_cfm.png'),{ frameWidth: 917, frameHeight: 233 });
+        this.load.spritesheet('startButton', require('../assets/images/button_start_game.png'), { frameWidth: 776, frameHeight: 227 });
+        this.load.spritesheet('retryButton', require('../assets/images/button_retry.png'), { frameWidth: 410, frameHeight: 163.5 });
+        this.load.spritesheet('gameProgressExitButton', require('../assets/images/button_exit_progress_game.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('gameEndExitButton', require('../assets/images/button_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
+        this.load.spritesheet('resetButton', require('../assets/images/button_reset.png'), { frameWidth: 228, frameHeight: 241 });
+        this.load.spritesheet('voiceButton', require('../assets/images/button_voice.png'), { frameWidth: 186, frameHeight: 210 });
+        this.load.spritesheet('playerButton', require('../assets/images/button_player_on_playing.png'), { frameWidth: 186, frameHeight: 219 });
+        this.load.spritesheet('backgroundMusicButtonOnPlay', require('../assets/images/button_background_music_on_play.png'), { frameWidth: 186, frameHeight: 209 });
+        this.load.spritesheet('backgroundMusicButtonOnPause', require('../assets/images/button_background_music_on_pause.png'), { frameWidth: 186, frameHeight: 209 });
+        
 
-        this.preloadFromArr({img: imageFiles, atlas: atlasFiles, sound: soundFiles});
 
-        this.createProgressBar();
-
-    }
-
-    create() {
-        super.create();
-
-        setTimeout(
-            ()=> {
-                this.scene.start('Tutor')
-            }, 1
-        )
+        this.preloadFromArr({ img: imageFiles, atlas: atlasFiles, sound: soundFiles });
     }
 
 }

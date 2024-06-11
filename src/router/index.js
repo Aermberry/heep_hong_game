@@ -15,9 +15,19 @@ const routes = [
     component: () => import('../views/Intro.vue')
   },
   {
-    path: '/game/intro',
+    path: '/game-intro',
     name: 'Game Intro',
     component: () => import('../views/GameIntro.vue')
+  },
+  {
+    path: '/world',
+    name: 'Game World',
+    component: () => import('../views/GameWorldIndex.vue')
+  },
+  {
+    path: '/world/:sid',
+    name: 'Game World Stage',
+    component: () => import('../views/GameWorldIndex.vue')
   },
   {
     path: '/gameDemo',

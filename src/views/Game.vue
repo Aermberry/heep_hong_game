@@ -10,6 +10,10 @@ export default {
   name: 'About',
   components: {
     Game
-  }
+  },
+  mounted: function() {
+    this.$gtag.event('view_item', { 'event_category': 'js_games', 'event_label': 'Game Landing Page 2' })
+
+  },
 }
 </script>

@@ -1,0 +1,251 @@
+﻿{"frames": {
+
+"pink car crush0000":
+{
+	"frame": {"x":0,"y":0,"w":458,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0001":
+{
+	"frame": {"x":460,"y":0,"w":443,"h":274},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":91,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0002":
+{
+	"frame": {"x":905,"y":0,"w":428,"h":289},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":70,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0003":
+{
+	"frame": {"x":1335,"y":0,"w":438,"h":303},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":51,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0004":
+{
+	"frame": {"x":1775,"y":0,"w":458,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":33,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0005":
+{
+	"frame": {"x":2235,"y":0,"w":479,"h":328},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":67,"y":15,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0006":
+{
+	"frame": {"x":2716,"y":0,"w":498,"h":338},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":0,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0007":
+{
+	"frame": {"x":3216,"y":0,"w":508,"h":325},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":19,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0008":
+{
+	"frame": {"x":0,"y":340,"w":518,"h":311},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":40,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0009":
+{
+	"frame": {"x":520,"y":340,"w":526,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":63,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0010":
+{
+	"frame": {"x":1048,"y":340,"w":532,"h":276},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":87,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0011":
+{
+	"frame": {"x":1582,"y":340,"w":538,"h":260},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":110,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0012":
+{
+	"frame": {"x":2122,"y":340,"w":515,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0013":
+{
+	"frame": {"x":2639,"y":340,"w":493,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0014":
+{
+	"frame": {"x":3134,"y":340,"w":478,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0015":
+{
+	"frame": {"x":3614,"y":340,"w":472,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0016":
+{
+	"frame": {"x":0,"y":653,"w":477,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0017":
+{
+	"frame": {"x":479,"y":653,"w":483,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0018":
+{
+	"frame": {"x":964,"y":653,"w":491,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0019":
+{
+	"frame": {"x":1457,"y":653,"w":517,"h":260},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":110,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0020":
+{
+	"frame": {"x":1976,"y":653,"w":522,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0021":
+{
+	"frame": {"x":2500,"y":653,"w":499,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0022":
+{
+	"frame": {"x":3001,"y":653,"w":474,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0023":
+{
+	"frame": {"x":3477,"y":653,"w":451,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0024":
+{
+	"frame": {"x":0,"y":915,"w":428,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0025":
+{
+	"frame": {"x":430,"y":915,"w":435,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0026":
+{
+	"frame": {"x":867,"y":915,"w":448,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0027":
+{
+	"frame": {"x":1317,"y":915,"w":464,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0028":
+{
+	"frame": {"x":1783,"y":915,"w":479,"h":258},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+},
+"pink car crush0029":
+{
+	"frame": {"x":2264,"y":915,"w":495,"h":260},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":110,"w":573,"h":370},
+	"sourceSize": {"w":573,"h":370}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "21.0.9.42677",
+	"image": "pink_car crush.png",
+	"format": "RGBA8888",
+	"size": {"w":4096,"h":2048},
+	"scale": "1"
+}
+}

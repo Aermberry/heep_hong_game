@@ -1,0 +1,23 @@
+[
+    {
+        "name": "eggGreen",
+        "status": "openedEggGreen"
+    },
+    {
+        "name": "eggOrange",
+        "status": "openedEggOrange"
+    },
+    {
+        "name": "eggPink",
+        "status": "openedEggPink"
+    },
+    {
+        "name": "eggPurple",
+        "status": "openedEggPurple"
+    },
+    {
+        "name": "eggYellow",
+        "status": "openedEggYellow"
+    }
+    
+]

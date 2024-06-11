@@ -1,0 +1,292 @@
+[
+    {
+        "gameStage": 1,
+        "items": [
+            {
+                "audio": "101",
+                "seconds":5000,
+                "data": [
+                    {
+                        "value": "我們要認真地學習",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "102",
+                "seconds":5000,
+                "data": [
+                    {
+                        "value": "小貓在地上睡覺",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "103",
+                "seconds":5000,
+                "data": [
+                    {
+                        "value": "我和小美是好朋友",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "104",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "幫助別人是一件快樂的事",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "105",
+                "seconds":4000,
+                "data": [
+                    {
+                        "value": "我愛我的家人",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "106",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "婆婆和我昨天去了看電影",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "107",
+                "seconds":5000,
+                "data": [
+                    {
+                        "value": "草莓是小天最愛的水果",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "108",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "小鳥在天上自由自在地飛翔",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "109",
+                "seconds":5000,
+                "data": [
+                    {
+                        "value": "我們要愛護大自然",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "110",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "媽媽每天辛勞地照顧我和妹妹",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "111",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "夏天到了",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "我們到海灘游泳",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "112",
+                "seconds":7000,
+                "data": [
+                    {
+                        "value": "今天",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "我和哥哥在家裏做蛋糕",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "113",
+                "seconds":8000,
+                "data": [
+                    {
+                        "value": "上星期天",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "爸爸媽媽帶我去海洋公園",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "114",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "姐姐一邊唱歌",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "一邊跳舞",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "115",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "我喜歡喝茶",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "也喜歡喝果汁",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "116",
+                "seconds":6000,
+                "data": [
+                    {
+                        "value": "爸爸愛打籃球",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "我也愛打籃球",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "117",
+                "seconds":7000,
+                "data": [
+                    {
+                        "value": "妹妹不但會彈鋼琴",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "而且會拉小提琴",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "118",
+                "seconds":12000,
+                "data": [
+                    {
+                        "value": "在音樂會上",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "小英演唱了一首歌",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "大家都覺得很動聽",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "119",
+                "seconds":12000,
+                "data": [
+                    {
+                        "value": "小息時",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "我和小美一起玩捉迷藏",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "她不小心跌倒在地上",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            },
+            {
+                "audio": "120",
+                "seconds":8000,
+                "data": [
+                    {
+                        "value": "操場上",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "同學們有的在看書",
+                        "type": "comm",
+                        "result": null
+                    },
+                    {
+                        "value": "有的在談天",
+                        "type": "full",
+                        "result": null
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,10 +1,17 @@
 import { Scene } from 'phaser'
 import config from '../config/Config';
+
+
 import Button from '../objects/Button';
+import SpeakerBtn from '../objects/SpeakerBtn';
 
 export default class EndScene extends Scene {
   constructor () {
     super('End');
+  }
+
+  init() {
+    this.model = this.sys.game.globals.model;
   }
 
   preload () {
@@ -15,18 +22,42 @@ export default class EndScene extends Scene {
 
     self.anims.create({
       key: 'bg_space',
-      frames: self.anims.generateFrameNames('bg_space', { prefix: 'frame', start: 0, end: 49 }),
+      frames: self.anims.generateFrameNames('bg_space', { prefix: 'bg_space', start: 0, end: 20, zeroPad: 4 }),
       repeat: -1
     });
 
     self.anims.create({
+      key: 'bg_space_rocket',
+      frames: self.anims.generateFrameNames('bg_space_rocket', { prefix: 'bg_space_rocket', start: 0, end: 20, zeroPad: 4 }),
+      repeat: -1,
+      duration: 2000
+    });
+
+    self.anims.create({
+      key: 'bg_space_ufo',
+      frames: self.anims.generateFrameNames('bg_space_ufo', { prefix: 'bg_space_ufo', start: 0, end: 20, zeroPad: 4 }),
+      repeat: -1,
+      duration: 2000
+    });
+
+    self.anims.create({
       key: 'char_create',
-      frames: self.anims.generateFrameNames('char_end', { prefix: 'frame', start: 0, end: 47 }),
+      frames: self.anims.generateFrameNames('char_end', {
+        prefix: self.model.character.end_key,
+        start: self.model.character.action.end[0],
+        end: self.model.character.action.end[1],
+        zeroPad: 4
+      }),
     });
 
     self.anims.create({
       key: 'char_repeat',
-      frames: self.anims.generateFrameNames('char_end', { prefix: 'frame', start: 47, end: 100 }),
+      frames: self.anims.generateFrameNames('char_end', {
+        prefix: self.model.character.end_key,
+        start: self.model.character.action.end2[0],
+        end: self.model.character.action.end2[1],
+        zeroPad: 4
+      }),
       repeat: -1
     });
   }
@@ -34,8 +65,16 @@ export default class EndScene extends Scene {
   create () {
     let self = this
 
+    this.sys.game.globals.gtag.event('game_1_end', { 'event_category': 'js_games', 'event_label': 'Game End'})
+
     let bg_space = self.add.sprite(config.width/2 + 10, config.height/2 - 150, 'bg_space')
     bg_space.play('bg_space')
+
+    let bg_rocket = self.add.sprite(config.width* 0.2, config.height * 0.4, 'bg_space_rocket')
+    bg_rocket.play('bg_space_rocket')
+
+    let bg_ufo = self.add.sprite(config.width* 0.7, config.height * 0.8, 'bg_space_ufo')
+    bg_ufo.play('bg_space_ufo')
 
     self.add.image(config.width/2, config.height/2, 'endBoxBg')
 
@@ -50,6 +89,24 @@ export default class EndScene extends Scene {
     }, this);
 
     self.replayButton = new Button(self, config.width/2 - 220, config.height/2 + 310, 'rplBtn', 'Game', 'self')
-    self.exitButton = new Button(self, config.width/2 + 220, config.height/2 + 310, 'extBtn')
+    self.exitButton = new Button(self, config.width/2 + 220, config.height/2 + 310, 'extBtn', '', 'back')
+
+    self.speakerBtn = new SpeakerBtn(this, 1820, 120, this.musicPause.bind(this));
+    self.speakerBtn.setDepth(3);
+    self.add.existing(self.speakerBtn);
+  }
+
+  musicPause() {
+    let self = this
+    if (self.model.bgMusicPlaying){
+      this.sys.game.globals.bgMusic.pause()
+      //self.sound.stopByKey('bgMusic')
+      self.model.bgMusicPlaying = false
+    } else {
+      this.sys.game.globals.bgMusic.resume()
+      //self.sound.play('bgMusic')
+      self.model.bgMusicPlaying = true
+    }
+
   }
 }

@@ -1,0 +1,91 @@
+﻿{"frames": {
+
+"house_b0000":
+{
+	"frame": {"x":0,"y":0,"w":928,"h":673},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0001":
+{
+	"frame": {"x":928,"y":0,"w":928,"h":683},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0002":
+{
+	"frame": {"x":1856,"y":0,"w":928,"h":693},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0003":
+{
+	"frame": {"x":0,"y":693,"w":928,"h":702},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":37,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0004":
+{
+	"frame": {"x":928,"y":693,"w":928,"h":708},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":31,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0005":
+{
+	"frame": {"x":1856,"y":693,"w":928,"h":714},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":25,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0006":
+{
+	"frame": {"x":0,"y":1407,"w":928,"h":720},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":19,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0007":
+{
+	"frame": {"x":928,"y":1407,"w":928,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":13,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0008":
+{
+	"frame": {"x":1856,"y":1407,"w":928,"h":732},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":7,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+},
+"house_b0009":
+{
+	"frame": {"x":0,"y":2139,"w":928,"h":739},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":928,"h":739},
+	"sourceSize": {"w":928,"h":739}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.2.168",
+	"image": "house_b.png",
+	"format": "RGBA8888",
+	"size": {"w":2900,"h":2900},
+	"scale": "1"
+}
+}

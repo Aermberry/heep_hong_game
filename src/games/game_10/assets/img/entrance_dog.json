@@ -1,0 +1,107 @@
+﻿{"frames": {
+
+"entrance_doggy0000":
+{
+	"frame": {"x":0,"y":0,"w":623,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0001":
+{
+	"frame": {"x":625,"y":0,"w":629,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":42,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0002":
+{
+	"frame": {"x":1256,"y":0,"w":648,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0003":
+{
+	"frame": {"x":1906,"y":0,"w":674,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0004":
+{
+	"frame": {"x":0,"y":928,"w":690,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0005":
+{
+	"frame": {"x":692,"y":928,"w":695,"h":926},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0006":
+{
+	"frame": {"x":1389,"y":928,"w":691,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0007":
+{
+	"frame": {"x":2082,"y":928,"w":681,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0008":
+{
+	"frame": {"x":0,"y":1856,"w":661,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0009":
+{
+	"frame": {"x":663,"y":1856,"w":641,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0010":
+{
+	"frame": {"x":1306,"y":1856,"w":627,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+},
+"entrance_doggy0011":
+{
+	"frame": {"x":0,"y":0,"w":623,"h":926},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":0,"w":695,"h":926},
+	"sourceSize": {"w":695,"h":926}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.1.105",
+	"image": "entrance_dog.png",
+	"format": "RGBA8888",
+	"size": {"w":2770,"h":2790},
+	"scale": "1"
+}
+}

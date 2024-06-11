@@ -1,0 +1,338 @@
+{
+    "level1": [
+        {
+            "name": "橙",
+            "logo": "i_orange.png",
+            "shadow": "i_orange gy.png",
+            "audio": "G10_001"
+        },
+        {
+            "name": "香蕉",
+            "logo": "i_banana.png",
+            "shadow": "i_banana gy.png",
+            "audio": "G10_002"
+        },
+        {
+            "name": "士多啤梨",
+            "logo": "i_sberry.png",
+            "shadow": "i_sberry gy.png",
+            "audio": "G10_003"
+        },
+        {
+            "name": "雞蛋",
+            "logo": "i_egg.png",
+            "shadow": "i_egg gy.png",
+            "audio": "G10_004"
+        },
+        {
+            "name": "間尺",
+            "logo": "i_ruler.png",
+            "shadow": "i_ruler gy.png",
+            "audio": "G10_005"
+        },
+        {
+            "name": "剪刀",
+            "logo": "i_scissor.png",
+            "shadow": "i_scissor gy.png",
+            "audio": "G10_006"
+        },
+        {
+            "name": "顏色筆",
+            "logo": "i_crayon.png",
+            "shadow": "i_crayon gy.png",
+            "audio": "G10_007"
+        },
+        {
+            "name": "釘書機",
+            "logo": "i_staple.png",
+            "shadow": "i_staple gy.png",
+            "audio": "G10_008"
+        },
+        {
+            "name": "泡泡槍",
+            "logo": "i_bbgun.png",
+            "shadow": "i_bbgun gy.png",
+            "audio": "G10_009"
+        },
+        {
+            "name": "拼圖",
+            "logo": "i_puzzle.png",
+            "shadow": "i_puzzle gy.png",
+            "audio": "G10_010"
+        },
+        {
+            "name": "玩具熊",
+            "logo": "i_ted.png",
+            "shadow": "i_ted gy.png",
+            "audio": "G10_011"
+        },
+        {
+            "name": "超人公仔",
+            "logo": "i_hero.png",
+            "shadow": "i_hero gy.png",
+            "audio": "G10_012"
+        },
+        {
+            "name": "漢堡包",
+            "logo": "i_bgr.png",
+            "shadow": "i_bgr gy.png",
+            "audio": "G10_013"
+        },
+        {
+            "name": "薯條",
+            "logo": "i_fries.png",
+            "shadow": "i_fries gy.png",
+            "audio": "G10_014"
+        },
+        {
+            "name": "雪糕",
+            "logo": "i_icream.png",
+            "shadow": "i_icream gy.png",
+            "audio": "G10_015"
+        },
+        {
+            "name": "可樂",
+            "logo": "i_coke.png",
+            "shadow": "i_coke gy.png",
+            "audio": "G10_016"
+        },
+        {
+            "name": "掃把",
+            "logo": "i_broom.png",
+            "shadow": "i_broom gy.png",
+            "audio": "G10_017"
+        },
+        {
+            "name": "牙刷",
+            "logo": "i_tbrush.png",
+            "shadow": "i_tbrush gy.png",
+            "audio": "G10_018"
+        },
+        {
+            "name": "水壺",
+            "logo": "i_bottle.png",
+            "shadow": "i_bottle gy.png",
+            "audio": "G10_019"
+        },
+        {
+            "name": "毛巾",
+            "logo": "i_towel.png",
+            "shadow": "i_towel gy.png",
+            "audio": "G10_020"
+        }
+    ],
+    "level2": [
+        {
+            "name": "衣服",
+            "logo": "i_tee.png",
+            "shadow": "i_tee gy.png",
+            "audio": "G10_021"
+        },
+        {
+            "name": "運動鞋",
+            "logo": "i_sneaker.png",
+            "shadow": "i_sneaker gy.png",
+            "audio": "G10_022"
+        },
+        {
+            "name": "手機充電器",
+            "logo": "i_charger.png",
+            "shadow": "i_charger gy.png",
+            "audio": "G10_023"
+        },
+        {
+            "name": "八達通",
+            "logo": "i_otp.png",
+            "shadow": "i_otp gy.png",
+            "audio": "G10_024"
+        },
+        {
+            "name": "藥物",
+            "logo": "i_pill.png",
+            "shadow": "i_pill gy.png",
+            "audio": "G10_025"
+        },
+        {
+            "name": "太陽帽",
+            "logo": "i_hat.png",
+            "shadow": "i_hat gy.png",
+            "audio": "G10_026"
+        },
+        {
+            "name": "雨傘",
+            "logo": "i_umbralla.png",
+            "shadow": "i_umbralla gy.png",
+            "audio": "G10_028"
+        },
+        {
+            "name": "太陽眼鏡",
+            "logo": "i_sung.png",
+            "shadow": "i_sung gy.png",
+            "audio": "G10_027"
+        },
+        {
+            "name": "泳衣",
+            "logo": "i_bsuit.png",
+            "shadow": "i_bsuit gy.png",
+            "audio": "G10_030"
+        },
+        {
+            "name": "泳鏡",
+            "logo": "i_swimg.png",
+            "shadow": "i_swimg gy.png",
+            "audio": "G10_031"
+        },
+        {
+            "name": "拖鞋",
+            "logo": "i_slipper.png",
+            "shadow": "i_slipper gy.png",
+            "audio": "G10_032"
+        },
+        {
+            "name": "大毛巾",
+            "logo": "i_xltowel.png",
+            "shadow": "i_xltowel gy.png",
+            "audio": "G10_033"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        },
+        {
+            "name": "皮鞋",
+            "logo": "i_shoes.png",
+            "shadow": "i_shoes gy.png",
+            "audio": "G10_034"
+        },
+        {
+            "name": "冷帽",
+            "logo": "i_beanie.png",
+            "shadow": "i_beanie gy.png",
+            "audio": "G10_035"
+        },
+        {
+            "name": "頸巾",
+            "logo": "i_scarf.png",
+            "shadow": "i_scarf gy.png",
+            "audio": "G10_036"
+        },
+        {
+            "name": "保暖手套",
+            "logo": "i_mitten.png",
+            "shadow": "i_mitten gy.png",
+            "audio": "G10_037"
+        },
+        {
+            "name": "紙巾",
+            "logo": "i_tissue.png",
+            "shadow": "i_tissue gy.png",
+            "audio": "G10_050"
+        }
+    ],
+    "level3": [
+        {
+            "name": "筆袋",
+            "logo": "i_pcase.png",
+            "shadow": "i_pcase gy.png",
+            "audio": "G10_038"
+        },
+        {
+            "name": "水壺",
+            "logo": "i_bottle.png",
+            "shadow": "i_bottle gy.png",
+            "audio": "G10_046"
+        },
+        {
+            "name": "手冊",
+            "logo": "i_hb.png",
+            "shadow": "i_hb gy.png",
+            "audio": "G10_039"
+        },
+        {
+            "name": "消毒搓手液",
+            "logo": "i_sanitizer.png",
+            "shadow": "i_sanitizer gy.png",
+            "audio": "G10_040"
+        },
+        {
+            "name": "中文書",
+            "logo": "i_bkchi.png",
+            "shadow": "i_bkchi gy.png",
+            "audio": "G10_041"
+        },
+        {
+            "name": "食物盒",
+            "logo": "i_fbox.png",
+            "shadow": "i_fbox gy.png",
+            "audio": "G10_043"
+        },
+        {
+            "name": "英文書",
+            "logo": "i_bkeng.png",
+            "shadow": "i_bkeng gy.png",
+            "audio": "G10_042"
+        },
+        {
+            "name": "功課袋",
+            "logo": "i_baghw.png",
+            "shadow": "i_baghw gy.png",
+            "audio": "G10_045"
+        },
+        {
+            "name": "學生證",
+            "logo": "i_card.png",
+            "shadow": "i_card gy.png",
+            "audio": "G10_044"
+        },
+        {
+            "name": "音樂書",
+            "logo": "i_bkmusic.png",
+            "shadow": "i_bkmusic gy.png",
+            "audio": "G10_048"
+        },
+        {
+            "name": "通告袋",
+            "logo": "i_bagmemo.png",
+            "shadow": "i_bagmemo gy.png",
+            "audio": "G10_049"
+        },
+        {
+            "name": "紙巾",
+            "logo": "i_tissue.png",
+            "shadow": "i_tissue gy.png",
+            "audio": "G10_050"
+        },
+        {
+            "name": "常識書",
+            "logo": "i_bkcom.png",
+            "shadow": "i_bkcom gy.png",
+            "audio": "G10_051"
+        },
+        {
+            "name": "濕紙巾",
+            "logo": "i_wet.png",
+            "shadow": "i_wet gy.png",
+            "audio": "G10_053"
+        },
+        {
+            "name": "銀包",
+            "logo": "i_wallet.png",
+            "shadow": "i_wallet gy.png",
+            "audio": "G10_054"
+        },
+        {
+            "name": "數學書",
+            "logo": "i_bkmaths.png",
+            "shadow": "i_bkmaths gy.png",
+            "audio": "G10_055"
+        },
+        {
+            "name": "音樂書",
+            "logo": "i_bkmusic.png",
+            "shadow": "i_bkmusic gy.png",
+            "audio": "G10_048"
+        },
+        {
+            "name": "口罩",
+            "logo": "i_mask.png",
+            "shadow": "i_mask gy.png",
+            "audio": "G10_056"
+        }
+    ]
+}

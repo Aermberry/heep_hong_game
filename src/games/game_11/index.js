@@ -1,15 +1,15 @@
 import Phaser from 'phaser'
 import config from './config'
 
-// import Model from './Model'
+import Model from './Model'
 import BootScene from './scenes/BootScene'
 import PreloaderScene from './scenes/PreloaderScene'
-import TutorScene from './scenes/TutorScene'
+import TutorSecene from './scenes/TutorScene'
 import GameScene from './scenes/GameScene'
 import EndScene from './scenes/EndScene'
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, PreloaderScene,TutorScene, GameScene,EndScene]
+    scene: [BootScene, PreloaderScene, TutorSecene, GameScene, EndScene]
 });
 
 /**
@@ -26,29 +26,30 @@ Phaser.Scenes.SceneManager.prototype.loadComplete = function (loader) {
         this.game.sound.unlock()
     }
     this.create(scene)
-
 }
 
 class Game11 extends Phaser.Game {
 
     // private globals: { model: Model }
 
-    constructor(config, urlParams) {
+    constructor(config, urlParams, gtag) {
         super(config);
-        console.log(urlParams)
-        // let model = new Model()
-        // this.globals = {
-        //     model
-        // }
+        let model = new Model()
+        this.globals = {
+            model,
+            gtag
+        }
 
-        // this.globals.model.gameStage = urlParams.sid;
+        this.globals.model.gameStage = urlParams.id;
+        this.globals.gtag = gtag
+        
     }
 }
 
 
-function launch(urlParams) {
+function launch(urlParams, gtag) {
 
-    let game = new Game11(gameConfig, urlParams)
+    let game = new Game11(gameConfig, urlParams, gtag)
 
     return game
 }

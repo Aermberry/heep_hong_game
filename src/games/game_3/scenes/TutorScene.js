@@ -1,69 +1,77 @@
+import ExitProgressGameButton from "../components/ExitProgressGameButton";
+import StartButton from "../components/StartButton";
 import BasicScene from "./BasicScene"
-import StartBtn from "../objects/StartBtn"
-import ExitBtn from '../objects/ExitBtn'
+import GameManager from "../components/GameManager";
+import GameSprite from "../phaser3_framework/object/GameSprite";
+import {
+    createTutorAnimation
+} from "../assets/animations/TutorAnimation";
+// import Phaser from "phaser";
 
-export default class TutorSecene extends BasicScene {
+export default class TutorScene extends BasicScene {
 
     constructor() {
-        super({
-            key: "Tutor"
-        })
+        super("Tutor")
+
+        this.gameManager = new GameManager()
     }
 
-    preload() {
+    async create() {
 
-        this.anims.create({
-            key: 'tut1',
-            delay: 200,
-            frames: this.anims.generateFrameNames('tut1', { prefix: 'tut1', start: 0, end: 33, zeroPad: 4 }),
-        });
-        this.anims.create({
-            key: 'tut2',
-            delay: 200,
-            frames: this.anims.generateFrameNames('tut2', { prefix: 'tut2', start: 0, end: 34, zeroPad: 4 }),
-        });
-        this.anims.create({
-            key: 'tut3',
-            delay: 200,
-            frames: this.anims.generateFrameNames('tut3', { prefix: 'tut3', start: 0, end: 50, zeroPad: 4 }),
-        });
-
-    }
-
-    create() {
         super.create();
-
-        this.buildBg('bg_tutor')
 
         //Stop all sound, because game will return to this scene on retry.
         this.sound.stopAll();
 
-        let tut1 = this.add.sprite(this.getColWidth(2.2), this.getRowHeight(6), 'tut1')
-        let tut2 = this.add.sprite(this.getColWidth(6), this.getRowHeight(3), 'tut2')
-        let tut3 = this.add.sprite(this.getColWidth(9.8), this.getRowHeight(5), 'tut3')
+         if (this.scene.get('EndUI')) {
+             this.scene.stop('EndUI');
+         }
 
-        this._repeatAnimate({tut1, tut2, tut3})
+        createTutorAnimation(this.anims);
+
+        this.paintScene();
+
+        await this.gameManager.initGameData();
+
+    }
+
+
+     paintScene() {
+
+        let uiLayer = this.add.layer().setDepth(0);
+
+        const exitProgressGameButton = new ExitProgressGameButton(this, 100, 120);
+        const startButton = new StartButton(this, this.getColWidth(6), this.getRowHeight(10)).setScale(0.8);
         
-        let exitBtn = new ExitBtn(this, 120, 135);
-        let startBtn = new StartBtn(this, this.getColWidth(6), this.getRowHeight(10.5));
-        this.add.existing(exitBtn);
-        this.add.existing(startBtn);
+      
+
+         uiLayer.add([this.buildBackground('backgroundTutorEnd'), exitProgressGameButton, startButton]);
+         
+          this.playTutorAnimation(uiLayer)
+
 
     }
 
-    /**
-     * @returns Promise
-     */
-    _repeatAnimate({tut1, tut2, tut3}) {
+   playTutorAnimation(layer) {
+       const tutorSprite01 = new GameSprite(this, this.cameras.main.width / 2 - 150, this.cameras.main.height / 2 - 110, 'tutorTexture01').setScale(1.3);
+       const tutorSprite02 = new GameSprite(this, this.cameras.main.width / 2 + 220, this.cameras.main.height / 2 - 120, 'tutorTexture02').setScale(1.3);
+       // const tutorSprite03 = new GameSprite(this, this.cameras.main.width / 2 + 390, this.cameras.main.height / 2 - 70, 'tutorTexture03').setScale(0.75);
 
-        tut1.play('tut1').once("animationcomplete", () => {
-            tut2.play('tut2').once("animationcomplete", () => {
-                tut3.play('tut3').once("animationcomplete", () => {
-                    this._repeatAnimate({tut1, tut2, tut3});
-                })
-            })
-        })
+       layer.add([tutorSprite02, tutorSprite01])
 
+       // tutorSprite01.on('animationcomplete', () => {
+       //    tutorSprite02.play('tutorAnimation02');
+       // })
+       // tutorSprite02.on('animationcomplete', () => {
+       //      tutorSprite03.play('tutorAnimation03');
+       // })
+       // tutorSprite03.on('animationcomplete', () => {
+       //     tutorSprite01.play('tutorAnimation01');
+       // })
+
+       tutorSprite01.play('tutorAnimation01')
+       tutorSprite02.play('tutorAnimation02');
     }
+
 
 }

@@ -1,12 +1,13 @@
 import BasicScene from './BasicScene'
-import EndBroad from '../objects/EndGameBroad'
+import GameEndDialog from '../components/DialogTipBox'
+import { createEndAnimation } from '../assets/animations/EndAnimation';
+
+
 
 export default class EndScene extends BasicScene {
 
     constructor() {
-        super({
-            key: 'End'
-        });
+        super('End');
 
     }
 
@@ -14,13 +15,27 @@ export default class EndScene extends BasicScene {
 
         super.create();
 
+        this.sys.game.globals.gtag.event(`game_${this.sys.game.globals.gameStageIndex}_end`, {'event_category': 'js_games', 'event_label': 'Game End'});
 
-        this.buildBg('bg_base')
+        createEndAnimation(this.anims);
+        
+        // this.playBackgroundMusic("gameEndSceneBackgroundMusic");
+        this.buildBackground('backgroundTutorEnd');
 
-        this.endBroad = new EndBroad(this, this.getColWidth(6), this.getRowHeight(6))
+        this.endBroad = new GameEndDialog(this, this.getColWidth(6), this.getRowHeight(6));
+        localStorage.clear()
 
-        this.add.existing(this.endBroad)        
+    }
 
+    playBackgroundMusic(sound){
+        
+        const backgroundMusic = this.sound.add(sound, {
+            volume: 0.8,
+            loop: true
+        });
+        
+     
+        backgroundMusic.play();
     }
 
 }

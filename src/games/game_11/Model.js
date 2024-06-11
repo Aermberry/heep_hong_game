@@ -4,9 +4,12 @@ export default class Model {
         this._gameStage = null;
         this._gameIndex = 0;
         this._gameData = JSON.parse(require('./assets/json/game_data.json'))
+
     }
 
     get gameStage() {
+
+        if(typeof this._gameStage === 'undefined' || this._gameStage == null) return this._gameData[0].gameStage;
         return this._gameStage;
     }
 
@@ -17,36 +20,41 @@ export default class Model {
             if(gameData.gameStage == stage) return this._gameIndex = ind;
 
         });
+    }
 
-
+    get gameQuestion() {
+        return this._gameData[this._gameIndex].gameQuestion.name;
     }
 
     get gameAnswers() {
-
-        if(this._gameStage == null) {
-
-            console.log('Game Stage void, set to default stage.')
-            
-            return [...this._gameData[0].answers];
-
-        }
-
-        return [...this._gameData[this._gameIndex].answers];
-
+        return this._gameData[this._gameIndex].gameAnswers;
     }
 
-    get gameItems() {
-
-        if(this._gameStage == null) {
-
-            console.log('Game Stage void, set to default stage.')
-            
-            return [...this._gameData[0].items];
-
-        }
-
-        return [...this._gameData[this._gameIndex].items];
-
+    get playerItem() {
+        return this._gameData[this._gameIndex].playerItem;
     }
 
+    get blockItem() {
+        return this._gameData[this._gameIndex].blockItem;
+    }
+
+    get backgroundItem() {
+        return this._gameData[this._gameIndex].backgroundItem
+    }
+
+    get foregroundItem() {
+        return this._gameData[this._gameIndex].foregroundItem
+    }
+
+    get tutorAnimates() {
+        return this._gameData[this._gameIndex].tutor
+    }
+
+    set bgMusicPlaying(value) {
+        this._bgMusicPlaying = value
+    }
+
+    get bgMusicPlaying() {
+        return this._bgMusicPlaying
+    }
 }

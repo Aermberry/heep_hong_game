@@ -1,70 +1,117 @@
-import BasicScene from './BasicScene'
-import config from '../config/index';
+import BasicScene from "./BasicScene";
 
 export default class PreloaderScene extends BasicScene {
 
-    constructor() {
+    constructor () {
         super({
-            key: "Preloader"
-        })
+            key: 'Preloader'
+        });
     }
 
-    preload() {
-        let self = this;
+    init() {
 
-        this.buildBg('bgLoadingGame');
+        this.dataModel = this.sys.game.globals.model;
 
-        const imageFiles = {
-            'bgTutor': require('../assets/images/bg_tutor.png'),
-            'iconTutor': require('../assets/images/icon_tutor.png'),
-            'stageSalver': require('../assets/images/stage_salver.png'),
-            'bgTipBox': require('../assets/images/icon_tip_dialog.png'),
-            'dialogTipBox': require('../assets/images/dialog_tip_box.png'),
-            'stageBigTooth': require('../assets/images/stage_big_tooth.png'),
-            'bgProgressGame': require('../assets/images/bg_progress_game.png'),
-            'stageSmallTooth': require('../assets/images/stage_small_tooth.png'),
-            'crocodileMouth': require('../assets/images/animal_crocodile_mouth.png'),
-            'bgGameFailed': require('../assets/images/bg_game_failed.png')
-        };
+    }
 
-        const soundFiles = {
-            'hit': require('../assets/audio/hit36.mp3'),
-            'impactSplat': require('../assets/audio/impactsplat05.mp3'),
-            'swing': require('../assets/audio/swing3.mp3'),
-            'swordUnsheathe': require('../assets/audio/sword-unsheathe5.mp3'),
-            'lightBattle': require('../assets/audio/light_battle_chopped.mp3'),
-            'drums': require('../assets/audio/taiko-drums_chopped.mp3')
+    preload () {
+
+        this.buildBg('bg_title')
+
+        this.sound.stopAll();
+
+        // console.log(this.dataModel.tutorAnimates)
+
+        // const tutReses = this.dataModel.tutorAnimates;
+
+
+
+        const tutAnimSet = {
+            11: {
+                'tut1': { img: require('../assets/anims/stage1/tut1.png'), data: require('../assets/anims/stage1/tut1.json')},
+                'tut2': { img: require('../assets/anims/stage1/tut2.png'), data: require('../assets/anims/stage1/tut2.json')},
+                'tut3': { img: require('../assets/anims/stage1/tut3.png'), data: require('../assets/anims/stage1/tut3.json')},
+            },
+            12: {
+                'tut1': { img: require('../assets/anims/stage2/tut1.png'), data: require('../assets/anims/stage2/tut1.json')},
+                'tut2': { img: require('../assets/anims/stage2/tut2.png'), data: require('../assets/anims/stage2/tut2.json')},
+                'tut3': { img: require('../assets/anims/stage2/tut3.png'), data: require('../assets/anims/stage2/tut3.json')},
+            },
+            13: {
+                'tut1': { img: require('../assets/anims/stage3/tut1.png'), data: require('../assets/anims/stage3/tut1.json')},
+                'tut2': { img: require('../assets/anims/stage3/tut2.png'), data: require('../assets/anims/stage3/tut2.json')},
+                'tut3': { img: require('../assets/anims/stage3/tut3.png'), data: require('../assets/anims/stage3/tut3.json')},
+            },
+            14: {
+                'tut1': { img: require('../assets/anims/stage4/tut1.png'), data: require('../assets/anims/stage4/tut1.json')},
+                'tut2': { img: require('../assets/anims/stage4/tut2.png'), data: require('../assets/anims/stage4/tut2.json')},
+                'tut3': { img: require('../assets/anims/stage4/tut3.png'), data: require('../assets/anims/stage4/tut3.json')},
+            },
+            15: {
+                'tut1': { img: require('../assets/anims/stage5/tut1.png'), data: require('../assets/anims/stage5/tut1.json')},
+                'tut2': { img: require('../assets/anims/stage5/tut2.png'), data: require('../assets/anims/stage5/tut2.json')},
+                'tut3': { img: require('../assets/anims/stage5/tut3.png'), data: require('../assets/anims/stage5/tut3.json')},
+            }
         }
 
-        this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'), { frameWidth: 776, frameHeight: 227 });
-        this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('gameProgressExitBtn', require('../assets/images/btn_game_progress_exit.png'), { frameWidth: 186, frameHeight: 209 });
-        this.load.spritesheet('gameEndExitBtn', require('../assets/images/btn_game_end_exit.png'), { frameWidth: 410, frameHeight: 163.5 });
-        this.load.spritesheet('moveBtn', require('../assets/images/btn_move.png'), { frameWidth: 256, frameHeight: 277 });
+        // const atlasFiles = {
+        //     'tut1': { img: require('../assets/anims/tut1.png'), data: require('../assets/anims/tut1.json')},
+        //     'tut2': { img: require('../assets/anims/tut2.png'), data: require('../assets/anims/tut2.json')},
+        //     'tut3': { img: require('../assets/anims/tut3.png'), data: require('../assets/anims/tut3.json')},
+        // }
 
 
-        this.preloadFromArr({ img: imageFiles, sound: soundFiles });
 
-        this.loadingText = this.make.text({
-            x: config.width / 2,
-            y: config.height * 0.89,
-            text: '連接中',
-            style: {
-                font: '25px monospace',
-                fill: '#fff'
-            }
-        });
+        // const atlasFiles = {
+        //     'tut1': { img: require(tutReses['tut1']['img']), data: require(tutReses['tut1']['data'])},
+        //     'tut2': { img: require(tutReses['tut2']['img']), data: require(tutReses['tut2']['data'])},
+        //     'tut3': { img: require(tutReses['tut3']['img']), data: require(tutReses['tut3']['data'])},
+        // }
+        let atlasFiles = {}
+
+        Object.keys(tutAnimSet[this.dataModel.gameStage]).forEach((key)=> {
+            atlasFiles[key] = tutAnimSet[this.dataModel.gameStage][key]
+        })
+
+        const imageFiles = {
+            'tutor_bg': require('../assets/images/Tutor.png'),
+            'end_bg': require('../assets/images/Complete.png')
+        }
+
+        const soundFiles = {
+            'correct_sound': require('../assets/audios/Cartoon_correct_answer.mp3'),
+            'wrong_sound': require('../assets/audios/Cardboard_Box_05.mp3'),
+            'bgm': require('../assets/audios/06_strait_no_chaser_01_shorten.mp3'),
+            'turn': require('../assets/audios/turn-signal_short.mp3')
+        }
+
+        this.preloadFromArr({
+            atlas: atlasFiles, img: imageFiles, sound: soundFiles
+        })
+
+        this.load.spritesheet('extSmBtn', require('../assets/images/btn_ext_1.png'),{ frameWidth: 186, frameHeight: 209 })
+        this.load.spritesheet('strBtn', require('../assets/images/btn_str.png'),{ frameWidth: 776, frameHeight: 227 })
+        this.load.spritesheet('btn_lt', require('../assets/images/btn_lt.png'),{ frameWidth:168, frameHeight: 186})
+        this.load.spritesheet('btn_rt', require('../assets/images/btn_rt.png'),{ frameWidth:168, frameHeight: 186})
+        this.load.spritesheet('rplBtn', require('../assets/images/btn_rpl.png'),{ frameWidth: 410, frameHeight: 163.5 })
+        this.load.spritesheet('extBtn', require('../assets/images/btn_ext.png'),{ frameWidth: 410, frameHeight: 163.5 })
+        this.load.spritesheet('speakerBtn', require('../assets/images/btn_speaker.png'),{ frameWidth: 186, frameHeight: 209  })
+        this.load.spritesheet('offSpeakerBtn', require('../assets/images/btn_speaker_off.png'), { frameWidth: 186, frameHeight: 209  })
 
         this.createProgressBar();
 
-        this.load.on('complete', function () {
-            self.loadingText.setText('連接完成')
-            self.time.addEvent({
-                delay: 500,
-                callback: () => self.scene.start('Tutor')
-            })
+    }
 
-        });
+    create () {
+        super.create();
+
+        this.buildBg('bg_title')
+
+        setTimeout(
+            ()=> {
+                this.scene.start('Tutor')
+            }, 1
+        )
 
     }
 

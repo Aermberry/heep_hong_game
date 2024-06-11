@@ -13,6 +13,7 @@ image: node:12.18.3
 stages:
  - build
  - deploy:master
+ - deploy:test
 
 
 # cache:
@@ -26,12 +27,14 @@ build:node:
   before_script:
     - npm install
   script:
+    - npx browserslist@latest --update-db
     - npm run build
   only:
     - master
+    - test
   artifacts:
     name: "$CI_JOB_STAGE-$CI_COMMIT_REF_NAME"
-    paths: 
+    paths:
       - 'dist/*'
     expire_in: 1 day
     when: always
@@ -48,6 +51,70 @@ deploy_master:
     USER: $WEBSERVER_USER              # Deploy Host Signin User
     SSH_PRI_KEY: $SSH_PRIVATE_KEY      # SSH Privite Key for signin
     DOCROOT: $WEBSERVER_DOCROOT        # Deploy Host Document Root
+    TMP: $WEB_TMP                # Deploy Host Temp folder for handle Backup and Deploy Files.
+    GIT_STRATEGY: none
+  script:
+    #remove SSH Key
+    - rm -rf ~/.ssh/id_rsa
+
+    # Set Commit Time
+    - export DEPLOY_DATE=$(date '+%Y%m%d_%H%M%S')
+
+    #Import SSH Key
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - ls
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_PRI_KEY" > ~/.ssh/id_rsa
+    - chmod 400 ~/.ssh/id_rsa
+
+    #  1. (Optional) Clear Remote Host tmp folder
+    #     Clear File before Copy (Optional, as this can be a Cron on Server, Or handle )
+    - ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$USER"@"$HOST" "rm -rf $TMP/backup.*.gz; rm -rf $TMP/deploy.*.gz;"
+
+    #  2. Upload the artifacts,
+    - tar zcf - ./ | ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa $USER@$HOST "cat > $TMP/deploy.$DEPLOY_DATE.tar.gz"
+
+    # Prepare Remote scripts (For Step 3 and 4)
+    #  3. Backup exisiting webroot,
+    - echo "tar -zcf $TMP/backup.$DEPLOY_DATE.tar.gz $DOCROOT" >> ~/"$CI_PROJECT_NAME".sh
+    #  4. Copy deploy code on top exisiting webroot (i.e. gitignored file will not overwrite)
+    #     Unzip
+    - echo "mkdir -p $TMP/deploy; " >> ~/"$CI_PROJECT_NAME".sh
+    - echo "tar -zxf $TMP/deploy.$DEPLOY_DATE.tar.gz -C $TMP/deploy;" >> ~/"$CI_PROJECT_NAME".sh
+    #     Copy
+    - echo "cp -rlf $TMP/deploy/dist/* $DOCROOT/" >> ~/"$CI_PROJECT_NAME".sh
+    #     Remove Deploy Folder
+    - echo "rm -rf $TMP/deploy" >> ~/"$CI_PROJECT_NAME".sh
+
+    # Fire Remote Command
+    - ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$USER"@"$HOST" < ~/"$CI_PROJECT_NAME".sh
+
+    #  5. (Optional) Copy backup to Local
+    - scp -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$USER"@"$HOST":$TMP/backup.$DEPLOY_DATE.tar.gz ./
+    # Copy to backup location.
+    # - mv ./backup.$DEPLOY_DATE.tar.gz /mnt/deployBackup/$backupFolder
+
+    #  6. (Optional) Clear Remote Host tmp folder
+    # - ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa "$WEBSERVER_USER"@"$WEBSERVER_IP" "rm -rf $TMP/backup.*.gz; rm -rf $TMP/deploy.*.gz;"
+
+    #remove SSH Keys and Remote scripts
+    - rm ~/.ssh/id_rsa
+    - rm ~/"$CI_PROJECT_NAME".sh
+
+
+deploy_test:
+  stage: deploy:test
+  tags: [general-shell] # Shell Worker to make SSH / SCP
+  only:
+    - test
+  dependencies:
+    - build:node    # We need the artifacts for deploy, (We using Gitlab 11, cannot use "needs")
+  variables:            # Setup Variables for deploy
+    HOST: $TEST_IP                # Deploy Host IP
+    USER: $TEST_USER              # Deploy Host Signin User
+    SSH_PRI_KEY: $TEST_PRI_KEY      # SSH Privite Key for signin
+    DOCROOT: $TEST_DOCROOT        # Deploy Host Document Root
     TMP: $WEB_TMP                # Deploy Host Temp folder for handle Backup and Deploy Files.
     GIT_STRATEGY: none
   script:

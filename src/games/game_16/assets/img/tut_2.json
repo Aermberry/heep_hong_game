@@ -1,0 +1,59 @@
+﻿{"frames": {
+
+"Symbol 40000":
+{
+	"frame": {"x":0,"y":0,"w":469,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
+	"sourceSize": {"w":469,"h":476}
+},
+"Symbol 40001":
+{
+	"frame": {"x":469,"y":0,"w":469,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
+	"sourceSize": {"w":469,"h":476}
+},
+"Symbol 40002":
+{
+	"frame": {"x":938,"y":0,"w":469,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
+	"sourceSize": {"w":469,"h":476}
+},
+"Symbol 40003":
+{
+	"frame": {"x":1407,"y":0,"w":469,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
+	"sourceSize": {"w":469,"h":476}
+},
+"Symbol 40004":
+{
+	"frame": {"x":0,"y":476,"w":469,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
+	"sourceSize": {"w":469,"h":476}
+},
+"Symbol 40005":
+{
+	"frame": {"x":469,"y":476,"w":469,"h":476},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":469,"h":476},
+	"sourceSize": {"w":469,"h":476}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "22.0.2.168",
+	"image": "tut_2_L1.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":1024},
+	"scale": "1"
+}
+}
